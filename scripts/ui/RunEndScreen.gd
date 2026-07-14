@@ -1,8 +1,5 @@
 extends Control
 
-signal restart_pressed
-signal main_menu_pressed
-
 
 func _ready() -> void:
 	%RestartButton.pressed.connect(_on_restart_pressed)
@@ -10,8 +7,8 @@ func _ready() -> void:
 
 
 func _on_restart_pressed() -> void:
-	restart_pressed.emit()
+	GameManager.restart_run()
 
 
 func _on_main_menu_pressed() -> void:
-	main_menu_pressed.emit()
+	GameManager.return_to_main_menu()

@@ -9,8 +9,8 @@
 
 | # | Milestone | Status | Commit |
 |---|-----------|--------|--------|
-| 1 | Boot and basic screen navigation | ✅ Done (needs manual click-through + commit) | — |
-| 2 | RunState and GameManager | ⬜ Not started | — |
+| 1 | Boot and basic screen navigation | ✅ Done | `454e614` |
+| 2 | RunState and GameManager | ✅ Done | pending commit |
 | 3 | Content loading and validation | ⬜ Not started | — |
 | 4 | Decision Engine | ⬜ Not started | — |
 | 5 | Choice and effect resolution | ⬜ Not started | — |
@@ -41,7 +41,7 @@ Read per milestone — never all at once:
 | 9 | 02, 04, 05 |
 | 10 | 04, 05 |
 
-`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, and `CONTENT_GUIDE.md` are **legacy pre-PRD notes**. Where they conflict with the numbered PRDs, the numbered PRDs win. Do not use them as implementation specs.
+Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE.md`) are **legacy pre-PRD notes**. Where they conflict with the numbered PRDs, the numbered PRDs win. Do not use them as implementation specs.
 
 ---
 
@@ -59,31 +59,35 @@ Read per milestone — never all at once:
 
 **Acceptance (from PRD 04 §21):**
 - [x] App launches without errors (validated headless, Godot 4.7)
-- [ ] Start button opens Game Screen — verify manually in editor
-- [ ] Debug button opens Run End Screen — verify manually in editor
-- [ ] Return/restart navigation works — verify manually in editor
-- [ ] Committed to git
-
-**Remaining before sign-off:** one manual click-through in the editor, then commit (suggested message: `feat: milestone 1 boot and screen navigation`).
+- [x] Start button opens Game Screen
+- [x] Debug button opens Run End Screen
+- [x] Return/restart navigation works
+- [x] Committed to git (`454e614`)
 
 ---
 
-## Milestone 2 — RunState and GameManager
+## Milestone 2 — RunState and GameManager ✅
 
 **Objective:** Clean run lifecycle state, owned outside UI.
 
-**Deliverables:**
-- Rewrite `scripts/core/RunState.gd` to PRD 01 §4: four typed resource fields (`treasury`, `happiness`, `order`, `elite_loyalty`), `active_laws`, `flags` (Array[String], not Dictionary), `counters`, `used_decision_ids`, `decision_history`, `current_decision_id`, `run_phase`, `random_seed`; full method set including `change_resource()` returning the actual applied delta after 0–100 clamping; `to_dictionary()`/`from_dictionary()`
-- `RunPhase` enum per PRD 01 §2
-- Rewrite `scripts/core/GameManager.gd` (autoload) with lifecycle methods from PRD 04 §4: `start_new_run()`, `restart_run()`, `return_to_main_menu()`, `get_current_state()`; decision/content methods stay stubbed
-- Update `scripts/core/EventBus.gd` signals to PRD 01 §21 (`run_started`, `run_ended`, `run_reset`, etc.)
-- Wire Main/StartScreen navigation through GameManager instead of direct signals where appropriate
+**Delivered:**
+- `scripts/core/RunState.gd` rewritten to PRD 01 §4: four typed resources, `RunPhase` enum, laws/flags/counters/used-decisions/history, `change_resource()` returning actual applied delta after 0–100 clamping, `to_dictionary()`/`from_dictionary()`
+- `scripts/core/GameManager.gd` rewritten (autoload): `start_new_run()`, `restart_run()`, `return_to_main_menu()`, `get_current_state()`, `debug_set_resource()`, `debug_print_state()`; content/decision methods stubbed until M3/M4
+- `scripts/core/EventBus.gd` rewritten to PRD 01 §21 signal set
+- Navigation per PRD 04 §14: StartScreen → `GameManager.start_new_run()` → `run_started` → Main shows Game Screen; RunEnd buttons call `restart_run()`/`return_to_main_menu()`; debug run-end buttons remain Main-local until M7
+- GameScreen placeholder now displays real day/resources from RunState
+- Tests: `tests/test_run_state.gd`, `tests/test_game_manager.gd` (headless assertion scripts)
 
-**Legacy cleanup in this milestone:**
-- Delete or rewrite `scripts/core/ResourceManager.gd` (old `approval`/`money` model; clamping moves into RunState per PRD 01)
-- Delete `scripts/models/*` old data classes if they conflict (`DecisionData`, `AdvisorData`, `LawData`, `EndingData` — PRDs use Dictionaries + `DecisionResult`/`RunSummary`/`CountryVisualState` models)
+**Legacy cleanup done (expanded beyond original plan to keep the project parse-error-free):**
+- Deleted `ResourceManager.gd`, `DecisionEngine.gd` (rewritten fresh in M4), `SaveManager.gd` (rewritten fresh in M10), all `scripts/models/*`
+- Deleted old UI scripts (`DecisionCard`, `ResourceBar`, `ActiveLawsBar`, `CountryDiorama`) and `scenes/game/*`, `CollectionScreen.tscn`, `PalaceScreen.tscn` — they depended on the old data model and would no longer compile (M6 cleanup pulled forward)
 
-**Acceptance:** new run always starts clean; state never stored in UI nodes; resources clamp 0–100 with correct applied delta (TC-003/TC-004 logic); debug print of state works.
+**Acceptance (verified):**
+- [x] New run always starts clean; restart creates a fresh RunState instance (tested)
+- [x] State not stored in UI nodes
+- [x] Clamping returns actual applied delta — TC-003/TC-004 logic (tested)
+- [x] Debug state printing works
+- [x] Headless boot passes with no errors
 
 ---
 
@@ -144,7 +148,7 @@ Read per milestone — never all at once:
 - Delta feedback (`+8`/`-10`) on changed resources; danger coloring with numbers always visible
 - Mandatory explicit Continue button after each result
 
-**Legacy cleanup in this milestone:** delete `scenes/game/*` (old GameScreen, ResourceBar, DecisionCard, etc.), `scenes/screens/CollectionScreen.tscn`, `PalaceScreen.tscn`, and their orphaned UI scripts — superseded by the new components.
+**Legacy cleanup:** already done in Milestone 2 (old `scenes/game/*`, Collection/Palace screens, and orphaned UI scripts were removed there).
 
 **Acceptance:** full loop works for many consecutive days; buttons disabled during resolution; 220-char proposals wrap without clipping (UI-001); laws bar updates immediately.
 

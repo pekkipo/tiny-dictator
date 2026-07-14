@@ -63,12 +63,14 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="DayLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "DAY 1  |  MINISTAN"
 horizontal_alignment = 1
 
 [node name="ResourcesLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "💰 55   🙂 55   🛡 55   👑 55"

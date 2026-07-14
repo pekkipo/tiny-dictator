@@ -1,5 +1,8 @@
 extends Control
 
+## Owns screen switching only. Gameplay flow lives in GameManager.
+## Navigation spec: docs/04_TECHNICAL_ARCHITECTURE_AND_IMPLEMENTATION.md §14-§15.
+
 enum Screen { START, GAME, RUN_END }
 
 const SCREEN_SCENES: Dictionary = {
@@ -14,6 +17,8 @@ var _current_screen: Control = null
 
 
 func _ready() -> void:
+	EventBus.run_started.connect(_on_run_started)
+	EventBus.run_reset.connect(_on_run_reset)
 	print("[BOOT] Main scene ready.")
 	show_screen(Screen.START)
 
@@ -26,36 +31,23 @@ func show_screen(screen: Screen) -> void:
 	var packed_scene: PackedScene = SCREEN_SCENES[screen]
 	_current_screen = packed_scene.instantiate() as Control
 	_screen_container.add_child(_current_screen)
-	_connect_screen_signals(_current_screen)
+	_connect_debug_signals(_current_screen)
 	print("[BOOT] Showing screen: %s" % Screen.keys()[screen])
 
 
-func _connect_screen_signals(screen: Control) -> void:
-	if screen.has_signal("start_pressed"):
-		if not screen.start_pressed.is_connected(_on_start_pressed):
-			screen.start_pressed.connect(_on_start_pressed)
-	if screen.has_signal("debug_run_end_pressed"):
-		if not screen.debug_run_end_pressed.is_connected(_on_debug_run_end_pressed):
-			screen.debug_run_end_pressed.connect(_on_debug_run_end_pressed)
-	if screen.has_signal("main_menu_pressed"):
-		if not screen.main_menu_pressed.is_connected(_on_main_menu_pressed):
-			screen.main_menu_pressed.connect(_on_main_menu_pressed)
-	if screen.has_signal("restart_pressed"):
-		if not screen.restart_pressed.is_connected(_on_restart_pressed):
-			screen.restart_pressed.connect(_on_restart_pressed)
-
-
-func _on_start_pressed() -> void:
+func _on_run_started(_run_state: RunState) -> void:
 	show_screen(Screen.GAME)
+
+
+func _on_run_reset() -> void:
+	show_screen(Screen.START)
+
+
+## Temporary until EndingResolver (Milestone 7) drives the Run End Screen.
+func _connect_debug_signals(screen: Control) -> void:
+	if screen.has_signal("debug_run_end_pressed"):
+		screen.debug_run_end_pressed.connect(_on_debug_run_end_pressed)
 
 
 func _on_debug_run_end_pressed() -> void:
 	show_screen(Screen.RUN_END)
-
-
-func _on_main_menu_pressed() -> void:
-	show_screen(Screen.START)
-
-
-func _on_restart_pressed() -> void:
-	show_screen(Screen.GAME)

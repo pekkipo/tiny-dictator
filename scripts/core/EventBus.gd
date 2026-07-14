@@ -1,10 +1,16 @@
 extends Node
 
-signal run_started(scenario_id: String)
-signal run_ended(ending_id: String)
-signal day_advanced(day: int)
-signal decision_presented(decision: DecisionData)
-signal decision_resolved(decision_id: String, choice_id: String)
-signal resources_changed(resources: Dictionary)
-signal law_enacted(law: LawData)
-signal screen_changed(screen_name: String)
+## Global signal hub. Spec: docs/01_CORE_GAMEPLAY_AND_STATE_PRD.md §21.
+## Untyped payloads (decision, result, summary) become typed models in later milestones.
+
+signal run_started(run_state: RunState)
+signal decision_presented(decision: Dictionary)
+signal decision_resolved(result)
+signal resources_changed(changes: Dictionary)
+signal law_added(law_id: String)
+signal law_removed(law_id: String)
+signal flag_added(flag_id: String)
+signal country_visual_state_changed(state)
+signal ending_triggered(ending_data: Dictionary)
+signal run_ended(summary)
+signal run_reset
