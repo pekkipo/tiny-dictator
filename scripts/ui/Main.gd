@@ -19,6 +19,7 @@ var _current_screen: Control = null
 func _ready() -> void:
 	EventBus.run_started.connect(_on_run_started)
 	EventBus.run_reset.connect(_on_run_reset)
+	EventBus.run_ended.connect(_on_run_ended)
 	print("[BOOT] Main scene ready.")
 	show_screen(Screen.START)
 
@@ -41,6 +42,10 @@ func _on_run_started(_run_state: RunState) -> void:
 
 func _on_run_reset() -> void:
 	show_screen(Screen.START)
+
+
+func _on_run_ended(_summary: RunSummary) -> void:
+	show_screen(Screen.RUN_END)
 
 
 ## Temporary until EndingResolver (Milestone 7) drives the Run End Screen.

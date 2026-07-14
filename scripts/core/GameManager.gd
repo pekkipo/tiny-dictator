@@ -1,9 +1,11 @@
 extends Node
 
 ## High-level run lifecycle coordinator (autoload).
-## Milestone 5 scope: run lifecycle, decision selection, choice resolution.
-## Endings (M7) are stubbed.
+## Owns the full core loop: run lifecycle, decision selection, choice
+## resolution, ending checks, and run summaries.
 ## Spec: docs/04_TECHNICAL_ARCHITECTURE_AND_IMPLEMENTATION.md §4.
+
+const CONTENT_EXHAUSTED_ENDING_ID: String = "content_exhausted"
 
 var _run_state: RunState = RunState.new()
 var _content: ContentRepository = ContentRepository.new()
@@ -12,8 +14,10 @@ var _content_valid: bool = false
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
+var _ending_resolver: EndingResolver = EndingResolver.new()
 var _current_decision: Dictionary = {}
 var _last_result: DecisionResult = null
+var _last_summary: RunSummary = null
 
 
 func _ready() -> void:
@@ -131,14 +135,66 @@ func continue_after_result() -> void:
 	if _run_state.run_phase != RunState.RunPhase.SHOWING_RESULT:
 		return
 	_run_state.run_phase = RunState.RunPhase.CHECKING_ENDING
-	# Ending resolution arrives in Milestone 7; until then runs never end here.
+
+	var country: Dictionary = _content.get_country(_run_state.country_id)
+	var ending := _ending_resolver.resolve_ending(_run_state, _last_result, country, _content)
+	if not ending.is_empty():
+		_end_run(ending)
+		return
+	print("[ENDING] No ending matched.")
+
+	# Day increments only when the run continues (PRD 01 §12).
 	_run_state.day += 1
 	_select_next_decision()
-	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	if _current_decision.is_empty():
-		push_warning("[RUN] No decision available on day %d (content exhaustion ending arrives in M7)." % _run_state.day)
+		# Engine already tried the fallback decision; the country is out of content.
+		var exhausted: Dictionary = _content.get_ending(CONTENT_EXHAUSTED_ENDING_ID)
+		if exhausted.is_empty():
+			push_error("[ENDING] Content exhausted and no '%s' ending exists." % CONTENT_EXHAUSTED_ENDING_ID)
+			return
+		_end_run(exhausted)
 		return
+	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	EventBus.decision_presented.emit(_current_decision)
+
+
+func get_last_summary() -> RunSummary:
+	return _last_summary
+
+
+## Debug helper (used by the M9 overlay and debug buttons).
+func debug_trigger_ending(ending_id: String) -> void:
+	var ending: Dictionary = _content.get_ending(ending_id)
+	if ending.is_empty():
+		push_error("[DEBUG] Unknown ending '%s'." % ending_id)
+		return
+	_end_run(ending)
+
+
+func _end_run(ending: Dictionary) -> void:
+	_run_state.run_phase = RunState.RunPhase.ENDED
+	_last_summary = _build_run_summary(ending)
+	print("[ENDING] Run ended on day %d: %s" % [_run_state.day, _last_summary.ending_id])
+	EventBus.ending_triggered.emit(ending)
+	EventBus.run_ended.emit(_last_summary)
+
+
+func _build_run_summary(ending: Dictionary) -> RunSummary:
+	var summary := RunSummary.new()
+	summary.ending_id = str(ending.get("id", ""))
+	summary.ending_title = str(ending.get("title", "The End"))
+	summary.ending_description = str(ending.get("description", ""))
+	summary.final_day = _run_state.day
+	summary.final_resources = _run_state.get_resources()
+	summary.active_laws = _run_state.active_laws.duplicate()
+	summary.decision_history = _run_state.decision_history.duplicate(true)
+	summary.random_seed = _run_state.random_seed
+	summary.legacy_text = "Ruled for %d day%s. Made %d decision%s. Enacted %d law%s. History will judge accordingly." % [
+		summary.final_day, "" if summary.final_day == 1 else "s",
+		summary.decision_history.size(), "" if summary.decision_history.size() == 1 else "s",
+		summary.active_laws.size(), "" if summary.active_laws.size() == 1 else "s",
+	]
+	return summary
 
 
 ## Debug helper (used by the M9 overlay): queue a specific decision next.

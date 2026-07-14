@@ -3,8 +3,6 @@ extends Control
 ## Main gameplay screen controller. Displays state and forwards player
 ## actions to GameManager; owns no gameplay logic (PRD 04 §11).
 
-signal debug_run_end_pressed
-
 
 func _ready() -> void:
 	%DecisionCard.choice_selected.connect(_on_choice_selected)
@@ -60,8 +58,9 @@ func _on_continue_pressed() -> void:
 	GameManager.continue_after_result()
 
 
+## Temporary shortcut until the M9 debug overlay; ends the run for real.
 func _on_debug_run_end_pressed() -> void:
-	debug_run_end_pressed.emit()
+	GameManager.debug_trigger_ending("revolution")
 
 
 func _on_debug_start_pressed() -> void:

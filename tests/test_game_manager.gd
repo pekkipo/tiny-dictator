@@ -92,6 +92,52 @@ func _initialize() -> void:
 	game_manager.continue_after_result()
 	_check(state.current_decision_id == "traffic_tank_solution", "forced follow-up chain works end to end")
 
+	# --- Milestone 7: endings and restart flow ---
+	var run_ended_count: Array[int] = [0]
+	var ended_payload: Array = [null]
+	event_bus.run_ended.connect(func(summary: RunSummary) -> void:
+		run_ended_count[0] += 1
+		ended_payload[0] = summary)
+
+	# Fatal decision: collapse happiness, then continue ends the run.
+	game_manager.start_new_run()
+	state = game_manager.get_current_state()
+	game_manager.resolve_choice("left")
+	game_manager.debug_set_resource("happiness", 0)
+	var day_before: int = state.day
+	game_manager.continue_after_result()
+	_check(run_ended_count[0] == 1, "run_ended emitted on collapse")
+	_check(state.run_phase == RunState.RunPhase.ENDED, "phase ENDED after collapse")
+	_check(state.day == day_before, "day does not increment on a fatal decision")
+	var summary: RunSummary = game_manager.get_last_summary()
+	_check(summary != null and summary.ending_id == "revolution", "summary carries revolution ending")
+	_check(summary == ended_payload[0], "run_ended payload matches get_last_summary")
+	_check(summary.final_day == day_before, "summary final_day matches run day")
+	_check(summary.decision_history.size() == 1, "summary records decision history")
+	_check(not summary.legacy_text.is_empty(), "summary has legacy text")
+
+	# Input after the run ended is rejected.
+	_check(game_manager.resolve_choice("left") == null, "no choices accepted after run ended")
+	game_manager.continue_after_result()
+	_check(state.run_phase == RunState.RunPhase.ENDED, "continue after ending is a no-op")
+
+	# Debug ending trigger ends the run immediately.
+	game_manager.start_new_run()
+	game_manager.debug_trigger_ending("cat_republic")
+	_check(run_ended_count[0] == 2, "debug_trigger_ending ends the run")
+	_check(game_manager.get_last_summary().ending_id == "cat_republic", "debug ending recorded in summary")
+
+	# TC-020: ten consecutive restarts stay clean.
+	var restarts_clean: bool = true
+	for i in range(10):
+		game_manager.restart_run()
+		var restarted: RunState = game_manager.get_current_state()
+		if restarted.day != 1 or not restarted.decision_history.is_empty() \
+				or not restarted.active_laws.is_empty() or not restarted.flags.is_empty() \
+				or restarted.run_phase != RunState.RunPhase.AWAITING_DECISION:
+			restarts_clean = false
+	_check(restarts_clean, "ten consecutive restarts produce clean runs")
+
 	if _failures == 0:
 		print("[TEST] All GameManager tests passed.")
 	else:

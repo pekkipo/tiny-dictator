@@ -53,8 +53,12 @@ func _initialize() -> void:
 	_check(not result_panel.visible, "result panel hidden on next card")
 	_check(not left_button.disabled, "choices enabled on next card")
 
-	# Play several more days to shake out loop issues.
+	# Play several more days to shake out loop issues. Resources are topped
+	# up each day so no collapse ending cuts the loop short (endings have
+	# their own tests in test_ending_resolver.gd / test_run_end_screen.gd).
 	for i in range(10):
+		for resource_id in RunState.RESOURCE_IDS:
+			game_manager.debug_set_resource(resource_id, 55)
 		left_button.pressed.emit()
 		await process_frame
 		continue_button.pressed.emit()

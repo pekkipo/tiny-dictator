@@ -14,8 +14,8 @@
 | 3 | Content loading and validation | ✅ Done | `d1df89e` |
 | 4 | Decision Engine | ✅ Done | `32d1b18` |
 | 5 | Choice and effect resolution | ✅ Done | `97568b2` |
-| 6 | Main gameplay UI | ✅ Done | pending commit |
-| 7 | Endings and restart flow | ⬜ Not started | — |
+| 6 | Main gameplay UI | ✅ Done | `8772603` |
+| 7 | Endings and restart flow | ✅ Done | pending commit |
 | 8 | Placeholder country reactions | ⬜ Not started | — |
 | 9 | Debug tools | ⬜ Not started | — |
 | 10 | Save system and QA | ⬜ Not started | — |
@@ -176,16 +176,26 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 7 — Endings and restart flow
+## Milestone 7 — Endings and restart flow ✅
 
 **Objective:** Runs end correctly and restart is clean.
 
-**Deliverables:**
-- `scripts/core/EndingResolver.gd` per PRD 04 §9, priority: explicit → special (priority desc) → resource collapse (elite_coup > revolution > chaos_country > bankrupt_leader) → max day → none
-- `scripts/models/RunSummary.gd` per PRD 04 §12
-- Rebuild `scenes/screens/RunEndScreen.tscn` with real data: newspaper masthead, ending title/description, final day, four final resources, laws count, RULE AGAIN + MAIN MENU
+**Delivered:**
+- `scripts/core/RequirementsEvaluator.gd` — shared static condition matcher; `DecisionEngine.evaluate_requirements()` now delegates to it, and `EndingResolver` uses it for ending conditions (same operator set, PRD 03 §11 / PRD 01 §14)
+- `scripts/core/EndingResolver.gd` per PRD 04 §9. Priority: explicit `trigger_ending` → condition-based endings by data priority (special 100 outranks collapses 50–53; simultaneous collapses resolve by priority, TC-017) → country `max_day` survival ending → none
+- `scripts/models/RunSummary.gd` per PRD 04 §12, built once by GameManager at run end (incl. generated legacy text)
+- GameManager: real ending check in `continue_after_result()` (day increments only when the run continues); content-exhaustion ending when the engine returns no decision even after fallback; `_end_run()` emits `ending_triggered` + `run_ended(summary)`; `get_last_summary()`; `debug_trigger_ending(id)` for M9
+- `scenes/screens/RunEndScreen.tscn` rebuilt as the newspaper: light paper panel on dark background, masthead + "Day N of the Glorious Reign", ending title/icon/description, final resources, laws count, legacy text, RULE AGAIN + MAIN MENU. Script reads only the RunSummary (placeholder shown if opened without one)
+- Main switches to Run End on `run_ended`; GameScreen debug button now triggers a real ending (`revolution`) through the full flow
+- EventBus payloads typed: `decision_resolved(DecisionResult)`, `run_ended(RunSummary)`
+- Tests: `tests/test_ending_resolver.gd` (7 groups: all four collapses, collapse priority TC-017, explicit TC-015, unknown explicit id, special-beats-collapse TC-016, max-day TC-018), M7 section in `test_game_manager.gd` (fatal decision ends run with frozen day, post-ending input rejected, debug trigger, ten clean restarts TC-020), `tests/test_run_end_screen.gd` (newspaper populated, restart + main menu buttons)
 
-**Acceptance:** each of the 7 endings can trigger and display; day does not increment on a fatal decision; restart resets everything (TC-020); ten consecutive restarts leak nothing.
+**Acceptance (verified):**
+- [x] Endings trigger and display (collapses, special, survival, explicit, exhausted all covered by tests; any ending forceable via `debug_trigger_ending`)
+- [x] Day does not increment on a fatal decision (tested)
+- [x] Restart resets everything — TC-020 (tested)
+- [x] Ten consecutive restarts leak nothing (tested)
+- [x] All eight suites pass headless; boot clean
 
 ---
 
