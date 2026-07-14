@@ -238,7 +238,18 @@ Optional:
 
 A decision is the core content unit.
 
-Example:
+> **Schema v2 update (Phase 2A milestone 2A-1).** Decisions may now declare
+> `"schema_version": 2` and author an `"options"` array (2–3 options, each
+> with a unique `id`) instead of fixed `left`/`right` objects, plus a
+> `"card_type"` field (default `"normal"`) and `"base_weight"` (mapped onto
+> `weight`). Legacy decisions below remain fully supported: at load time
+> `DecisionSchema.normalize()` converts `left`/`right` into options with ids
+> `left`/`right`, so every downstream system reads only the normalized
+> options model. Resolution is by option id; the legacy ids `left`/`right`
+> alias the first/second option on v2 cards. Full v2 schema:
+> `docs/06_PHASE_2A_NARRATIVE_AND_SYSTEMS_DESIGN_PRD.md` §12–13.
+
+Legacy (schema v1) example:
 
 ```json
 {
@@ -302,8 +313,7 @@ Mandatory:
 - `id`
 - `advisor_id`
 - `proposal`
-- `left`
-- `right`
+- `left` and `right` (schema v1) **or** `options` with 2–3 entries (schema v2)
 
 Mandatory option fields:
 

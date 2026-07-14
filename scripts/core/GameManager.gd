@@ -100,6 +100,8 @@ func get_last_result() -> DecisionResult:
 	return _last_result
 
 
+## Legacy Phase 1 wrappers; on schema-v2 cards "left"/"right" alias the
+## first/second option (DecisionSchema.LEGACY_ALIASES).
 func choose_left() -> void:
 	resolve_choice("left")
 
@@ -108,16 +110,17 @@ func choose_right() -> void:
 	resolve_choice("right")
 
 
-## Returns null when the choice cannot be resolved (wrong phase = double
-## click protection, TC-002).
-func resolve_choice(side: String) -> DecisionResult:
+## Resolves the current decision by option id (schema v2). Returns null when
+## the choice cannot be resolved (wrong phase = double click protection,
+## TC-002).
+func resolve_choice(option_id: String) -> DecisionResult:
 	if _run_state.run_phase != RunState.RunPhase.AWAITING_DECISION:
 		return null
 	if _current_decision.is_empty():
 		return null
 
 	_run_state.run_phase = RunState.RunPhase.RESOLVING_DECISION
-	var result := _effect_resolver.apply_option(_current_decision, side, _run_state, _content)
+	var result := _effect_resolver.apply_option(_current_decision, option_id, _run_state, _content)
 	_last_result = result
 
 	if not result.forced_next_decision_id.is_empty():

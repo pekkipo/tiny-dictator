@@ -20,27 +20,30 @@ func _initialize() -> void:
 	var day_label: Label = screen.get_node("%DayLabel")
 	var decision_card: PanelContainer = screen.get_node("%DecisionCard")
 	var result_panel: PanelContainer = screen.get_node("%ResultPanel")
-	var left_button: Button = decision_card.get_node("%LeftChoiceButton")
 	var proposal_label: Label = decision_card.get_node("%ProposalLabel")
+
+	# Option buttons are rebuilt for every decision since schema v2.
+	var buttons: Array[Button] = decision_card.get_option_buttons()
 
 	_check(day_label.text == "DAY 1", "day label shows DAY 1, got '%s'" % day_label.text)
 	_check(decision_card.visible, "decision card visible")
 	_check(not proposal_label.text.is_empty(), "proposal populated")
-	_check(not left_button.disabled, "choices enabled before pick")
+	_check(buttons.size() >= 2, "at least two option buttons rendered")
+	_check(not buttons[0].disabled, "choices enabled before pick")
 	_check(not result_panel.visible, "result panel hidden before pick")
 
-	# Simulate tapping the left choice button.
-	left_button.pressed.emit()
+	# Simulate tapping the first choice button.
+	buttons[0].pressed.emit()
 	await process_frame
 
-	_check(left_button.disabled, "choices disabled after pick")
+	_check(buttons[0].disabled, "choices disabled after pick")
 	_check(result_panel.visible, "result panel visible after pick")
 	var result_text: Label = result_panel.get_node("%ResultTextLabel")
 	_check(not result_text.text.is_empty(), "result text populated")
 
 	# Tapping again must not double-resolve (TC-002 at the UI level).
 	var history_size: int = game_manager.get_current_state().decision_history.size()
-	left_button.pressed.emit()
+	buttons[0].pressed.emit()
 	await process_frame
 	_check(game_manager.get_current_state().decision_history.size() == history_size, "double tap does not re-resolve")
 
@@ -49,9 +52,10 @@ func _initialize() -> void:
 	continue_button.pressed.emit()
 	await process_frame
 
+	buttons = decision_card.get_option_buttons()
 	_check(day_label.text == "DAY 2", "day label shows DAY 2 after continue, got '%s'" % day_label.text)
 	_check(not result_panel.visible, "result panel hidden on next card")
-	_check(not left_button.disabled, "choices enabled on next card")
+	_check(buttons.size() >= 2 and not buttons[0].disabled, "choices enabled on next card")
 
 	# Play several more days to shake out loop issues. Resources are topped
 	# up each day so no collapse ending cuts the loop short (endings have
@@ -64,7 +68,10 @@ func _initialize() -> void:
 			break
 		for resource_id in RunState.RESOURCE_IDS:
 			game_manager.debug_set_resource(resource_id, 55)
-		left_button.pressed.emit()
+		buttons = decision_card.get_option_buttons()
+		if buttons.is_empty():
+			break
+		buttons[0].pressed.emit()
 		await process_frame
 		continue_button.pressed.emit()
 		await process_frame

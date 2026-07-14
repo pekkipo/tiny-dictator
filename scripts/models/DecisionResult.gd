@@ -6,7 +6,13 @@ extends RefCounted
 ## Spec: docs/01_CORE_GAMEPLAY_AND_STATE_PRD.md §6.
 
 var decision_id: String = ""
+
+## Canonical since schema v2: the id of the resolved option.
+var selected_option_id: String = ""
+
+## Legacy alias kept for Phase 1 readers; mirrors selected_option_id.
 var selected_side: String = ""
+
 var choice_label: String = ""
 
 ## Actual applied deltas after clamping, keyed by resource id.

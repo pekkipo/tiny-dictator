@@ -33,9 +33,9 @@ scenes/components/           ResourceBar, DecisionCard, ResultPanel,
                              DebugOverlay
 scripts/core/                GameManager, EventBus (autoloads), RunState,
                              ContentRepository, ContentValidator, DecisionEngine,
-                             EffectResolver, EndingResolver, CountryStateResolver,
-                             RequirementsEvaluator, LawImpactResolver,
-                             SaveManager (autoload)
+                             DecisionSchema, EffectResolver, EndingResolver,
+                             CountryStateResolver, RequirementsEvaluator,
+                             LawImpactResolver, SaveManager (autoload)
 scripts/models/              DecisionResult, RunSummary, CountryVisualState
 scripts/ui/                  One controller per screen/component (display only)
 data/                        All game content as JSON (countries, advisors,
@@ -50,15 +50,29 @@ lives in `data/` JSON.
 
 ## How to add a decision
 
+Phase 1 legacy format (still fully supported):
+
 1. Open `data/decisions/ministan_core.json` (or `ministan_followups.json`).
 2. Add an entry with a unique `id`, an `advisor_id`, a `proposal`, and `left`/
    `right` options (each with `label`, `effects`, `result_text`; optionally
    `add_laws`, `add_flags`, `counter_changes`, `force_next_decision`,
    `trigger_ending`, `visible_effects`).
-3. Optionally gate it with `requirements` (flags, laws, resources, counters,
-   day range) and mark it `one_time`.
-4. Run the game. Content is validated at boot — errors name the file and ID,
-   and the Start button is blocked until they are fixed. No code changes needed.
+3. Optionally gate it with `requirements` and mark it `one_time`.
+
+Schema v2 format (Phase 2A milestone 2A-1 — preferred for new content):
+
+1. Same file, but set `"schema_version": 2` and author an `"options"` array
+   (2–3 entries, each with a unique `"id"`, plus `label`, `effects`,
+   `result_text`). Use `"base_weight"` instead of `"weight"`.
+2. Optional `"card_type"`: `normal` (default), `crisis`, `advisor`,
+   `consequence`, `resolution`, `recovery`, `ending_setup`. Non-normal types
+   show a placeholder banner on the card; behavior comes in later milestones.
+3. At load time `DecisionSchema.normalize()` converts legacy `left`/`right`
+   into options, so the engine, resolver, and UI always read the same model.
+
+Run the game after editing. Content is validated at boot — errors name the
+file and ID, and the Start button is blocked until they are fixed. No code
+changes needed for content-only additions.
 
 ## Debug overlay
 
@@ -85,6 +99,8 @@ godot --headless --path . -s tests/test_game_screen.gd
 godot --headless --path . -s tests/test_run_end_screen.gd
 godot --headless --path . -s tests/test_debug_overlay.gd
 godot --headless --path . -s tests/test_save_manager.gd
+godot --headless --path . -s tests/test_law_popup.gd
+godot --headless --path . -s tests/test_schema_v2.gd   # Phase 2A schema v2
 godot --headless --path . -s tests/playthrough_sim.gd   # 5 automated playthroughs
 ```
 

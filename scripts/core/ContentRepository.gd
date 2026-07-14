@@ -198,7 +198,9 @@ func _load_decision_files(country: Dictionary) -> void:
 			if _decisions.has(decision_id):
 				_load_errors.append("Duplicate decision id '%s' in %s" % [decision_id, decision_path])
 				continue
-			_decisions[decision_id] = decision
+			# Normalize once at load: legacy left/right become an "options"
+			# array; schema_version and card_type get defaults (PRD 2A §12).
+			_decisions[decision_id] = DecisionSchema.normalize(decision)
 			decision_ids.append(decision_id)
 	_country_decision_ids[country_id] = decision_ids
 

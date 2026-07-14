@@ -11,7 +11,7 @@ Intentional scope limits (per the Phase 1 PRDs), not defects:
 
 ## Content volume
 
-- One country (Ministan), 16 decisions (10 core + 6 follow-ups). The PRD target
+- One country (Ministan), 17 decisions (11 core + 6 follow-ups). The PRD target
   of 24+6 is a pure-JSON authoring task with no code changes required.
 - Because of the small pool, the decision pool can run dry around day 10-14.
   The fallback decision ("generic_minister_disagreement") bridges at most

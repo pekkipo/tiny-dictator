@@ -147,6 +147,11 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 	if str(decision.get("proposal", "")).is_empty():
 		errors.append("Decision '%s' missing 'proposal'" % id)
 
+	# Schema v2 (PRD 2A §12): normalize first so all checks below run against
+	# the options model, covering authored "options" and legacy left/right,
+	# and so v2 "base_weight" is mapped onto "weight".
+	DecisionSchema.normalize(decision)
+
 	var weight: Variant = decision.get("weight", 10)
 	if not (weight is float or weight is int) or int(weight) <= 0:
 		errors.append("Decision '%s' has invalid 'weight' (must be positive integer)" % id)
@@ -156,12 +161,31 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 	if minimum_day > maximum_day:
 		errors.append("Decision '%s' has minimum_day > maximum_day" % id)
 
-	for side in ["left", "right"]:
-		var option: Variant = decision.get(side)
+	var schema_version: int = int(decision.get("schema_version", DecisionSchema.LEGACY_VERSION))
+	if schema_version < DecisionSchema.LEGACY_VERSION or schema_version > DecisionSchema.CURRENT_VERSION:
+		errors.append("Decision '%s' has unsupported schema_version %d" % [id, schema_version])
+
+	var card_type: String = str(decision.get("card_type", DecisionSchema.DEFAULT_CARD_TYPE))
+	if card_type not in DecisionSchema.CARD_TYPES:
+		errors.append("Decision '%s' has unknown card_type '%s'" % [id, card_type])
+
+	var options: Array = decision.get("options", [])
+	if options.size() < DecisionSchema.MIN_OPTIONS:
+		errors.append("Decision '%s' has %d option(s); minimum is %d" % [id, options.size(), DecisionSchema.MIN_OPTIONS])
+	if options.size() > DecisionSchema.MAX_OPTIONS:
+		errors.append("Decision '%s' has %d options; maximum is %d" % [id, options.size(), DecisionSchema.MAX_OPTIONS])
+	var seen_option_ids: Dictionary = {}
+	for option in options:
 		if not (option is Dictionary):
-			errors.append("Decision '%s' missing '%s' option" % [id, side])
+			errors.append("Decision '%s' has a non-object option" % id)
 			continue
-		errors.append_array(_validate_option(id, side, option, repository))
+		var option_id: String = str(option.get("id", ""))
+		if option_id.is_empty():
+			errors.append("Decision '%s' has an option without 'id'" % id)
+		elif seen_option_ids.has(option_id):
+			errors.append("Decision '%s' has duplicate option id '%s'" % [id, option_id])
+		seen_option_ids[option_id] = true
+		errors.append_array(_validate_option(id, option_id, option, repository))
 
 	var requirements: Variant = decision.get("requirements", {})
 	if requirements is Dictionary:
@@ -172,9 +196,9 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 	return errors
 
 
-func _validate_option(decision_id: String, side: String, option: Dictionary, repository: ContentRepository) -> Array[String]:
+func _validate_option(decision_id: String, option_id: String, option: Dictionary, repository: ContentRepository) -> Array[String]:
 	var errors: Array[String] = []
-	var where := "Decision '%s' option '%s'" % [decision_id, side]
+	var where := "Decision '%s' option '%s'" % [decision_id, option_id]
 
 	if str(option.get("label", "")).is_empty():
 		errors.append("%s missing 'label'" % where)
@@ -263,12 +287,12 @@ func _decision_warnings(decision: Dictionary) -> Array[String]:
 	var id: String = str(decision.get("id", ""))
 	if str(decision.get("proposal", "")).length() > PROPOSAL_MAX_LENGTH:
 		warnings.append("Decision '%s' proposal exceeds %d characters" % [id, PROPOSAL_MAX_LENGTH])
-	for side in ["left", "right"]:
-		var option: Variant = decision.get(side)
+	for option in DecisionSchema.get_options(decision):
 		if not (option is Dictionary):
 			continue
+		var option_id: String = str(option.get("id", "?"))
 		if str(option.get("label", "")).length() > CHOICE_LABEL_MAX_LENGTH:
-			warnings.append("Decision '%s' %s label exceeds %d characters" % [id, side, CHOICE_LABEL_MAX_LENGTH])
+			warnings.append("Decision '%s' option '%s' label exceeds %d characters" % [id, option_id, CHOICE_LABEL_MAX_LENGTH])
 		if str(option.get("result_text", "")).length() > RESULT_TEXT_MAX_LENGTH:
-			warnings.append("Decision '%s' %s result_text exceeds %d characters" % [id, side, RESULT_TEXT_MAX_LENGTH])
+			warnings.append("Decision '%s' option '%s' result_text exceeds %d characters" % [id, option_id, RESULT_TEXT_MAX_LENGTH])
 	return warnings

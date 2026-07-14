@@ -47,7 +47,10 @@ func _test_pizza_right_option() -> void:
 	var result := _resolver.apply_option(decision, "right", state, _repo)
 
 	_check(result.decision_id == "free_pizza_friday", "result carries decision id")
-	_check(result.selected_side == "right", "result carries side")
+	# This card is schema v2 now: the legacy "right" alias resolves the second
+	# option, and the result carries the option's real id.
+	_check(result.selected_option_id == "approve", "result carries resolved option id")
+	_check(result.selected_side == "approve", "selected_side mirrors option id")
 	_check(result.choice_label == "Give them pizza", "result carries label")
 	_check(int(result.resource_changes.get("treasury", 0)) == -10, "treasury -10 applied")
 	_check(int(result.resource_changes.get("happiness", 0)) == 14, "happiness +14 applied")

@@ -40,8 +40,8 @@ func _refresh_all() -> void:
 	%DecisionCard.set_input_enabled(state.run_phase == RunState.RunPhase.AWAITING_DECISION)
 
 
-func _on_choice_selected(side: String) -> void:
-	GameManager.resolve_choice(side)
+func _on_choice_selected(option_id: String) -> void:
+	GameManager.resolve_choice(option_id)
 
 
 func _on_decision_presented(_decision: Dictionary) -> void:

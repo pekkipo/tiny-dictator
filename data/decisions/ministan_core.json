@@ -38,33 +38,39 @@
   },
   {
     "id": "free_pizza_friday",
+    "schema_version": 2,
+    "card_type": "normal",
     "advisor_id": "auntie_olga",
     "category": "public_life",
     "proposal": "The people are grumpy. My niece suggests free pizza every Friday. She also owns a pizzeria.",
     "one_time": true,
-    "weight": 10,
-    "left": {
-      "label": "No free lunch",
-      "effects": {
-        "treasury": 4,
-        "happiness": -8
+    "base_weight": 10,
+    "options": [
+      {
+        "id": "refuse",
+        "label": "No free lunch",
+        "effects": {
+          "treasury": 4,
+          "happiness": -8
+        },
+        "result_text": "No pizza. Citizens form a support group for disappointed stomachs."
       },
-      "result_text": "No pizza. Citizens form a support group for disappointed stomachs."
-    },
-    "right": {
-      "label": "Give them pizza",
-      "effects": {
-        "treasury": -10,
-        "happiness": 14,
-        "elite_loyalty": -2
-      },
-      "add_laws": ["free_pizza_friday"],
-      "add_flags": ["pizza_policy_active"],
-      "counter_changes": {
-        "pizza_choices": 1
-      },
-      "result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
-    },
+      {
+        "id": "approve",
+        "label": "Give them pizza",
+        "effects": {
+          "treasury": -10,
+          "happiness": 14,
+          "elite_loyalty": -2
+        },
+        "add_laws": ["free_pizza_friday"],
+        "add_flags": ["pizza_policy_active"],
+        "counter_changes": {
+          "pizza_choices": 1
+        },
+        "result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
+      }
+    ],
     "tags": ["public_life", "pizza", "setup"]
   },
   {
@@ -98,63 +104,75 @@
   },
   {
     "id": "cat_voting_proposal",
+    "schema_version": 2,
+    "card_type": "normal",
     "advisor_id": "auntie_olga",
     "category": "absurd_law",
     "proposal": "My cat Barsik has strong opinions about local politics. Perhaps cats should be allowed to vote?",
     "one_time": true,
-    "weight": 8,
-    "left": {
-      "label": "Cats can't vote",
-      "effects": {
-        "order": 2,
-        "happiness": -3
+    "base_weight": 8,
+    "options": [
+      {
+        "id": "reject",
+        "label": "Cats can't vote",
+        "effects": {
+          "order": 2,
+          "happiness": -3
+        },
+        "result_text": "Democracy remains human-only. Barsik files a formal complaint by scratching the door."
       },
-      "result_text": "Democracy remains human-only. Barsik files a formal complaint by scratching the door."
-    },
-    "right": {
-      "label": "Enfranchise the cats",
-      "effects": {
-        "happiness": 8,
-        "order": -5,
-        "elite_loyalty": -4
-      },
-      "add_laws": ["cat_voting_rights"],
-      "add_flags": ["cats_enfranchised"],
-      "counter_changes": {
-        "cat_favor_choices": 1
-      },
-      "result_text": "Cats receive ballots. Voter turnout now depends on the weather and naps."
-    },
+      {
+        "id": "enfranchise",
+        "label": "Enfranchise the cats",
+        "effects": {
+          "happiness": 8,
+          "order": -5,
+          "elite_loyalty": -4
+        },
+        "add_laws": ["cat_voting_rights"],
+        "add_flags": ["cats_enfranchised"],
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "result_text": "Cats receive ballots. Voter turnout now depends on the weather and naps."
+      }
+    ],
     "tags": ["absurd", "cats", "setup"]
   },
   {
     "id": "military_parade",
+    "schema_version": 2,
+    "card_type": "normal",
     "advisor_id": "general_boom",
     "category": "military",
     "proposal": "The army has not marched in weeks. A grand parade will remind everyone that we have exactly seven tanks.",
     "one_time": true,
-    "weight": 10,
-    "left": {
-      "label": "No parade",
-      "effects": {
-        "treasury": 2,
-        "elite_loyalty": -6
+    "base_weight": 10,
+    "options": [
+      {
+        "id": "cancel",
+        "label": "No parade",
+        "effects": {
+          "treasury": 2,
+          "elite_loyalty": -6
+        },
+        "result_text": "No parade. General Boom polishes the tanks alone, sadly."
       },
-      "result_text": "No parade. General Boom polishes the tanks alone, sadly."
-    },
-    "right": {
-      "label": "March!",
-      "effects": {
-        "treasury": -8,
-        "order": 6,
-        "happiness": 3,
-        "elite_loyalty": 5
-      },
-      "counter_changes": {
-        "military_favor_choices": 1
-      },
-      "result_text": "Seven tanks roll proudly through the square. One takes a wrong turn."
-    },
+      {
+        "id": "march",
+        "label": "March!",
+        "effects": {
+          "treasury": -8,
+          "order": 6,
+          "happiness": 3,
+          "elite_loyalty": 5
+        },
+        "counter_changes": {
+          "military_favor_choices": 1
+        },
+        "result_text": "Seven tanks roll proudly through the square. One takes a wrong turn."
+      }
+    ],
     "tags": ["military"]
   },
   {
@@ -271,6 +289,53 @@
       "result_text": "Morale soars. The army now guards the snack warehouse with unusual dedication."
     },
     "tags": ["military"]
+  },
+  {
+    "id": "budget_meltdown_crisis",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "CRISIS: The national budget spreadsheet caught fire. Figuratively, then literally. We need money by Friday.",
+    "one_time": true,
+    "base_weight": 10,
+    "requirements": {
+      "minimum_day": 3
+    },
+    "options": [
+      {
+        "id": "raise_taxes",
+        "label": "Emergency tax on everything",
+        "effects": {
+          "treasury": 12,
+          "happiness": -9,
+          "order": -3
+        },
+        "result_text": "Everything is taxed, including the tax forms. The budget survives; the mood does not."
+      },
+      {
+        "id": "sell_furniture",
+        "label": "Auction the palace furniture",
+        "effects": {
+          "treasury": 8,
+          "elite_loyalty": -6,
+          "happiness": 2
+        },
+        "result_text": "The golden chairs sell instantly. Ministers now hold meetings standing up, furiously."
+      },
+      {
+        "id": "print_money",
+        "label": "Print more money",
+        "effects": {
+          "treasury": 15,
+          "order": -7,
+          "elite_loyalty": -3
+        },
+        "add_flags": ["money_printer_used"],
+        "result_text": "The printer runs all night. Bread now costs a suspicious number of zeros."
+      }
+    ],
+    "tags": ["economy", "crisis", "placeholder"]
   },
   {
     "id": "generic_minister_disagreement",

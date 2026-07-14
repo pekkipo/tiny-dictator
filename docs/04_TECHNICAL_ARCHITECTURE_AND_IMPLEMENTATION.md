@@ -56,6 +56,7 @@ tiny-dictator/
 │   │   ├── EventBus.gd
 │   │   ├── RunState.gd
 │   │   ├── DecisionEngine.gd
+│   │   ├── DecisionSchema.gd
 │   │   ├── EffectResolver.gd
 │   │   ├── EndingResolver.gd
 │   │   ├── ContentRepository.gd
@@ -273,12 +274,14 @@ It must not:
 
 Takes one option and mutates RunState.
 
-Required method:
+Required method (since Phase 2A milestone 2A-1, choices resolve by option id;
+the legacy ids `left`/`right` alias the first/second option via
+`DecisionSchema.get_option()`):
 
 ```gdscript
 func apply_option(
     decision: Dictionary,
-    side: String,
+    option_id: String,
     state: RunState,
     repository: ContentRepository
 ) -> DecisionResult

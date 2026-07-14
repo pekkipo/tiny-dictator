@@ -38,8 +38,7 @@ static func describe(law_id: String, state: RunState, repository: ContentReposit
 			info["unlocks_decisions"] += 1
 		if law_id in requirements.get("blocked_laws", []):
 			info["blocks_decisions"] += 1
-		for side in ["left", "right"]:
-			var option: Variant = decision.get(side)
+		for option in DecisionSchema.get_options(decision):
 			if option is Dictionary and law_id in option.get("remove_laws", []):
 				info["repealable"] = true
 

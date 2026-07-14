@@ -5,20 +5,23 @@ extends RefCounted
 ## DecisionResult. Never selects decisions, changes scenes, or checks endings.
 ## Spec: docs/04_TECHNICAL_ARCHITECTURE_AND_IMPLEMENTATION.md §8,
 ## sequence: docs/01_CORE_GAMEPLAY_AND_STATE_PRD.md §5.
+## Since schema v2 (PRD 2A §12) choices resolve by option id; the legacy
+## ids "left"/"right" keep working through DecisionSchema aliases.
 
 const FALLBACK_RESULT_TEXT: String = "The country reacts to your decision."
 
 
-func apply_option(decision: Dictionary, side: String, state: RunState, repository: ContentRepository) -> DecisionResult:
+func apply_option(decision: Dictionary, option_id: String, state: RunState, repository: ContentRepository) -> DecisionResult:
 	var result := DecisionResult.new()
 	result.decision_id = str(decision.get("id", ""))
-	result.selected_side = side
 
-	var option: Variant = decision.get(side)
-	if not (option is Dictionary):
-		push_error("[EFFECT] Decision '%s' has no '%s' option." % [result.decision_id, side])
+	var option: Dictionary = DecisionSchema.get_option(decision, option_id)
+	if option.is_empty():
+		push_error("[EFFECT] Decision '%s' has no option '%s'." % [result.decision_id, option_id])
 		result.result_text = FALLBACK_RESULT_TEXT
 		return result
+	result.selected_option_id = str(option.get("id", option_id))
+	result.selected_side = result.selected_option_id
 	result.choice_label = str(option.get("label", ""))
 
 	var resources_before: Dictionary = state.get_resources()
@@ -57,14 +60,15 @@ func apply_option(decision: Dictionary, side: String, state: RunState, repositor
 	result.triggered_ending_id = str(option.get("trigger_ending", ""))
 	result.result_text = str(option.get("result_text", ""))
 	if result.result_text.is_empty():
-		push_warning("[EFFECT] Decision '%s' option '%s' has no result_text; using fallback." % [result.decision_id, side])
+		push_warning("[EFFECT] Decision '%s' option '%s' has no result_text; using fallback." % [result.decision_id, result.selected_option_id])
 		result.result_text = FALLBACK_RESULT_TEXT
 
 	state.add_history_entry({
 		"day": state.day,
 		"decision_id": result.decision_id,
 		"advisor_id": str(decision.get("advisor_id", "")),
-		"selected_side": side,
+		"selected_option_id": result.selected_option_id,
+		"selected_side": result.selected_option_id,
 		"choice_label": result.choice_label,
 		"resource_before": resources_before,
 		"resource_after": state.get_resources(),
@@ -74,7 +78,7 @@ func apply_option(decision: Dictionary, side: String, state: RunState, repositor
 	state.mark_decision_used(result.decision_id)
 
 	print("[EFFECT] %s/%s: %s%s" % [
-		result.decision_id, side,
+		result.decision_id, result.selected_option_id,
 		_format_changes(result.resource_changes),
 		"" if result.added_laws.is_empty() else " | new laws: %s" % ", ".join(result.added_laws),
 	])
