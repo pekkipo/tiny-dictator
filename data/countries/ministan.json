@@ -14,5 +14,6 @@
     "res://data/decisions/ministan_followups.json"
   ],
   "fallback_decision_id": "generic_minister_disagreement",
+  "fallback_decision_limit": 2,
   "survival_ending_id": "survived_the_prototype"
 }

@@ -127,6 +127,27 @@ func _initialize() -> void:
 	_check(run_ended_count[0] == 2, "debug_trigger_ending ends the run")
 	_check(game_manager.get_last_summary().ending_id == "cat_republic", "debug ending recorded in summary")
 
+	# TC-019 regression: an exhausted pool must not loop the fallback card
+	# forever; after the fallback limit the content_exhausted ending fires.
+	game_manager.start_new_run()
+	state = game_manager.get_current_state()
+	for decision in game_manager.get_content().get_all_decisions_for_country(state.country_id):
+		state.mark_decision_used(str(decision.get("id", "")))
+	var fallback_days: int = 0
+	for i in range(10):
+		if state.run_phase != RunState.RunPhase.AWAITING_DECISION:
+			break
+		if state.current_decision_id == "generic_minister_disagreement":
+			fallback_days += 1
+		# Keep resources healthy so only exhaustion can end the run.
+		for resource_id in RunState.RESOURCE_IDS:
+			game_manager.debug_set_resource(resource_id, 55)
+		game_manager.resolve_choice("left")
+		game_manager.continue_after_result()
+	_check(state.run_phase == RunState.RunPhase.ENDED, "exhausted content ends the run instead of looping")
+	_check(game_manager.get_last_summary().ending_id == "content_exhausted", "content_exhausted ending triggered, got '%s'" % game_manager.get_last_summary().ending_id)
+	_check(fallback_days <= 2, "fallback card shown at most twice, got %d" % fallback_days)
+
 	# TC-020: ten consecutive restarts stay clean.
 	var restarts_clean: bool = true
 	for i in range(10):

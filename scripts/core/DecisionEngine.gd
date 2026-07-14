@@ -8,6 +8,12 @@ extends RefCounted
 
 const DEFAULT_WEIGHT: int = 10
 
+## The fallback card is a short buffer, not infinite content: after this many
+## appearances in one run the pool is treated as truly exhausted, which lets
+## GameManager trigger the content_exhausted ending instead of looping the
+## same card forever. Countries can override via "fallback_decision_limit".
+const DEFAULT_FALLBACK_LIMIT: int = 2
+
 var _repository: ContentRepository
 var _rng: RandomNumberGenerator
 var _forced_decision_id: String = ""
@@ -106,9 +112,17 @@ func _select_fallback(state: RunState) -> Dictionary:
 	if fallback_id.is_empty():
 		push_warning("[DECISION] Empty pool and no fallback configured for '%s'." % state.country_id)
 		return {}
+	var limit: int = int(country.get("fallback_decision_limit", DEFAULT_FALLBACK_LIMIT))
+	var uses: int = 0
+	for entry in state.decision_history:
+		if str(entry.get("decision_id", "")) == fallback_id:
+			uses += 1
+	if uses >= limit:
+		print("[DECISION] Fallback '%s' already shown %d time(s); content truly exhausted." % [fallback_id, uses])
+		return {}
 	var fallback: Dictionary = _repository.get_decision(fallback_id)
 	if fallback.is_empty() or not is_decision_valid(fallback, state):
 		push_warning("[DECISION] Empty pool and fallback '%s' is unavailable." % fallback_id)
 		return {}
-	print("[DECISION] Decision pool empty; using fallback '%s'." % fallback_id)
+	print("[DECISION] Decision pool empty; using fallback '%s' (%d of %d uses)." % [fallback_id, uses + 1, limit])
 	return fallback

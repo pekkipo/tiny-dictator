@@ -29,11 +29,13 @@ godot --headless --path . --quit-after 10
 scenes/main/Main.tscn        Screen switching + debug overlay layer
 scenes/screens/              StartScreen, GameScreen, RunEndScreen
 scenes/components/           ResourceBar, DecisionCard, ResultPanel,
-                             ActiveLawsBar, CountryDiorama, DebugOverlay
+                             ActiveLawsBar, LawDetailPopup, CountryDiorama,
+                             DebugOverlay
 scripts/core/                GameManager, EventBus (autoloads), RunState,
                              ContentRepository, ContentValidator, DecisionEngine,
                              EffectResolver, EndingResolver, CountryStateResolver,
-                             RequirementsEvaluator, SaveManager (autoload)
+                             RequirementsEvaluator, LawImpactResolver,
+                             SaveManager (autoload)
 scripts/models/              DecisionResult, RunSummary, CountryVisualState
 scripts/ui/                  One controller per screen/component (display only)
 data/                        All game content as JSON (countries, advisors,

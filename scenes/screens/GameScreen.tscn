@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgame002screen"]
+[gd_scene load_steps=8 format=3 uid="uid://cgame002screen"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameScreen.gd" id="1_game"]
 [ext_resource type="PackedScene" uid="uid://crbar001tiny" path="res://scenes/components/ResourceBar.tscn" id="2_rbar"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://crpanel001tiny" path="res://scenes/components/ResultPanel.tscn" id="4_result"]
 [ext_resource type="PackedScene" uid="uid://clbar001tiny" path="res://scenes/components/ActiveLawsBar.tscn" id="5_laws"]
 [ext_resource type="PackedScene" uid="uid://cdiorama01tiny" path="res://scenes/components/CountryDiorama.tscn" id="6_diorama"]
+[ext_resource type="PackedScene" uid="uid://clawpop01tiny" path="res://scenes/components/LawDetailPopup.tscn" id="7_lawpop"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -98,3 +99,8 @@ layout_mode = 2
 [node name="ActiveLawsBar" parent="SafeAreaMargin/MainVBox" instance=ExtResource("5_laws")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="LawDetailPopup" parent="." instance=ExtResource("7_lawpop")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

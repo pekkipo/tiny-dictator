@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://clawpop01tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/LawDetailPopup.gd" id="1_lawpop"]
+
+[node name="LawDetailPopup" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lawpop")
+
+[node name="Dim" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Card" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+
+[node name="CardMargin" type="MarginContainer" parent="CenterContainer/Card"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="CardVBox" type="VBoxContainer" parent="CenterContainer/Card/CardMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HeaderRow" type="HBoxContainer" parent="CenterContainer/Card/CardMargin/CardVBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LawIconLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "📜"
+
+[node name="HeaderTextVBox" type="VBoxContainer" parent="CenterContainer/Card/CardMargin/CardVBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="LawNameLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox/HeaderRow/HeaderTextVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Law Name"
+autowrap_mode = 3
+
+[node name="LawCategoryLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox/HeaderRow/HeaderTextVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+text = "CATEGORY"
+
+[node name="Separator" type="HSeparator" parent="CenterContainer/Card/CardMargin/CardVBox"]
+layout_mode = 2
+
+[node name="LawDescriptionLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Law description."
+autowrap_mode = 3
+
+[node name="EnactedLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 20
+text = "Enacted on day 3."
+autowrap_mode = 3
+
+[node name="InfluenceHeader" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 20
+text = "LONG-TERM INFLUENCE"
+
+[node name="InfluenceLabel" type="Label" parent="CenterContainer/Card/CardMargin/CardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Influence hints."
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/Card/CardMargin/CardVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CLOSE"

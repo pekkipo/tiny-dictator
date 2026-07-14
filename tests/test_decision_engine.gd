@@ -175,10 +175,16 @@ func _test_fallback() -> void:
 		state.mark_decision_used(str(decision["id"]))
 	var selected := engine.select_next_decision(state)
 	_check(str(selected.get("id", "")) == "generic_minister_disagreement", "fallback selected on empty pool")
-	# Fallback is reusable: selecting again still works.
+	# Fallback is reusable within its limit: with one resolved use it repeats.
 	state.current_decision_id = "generic_minister_disagreement"
+	state.add_history_entry({"day": 15, "decision_id": "generic_minister_disagreement"})
 	var again := engine.select_next_decision(state)
-	_check(str(again.get("id", "")) == "generic_minister_disagreement", "reusable fallback can repeat when alone")
+	_check(str(again.get("id", "")) == "generic_minister_disagreement", "fallback can repeat within its limit")
+	# After the per-run limit (2 for ministan) the pool is truly exhausted,
+	# so the content_exhausted ending can fire instead of looping forever.
+	state.add_history_entry({"day": 16, "decision_id": "generic_minister_disagreement"})
+	var exhausted := engine.select_next_decision(state)
+	_check(exhausted.is_empty(), "fallback stops after its limit, got '%s'" % exhausted.get("id", ""))
 
 
 func _test_repetition_avoidance() -> void:

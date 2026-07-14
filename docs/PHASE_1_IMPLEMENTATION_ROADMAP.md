@@ -297,6 +297,26 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
+## Post-Phase-1 additions
+
+- **Fallback loop fix** (player-reported bug): when the decision pool ran dry
+  (~day 14 with current content), the fallback card "Ministers want larger
+  offices" repeated every day until day 30. The fallback now bridges at most
+  `fallback_decision_limit` days per run (2 for Ministan, configurable in the
+  country JSON), after which the `content_exhausted` ending ("An Unexpected
+  Peace") fires as PRD 01 §17 intended. Regression tests added to
+  `test_decision_engine.gd` and `test_game_manager.gd`.
+
+- **Law detail popup** (player request): law chips in the Active Laws Bar are
+  now tappable and open `LawDetailPopup`, showing the law's description, its
+  enactment record (day, choice, actual resource deltas from run history), and
+  content-derived long-term influence hints (unlocks/blocks future decisions,
+  ending relevance, repealability, diorama props). Facts come from
+  `scripts/core/LawImpactResolver.gd`; tests in `tests/test_law_popup.gd`.
+  The "+N more" overflow chip now expands/collapses the full law list.
+
+---
+
 ## Content workstream (parallel to Milestones 4–10)
 
 Content can be authored in JSON independently once Milestone 3 lands the schemas. Targets from PRD 00 §7 and PRD 03 §19–20:

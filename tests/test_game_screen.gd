@@ -56,14 +56,23 @@ func _initialize() -> void:
 	# Play several more days to shake out loop issues. Resources are topped
 	# up each day so no collapse ending cuts the loop short (endings have
 	# their own tests in test_ending_resolver.gd / test_run_end_screen.gd).
+	# Left-only choices never set flags, so the pool can legitimately run dry
+	# near day 12 once the fallback card hits its per-run cap; ending the run
+	# with content_exhausted is a valid outcome, looping the fallback is not.
 	for i in range(10):
+		if game_manager.get_current_state().run_phase == RunState.RunPhase.ENDED:
+			break
 		for resource_id in RunState.RESOURCE_IDS:
 			game_manager.debug_set_resource(resource_id, 55)
 		left_button.pressed.emit()
 		await process_frame
 		continue_button.pressed.emit()
 		await process_frame
-	_check(day_label.text == "DAY 12", "loop stable through day 12, got '%s'" % day_label.text)
+	var reached_day_12: bool = day_label.text == "DAY 12"
+	var exhausted_cleanly: bool = game_manager.get_current_state().run_phase == RunState.RunPhase.ENDED \
+		and game_manager.get_last_summary().ending_id == "content_exhausted"
+	_check(reached_day_12 or exhausted_cleanly,
+		"loop reaches day 12 or ends via content_exhausted, got '%s'" % day_label.text)
 
 	if _failures == 0:
 		print("[TEST] All GameScreen smoke tests passed.")

@@ -13,10 +13,11 @@ Intentional scope limits (per the Phase 1 PRDs), not defects:
 
 - One country (Ministan), 16 decisions (10 core + 6 follow-ups). The PRD target
   of 24+6 is a pure-JSON authoring task with no code changes required.
-- Because of the small pool, long runs repeat the fallback decision
-  ("generic_minister_disagreement") after roughly day 10, which makes the
-  day-30 survival ending fairly common (3 of 5 simulated playthroughs).
-  Authoring more decisions will restore variety and risk in the late game.
+- Because of the small pool, the decision pool can run dry around day 10-14.
+  The fallback decision ("generic_minister_disagreement") bridges at most
+  `fallback_decision_limit` days (2 for Ministan), then the run ends with the
+  "An Unexpected Peace" (content_exhausted) ending. Authoring more decisions
+  will push runs toward the full 30 days and the survival ending.
 
 ## Platform and export
 
