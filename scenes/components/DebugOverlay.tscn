@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdbgover01tiny"]
+[gd_scene format=3 uid="uid://bp31ad8hu6q07"]
 
 [ext_resource type="Script" path="res://scripts/ui/DebugOverlay.gd" id="1_debug"]
 
@@ -247,3 +247,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 18
 text = "RELOAD CONTENT"
+
+[node name="ResetSaveButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "RESET SAVE"

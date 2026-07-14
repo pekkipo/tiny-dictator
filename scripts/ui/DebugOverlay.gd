@@ -18,6 +18,7 @@ func _ready() -> void:
 	%RestartButton.pressed.connect(_on_restart_pressed)
 	%PrintStateButton.pressed.connect(_on_print_state_pressed)
 	%ReloadContentButton.pressed.connect(_on_reload_content_pressed)
+	%ResetSaveButton.pressed.connect(_on_reset_save_pressed)
 
 	for resource_id in RunState.RESOURCE_IDS:
 		%ResourceOption.add_item(resource_id)
@@ -145,3 +146,8 @@ func _on_reload_content_pressed() -> void:
 	var ok: bool = GameManager.reload_content()
 	_populate_ending_options()
 	_show_feedback("Content reloaded. Valid: %s." % ok, ok)
+
+
+func _on_reset_save_pressed() -> void:
+	SaveManager.reset_save()
+	_show_feedback("Save reset: unlocked endings cleared.", true)

@@ -42,6 +42,7 @@ func _initialize() -> void:
 	_check(screen.get_node("%DateLabel").text == "Day 1 of the Glorious Reign", "final day displayed")
 	_check("🛡 0" in screen.get_node("%FinalStatsLabel").text, "collapsed resource shown in stats")
 	_check(screen.get_node("%LawsCountLabel").text.begins_with("Active laws:"), "laws count displayed")
+	_check(screen.get_node("%EndingsUnlockedLabel").text.begins_with("Endings discovered:"), "unlocked endings count displayed")
 	_check(not screen.get_node("%LegacySummaryLabel").text.is_empty(), "legacy text displayed")
 
 	# RULE AGAIN starts a fresh run.

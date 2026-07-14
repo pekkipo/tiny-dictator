@@ -18,6 +18,7 @@ func _populate() -> void:
 		%DateLabel.text = "Day ? of the Glorious Reign"
 		%FinalStatsLabel.text = ""
 		%LawsCountLabel.text = ""
+		%EndingsUnlockedLabel.text = ""
 		%LegacySummaryLabel.text = ""
 		return
 
@@ -34,6 +35,10 @@ func _populate() -> void:
 		int(summary.final_resources.get("elite_loyalty", 0)),
 	]
 	%LawsCountLabel.text = "Active laws: %d" % summary.active_laws.size()
+	%EndingsUnlockedLabel.text = "Endings discovered: %d of %d" % [
+		SaveManager.get_unlocked_endings().size(),
+		GameManager.get_content().get_raw_endings().size(),
+	]
 	%LegacySummaryLabel.text = summary.legacy_text
 
 
