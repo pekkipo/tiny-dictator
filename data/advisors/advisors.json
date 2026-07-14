@@ -1,0 +1,18 @@
+{
+  "advisors": [
+    {
+      "id": "finance_minister",
+      "name": "Penny Pincher",
+      "title": "Minister of Finance",
+      "portrait": "res://assets/art/advisors/finance_minister.png",
+      "personality_tags": ["cautious", "economic"]
+    },
+    {
+      "id": "interior_minister",
+      "name": "Iron Fist",
+      "title": "Minister of Interior",
+      "portrait": "res://assets/art/advisors/interior_minister.png",
+      "personality_tags": ["aggressive", "security"]
+    }
+  ]
+}

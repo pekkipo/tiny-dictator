@@ -1,0 +1,45 @@
+---
+description: Tiny Dictator game design rules
+alwaysApply: true
+---
+
+Tiny Dictator is a satirical mobile game where the player rules a fictional tiny country through absurd laws and decisions.
+
+Core fantasy:
+The player is a ridiculous ruler trying to survive, stay loved, keep the country stable, and discover absurd endings.
+
+Tone:
+- Funny, absurd, charming, lightly dark.
+- Fictional countries only.
+- Avoid real politicians, real parties, real wars, hate speech, or realistic authoritarian propaganda.
+- The humor should come from silly laws, unexpected consequences, advisors, and visual city changes.
+
+Core loop:
+1. Advisor proposes a decision.
+2. Player chooses one of two options.
+3. Resources change.
+4. Active laws/flags may be added.
+5. Country visuals update.
+6. Follow-up events may unlock.
+7. Run ends when a resource collapses, the player is overthrown, or a special ending triggers.
+
+MVP resources:
+- treasury
+- happiness
+- order
+- elite_loyalty
+
+MVP screens:
+- Start screen
+- Main game screen
+- Decision card
+- Country diorama
+- Active laws bar
+- Run end newspaper
+
+Design priorities:
+- Every decision should be understandable in 5 seconds.
+- Every decision should have at least one funny consequence.
+- Some decisions should create follow-up chains.
+- Visual country changes are more important than complex simulation.
+- Prioritize replayability and shareable endings.

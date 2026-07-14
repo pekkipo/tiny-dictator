@@ -1,0 +1,29 @@
+---
+description: Godot 4 GDScript rules for Tiny Dictator
+alwaysApply: true
+---
+
+You are helping build Tiny Dictator, a portrait mobile 2D strategy-comedy game in Godot 4 using GDScript.
+
+Technical rules:
+- Use GDScript, not C#.
+- Use Godot 4 syntax.
+- Prefer typed GDScript where practical.
+- Keep game logic data-driven using JSON files under /data.
+- Do not hardcode decisions, laws, advisors, or endings in UI scripts.
+- Use signals for UI updates and state changes.
+- Keep scenes small and composable.
+- Use portrait mobile layout: 1080x1920 target resolution.
+- Avoid complex 3D, physics, multiplayer, online requirements, or procedural world generation for MVP.
+- Do not add plugins, SDKs, ads, analytics, or IAP until the core game loop is playable.
+- Every new script should have a clear responsibility.
+- Do not rewrite working systems unless explicitly asked.
+- When implementing a feature, update relevant docs if behavior changes.
+
+Architecture:
+- GameManager controls high-level flow.
+- RunState stores current run data: day, resources, laws, flags, endings.
+- DecisionEngine selects valid decision cards from JSON.
+- ResourceManager applies resource changes and checks lose conditions.
+- CountryDiorama visualizes the current country state.
+- UI scripts only display state and emit player actions.

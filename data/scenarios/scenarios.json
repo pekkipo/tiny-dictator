@@ -1,0 +1,15 @@
+{
+  "scenarios": [
+    {
+      "id": "ministan",
+      "name": "Ministan",
+      "description": "A tiny nation with big problems and a small budget.",
+      "starting_resources": {
+        "money": 50,
+        "approval": 50,
+        "military": 30,
+        "corruption": 20
+      }
+    }
+  ]
+}

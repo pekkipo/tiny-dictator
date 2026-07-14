@@ -1,0 +1,25 @@
+{
+  "endings": [
+    {
+      "id": "lose_approval",
+      "title": "Overthrown",
+      "description": "The people have had enough of your rule.",
+      "flavor": "Your portrait is removed before the paint dries.",
+      "conditions": { "resource": "approval", "max": 0 }
+    },
+    {
+      "id": "lose_money",
+      "title": "Bankrupt",
+      "description": "The nation cannot pay its debts.",
+      "flavor": "Creditors seize the palace furniture.",
+      "conditions": { "resource": "money", "max": 0 }
+    },
+    {
+      "id": "survived",
+      "title": "Survivor",
+      "description": "You made it through another week of chaos.",
+      "flavor": "Historians will call this 'eventful'.",
+      "conditions": { "min_day": 7 }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmain001tiny"]
+
+[ext_resource type="PackedScene" uid="uid://cstart001tiny" path="res://scenes/screens/StartScreen.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cgame001tiny" path="res://scenes/game/GameScreen.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cend001tiny" path="res://scenes/screens/RunEndScreen.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://ccoll001tiny" path="res://scenes/screens/CollectionScreen.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cpalace001tiny" path="res://scenes/screens/PalaceScreen.tscn" id="5"]
+
+[sub_resource type="GDScript" id="GDScript_main"]
+script/source = "extends Control
+
+@onready var start_screen: Control = %StartScreen
+@onready var game_screen: Control = %GameScreen
+@onready var run_end_screen: Control = %RunEndScreen
+@onready var collection_screen: Control = %CollectionScreen
+@onready var palace_screen: Control = %PalaceScreen
+
+func _ready() -> void:
+	EventBus.screen_changed.connect(_on_screen_changed)
+
+func _on_screen_changed(screen_name: String) -> void:
+	start_screen.visible = screen_name == \"START\"
+	game_screen.visible = screen_name == \"GAME\"
+	run_end_screen.visible = screen_name == \"RUN_END\"
+	collection_screen.visible = screen_name == \"COLLECTION\"
+	palace_screen.visible = screen_name == \"PALACE\"
+"
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_main")
+
+[node name="StartScreen" parent="." instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameScreen" parent="." instance=ExtResource("2")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RunEndScreen" parent="." instance=ExtResource("3")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollectionScreen" parent="." instance=ExtResource("4")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PalaceScreen" parent="." instance=ExtResource("5")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
