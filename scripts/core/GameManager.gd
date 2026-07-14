@@ -20,6 +20,9 @@ var _current_decision: Dictionary = {}
 var _last_result: DecisionResult = null
 var _last_summary: RunSummary = null
 
+## When non-zero, the next run uses this seed instead of a random one (M9 debug).
+var _debug_fixed_seed: int = 0
+
 
 func _ready() -> void:
 	initialize_game()
@@ -56,7 +59,7 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_run_state = RunState.new()
 	_run_state.run_phase = RunState.RunPhase.INITIALIZING
 	_run_state.country_id = country_id
-	_run_state.random_seed = randi()
+	_run_state.random_seed = _debug_fixed_seed if _debug_fixed_seed != 0 else randi()
 	var starting_resources: Dictionary = country.get("starting_resources", {})
 	for resource_id in RunState.RESOURCE_IDS:
 		_run_state.set_resource(resource_id, int(starting_resources.get(resource_id, RunState.DEFAULT_RESOURCE_VALUE)))
@@ -230,6 +233,43 @@ func debug_set_resource(resource_id: String, value: int) -> void:
 	_run_state.set_resource(resource_id, value)
 	EventBus.resources_changed.emit(_run_state.get_resources())
 	EventBus.country_visual_state_changed.emit(get_country_visual_state())
+
+
+func debug_add_law(law_id: String) -> bool:
+	if not _content.has_law(law_id):
+		push_error("[DEBUG] Unknown law '%s'." % law_id)
+		return false
+	if not _run_state.add_law(law_id):
+		return false
+	EventBus.law_added.emit(law_id)
+	EventBus.country_visual_state_changed.emit(get_country_visual_state())
+	return true
+
+
+func debug_add_flag(flag_id: String) -> bool:
+	if flag_id.is_empty() or not _run_state.add_flag(flag_id):
+		return false
+	EventBus.flag_added.emit(flag_id)
+	return true
+
+
+## Skips the current decision and moves to the next day.
+func debug_advance_day() -> bool:
+	if _run_state.run_phase != RunState.RunPhase.AWAITING_DECISION:
+		return false
+	_run_state.day += 1
+	_select_next_decision()
+	if _current_decision.is_empty():
+		push_warning("[DEBUG] No decision available after advancing to day %d." % _run_state.day)
+		return true
+	EventBus.decision_presented.emit(_current_decision)
+	return true
+
+
+## 0 disables the fixed seed. Applies from the next run start.
+func debug_set_fixed_seed(new_seed: int) -> void:
+	_debug_fixed_seed = new_seed
+	print("[DEBUG] Fixed seed %s." % ("cleared" if new_seed == 0 else "set to %d" % new_seed))
 
 
 func debug_print_state() -> void:

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmain001tiny"]
+[gd_scene load_steps=3 format=3 uid="uid://bmain001tiny"]
 
 [ext_resource type="Script" path="res://scripts/ui/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://cdbgover01tiny" path="res://scenes/components/DebugOverlay.tscn" id="2_debug"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -28,3 +29,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="DebugOverlay" parent="DebugLayer" instance=ExtResource("2_debug")]

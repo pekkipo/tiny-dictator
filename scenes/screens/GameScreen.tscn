@@ -98,23 +98,3 @@ layout_mode = 2
 [node name="ActiveLawsBar" parent="SafeAreaMargin/MainVBox" instance=ExtResource("5_laws")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="DebugRow" type="HBoxContainer" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox/DebugRow"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 18
-text = "DEBUG: Trigger Ending"
-
-[node name="DebugStartButton" type="Button" parent="SafeAreaMargin/MainVBox/DebugRow"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 18
-text = "DEBUG: Main Menu"

@@ -32,7 +32,6 @@ func show_screen(screen: Screen) -> void:
 	var packed_scene: PackedScene = SCREEN_SCENES[screen]
 	_current_screen = packed_scene.instantiate() as Control
 	_screen_container.add_child(_current_screen)
-	_connect_debug_signals(_current_screen)
 	print("[BOOT] Showing screen: %s" % Screen.keys()[screen])
 
 
@@ -45,14 +44,4 @@ func _on_run_reset() -> void:
 
 
 func _on_run_ended(_summary: RunSummary) -> void:
-	show_screen(Screen.RUN_END)
-
-
-## Temporary until EndingResolver (Milestone 7) drives the Run End Screen.
-func _connect_debug_signals(screen: Control) -> void:
-	if screen.has_signal("debug_run_end_pressed"):
-		screen.debug_run_end_pressed.connect(_on_debug_run_end_pressed)
-
-
-func _on_debug_run_end_pressed() -> void:
 	show_screen(Screen.RUN_END)

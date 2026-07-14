@@ -1,0 +1,249 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdbgover01tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/DebugOverlay.gd" id="1_debug"]
+
+[node name="DebugOverlay" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_debug")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="PanelMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 48
+
+[node name="Panel" type="PanelContainer" parent="PanelMargin"]
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="PanelMargin/Panel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ContentMargin" type="MarginContainer" parent="PanelMargin/Panel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "DEBUG OVERLAY (F1 / `)"
+
+[node name="CloseButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/TitleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[node name="StateLabel" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "phase / day / seed / decision / resources / laws / flags / counters"
+autowrap_mode = 3
+
+[node name="FeedbackLabel" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.9, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = ""
+autowrap_mode = 3
+
+[node name="Separator1" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
+[node name="ResourceRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResourceOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+
+[node name="ResourceValueSpin" type="SpinBox" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+max_value = 100.0
+value = 55.0
+
+[node name="SetResourceButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ResourceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "SET"
+
+[node name="ForceRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ForceDecisionEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ForceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "decision id"
+
+[node name="ForceDecisionButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ForceRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "FORCE DECISION"
+
+[node name="LawRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddLawEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/LawRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "law id"
+
+[node name="AddLawButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/LawRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "ADD LAW"
+
+[node name="FlagRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AddFlagEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/FlagRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "flag id"
+
+[node name="AddFlagButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/FlagRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "ADD FLAG"
+
+[node name="EndingRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EndingOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/EndingRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+
+[node name="TriggerEndingButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/EndingRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "TRIGGER ENDING"
+
+[node name="SeedRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SeedEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+placeholder_text = "fixed seed (0 clears)"
+
+[node name="SetSeedButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "SET SEED"
+
+[node name="Separator2" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
+[node name="ActionsRow1" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AdvanceDayButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ActionsRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "ADVANCE DAY"
+
+[node name="RestartButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ActionsRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "RESTART RUN"
+
+[node name="ActionsRow2" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PrintStateButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "PRINT STATE"
+
+[node name="ReloadContentButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "RELOAD CONTENT"

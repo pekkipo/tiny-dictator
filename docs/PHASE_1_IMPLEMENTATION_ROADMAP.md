@@ -16,8 +16,8 @@
 | 5 | Choice and effect resolution | ✅ Done | `97568b2` |
 | 6 | Main gameplay UI | ✅ Done | `8772603` |
 | 7 | Endings and restart flow | ✅ Done | `7fa3d03` |
-| 8 | Placeholder country reactions | ✅ Done | pending commit |
-| 9 | Debug tools | ⬜ Not started | — |
+| 8 | Placeholder country reactions | ✅ Done | `d986086` |
+| 9 | Debug tools | ✅ Done | pending commit |
 | 10 | Save system and QA | ⬜ Not started | — |
 
 Update this table (status + commit hash) after every milestone.
@@ -220,15 +220,25 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 9 — Debug tools
+## Milestone 9 — Debug tools ✅
 
 **Objective:** Every major state reachable in seconds.
 
-**Deliverables (per PRD 02 §15 + PRD 05 §7):**
-- `scenes/components/DebugOverlay.tscn` on a CanvasLayer in Main, toggled with F1/backtick
-- Controls: view phase/seed/decision ID/flags/laws/counters; set resources; force decision by ID; add law/flag; trigger ending; restart; print state JSON; fixed seed; reload content
+**Delivered (per PRD 02 §15 + PRD 05 §7):**
+- `scenes/components/DebugOverlay.tscn` + `scripts/ui/DebugOverlay.gd` on a `DebugLayer` CanvasLayer (layer 100) in Main; toggled with F1 or backtick; hidden by default and invisible controls intercept no input
+- State readout (refreshed live via EventBus): phase, day, seed, current decision ID, resources, laws, flags, counters
+- Controls, all through normal GameManager APIs: set any resource (dropdown + spinbox), force decision by ID, add law by ID, add flag by ID, trigger any ending (dropdown built from content), advance day, restart run, print state JSON, set fixed seed, reload content. Feedback label reports success/failure — invalid IDs message instead of crashing
+- New GameManager debug APIs: `debug_add_law()`, `debug_add_flag()`, `debug_advance_day()` (skips current decision, presents the next), `debug_set_fixed_seed()` (0 clears; applies from next run start)
+- GameScreen now listens to `resources_changed` / `law_added` / `law_removed`, so debug edits update the resource bar, laws bar, and diorama immediately (QA §7)
+- Legacy cleanup: temporary M1 debug buttons removed from StartScreen and GameScreen (the overlay supersedes them); Main's debug-signal plumbing deleted
+- Tests: `tests/test_debug_overlay.gd` — hidden by default, F1/backtick key toggling via real input events, every overlay control exercised through button presses, invalid law/decision IDs produce messages not crashes, fixed seed reproduces the same first decision across restarts, trigger-ending ends the run for real
 
-**Acceptance:** hidden overlay intercepts no input; every ending can be forced; invalid debug IDs log a message instead of crashing.
+**Acceptance (verified):**
+- [x] Hidden overlay intercepts no input (hidden by default; toggle via unhandled key input)
+- [x] Every ending can be forced (dropdown lists all endings from content; tested end-to-end with cat_republic)
+- [x] Invalid debug IDs log a message instead of crashing (tested)
+- [x] Resource/law edits immediately update UI (signal wiring tested via GameManager APIs)
+- [x] All ten suites pass headless; boot clean
 
 ---
 

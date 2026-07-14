@@ -85,13 +85,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "START NEW RULE"
 
-[node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "DEBUG: Open Run End Screen"
-
 [node name="BottomSpacer" type="Control" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
 size_flags_vertical = 3
