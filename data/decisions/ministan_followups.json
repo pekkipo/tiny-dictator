@@ -1,0 +1,201 @@
+[
+  {
+    "id": "traffic_tank_solution",
+    "advisor_id": "general_boom",
+    "category": "follow_up",
+    "proposal": "Traffic is chaos since the lights went dark. I can place tanks at every intersection. Tanks are very visible.",
+    "one_time": true,
+    "weight": 10,
+    "requirements": {
+      "all_flags": ["traffic_lights_off"],
+      "blocked_flags": ["military_controls_traffic"]
+    },
+    "left": {
+      "label": "Absolutely not",
+      "effects": {
+        "order": -8,
+        "happiness": 2
+      },
+      "result_text": "The tanks stay home. The cars continue negotiating right of way."
+    },
+    "right": {
+      "label": "Deploy the tanks",
+      "effects": {
+        "treasury": -12,
+        "order": 14,
+        "happiness": -8,
+        "elite_loyalty": 5
+      },
+      "add_laws": ["tank_traffic_control"],
+      "add_flags": ["military_controls_traffic"],
+      "counter_changes": {
+        "military_favor_choices": 1
+      },
+      "result_text": "Traffic becomes extremely orderly and slightly terrified."
+    },
+    "tags": ["traffic", "follow_up"]
+  },
+  {
+    "id": "traffic_complaint",
+    "advisor_id": "auntie_olga",
+    "category": "follow_up",
+    "proposal": "Citizens report that crossing the street now requires courage, luck, and a written will. Something must be done.",
+    "one_time": true,
+    "weight": 12,
+    "requirements": {
+      "all_flags": ["traffic_lights_off"],
+      "blocked_flags": ["military_controls_traffic"]
+    },
+    "left": {
+      "label": "They'll adapt",
+      "effects": {
+        "happiness": -6,
+        "order": -4
+      },
+      "result_text": "Citizens develop impressive sprinting skills and lasting resentment."
+    },
+    "right": {
+      "label": "Turn lights back on",
+      "effects": {
+        "treasury": -6,
+        "happiness": 6,
+        "order": 8
+      },
+      "remove_flags": ["traffic_lights_off"],
+      "result_text": "The lights return. Intersections resume being boring, which everyone appreciates."
+    },
+    "tags": ["traffic", "follow_up"]
+  },
+  {
+    "id": "cheese_shortage",
+    "advisor_id": "minister_penny",
+    "category": "follow_up",
+    "proposal": "Free Pizza Friday has consumed the national cheese reserve. Our cheese supplier demands immediate payment.",
+    "one_time": true,
+    "weight": 12,
+    "requirements": {
+      "all_flags": ["pizza_policy_active"]
+    },
+    "left": {
+      "label": "Pay the invoice",
+      "effects": {
+        "treasury": -10,
+        "happiness": 3
+      },
+      "add_flags": ["cheese_shortage_resolved"],
+      "result_text": "The invoice is paid. The supplier sends a thank-you wheel of parmesan."
+    },
+    "right": {
+      "label": "Cancel pizza program",
+      "effects": {
+        "treasury": 5,
+        "happiness": -12
+      },
+      "remove_laws": ["free_pizza_friday"],
+      "remove_flags": ["pizza_policy_active"],
+      "result_text": "Pizza Friday is cancelled. A nation quietly weeps into its empty plates."
+    },
+    "tags": ["pizza", "follow_up"]
+  },
+  {
+    "id": "fake_smile_industry",
+    "advisor_id": "luna_news",
+    "category": "follow_up",
+    "proposal": "Since smiling became mandatory, citizens have perfected identical fake smiles. My cameras cannot tell anyone apart.",
+    "one_time": true,
+    "weight": 12,
+    "requirements": {
+      "all_flags": ["mandatory_smiling_active"]
+    },
+    "left": {
+      "label": "Repeal the law",
+      "effects": {
+        "happiness": 5,
+        "order": -3,
+        "elite_loyalty": -2
+      },
+      "remove_laws": ["mandatory_smiling"],
+      "remove_flags": ["mandatory_smiling_active"],
+      "result_text": "Frowning is legal again. The nation exhales and relaxes its cheeks."
+    },
+    "right": {
+      "label": "Report 100% happiness",
+      "effects": {
+        "happiness": -8,
+        "order": 2,
+        "elite_loyalty": 4
+      },
+      "visible_effects": ["order", "elite_loyalty"],
+      "add_flags": ["media_declares_total_happiness"],
+      "result_text": "Official happiness reaches 100%. Actual happiness declines to file a protest."
+    },
+    "tags": ["smiling", "follow_up"]
+  },
+  {
+    "id": "cat_parliament",
+    "advisor_id": "luna_news",
+    "category": "follow_up",
+    "proposal": "The Cat Party has won three parliamentary seats. Their platform is fish, naps, and the destruction of curtains.",
+    "one_time": true,
+    "weight": 12,
+    "requirements": {
+      "all_flags": ["cats_enfranchised"]
+    },
+    "left": {
+      "label": "Contest the results",
+      "effects": {
+        "order": -4,
+        "happiness": -3,
+        "elite_loyalty": 3
+      },
+      "result_text": "The recount confirms it: the cats won fairly. They celebrate by ignoring everyone."
+    },
+    "right": {
+      "label": "Welcome the cats",
+      "effects": {
+        "happiness": 7,
+        "order": -3,
+        "elite_loyalty": -5
+      },
+      "add_flags": ["cats_control_parliament"],
+      "counter_changes": {
+        "cat_favor_choices": 1
+      },
+      "result_text": "Parliament installs sunbeam seating. Legislative naps begin immediately."
+    },
+    "tags": ["cats", "follow_up"]
+  },
+  {
+    "id": "cat_fish_budget",
+    "advisor_id": "minister_penny",
+    "category": "follow_up",
+    "proposal": "The Cat Party demands a national fish budget. They have scratched their proposal directly into my desk.",
+    "one_time": true,
+    "weight": 12,
+    "requirements": {
+      "all_flags": ["cats_control_parliament"]
+    },
+    "left": {
+      "label": "Refuse the cats",
+      "effects": {
+        "treasury": 2,
+        "happiness": -4,
+        "order": -5
+      },
+      "result_text": "The cats respond with coordinated staring. The nation feels judged."
+    },
+    "right": {
+      "label": "Fund the fish",
+      "effects": {
+        "treasury": -8,
+        "happiness": 6,
+        "order": 2
+      },
+      "counter_changes": {
+        "cat_favor_choices": 1
+      },
+      "result_text": "The fish budget passes. Purring is heard from the parliament building."
+    },
+    "tags": ["cats", "follow_up", "ending_setup"]
+  }
+]

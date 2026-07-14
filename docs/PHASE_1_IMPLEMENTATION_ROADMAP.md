@@ -10,8 +10,8 @@
 | # | Milestone | Status | Commit |
 |---|-----------|--------|--------|
 | 1 | Boot and basic screen navigation | ✅ Done | `454e614` |
-| 2 | RunState and GameManager | ✅ Done | pending commit |
-| 3 | Content loading and validation | ⬜ Not started | — |
+| 2 | RunState and GameManager | ✅ Done | `1a057f0` |
+| 3 | Content loading and validation | ✅ Done | pending commit |
 | 4 | Decision Engine | ⬜ Not started | — |
 | 5 | Choice and effect resolution | ⬜ Not started | — |
 | 6 | Main gameplay UI | ⬜ Not started | — |
@@ -91,26 +91,27 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 3 — Content loading and validation
+## Milestone 3 — Content loading and validation ✅
 
 **Objective:** All content loads from JSON with strict validation.
 
-**Deliverables:**
-- `scripts/core/ContentRepository.gd` per PRD 04 §5 (catalogs: countries, advisors, laws, decisions, endings; multi-file decision loading)
-- `scripts/core/ContentValidator.gd` per PRD 04 §6 + PRD 03 §18 (unique IDs, referenced IDs exist, required fields, day ranges, weights)
-- Data files matching PRD 03 schemas:
-  - `data/countries/ministan.json`
-  - `data/advisors/advisors.json` (general_boom, minister_penny, luna_news, auntie_olga)
-  - `data/laws/laws.json` (6 laws per PRD 03 §20)
-  - `data/endings/endings.json` (7 endings per PRD 03 §20)
-  - `data/decisions/ministan_core.json` + `ministan_followups.json`
+**Delivered:**
+- `scripts/core/ContentRepository.gd` per PRD 04 §5: catalogs for countries (directory scan), advisors, laws, decisions (multi-file per country), endings; duplicate-ID detection at load; clear errors naming file path and ID
+- `scripts/core/ContentValidator.gd` per PRD 04 §6 + PRD 03 §18: required fields, referenced IDs exist (advisors, laws, endings, forced decisions), resource IDs, weights, day ranges, requirement/condition operator keys; character-limit checks are warnings (PRD 03 §21); `ValidationReport` with errors/warnings/is_valid
+- Data files (PRD 03 schemas): `data/countries/ministan.json`, `advisors.json` (4), `laws.json` (6), `endings.json` (7), `ministan_core.json` (10 decisions incl. fallback) + `ministan_followups.json` (6 follow-ups). All four chains (traffic, pizza, smiling, cats) have their setup + follow-ups; cat_republic special ending is fully wired via law + flag + counter
+- GameManager: loads and validates content at boot, prints `[CONTENT]` summary, refuses `start_new_run()` on validation failure, applies country starting resources; `reload_content()` ready for the M9 debug overlay
+- StartScreen: Start button disabled with "CONTENT ERRORS — SEE LOG" when validation fails
+- Tests: `tests/test_content_validation.gd` (repository counts, shipped content zero errors/warnings, validator catches 7 classes of broken content)
 
-**Legacy cleanup in this milestone:**
-- Replace `data/decisions/ministan_decisions.json` (wrong schema: `money`/`approval`/`corruption`, 3 choices) with PRD-schema files
-- Delete `data/scenarios/scenarios.json` (countries file replaces it)
-- Rewrite old `data/advisors/advisors.json`, `data/laws/laws.json`, `data/endings/endings.json` to PRD 03 schemas
+**Legacy cleanup done:** deleted `data/scenarios/scenarios.json` and old-schema `ministan_decisions.json`; rewrote advisors/laws/endings JSON to PRD schemas.
 
-**Acceptance:** catalog counts print at boot (`[CONTENT]` log); duplicate/missing IDs produce clear errors naming file and ID; fatal validation blocks starting a run in debug.
+**Acceptance (verified):**
+- [x] Catalog counts print at boot: `1 countries, 4 advisors, 6 laws, 16 decisions, 7 endings`
+- [x] Duplicate/missing IDs produce errors naming file and ID (tested)
+- [x] Fatal validation blocks starting a run and disables the Start button
+- [x] Headless boot passes with 0 errors, 0 warnings
+
+**Content note:** 16 decisions shipped (10 core + 6 follow-ups). Expanding to the 24+6 PRD target is the parallel content workstream — pure JSON authoring, no code changes.
 
 ---
 

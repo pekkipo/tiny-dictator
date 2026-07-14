@@ -1,0 +1,18 @@
+{
+  "id": "ministan",
+  "display_name": "Ministan",
+  "description": "A tiny republic with a large palace and several unresolved budget problems.",
+  "starting_resources": {
+    "treasury": 55,
+    "happiness": 55,
+    "order": 55,
+    "elite_loyalty": 55
+  },
+  "max_day": 30,
+  "decision_files": [
+    "res://data/decisions/ministan_core.json",
+    "res://data/decisions/ministan_followups.json"
+  ],
+  "fallback_decision_id": "generic_minister_disagreement",
+  "survival_ending_id": "survived_the_prototype"
+}

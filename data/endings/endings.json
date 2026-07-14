@@ -1,25 +1,94 @@
-{
-  "endings": [
-    {
-      "id": "lose_approval",
-      "title": "Overthrown",
-      "description": "The people have had enough of your rule.",
-      "flavor": "Your portrait is removed before the paint dries.",
-      "conditions": { "resource": "approval", "max": 0 }
-    },
-    {
-      "id": "lose_money",
-      "title": "Bankrupt",
-      "description": "The nation cannot pay its debts.",
-      "flavor": "Creditors seize the palace furniture.",
-      "conditions": { "resource": "money", "max": 0 }
-    },
-    {
-      "id": "survived",
-      "title": "Survivor",
-      "description": "You made it through another week of chaos.",
-      "flavor": "Historians will call this 'eventful'.",
-      "conditions": { "min_day": 7 }
+[
+  {
+    "id": "elite_coup",
+    "type": "resource_failure",
+    "priority": 53,
+    "title": "A Very Polite Coup",
+    "description": "The generals and ministers replaced you during lunch. The paperwork was already prepared.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🎖️",
+    "conditions": {
+      "maximum_resources": {
+        "elite_loyalty": 0
+      }
     }
-  ]
-}
+  },
+  {
+    "id": "revolution",
+    "type": "resource_failure",
+    "priority": 52,
+    "title": "People Had Enough",
+    "description": "The people stormed the palace, mostly because it had the only working air conditioner.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "✊",
+    "conditions": {
+      "maximum_resources": {
+        "happiness": 0
+      }
+    }
+  },
+  {
+    "id": "chaos_country",
+    "type": "resource_failure",
+    "priority": 51,
+    "title": "Nationwide Shrug",
+    "description": "Order collapsed completely. The last traffic sign was traded for a sandwich.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🔥",
+    "conditions": {
+      "maximum_resources": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": "bankrupt_leader",
+    "type": "resource_failure",
+    "priority": 50,
+    "title": "Officially Broke",
+    "description": "The treasury is empty. Creditors seized the palace furniture, including your favorite chair.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💸",
+    "conditions": {
+      "maximum_resources": {
+        "treasury": 0
+      }
+    }
+  },
+  {
+    "id": "cat_republic",
+    "type": "special",
+    "priority": 100,
+    "title": "The Purrfect Transfer of Power",
+    "description": "Parliament voted unanimously to replace you with a cat. The cat immediately declared a nap.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🐱",
+    "conditions": {
+      "all_laws": ["cat_voting_rights"],
+      "all_flags": ["cats_control_parliament"],
+      "minimum_counters": {
+        "cat_favor_choices": 3
+      }
+    }
+  },
+  {
+    "id": "survived_the_prototype",
+    "type": "survival",
+    "priority": 10,
+    "title": "Still Standing, Somehow",
+    "description": "Thirty days in power and the country still exists. Historians will call this period 'eventful'.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏛️",
+    "conditions": {}
+  },
+  {
+    "id": "content_exhausted",
+    "type": "fallback",
+    "priority": 5,
+    "title": "An Unexpected Peace",
+    "description": "The ministers ran out of ideas. For the first time in history, the country experienced peace.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🕊️",
+    "conditions": {}
+  }
+]

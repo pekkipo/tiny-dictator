@@ -1,18 +1,56 @@
-{
-  "laws": [
-    {
-      "id": "emergency_tax",
-      "name": "Emergency Tax",
-      "description": "A temporary tax that will surely be temporary.",
-      "icon": "res://assets/art/icons/law_tax.png",
-      "effects": { "money_gain_multiplier": 1.1 }
-    },
-    {
-      "id": "martial_law",
-      "name": "Martial Law",
-      "description": "Curfews for everyone, parties for no one.",
-      "icon": "res://assets/art/icons/law_martial.png",
-      "effects": { "approval_decay": -2 }
-    }
-  ]
-}
+[
+  {
+    "id": "free_pizza_friday",
+    "display_name": "Free Pizza Friday",
+    "short_name": "Free Pizza",
+    "description": "Citizens receive free pizza every Friday. Nobody knows who pays.",
+    "placeholder_icon": "🍕",
+    "visual_tags": ["pizza_stalls"],
+    "category": "public_life"
+  },
+  {
+    "id": "mandatory_smiling",
+    "display_name": "Mandatory Smiling",
+    "short_name": "Smiling",
+    "description": "Frowning in public is now a misdemeanor.",
+    "placeholder_icon": "😁",
+    "visual_tags": ["smiling_citizens"],
+    "category": "absurd_law"
+  },
+  {
+    "id": "window_tax",
+    "display_name": "Window Tax",
+    "short_name": "Window Tax",
+    "description": "Every window is taxed. Bricks are suddenly fashionable.",
+    "placeholder_icon": "🪟",
+    "visual_tags": ["bricked_windows"],
+    "category": "economy"
+  },
+  {
+    "id": "cat_voting_rights",
+    "display_name": "Cat Voting Rights",
+    "short_name": "Cat Voting",
+    "description": "Cats may now vote. Turnout depends on napping schedules.",
+    "placeholder_icon": "🐱",
+    "visual_tags": ["cats_in_square"],
+    "category": "absurd_law"
+  },
+  {
+    "id": "tank_traffic_control",
+    "display_name": "Tank-Based Traffic Control",
+    "short_name": "Tank Traffic",
+    "description": "Tanks direct traffic at every major intersection.",
+    "placeholder_icon": "🪖",
+    "visual_tags": ["traffic_tanks"],
+    "category": "military"
+  },
+  {
+    "id": "no_weekends",
+    "display_name": "No Weekends",
+    "short_name": "No Weekends",
+    "description": "Weekends abolished for productivity. Calendars in mourning.",
+    "placeholder_icon": "📅",
+    "visual_tags": ["tired_citizens"],
+    "category": "absurd_law"
+  }
+]

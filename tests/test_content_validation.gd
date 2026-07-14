@@ -1,0 +1,122 @@
+extends SceneTree
+
+## Milestone 3 assertion tests for ContentRepository and ContentValidator.
+## Run: godot --headless --path . -s tests/test_content_validation.gd
+
+var _failures: int = 0
+
+
+func _initialize() -> void:
+	_test_repository_loads()
+	_test_shipped_content_is_valid()
+	_test_validator_catches_bad_decisions()
+	_test_validator_catches_bad_endings()
+
+	if _failures == 0:
+		print("[TEST] All content validation tests passed.")
+	else:
+		print("[TEST] FAILED: %d assertion(s) failed." % _failures)
+	quit(1 if _failures > 0 else 0)
+
+
+func _check(condition: bool, message: String) -> void:
+	if not condition:
+		_failures += 1
+		printerr("[TEST] FAIL: %s" % message)
+
+
+func _test_repository_loads() -> void:
+	var repo := ContentRepository.new()
+	var ok := repo.load_all()
+	_check(ok, "repository loads without errors")
+	_check(repo.has_country("ministan"), "ministan country loaded")
+	_check(repo.get_raw_advisors().size() == 4, "4 advisors loaded")
+	_check(repo.get_raw_laws().size() == 6, "6 laws loaded")
+	_check(repo.get_raw_endings().size() == 7, "7 endings loaded")
+	_check(repo.get_all_decisions_for_country("ministan").size() == 16, "16 decisions loaded for ministan")
+	_check(repo.has_decision("switch_off_traffic_lights"), "example decision present")
+	_check(repo.has_decision("traffic_tank_solution"), "follow-up decision present")
+	_check(repo.has_advisor("general_boom"), "advisor lookup works")
+	_check(repo.has_law("free_pizza_friday"), "law lookup works")
+	_check(repo.has_ending("cat_republic"), "ending lookup works")
+	_check(repo.get_decision("nonexistent").is_empty(), "unknown decision returns empty")
+
+
+func _test_shipped_content_is_valid() -> void:
+	var repo := ContentRepository.new()
+	repo.load_all()
+	var report := ContentValidator.new().validate_repository(repo)
+	for error in report.errors:
+		printerr("[TEST] Unexpected content error: %s" % error)
+	_check(report.is_valid, "shipped content has zero validation errors")
+	_check(report.warnings.is_empty(), "shipped content has zero validation warnings")
+
+
+func _test_validator_catches_bad_decisions() -> void:
+	var repo := ContentRepository.new()
+	repo.load_all()
+	var validator := ContentValidator.new()
+
+	var bad_advisor := _minimal_decision()
+	bad_advisor["advisor_id"] = "unknown_advisor"
+	_check(not validator.validate_decision(bad_advisor, repo).is_empty(), "unknown advisor detected")
+
+	var bad_resource := _minimal_decision()
+	bad_resource["left"]["effects"] = {"corruption": 5}
+	_check(not validator.validate_decision(bad_resource, repo).is_empty(), "unknown resource detected")
+
+	var bad_law := _minimal_decision()
+	bad_law["right"]["add_laws"] = ["nonexistent_law"]
+	_check(not validator.validate_decision(bad_law, repo).is_empty(), "unknown law detected")
+
+	var bad_days := _minimal_decision()
+	bad_days["minimum_day"] = 10
+	bad_days["maximum_day"] = 5
+	_check(not validator.validate_decision(bad_days, repo).is_empty(), "invalid day range detected")
+
+	var bad_forced := _minimal_decision()
+	bad_forced["right"]["force_next_decision"] = "nonexistent_decision"
+	_check(not validator.validate_decision(bad_forced, repo).is_empty(), "unknown forced decision detected")
+
+	var missing_result := _minimal_decision()
+	missing_result["left"].erase("result_text")
+	_check(not validator.validate_decision(missing_result, repo).is_empty(), "missing result_text detected")
+
+	var bad_weight := _minimal_decision()
+	bad_weight["weight"] = 0
+	_check(not validator.validate_decision(bad_weight, repo).is_empty(), "zero weight detected")
+
+	var good := _minimal_decision()
+	_check(validator.validate_decision(good, repo).is_empty(), "minimal valid decision passes")
+
+
+func _test_validator_catches_bad_endings() -> void:
+	var validator := ContentValidator.new()
+	var bad_ending := {
+		"id": "broken_ending",
+		"type": "special",
+		"priority": "high",
+		"title": "",
+		"description": "Something",
+		"conditions": {"unknown_operator": []},
+	}
+	var errors := validator.validate_ending(bad_ending)
+	_check(errors.size() >= 3, "bad ending produces multiple errors (priority, title, condition), got %d" % errors.size())
+
+
+func _minimal_decision() -> Dictionary:
+	return {
+		"id": "test_decision",
+		"advisor_id": "auntie_olga",
+		"proposal": "A perfectly reasonable test proposal about national affairs.",
+		"left": {
+			"label": "Decline",
+			"effects": {"happiness": -2},
+			"result_text": "Nothing much happens, which is suspicious.",
+		},
+		"right": {
+			"label": "Approve",
+			"effects": {"treasury": -3},
+			"result_text": "Something happens, which is also suspicious.",
+		},
+	}

@@ -1,18 +1,34 @@
-{
-  "advisors": [
-    {
-      "id": "finance_minister",
-      "name": "Penny Pincher",
-      "title": "Minister of Finance",
-      "portrait": "res://assets/art/advisors/finance_minister.png",
-      "personality_tags": ["cautious", "economic"]
-    },
-    {
-      "id": "interior_minister",
-      "name": "Iron Fist",
-      "title": "Minister of Interior",
-      "portrait": "res://assets/art/advisors/interior_minister.png",
-      "personality_tags": ["aggressive", "security"]
-    }
-  ]
-}
+[
+  {
+    "id": "general_boom",
+    "display_name": "General Boom",
+    "role": "Military Advisor",
+    "short_description": "Believes every problem can be solved with a parade.",
+    "placeholder_icon": "🪖",
+    "accent_key": "military"
+  },
+  {
+    "id": "minister_penny",
+    "display_name": "Minister Penny",
+    "role": "Treasury Advisor",
+    "short_description": "Has never met a tax she didn't like.",
+    "placeholder_icon": "💰",
+    "accent_key": "economy"
+  },
+  {
+    "id": "luna_news",
+    "display_name": "Luna News",
+    "role": "Media Advisor",
+    "short_description": "Turns every disaster into a triumph by lunchtime.",
+    "placeholder_icon": "📺",
+    "accent_key": "media"
+  },
+  {
+    "id": "auntie_olga",
+    "display_name": "Auntie Olga",
+    "role": "Citizen Representative",
+    "short_description": "Deeply suspicious of government nonsense.",
+    "placeholder_icon": "🧹",
+    "accent_key": "public"
+  }
+]

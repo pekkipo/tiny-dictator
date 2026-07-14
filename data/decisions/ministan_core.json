@@ -1,0 +1,301 @@
+[
+  {
+    "id": "switch_off_traffic_lights",
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "We can save money by switching off all traffic lights. Red and green are expensive colors.",
+    "one_time": true,
+    "weight": 10,
+    "requirements": {
+      "blocked_flags": ["traffic_lights_off"]
+    },
+    "left": {
+      "label": "Keep them on",
+      "effects": {
+        "treasury": -2,
+        "happiness": 2,
+        "order": 3
+      },
+      "result_text": "The lights stay on. Minister Penny begins calculating the cost of colors."
+    },
+    "right": {
+      "label": "Switch them off",
+      "effects": {
+        "treasury": 8,
+        "happiness": -4,
+        "order": -10,
+        "elite_loyalty": 2
+      },
+      "visible_effects": ["treasury", "order"],
+      "add_flags": ["traffic_lights_off"],
+      "counter_changes": {
+        "reckless_savings": 1
+      },
+      "force_next_decision": "traffic_tank_solution",
+      "result_text": "The Treasury saves money. Every intersection becomes a philosophical debate."
+    },
+    "tags": ["economy", "traffic", "setup"]
+  },
+  {
+    "id": "free_pizza_friday",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "The people are grumpy. My niece suggests free pizza every Friday. She also owns a pizzeria.",
+    "one_time": true,
+    "weight": 10,
+    "left": {
+      "label": "No free lunch",
+      "effects": {
+        "treasury": 4,
+        "happiness": -8
+      },
+      "result_text": "No pizza. Citizens form a support group for disappointed stomachs."
+    },
+    "right": {
+      "label": "Give them pizza",
+      "effects": {
+        "treasury": -10,
+        "happiness": 14,
+        "elite_loyalty": -2
+      },
+      "add_laws": ["free_pizza_friday"],
+      "add_flags": ["pizza_policy_active"],
+      "counter_changes": {
+        "pizza_choices": 1
+      },
+      "result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
+    },
+    "tags": ["public_life", "pizza", "setup"]
+  },
+  {
+    "id": "mandatory_smiling_proposal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Our happiness statistics look terrible. If everyone is legally required to smile, the statistics improve immediately.",
+    "one_time": true,
+    "weight": 10,
+    "left": {
+      "label": "That's absurd",
+      "effects": {
+        "happiness": 3,
+        "elite_loyalty": -3
+      },
+      "result_text": "Citizens keep their natural faces. Luna News sighs into her microphone."
+    },
+    "right": {
+      "label": "Everyone smiles now",
+      "effects": {
+        "happiness": -6,
+        "order": 5,
+        "elite_loyalty": 4
+      },
+      "visible_effects": ["order", "elite_loyalty"],
+      "add_laws": ["mandatory_smiling"],
+      "add_flags": ["mandatory_smiling_active"],
+      "result_text": "Smiles everywhere. Dentists report record profits and record suspicion."
+    },
+    "tags": ["media", "smiling", "setup"]
+  },
+  {
+    "id": "cat_voting_proposal",
+    "advisor_id": "auntie_olga",
+    "category": "absurd_law",
+    "proposal": "My cat Barsik has strong opinions about local politics. Perhaps cats should be allowed to vote?",
+    "one_time": true,
+    "weight": 8,
+    "left": {
+      "label": "Cats can't vote",
+      "effects": {
+        "order": 2,
+        "happiness": -3
+      },
+      "result_text": "Democracy remains human-only. Barsik files a formal complaint by scratching the door."
+    },
+    "right": {
+      "label": "Enfranchise the cats",
+      "effects": {
+        "happiness": 8,
+        "order": -5,
+        "elite_loyalty": -4
+      },
+      "add_laws": ["cat_voting_rights"],
+      "add_flags": ["cats_enfranchised"],
+      "counter_changes": {
+        "cat_favor_choices": 1
+      },
+      "result_text": "Cats receive ballots. Voter turnout now depends on the weather and naps."
+    },
+    "tags": ["absurd", "cats", "setup"]
+  },
+  {
+    "id": "military_parade",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "The army has not marched in weeks. A grand parade will remind everyone that we have exactly seven tanks.",
+    "one_time": true,
+    "weight": 10,
+    "left": {
+      "label": "No parade",
+      "effects": {
+        "treasury": 2,
+        "elite_loyalty": -6
+      },
+      "result_text": "No parade. General Boom polishes the tanks alone, sadly."
+    },
+    "right": {
+      "label": "March!",
+      "effects": {
+        "treasury": -8,
+        "order": 6,
+        "happiness": 3,
+        "elite_loyalty": 5
+      },
+      "counter_changes": {
+        "military_favor_choices": 1
+      },
+      "result_text": "Seven tanks roll proudly through the square. One takes a wrong turn."
+    },
+    "tags": ["military"]
+  },
+  {
+    "id": "window_tax_proposal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Sunlight is free, but windows are not. I propose a modest tax on every window in the country.",
+    "one_time": true,
+    "weight": 10,
+    "left": {
+      "label": "Leave windows alone",
+      "effects": {
+        "treasury": -3,
+        "happiness": 4
+      },
+      "result_text": "Windows remain untaxed. Minister Penny eyes the doors thoughtfully."
+    },
+    "right": {
+      "label": "Tax the windows",
+      "effects": {
+        "treasury": 10,
+        "happiness": -7,
+        "order": -3
+      },
+      "add_laws": ["window_tax"],
+      "counter_changes": {
+        "reckless_savings": 1
+      },
+      "result_text": "The tax passes. Bricklayers become the wealthiest profession overnight."
+    },
+    "tags": ["economy"]
+  },
+  {
+    "id": "no_weekends_proposal",
+    "advisor_id": "minister_penny",
+    "category": "absurd_law",
+    "proposal": "Studies show citizens do no work on weekends. Abolishing weekends would raise productivity by two sevenths.",
+    "one_time": true,
+    "weight": 8,
+    "left": {
+      "label": "Weekends stay",
+      "effects": {
+        "happiness": 4,
+        "treasury": -2
+      },
+      "result_text": "Weekends survive. Citizens celebrate by doing absolutely nothing."
+    },
+    "right": {
+      "label": "Abolish weekends",
+      "effects": {
+        "treasury": 9,
+        "happiness": -12,
+        "order": -4,
+        "elite_loyalty": 3
+      },
+      "add_laws": ["no_weekends"],
+      "result_text": "Weekends are cancelled. Calendars nationwide enter a period of mourning."
+    },
+    "tags": ["economy", "absurd"]
+  },
+  {
+    "id": "luna_good_news_only",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Bad news makes people sad. I propose we only report good news. I have already prepared next month's weather.",
+    "one_time": true,
+    "weight": 10,
+    "left": {
+      "label": "Report the truth",
+      "effects": {
+        "happiness": -2,
+        "order": 4
+      },
+      "result_text": "The news stays honest. Ratings drop, but so does national confusion."
+    },
+    "right": {
+      "label": "Only good news",
+      "effects": {
+        "happiness": 9,
+        "order": -6,
+        "elite_loyalty": 2
+      },
+      "visible_effects": ["happiness"],
+      "add_flags": ["media_good_news_only"],
+      "result_text": "Every broadcast is now delightful. Reality files a complaint that goes unreported."
+    },
+    "tags": ["media"]
+  },
+  {
+    "id": "army_snack_budget",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "An army marches on its stomach. I request a dedicated national snack budget for the troops.",
+    "one_time": true,
+    "weight": 8,
+    "left": {
+      "label": "No snacks",
+      "effects": {
+        "treasury": 3,
+        "elite_loyalty": -5
+      },
+      "result_text": "The troops receive standard rations and non-standard grumbling."
+    },
+    "right": {
+      "label": "Fund the snacks",
+      "effects": {
+        "treasury": -6,
+        "order": 3,
+        "elite_loyalty": 6
+      },
+      "counter_changes": {
+        "military_favor_choices": 1
+      },
+      "result_text": "Morale soars. The army now guards the snack warehouse with unusual dedication."
+    },
+    "tags": ["military"]
+  },
+  {
+    "id": "generic_minister_disagreement",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Two ministers are arguing over who gets the larger office. Both have submitted formal complaints about the other.",
+    "one_time": false,
+    "weight": 1,
+    "fallback": true,
+    "left": {
+      "label": "Give it to neither",
+      "effects": {
+        "order": 2,
+        "elite_loyalty": -4
+      },
+      "result_text": "Both ministers become equally offended. Balance is restored."
+    },
+    "right": {
+      "label": "Build another office",
+      "effects": {
+        "treasury": -5,
+        "elite_loyalty": 4
+      },
+      "result_text": "The government expands by one office and zero useful employees."
+    },
+    "tags": ["generic", "fallback"]
+  }
+]
