@@ -15,6 +15,7 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
+var _country_state_resolver: CountryStateResolver = CountryStateResolver.new()
 var _current_decision: Dictionary = {}
 var _last_result: DecisionResult = null
 var _last_summary: RunSummary = null
@@ -70,6 +71,7 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_select_next_decision()
 	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	EventBus.run_started.emit(_run_state)
+	EventBus.country_visual_state_changed.emit(get_country_visual_state())
 	if not _current_decision.is_empty():
 		EventBus.decision_presented.emit(_current_decision)
 
@@ -125,6 +127,7 @@ func resolve_choice(side: String) -> DecisionResult:
 		EventBus.law_removed.emit(law_id)
 	for flag_id in result.added_flags:
 		EventBus.flag_added.emit(flag_id)
+	EventBus.country_visual_state_changed.emit(get_country_visual_state())
 
 	_run_state.run_phase = RunState.RunPhase.SHOWING_RESULT
 	EventBus.decision_resolved.emit(result)
@@ -160,6 +163,10 @@ func continue_after_result() -> void:
 
 func get_last_summary() -> RunSummary:
 	return _last_summary
+
+
+func get_country_visual_state() -> CountryVisualState:
+	return _country_state_resolver.resolve(_run_state, _content)
 
 
 ## Debug helper (used by the M9 overlay and debug buttons).
@@ -222,6 +229,7 @@ func _select_next_decision() -> void:
 func debug_set_resource(resource_id: String, value: int) -> void:
 	_run_state.set_resource(resource_id, value)
 	EventBus.resources_changed.emit(_run_state.get_resources())
+	EventBus.country_visual_state_changed.emit(get_country_visual_state())
 
 
 func debug_print_state() -> void:

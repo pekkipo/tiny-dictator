@@ -11,6 +11,7 @@ func _ready() -> void:
 	%DebugStartButton.pressed.connect(_on_debug_start_pressed)
 	EventBus.decision_presented.connect(_on_decision_presented)
 	EventBus.decision_resolved.connect(_on_decision_resolved)
+	EventBus.country_visual_state_changed.connect(_on_visual_state_changed)
 	_refresh_all()
 
 
@@ -22,6 +23,7 @@ func _refresh_all() -> void:
 	%CountryLabel.text = str(country.get("display_name", state.country_id)).to_upper()
 	%DayLabel.text = "DAY %d" % state.day
 	%ResourceBar.update_resources(state.get_resources())
+	%CountryDiorama.update_visual_state(GameManager.get_country_visual_state(), content.get_visual_map())
 	%ActiveLawsBar.update_laws(state.active_laws, content)
 	%ResultPanel.visible = false
 
@@ -52,6 +54,10 @@ func _on_decision_resolved(result: DecisionResult) -> void:
 	%ActiveLawsBar.update_laws(state.active_laws, content)
 	%ResultPanel.show_result(result, content)
 	%ResultPanel.visible = true
+
+
+func _on_visual_state_changed(visual: CountryVisualState) -> void:
+	%CountryDiorama.update_visual_state(visual, GameManager.get_content().get_visual_map())
 
 
 func _on_continue_pressed() -> void:

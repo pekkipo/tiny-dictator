@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgame002screen"]
+[gd_scene load_steps=7 format=3 uid="uid://cgame002screen"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameScreen.gd" id="1_game"]
 [ext_resource type="PackedScene" uid="uid://crbar001tiny" path="res://scenes/components/ResourceBar.tscn" id="2_rbar"]
 [ext_resource type="PackedScene" uid="uid://cdcard001tiny" path="res://scenes/components/DecisionCard.tscn" id="3_card"]
 [ext_resource type="PackedScene" uid="uid://crpanel001tiny" path="res://scenes/components/ResultPanel.tscn" id="4_result"]
 [ext_resource type="PackedScene" uid="uid://clbar001tiny" path="res://scenes/components/ActiveLawsBar.tscn" id="5_laws"]
+[ext_resource type="PackedScene" uid="uid://cdiorama01tiny" path="res://scenes/components/CountryDiorama.tscn" id="6_diorama"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -77,31 +78,11 @@ text = "DAY 1"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CountryPlaceholder" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
+[node name="CountryDiorama" parent="SafeAreaMargin/MainVBox" instance=ExtResource("6_diorama")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.2
-
-[node name="DioramaVBox" type="VBoxContainer" parent="SafeAreaMargin/MainVBox/CountryPlaceholder"]
-layout_mode = 2
-alignment = 1
-
-[node name="DioramaEmojiLabel" type="Label" parent="SafeAreaMargin/MainVBox/CountryPlaceholder/DioramaVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 56
-text = "🏛️  🏘️ 🏘️ 🏘️  🌳"
-horizontal_alignment = 1
-
-[node name="StateDescriptionLabel" type="Label" parent="SafeAreaMargin/MainVBox/CountryPlaceholder/DioramaVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
-theme_override_font_sizes/font_size = 22
-text = "Country visualization arrives in Milestone 8."
-horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="DecisionCard" parent="SafeAreaMargin/MainVBox" instance=ExtResource("3_card")]
 unique_name_in_owner = true

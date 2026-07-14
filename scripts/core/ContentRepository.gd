@@ -9,12 +9,16 @@ const COUNTRIES_DIR: String = "res://data/countries"
 const ADVISORS_PATH: String = "res://data/advisors/advisors.json"
 const LAWS_PATH: String = "res://data/laws/laws.json"
 const ENDINGS_PATH: String = "res://data/endings/endings.json"
+const VISUAL_MAP_PATH: String = "res://data/visual_states/country_visual_map.json"
 
 var _countries: Dictionary = {}
 var _advisors: Dictionary = {}
 var _laws: Dictionary = {}
 var _decisions: Dictionary = {}
 var _endings: Dictionary = {}
+
+## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
+var _visual_map: Dictionary = {}
 
 ## Decision IDs per country, in file order.
 var _country_decision_ids: Dictionary = {}
@@ -42,6 +46,12 @@ func load_all() -> bool:
 	_index_catalog(_raw_endings, _endings, "ending", ENDINGS_PATH)
 
 	_load_countries()
+
+	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
+	if parsed_map is Dictionary:
+		_visual_map = parsed_map
+	elif parsed_map != null:
+		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
 	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings" % [
 		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(),
@@ -78,6 +88,10 @@ func get_decision(id: String) -> Dictionary:
 
 func get_ending(id: String) -> Dictionary:
 	return _endings.get(id, {})
+
+
+func get_visual_map() -> Dictionary:
+	return _visual_map
 
 
 func get_all_decisions_for_country(country_id: String) -> Array[Dictionary]:
@@ -134,6 +148,7 @@ func _clear() -> void:
 	_laws.clear()
 	_decisions.clear()
 	_endings.clear()
+	_visual_map.clear()
 	_country_decision_ids.clear()
 	_raw_advisors = []
 	_raw_laws = []

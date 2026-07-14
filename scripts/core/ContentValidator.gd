@@ -71,6 +71,15 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 		for warning in _decision_warnings(decision):
 			report.warnings.append(warning)
 
+	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
+	var visual_map: Dictionary = repository.get_visual_map()
+	for law in repository.get_raw_laws():
+		for tag in law.get("visual_tags", []):
+			if not visual_map.has(str(tag)):
+				report.warnings.append("Law '%s' visual tag '%s' has no entry in country_visual_map.json" % [
+					str(law.get("id", "")), str(tag),
+				])
+
 	return report
 
 

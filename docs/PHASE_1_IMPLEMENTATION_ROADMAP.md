@@ -15,8 +15,8 @@
 | 4 | Decision Engine | ✅ Done | `32d1b18` |
 | 5 | Choice and effect resolution | ✅ Done | `97568b2` |
 | 6 | Main gameplay UI | ✅ Done | `8772603` |
-| 7 | Endings and restart flow | ✅ Done | pending commit |
-| 8 | Placeholder country reactions | ⬜ Not started | — |
+| 7 | Endings and restart flow | ✅ Done | `7fa3d03` |
+| 8 | Placeholder country reactions | ✅ Done | pending commit |
 | 9 | Debug tools | ⬜ Not started | — |
 | 10 | Save system and QA | ⬜ Not started | — |
 
@@ -199,16 +199,24 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 8 — Placeholder country reactions
+## Milestone 8 — Placeholder country reactions ✅
 
 **Objective:** Visible country state changes.
 
-**Deliverables:**
-- `scripts/core/CountryStateResolver.gd` + `scripts/models/CountryVisualState.gd` per PRD 04 §10 (prosperity/mood/stability/elite states + visual tags)
-- `scenes/components/CountryDiorama.tscn` per PRD 02 §9: emoji/color placeholders, mood overlay, state description label
-- `data/visual_states/country_visual_map.json` — law → prop mapping (🍕 😁 🐱 🪖 🪟)
+**Delivered:**
+- `scripts/models/CountryVisualState.gd` per PRD 04 §10: prosperity / public_mood / stability / elite_status + visual_tags + summary_text
+- `scripts/core/CountryStateResolver.gd` — pure logic, never touches UI. Tier thresholds match the resource danger coloring (>60 healthy, 31–60 middling, ≤30 bad): treasury → prosperous/normal/poor, happiness → celebrating/calm/protesting, order → stable/tense/chaotic, elite_loyalty → supportive/watching/coup_risk. Visual tags collected (deduped) from active laws' `visual_tags`
+- `data/visual_states/country_visual_map.json` — visual tag → emoji prop (🍕 😁 🪟 🐱 🪖 🥱); loaded by ContentRepository (`get_visual_map()`); validator warns when a law tag has no mapping
+- `scenes/components/CountryDiorama.tscn` + `scripts/ui/CountryDiorama.gd` per PRD 02 §9: sky color by mood, ground color by prosperity, palace row by elite status (👑/👀/🗡️), houses by prosperity (🏘️/🏚️), citizens by mood (🎉/🙂/🪧), stability tint overlay, law props layer, "Country state: …" summary label. Unknown tags ignored safely (PRD 04 §16)
+- GameManager: owns `CountryStateResolver`, exposes `get_country_visual_state()`, emits `country_visual_state_changed` on run start, after each resolved choice, and on `debug_set_resource`
+- GameScreen: diorama instance replaces the M6 placeholder; updates on refresh and on the visual-state signal
+- Tests: `tests/test_country_state.gd` — resolver tier boundaries (61/60/31/30), law tags incl. unknown-law safety, visual map completeness for shipped laws, diorama rendering (bad state props/colors, recovery clears props)
 
-**Acceptance:** resource thresholds visibly change the country; enacting a law adds its prop; resolver never touches UI nodes.
+**Acceptance (verified):**
+- [x] Resource thresholds visibly change the country (tested at exact boundaries)
+- [x] Enacting a law adds its prop; removing laws clears props (tested)
+- [x] Resolver never touches UI nodes (pure RefCounted, repository + state in, model out)
+- [x] All nine suites pass headless; boot clean, 0 validation warnings
 
 ---
 
