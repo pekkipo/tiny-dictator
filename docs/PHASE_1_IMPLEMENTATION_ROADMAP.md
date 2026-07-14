@@ -12,8 +12,8 @@
 | 1 | Boot and basic screen navigation | ✅ Done | `454e614` |
 | 2 | RunState and GameManager | ✅ Done | `1a057f0` |
 | 3 | Content loading and validation | ✅ Done | `d1df89e` |
-| 4 | Decision Engine | ✅ Done | pending commit |
-| 5 | Choice and effect resolution | ⬜ Not started | — |
+| 4 | Decision Engine | ✅ Done | `32d1b18` |
+| 5 | Choice and effect resolution | ✅ Done | pending commit |
 | 6 | Main gameplay UI | ⬜ Not started | — |
 | 7 | Endings and restart flow | ⬜ Not started | — |
 | 8 | Placeholder country reactions | ⬜ Not started | — |
@@ -134,16 +134,25 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 5 — Choice and effect resolution
+## Milestone 5 — Choice and effect resolution ✅
 
 **Objective:** Choosing an option mutates state correctly and produces a normalized result.
 
-**Deliverables:**
-- `scripts/core/EffectResolver.gd` per PRD 04 §8: applies effects/laws/flags/counters, records forced follow-up and explicit ending, appends history, marks decisions used
-- `scripts/models/DecisionResult.gd` per PRD 01 §6
-- GameManager flow: `choose_left()`/`choose_right()`/`resolve_choice()`/`continue_after_result()`, run phase transitions per PRD 01 §5
+**Delivered:**
+- `scripts/models/DecisionResult.gd` per PRD 01 §6 (plus `forced_next_decision_id` per PRD 04 §8)
+- `scripts/core/EffectResolver.gd` per PRD 04 §8: applies effects (recording actual clamped deltas), laws (dedup-safe), flags, counters; records forced follow-up and explicit ending; appends history entry (PRD 01 §11); marks decision used; fallback result text; `[EFFECT]` logging
+- GameManager: `choose_left()`/`choose_right()`/`resolve_choice()`/`continue_after_result()` with full phase transitions (AWAITING → RESOLVING → SHOWING_RESULT → CHECKING_ENDING → next day); phase guards give double-click protection; forced follow-ups queued into the engine; state-change signals emitted from the resolved result; endings still stubbed (M7)
+- GameScreen: temporary playable loop — two choice buttons with visible-effects summaries (respecting `visible_effects` filter), result text with actual deltas and law announcements, explicit Continue button. Replaced by real components in M6.
+- Tests: `tests/test_effect_resolver.gd` (8 groups) + full-loop and forced-chain integration tests in `test_game_manager.gd`
 
-**Acceptance:** actual deltas correct after clamping; no duplicate laws (TC-005/TC-006); double-click cannot resolve twice (TC-002); history matches choices; UI receives only the normalized `DecisionResult`.
+**Acceptance (verified):**
+- [x] Actual deltas correct after clamping (tested)
+- [x] No duplicate laws — TC-005/TC-006 (tested)
+- [x] Double-click cannot resolve twice — TC-002 (tested)
+- [x] History matches actual choices with before/after snapshots (tested)
+- [x] UI receives only the normalized DecisionResult
+- [x] Forced chain works end to end: traffic lights → tanks (tested)
+- [x] All five suites pass headless; boot clean
 
 ---
 

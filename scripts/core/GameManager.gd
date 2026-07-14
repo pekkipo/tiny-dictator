@@ -1,8 +1,8 @@
 extends Node
 
 ## High-level run lifecycle coordinator (autoload).
-## Milestone 4 scope: owns RunState, content catalogs, and decision selection.
-## Effect resolution (M5) and endings (M7) are stubbed.
+## Milestone 5 scope: run lifecycle, decision selection, choice resolution.
+## Endings (M7) are stubbed.
 ## Spec: docs/04_TECHNICAL_ARCHITECTURE_AND_IMPLEMENTATION.md §4.
 
 var _run_state: RunState = RunState.new()
@@ -11,7 +11,9 @@ var _validator: ContentValidator = ContentValidator.new()
 var _content_valid: bool = false
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
+var _effect_resolver: EffectResolver = EffectResolver.new()
 var _current_decision: Dictionary = {}
+var _last_result: DecisionResult = null
 
 
 func _ready() -> void:
@@ -56,6 +58,7 @@ func start_new_run(country_id: String = "ministan") -> void:
 
 	_rng.seed = _run_state.random_seed
 	_decision_engine = DecisionEngine.new(_content, _rng)
+	_last_result = null
 
 	print("[RUN] New run started: country=%s day=%d seed=%d" % [
 		_run_state.country_id, _run_state.day, _run_state.random_seed,
@@ -82,6 +85,60 @@ func get_current_state() -> RunState:
 
 func get_current_decision() -> Dictionary:
 	return _current_decision
+
+
+func get_last_result() -> DecisionResult:
+	return _last_result
+
+
+func choose_left() -> void:
+	resolve_choice("left")
+
+
+func choose_right() -> void:
+	resolve_choice("right")
+
+
+## Returns null when the choice cannot be resolved (wrong phase = double
+## click protection, TC-002).
+func resolve_choice(side: String) -> DecisionResult:
+	if _run_state.run_phase != RunState.RunPhase.AWAITING_DECISION:
+		return null
+	if _current_decision.is_empty():
+		return null
+
+	_run_state.run_phase = RunState.RunPhase.RESOLVING_DECISION
+	var result := _effect_resolver.apply_option(_current_decision, side, _run_state, _content)
+	_last_result = result
+
+	if not result.forced_next_decision_id.is_empty():
+		_decision_engine.set_forced_decision(result.forced_next_decision_id)
+
+	EventBus.resources_changed.emit(_run_state.get_resources())
+	for law_id in result.added_laws:
+		EventBus.law_added.emit(law_id)
+	for law_id in result.removed_laws:
+		EventBus.law_removed.emit(law_id)
+	for flag_id in result.added_flags:
+		EventBus.flag_added.emit(flag_id)
+
+	_run_state.run_phase = RunState.RunPhase.SHOWING_RESULT
+	EventBus.decision_resolved.emit(result)
+	return result
+
+
+func continue_after_result() -> void:
+	if _run_state.run_phase != RunState.RunPhase.SHOWING_RESULT:
+		return
+	_run_state.run_phase = RunState.RunPhase.CHECKING_ENDING
+	# Ending resolution arrives in Milestone 7; until then runs never end here.
+	_run_state.day += 1
+	_select_next_decision()
+	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
+	if _current_decision.is_empty():
+		push_warning("[RUN] No decision available on day %d (content exhaustion ending arrives in M7)." % _run_state.day)
+		return
+	EventBus.decision_presented.emit(_current_decision)
 
 
 ## Debug helper (used by the M9 overlay): queue a specific decision next.

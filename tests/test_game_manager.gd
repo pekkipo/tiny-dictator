@@ -53,6 +53,45 @@ func _initialize() -> void:
 	_check(_run_reset_count == 1, "run_reset emitted on main menu")
 	_check(game_manager.get_current_state().run_phase == RunState.RunPhase.NOT_STARTED, "phase NOT_STARTED after menu")
 
+	# --- Milestone 5: full choose/result/continue loop ---
+	var resolved_count: Array[int] = [0]
+	event_bus.decision_resolved.connect(func(_result: DecisionResult) -> void: resolved_count[0] += 1)
+
+	game_manager.start_new_run()
+	state = game_manager.get_current_state()
+	var first_decision_id: String = state.current_decision_id
+
+	var result: DecisionResult = game_manager.resolve_choice("left")
+	_check(result != null, "resolve_choice returns a result")
+	_check(resolved_count[0] == 1, "decision_resolved emitted")
+	_check(state.run_phase == RunState.RunPhase.SHOWING_RESULT, "phase SHOWING_RESULT after choice")
+	_check(state.decision_history.size() == 1, "history has one entry")
+	_check(game_manager.get_last_result() == result, "last result stored")
+
+	# TC-002: double resolution rejected.
+	var second: DecisionResult = game_manager.resolve_choice("left")
+	_check(second == null, "second resolve rejected")
+	_check(state.decision_history.size() == 1, "history still has one entry after double click")
+	_check(state.day == 1, "day unchanged before continue")
+
+	game_manager.continue_after_result()
+	_check(state.day == 2, "day incremented after continue")
+	_check(state.run_phase == RunState.RunPhase.AWAITING_DECISION, "phase AWAITING_DECISION after continue")
+	_check(not game_manager.get_current_decision().is_empty(), "next decision presented")
+	_check(state.current_decision_id != first_decision_id, "next decision differs from resolved one")
+
+	# Forced follow-up through the full loop: traffic lights right forces tanks.
+	game_manager.start_new_run()
+	state = game_manager.get_current_state()
+	game_manager.force_decision("switch_off_traffic_lights")
+	game_manager.continue_after_result()  # no-op: wrong phase
+	game_manager.resolve_choice("left")
+	game_manager.continue_after_result()
+	_check(state.current_decision_id == "switch_off_traffic_lights", "forced decision presented next")
+	game_manager.resolve_choice("right")
+	game_manager.continue_after_result()
+	_check(state.current_decision_id == "traffic_tank_solution", "forced follow-up chain works end to end")
+
 	if _failures == 0:
 		print("[TEST] All GameManager tests passed.")
 	else:

@@ -77,6 +77,45 @@ theme_override_font_sizes/font_size = 22
 text = "💰 55   🙂 55   🛡 55   👑 55"
 horizontal_alignment = 1
 
+[node name="ResultLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Result"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoicesRow" type="HBoxContainer" parent="SafeAreaMargin/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LeftChoiceButton" type="Button" parent="SafeAreaMargin/MainVBox/ChoicesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Left"
+autowrap_mode = 3
+
+[node name="RightChoiceButton" type="Button" parent="SafeAreaMargin/MainVBox/ChoicesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Right"
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="SafeAreaMargin/MainVBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CONTINUE"
+
 [node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
