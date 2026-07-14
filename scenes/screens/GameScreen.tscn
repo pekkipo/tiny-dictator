@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cstart001tiny"]
+[gd_scene format=3 uid="uid://tuusxl0lwqy4"]
 
-[ext_resource type="Script" path="res://scripts/ui/StartScreen.gd" id="1_start"]
+[ext_resource type="Script" path="res://scripts/ui/GameScreen.gd" id="1_game"]
 
-[node name="StartScreen" type="Control"]
+[node name="GameScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_start")
+script = ExtResource("1_game")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,50 +40,39 @@ theme_override_constants/separation = 24
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CrownPlaceholder" type="Label" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "👑"
-horizontal_alignment = 1
-
-[node name="TitleLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
+[node name="HeaderLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.12, 0.1, 0.08, 1)
-theme_override_font_sizes/font_size = 64
-text = "TINY DICTATOR"
+theme_override_font_sizes/font_size = 48
+text = "GAME SCREEN"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
+[node name="PlaceholderPanel" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.3, 0.25, 0.2, 1)
-theme_override_font_sizes/font_size = 28
-text = "Your country. Their problem."
-horizontal_alignment = 1
+size_flags_vertical = 3
 
-[node name="CountryPlaceholder" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
+[node name="PlaceholderVBox" type="VBoxContainer" parent="SafeAreaMargin/MainVBox/PlaceholderPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 16
 
-[node name="CountryText" type="Label" parent="SafeAreaMargin/MainVBox/CountryPlaceholder"]
+[node name="PlaceholderLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "🏛️ 🏘️ 🌳"
-horizontal_alignment = 1
-
-[node name="ExplanationLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.25, 0.22, 0.18, 1)
-theme_override_font_sizes/font_size = 22
-text = "Approve absurd laws. Balance the country. Stay in power."
+theme_override_font_sizes/font_size = 24
+text = "Main gameplay UI will appear here in later milestones."
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="StartButton" type="Button" parent="SafeAreaMargin/MainVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 72)
+[node name="DayLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "START NEW RULE"
+theme_override_font_sizes/font_size = 22
+text = "DAY 1  |  MINISTAN"
+horizontal_alignment = 1
+
+[node name="ResourcesLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "💰 55   🙂 55   🛡 55   👑 55"
+horizontal_alignment = 1
 
 [node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox"]
 unique_name_in_owner = true
@@ -92,13 +81,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "DEBUG: Open Run End Screen"
 
+[node name="DebugStartButton" type="Button" parent="SafeAreaMargin/MainVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "DEBUG: Return to Start Screen"
+
 [node name="BottomSpacer" type="Control" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VersionLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
+[node name="MilestoneLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.45, 0.4, 0.35, 1)
 theme_override_font_sizes/font_size = 18
-text = "Prototype v0.1"
+text = "Milestone 1 — placeholder"
 horizontal_alignment = 1

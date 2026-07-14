@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://cend001tiny"]
+[gd_scene load_steps=2 format=3 uid="uid://cend001tiny"]
 
-[ext_resource type="Script" path="res://scripts/ui/RunEndScreen.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/RunEndScreen.gd" id="1_run_end"]
 
 [node name="RunEndScreen" type="Control"]
 layout_mode = 3
@@ -9,36 +9,120 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+script = ExtResource("1_run_end")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -150.0
-offset_right = 250.0
-offset_bottom = 150.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.18, 0.2, 0.24, 1)
 
-[node name="TitleLabel" type="Label" parent="VBox"]
-unique_name_in_owner = true
+[node name="SafeAreaMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 80
+
+[node name="NewspaperPanel" type="PanelContainer" parent="SafeAreaMargin"]
 layout_mode = 2
-text = "Run Ended"
+size_flags_vertical = 3
+
+[node name="NewspaperMargin" type="MarginContainer" parent="SafeAreaMargin/NewspaperPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="NewspaperVBox" type="VBoxContainer" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MastheadLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "THE MINISTAN TIMES"
 horizontal_alignment = 1
 
-[node name="DescriptionLabel" type="Label" parent="VBox"]
-unique_name_in_owner = true
+[node name="DateLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
 layout_mode = 2
-text = "Your reign has ended."
+theme_override_font_sizes/font_size = 20
+text = "Day 12 — Placeholder Edition"
+horizontal_alignment = 1
+
+[node name="EndingTitleLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "PEOPLE HAD ENOUGH"
+horizontal_alignment = 1
 autowrap_mode = 3
-horizontal_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="VBox"]
-unique_name_in_owner = true
+[node name="EndingImagePlaceholder" type="PanelContainer" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
 layout_mode = 2
-text = "Continue"
+size_flags_vertical = 3
+
+[node name="EndingIconLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox/EndingImagePlaceholder"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "📰"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndingDescriptionLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "After 12 days in power, the Supreme Leader discovered that mandatory smiling did not create actual happiness."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="FinalStatsGrid" type="GridContainer" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="HappinessLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox/FinalStatsGrid"]
+layout_mode = 2
+text = "Final Happiness:"
+
+[node name="HappinessValue" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox/FinalStatsGrid"]
+layout_mode = 2
+text = "0"
+
+[node name="LawsLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox/FinalStatsGrid"]
+layout_mode = 2
+text = "Active Laws:"
+
+[node name="LawsValue" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox/FinalStatsGrid"]
+layout_mode = 2
+text = "4"
+
+[node name="LegacySummaryLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Legacy: Three pizza reforms, one traffic disaster, no working windows."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RestartButton" type="Button" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "RULE AGAIN"
+
+[node name="MainMenuButton" type="Button" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
