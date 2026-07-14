@@ -78,7 +78,7 @@ changes needed for content-only additions.
 
 Press **F1** or **`** (backtick) at any time:
 
-- Live readout: phase, day, seed, current decision, resources, laws, flags, counters
+- Live readout: phase, day, seed, current decision, run stage, content request, resources, laws, flags, counters
 - Set any resource, force a decision by ID, add laws/flags
 - Trigger any ending, advance the day, restart the run
 - Fixed random seed (reproducible runs), print state JSON, reload content, reset save
@@ -101,6 +101,7 @@ godot --headless --path . -s tests/test_debug_overlay.gd
 godot --headless --path . -s tests/test_save_manager.gd
 godot --headless --path . -s tests/test_law_popup.gd
 godot --headless --path . -s tests/test_schema_v2.gd   # Phase 2A schema v2
+godot --headless --path . -s tests/test_content_director.gd   # Phase 2A run stages + ContentDirector
 godot --headless --path . -s tests/playthrough_sim.gd   # 5 automated playthroughs
 ```
 

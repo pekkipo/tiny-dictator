@@ -49,6 +49,15 @@ static func normalize(decision: Dictionary) -> Dictionary:
 				normalized["id"] = side
 				options.append(normalized)
 		decision["options"] = options
+	if decision.has("pacing") and decision["pacing"] is Dictionary:
+		var pacing: Dictionary = decision["pacing"].duplicate(true)
+		if pacing.has("allowed_stages") and pacing["allowed_stages"] is Array:
+			var allowed_stages: Array[String] = []
+			for stage_id in pacing["allowed_stages"]:
+				if stage_id is String:
+					allowed_stages.append(stage_id)
+			pacing["allowed_stages"] = allowed_stages
+		decision["pacing"] = pacing
 	return decision
 
 

@@ -13,3 +13,4 @@ signal country_visual_state_changed(state: CountryVisualState)
 signal ending_triggered(ending_data: Dictionary)
 signal run_ended(summary: RunSummary)
 signal run_reset
+signal stage_changed(stage_id: String)

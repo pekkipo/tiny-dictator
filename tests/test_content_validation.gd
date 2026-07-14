@@ -33,7 +33,7 @@ func _test_repository_loads() -> void:
 	_check(repo.get_raw_advisors().size() == 4, "4 advisors loaded")
 	_check(repo.get_raw_laws().size() == 6, "6 laws loaded")
 	_check(repo.get_raw_endings().size() == 7, "7 endings loaded")
-	_check(repo.get_all_decisions_for_country("ministan").size() == 17, "17 decisions loaded for ministan")
+	_check(repo.get_all_decisions_for_country("ministan").size() == 22, "22 decisions loaded for ministan")
 	_check(repo.has_decision("switch_off_traffic_lights"), "example decision present")
 	_check(repo.has_decision("traffic_tank_solution"), "follow-up decision present")
 	_check(repo.has_advisor("general_boom"), "advisor lookup works")

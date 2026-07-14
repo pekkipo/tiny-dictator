@@ -13,6 +13,7 @@ var _validator: ContentValidator = ContentValidator.new()
 var _content_valid: bool = false
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
+var _content_director: ContentDirector = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
 var _country_state_resolver: CountryStateResolver = CountryStateResolver.new()
@@ -66,11 +67,13 @@ func start_new_run(country_id: String = "ministan") -> void:
 
 	_rng.seed = _run_state.random_seed
 	_decision_engine = DecisionEngine.new(_content, _rng)
+	_content_director = ContentDirector.new(_content)
 	_last_result = null
 
 	print("[RUN] New run started: country=%s day=%d seed=%d" % [
 		_run_state.country_id, _run_state.day, _run_state.random_seed,
 	])
+	_content_director.update_stage(_run_state)
 	_select_next_decision()
 	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	EventBus.run_started.emit(_run_state)
@@ -154,6 +157,8 @@ func continue_after_result() -> void:
 
 	# Day increments only when the run continues (PRD 01 §12).
 	_run_state.day += 1
+	if _content_director != null:
+		_content_director.update_stage(_run_state)
 	_select_next_decision()
 	if _current_decision.is_empty():
 		# Engine already tried the fallback decision; the country is out of content.
@@ -226,8 +231,31 @@ func force_decision(decision_id: String) -> bool:
 	return true
 
 
+func get_current_stage_id() -> String:
+	if _run_state == null:
+		return ""
+	return _run_state.current_stage_id
+
+
+func debug_get_last_content_request() -> Dictionary:
+	if _content_director == null:
+		return {}
+	var last_request: ContentRequest = _content_director.get_last_request()
+	if last_request == null:
+		return {}
+	return last_request.to_dictionary()
+
+
 func _select_next_decision() -> void:
-	_current_decision = _decision_engine.select_next_decision(_run_state)
+	if _decision_engine == null:
+		push_warning("[DECISION] No decision engine available.")
+		_current_decision = {}
+		_run_state.current_decision_id = ""
+		return
+	var request: ContentRequest = null
+	if _content_director != null:
+		request = _content_director.build_request(_run_state, _decision_engine)
+	_current_decision = _decision_engine.select_next_decision(_run_state, request)
 	if _current_decision.is_empty():
 		# Content exhaustion triggers an ending in Milestone 7.
 		push_warning("[DECISION] No valid decision available.")

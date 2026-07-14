@@ -133,6 +133,7 @@ It owns:
 - Current `RunState`
 - ContentRepository instance
 - DecisionEngine instance
+- ContentDirector instance (Phase 2A milestone 2A-2)
 - EffectResolver instance
 - EndingResolver instance
 - CountryStateResolver instance
@@ -163,7 +164,17 @@ func return_to_main_menu() -> void
 func force_decision(decision_id: String) -> bool
 func debug_set_resource(resource_id: String, value: int) -> void
 func debug_trigger_ending(ending_id: String) -> void
+func get_current_stage_id() -> String
+func debug_get_last_content_request() -> Dictionary
 ```
+
+### Selection flow (Phase 2A milestone 2A-2)
+
+On each new decision (run start, continue after result, debug advance):
+
+1. `ContentDirector.update_stage(_run_state)` — sets `current_stage_id` from country `run_stages`, emits `EventBus.stage_changed` on change.
+2. `ContentDirector.build_request(_run_state, _decision_engine)` — returns a `ContentRequest` (`forced_follow_up`, `recovery`, `endgame_resolution`, or `standalone`).
+3. `DecisionEngine.select_next_decision(_run_state, request)` — forced decision first, then eligible pool (stage + requirements), tag exclusions, weighted pick with preference multiplier.
 
 ### Internal flow
 
@@ -254,12 +265,20 @@ Owns decision eligibility and selection.
 
 ```gdscript
 func get_valid_decisions(state: RunState) -> Array[Dictionary]
-func select_next_decision(state: RunState) -> Dictionary
+func select_next_decision(state: RunState, request: ContentRequest = null) -> Dictionary
 func is_decision_valid(decision: Dictionary, state: RunState) -> bool
 func evaluate_requirements(requirements: Dictionary, state: RunState) -> bool
 func set_forced_decision(decision_id: String) -> void
 func clear_forced_decision() -> void
+func has_forced_decision() -> bool
 ```
+
+Phase 2A milestone 2A-2 additions:
+
+- `is_decision_valid` rejects cards whose `pacing.allowed_stages` omits `state.current_stage_id` (when both are set).
+- `select_next_decision` accepts an optional `ContentRequest`: hard-excludes `excluded_tags` (with empty-pool safeguard), multiplies weight ×4 for `preferred_card_types` / `required_tags`. Forced decisions bypass the request.
+
+`ContentDirector` (`scripts/core/ContentDirector.gd`) is a pure service: resolves stage from country config, builds and caches the last `ContentRequest` for debug readout. It does not apply effects or select cards.
 
 It must not:
 

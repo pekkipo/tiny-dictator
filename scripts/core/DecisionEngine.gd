@@ -7,6 +7,7 @@ extends RefCounted
 ## algorithm: docs/03_CONTENT_DATA_AND_DECISION_ENGINE_PRD.md §11-§14.
 
 const DEFAULT_WEIGHT: int = 10
+const PREFERRED_WEIGHT_MULTIPLIER: int = 4
 
 ## The fallback card is a short buffer, not infinite content: after this many
 ## appearances in one run the pool is treated as truly exhausted, which lets
@@ -32,8 +33,16 @@ func clear_forced_decision() -> void:
 	_forced_decision_id = ""
 
 
+func has_forced_decision() -> bool:
+	return not _forced_decision_id.is_empty()
+
+
+func get_forced_decision_id() -> String:
+	return _forced_decision_id
+
+
 ## Returns {} only when no decision (including the fallback) is available.
-func select_next_decision(state: RunState) -> Dictionary:
+func select_next_decision(state: RunState, request: ContentRequest = null) -> Dictionary:
 	if not _forced_decision_id.is_empty():
 		var forced_id := _forced_decision_id
 		_forced_decision_id = ""
@@ -52,9 +61,17 @@ func select_next_decision(state: RunState) -> Dictionary:
 				filtered.append(decision)
 		candidates = filtered
 
+	if request != null and not request.excluded_tags.is_empty():
+		var tag_filtered: Array[Dictionary] = []
+		for decision in candidates:
+			if not _has_excluded_tag(decision, request.excluded_tags):
+				tag_filtered.append(decision)
+		if not tag_filtered.is_empty():
+			candidates = tag_filtered
+
 	if candidates.is_empty():
 		return _select_fallback(state)
-	return _weighted_pick(candidates)
+	return _weighted_pick(candidates, request)
 
 
 ## All currently eligible decisions, excluding fallback cards
@@ -83,6 +100,12 @@ func is_decision_valid(decision: Dictionary, state: RunState) -> bool:
 		return false
 	if state.day > int(decision.get("maximum_day", 9999)):
 		return false
+	var pacing: Variant = decision.get("pacing", {})
+	if pacing is Dictionary:
+		var allowed_stages: Variant = pacing.get("allowed_stages", [])
+		if allowed_stages is Array and not allowed_stages.is_empty():
+			if not state.current_stage_id.is_empty() and state.current_stage_id not in allowed_stages:
+				return false
 	var requirements: Variant = decision.get("requirements", {})
 	if not (requirements is Dictionary):
 		return false
@@ -93,17 +116,42 @@ func evaluate_requirements(requirements: Dictionary, state: RunState) -> bool:
 	return RequirementsEvaluator.matches(requirements, state)
 
 
-func _weighted_pick(candidates: Array[Dictionary]) -> Dictionary:
+func _weighted_pick(candidates: Array[Dictionary], request: ContentRequest = null) -> Dictionary:
 	var total_weight: int = 0
+	var weights: Array[int] = []
 	for decision in candidates:
-		total_weight += maxi(1, int(decision.get("weight", DEFAULT_WEIGHT)))
+		var weight: int = maxi(1, int(decision.get("weight", DEFAULT_WEIGHT)))
+		if request != null and _is_preferred_decision(decision, request):
+			weight *= PREFERRED_WEIGHT_MULTIPLIER
+		weights.append(weight)
+		total_weight += weight
 	var roll: int = _rng.randi_range(1, total_weight)
 	var cursor: int = 0
-	for decision in candidates:
-		cursor += maxi(1, int(decision.get("weight", DEFAULT_WEIGHT)))
+	for i in candidates.size():
+		cursor += weights[i]
 		if roll <= cursor:
-			return decision
+			return candidates[i]
 	return candidates.back()
+
+
+func _is_preferred_decision(decision: Dictionary, request: ContentRequest) -> bool:
+	var card_type: String = str(decision.get("card_type", ""))
+	if card_type in request.preferred_card_types:
+		return true
+	if not request.required_tags.is_empty():
+		var tags: Array = decision.get("tags", [])
+		for tag in request.required_tags:
+			if str(tag) in tags:
+				return true
+	return false
+
+
+func _has_excluded_tag(decision: Dictionary, excluded_tags: Array[String]) -> bool:
+	var tags: Array = decision.get("tags", [])
+	for tag in tags:
+		if str(tag) in excluded_tags:
+			return true
+	return false
 
 
 func _select_fallback(state: RunState) -> Dictionary:

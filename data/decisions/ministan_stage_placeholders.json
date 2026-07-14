@@ -1,0 +1,183 @@
+[
+  {
+    "id": "recovery_international_bank",
+    "schema_version": 2,
+    "card_type": "recovery",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "The International Bank of Somewhere offers rescue money. The interest rate is expressed as a haiku and a firm handshake.",
+    "one_time": false,
+    "base_weight": 10,
+    "requirements": {
+      "maximum_resources": {
+        "treasury": 35
+      }
+    },
+    "options": [
+      {
+        "id": "accept",
+        "label": "Take the money",
+        "effects": {
+          "treasury": 18,
+          "elite_loyalty": -8
+        },
+        "result_text": "The Treasury inhales. The Bank now owns a decorative corner of the palace."
+      },
+      {
+        "id": "refuse",
+        "label": "Refuse politely",
+        "effects": {
+          "happiness": 4,
+          "treasury": -4
+        },
+        "result_text": "Ministan keeps its dignity and its empty pockets. Citizens applaud the principle."
+      }
+    ],
+    "tags": ["recovery", "economy", "placeholder"]
+  },
+  {
+    "id": "recovery_national_smile_day",
+    "schema_version": 2,
+    "card_type": "recovery",
+    "advisor_id": "luna_news",
+    "category": "public_life",
+    "proposal": "Morale is cratered. Luna proposes National Smile Day: mandatory picnics, free balloons, and one government-approved grin.",
+    "one_time": false,
+    "base_weight": 10,
+    "requirements": {
+      "maximum_resources": {
+        "happiness": 35
+      }
+    },
+    "options": [
+      {
+        "id": "approve",
+        "label": "Smile Day, go",
+        "effects": {
+          "happiness": 15,
+          "treasury": -6
+        },
+        "result_text": "Balloons everywhere. The Treasury funds joy at an alarming rate."
+      },
+      {
+        "id": "refuse",
+        "label": "No stunts",
+        "effects": {
+          "order": 3,
+          "happiness": -2
+        },
+        "result_text": "No picnics. Citizens continue their dignified misery in silence."
+      }
+    ],
+    "tags": ["recovery", "morale", "placeholder"]
+  },
+  {
+    "id": "endgame_legacy_statue",
+    "schema_version": 2,
+    "card_type": "resolution",
+    "advisor_id": "general_boom",
+    "category": "politics",
+    "proposal": "History approaches. General Boom suggests a colossal statue of you on horseback, even though you have never ridden a horse.",
+    "one_time": true,
+    "base_weight": 10,
+    "pacing": {
+      "allowed_stages": ["instability", "endgame"]
+    },
+    "options": [
+      {
+        "id": "build_it",
+        "label": "Build the statue",
+        "effects": {
+          "happiness": -4,
+          "order": 5,
+          "elite_loyalty": 8,
+          "treasury": -12
+        },
+        "result_text": "The statue rises. Tourists wonder why the horse looks nervous."
+      },
+      {
+        "id": "modest_plaque",
+        "label": "A modest plaque",
+        "effects": {
+          "happiness": 6,
+          "elite_loyalty": -5,
+          "treasury": -2
+        },
+        "result_text": "A tasteful plaque appears. Generals mutter that bronze was invented for a reason."
+      }
+    ],
+    "tags": ["resolution", "legacy", "placeholder"]
+  },
+  {
+    "id": "long_setup_grand_canal",
+    "schema_version": 2,
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "Ministan could dig a Grand Canal linking every village. Completion is scheduled for roughly never, but the groundbreaking photos would be magnificent.",
+    "one_time": true,
+    "base_weight": 8,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "dig",
+        "label": "Break ground",
+        "effects": {
+          "treasury": -10,
+          "happiness": 5,
+          "order": -3
+        },
+        "result_text": "Ceremonial shovels turn one inch of soil. A sign promises completion by the year 3000."
+      },
+      {
+        "id": "postpone",
+        "label": "Maybe later",
+        "effects": {
+          "elite_loyalty": -3,
+          "treasury": 2
+        },
+        "result_text": "The canal enters permanent planning. Engineers draw maps of maps."
+      }
+    ],
+    "tags": ["long_setup", "infrastructure", "placeholder"]
+  },
+  {
+    "id": "escalation_only_rival_parade",
+    "schema_version": 2,
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Neighboring Tinyland is marching eight tanks through their capital. We must respond with nine tanks, or history will judge us harshly.",
+    "one_time": true,
+    "base_weight": 10,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "options": [
+      {
+        "id": "counter_parade",
+        "label": "Nine tanks!",
+        "effects": {
+          "treasury": -9,
+          "order": 4,
+          "happiness": 3,
+          "elite_loyalty": 6
+        },
+        "result_text": "Nine tanks rumble proudly. One is borrowed and must be returned by Tuesday."
+      },
+      {
+        "id": "ignore",
+        "label": "Ignore Tinyland",
+        "effects": {
+          "elite_loyalty": -7,
+          "happiness": 2,
+          "order": -2
+        },
+        "result_text": "No parade. General Boom writes a strongly worded memo to history."
+      }
+    ],
+    "tags": ["placeholder", "politics"]
+  }
+]

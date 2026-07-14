@@ -8,10 +8,17 @@
     "order": 55,
     "elite_loyalty": 55
   },
-  "max_day": 30,
+  "max_day": 40,
+  "run_stages": [
+    { "id": "establishment", "minimum_day": 1,  "maximum_day": 7 },
+    { "id": "escalation",    "minimum_day": 8,  "maximum_day": 16 },
+    { "id": "instability",   "minimum_day": 17, "maximum_day": 27 },
+    { "id": "endgame",       "minimum_day": 28, "maximum_day": 40 }
+  ],
   "decision_files": [
     "res://data/decisions/ministan_core.json",
-    "res://data/decisions/ministan_followups.json"
+    "res://data/decisions/ministan_followups.json",
+    "res://data/decisions/ministan_stage_placeholders.json"
   ],
   "fallback_decision_id": "generic_minister_disagreement",
   "fallback_decision_limit": 2,

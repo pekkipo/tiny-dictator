@@ -57,7 +57,7 @@ func _valid_ids(engine: DecisionEngine, state: RunState) -> Array[String]:
 func _test_day_one_pool() -> void:
 	# Day 1, no flags: all 9 non-fallback core decisions valid, no follow-ups.
 	var ids := _valid_ids(_make_engine(), _fresh_state())
-	_check(ids.size() == 9, "day 1 pool has 9 decisions, got %d" % ids.size())
+	_check(ids.size() == 12, "day 1 pool has 12 decisions, got %d" % ids.size())
 	_check("generic_minister_disagreement" not in ids, "fallback excluded from normal pool")
 	_check("traffic_tank_solution" not in ids, "follow-up hidden without flag")
 	_check("cheese_shortage" not in ids, "pizza follow-up hidden without flag")
@@ -89,7 +89,7 @@ func _test_one_time_filtering() -> void:
 	state.mark_decision_used("switch_off_traffic_lights")
 	var ids := _valid_ids(_make_engine(), state)
 	_check("switch_off_traffic_lights" not in ids, "used one-time decision excluded")
-	_check(ids.size() == 8, "pool shrinks to 8, got %d" % ids.size())
+	_check(ids.size() == 11, "pool shrinks to 11, got %d" % ids.size())
 
 
 func _test_requirements_evaluator() -> void:

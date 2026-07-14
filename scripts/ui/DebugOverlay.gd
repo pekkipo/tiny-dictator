@@ -50,11 +50,26 @@ func _refresh() -> void:
 	if not visible:
 		return
 	var state: RunState = GameManager.get_current_state()
+	var request_dict: Dictionary = GameManager.debug_get_last_content_request()
+	var request_line: String
+	if request_dict.is_empty():
+		request_line = "request: none"
+	else:
+		var prefer: String = ", ".join(request_dict.get("preferred_card_types", []))
+		var exclude: String = ", ".join(request_dict.get("excluded_tags", []))
+		request_line = "request: %s prefer=%s exclude=%s (%s)" % [
+			request_dict.get("request_type", ""),
+			prefer if not prefer.is_empty() else "(none)",
+			exclude if not exclude.is_empty() else "(none)",
+			request_dict.get("reason", ""),
+		]
 	var lines: PackedStringArray = [
 		"phase: %s   day: %d   seed: %d" % [
 			RunState.RunPhase.keys()[state.run_phase], state.day, state.random_seed,
 		],
 		"decision: %s" % (state.current_decision_id if not state.current_decision_id.is_empty() else "(none)"),
+		"stage: %s" % GameManager.get_current_stage_id(),
+		request_line,
 		"resources: 💰 %d  🙂 %d  🛡 %d  👑 %d" % [state.treasury, state.happiness, state.order, state.elite_loyalty],
 		"laws: %s" % (", ".join(state.active_laws) if not state.active_laws.is_empty() else "(none)"),
 		"flags: %s" % (", ".join(state.flags) if not state.flags.is_empty() else "(none)"),

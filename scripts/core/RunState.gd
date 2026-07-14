@@ -35,6 +35,7 @@ var used_decision_ids: Array[String] = []
 var decision_history: Array[Dictionary] = []
 
 var current_decision_id: String = ""
+var current_stage_id: String = ""
 var run_phase: RunPhase = RunPhase.NOT_STARTED
 var random_seed: int = 0
 
@@ -52,6 +53,7 @@ func reset() -> void:
 	used_decision_ids.clear()
 	decision_history.clear()
 	current_decision_id = ""
+	current_stage_id = ""
 	run_phase = RunPhase.NOT_STARTED
 	random_seed = 0
 
@@ -172,6 +174,7 @@ func to_dictionary() -> Dictionary:
 		"used_decision_ids": used_decision_ids.duplicate(),
 		"decision_history": decision_history.duplicate(true),
 		"current_decision_id": current_decision_id,
+		"current_stage_id": current_stage_id,
 		"run_phase": RunPhase.keys()[run_phase],
 		"random_seed": random_seed,
 	}
@@ -195,6 +198,7 @@ func from_dictionary(data: Dictionary) -> void:
 		if entry is Dictionary:
 			decision_history.append(entry)
 	current_decision_id = str(data.get("current_decision_id", ""))
+	current_stage_id = str(data.get("current_stage_id", ""))
 	var phase_name: String = str(data.get("run_phase", "NOT_STARTED"))
 	var phase_index: int = RunPhase.keys().find(phase_name)
 	run_phase = phase_index as RunPhase if phase_index >= 0 else RunPhase.NOT_STARTED

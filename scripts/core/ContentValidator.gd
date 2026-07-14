@@ -38,6 +38,10 @@ const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
 	"minimum_day", "maximum_day",
 ]
 
+const KNOWN_PACING_KEYS: Array[String] = [
+	"allowed_stages",
+]
+
 const PROPOSAL_MAX_LENGTH: int = 220
 const CHOICE_LABEL_MAX_LENGTH: int = 32
 const RESULT_TEXT_MAX_LENGTH: int = 180
@@ -64,11 +68,13 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 	for country in repository.get_raw_countries():
 		for error in _validate_country(country, repository):
 			report.errors.append(error)
+		for warning in _country_warnings(country):
+			report.warnings.append(warning)
 
 	for decision in repository.get_raw_decisions():
 		for error in validate_decision(decision, repository):
 			report.errors.append(error)
-		for warning in _decision_warnings(decision):
+		for warning in _decision_warnings(decision, repository):
 			report.warnings.append(warning)
 
 	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
@@ -193,6 +199,20 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 	else:
 		errors.append("Decision '%s' has non-object 'requirements'" % id)
 
+	if decision.has("pacing"):
+		var pacing: Variant = decision.get("pacing")
+		if not (pacing is Dictionary):
+			errors.append("Decision '%s' has non-object 'pacing'" % id)
+		elif pacing.has("allowed_stages"):
+			var allowed_stages: Variant = pacing.get("allowed_stages")
+			if not (allowed_stages is Array):
+				errors.append("Decision '%s' pacing.allowed_stages must be an array" % id)
+			else:
+				for stage_ref in allowed_stages:
+					if not (stage_ref is String):
+						errors.append("Decision '%s' pacing.allowed_stages must contain only strings" % id)
+						break
+
 	return errors
 
 
@@ -278,11 +298,113 @@ func _validate_country(country: Dictionary, repository: ContentRepository) -> Ar
 	if not survival_id.is_empty() and not repository.has_ending(survival_id):
 		errors.append("Country '%s' survival ending '%s' not found" % [id, survival_id])
 
+	if country.has("run_stages"):
+		var run_stages: Variant = country.get("run_stages")
+		if not (run_stages is Array):
+			errors.append("Country '%s' run_stages must be an array" % id)
+		else:
+			errors.append_array(_validate_run_stages(id, run_stages))
+
 	return errors
 
 
+func _validate_run_stages(country_id: String, run_stages: Array) -> Array[String]:
+	var errors: Array[String] = []
+	var seen_ids: Dictionary = {}
+	var previous_max_day: int = 0
+
+	for index in run_stages.size():
+		var stage: Variant = run_stages[index]
+		var where := "Country '%s' run_stages[%d]" % [country_id, index]
+		if not (stage is Dictionary):
+			errors.append("%s must be an object" % where)
+			continue
+
+		var stage_id: String = str(stage.get("id", ""))
+		if stage_id.is_empty():
+			errors.append("%s missing non-empty string 'id'" % where)
+		elif seen_ids.has(stage_id):
+			errors.append("Country '%s' run_stages has duplicate stage id '%s'" % [country_id, stage_id])
+		else:
+			seen_ids[stage_id] = true
+
+		var minimum_day: Variant = stage.get("minimum_day")
+		var maximum_day: Variant = stage.get("maximum_day")
+		var minimum_valid := _is_integer_value(minimum_day)
+		var maximum_valid := _is_integer_value(maximum_day)
+		if not minimum_valid:
+			errors.append("%s 'minimum_day' must be an integer" % where)
+		if not maximum_valid:
+			errors.append("%s 'maximum_day' must be an integer" % where)
+
+		if minimum_valid and maximum_valid:
+			var min_day: int = int(minimum_day)
+			var max_day: int = int(maximum_day)
+			if min_day > max_day:
+				errors.append("%s has minimum_day (%d) > maximum_day (%d)" % [where, min_day, max_day])
+			if index == 0:
+				if min_day != 1:
+					errors.append("Country '%s' first run stage must start at day 1 (got %d)" % [country_id, min_day])
+			elif previous_max_day > 0 and min_day != previous_max_day + 1:
+				errors.append(
+					"Country '%s' run stage '%s' minimum_day (%d) must be %d (previous maximum_day + 1)" % [
+						country_id, stage_id, min_day, previous_max_day + 1,
+					]
+				)
+			previous_max_day = max_day
+
+	return errors
+
+
+func _country_warnings(country: Dictionary) -> Array[String]:
+	var warnings: Array[String] = []
+	var id: String = str(country.get("id", ""))
+	if id.is_empty() or not country.has("run_stages"):
+		return warnings
+
+	var run_stages: Variant = country.get("run_stages")
+	if not (run_stages is Array) or run_stages.is_empty():
+		return warnings
+
+	var last_stage: Variant = run_stages[run_stages.size() - 1]
+	if not (last_stage is Dictionary):
+		return warnings
+
+	var last_max_day: int = int(last_stage.get("maximum_day", 0))
+	var max_day: int = int(country.get("max_day", 0))
+	if last_max_day != max_day:
+		warnings.append(
+			"Country '%s' last run stage maximum_day (%d) does not match max_day (%d)" % [
+				id, last_max_day, max_day,
+			]
+		)
+	return warnings
+
+
+func _collect_run_stage_ids(repository: ContentRepository) -> Dictionary:
+	var stage_ids: Dictionary = {}
+	for country in repository.get_raw_countries():
+		var run_stages: Variant = country.get("run_stages", [])
+		if not (run_stages is Array):
+			continue
+		for stage in run_stages:
+			if stage is Dictionary:
+				var stage_id: String = str(stage.get("id", ""))
+				if not stage_id.is_empty():
+					stage_ids[stage_id] = true
+	return stage_ids
+
+
+func _is_integer_value(value: Variant) -> bool:
+	if value is int:
+		return true
+	if value is float:
+		return is_finite(value) and value == int(value)
+	return false
+
+
 ## Length checks are warnings, not failures (PRD 03 §21).
-func _decision_warnings(decision: Dictionary) -> Array[String]:
+func _decision_warnings(decision: Dictionary, repository: ContentRepository) -> Array[String]:
 	var warnings: Array[String] = []
 	var id: String = str(decision.get("id", ""))
 	if str(decision.get("proposal", "")).length() > PROPOSAL_MAX_LENGTH:
@@ -295,4 +417,17 @@ func _decision_warnings(decision: Dictionary) -> Array[String]:
 			warnings.append("Decision '%s' option '%s' label exceeds %d characters" % [id, option_id, CHOICE_LABEL_MAX_LENGTH])
 		if str(option.get("result_text", "")).length() > RESULT_TEXT_MAX_LENGTH:
 			warnings.append("Decision '%s' option '%s' result_text exceeds %d characters" % [id, option_id, RESULT_TEXT_MAX_LENGTH])
+
+	var pacing: Variant = decision.get("pacing", {})
+	if pacing is Dictionary and not pacing.is_empty():
+		var known_stage_ids: Dictionary = _collect_run_stage_ids(repository)
+		if pacing.has("allowed_stages") and pacing["allowed_stages"] is Array:
+			for stage_ref in pacing["allowed_stages"]:
+				var stage_id: String = str(stage_ref)
+				if not stage_id.is_empty() and not known_stage_ids.has(stage_id):
+					warnings.append("Decision '%s' pacing references unknown stage '%s'" % [id, stage_id])
+		for key in pacing:
+			if str(key) not in KNOWN_PACING_KEYS:
+				warnings.append("Decision '%s' pacing key '%s' is not yet supported" % [id, key])
+
 	return warnings

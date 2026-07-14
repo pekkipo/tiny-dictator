@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://clawpop01tiny"]
+[gd_scene format=3 uid="uid://clawpop01tiny"]
 
 [ext_resource type="Script" path="res://scripts/ui/LawDetailPopup.gd" id="1_lawpop"]
 

@@ -157,12 +157,15 @@ func _test_game_manager_flow() -> void:
 	var result: DecisionResult = game_manager.resolve_choice("sell_furniture")
 	_check(result != null and result.selected_option_id == "sell_furniture", "GameManager resolves by option id")
 
-	# Legacy wrappers still work on v2 cards.
+	# Legacy wrappers still work on v2 cards. The day-1 card is random, so only
+	# force the pizza card when it isn't already presented (resolving it first
+	# would mark the one-time card used and invalidate the forced selection).
 	game_manager.start_new_run()
 	state = game_manager.get_current_state()
-	game_manager.force_decision("free_pizza_friday")
-	game_manager.resolve_choice("left")
-	game_manager.continue_after_result()
+	if state.current_decision_id != "free_pizza_friday":
+		game_manager.force_decision("free_pizza_friday")
+		game_manager.resolve_choice("left")
+		game_manager.continue_after_result()
 	_check(state.current_decision_id == "free_pizza_friday", "forced v2 card presented")
 	game_manager.choose_left()
 	_check(game_manager.get_last_result().selected_option_id == "refuse", "choose_left resolves first option of v2 card")

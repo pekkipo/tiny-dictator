@@ -105,6 +105,19 @@ Required fields:
 - `max_day`
 - `decision_files`
 
+Optional (Phase 2A milestone 2A-2):
+
+- `run_stages` — ordered non-overlapping day ranges that label the current narrative phase. Each entry has `id`, `minimum_day`, and `maximum_day`. The last stage's `maximum_day` should match `max_day`. `ContentDirector` maps `RunState.day` to `RunState.current_stage_id`; when omitted, stage filtering is disabled and all decisions stay eligible.
+
+```json
+"run_stages": [
+  { "id": "establishment", "minimum_day": 1,  "maximum_day": 7 },
+  { "id": "escalation",    "minimum_day": 8,  "maximum_day": 16 },
+  { "id": "instability",   "minimum_day": 17, "maximum_day": 27 },
+  { "id": "endgame",       "minimum_day": 28, "maximum_day": 40 }
+]
+```
+
 ---
 
 ## 5. Advisor schema
@@ -333,6 +346,13 @@ Optional decision fields:
 - `tags`
 - `fallback`
 - `debug_only`
+- `pacing` — optional pacing metadata (Phase 2A milestone 2A-2). In 2A-2 only `pacing.allowed_stages` is enforced: when non-empty and `RunState.current_stage_id` is set, the decision is eligible only in those stage ids. Cards without `pacing` remain eligible in every stage.
+
+```json
+"pacing": {
+  "allowed_stages": ["establishment", "escalation"]
+}
+```
 
 ---
 
@@ -457,8 +477,9 @@ Recommended order:
 9. Resource conditions pass.
 10. Counter conditions pass.
 11. Used/not-used history conditions pass.
-12. Decision is not the same as current or immediately previous decision unless allowed.
-13. Decision is not marked debug-only in normal mode.
+12. If `pacing.allowed_stages` is set and `current_stage_id` is non-empty, the current stage must be listed (Phase 2A milestone 2A-2).
+13. Decision is not the same as current or immediately previous decision unless allowed.
+14. Decision is not marked debug-only in normal mode.
 
 Pseudocode:
 
@@ -513,6 +534,19 @@ for decision in candidates:
     if roll <= cursor:
         return decision
 ```
+
+### Content Director and ContentRequest (Phase 2A milestone 2A-2)
+
+Before weighted selection, `GameManager` asks `ContentDirector.build_request()` for a `ContentRequest`. `DecisionEngine.select_next_decision(state, request)` still owns the final pick; the request only biases it.
+
+Request types (priority order):
+
+1. `forced_follow_up` — a forced next decision is queued (informational; forced card always wins).
+2. `recovery` — any resource is at or below 20; prefers `card_type: recovery`.
+3. `endgame_resolution` — `current_stage_id` is `endgame`; prefers `resolution` and `ending_setup`, excludes `long_setup` tags.
+4. `standalone` — no special bias.
+
+Bias rules: matching `preferred_card_types` (or `required_tags` when set) multiply weight by 4. `excluded_tags` hard-remove candidates unless that would empty the pool. Forced follow-ups ignore the request entirely.
 
 ---
 

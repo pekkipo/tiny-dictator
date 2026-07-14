@@ -120,8 +120,8 @@ func _test_special_beats_collapse() -> void:
 func _test_max_day() -> void:
 	# TC-018: reaching max day triggers the survival ending.
 	var state := _fresh_state()
-	state.day = 30
-	_check(_resolve(state) == "survived_the_prototype", "day 30 -> survival ending")
+	state.day = 40
+	_check(_resolve(state) == "survived_the_prototype", "day 40 -> survival ending")
 
-	state.day = 29
-	_check(_resolve(state) == "", "day 29 -> no ending")
+	state.day = 39
+	_check(_resolve(state) == "", "day 39 -> no ending")
