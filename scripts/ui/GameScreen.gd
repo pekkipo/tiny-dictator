@@ -16,6 +16,17 @@ func _refresh_from_state() -> void:
 	%ResourcesLabel.text = "💰 %d   🙂 %d   🛡 %d   👑 %d" % [
 		state.treasury, state.happiness, state.order, state.elite_loyalty,
 	]
+	var decision: Dictionary = GameManager.get_current_decision()
+	if decision.is_empty():
+		%PlaceholderLabel.text = "No decision selected."
+		return
+	var advisor: Dictionary = GameManager.get_content().get_advisor(str(decision.get("advisor_id", "")))
+	%PlaceholderLabel.text = "%s %s (%s):\n\n%s" % [
+		str(advisor.get("placeholder_icon", "")),
+		str(advisor.get("display_name", "?")),
+		str(advisor.get("role", "")),
+		str(decision.get("proposal", "")),
+	]
 
 
 func _on_debug_run_end_pressed() -> void:

@@ -16,6 +16,8 @@ func _initialize() -> void:
 	var game_manager: Node = root.get_node("GameManager")
 	event_bus.run_started.connect(func(_state: RunState) -> void: _run_started_count += 1)
 	event_bus.run_reset.connect(func() -> void: _run_reset_count += 1)
+	var presented_count: Array[int] = [0]
+	event_bus.decision_presented.connect(func(_decision: Dictionary) -> void: presented_count[0] += 1)
 
 	# Start a run, dirty the state, then restart and verify cleanliness.
 	game_manager.start_new_run()
@@ -23,6 +25,11 @@ func _initialize() -> void:
 	_check(_run_started_count == 1, "run_started emitted")
 	_check(state.run_phase == RunState.RunPhase.AWAITING_DECISION, "phase AWAITING_DECISION after start")
 	_check(state.day == 1, "day 1 after start")
+	_check(presented_count[0] == 1, "decision_presented emitted on start")
+	_check(not game_manager.get_current_decision().is_empty(), "a decision is selected at run start")
+	_check(state.current_decision_id == str(game_manager.get_current_decision().get("id", "")), "current_decision_id matches selected decision")
+	_check(game_manager.force_decision("free_pizza_friday"), "force_decision accepts known id")
+	_check(not game_manager.force_decision("nonexistent"), "force_decision rejects unknown id")
 
 	state.change_resource("treasury", -30)
 	state.add_law("window_tax")

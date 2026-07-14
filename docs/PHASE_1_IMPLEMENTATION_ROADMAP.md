@@ -11,8 +11,8 @@
 |---|-----------|--------|--------|
 | 1 | Boot and basic screen navigation | ✅ Done | `454e614` |
 | 2 | RunState and GameManager | ✅ Done | `1a057f0` |
-| 3 | Content loading and validation | ✅ Done | pending commit |
-| 4 | Decision Engine | ⬜ Not started | — |
+| 3 | Content loading and validation | ✅ Done | `d1df89e` |
+| 4 | Decision Engine | ✅ Done | pending commit |
 | 5 | Choice and effect resolution | ⬜ Not started | — |
 | 6 | Main gameplay UI | ⬜ Not started | — |
 | 7 | Endings and restart flow | ⬜ Not started | — |
@@ -115,14 +115,22 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 4 — Decision Engine
+## Milestone 4 — Decision Engine ✅
 
 **Objective:** Valid decision selection, data-driven.
 
-**Deliverables:**
-- Rewrite `scripts/core/DecisionEngine.gd` per PRD 04 §7 + PRD 03 §11–14: full requirements evaluator (`all/any/blocked` flags and laws, min/max resources, counters, day range, used/not-used decisions), one-time filtering, weighted random selection (default weight 10), forced follow-up (`set_forced_decision`), fallback decision, seeded RNG
+**Delivered:**
+- `scripts/core/DecisionEngine.gd` (new, per PRD 04 §7 + PRD 03 §11–14): full requirements evaluator (`all/any/blocked` flags and laws, min/max resources, counters, day range, used/not-used decisions), one-time filtering, `debug_only` exclusion, weighted random selection (default weight 10), forced follow-up (consumed once, invalid IDs fall back to normal selection), country fallback decision on empty pool, immediate-repetition avoidance, seeded RNG injected by GameManager
+- GameManager: creates a seeded engine per run, selects and presents the first decision at run start (`decision_presented` after `run_started`), exposes `get_current_decision()` and `force_decision()` for the debug overlay
+- GameScreen placeholder now shows the selected advisor and proposal (read-only until M6)
+- Tests: `tests/test_decision_engine.gd` (10 test groups: pool contents, flag gating TC-007/008, one-time TC-009, full evaluator matrix, seed reproducibility TC-014, forced TC-011/012, fallback TC-019, repetition avoidance)
 
-**Acceptance:** conditional cards appear only when requirements pass (TC-007/TC-008); one-time cards never repeat (TC-009); same seed + same choices reproduces the sequence (TC-014); empty pool logs the reason and falls back safely.
+**Acceptance (verified):**
+- [x] Conditional cards appear only when requirements pass (tested)
+- [x] One-time cards never repeat (tested)
+- [x] Same seed reproduces the selection sequence (tested)
+- [x] Empty pool logs the reason and uses the fallback decision (tested)
+- [x] All four suites pass headless; boot clean
 
 ---
 
