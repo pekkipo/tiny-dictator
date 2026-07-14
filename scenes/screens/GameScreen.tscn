@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://tuusxl0lwqy4"]
+[gd_scene load_steps=6 format=3 uid="uid://cgame002screen"]
 
 [ext_resource type="Script" path="res://scripts/ui/GameScreen.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://crbar001tiny" path="res://scenes/components/ResourceBar.tscn" id="2_rbar"]
+[ext_resource type="PackedScene" uid="uid://cdcard001tiny" path="res://scenes/components/DecisionCard.tscn" id="3_card"]
+[ext_resource type="PackedScene" uid="uid://crpanel001tiny" path="res://scenes/components/ResultPanel.tscn" id="4_result"]
+[ext_resource type="PackedScene" uid="uid://clbar001tiny" path="res://scenes/components/ActiveLawsBar.tscn" id="5_laws"]
 
 [node name="GameScreen" type="Control"]
 layout_mode = 3
@@ -27,116 +31,109 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 40
 
 [node name="MainVBox" type="VBoxContainer" parent="SafeAreaMargin"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 16
 
-[node name="TopSpacer" type="Control" parent="SafeAreaMargin/MainVBox"]
+[node name="TopBar" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
+layout_mode = 2
+
+[node name="TopBarMargin" type="MarginContainer" parent="SafeAreaMargin/MainVBox/TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="TopBarVBox" type="VBoxContainer" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DayRow" type="HBoxContainer" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox"]
+layout_mode = 2
+
+[node name="CountryLabel" type="Label" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox/DayRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "MINISTAN"
+
+[node name="DaySpacer" type="Control" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox/DayRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DayLabel" type="Label" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox/DayRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "DAY 1"
+
+[node name="ResourceBar" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox" instance=ExtResource("2_rbar")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CountryPlaceholder" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 2.2
 
-[node name="HeaderLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
+[node name="DioramaVBox" type="VBoxContainer" parent="SafeAreaMargin/MainVBox/CountryPlaceholder"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12, 0.1, 0.08, 1)
-theme_override_font_sizes/font_size = 48
-text = "GAME SCREEN"
+alignment = 1
+
+[node name="DioramaEmojiLabel" type="Label" parent="SafeAreaMargin/MainVBox/CountryPlaceholder/DioramaVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "🏛️  🏘️ 🏘️ 🏘️  🌳"
 horizontal_alignment = 1
 
-[node name="PlaceholderPanel" type="PanelContainer" parent="SafeAreaMargin/MainVBox"]
+[node name="StateDescriptionLabel" type="Label" parent="SafeAreaMargin/MainVBox/CountryPlaceholder/DioramaVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 22
+text = "Country visualization arrives in Milestone 8."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DecisionCard" parent="SafeAreaMargin/MainVBox" instance=ExtResource("3_card")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
 
-[node name="PlaceholderVBox" type="VBoxContainer" parent="SafeAreaMargin/MainVBox/PlaceholderPanel"]
+[node name="ResultPanel" parent="SafeAreaMargin/MainVBox" instance=ExtResource("4_result")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="ActiveLawsBar" parent="SafeAreaMargin/MainVBox" instance=ExtResource("5_laws")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DebugRow" type="HBoxContainer" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="PlaceholderLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
+[node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox/DebugRow"]
 unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Main gameplay UI will appear here in later milestones."
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="DayLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "DAY 1  |  MINISTAN"
-horizontal_alignment = 1
-
-[node name="ResourcesLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "💰 55   🙂 55   🛡 55   👑 55"
-horizontal_alignment = 1
-
-[node name="ResultLabel" type="Label" parent="SafeAreaMargin/MainVBox/PlaceholderPanel/PlaceholderVBox"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Result"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="ChoicesRow" type="HBoxContainer" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-theme_override_constants/separation = 24
-
-[node name="LeftChoiceButton" type="Button" parent="SafeAreaMargin/MainVBox/ChoicesRow"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 96)
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "Left"
-autowrap_mode = 3
-
-[node name="RightChoiceButton" type="Button" parent="SafeAreaMargin/MainVBox/ChoicesRow"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "Right"
-autowrap_mode = 3
-
-[node name="ContinueButton" type="Button" parent="SafeAreaMargin/MainVBox"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "CONTINUE"
-
-[node name="DebugRunEndButton" type="Button" parent="SafeAreaMargin/MainVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "DEBUG: Open Run End Screen"
-
-[node name="DebugStartButton" type="Button" parent="SafeAreaMargin/MainVBox"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "DEBUG: Return to Start Screen"
-
-[node name="BottomSpacer" type="Control" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="MilestoneLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.4, 0.35, 1)
 theme_override_font_sizes/font_size = 18
-text = "Milestone 1 — placeholder"
-horizontal_alignment = 1
+text = "DEBUG: Run End"
+
+[node name="DebugStartButton" type="Button" parent="SafeAreaMargin/MainVBox/DebugRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "DEBUG: Main Menu"

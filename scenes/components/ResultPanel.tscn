@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://crpanel001tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/ResultPanel.gd" id="1_panel"]
+
+[node name="ResultPanel" type="PanelContainer"]
+script = ExtResource("1_panel")
+
+[node name="ResultMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="ResultVBox" type="VBoxContainer" parent="ResultMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResultTextLabel" type="Label" parent="ResultMargin/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Result text."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="DeltaSummaryLabel" type="Label" parent="ResultMargin/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "💰 -10  🙂 +14"
+horizontal_alignment = 1
+
+[node name="NewLawLabel" type="Label" parent="ResultMargin/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.5, 1)
+theme_override_font_sizes/font_size = 24
+text = "New law: Free Pizza Friday"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="ResultMargin/ResultVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "CONTINUE"

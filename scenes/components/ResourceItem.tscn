@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://critem001tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/ResourceItem.gd" id="1_item"]
+
+[node name="ResourceItem" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_item")
+
+[node name="ValueLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "💰 55"
+horizontal_alignment = 1
+
+[node name="DeltaLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "+0"
+horizontal_alignment = 1

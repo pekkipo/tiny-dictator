@@ -13,8 +13,8 @@
 | 2 | RunState and GameManager | ✅ Done | `1a057f0` |
 | 3 | Content loading and validation | ✅ Done | `d1df89e` |
 | 4 | Decision Engine | ✅ Done | `32d1b18` |
-| 5 | Choice and effect resolution | ✅ Done | pending commit |
-| 6 | Main gameplay UI | ⬜ Not started | — |
+| 5 | Choice and effect resolution | ✅ Done | `97568b2` |
+| 6 | Main gameplay UI | ✅ Done | pending commit |
 | 7 | Endings and restart flow | ⬜ Not started | — |
 | 8 | Placeholder country reactions | ⬜ Not started | — |
 | 9 | Debug tools | ⬜ Not started | — |
@@ -156,19 +156,23 @@ Files in `docs/legacy/` (`GAME_DESIGN.md`, `TECHNICAL_DESIGN.md`, `CONTENT_GUIDE
 
 ---
 
-## Milestone 6 — Main gameplay UI
+## Milestone 6 — Main gameplay UI ✅
 
 **Objective:** Full choose → result → continue loop on screen.
 
-**Deliverables (per PRD 02 §7–13):**
-- Components under `scenes/components/`: `ResourceBar`, `ResourceItem`, `DecisionCard`, `ResultPanel`, `ActiveLawsBar`, `AdvisorHeader`
-- Rebuild `scenes/screens/GameScreen.tscn`: TopBar (country, day, resources), diorama placeholder area, decision card, result panel (hidden until choice), laws bar
-- Delta feedback (`+8`/`-10`) on changed resources; danger coloring with numbers always visible
-- Mandatory explicit Continue button after each result
+**Delivered (per PRD 02 §7–13):**
+- Components under `scenes/components/` with scripts in `scripts/ui/`: `ResourceItem` (icon + value + delta, danger coloring with number always visible), `ResourceBar` (four items, `update_resources`/`show_deltas`), `DecisionCard` (advisor row with emoji portrait, wrapping proposal, two choice buttons with visible-effects summaries, `choice_selected` signal), `ResultPanel` (result text, actual delta summary, law announcements, Continue button), `ActiveLawsBar` (chips, max 5 + "+N more", empty-state text). Advisor header is part of DecisionCard per PRD 02 §10.
+- `GameScreen.tscn` rebuilt to the spec layout: TopBar (country name, day, resource bar), country diorama placeholder area (real diorama in M8), decision card, hidden-until-choice result panel, laws bar, debug row
+- Delta feedback shows actual applied (clamped) changes; danger states colored at ≤30, collapsed at 0
+- Explicit Continue button after every result (mandatory per PRD 02 §12)
+- Tests: `tests/test_game_screen.gd` drives the real screen headless through 12 in-game days including double-tap protection
 
-**Legacy cleanup:** already done in Milestone 2 (old `scenes/game/*`, Collection/Palace screens, and orphaned UI scripts were removed there).
-
-**Acceptance:** full loop works for many consecutive days; buttons disabled during resolution; 220-char proposals wrap without clipping (UI-001); laws bar updates immediately.
+**Acceptance (verified):**
+- [x] Full loop stable through many consecutive days (12 days automated)
+- [x] Buttons disabled during resolution; double tap does not re-resolve
+- [x] Proposals wrap without clipping (autowrap on all text)
+- [x] Laws bar updates immediately after law changes
+- [x] All six suites pass headless; boot clean
 
 ---
 

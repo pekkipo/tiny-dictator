@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://crbar001tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/ResourceBar.gd" id="1_bar"]
+[ext_resource type="PackedScene" uid="uid://critem001tiny" path="res://scenes/components/ResourceItem.tscn" id="2_item"]
+
+[node name="ResourceBar" type="HBoxContainer"]
+theme_override_constants/separation = 8
+script = ExtResource("1_bar")
+
+[node name="TreasuryItem" parent="." instance=ExtResource("2_item")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HappinessItem" parent="." instance=ExtResource("2_item")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OrderItem" parent="." instance=ExtResource("2_item")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EliteItem" parent="." instance=ExtResource("2_item")]
+unique_name_in_owner = true
+layout_mode = 2

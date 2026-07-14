@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdcard001tiny"]
+
+[ext_resource type="Script" path="res://scripts/ui/DecisionCard.gd" id="1_card"]
+
+[node name="DecisionCard" type="PanelContainer"]
+script = ExtResource("1_card")
+
+[node name="CardMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 20
+
+[node name="CardVBox" type="VBoxContainer" parent="CardMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AdvisorRow" type="HBoxContainer" parent="CardMargin/CardVBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="AdvisorPortraitLabel" type="Label" parent="CardMargin/CardVBox/AdvisorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "👤"
+
+[node name="AdvisorTextVBox" type="VBoxContainer" parent="CardMargin/CardVBox/AdvisorRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AdvisorNameLabel" type="Label" parent="CardMargin/CardVBox/AdvisorRow/AdvisorTextVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Advisor Name"
+
+[node name="AdvisorRoleLabel" type="Label" parent="CardMargin/CardVBox/AdvisorRow/AdvisorTextVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.78, 1)
+theme_override_font_sizes/font_size = 22
+text = "Role"
+
+[node name="Separator" type="HSeparator" parent="CardMargin/CardVBox"]
+layout_mode = 2
+
+[node name="ProposalLabel" type="Label" parent="CardMargin/CardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 28
+text = "Proposal text goes here."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoicesRow" type="HBoxContainer" parent="CardMargin/CardVBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LeftChoiceButton" type="Button" parent="CardMargin/CardVBox/ChoicesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Left choice"
+autowrap_mode = 3
+
+[node name="RightChoiceButton" type="Button" parent="CardMargin/CardVBox/ChoicesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Right choice"
+autowrap_mode = 3
