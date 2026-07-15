@@ -22,6 +22,15 @@ $GODOT --headless --path . -s tests/run_2a9_sim_report.gd
 
 # Static narrative diagnostics (in-editor: F1 → Run Static Diagnostics)
 $GODOT --headless --path . -s tests/test_diagnostics_simulation.gd
+
+# Content manifest build + validation (Milestone 2B-0)
+$GODOT --headless --path . -s tests/run_content_manifest.gd
+
+# Regenerate manifest JSON and audit markdown
+$GODOT --headless --path . -s tests/run_content_manifest.gd -- --export-audit
+
+# Manifest assertion tests
+$GODOT --headless --path . -s tests/test_content_manifest.gd
 ```
 
 Exports land in `user://diagnostics/` as JSON and text.
@@ -556,7 +565,28 @@ Simulations and diagnostics **never write** to the real player save.
 
 ---
 
-## 11. Architecture freeze statement
+## 11. Content manifest (Phase 2B-0)
+
+Development-only inventory at `data/content_manifest.json`. **Not loaded at game boot.**
+
+Tracks every decision and catalog item with:
+
+- `primary_content_class` (onboarding, standalone, short_chain, major_arc, crisis, recovery, endgame)
+- Review gates: schema, graph, manual test, voice, balance
+- `status` (only `approved` counts toward the 330-decision strong-launch target)
+- Computed `quota_report` and `distribution_report`
+
+Human-readable audit: [docs/content/PHASE_2A_CONTENT_AUDIT.md](content/PHASE_2A_CONTENT_AUDIT.md)
+
+Rebuild after content changes:
+
+```bash
+godot --headless --path . -s tests/run_content_manifest.gd -- --export-audit
+```
+
+---
+
+## 12. Architecture freeze statement
 
 Phase 2A is frozen at:
 

@@ -38,7 +38,8 @@ Intentional scope limits and known quirks at the Phase 2A architecture freeze.
 ## Content and balance notes
 
 - Ministan ships **74 decisions**, **6 arcs**, **6 crises**, **12 laws**, **11 endings**, **8 advisors** — representative pack, not final writing.
-- `robot_government` arc and `budget_meltdown` crisis are extra beyond the five required arcs/crises.
+- **Phase 2B-0 content manifest** (`data/content_manifest.json`) inventories all runtime content with honest status gates. **0 decisions are `approved`** toward the 330 strong-launch target until voice review and batch QA (2B-1+). See [docs/content/PHASE_2A_CONTENT_AUDIT.md](docs/content/PHASE_2A_CONTENT_AUDIT.md).
+- `robot_government` arc and `budget_meltdown` crisis are extra beyond the five required arcs/crises (manifest status: `deferred`).
 - `general_boom_arc` completes in only ~3% of random simulated runs — needs Phase 2B balance attention.
 - Two branch-gated resolution cards (`boom_loyal_protector`, `happiness_backlash`) were never picked in the 1,000-run seed `20260715` simulation; they remain reachable via specific branches.
 - Static diagnostics reports ~42 "unreachable" decisions — expected for arc-gated and follow-up cards; the optimistic graph does not model arc activation.
