@@ -32,12 +32,19 @@ func _ready() -> void:
 	%PrintStateButton.pressed.connect(_on_print_state_pressed)
 	%ReloadContentButton.pressed.connect(_on_reload_content_pressed)
 	%ResetSaveButton.pressed.connect(_on_reset_save_pressed)
+	%AddMedalsButton.pressed.connect(_on_add_medals_pressed)
+	%RemoveMedalsButton.pressed.connect(_on_remove_medals_pressed)
+	%UnlockEndingButton.pressed.connect(_on_unlock_ending_pressed)
+	%PurchaseUpgradeButton.pressed.connect(_on_purchase_upgrade_pressed)
+	%ClearUpgradeButton.pressed.connect(_on_clear_upgrade_pressed)
+	%ResetMetaButton.pressed.connect(_on_reset_meta_pressed)
 
 	for resource_id in RunState.RESOURCE_IDS:
 		%ResourceOption.add_item(resource_id)
 	_populate_ending_options()
 	_populate_arc_options()
 	_populate_crisis_options()
+	_populate_upgrade_options()
 
 	EventBus.decision_presented.connect(func(_decision: Dictionary) -> void: _refresh())
 	EventBus.decision_resolved.connect(func(_result: DecisionResult) -> void: _refresh())
@@ -52,6 +59,7 @@ func _ready() -> void:
 	EventBus.crisis_started.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
 	EventBus.crisis_resolved.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
 	EventBus.crisis_failed.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.meta_progression_updated.connect(func() -> void: _refresh())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -67,6 +75,7 @@ func toggle_visibility() -> void:
 		_populate_ending_options()
 		_populate_arc_options()
 		_populate_crisis_options()
+		_populate_upgrade_options()
 		_show_feedback("", true)
 		_refresh()
 
@@ -123,6 +132,13 @@ func _refresh() -> void:
 		"phase: %s   day: %d   seed: %d" % [
 			RunState.RunPhase.keys()[state.run_phase], state.day, state.random_seed,
 		],
+		"meta: medals=%d  endings=%d  upgrades=%d  save=v%d  runs=%d" % [
+			MetaProgressionManager.get_medals(),
+			MetaProgressionManager.get_unlocked_ending_ids().size(),
+			MetaProgressionManager.get_purchased_upgrades().size(),
+			MetaProgressionManager.get_save_version(),
+			MetaProgressionManager.get_total_runs_completed(),
+		],
 		"decision: %s" % (state.current_decision_id if not state.current_decision_id.is_empty() else "(none)"),
 		"stage: %s" % GameManager.get_current_stage_id(),
 		request_line,
@@ -176,6 +192,27 @@ func _populate_crisis_options() -> void:
 	%CrisisOption.clear()
 	for crisis in GameManager.get_content().get_raw_crises():
 		%CrisisOption.add_item(str(crisis.get("id", "")))
+
+
+func _populate_upgrade_options() -> void:
+	%UpgradeOption.clear()
+	for upgrade in GameManager.get_content().get_raw_palace_upgrades():
+		%UpgradeOption.add_item(str(upgrade.get("id", "")))
+	%UnlockEndingOption.clear()
+	for ending in GameManager.get_content().get_raw_endings():
+		%UnlockEndingOption.add_item(str(ending.get("id", "")))
+
+
+func _selected_upgrade_id() -> String:
+	if %UpgradeOption.selected < 0:
+		return ""
+	return %UpgradeOption.get_item_text(%UpgradeOption.selected)
+
+
+func _selected_unlock_ending_id() -> String:
+	if %UnlockEndingOption.selected < 0:
+		return ""
+	return %UnlockEndingOption.get_item_text(%UnlockEndingOption.selected)
 
 
 func _selected_crisis_id() -> String:
@@ -435,4 +472,50 @@ func _on_reload_content_pressed() -> void:
 
 func _on_reset_save_pressed() -> void:
 	SaveManager.reset_save()
-	_show_feedback("Save reset: unlocked endings cleared.", true)
+	_show_feedback("Full save reset.", true)
+
+
+func _on_add_medals_pressed() -> void:
+	var amount: int = int(%MedalsSpin.value)
+	MetaProgressionManager.add_medals(amount)
+	_show_feedback("Added %d medal(s)." % amount, true)
+
+
+func _on_remove_medals_pressed() -> void:
+	var amount: int = int(%MedalsSpin.value)
+	MetaProgressionManager.add_medals(-amount)
+	_show_feedback("Removed %d medal(s)." % amount, true)
+
+
+func _on_unlock_ending_pressed() -> void:
+	var ending_id: String = _selected_unlock_ending_id()
+	if ending_id.is_empty():
+		_show_feedback("Select an ending first.", false)
+		return
+	var result: Dictionary = MetaProgressionManager.record_ending_reached(ending_id, 1)
+	_show_feedback("Unlocked ending '%s' (new=%s)." % [ending_id, result.get("is_new", false)], true)
+
+
+func _on_purchase_upgrade_pressed() -> void:
+	var upgrade_id: String = _selected_upgrade_id()
+	if upgrade_id.is_empty():
+		_show_feedback("Select an upgrade first.", false)
+		return
+	if MetaProgressionManager.purchase_upgrade(upgrade_id, GameManager.get_content()):
+		_show_feedback("Purchased upgrade '%s'." % upgrade_id, true)
+	else:
+		_show_feedback("Cannot purchase '%s'." % upgrade_id, false)
+
+
+func _on_clear_upgrade_pressed() -> void:
+	var upgrade_id: String = _selected_upgrade_id()
+	if upgrade_id.is_empty():
+		_show_feedback("Select an upgrade first.", false)
+		return
+	MetaProgressionManager.clear_upgrade(upgrade_id)
+	_show_feedback("Cleared upgrade '%s'." % upgrade_id, true)
+
+
+func _on_reset_meta_pressed() -> void:
+	MetaProgressionManager.reset_meta_progression()
+	_show_feedback("Meta progression reset.", true)

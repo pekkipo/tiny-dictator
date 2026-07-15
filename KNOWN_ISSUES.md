@@ -26,8 +26,7 @@ Intentional scope limits (per the Phase 1 PRDs), not defects:
 
 ## Systems deferred beyond Phase 1
 
-- Save system stores only unlocked endings, settings, and the last run summary.
-  A version mismatch resets the save (no migration path yet).
+- Save system stores meta progression (Medals, Ending Archive, palace upgrades) in save v2 with migration from v1.
 - No mid-run persistence — closing the game abandons the current run.
 - No monetization, analytics, ads, localization, or accessibility options.
 - TC-013 (weighted-selection distribution over 1,000 draws) is not automated;

@@ -21,6 +21,9 @@ func _populate() -> void:
 		%EndingsUnlockedLabel.text = ""
 		%RulerIdentityLabel.text = ""
 		%RulerIdentityLabel.visible = false
+		%NewEndingBadgeLabel.text = ""
+		%NewEndingBadgeLabel.visible = false
+		%RewardSummaryLabel.text = ""
 		%LegacySummaryLabel.text = ""
 		return
 
@@ -38,7 +41,7 @@ func _populate() -> void:
 	]
 	%LawsCountLabel.text = "Active laws: %d" % summary.active_laws.size()
 	%EndingsUnlockedLabel.text = "Endings discovered: %d of %d" % [
-		SaveManager.get_unlocked_endings().size(),
+		MetaProgressionManager.get_unlocked_ending_ids().size(),
 		GameManager.get_content().get_raw_endings().size(),
 	]
 	if summary.ruler_identity_title.is_empty():
@@ -47,7 +50,40 @@ func _populate() -> void:
 	else:
 		%RulerIdentityLabel.text = "Ruler identity: %s" % summary.ruler_identity_title
 		%RulerIdentityLabel.visible = true
+
+	if summary.is_new_ending:
+		%NewEndingBadgeLabel.text = "NEW ENDING UNLOCKED"
+		%NewEndingBadgeLabel.visible = true
+	else:
+		%NewEndingBadgeLabel.text = ""
+		%NewEndingBadgeLabel.visible = false
+
+	%RewardSummaryLabel.text = _format_reward_summary(summary)
 	%LegacySummaryLabel.text = summary.legacy_text
+
+
+func _format_reward_summary(summary: RunSummary) -> String:
+	var lines: PackedStringArray = []
+	lines.append("Medals earned: +%d" % summary.medals_earned)
+	var breakdown: Dictionary = summary.reward_breakdown
+	if breakdown.has("base"):
+		lines.append("  Days survived: +%d" % int(breakdown.get("base", 0)))
+	if int(breakdown.get("new_ending", 0)) > 0:
+		lines.append("  New ending: +%d" % int(breakdown.get("new_ending", 0)))
+	if int(breakdown.get("major_arcs", 0)) > 0:
+		for arc_bonus in summary.completed_arc_bonuses:
+			if str(arc_bonus.get("importance", "")) == "major":
+				lines.append("  Major arc: +%d (%s)" % [
+					int(arc_bonus.get("bonus", 0)), str(arc_bonus.get("display_name", "")),
+				])
+	if int(breakdown.get("minor_arcs", 0)) > 0:
+		for arc_bonus in summary.completed_arc_bonuses:
+			if str(arc_bonus.get("importance", "")) == "minor":
+				lines.append("  Minor arc: +%d (%s)" % [
+					int(arc_bonus.get("bonus", 0)), str(arc_bonus.get("display_name", "")),
+				])
+	lines.append("Total Medals: %d" % summary.medals_total_after)
+	return "\n".join(lines)
 
 
 func _on_restart_pressed() -> void:

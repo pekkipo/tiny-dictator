@@ -14,6 +14,8 @@ const ENDINGS_PATH: String = "res://data/endings/endings.json"
 const VISUAL_MAP_PATH: String = "res://data/visual_states/country_visual_map.json"
 const FOLLOW_UP_POOLS_PATH: String = "res://data/follow_up_pools/follow_up_pools.json"
 const RULER_IDENTITIES_PATH: String = "res://data/ruler_identities/ruler_identities.json"
+const META_REWARDS_PATH: String = "res://data/meta/meta_rewards.json"
+const PALACE_UPGRADES_PATH: String = "res://data/meta/palace_upgrades.json"
 
 var _countries: Dictionary = {}
 var _advisors: Dictionary = {}
@@ -24,6 +26,8 @@ var _arcs: Dictionary = {}
 var _crises: Dictionary = {}
 var _follow_up_pools: Dictionary = {}
 var _ruler_identities: Dictionary = {}
+var _meta_rewards: Dictionary = {}
+var _palace_upgrades: Dictionary = {}
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
 var _visual_map: Dictionary = {}
@@ -41,6 +45,7 @@ var _raw_crises: Array[Dictionary] = []
 var _raw_countries: Array[Dictionary] = []
 var _raw_follow_up_pools: Array[Dictionary] = []
 var _raw_ruler_identities: Array[Dictionary] = []
+var _raw_palace_upgrades: Array[Dictionary] = []
 
 var _load_errors: Array[String] = []
 
@@ -65,15 +70,18 @@ func load_all() -> bool:
 	_raw_ruler_identities = _load_entry_array(RULER_IDENTITIES_PATH)
 	_index_catalog(_raw_ruler_identities, _ruler_identities, "ruler identity", RULER_IDENTITIES_PATH)
 
+	_load_meta_rewards()
+	_load_palace_upgrades()
+
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
 	if parsed_map is Dictionary:
 		_visual_map = parsed_map
 	elif parsed_map != null:
 		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
-	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d crises, %d follow-up pools, %d ruler identities" % [
+	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d crises, %d follow-up pools, %d ruler identities, %d palace upgrades" % [
 		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(), _arcs.size(),
-		_crises.size(), _follow_up_pools.size(), _ruler_identities.size(),
+		_crises.size(), _follow_up_pools.size(), _ruler_identities.size(), _palace_upgrades.size(),
 	]
 	print(summary)
 	for error in _load_errors:
@@ -225,6 +233,44 @@ func get_raw_ruler_identities() -> Array[Dictionary]:
 	return _raw_ruler_identities
 
 
+func get_meta_rewards() -> Dictionary:
+	return _meta_rewards.duplicate(true)
+
+
+func get_palace_upgrade(id: String) -> Dictionary:
+	return _palace_upgrades.get(id, {})
+
+
+func has_palace_upgrade(id: String) -> bool:
+	return _palace_upgrades.has(id)
+
+
+func get_raw_palace_upgrades() -> Array[Dictionary]:
+	return _raw_palace_upgrades
+
+
+func _load_meta_rewards() -> void:
+	var parsed: Variant = _parse_json_file(META_REWARDS_PATH)
+	if parsed is Dictionary:
+		_meta_rewards = parsed
+	elif parsed != null:
+		_load_errors.append("Expected a JSON object at root of %s" % META_REWARDS_PATH)
+
+
+func _load_palace_upgrades() -> void:
+	var entries := _load_entry_array(PALACE_UPGRADES_PATH)
+	for upgrade in entries:
+		_raw_palace_upgrades.append(upgrade)
+		var upgrade_id: String = str(upgrade.get("id", ""))
+		if upgrade_id.is_empty():
+			_load_errors.append("Palace upgrade missing 'id' in %s" % PALACE_UPGRADES_PATH)
+			continue
+		if _palace_upgrades.has(upgrade_id):
+			_load_errors.append("Duplicate palace upgrade id '%s' in %s" % [upgrade_id, PALACE_UPGRADES_PATH])
+			continue
+		_palace_upgrades[upgrade_id] = upgrade
+
+
 func _clear() -> void:
 	_countries.clear()
 	_advisors.clear()
@@ -235,6 +281,8 @@ func _clear() -> void:
 	_crises.clear()
 	_follow_up_pools.clear()
 	_ruler_identities.clear()
+	_meta_rewards.clear()
+	_palace_upgrades.clear()
 	_visual_map.clear()
 	_country_decision_ids.clear()
 	_raw_advisors = []
@@ -246,6 +294,7 @@ func _clear() -> void:
 	_raw_countries = []
 	_raw_follow_up_pools = []
 	_raw_ruler_identities = []
+	_raw_palace_upgrades = []
 	_load_errors = []
 
 

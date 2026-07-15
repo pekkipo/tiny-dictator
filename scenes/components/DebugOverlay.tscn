@@ -420,6 +420,99 @@ text = "FORCE QUEUED"
 [node name="Separator4" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 
+[node name="MetaHeader" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Meta progression"
+
+[node name="MedalsRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MedalsSpin" type="SpinBox" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/MedalsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+max_value = 9999.0
+value = 5.0
+
+[node name="AddMedalsButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/MedalsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "ADD MEDALS"
+
+[node name="RemoveMedalsButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/MedalsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "REMOVE MEDALS"
+
+[node name="UnlockEndingRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="UnlockEndingOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/UnlockEndingRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="UnlockEndingButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/UnlockEndingRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "UNLOCK ENDING"
+
+[node name="UpgradeRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="UpgradeOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/UpgradeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="PurchaseUpgradeButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/UpgradeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "PURCHASE"
+
+[node name="ClearUpgradeButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/UpgradeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "CLEAR"
+
+[node name="MetaActionsRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ResetMetaButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/MetaActionsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "RESET META"
+
+[node name="Separator5" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
 [node name="ActionsRow1" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 8

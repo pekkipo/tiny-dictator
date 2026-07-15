@@ -22,3 +22,5 @@ signal arc_paused(arc_id: String, runtime: Dictionary)
 signal crisis_started(crisis_id: String, runtime: Dictionary)
 signal crisis_resolved(crisis_id: String, runtime: Dictionary)
 signal crisis_failed(crisis_id: String, runtime: Dictionary)
+signal meta_progression_updated
+signal meta_screen_requested

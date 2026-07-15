@@ -78,12 +78,27 @@ text = "Approve absurd laws. Balance the country. Stay in power."
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="MetaSummaryLabel" type="Label" parent="SafeAreaMargin/MainVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.32, 0.12, 1)
+theme_override_font_sizes/font_size = 24
+text = "🏅 0 Medals · Endings 0 / 7"
+horizontal_alignment = 1
+
 [node name="StartButton" type="Button" parent="SafeAreaMargin/MainVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "START NEW RULE"
+
+[node name="MetaButton" type="Button" parent="SafeAreaMargin/MainVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "PALACE & ARCHIVE"
 
 [node name="BottomSpacer" type="Control" parent="SafeAreaMargin/MainVBox"]
 layout_mode = 2

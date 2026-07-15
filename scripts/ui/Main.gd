@@ -3,12 +3,13 @@ extends Control
 ## Owns screen switching only. Gameplay flow lives in GameManager.
 ## Navigation spec: docs/04_TECHNICAL_ARCHITECTURE_AND_IMPLEMENTATION.md §14-§15.
 
-enum Screen { START, GAME, RUN_END }
+enum Screen { START, GAME, RUN_END, META }
 
 const SCREEN_SCENES: Dictionary = {
 	Screen.START: preload("res://scenes/screens/StartScreen.tscn"),
 	Screen.GAME: preload("res://scenes/screens/GameScreen.tscn"),
 	Screen.RUN_END: preload("res://scenes/screens/RunEndScreen.tscn"),
+	Screen.META: preload("res://scenes/screens/MetaProgressScreen.tscn"),
 }
 
 @onready var _screen_container: Control = %ScreenContainer
@@ -20,6 +21,7 @@ func _ready() -> void:
 	EventBus.run_started.connect(_on_run_started)
 	EventBus.run_reset.connect(_on_run_reset)
 	EventBus.run_ended.connect(_on_run_ended)
+	EventBus.meta_screen_requested.connect(_on_meta_screen_requested)
 	print("[BOOT] Main scene ready.")
 	show_screen(Screen.START)
 
@@ -32,6 +34,8 @@ func show_screen(screen: Screen) -> void:
 	var packed_scene: PackedScene = SCREEN_SCENES[screen]
 	_current_screen = packed_scene.instantiate() as Control
 	_screen_container.add_child(_current_screen)
+	if screen == Screen.META and _current_screen.has_signal("back_pressed"):
+		_current_screen.back_pressed.connect(_on_meta_back_pressed)
 	print("[BOOT] Showing screen: %s" % Screen.keys()[screen])
 
 
@@ -45,3 +49,11 @@ func _on_run_reset() -> void:
 
 func _on_run_ended(_summary: RunSummary) -> void:
 	show_screen(Screen.RUN_END)
+
+
+func _on_meta_screen_requested() -> void:
+	show_screen(Screen.META)
+
+
+func _on_meta_back_pressed() -> void:
+	show_screen(Screen.START)

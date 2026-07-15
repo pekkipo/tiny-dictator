@@ -1,0 +1,30 @@
+[
+  {
+    "id": "gold_desk",
+    "display_name": "Gold Desk",
+    "description": "A desk so shiny that ministers forget what they came to argue about.",
+    "medal_cost": 5,
+    "placeholder_icon": "🪑",
+    "requirements": {}
+  },
+  {
+    "id": "propaganda_studio",
+    "display_name": "Propaganda Studio",
+    "description": "Broadcast your finest speeches to three loyal citizens and one confused cat.",
+    "medal_cost": 10,
+    "placeholder_icon": "📺",
+    "requirements": {
+      "minimum_endings_unlocked": 2
+    }
+  },
+  {
+    "id": "emergency_bunker",
+    "display_name": "Emergency Bunker",
+    "description": "For when the country needs you to hide with dignity and a snack reserve.",
+    "medal_cost": 15,
+    "placeholder_icon": "🚪",
+    "requirements": {
+      "minimum_total_runs": 3
+    }
+  }
+]

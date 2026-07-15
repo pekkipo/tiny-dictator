@@ -224,14 +224,7 @@ func _end_run(ending: Dictionary) -> void:
 	_run_state.run_phase = RunState.RunPhase.ENDED
 	_last_summary = _build_run_summary(ending)
 	print("[ENDING] Run ended on day %d: %s" % [_run_state.day, _last_summary.ending_id])
-	SaveManager.unlock_ending(_last_summary.ending_id)
-	SaveManager.set_last_run_summary({
-		"ending_id": _last_summary.ending_id,
-		"final_day": _last_summary.final_day,
-		"final_resources": _last_summary.final_resources,
-		"laws_count": _last_summary.active_laws.size(),
-		"random_seed": _last_summary.random_seed,
-	})
+	MetaProgressionManager.process_run_end(_last_summary, _run_state, _content)
 	EventBus.ending_triggered.emit(ending)
 	EventBus.run_ended.emit(_last_summary)
 

@@ -133,6 +133,23 @@ theme_override_font_sizes/font_size = 26
 text = "Ruler identity: The Accidental Ruler"
 horizontal_alignment = 1
 
+[node name="NewEndingBadgeLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.28, 0.05, 1)
+theme_override_font_sizes/font_size = 24
+text = "NEW ENDING UNLOCKED"
+horizontal_alignment = 1
+
+[node name="RewardSummaryLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.35, 0.15, 1)
+theme_override_font_sizes/font_size = 22
+text = "Medals earned: +0"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="LegacySummaryLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
 unique_name_in_owner = true
 layout_mode = 2

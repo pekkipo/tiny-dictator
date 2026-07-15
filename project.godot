@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 EventBus="*res://scripts/core/EventBus.gd"
 GameManager="*res://scripts/core/GameManager.gd"
 SaveManager="*res://scripts/core/SaveManager.gd"
+MetaProgressionManager="*res://scripts/core/MetaProgressionManager.gd"
 
 [display]
 

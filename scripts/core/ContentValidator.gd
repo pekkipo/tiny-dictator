@@ -51,7 +51,14 @@ const RESULT_TEXT_MAX_LENGTH: int = 180
 const VALID_ARC_ACTIONS: Array[String] = [
 	"start", "advance", "branch", "pause", "complete", "fail", "abandon",
 ]
+const VALID_ARC_IMPORTANCE: Array[String] = ["major", "minor"]
 const VALID_CRISIS_ACTIONS: Array[String] = ["start", "resolve", "fail"]
+const KNOWN_META_REQUIREMENT_KEYS: Array[String] = [
+	"minimum_endings_unlocked",
+	"minimum_medals",
+	"required_ending_ids",
+	"minimum_total_runs",
+]
 
 
 func validate_repository(repository: ContentRepository) -> ValidationReport:
@@ -98,6 +105,13 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 
 	for identity in repository.get_raw_ruler_identities():
 		for error in validate_ruler_identity(identity):
+			report.errors.append(error)
+
+	for error in validate_meta_rewards(repository.get_meta_rewards()):
+		report.errors.append(error)
+
+	for upgrade in repository.get_raw_palace_upgrades():
+		for error in validate_palace_upgrade(upgrade, repository):
 			report.errors.append(error)
 
 	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
@@ -313,6 +327,51 @@ func validate_arc(arc: Dictionary, repository: ContentRepository) -> Array[Strin
 			if not stage_id.is_empty() and stage_id not in stage_ids:
 				errors.append("Arc '%s' %s '%s' not in country run_stages" % [id, stage_key, stage_id])
 
+	var importance: String = str(arc.get("importance", "major"))
+	if importance not in VALID_ARC_IMPORTANCE:
+		errors.append("Arc '%s' importance '%s' must be major or minor" % [id, importance])
+
+	return errors
+
+
+func validate_meta_rewards(config: Dictionary) -> Array[String]:
+	var errors: Array[String] = []
+	if config.is_empty():
+		errors.append("Meta rewards config is missing or empty")
+		return errors
+	for key in ["days_survived_divisor", "new_ending_bonus", "completed_major_arc_bonus", "completed_minor_arc_bonus"]:
+		if not config.has(key):
+			errors.append("Meta rewards missing '%s'" % key)
+		elif int(config.get(key, -1)) < 0:
+			errors.append("Meta rewards '%s' must be non-negative" % key)
+	if int(config.get("days_survived_divisor", 1)) < 1:
+		errors.append("Meta rewards days_survived_divisor must be at least 1")
+	return errors
+
+
+func validate_palace_upgrade(upgrade: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var id: String = str(upgrade.get("id", ""))
+	if id.is_empty():
+		errors.append("Palace upgrade missing 'id'")
+		return errors
+	if str(upgrade.get("display_name", "")).is_empty():
+		errors.append("Palace upgrade '%s' missing 'display_name'" % id)
+	if int(upgrade.get("medal_cost", -1)) < 0:
+		errors.append("Palace upgrade '%s' medal_cost must be non-negative" % id)
+
+	var requirements: Variant = upgrade.get("requirements", {})
+	if not requirements is Dictionary:
+		errors.append("Palace upgrade '%s' requirements must be an object" % id)
+		return errors
+	for key in requirements:
+		if str(key) not in KNOWN_META_REQUIREMENT_KEYS:
+			errors.append("Palace upgrade '%s' has unknown requirement key '%s'" % [id, key])
+	var required_endings: Variant = requirements.get("required_ending_ids", [])
+	if required_endings is Array:
+		for ending_id in required_endings:
+			if not repository.has_ending(str(ending_id)):
+				errors.append("Palace upgrade '%s' requires unknown ending '%s'" % [id, ending_id])
 	return errors
 
 
