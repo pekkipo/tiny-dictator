@@ -19,6 +19,7 @@ func _initialize() -> void:
 	_test_forced_follow_up_wins()
 	_test_endgame_exclusions()
 	_test_excluded_tag_safeguard()
+	_test_onboarding_request()
 	_test_legacy_compatibility()
 	await _test_restart_and_persistence()
 
@@ -122,7 +123,7 @@ func _test_recovery_request() -> void:
 
 	state.set_resource("treasury", 21)
 	request = director.build_request(state, engine)
-	_check(request.request_type == "standalone", "treasury 21 -> not recovery")
+	_check(request.request_type != "recovery", "treasury 21 -> not recovery")
 
 
 func _test_recovery_bias() -> void:
@@ -208,15 +209,45 @@ func _test_excluded_tag_safeguard() -> void:
 	_check(not picked.is_empty(), "excluded-tag safeguard still returns a card when pool has candidates")
 
 
+func _test_onboarding_request() -> void:
+	var director = _make_director()
+	var engine := _make_engine()
+	var state := _fresh_state()
+	state.current_stage_id = "establishment"
+
+	var request = director.build_request(state, engine)
+	_check(request.request_type == "onboarding", "fresh run prefers onboarding")
+	_check("onboarding" in request.required_tags, "onboarding request requires onboarding tag")
+
+	var onboarding_hits: int = 0
+	const TRIALS: int = 100
+	for i in range(TRIALS):
+		var trial_state := _fresh_state()
+		trial_state.current_stage_id = "establishment"
+		var trial_engine := _make_engine(5000 + i)
+		var trial_request = director.build_request(trial_state, trial_engine)
+		var pick: Dictionary = trial_engine.select_next_decision(trial_state, trial_request)
+		var tags: Array = pick.get("tags", [])
+		if "onboarding" in tags:
+			onboarding_hits += 1
+	_check(onboarding_hits > 40, "onboarding cards dominate early pool, got %d/%d" % [onboarding_hits, TRIALS])
+
+
 func _test_legacy_compatibility() -> void:
 	var engine := _make_engine()
 	var legacy: Dictionary = _repo.get_decision("window_tax_proposal")
-	_check(legacy.get("pacing", {}).is_empty(), "legacy card has no pacing block")
+	_check(not legacy.get("options", []).is_empty(), "window_tax has normalized options")
 
-	for stage_id in ["establishment", "escalation", "instability", "endgame"]:
+	for stage_id in ["establishment"]:
 		var state := _fresh_state()
 		state.current_stage_id = stage_id
-		_check(engine.is_decision_valid(legacy, state), "legacy card valid in stage %s" % stage_id)
+		_check(engine.is_decision_valid(legacy, state), "window_tax valid in stage %s" % stage_id)
+
+	for stage_id in ["escalation", "instability", "endgame"]:
+		var state := _fresh_state()
+		state.current_stage_id = stage_id
+		state.day = 30 if stage_id == "endgame" else 10
+		_check(not engine.is_decision_valid(legacy, state), "window_tax excluded in stage %s" % stage_id)
 
 	var state := _fresh_state()
 	var picked: Dictionary = engine.select_next_decision(state)

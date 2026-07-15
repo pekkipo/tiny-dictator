@@ -194,6 +194,29 @@ func reset_meta_progression() -> void:
 	print("[SAVE] Meta progression reset.")
 
 
+func get_introduced_onboarding_concepts() -> Array[String]:
+	var concepts: Array[String] = []
+	for concept_id in _data.get("introduced_onboarding_concepts", []):
+		var id: String = str(concept_id)
+		if not id.is_empty():
+			concepts.append(id)
+	return concepts
+
+
+func merge_introduced_onboarding_concepts(new_concepts: Array) -> void:
+	if new_concepts.is_empty():
+		return
+	var merged: Array[String] = get_introduced_onboarding_concepts()
+	for concept_id in new_concepts:
+		var id: String = str(concept_id)
+		if id.is_empty() or id in merged:
+			continue
+		merged.append(id)
+	merged.sort()
+	_data["introduced_onboarding_concepts"] = merged
+	_persist()
+
+
 func reset_save() -> void:
 	_data = _default_data()
 	_persist()
@@ -213,6 +236,7 @@ func _default_data() -> Dictionary:
 			"debug_enabled": true,
 		},
 		"last_run_summary": {},
+		"introduced_onboarding_concepts": [],
 	}
 
 
@@ -265,6 +289,18 @@ func _sanitize_and_backfill(parsed: Dictionary) -> Dictionary:
 
 	sanitized["ending_records"] = _sanitize_ending_records(parsed.get("ending_records", {}))
 	sanitized["palace_upgrades"] = _sanitize_palace_upgrades(parsed.get("palace_upgrades", {}))
+
+	var saved_concepts: Variant = parsed.get("introduced_onboarding_concepts", [])
+	if saved_concepts is Array:
+		var concepts: Array[String] = []
+		for concept_id in saved_concepts:
+			var id: String = str(concept_id)
+			if not id.is_empty() and id not in concepts:
+				concepts.append(id)
+		concepts.sort()
+		sanitized["introduced_onboarding_concepts"] = concepts
+	else:
+		sanitized["introduced_onboarding_concepts"] = []
 
 	for key in defaults:
 		if not sanitized.has(key):

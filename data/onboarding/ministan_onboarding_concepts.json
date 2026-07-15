@@ -1,0 +1,66 @@
+{
+  "country_id": "ministan",
+  "concept_ids": [
+    "resources",
+    "visible_effects",
+    "hidden_consequences",
+    "laws",
+    "advisors",
+    "affinity_feedback",
+    "ruler_traits",
+    "delayed_followups",
+    "hard_followups",
+    "crises",
+    "endings_replay",
+    "no_perfect_option"
+  ],
+  "decisions_by_concept": {
+    "resources": ["palace_roof_leak"],
+    "visible_effects": ["luna_good_news_only"],
+    "hidden_consequences": ["luna_good_news_only", "window_tax_proposal"],
+    "laws": ["window_tax_proposal"],
+    "advisors": [
+      "palace_roof_leak",
+      "border_parade_dispute",
+      "window_tax_proposal",
+      "olga_bridge_repair",
+      "luna_good_news_only",
+      "science_gamble",
+      "privatize_palace_garden",
+      "cat_treaty_offer",
+      "bureaucracy_expansion",
+      "pantry_moth_crisis"
+    ],
+    "affinity_feedback": [
+      "border_parade_dispute",
+      "privatize_palace_garden",
+      "cat_treaty_offer",
+      "science_gamble"
+    ],
+    "ruler_traits": [
+      "science_gamble",
+      "privatize_palace_garden",
+      "bureaucracy_expansion",
+      "border_parade_dispute"
+    ],
+    "delayed_followups": ["science_gamble"],
+    "hard_followups": ["pantry_moth_crisis"],
+    "crises": ["pantry_moth_crisis"],
+    "endings_replay": ["cat_treaty_offer", "privatize_palace_garden"],
+    "no_perfect_option": ["palace_roof_leak", "olga_bridge_repair", "window_tax_proposal"]
+  },
+  "ui_hints": {
+    "resources": "Four meters at the top: treasury, happiness, order, and elite loyalty.",
+    "visible_effects": "Some options show only part of the impact before you choose.",
+    "hidden_consequences": "Results may reveal effects you did not see on the card.",
+    "laws": "New laws stay active until something repeals them. Tap the laws bar to read them.",
+    "advisors": "Each card comes from an advisor with their own agenda.",
+    "affinity_feedback": "Advisors react to your choices. Watch for approval or disappointment.",
+    "ruler_traits": "Your repeated choices shape how history remembers your rule.",
+    "delayed_followups": "Some choices echo later. The country remembers.",
+    "hard_followups": "Urgent problems can demand an immediate answer.",
+    "crises": "Crises need a decision before normal business resumes.",
+    "endings_replay": "Every run can end differently. Try again to discover more endings.",
+    "no_perfect_option": "Every choice trades something away. There is no free lunch."
+  }
+}

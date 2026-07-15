@@ -251,7 +251,7 @@ static func _append_assumptions(lines: PackedStringArray) -> void:
 	lines.append("4. **Resource-failure endings** — `bankrupt_leader`, `revolution`, `elite_coup`, `chaos_country` flagged impossible from day-1 by design.")
 	lines.append("5. **Guest speakers** — 0 of 6 target in runtime; voice cards in voice bible only.")
 	lines.append("6. **Simulation snapshot** — embedded from Phase 2A 1000-run report (seed 20260715).")
-	lines.append("7. **Onboarding IDs** — provisional 3-card classification; full 10-card pack is 2B-2.")
+	lines.append("7. **Onboarding pack** — Milestone 2B-2 complete: 10 approved onboarding decisions with Content Director bias.")
 	lines.append("")
 
 

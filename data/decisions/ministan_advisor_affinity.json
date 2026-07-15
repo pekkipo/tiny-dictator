@@ -53,14 +53,18 @@
     "id": "cat_treaty_offer",
     "schema_version": 2,
     "country_id": "ministan",
-    "card_type": "advisor",
+    "card_type": "onboarding",
     "advisor_id": "comrade_whiskers",
     "category": "public_life",
     "proposal": "Comrade Whiskers proposes a formal Fish Treaty. General Boom calls it treason.",
     "one_time": true,
     "base_weight": 12,
     "minimum_day": 3,
-    "maximum_day": 25,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["affinity_feedback", "ruler_traits", "advisors", "endings_replay"],
     "options": [
       {
         "id": "reject_treaty",
@@ -78,20 +82,26 @@
         "trait_changes": { "cat_friendly": 3, "populist": 1 },
         "result_text": "Comrade Whiskers purrs on the treaty table. Luna News calls it historic diplomacy."
       }
-    ]
+    ],
+    "tags": ["onboarding", "cats"],
+    "visual_tags": ["fish_treaty"]
   },
   {
     "id": "bureaucracy_expansion",
     "schema_version": 2,
     "country_id": "ministan",
-    "card_type": "advisor",
+    "card_type": "onboarding",
     "advisor_id": "clerk_zero",
     "category": "administration",
     "proposal": "Clerk Zero requests a Ministry of Forms About Forms.",
     "one_time": true,
-    "base_weight": 11,
-    "minimum_day": 2,
-    "maximum_day": 30,
+    "base_weight": 12,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["ruler_traits", "advisors"],
     "options": [
       {
         "id": "approve_ministry",
@@ -109,20 +119,23 @@
         "trait_changes": { "chaotic": 1 },
         "result_text": "Clerk Zero files your rejection in triplicate anyway."
       }
-    ]
+    ],
+    "tags": ["onboarding", "bureaucracy"],
+    "visual_tags": ["ministry_of_forms"]
   },
   {
     "id": "science_gamble",
     "schema_version": 2,
     "country_id": "ministan",
-    "card_type": "advisor",
+    "card_type": "onboarding",
     "advisor_id": "doctor_maybe",
     "category": "science",
     "proposal": "Doctor Maybe wants to test whether happiness is contagious. Sample size: everyone.",
     "one_time": true,
-    "base_weight": 12,
-    "minimum_day": 4,
-    "maximum_day": 28,
+    "base_weight": 13,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "teaches_concepts": ["delayed_followups", "ruler_traits", "affinity_feedback", "advisors"],
     "narrative": {
       "arc_id": "doctor_maybe_arc",
       "beat_type": "setup",
@@ -167,21 +180,25 @@
         "result_text": "Doctor Maybe labels you Control Group A."
       }
     ],
-    "tags": ["science", "arc_setup"],
+    "tags": ["onboarding", "science", "arc_setup"],
     "visual_tags": ["lab_sparks"]
   },
   {
     "id": "privatize_palace_garden",
     "schema_version": 2,
     "country_id": "ministan",
-    "card_type": "advisor",
+    "card_type": "onboarding",
     "advisor_id": "sir_profit",
     "category": "economy",
     "proposal": "Sir Profit suggests privatizing the palace garden. Entry fee: one smile.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 12,
     "minimum_day": 3,
-    "maximum_day": 30,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["affinity_feedback", "ruler_traits", "advisors", "endings_replay"],
     "options": [
       {
         "id": "privatize",
@@ -199,7 +216,9 @@
         "trait_changes": { "populist": 2 },
         "result_text": "Families picnic freely. Sir Profit drafts a regret memo."
       }
-    ]
+    ],
+    "tags": ["onboarding", "economy"],
+    "visual_tags": ["privatized_garden"]
   },
   {
     "id": "propaganda_smile_campaign",

@@ -185,6 +185,7 @@ func resolve_choice(option_id: String) -> DecisionResult:
 		_arc_manager, _crisis_manager, _advisor_manager, _trait_manager,
 	)
 	_last_result = result
+	_mark_onboarding_concepts_from_decision(_current_decision, result)
 
 	if not result.forced_next_decision_id.is_empty():
 		_decision_engine.set_forced_decision(result.forced_next_decision_id)
@@ -252,6 +253,12 @@ func continue_after_result() -> void:
 
 func get_last_summary() -> RunSummary:
 	return _last_summary
+
+
+func mark_onboarding_concept(concept_id: String) -> void:
+	if _run_state == null or concept_id.is_empty():
+		return
+	_run_state.mark_concepts_introduced([concept_id])
 
 
 func get_country_visual_state() -> CountryVisualState:
@@ -611,6 +618,36 @@ func debug_change_trait(trait_id: String, delta: int) -> bool:
 		return false
 	_run_state.change_ruler_trait(trait_id, delta)
 	return true
+
+
+func _mark_onboarding_concepts_from_decision(decision: Dictionary, result: DecisionResult) -> void:
+	var concepts: Array[String] = []
+	for concept_id in decision.get("teaches_concepts", []):
+		var id: String = str(concept_id)
+		if not id.is_empty():
+			concepts.append(id)
+
+	if not result.added_laws.is_empty() and "laws" not in concepts:
+		concepts.append("laws")
+	if not result.advisor_affinity_changes.is_empty() and "affinity_feedback" not in concepts:
+		concepts.append("affinity_feedback")
+	if not result.ruler_trait_changes.is_empty() and "ruler_traits" not in concepts:
+		concepts.append("ruler_traits")
+	if str(decision.get("card_type", "")) == "crisis" and "crises" not in concepts:
+		concepts.append("crises")
+	if not result.queued_follow_ups.is_empty() and "delayed_followups" not in concepts:
+		concepts.append("delayed_followups")
+	if not result.forced_next_decision_id.is_empty() and "hard_followups" not in concepts:
+		concepts.append("hard_followups")
+
+	var registry: RefCounted = _content.get_onboarding_registry()
+	if registry == null:
+		return
+	for concept_id in registry.get_concepts_for_decision(str(decision.get("id", ""))):
+		if concept_id not in concepts:
+			concepts.append(concept_id)
+
+	_run_state.mark_concepts_introduced(concepts)
 
 
 func _load_and_validate_content() -> void:

@@ -46,6 +46,8 @@ func process_run_end(summary: RunSummary, state: RunState, content: ContentRepos
 		"reward_breakdown": summary.reward_breakdown,
 	})
 
+	SaveManager.merge_introduced_onboarding_concepts(state.get_introduced_concepts())
+
 	EventBus.meta_progression_updated.emit()
 	return rewards
 

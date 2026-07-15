@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_1_scaffolding"
-const BATCH_ID: String = "2b-1"
-const DECISION_BATCH_ID: String = "2a-9"
+const PHASE: String = "2b_2_onboarding"
+const BATCH_ID: String = "2B-2"
+const DECISION_BATCH_ID: String = "2B-2"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -102,8 +102,10 @@ const CHAIN_MEMBERS: Dictionary = {
 }
 
 const ONBOARDING_IDS: Array[String] = [
-	"free_pizza_friday", "window_tax_proposal", "no_weekends_proposal",
-	"luna_good_news_only", "army_snack_budget", "parade_budget_boost",
+	"palace_roof_leak", "border_parade_dispute", "window_tax_proposal",
+	"olga_bridge_repair", "luna_good_news_only", "science_gamble",
+	"privatize_palace_garden", "cat_treaty_offer", "bureaucracy_expansion",
+	"pantry_moth_crisis",
 ]
 
 const DEFERRED_DECISION_IDS: Array[String] = [
@@ -132,6 +134,9 @@ const SIMULATION_SNAPSHOT: Dictionary = {
 	"run_count": 1000,
 	"date": "2026-07-15",
 	"decisions_never_selected": ["boom_loyal_protector", "happiness_backlash"],
+	"average_run_length": 21.8,
+	"content_exhaustion_count": 0,
+	"fallback_card_usage": 0,
 }
 
 const DUPLICATE_PREMISE_GROUPS: Array[Dictionary] = [
@@ -401,6 +406,8 @@ func _classify_decision(
 	var narrative: Dictionary = _as_dict(decision.get("narrative", {}))
 	var arc_id := str(narrative.get("arc_id", ""))
 
+	if id in ONBOARDING_IDS:
+		return "onboarding"
 	if card_type == "crisis" or bool(narrative.get("starts_crisis", false)):
 		return "crisis"
 	if card_type == "recovery":
@@ -420,8 +427,6 @@ func _classify_decision(
 
 	if id in chain_by_decision:
 		return "short_chain"
-	if id in ONBOARDING_IDS:
-		return "onboarding"
 	return "standalone"
 
 
@@ -460,6 +465,9 @@ func _resolve_status(
 		return "needs_rewrite"
 	if balance_status == "fail":
 		return "needs_rewrite"
+
+	if id in ONBOARDING_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
 
 	var all_pass := (
 		schema_status == "pass"
@@ -524,7 +532,7 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 	if id in ["pizza_union_strike", "pineapple_referendum"]:
 		notes.append("Legacy v1 left/right card normalized at load; missing explicit proposal field.")
 	if primary_class == "onboarding":
-		notes.append("Provisional onboarding classification; may move in 2B-2 pack.")
+		notes.append("Milestone 2B-2 approved onboarding card.")
 	return ", ".join(notes)
 
 
@@ -541,6 +549,9 @@ func _source_file_hint(id: String) -> String:
 		"army_snack_budget": "ministan_core.json",
 		"budget_meltdown_crisis": "ministan_core.json",
 		"generic_minister_disagreement": "ministan_core.json",
+		"palace_roof_leak": "ministan_onboarding.json",
+		"border_parade_dispute": "ministan_onboarding.json",
+		"pantry_moth_crisis": "ministan_onboarding.json",
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]

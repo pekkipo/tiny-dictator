@@ -16,6 +16,8 @@ var queued_event_id: String = ""
 var mandatory: bool = false
 var crisis_id: String = ""
 var crisis_decision_id: String = ""
+var missing_onboarding_concepts: Array[String] = []
+var onboarding_weight_multiplier: int = 1
 
 
 func to_dictionary() -> Dictionary:
@@ -32,4 +34,6 @@ func to_dictionary() -> Dictionary:
 		"mandatory": mandatory,
 		"crisis_id": crisis_id,
 		"crisis_decision_id": crisis_decision_id,
+		"missing_onboarding_concepts": missing_onboarding_concepts.duplicate(),
+		"onboarding_weight_multiplier": onboarding_weight_multiplier,
 	}

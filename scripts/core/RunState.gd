@@ -43,6 +43,7 @@ var narrative_event_queue: Array[Dictionary] = []
 var active_crisis: Dictionary = {}
 var advisor_affinity: Dictionary = {}
 var ruler_traits: Dictionary = {}
+var introduced_concepts: Array[String] = []
 var run_phase: RunPhase = RunPhase.NOT_STARTED
 var random_seed: int = 0
 
@@ -68,6 +69,7 @@ func reset() -> void:
 	active_crisis.clear()
 	advisor_affinity.clear()
 	ruler_traits.clear()
+	introduced_concepts.clear()
 	run_phase = RunPhase.NOT_STARTED
 	random_seed = 0
 
@@ -224,6 +226,22 @@ func get_arc_branch(arc_id: String) -> String:
 	return str(get_arc_runtime(arc_id).get("branch_id", ""))
 
 
+func mark_concepts_introduced(concept_ids: Array) -> void:
+	for concept_id in concept_ids:
+		var id: String = str(concept_id)
+		if id.is_empty() or id in introduced_concepts:
+			continue
+		introduced_concepts.append(id)
+
+
+func get_introduced_concepts() -> Array[String]:
+	return introduced_concepts.duplicate()
+
+
+func merge_introduced_concepts(extra: Array) -> void:
+	mark_concepts_introduced(extra)
+
+
 func to_dictionary() -> Dictionary:
 	return {
 		"country_id": country_id,
@@ -243,6 +261,7 @@ func to_dictionary() -> Dictionary:
 		"active_crisis": active_crisis.duplicate(true),
 		"advisor_affinity": advisor_affinity.duplicate(true),
 		"ruler_traits": ruler_traits.duplicate(true),
+		"introduced_concepts": introduced_concepts.duplicate(),
 		"run_phase": RunPhase.keys()[run_phase],
 		"random_seed": random_seed,
 	}
@@ -285,6 +304,11 @@ func from_dictionary(data: Dictionary) -> void:
 	advisor_affinity = loaded_affinity.duplicate(true) if loaded_affinity is Dictionary else {}
 	var loaded_traits: Variant = data.get("ruler_traits", {})
 	ruler_traits = loaded_traits.duplicate(true) if loaded_traits is Dictionary else {}
+	introduced_concepts.clear()
+	for concept_id in data.get("introduced_concepts", []):
+		var id: String = str(concept_id)
+		if not id.is_empty() and id not in introduced_concepts:
+			introduced_concepts.append(id)
 	var phase_name: String = str(data.get("run_phase", "NOT_STARTED"))
 	var phase_index: int = RunPhase.keys().find(phase_name)
 	run_phase = phase_index as RunPhase if phase_index >= 0 else RunPhase.NOT_STARTED

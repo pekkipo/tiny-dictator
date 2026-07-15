@@ -91,14 +91,18 @@
     "id": "olga_bridge_repair",
     "schema_version": 2,
     "country_id": "ministan",
-    "card_type": "normal",
+    "card_type": "onboarding",
     "advisor_id": "auntie_olga",
     "category": "public_life",
     "proposal": "The main bridge is held together by optimism and duct tape. Repairs will cost real money.",
-    "one_time": false,
-    "base_weight": 7,
+    "one_time": true,
+    "base_weight": 13,
     "minimum_day": 2,
-    "maximum_day": 35,
+    "maximum_day": 12,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["advisors", "no_perfect_option"],
     "options": [
       {
         "id": "repair",
@@ -114,7 +118,7 @@
         "result_text": "Citizens take the long route. Optimism declines."
       }
     ],
-    "tags": ["public", "generic", "infrastructure"]
+    "tags": ["onboarding", "public", "infrastructure"]
   },
   {
     "id": "daily_cabinet_briefing",
@@ -228,35 +232,5 @@
       }
     ],
     "tags": ["science", "generic", "repeatable"]
-  },
-  {
-    "id": "border_parade_dispute",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "general_boom",
-    "category": "military",
-    "proposal": "General Boom wants to answer a neighboring parade with a louder parade.",
-    "one_time": false,
-    "base_weight": 5,
-    "minimum_day": 7,
-    "maximum_day": 40,
-    "options": [
-      {
-        "id": "parade",
-        "label": "Approve the parade",
-        "effects": { "treasury": -5, "order": 3, "elite_loyalty": 4, "happiness": 1 },
-        "advisor_affinity": { "general_boom": 1 },
-        "result_text": "The parade echoes across the border. Tinyland requests volume negotiations."
-      },
-      {
-        "id": "decline",
-        "label": "Decline politely",
-        "effects": { "happiness": 2, "elite_loyalty": -4, "treasury": 1 },
-        "advisor_affinity": { "general_boom": -1 },
-        "result_text": "General Boom practices salutes in a mirror."
-      }
-    ],
-    "tags": ["military", "generic", "repeatable"]
   }
 ]

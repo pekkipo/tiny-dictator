@@ -131,9 +131,9 @@ func _test_required_fields(manifest: Dictionary) -> void:
 
 
 func _test_expected_counts(manifest: Dictionary) -> void:
-	_check(manifest.get("decisions", []).size() == 74, "manifest has 74 decisions")
+	_check(manifest.get("decisions", []).size() == 76, "manifest has 76 decisions")
 	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 6, "manifest has 6 arcs")
-	_check(manifest.get("catalogs", {}).get("crises", []).size() == 6, "manifest has 6 crises")
+	_check(manifest.get("catalogs", {}).get("crises", []).size() == 7, "manifest has 7 crises")
 	_check(manifest.get("catalogs", {}).get("laws", []).size() == 12, "manifest has 12 laws")
 	_check(manifest.get("catalogs", {}).get("endings", []).size() == 11, "manifest has 11 endings")
 	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 8, "manifest has 8 advisors")
@@ -142,4 +142,8 @@ func _test_expected_counts(manifest: Dictionary) -> void:
 	_check(manifest.get("catalogs", {}).get("chains", []).size() == 3, "manifest has 3 chains")
 
 	var approved: int = int(manifest.get("quota_report", {}).get("decisions", {}).get("approved_total", -1))
-	_check(approved == 0, "no decisions auto-approved (got %d)" % approved)
+	_check(approved == 10, "onboarding pack approved count (got %d)" % approved)
+	var onboarding_approved: int = int(
+		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("onboarding", {}).get("approved", -1)
+	)
+	_check(onboarding_approved == 10, "onboarding class has 10 approved (got %d)" % onboarding_approved)

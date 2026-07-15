@@ -59,7 +59,10 @@ func _populate() -> void:
 		%NewEndingBadgeLabel.visible = false
 
 	%RewardSummaryLabel.text = _format_reward_summary(summary)
-	%LegacySummaryLabel.text = summary.legacy_text
+	var legacy_text: String = summary.legacy_text
+	if MetaProgressionManager.get_total_runs_completed() <= 1:
+		legacy_text += "\n\nTry another run — endings and advisor stories change with your choices."
+	%LegacySummaryLabel.text = legacy_text
 
 
 func _format_reward_summary(summary: RunSummary) -> String:

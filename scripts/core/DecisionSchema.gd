@@ -14,7 +14,7 @@ const DEFAULT_CARD_TYPE: String = "normal"
 ## Placeholder card types per PRD 2A §13. Later milestones give these
 ## real behavior; for now they only affect the card banner.
 const CARD_TYPES: Array[String] = [
-	"normal", "crisis", "advisor", "consequence",
+	"normal", "onboarding", "crisis", "advisor", "consequence",
 	"resolution", "recovery", "ending_setup",
 ]
 

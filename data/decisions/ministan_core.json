@@ -235,33 +235,40 @@
   },
   {
     "id": "window_tax_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "onboarding",
     "advisor_id": "minister_penny",
     "category": "economy",
     "proposal": "Sunlight is free, but windows are not. I propose a modest tax on every window in the country.",
     "one_time": true,
-    "weight": 10,
-    "left": {
-      "label": "Leave windows alone",
-      "effects": {
-        "treasury": -3,
-        "happiness": 4
-      },
-      "result_text": "Windows remain untaxed. Minister Penny eyes the doors thoughtfully."
+    "base_weight": 14,
+    "minimum_day": 1,
+    "maximum_day": 10,
+    "pacing": {
+      "allowed_stages": ["establishment"]
     },
-    "right": {
-      "label": "Tax the windows",
-      "effects": {
-        "treasury": 10,
-        "happiness": -7,
-        "order": -3
+    "teaches_concepts": ["laws", "hidden_consequences", "advisors", "no_perfect_option"],
+    "options": [
+      {
+        "id": "leave_alone",
+        "label": "Leave windows alone",
+        "effects": { "treasury": -3, "happiness": 4 },
+        "visible_effects": ["treasury", "happiness"],
+        "result_text": "Windows remain untaxed. Minister Penny eyes the doors thoughtfully."
       },
-      "add_laws": ["window_tax"],
-      "counter_changes": {
-        "reckless_savings": 1
-      },
-      "result_text": "The tax passes. Bricklayers become the wealthiest profession overnight."
-    },
-    "tags": ["economy"]
+      {
+        "id": "tax_windows",
+        "label": "Tax the windows",
+        "effects": { "treasury": 10, "happiness": -7, "order": -3 },
+        "visible_effects": ["treasury", "happiness"],
+        "add_laws": ["window_tax"],
+        "counter_changes": { "reckless_savings": 1 },
+        "result_text": "The tax passes. Bricklayers become the wealthiest profession overnight."
+      }
+    ],
+    "tags": ["onboarding", "economy"],
+    "visual_tags": ["window_tax"]
   },
   {
     "id": "no_weekends_proposal",
@@ -293,31 +300,39 @@
   },
   {
     "id": "luna_good_news_only",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "onboarding",
     "advisor_id": "luna_news",
     "category": "media",
     "proposal": "Bad news makes people sad. I propose we only report good news. I have already prepared next month's weather.",
     "one_time": true,
-    "weight": 10,
-    "left": {
-      "label": "Report the truth",
-      "effects": {
-        "happiness": -2,
-        "order": 4
-      },
-      "result_text": "The news stays honest. Ratings drop, but so does national confusion."
+    "base_weight": 13,
+    "minimum_day": 2,
+    "maximum_day": 12,
+    "pacing": {
+      "allowed_stages": ["establishment"]
     },
-    "right": {
-      "label": "Only good news",
-      "effects": {
-        "happiness": 9,
-        "order": -6,
-        "elite_loyalty": 2
+    "teaches_concepts": ["visible_effects", "hidden_consequences", "advisors"],
+    "options": [
+      {
+        "id": "report_truth",
+        "label": "Report the truth",
+        "effects": { "happiness": -2, "order": 4 },
+        "visible_effects": ["happiness", "order"],
+        "result_text": "The news stays honest. Ratings drop, but so does national confusion."
       },
-      "visible_effects": ["happiness"],
-      "add_flags": ["media_good_news_only"],
-      "result_text": "Every broadcast is now delightful. Reality files a complaint that goes unreported."
-    },
-    "tags": ["media"]
+      {
+        "id": "good_news_only",
+        "label": "Only good news",
+        "effects": { "happiness": 9, "order": -6, "elite_loyalty": 2 },
+        "visible_effects": ["happiness"],
+        "add_flags": ["media_good_news_only"],
+        "result_text": "Every broadcast is now delightful. Reality files a complaint that goes unreported."
+      }
+    ],
+    "tags": ["onboarding", "media"],
+    "visual_tags": ["good_news_broadcast"]
   },
   {
     "id": "army_snack_budget",

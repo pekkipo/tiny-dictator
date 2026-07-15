@@ -4,6 +4,8 @@ extends RefCounted
 ## Produces ContentRequest hints for DecisionEngine. Mutates only run stage id on RunState.
 
 const RECOVERY_THRESHOLD := 20
+const ONBOARDING_WEIGHT_FIRST_RUN := 8
+const ONBOARDING_WEIGHT_REPEAT := 2
 
 var _repository: ContentRepository
 var _last_request: ContentRequest = null
@@ -97,7 +99,9 @@ func build_request(
 			var arc_request: Dictionary = _pick_arc_request(state)
 			request.request_type = "advance_arc"
 			request.arc_id = str(arc_request.get("arc_id", ""))
-			request.required_tags = arc_request.get("tags", [])
+			request.required_tags.clear()
+			for tag in arc_request.get("tags", []):
+				request.required_tags.append(str(tag))
 			request.priority = int(arc_request.get("priority", 0))
 			request.reason = "active arc '%s' step %d" % [
 				request.arc_id, int(arc_request.get("current_step", 0)),
@@ -111,6 +115,17 @@ func build_request(
 			request.request_type = "endgame_resolution"
 			request.preferred_card_types = ["resolution", "ending_setup"]
 			request.excluded_tags = ["long_setup"]
+		elif _should_bias_onboarding(state):
+			var missing: Array[String] = _missing_onboarding_concepts(state)
+			if not missing.is_empty():
+				request.request_type = "onboarding"
+				request.preferred_card_types = ["onboarding"]
+				request.required_tags.clear()
+				request.required_tags.append("onboarding")
+				request.missing_onboarding_concepts = missing
+				request.onboarding_weight_multiplier = _onboarding_weight_multiplier()
+				request.priority = 70
+				request.reason = "onboarding concepts remaining: %s" % ", ".join(missing)
 
 	if state.current_stage_id == "endgame":
 		request.excluded_tags = ["long_setup"]
@@ -167,3 +182,41 @@ func _pick_arc_request(state: RunState) -> Dictionary:
 				"tags": arc.get("tags", []),
 			}
 	return best
+
+
+func _should_bias_onboarding(state: RunState) -> bool:
+	return not _missing_onboarding_concepts(state).is_empty()
+
+
+func _missing_onboarding_concepts(state: RunState) -> Array[String]:
+	var registry: RefCounted = _repository.get_onboarding_registry()
+	if registry == null or registry.get_all_concept_ids().is_empty():
+		return []
+
+	var introduced: Array[String] = _collect_introduced_concepts(state)
+	return registry.get_missing_concepts(introduced)
+
+
+func _collect_introduced_concepts(state: RunState) -> Array[String]:
+	var introduced: Array[String] = state.get_introduced_concepts().duplicate()
+	var save_manager: Node = _save_manager()
+	if save_manager != null and save_manager.has_method("get_introduced_onboarding_concepts"):
+		for concept_id in save_manager.get_introduced_onboarding_concepts():
+			if concept_id not in introduced:
+				introduced.append(concept_id)
+	return introduced
+
+
+func _onboarding_weight_multiplier() -> int:
+	var save_manager: Node = _save_manager()
+	if save_manager != null and save_manager.has_method("get_total_runs_completed"):
+		if int(save_manager.get_total_runs_completed()) >= 1:
+			return ONBOARDING_WEIGHT_REPEAT
+	return ONBOARDING_WEIGHT_FIRST_RUN
+
+
+func _save_manager() -> Node:
+	var tree: SceneTree = Engine.get_main_loop() as SceneTree
+	if tree == null:
+		return null
+	return tree.root.get_node_or_null("SaveManager")

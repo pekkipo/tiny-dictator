@@ -199,5 +199,37 @@
       }
     },
     "tags": ["cats", "crisis", "politics"]
+  },
+  {
+    "id": "pantry_moth_crisis",
+    "display_name": "Pantry Moth Infestation",
+    "country_id": "ministan",
+    "severity": 1,
+    "maximum_duration_days": 3,
+    "resolution_required": true,
+    "priority": 70,
+    "start_requirements": {
+      "minimum_day": 4,
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "entry_decision_id": "pantry_moth_crisis",
+    "resolution_paths": [
+      { "resolution_id": "fumigate", "option_id": "fumigate" },
+      { "resolution_id": "citizen_sweep", "option_id": "citizen_sweep" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "moth_amnesty",
+        "option_id": "moth_amnesty",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "happiness": -6,
+        "treasury": -4
+      }
+    },
+    "tags": ["food", "crisis", "onboarding"]
   }
 ]

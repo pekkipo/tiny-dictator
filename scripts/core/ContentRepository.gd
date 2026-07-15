@@ -16,6 +16,7 @@ const FOLLOW_UP_POOLS_PATH: String = "res://data/follow_up_pools/follow_up_pools
 const RULER_IDENTITIES_PATH: String = "res://data/ruler_identities/ruler_identities.json"
 const META_REWARDS_PATH: String = "res://data/meta/meta_rewards.json"
 const PALACE_UPGRADES_PATH: String = "res://data/meta/palace_upgrades.json"
+const ONBOARDING_CONCEPTS_PATH: String = "res://data/onboarding/ministan_onboarding_concepts.json"
 
 var _countries: Dictionary = {}
 var _advisors: Dictionary = {}
@@ -28,6 +29,7 @@ var _follow_up_pools: Dictionary = {}
 var _ruler_identities: Dictionary = {}
 var _meta_rewards: Dictionary = {}
 var _palace_upgrades: Dictionary = {}
+var _onboarding_registry: RefCounted = null
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
 var _visual_map: Dictionary = {}
@@ -72,6 +74,8 @@ func load_all() -> bool:
 
 	_load_meta_rewards()
 	_load_palace_upgrades()
+	_onboarding_registry = load("res://scripts/core/OnboardingConceptRegistry.gd").new()
+	_onboarding_registry.load_from_disk()
 
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
 	if parsed_map is Dictionary:
@@ -329,6 +333,10 @@ func get_raw_palace_upgrades() -> Array[Dictionary]:
 	return _raw_palace_upgrades
 
 
+func get_onboarding_registry() -> RefCounted:
+	return _onboarding_registry
+
+
 func _load_meta_rewards() -> void:
 	var parsed: Variant = _parse_json_file(META_REWARDS_PATH)
 	if parsed is Dictionary:
@@ -376,6 +384,7 @@ func _clear() -> void:
 	_raw_ruler_identities = []
 	_raw_palace_upgrades = []
 	_load_errors = []
+	_onboarding_registry = null
 
 
 func _load_follow_up_pools() -> void:

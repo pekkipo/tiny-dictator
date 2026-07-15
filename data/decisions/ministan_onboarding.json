@@ -1,0 +1,137 @@
+[
+  {
+    "id": "palace_roof_leak",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "onboarding",
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "Rain entered the palace through eleven leaks. Minister Penny says duct tape is cheaper than dignity.",
+    "one_time": true,
+    "base_weight": 16,
+    "minimum_day": 1,
+    "maximum_day": 7,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["resources", "advisors", "no_perfect_option"],
+    "options": [
+      {
+        "id": "full_repair",
+        "label": "Fix it properly",
+        "effects": { "treasury": -8, "happiness": 4, "order": 3, "elite_loyalty": 2 },
+        "visible_effects": ["treasury", "happiness"],
+        "result_text": "The roof stops dripping on the throne. Minister Penny sighs at the invoice."
+      },
+      {
+        "id": "duct_tape",
+        "label": "Duct tape only",
+        "effects": { "treasury": -2, "happiness": -3, "order": -2, "elite_loyalty": -4 },
+        "visible_effects": ["treasury"],
+        "add_flags": ["palace_roof_patched"],
+        "result_text": "Silver tape glitters over the throne room. Rain finds new angles."
+      },
+      {
+        "id": "ignore",
+        "label": "Ignore the leaks",
+        "effects": { "treasury": 1, "happiness": -5, "order": -3, "elite_loyalty": -6 },
+        "result_text": "Buckets multiply in the corridors. Guests admire the new waterfall feature."
+      }
+    ],
+    "tags": ["onboarding", "infrastructure", "palace"],
+    "visual_tags": ["palace_leaks"]
+  },
+  {
+    "id": "border_parade_dispute",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "onboarding",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Tinyland held a parade louder than ours. General Boom demands an immediate answer parade at the border.",
+    "one_time": true,
+    "base_weight": 14,
+    "minimum_day": 1,
+    "maximum_day": 10,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "teaches_concepts": ["advisors", "affinity_feedback", "ruler_traits"],
+    "options": [
+      {
+        "id": "parade",
+        "label": "Approve the parade",
+        "effects": { "treasury": -5, "order": 3, "elite_loyalty": 4, "happiness": 1 },
+        "visible_effects": ["treasury", "order", "elite_loyalty"],
+        "advisor_affinity": { "general_boom": 2 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "Seven tanks echo toward the border. Tinyland requests volume negotiations."
+      },
+      {
+        "id": "decline",
+        "label": "Decline politely",
+        "effects": { "happiness": 3, "elite_loyalty": -3, "treasury": 1 },
+        "advisor_affinity": { "general_boom": -2 },
+        "trait_changes": { "populist": 1 },
+        "result_text": "General Boom practices salutes in a mirror. Citizens enjoy the quiet."
+      }
+    ],
+    "tags": ["onboarding", "military"],
+    "visual_tags": ["border_parade"]
+  },
+  {
+    "id": "pantry_moth_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "crisis",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "CRISIS: Pantry moths have seized the national grain reserve. Flour now moves under its own power.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 4,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "narrative": {
+      "crisis_id": "pantry_moth_crisis",
+      "starts_crisis": true
+    },
+    "teaches_concepts": ["crises", "hard_followups", "advisors"],
+    "options": [
+      {
+        "id": "fumigate",
+        "label": "Fumigate the silos",
+        "effects": { "treasury": -6, "happiness": -2, "order": 4 },
+        "crisis_actions": [
+          { "crisis_id": "pantry_moth_crisis", "action": "resolve", "resolution_id": "fumigate" }
+        ],
+        "result_text": "The moths evacuate in offended formation. Bread prices stabilize, briefly."
+      },
+      {
+        "id": "citizen_sweep",
+        "label": "Citizen moth brigade",
+        "effects": { "happiness": 4, "order": -2, "treasury": -3 },
+        "advisor_affinity": { "auntie_olga": 2 },
+        "crisis_actions": [
+          { "crisis_id": "pantry_moth_crisis", "action": "resolve", "resolution_id": "citizen_sweep" }
+        ],
+        "result_text": "Volunteers sweep with heroic flour on their sleeves. Auntie Olga nods approval."
+      },
+      {
+        "id": "moth_amnesty",
+        "label": "Grant moth amnesty",
+        "effects": { "happiness": 6, "order": -5, "elite_loyalty": -3 },
+        "add_flags": ["moth_amnesty_active"],
+        "counter_changes": { "chaotic_ruler_choices": 1 },
+        "crisis_actions": [
+          { "crisis_id": "pantry_moth_crisis", "action": "fail", "reason": "moth_amnesty" }
+        ],
+        "result_text": "Moths receive legal residency in the grain reserve. Bakers adapt philosophically."
+      }
+    ],
+    "tags": ["onboarding", "crisis", "food"],
+    "visual_tags": ["pantry_moths"]
+  }
+]

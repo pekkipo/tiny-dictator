@@ -240,7 +240,10 @@ func _weighted_pick(candidates: Array[Dictionary], request: ContentRequest = nul
 	for decision in candidates:
 		var weight: int = maxi(1, int(decision.get("weight", DEFAULT_WEIGHT)))
 		if request != null and _is_preferred_decision(decision, request):
-			weight *= PREFERRED_WEIGHT_MULTIPLIER
+			var multiplier: int = PREFERRED_WEIGHT_MULTIPLIER
+			if request.request_type == "onboarding" and request.onboarding_weight_multiplier > 1:
+				multiplier = request.onboarding_weight_multiplier
+			weight *= multiplier
 		weights.append(weight)
 		total_weight += weight
 	var roll: int = _rng.randi_range(1, total_weight)
@@ -253,6 +256,9 @@ func _weighted_pick(candidates: Array[Dictionary], request: ContentRequest = nul
 
 
 func _is_preferred_decision(decision: Dictionary, request: ContentRequest) -> bool:
+	if request.request_type == "onboarding":
+		if _decision_teaches_missing_concepts(decision, request):
+			return true
 	if request.request_type == "advance_arc" and not request.arc_id.is_empty():
 		var narrative: Variant = decision.get("narrative", {})
 		if narrative is Dictionary and str(narrative.get("arc_id", "")) == request.arc_id:
@@ -265,6 +271,22 @@ func _is_preferred_decision(decision: Dictionary, request: ContentRequest) -> bo
 		for tag in request.required_tags:
 			if str(tag) in tags:
 				return true
+	return false
+
+
+func _decision_teaches_missing_concepts(decision: Dictionary, request: ContentRequest) -> bool:
+	if request.missing_onboarding_concepts.is_empty():
+		return false
+	var tags: Array = decision.get("tags", [])
+	var card_type: String = str(decision.get("card_type", ""))
+	if not ("onboarding" in tags or card_type == "onboarding"):
+		return false
+	var teaches: Array = decision.get("teaches_concepts", [])
+	if teaches.is_empty():
+		return true
+	for concept in teaches:
+		if str(concept) in request.missing_onboarding_concepts:
+			return true
 	return false
 
 
