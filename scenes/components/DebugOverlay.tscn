@@ -513,6 +513,97 @@ text = "RESET META"
 [node name="Separator5" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 
+[node name="DiagnosticsTitle" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "DIAGNOSTICS & SIMULATION"
+
+[node name="SimSeedRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SimSeedModeOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimSeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="SimSeedEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimSeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+placeholder_text = "simulation seed"
+text = "20260715"
+
+[node name="SimCountSpin" type="SpinBox" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimSeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+min_value = 1.0
+max_value = 10000.0
+value = 100.0
+
+[node name="SimActionsRow1" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Sim100Button" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "SIM 100"
+
+[node name="Sim1000Button" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "SIM 1000"
+
+[node name="SimCustomButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow1"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "SIM CUSTOM"
+
+[node name="SimActionsRow2" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RunStaticDiagnosticsButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "STATIC DIAG"
+
+[node name="PrintLatestReportButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "PRINT REPORT"
+
+[node name="OpenDiagnosticsFolderButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/SimActionsRow2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "OPEN REPORTS"
+
+[node name="Separator6" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
 [node name="ActionsRow1" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 8

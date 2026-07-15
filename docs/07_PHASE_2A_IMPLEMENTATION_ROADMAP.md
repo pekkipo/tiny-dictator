@@ -42,8 +42,8 @@ feat: complete phase 2a milestone 2a-1 schema v2
 [ ] 2A-4 Narrative event queue
 [ ] 2A-5 Crisis system
 [ ] 2A-6 Advisors, affinity, and ruler identity
-[ ] 2A-7 Meta-progression skeleton
-[ ] 2A-8 Diagnostics and simulation
+[x] 2A-7 Meta-progression skeleton
+[x] 2A-8 Diagnostics and simulation
 [ ] 2A-9 Representative content pack
 [ ] 2A-10 QA and architecture freeze
 ```

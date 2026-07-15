@@ -1,11 +1,9 @@
 extends SceneTree
 
-## PRD 05 §8 playability session, automated: plays five full runs with
-## seeded random choices and prints one record per run plus aggregates.
+## PRD 05 §8 playability session, automated: plays five full runs via RunSimulator.
 ## Run: godot --headless --path . -s tests/playthrough_sim.gd
 
 const RUN_COUNT: int = 5
-const MAX_STEPS: int = 100
 
 var _failures: int = 0
 
@@ -13,38 +11,31 @@ var _failures: int = 0
 func _initialize() -> void:
 	await process_frame
 	var game_manager: Node = root.get_node("GameManager")
-	var chooser := RandomNumberGenerator.new()
-	chooser.seed = 20260714
 
-	var endings_seen: Dictionary = {}
-	var total_decisions: int = 0
+	var config := SimulationConfig.new()
+	config.run_count = RUN_COUNT
+	config.base_seed = 20260714
+	config.seed_mode = SimulationConfig.SEED_MODE_FIXED
+	config.include_static_diagnostics = false
+	config.export_report = false
 
-	print("[SIM] run | seed        | days | decisions | laws | ending")
-	for i in range(RUN_COUNT):
-		game_manager.start_new_run()
-		var state: RunState = game_manager.get_current_state()
-		var steps: int = 0
-		while state.run_phase != RunState.RunPhase.ENDED and steps < MAX_STEPS:
-			var side: String = "left" if chooser.randf() < 0.5 else "right"
-			if game_manager.resolve_choice(side) == null:
-				break
-			game_manager.continue_after_result()
-			steps += 1
+	var simulator := RunSimulator.new(game_manager)
+	var report: SimulationReport = simulator.run_batch(config)
+	var sim: Dictionary = report.simulation
 
-		var summary: RunSummary = game_manager.get_last_summary()
-		_check(state.run_phase == RunState.RunPhase.ENDED, "run %d reached an ending (not a technical dead end)" % (i + 1))
-		_check(summary != null and not summary.ending_id.is_empty(), "run %d produced a summary" % (i + 1))
-		if summary == null:
-			continue
-		endings_seen[summary.ending_id] = true
-		total_decisions += summary.decision_history.size()
-		print("[SIM]  %d  | %11d |  %2d  |    %2d     |  %d   | %s" % [
-			i + 1, summary.random_seed, summary.final_day,
-			summary.decision_history.size(), summary.active_laws.size(), summary.ending_id,
-		])
+	print("[SIM] run | seed        | days | decisions | ending")
+	var run_count: int = int(sim.get("run_count", 0))
+	_check(run_count == RUN_COUNT, "all %d runs completed" % RUN_COUNT)
 
-	var avg: float = float(total_decisions) / RUN_COUNT
-	print("[SIM] distinct endings: %d, average decisions per run: %.1f" % [endings_seen.size(), avg])
+	var ending_dist: Dictionary = sim.get("ending_distribution", {})
+	print("[SIM] distinct endings: %d" % ending_dist.size())
+	var run_length: Dictionary = sim.get("run_length", {})
+	print("[SIM] average run length: %.1f days" % float(run_length.get("average", 0.0)))
+
+	var errors: Array = sim.get("errors", [])
+	for error in errors:
+		printerr("[SIM] %s" % str(error))
+	_check(errors.is_empty(), "playthrough simulation completed without technical failures")
 
 	if _failures == 0:
 		print("[TEST] Playthrough simulation completed without technical failures.")

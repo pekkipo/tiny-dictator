@@ -93,6 +93,86 @@ func reload_all() -> bool:
 	return load_all()
 
 
+## Loads an isolated test bundle for diagnostics/simulation unit tests.
+static func load_test_bundle(path: String) -> ContentRepository:
+	var repo := ContentRepository.new()
+	var parsed: Variant = repo._parse_json_file(path)
+	if not (parsed is Dictionary):
+		push_error("[CONTENT] Test bundle '%s' must be a JSON object." % path)
+		return repo
+	var bundle: Dictionary = parsed
+	repo._clear()
+
+	for advisor in bundle.get("advisors", []):
+		if advisor is Dictionary:
+			repo._raw_advisors.append(advisor)
+			var advisor_id: String = str(advisor.get("id", ""))
+			if not advisor_id.is_empty():
+				repo._advisors[advisor_id] = advisor
+
+	for law in bundle.get("laws", []):
+		if law is Dictionary:
+			repo._raw_laws.append(law)
+			var law_id: String = str(law.get("id", ""))
+			if not law_id.is_empty():
+				repo._laws[law_id] = law
+
+	for ending in bundle.get("endings", []):
+		if ending is Dictionary:
+			repo._raw_endings.append(ending)
+			var ending_id: String = str(ending.get("id", ""))
+			if not ending_id.is_empty():
+				repo._endings[ending_id] = ending
+
+	for arc in bundle.get("arcs", []):
+		if arc is Dictionary:
+			repo._raw_arcs.append(arc)
+			var arc_id: String = str(arc.get("id", ""))
+			if not arc_id.is_empty():
+				repo._arcs[arc_id] = arc
+
+	for crisis in bundle.get("crises", []):
+		if crisis is Dictionary:
+			repo._raw_crises.append(crisis)
+			var crisis_id: String = str(crisis.get("id", ""))
+			if not crisis_id.is_empty():
+				repo._crises[crisis_id] = crisis
+
+	for pool in bundle.get("follow_up_pools", []):
+		if pool is Dictionary:
+			repo._raw_follow_up_pools.append(pool)
+			var pool_id: String = str(pool.get("id", ""))
+			if not pool_id.is_empty():
+				repo._follow_up_pools[pool_id] = pool
+
+	for country in bundle.get("countries", []):
+		if country is Dictionary:
+			repo._raw_countries.append(country)
+			var country_id: String = str(country.get("id", ""))
+			if country_id.is_empty():
+				continue
+			repo._countries[country_id] = country
+			var decision_ids: Array[String] = []
+			for decision in bundle.get("decisions", []):
+				if not (decision is Dictionary):
+					continue
+				if str(decision.get("country_id", country_id)) != country_id:
+					continue
+				var decision_id: String = str(decision.get("id", ""))
+				if decision_id.is_empty():
+					continue
+				if not repo._decisions.has(decision_id):
+					repo._raw_decisions.append(decision)
+					repo._decisions[decision_id] = DecisionSchema.normalize(decision.duplicate(true))
+				decision_ids.append(decision_id)
+			repo._country_decision_ids[country_id] = decision_ids
+
+	if repo._meta_rewards.is_empty():
+		repo._meta_rewards = {"days_survived_divisor": 3, "new_ending_bonus": 5}
+
+	return repo
+
+
 func get_load_errors() -> Array[String]:
 	return _load_errors.duplicate()
 

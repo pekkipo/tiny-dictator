@@ -1,0 +1,163 @@
+{
+  "advisors": [
+    {
+      "id": "test_advisor",
+      "display_name": "Test Advisor",
+      "title": "Tester",
+      "portrait_placeholder": "🧪"
+    }
+  ],
+  "endings": [
+    {
+      "id": "test_survival",
+      "title": "Survived",
+      "description": "Test survival ending.",
+      "type": "special",
+      "priority": 10,
+      "conditions": { "minimum_day": 5 }
+    },
+    {
+      "id": "content_exhausted",
+      "title": "Content Exhausted",
+      "description": "No more cards.",
+      "type": "fallback",
+      "priority": 1,
+      "conditions": {}
+    }
+  ],
+  "countries": [
+    {
+      "id": "testland",
+      "display_name": "Testland",
+      "starting_resources": {
+        "treasury": 55,
+        "happiness": 55,
+        "order": 55,
+        "elite_loyalty": 55
+      },
+      "max_day": 10,
+      "run_stages": [
+        { "id": "establishment", "minimum_day": 1, "maximum_day": 10 }
+      ],
+      "decision_files": [],
+      "fallback_decision_id": "test_fallback",
+      "fallback_decision_limit": 1,
+      "survival_ending_id": "test_survival"
+    }
+  ],
+  "arcs": [
+    {
+      "id": "dead_end_arc",
+      "display_name": "Dead End Arc",
+      "country_id": "testland",
+      "importance": "minor",
+      "entry_decision_ids": ["arc_entry"],
+      "resolution_decision_ids": ["missing_resolution"],
+      "branch_ids": ["orphan_branch"]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "test_entry",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Entry card.",
+      "one_time": true,
+      "options": [
+        { "id": "a", "label": "A", "result_text": "A.", "effects": { "treasury": 1 } },
+        { "id": "b", "label": "B", "result_text": "B.", "effects": { "treasury": -1 } }
+      ]
+    },
+    {
+      "id": "unreachable_island",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Unreachable island.",
+      "debug_only": true,
+      "requirements": { "all_flags": ["never_set_flag"] },
+      "options": [
+        { "id": "a", "label": "A", "result_text": "A.", "effects": {} },
+        { "id": "b", "label": "B", "result_text": "B.", "effects": {} }
+      ]
+    },
+    {
+      "id": "cycle_a",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Cycle A.",
+      "debug_only": true,
+      "options": [
+        {
+          "id": "next",
+          "label": "Next",
+          "result_text": "To B.",
+          "effects": {},
+          "force_next_decision": "cycle_b"
+        },
+        { "id": "stop", "label": "Stop", "result_text": "Stop.", "effects": {} }
+      ]
+    },
+    {
+      "id": "cycle_b",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Cycle B.",
+      "debug_only": true,
+      "options": [
+        {
+          "id": "loop",
+          "label": "Loop",
+          "result_text": "To A.",
+          "effects": {},
+          "force_next_decision": "cycle_a"
+        },
+        { "id": "stop", "label": "Stop", "result_text": "Stop.", "effects": {} }
+      ]
+    },
+    {
+      "id": "dominant_card",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Dominant option test.",
+      "debug_only": true,
+      "options": [
+        {
+          "id": "best",
+          "label": "Best",
+          "result_text": "Best.",
+          "effects": { "treasury": 5, "happiness": 5, "order": 5, "elite_loyalty": 5 }
+        },
+        {
+          "id": "worse",
+          "label": "Worse",
+          "result_text": "Worse.",
+          "effects": { "treasury": 1, "happiness": 1, "order": 1, "elite_loyalty": 1 }
+        }
+      ]
+    },
+    {
+      "id": "arc_entry",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Arc entry.",
+      "debug_only": true,
+      "narrative": { "arc_id": "dead_end_arc", "starts_arc": true },
+      "options": [
+        { "id": "start", "label": "Start", "result_text": "Started.", "effects": {} },
+        { "id": "skip", "label": "Skip", "result_text": "Skipped.", "effects": {} }
+      ]
+    },
+    {
+      "id": "test_fallback",
+      "country_id": "testland",
+      "advisor_id": "test_advisor",
+      "proposal_text": "Fallback.",
+      "fallback": true,
+      "one_time": false,
+      "options": [
+        { "id": "a", "label": "A", "result_text": "A.", "effects": { "treasury": -5 } },
+        { "id": "b", "label": "B", "result_text": "B.", "effects": { "happiness": -5 } }
+      ]
+    }
+  ]
+}

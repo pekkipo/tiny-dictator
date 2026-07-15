@@ -90,6 +90,24 @@ func _initialize() -> void:
 	_check(game_manager.get_current_state().run_phase == RunState.RunPhase.ENDED, "trigger ending ends the run")
 	_check(game_manager.get_last_summary().ending_id == "cat_republic", "selected ending recorded")
 
+	# Diagnostics controls smoke test (small batch).
+	var save_manager: Node = root.get_node("SaveManager")
+	var medals_before: int = save_manager.get_medals()
+	overlay.get_node("%SimCountSpin").value = 2
+	overlay.get_node("%SimCustomButton").pressed.emit()
+	for _i in range(120):
+		await process_frame
+		if not overlay._simulation_running:
+			break
+	_check(save_manager.get_medals() == medals_before, "simulation does not mutate save from overlay")
+	overlay.get_node("%RunStaticDiagnosticsButton").pressed.emit()
+	for _i in range(60):
+		await process_frame
+		if not overlay._simulation_running:
+			break
+	var feedback: String = overlay.get_node("%FeedbackLabel").text.to_lower()
+	_check("diagnostics" in feedback or "finding" in feedback, "static diagnostics reports feedback")
+
 	overlay.queue_free()
 	await process_frame
 

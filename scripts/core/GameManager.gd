@@ -28,6 +28,9 @@ var _last_summary: RunSummary = null
 
 ## When non-zero, the next run uses this seed instead of a random one (M9 debug).
 var _debug_fixed_seed: int = 0
+var _simulation_active: bool = false
+var _simulation_config: SimulationConfig = null
+var _simulation_suppress_events: bool = false
 
 
 func _ready() -> void:
@@ -54,6 +57,10 @@ func get_content() -> ContentRepository:
 
 
 func start_new_run(country_id: String = "ministan") -> void:
+	start_simulated_run(country_id, 0)
+
+
+func start_simulated_run(country_id: String = "ministan", run_seed: int = 0) -> void:
 	if not _content_valid:
 		push_error("[RUN] Cannot start run: content validation failed. See [CONTENT] errors above.")
 		return
@@ -65,7 +72,7 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_run_state = RunState.new()
 	_run_state.run_phase = RunState.RunPhase.INITIALIZING
 	_run_state.country_id = country_id
-	_run_state.random_seed = _debug_fixed_seed if _debug_fixed_seed != 0 else randi()
+	_run_state.random_seed = _resolve_run_seed(run_seed)
 	var starting_resources: Dictionary = country.get("starting_resources", {})
 	for resource_id in RunState.RESOURCE_IDS:
 		_run_state.set_resource(resource_id, int(starting_resources.get(resource_id, RunState.DEFAULT_RESOURCE_VALUE)))
@@ -86,16 +93,50 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_trait_manager.initialize_for_run(_run_state)
 	_last_result = null
 
-	print("[RUN] New run started: country=%s day=%d seed=%d" % [
-		_run_state.country_id, _run_state.day, _run_state.random_seed,
-	])
+	if not _simulation_suppress_events:
+		print("[RUN] New run started: country=%s day=%d seed=%d" % [
+			_run_state.country_id, _run_state.day, _run_state.random_seed,
+		])
 	_content_director.update_stage(_run_state)
 	_select_next_decision()
 	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
-	EventBus.run_started.emit(_run_state)
-	EventBus.country_visual_state_changed.emit(get_country_visual_state())
-	if not _current_decision.is_empty():
-		EventBus.decision_presented.emit(_current_decision)
+	if not _simulation_suppress_events:
+		EventBus.run_started.emit(_run_state)
+		EventBus.country_visual_state_changed.emit(get_country_visual_state())
+		if not _current_decision.is_empty():
+			EventBus.decision_presented.emit(_current_decision)
+
+
+func begin_simulation_batch(config: SimulationConfig) -> void:
+	_simulation_active = true
+	_simulation_config = config
+	_simulation_suppress_events = true
+
+
+func end_simulation_batch() -> void:
+	_simulation_active = false
+	_simulation_config = null
+	_simulation_suppress_events = false
+
+
+func is_simulation_active() -> bool:
+	return _simulation_active
+
+
+## Test/dev helper: temporarily replace the active content repository.
+func debug_set_content_repository(repo: ContentRepository) -> void:
+	_content = repo
+	_content_valid = true
+
+
+func _resolve_run_seed(run_seed: int) -> int:
+	if run_seed != 0:
+		return run_seed
+	if _simulation_active and _simulation_config != null:
+		return _simulation_config.base_seed if _simulation_config.base_seed != 0 else randi()
+	if _debug_fixed_seed != 0:
+		return _debug_fixed_seed
+	return randi()
 
 
 func restart_run() -> void:
@@ -154,15 +195,20 @@ func resolve_choice(option_id: String) -> DecisionResult:
 
 	EventBus.resources_changed.emit(_run_state.get_resources())
 	for law_id in result.added_laws:
-		EventBus.law_added.emit(law_id)
+		if not _simulation_suppress_events:
+			EventBus.law_added.emit(law_id)
 	for law_id in result.removed_laws:
-		EventBus.law_removed.emit(law_id)
+		if not _simulation_suppress_events:
+			EventBus.law_removed.emit(law_id)
 	for flag_id in result.added_flags:
-		EventBus.flag_added.emit(flag_id)
-	EventBus.country_visual_state_changed.emit(get_country_visual_state())
+		if not _simulation_suppress_events:
+			EventBus.flag_added.emit(flag_id)
+	if not _simulation_suppress_events:
+		EventBus.country_visual_state_changed.emit(get_country_visual_state())
 
 	_run_state.run_phase = RunState.RunPhase.SHOWING_RESULT
-	EventBus.decision_resolved.emit(result)
+	if not _simulation_suppress_events:
+		EventBus.decision_resolved.emit(result)
 	return result
 
 
@@ -200,7 +246,8 @@ func continue_after_result() -> void:
 		_end_run(exhausted)
 		return
 	_run_state.run_phase = RunState.RunPhase.AWAITING_DECISION
-	EventBus.decision_presented.emit(_current_decision)
+	if not _simulation_suppress_events:
+		EventBus.decision_presented.emit(_current_decision)
 
 
 func get_last_summary() -> RunSummary:
@@ -223,10 +270,21 @@ func debug_trigger_ending(ending_id: String) -> void:
 func _end_run(ending: Dictionary) -> void:
 	_run_state.run_phase = RunState.RunPhase.ENDED
 	_last_summary = _build_run_summary(ending)
-	print("[ENDING] Run ended on day %d: %s" % [_run_state.day, _last_summary.ending_id])
-	MetaProgressionManager.process_run_end(_last_summary, _run_state, _content)
-	EventBus.ending_triggered.emit(ending)
-	EventBus.run_ended.emit(_last_summary)
+	if not _simulation_active:
+		print("[ENDING] Run ended on day %d: %s" % [_run_state.day, _last_summary.ending_id])
+	if _simulation_active:
+		var is_new_ending: bool = not SaveManager.is_ending_unlocked(_last_summary.ending_id)
+		var rewards: Dictionary = MetaProgressionManager.calculate_run_rewards(
+			_run_state, _content, _last_summary.ending_id, is_new_ending,
+		)
+		_last_summary.medals_earned = int(rewards.get("total", 0))
+		_last_summary.reward_breakdown = rewards.get("breakdown", {})
+		_last_summary.completed_arc_bonuses = rewards.get("completed_arc_bonuses", [])
+	else:
+		MetaProgressionManager.process_run_end(_last_summary, _run_state, _content)
+		if not _simulation_suppress_events:
+			EventBus.ending_triggered.emit(ending)
+			EventBus.run_ended.emit(_last_summary)
 
 
 func _build_run_summary(ending: Dictionary) -> RunSummary:

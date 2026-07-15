@@ -3,8 +3,12 @@ extends Control
 ## Developer-only overlay (PRD 02 §15, PRD 05 §7). Toggled with F1 or backtick.
 ## Every action goes through normal GameManager APIs; owns no gameplay logic.
 
+var _simulator: RunSimulator
+var _simulation_running: bool = false
+
 
 func _ready() -> void:
+	_simulator = RunSimulator.new(GameManager)
 	visible = false
 
 	%CloseButton.pressed.connect(toggle_visibility)
@@ -38,6 +42,16 @@ func _ready() -> void:
 	%PurchaseUpgradeButton.pressed.connect(_on_purchase_upgrade_pressed)
 	%ClearUpgradeButton.pressed.connect(_on_clear_upgrade_pressed)
 	%ResetMetaButton.pressed.connect(_on_reset_meta_pressed)
+	%Sim100Button.pressed.connect(func() -> void: _run_simulation(100))
+	%Sim1000Button.pressed.connect(func() -> void: _run_simulation(1000))
+	%SimCustomButton.pressed.connect(func() -> void: _run_simulation(int(%SimCountSpin.value)))
+	%RunStaticDiagnosticsButton.pressed.connect(_on_run_static_diagnostics_pressed)
+	%PrintLatestReportButton.pressed.connect(_on_print_latest_report_pressed)
+	%OpenDiagnosticsFolderButton.pressed.connect(_on_open_diagnostics_folder_pressed)
+
+	%SimSeedModeOption.add_item("Fixed")
+	%SimSeedModeOption.add_item("Random")
+	%SimSeedModeOption.select(0)
 
 	for resource_id in RunState.RESOURCE_IDS:
 		%ResourceOption.add_item(resource_id)
@@ -519,3 +533,87 @@ func _on_clear_upgrade_pressed() -> void:
 func _on_reset_meta_pressed() -> void:
 	MetaProgressionManager.reset_meta_progression()
 	_show_feedback("Meta progression reset.", true)
+
+
+func _build_simulation_config(run_count: int) -> SimulationConfig:
+	var config := SimulationConfig.new()
+	config.run_count = run_count
+	config.seed_mode = SimulationConfig.SEED_MODE_RANDOM \
+		if %SimSeedModeOption.selected == 1 else SimulationConfig.SEED_MODE_FIXED
+	var seed_text: String = %SimSeedEdit.text.strip_edges()
+	if seed_text.is_valid_int():
+		config.base_seed = int(seed_text)
+	elif config.seed_mode == SimulationConfig.SEED_MODE_FIXED:
+		config.base_seed = SimulationConfig.DEFAULT_BASE_SEED
+	config.include_static_diagnostics = run_count <= 100
+	config.export_report = true
+	return config
+
+
+func _run_simulation(run_count: int) -> void:
+	if _simulation_running:
+		_show_feedback("Simulation already running.", false)
+		return
+	if not GameManager.is_content_valid():
+		_show_feedback("Content invalid; cannot simulate.", false)
+		return
+	_simulation_running = true
+	_set_simulation_buttons_disabled(true)
+	_show_feedback("Running %d simulation(s)..." % run_count, true)
+	await get_tree().process_frame
+
+	var config := _build_simulation_config(run_count)
+	var report: SimulationReport = _simulator.run_batch(config)
+	var sim: Dictionary = report.simulation
+	var errors: Array = sim.get("errors", [])
+	var message: String = "Simulation complete: %d run(s)." % int(sim.get("run_count", 0))
+	if not errors.is_empty():
+		message += " %d error(s)." % errors.size()
+	if report.export_paths.has("text"):
+		message += " Report exported."
+	_show_feedback(message, errors.is_empty())
+	_set_simulation_buttons_disabled(false)
+	_simulation_running = false
+
+
+func _set_simulation_buttons_disabled(disabled: bool) -> void:
+	%Sim100Button.disabled = disabled
+	%Sim1000Button.disabled = disabled
+	%SimCustomButton.disabled = disabled
+	%RunStaticDiagnosticsButton.disabled = disabled
+
+
+func _on_run_static_diagnostics_pressed() -> void:
+	if _simulation_running:
+		return
+	_simulation_running = true
+	_set_simulation_buttons_disabled(true)
+	var report: SimulationReport = _simulator.run_static_diagnostics("ministan", true)
+	var total: int = int(report.static_diagnostics.get("summary", {}).get("total_findings", 0))
+	_show_feedback("Static diagnostics complete: %d finding(s)." % total, true)
+	_set_simulation_buttons_disabled(false)
+	_simulation_running = false
+
+
+func _on_print_latest_report_pressed() -> void:
+	var path: String = SimulationReport.get_latest_export_path("txt")
+	if path.is_empty():
+		_show_feedback("No diagnostics report found.", false)
+		return
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		_show_feedback("Cannot read latest report.", false)
+		return
+	print("[DIAG] Latest report (%s):\n%s" % [path, file.get_as_text()])
+	file.close()
+	_show_feedback("Latest report printed to console.", true)
+
+
+func _on_open_diagnostics_folder_pressed() -> void:
+	SimulationReport._ensure_diagnostics_dir()
+	var absolute_path: String = SimulationReport.get_diagnostics_dir_absolute()
+	var err := OS.shell_open(absolute_path)
+	if err != OK:
+		_show_feedback("Cannot open diagnostics folder.", false)
+	else:
+		_show_feedback("Opened diagnostics folder.", true)

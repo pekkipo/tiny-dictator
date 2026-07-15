@@ -8,6 +8,7 @@ const SAVE_VERSION: int = 2
 const LEGACY_SAVE_VERSION: int = 1
 
 var _data: Dictionary = {}
+var _persistence_enabled: bool = true
 
 
 func _ready() -> void:
@@ -68,6 +69,25 @@ func load_save() -> Dictionary:
 
 func get_data() -> Dictionary:
 	return _data.duplicate(true)
+
+
+func create_snapshot() -> Dictionary:
+	return _data.duplicate(true)
+
+
+func restore_snapshot(snapshot: Dictionary) -> void:
+	_data = snapshot.duplicate(true)
+	_sync_unlocked_endings_array(_data)
+	if _persistence_enabled:
+		_persist()
+
+
+func set_persistence_enabled(enabled: bool) -> void:
+	_persistence_enabled = enabled
+
+
+func is_persistence_enabled() -> bool:
+	return _persistence_enabled
 
 
 func save_data(data: Dictionary) -> bool:
@@ -306,6 +326,8 @@ func _sync_unlocked_endings_array(data: Dictionary) -> void:
 
 
 func _persist() -> bool:
+	if not _persistence_enabled:
+		return true
 	_sync_unlocked_endings_array(_data)
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
