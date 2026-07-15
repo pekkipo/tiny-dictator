@@ -18,6 +18,7 @@ const DEFAULT_FALLBACK_LIMIT: int = 2
 var _repository: ContentRepository
 var _rng: RandomNumberGenerator
 var _arc_manager: ArcManager = null
+var _crisis_manager: CrisisManager = null
 var _forced_decision_id: String = ""
 
 
@@ -28,6 +29,10 @@ func _init(repository: ContentRepository, rng: RandomNumberGenerator) -> void:
 
 func set_arc_manager(arc_manager: ArcManager) -> void:
 	_arc_manager = arc_manager
+
+
+func set_crisis_manager(crisis_manager: CrisisManager) -> void:
+	_crisis_manager = crisis_manager
 
 
 func set_forced_decision(decision_id: String) -> void:
@@ -52,7 +57,7 @@ func select_next_decision(state: RunState, request: ContentRequest = null) -> Di
 		var forced_id := _forced_decision_id
 		_forced_decision_id = ""
 		var forced: Dictionary = _repository.get_decision(forced_id)
-		if not forced.is_empty() and is_decision_valid(forced, state):
+		if not forced.is_empty() and is_decision_valid(forced, state, true):
 			print("[DECISION] Using forced decision '%s'" % forced_id)
 			return forced
 		push_error("[DECISION] Forced decision '%s' is missing or invalid; using normal selection." % forced_id)
@@ -60,12 +65,22 @@ func select_next_decision(state: RunState, request: ContentRequest = null) -> Di
 	if request != null and not request.queued_decision_id.is_empty():
 		var queued_id := request.queued_decision_id
 		var queued: Dictionary = _repository.get_decision(queued_id)
-		if not queued.is_empty() and is_decision_valid(queued, state):
+		if not queued.is_empty() and is_decision_valid(queued, state, true):
 			print("[DECISION] Using queued decision '%s' (event %s)" % [queued_id, request.queued_event_id])
 			return queued
 		push_error("[DECISION] Queued decision '%s' is missing or invalid; using normal selection." % queued_id)
 
+	if request != null and not request.crisis_decision_id.is_empty():
+		var crisis_id := request.crisis_decision_id
+		var crisis_decision: Dictionary = _repository.get_decision(crisis_id)
+		if not crisis_decision.is_empty() and is_decision_valid(crisis_decision, state, true):
+			print("[DECISION] Using mandatory crisis decision '%s' (crisis %s)" % [crisis_id, request.crisis_id])
+			return crisis_decision
+		push_error("[DECISION] Mandatory crisis decision '%s' is missing or invalid." % crisis_id)
+
 	var candidates := get_valid_decisions(state)
+	if _should_filter_for_active_crisis(state, request):
+		candidates = _filter_crisis_decisions(candidates, state)
 	# Avoid presenting the same card twice in a row (relevant for reusable cards).
 	if candidates.size() > 1 and not state.current_decision_id.is_empty():
 		var filtered: Array[Dictionary] = []
@@ -101,11 +116,14 @@ func get_valid_decisions(state: RunState) -> Array[Dictionary]:
 	return valid
 
 
-func is_decision_valid(decision: Dictionary, state: RunState) -> bool:
+## When allow_queue_only is true, queue_only cards may be selected (forced/queued/crisis paths).
+func is_decision_valid(decision: Dictionary, state: RunState, allow_queue_only: bool = false) -> bool:
 	var id: String = str(decision.get("id", ""))
 	if id.is_empty():
 		return false
 	if bool(decision.get("debug_only", false)):
+		return false
+	if bool(decision.get("queue_only", false)) and not allow_queue_only:
 		return false
 	if not _repository.has_advisor(str(decision.get("advisor_id", ""))):
 		return false
@@ -126,7 +144,9 @@ func is_decision_valid(decision: Dictionary, state: RunState) -> bool:
 		return false
 	if not evaluate_requirements(requirements, state):
 		return false
-	return _narrative_is_valid(decision, state)
+	if not _narrative_is_valid(decision, state):
+		return false
+	return _crisis_narrative_is_valid(decision, state)
 
 
 func _narrative_is_valid(decision: Dictionary, state: RunState) -> bool:
@@ -163,6 +183,51 @@ func _narrative_is_valid(decision: Dictionary, state: RunState) -> bool:
 			return false
 
 	return true
+
+
+func _crisis_narrative_is_valid(decision: Dictionary, state: RunState) -> bool:
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return true
+	var crisis_id: String = str(narrative.get("crisis_id", ""))
+	if crisis_id.is_empty():
+		return true
+	if bool(narrative.get("starts_crisis", false)):
+		if _crisis_manager != null:
+			if _crisis_manager.has_active_crisis(state) and _crisis_manager.get_active_crisis_id(state) == crisis_id:
+				return true
+			if not _crisis_manager.can_start_crisis(crisis_id, state):
+				return false
+	return true
+
+
+func _should_filter_for_active_crisis(state: RunState, request: ContentRequest) -> bool:
+	if _crisis_manager == null or not _crisis_manager.has_active_crisis(state):
+		return false
+	if request != null and request.request_type in ["forced_follow_up", "mandatory_queued_event", "queued_event"]:
+		return false
+	return bool(state.active_crisis.get("resolution_required", true))
+
+
+func _filter_crisis_decisions(candidates: Array[Dictionary], state: RunState) -> Array[Dictionary]:
+	var active_id: String = str(state.active_crisis.get("crisis_id", ""))
+	if active_id.is_empty():
+		return candidates
+	var filtered: Array[Dictionary] = []
+	for decision in candidates:
+		if _decision_belongs_to_crisis(decision, active_id):
+			filtered.append(decision)
+	return filtered
+
+
+func _decision_belongs_to_crisis(decision: Dictionary, crisis_id: String) -> bool:
+	var requirements: Variant = decision.get("requirements", {})
+	if requirements is Dictionary and str(requirements.get("active_crisis", "")) == crisis_id:
+		return true
+	var narrative: Variant = decision.get("narrative", {})
+	if narrative is Dictionary and str(narrative.get("crisis_id", "")) == crisis_id:
+		return true
+	return false
 
 
 func evaluate_requirements(requirements: Dictionary, state: RunState) -> bool:

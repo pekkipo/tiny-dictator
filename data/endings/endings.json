@@ -56,6 +56,16 @@
     }
   },
   {
+    "id": "nation_in_darkness",
+    "type": "special",
+    "priority": 95,
+    "title": "Nation in Darkness",
+    "description": "The blackout outlasted your patience. Citizens learned to navigate by rumor and candlelight. The palace remained visible from space.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🌑",
+    "conditions": {}
+  },
+  {
     "id": "cat_republic",
     "type": "special",
     "priority": 100,

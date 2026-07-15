@@ -56,6 +56,7 @@ func build_request(
 	state: RunState,
 	decision_engine: DecisionEngine,
 	queue: NarrativeEventQueue = null,
+	crisis_manager: CrisisManager = null,
 ) -> ContentRequest:
 	var request := ContentRequest.new()
 
@@ -79,6 +80,17 @@ func build_request(
 				]
 			else:
 				push_warning("[DIRECTOR] Due queue event '%s' has no valid target." % top_event.get("event_id", ""))
+
+	if request.request_type == "standalone" and crisis_manager != null and crisis_manager.has_active_crisis(state):
+		var crisis_decision_id: String = crisis_manager.get_mandatory_decision_id(state)
+		if not crisis_decision_id.is_empty():
+			var active_crisis_id: String = crisis_manager.get_active_crisis_id(state)
+			request.request_type = "mandatory_crisis"
+			request.crisis_id = active_crisis_id
+			request.crisis_decision_id = crisis_decision_id
+			request.mandatory = true
+			request.priority = crisis_manager.get_crisis_priority(active_crisis_id)
+			request.reason = "mandatory crisis '%s' -> '%s'" % [active_crisis_id, crisis_decision_id]
 
 	if request.request_type == "standalone":
 		if _should_advance_arc(state):

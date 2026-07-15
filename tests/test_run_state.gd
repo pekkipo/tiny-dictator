@@ -17,6 +17,7 @@ func _initialize() -> void:
 	_test_reset_cleanliness()
 	_test_serialization_round_trip()
 	_test_queue_serialization()
+	_test_crisis_serialization()
 
 	if _failures == 0:
 		print("[TEST] All RunState tests passed.")
@@ -111,6 +112,7 @@ func _test_reset_cleanliness() -> void:
 	state.mark_decision_used("budget_crisis")
 	state.add_history_entry({"day": 12})
 	state.current_decision_id = "budget_crisis"
+	state.active_crisis = {"crisis_id": "national_power_outage", "status": "active"}
 	state.run_phase = RunState.RunPhase.ENDED
 	state.reset()
 	_check(state.day == 1, "reset day")
@@ -125,6 +127,7 @@ func _test_reset_cleanliness() -> void:
 	_check(state.completed_arc_ids.is_empty(), "reset completed arcs")
 	_check(state.failed_arc_ids.is_empty(), "reset failed arcs")
 	_check(state.narrative_event_queue.is_empty(), "reset narrative event queue")
+	_check(state.active_crisis.is_empty(), "reset active crisis")
 	_check(state.run_phase == RunState.RunPhase.NOT_STARTED, "reset phase")
 
 
@@ -185,3 +188,25 @@ func _test_queue_serialization() -> void:
 	_check(restored.narrative_event_queue.size() == 1, "queue round-trip size")
 	_check(restored.narrative_event_queue[0]["event_id"] == "evt_0001", "queue round-trip event_id")
 	_check(restored.narrative_event_queue[0]["decision_id"] == "cheese_shortage", "queue round-trip decision_id")
+
+
+func _test_crisis_serialization() -> void:
+	var state := RunState.new()
+	state.active_crisis = {
+		"crisis_id": "national_power_outage",
+		"status": "active",
+		"started_day": 10,
+		"severity": 2,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"resolved_resolution_id": "",
+		"failed_reason": "",
+	}
+	var restored := RunState.new()
+	restored.from_dictionary(state.to_dictionary())
+	_check(str(restored.active_crisis.get("crisis_id", "")) == "national_power_outage", "crisis round-trip id")
+	_check(str(restored.active_crisis.get("status", "")) == "active", "crisis round-trip status")
+
+	var legacy := RunState.new()
+	legacy.from_dictionary({"day": 4, "resources": restored.get_resources()})
+	_check(legacy.active_crisis.is_empty(), "legacy save without active_crisis")

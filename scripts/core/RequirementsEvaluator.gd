@@ -88,4 +88,32 @@ static func matches(requirements: Dictionary, state: RunState) -> bool:
 			if state.get_arc_branch(str(arc_id)) != str(arc_branches[arc_id]):
 				return false
 
+	if requirements.has("active_crisis"):
+		var required_id: String = str(requirements["active_crisis"])
+		if str(state.active_crisis.get("status", "")) != "active":
+			return false
+		if str(state.active_crisis.get("crisis_id", "")) != required_id:
+			return false
+
+	if requirements.has("blocked_crisis"):
+		var blocked_id: String = str(requirements["blocked_crisis"])
+		if str(state.active_crisis.get("status", "")) == "active":
+			if str(state.active_crisis.get("crisis_id", "")) == blocked_id:
+				return false
+
+	if bool(requirements.get("completed_crisis", false)):
+		if state.active_crisis.is_empty():
+			return false
+		if str(state.active_crisis.get("status", "")) != "resolved":
+			return false
+
+	if requirements.has("failed_crisis"):
+		var failed_id: String = str(requirements["failed_crisis"])
+		if state.active_crisis.is_empty():
+			return false
+		if str(state.active_crisis.get("crisis_id", "")) != failed_id:
+			return false
+		if str(state.active_crisis.get("status", "")) != "failed":
+			return false
+
 	return true

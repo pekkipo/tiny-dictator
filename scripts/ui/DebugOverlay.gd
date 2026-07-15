@@ -19,6 +19,10 @@ func _ready() -> void:
 	%SelectBranchButton.pressed.connect(_on_select_branch_pressed)
 	%CompleteArcButton.pressed.connect(_on_complete_arc_pressed)
 	%FailArcButton.pressed.connect(_on_fail_arc_pressed)
+	%ForceCrisisButton.pressed.connect(_on_force_crisis_pressed)
+	%AdvanceCrisisDurationButton.pressed.connect(_on_advance_crisis_duration_pressed)
+	%ResolveCrisisButton.pressed.connect(_on_resolve_crisis_pressed)
+	%FailCrisisButton.pressed.connect(_on_fail_crisis_pressed)
 	%AddQueueEventButton.pressed.connect(_on_add_queue_event_pressed)
 	%CancelQueueEventButton.pressed.connect(_on_cancel_queue_event_pressed)
 	%ConsumeQueueEventButton.pressed.connect(_on_consume_queue_event_pressed)
@@ -33,6 +37,7 @@ func _ready() -> void:
 		%ResourceOption.add_item(resource_id)
 	_populate_ending_options()
 	_populate_arc_options()
+	_populate_crisis_options()
 
 	EventBus.decision_presented.connect(func(_decision: Dictionary) -> void: _refresh())
 	EventBus.decision_resolved.connect(func(_result: DecisionResult) -> void: _refresh())
@@ -44,6 +49,9 @@ func _ready() -> void:
 	EventBus.arc_completed.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
 	EventBus.arc_failed.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
 	EventBus.arc_paused.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.crisis_started.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.crisis_resolved.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.crisis_failed.connect(func(_crisis_id: String, _runtime: Dictionary) -> void: _refresh())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -58,6 +66,7 @@ func toggle_visibility() -> void:
 	if visible:
 		_populate_ending_options()
 		_populate_arc_options()
+		_populate_crisis_options()
 		_show_feedback("", true)
 		_refresh()
 
@@ -74,7 +83,9 @@ func _refresh() -> void:
 		var prefer: String = ", ".join(request_dict.get("preferred_card_types", []))
 		var exclude: String = ", ".join(request_dict.get("excluded_tags", []))
 		var arc_part: String = ""
-		if request_dict.get("arc_id", "") != "":
+		if request_dict.get("crisis_id", "") != "":
+			arc_part = " crisis=%s" % request_dict.get("crisis_id", "")
+		elif request_dict.get("arc_id", "") != "":
 			arc_part = " arc=%s" % request_dict.get("arc_id", "")
 		request_line = "request: %s%s prefer=%s exclude=%s (%s)" % [
 			request_dict.get("request_type", ""),
@@ -97,6 +108,17 @@ func _refresh() -> void:
 	var completed: Array = arc_state.get("completed_arc_ids", [])
 	var failed: Array = arc_state.get("failed_arc_ids", [])
 
+	var crisis_state: Dictionary = GameManager.debug_get_crisis_state()
+	var crisis_line: String
+	if crisis_state.is_empty() or str(crisis_state.get("status", "")).is_empty():
+		crisis_line = "active crisis: (none)"
+	else:
+		crisis_line = "active crisis: %s [%s] started day %s" % [
+			crisis_state.get("crisis_id", "?"),
+			crisis_state.get("status", "?"),
+			str(crisis_state.get("started_day", "?")),
+		]
+
 	var lines: PackedStringArray = [
 		"phase: %s   day: %d   seed: %d" % [
 			RunState.RunPhase.keys()[state.run_phase], state.day, state.random_seed,
@@ -107,6 +129,7 @@ func _refresh() -> void:
 		"active arcs: %s" % (", ".join(active_lines) if not active_lines.is_empty() else "(none)"),
 		"completed arcs: %s" % (", ".join(completed) if not completed.is_empty() else "(none)"),
 		"failed arcs: %s" % (", ".join(failed) if not failed.is_empty() else "(none)"),
+		crisis_line,
 		"resources: 💰 %d  🙂 %d  🛡 %d  👑 %d" % [state.treasury, state.happiness, state.order, state.elite_loyalty],
 		"laws: %s" % (", ".join(state.active_laws) if not state.active_laws.is_empty() else "(none)"),
 		"flags: %s" % (", ".join(state.flags) if not state.flags.is_empty() else "(none)"),
@@ -145,6 +168,18 @@ func _populate_arc_options() -> void:
 	%ArcOption.clear()
 	for arc in GameManager.get_content().get_raw_arcs():
 		%ArcOption.add_item(str(arc.get("id", "")))
+
+
+func _populate_crisis_options() -> void:
+	%CrisisOption.clear()
+	for crisis in GameManager.get_content().get_raw_crises():
+		%CrisisOption.add_item(str(crisis.get("id", "")))
+
+
+func _selected_crisis_id() -> String:
+	if %CrisisOption.selected < 0:
+		return ""
+	return %CrisisOption.get_item_text(%CrisisOption.selected)
 
 
 func _populate_queue_options(queue: Array) -> void:
@@ -287,6 +322,46 @@ func _on_fail_arc_pressed() -> void:
 		_show_feedback("Cannot fail arc '%s'." % arc_id, false)
 
 
+func _on_force_crisis_pressed() -> void:
+	var crisis_id: String = _selected_crisis_id()
+	if crisis_id.is_empty():
+		_show_feedback("Select a crisis first.", false)
+		return
+	if GameManager.debug_force_crisis(crisis_id):
+		_show_feedback("Forced crisis '%s'." % crisis_id, true)
+	else:
+		_show_feedback("Cannot force crisis '%s'." % crisis_id, false)
+
+
+func _on_advance_crisis_duration_pressed() -> void:
+	if GameManager.debug_advance_crisis_duration(int(%CrisisDurationSpin.value)):
+		_show_feedback("Crisis duration advanced.", true)
+	else:
+		_show_feedback("No active crisis to advance.", false)
+
+
+func _on_resolve_crisis_pressed() -> void:
+	var crisis_id: String = _selected_crisis_id()
+	if crisis_id.is_empty():
+		_show_feedback("Select a crisis first.", false)
+		return
+	if GameManager.debug_resolve_crisis(crisis_id, "debug"):
+		_show_feedback("Resolved crisis '%s'." % crisis_id, true)
+	else:
+		_show_feedback("Cannot resolve crisis '%s'." % crisis_id, false)
+
+
+func _on_fail_crisis_pressed() -> void:
+	var crisis_id: String = _selected_crisis_id()
+	if crisis_id.is_empty():
+		_show_feedback("Select a crisis first.", false)
+		return
+	if GameManager.debug_fail_crisis(crisis_id, "debug"):
+		_show_feedback("Failed crisis '%s'." % crisis_id, true)
+	else:
+		_show_feedback("Cannot fail crisis '%s'." % crisis_id, false)
+
+
 func _on_add_queue_event_pressed() -> void:
 	var decision_id: String = %QueueDecisionEdit.text.strip_edges()
 	var min_delay: int = int(%QueueMinDelaySpin.value)
@@ -352,6 +427,7 @@ func _on_reload_content_pressed() -> void:
 	var ok: bool = GameManager.reload_content()
 	_populate_ending_options()
 	_populate_arc_options()
+	_populate_crisis_options()
 	_show_feedback("Content reloaded. Valid: %s." % ok, ok)
 
 

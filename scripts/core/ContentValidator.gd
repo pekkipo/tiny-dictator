@@ -29,6 +29,7 @@ const KNOWN_REQUIREMENT_KEYS: Array[String] = [
 	"minimum_day", "maximum_day",
 	"used_decisions", "not_used_decisions",
 	"active_arcs", "blocked_arcs", "completed_arcs", "failed_arcs", "arc_branches",
+	"active_crisis", "blocked_crisis", "completed_crisis", "failed_crisis",
 ]
 
 const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
@@ -49,6 +50,7 @@ const RESULT_TEXT_MAX_LENGTH: int = 180
 const VALID_ARC_ACTIONS: Array[String] = [
 	"start", "advance", "branch", "pause", "complete", "fail", "abandon",
 ]
+const VALID_CRISIS_ACTIONS: Array[String] = ["start", "resolve", "fail"]
 
 
 func validate_repository(repository: ContentRepository) -> ValidationReport:
@@ -83,6 +85,10 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 
 	for arc in repository.get_raw_arcs():
 		for error in validate_arc(arc, repository):
+			report.errors.append(error)
+
+	for crisis in repository.get_raw_crises():
+		for error in validate_crisis(crisis, repository):
 			report.errors.append(error)
 
 	for pool in repository.get_raw_follow_up_pools():
@@ -226,6 +232,7 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 						break
 
 	errors.append_array(_validate_decision_narrative(id, decision, repository))
+	errors.append_array(_validate_decision_narrative_crisis(id, decision, repository))
 
 	return errors
 
@@ -276,6 +283,123 @@ func validate_arc(arc: Dictionary, repository: ContentRepository) -> Array[Strin
 	return errors
 
 
+func validate_crisis(crisis: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var id: String = str(crisis.get("id", ""))
+	if id.is_empty():
+		errors.append("Crisis missing 'id'")
+		return errors
+
+	var country_id: String = str(crisis.get("country_id", ""))
+	if country_id.is_empty():
+		errors.append("Crisis '%s' missing 'country_id'" % id)
+	elif not repository.has_country(country_id):
+		errors.append("Crisis '%s' references unknown country '%s'" % [id, country_id])
+
+	var severity: int = int(crisis.get("severity", 0))
+	if severity < 1 or severity > 3:
+		errors.append("Crisis '%s' severity must be 1-3" % id)
+
+	var max_days: int = int(crisis.get("maximum_duration_days", 0))
+	if max_days < 1:
+		errors.append("Crisis '%s' maximum_duration_days must be >= 1" % id)
+
+	var entry_id: String = str(crisis.get("entry_decision_id", ""))
+	if entry_id.is_empty():
+		errors.append("Crisis '%s' missing 'entry_decision_id'" % id)
+	elif not repository.has_decision(entry_id):
+		errors.append("Crisis '%s' entry decision '%s' not found" % [id, entry_id])
+	else:
+		var entry: Dictionary = repository.get_decision(entry_id)
+		if str(entry.get("card_type", "")) != "crisis":
+			errors.append("Crisis '%s' entry decision '%s' must have card_type 'crisis'" % [id, entry_id])
+
+	var entry_options: Dictionary = _option_ids_for_decision(entry_id, repository)
+	for path in crisis.get("resolution_paths", []):
+		if not (path is Dictionary):
+			continue
+		var resolution_id: String = str(path.get("resolution_id", ""))
+		var option_id: String = str(path.get("option_id", ""))
+		if resolution_id.is_empty():
+			errors.append("Crisis '%s' resolution_path missing 'resolution_id'" % id)
+		if option_id.is_empty():
+			errors.append("Crisis '%s' resolution_path missing 'option_id'" % id)
+		elif not entry_options.has(option_id):
+			errors.append("Crisis '%s' resolution_path option '%s' not on entry decision" % [id, option_id])
+
+	for path in crisis.get("failure_paths", []):
+		if not (path is Dictionary):
+			continue
+		var option_id: String = str(path.get("option_id", ""))
+		if option_id.is_empty():
+			errors.append("Crisis '%s' failure_path missing 'option_id'" % id)
+		elif not entry_options.has(option_id):
+			errors.append("Crisis '%s' failure_path option '%s' not on entry decision" % [id, option_id])
+		var ending_id: String = str(path.get("trigger_ending_id", ""))
+		if not ending_id.is_empty() and not repository.has_ending(ending_id):
+			errors.append("Crisis '%s' failure_path references unknown ending '%s'" % [id, ending_id])
+
+	var timeout: Variant = crisis.get("timeout", {})
+	if timeout is Dictionary and not timeout.is_empty():
+		var timeout_ending: String = str(timeout.get("trigger_ending_id", ""))
+		if not timeout_ending.is_empty() and not repository.has_ending(timeout_ending):
+			errors.append("Crisis '%s' timeout references unknown ending '%s'" % [id, timeout_ending])
+		var effects: Variant = timeout.get("effects", {})
+		if effects is Dictionary:
+			for resource_id in effects:
+				if str(resource_id) not in RunState.RESOURCE_IDS:
+					errors.append("Crisis '%s' timeout has unknown resource '%s'" % [id, resource_id])
+
+	if country_id and repository.has_country(country_id):
+		var country: Dictionary = repository.get_country(country_id)
+		var stage_ids: Array[String] = []
+		for stage in country.get("run_stages", []):
+			if stage is Dictionary:
+				stage_ids.append(str(stage.get("id", "")))
+		var start_req: Variant = crisis.get("start_requirements", {})
+		if start_req is Dictionary:
+			for stage_ref in start_req.get("allowed_stages", []):
+				if str(stage_ref) not in stage_ids:
+					errors.append("Crisis '%s' start_requirements allowed_stages '%s' not in country run_stages" % [
+						id, str(stage_ref),
+					])
+
+	return errors
+
+
+func _option_ids_for_decision(decision_id: String, repository: ContentRepository) -> Dictionary:
+	var result: Dictionary = {}
+	if decision_id.is_empty():
+		return result
+	var decision: Dictionary = repository.get_decision(decision_id)
+	for option in DecisionSchema.get_options(decision):
+		if option is Dictionary:
+			var option_id: String = str(option.get("id", ""))
+			if not option_id.is_empty():
+				result[option_id] = true
+	return result
+
+
+func _validate_decision_narrative_crisis(decision_id: String, decision: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return errors
+	var crisis_id: String = str(narrative.get("crisis_id", ""))
+	if crisis_id.is_empty():
+		return errors
+	if not repository.has_crisis(crisis_id):
+		errors.append("Decision '%s' references unknown crisis '%s'" % [decision_id, crisis_id])
+		return errors
+	if bool(narrative.get("starts_crisis", false)):
+		var crisis: Dictionary = repository.get_crisis(crisis_id)
+		if str(crisis.get("entry_decision_id", "")) != decision_id:
+			errors.append("Decision '%s' starts crisis '%s' but is not listed as entry_decision_id" % [
+				decision_id, crisis_id,
+			])
+	return errors
+
+
 func validate_follow_up_pool(pool: Dictionary, repository: ContentRepository) -> Array[String]:
 	var errors: Array[String] = []
 	var id: String = str(pool.get("id", ""))
@@ -301,7 +425,11 @@ func _validate_decision_narrative(decision_id: String, decision: Dictionary, rep
 	if not (narrative is Dictionary) or narrative.is_empty():
 		return errors
 
+	var crisis_id: String = str(narrative.get("crisis_id", ""))
 	var arc_id: String = str(narrative.get("arc_id", ""))
+	if not crisis_id.is_empty() and arc_id.is_empty():
+		return errors
+
 	if arc_id.is_empty():
 		errors.append("Decision '%s' narrative missing 'arc_id'" % decision_id)
 		return errors
@@ -393,6 +521,23 @@ func _validate_option(decision_id: String, option_id: String, option: Dictionary
 			var branch_ids: Array = arc.get("branch_ids", [])
 			if not branch_ids.is_empty() and branch_id not in branch_ids:
 				errors.append("%s arc_action branch_id '%s' invalid for arc '%s'" % [where, branch_id, arc_id])
+
+	for action_data in option.get("crisis_actions", []):
+		if not (action_data is Dictionary):
+			errors.append("%s has non-object crisis_action" % where)
+			continue
+		var crisis_id: String = str(action_data.get("crisis_id", ""))
+		var action: String = str(action_data.get("action", ""))
+		if crisis_id.is_empty():
+			errors.append("%s crisis_action missing 'crisis_id'" % where)
+		elif not repository.has_crisis(crisis_id):
+			errors.append("%s crisis_action references unknown crisis '%s'" % [where, crisis_id])
+		if action.is_empty():
+			errors.append("%s crisis_action missing 'action'" % where)
+		elif action not in VALID_CRISIS_ACTIONS:
+			errors.append("%s crisis_action has invalid action '%s'" % [where, action])
+		if action == "resolve" and str(action_data.get("resolution_id", "")).is_empty():
+			errors.append("%s crisis_action resolve missing 'resolution_id'" % where)
 
 	return errors
 

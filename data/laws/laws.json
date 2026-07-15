@@ -45,6 +45,15 @@
     "category": "military"
   },
   {
+    "id": "emergency_broadcast_priority",
+    "display_name": "Emergency Broadcast Priority",
+    "short_name": "Broadcast Priority",
+    "description": "National television receives generator priority during emergencies. Cooking is optional.",
+    "placeholder_icon": "📺",
+    "visual_tags": ["smiling_citizens"],
+    "category": "public_life"
+  },
+  {
     "id": "no_weekends",
     "display_name": "No Weekends",
     "short_name": "No Weekends",

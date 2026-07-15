@@ -17,6 +17,7 @@ func apply_option(
 	state: RunState,
 	repository: ContentRepository,
 	arc_manager: ArcManager = null,
+	crisis_manager: CrisisManager = null,
 ) -> DecisionResult:
 	var result := DecisionResult.new()
 	result.decision_id = str(decision.get("id", ""))
@@ -74,6 +75,10 @@ func apply_option(
 	if arc_manager != null:
 		_apply_narrative_arc_effects(decision, result.decision_id, state, arc_manager, result)
 		_apply_option_arc_actions(option, result.decision_id, state, arc_manager, result)
+
+	if crisis_manager != null:
+		_apply_narrative_crisis_effects(decision, state, crisis_manager, result)
+		_apply_option_crisis_actions(option, result.decision_id, state, crisis_manager, result)
 
 	state.add_history_entry({
 		"day": state.day,
@@ -149,6 +154,52 @@ func _apply_option_arc_actions(
 				"branch_id": branch_id,
 				"reason": reason,
 			})
+
+
+func _apply_narrative_crisis_effects(
+	decision: Dictionary,
+	state: RunState,
+	crisis_manager: CrisisManager,
+	result: DecisionResult,
+) -> void:
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return
+	var crisis_id: String = str(narrative.get("crisis_id", ""))
+	if crisis_id.is_empty():
+		return
+	if bool(narrative.get("starts_crisis", false)) and not crisis_manager.has_active_crisis(state):
+		if crisis_manager.apply_action(state, crisis_id, "start"):
+			result.crisis_changes.append({"crisis_id": crisis_id, "action": "start"})
+
+
+func _apply_option_crisis_actions(
+	option: Dictionary,
+	decision_id: String,
+	state: RunState,
+	crisis_manager: CrisisManager,
+	result: DecisionResult,
+) -> void:
+	for action_data in option.get("crisis_actions", []):
+		if not (action_data is Dictionary):
+			continue
+		var crisis_id: String = str(action_data.get("crisis_id", ""))
+		var action: String = str(action_data.get("action", ""))
+		var resolution_id: String = str(action_data.get("resolution_id", ""))
+		var reason: String = str(action_data.get("reason", ""))
+		if crisis_id.is_empty() or action.is_empty():
+			continue
+		if crisis_manager.apply_action(state, crisis_id, action, decision_id, resolution_id, reason):
+			result.crisis_changes.append({
+				"crisis_id": crisis_id,
+				"action": action,
+				"resolution_id": resolution_id,
+				"reason": reason,
+			})
+			if action == "fail" and result.triggered_ending_id.is_empty():
+				var ending_id: String = crisis_manager.get_failure_ending_for_option(crisis_id, result.selected_option_id)
+				if not ending_id.is_empty():
+					result.triggered_ending_id = ending_id
 
 
 func _format_changes(changes: Dictionary) -> String:

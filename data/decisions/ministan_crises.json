@@ -1,0 +1,64 @@
+[
+  {
+    "id": "national_power_outage",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "luna_news",
+    "category": "infrastructure",
+    "proposal": "CRISIS: The entire country is dark. The palace generator powers only one national service.",
+    "one_time": true,
+    "queue_only": true,
+    "base_weight": 10,
+    "requirements": {
+      "active_crisis": "national_power_outage"
+    },
+    "narrative": {
+      "crisis_id": "national_power_outage",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "hospital",
+        "label": "Power hospitals",
+        "effects": {
+          "happiness": 8,
+          "treasury": -8,
+          "elite_loyalty": -4
+        },
+        "crisis_actions": [
+          { "crisis_id": "national_power_outage", "action": "resolve", "resolution_id": "hospital" }
+        ],
+        "result_text": "Hospitals return to life. Television executives declare this an attack on culture."
+      },
+      {
+        "id": "television",
+        "label": "Power television",
+        "effects": {
+          "happiness": 2,
+          "order": 6,
+          "elite_loyalty": 4
+        },
+        "add_flags": ["propaganda_powered_during_blackout"],
+        "add_laws": ["emergency_broadcast_priority"],
+        "crisis_actions": [
+          { "crisis_id": "national_power_outage", "action": "resolve", "resolution_id": "television" }
+        ],
+        "result_text": "Citizens cannot cook, but they can watch a documentary explaining why this is good."
+      },
+      {
+        "id": "palace",
+        "label": "Power the palace",
+        "effects": {
+          "happiness": -12,
+          "order": -5,
+          "elite_loyalty": 8
+        },
+        "crisis_actions": [
+          { "crisis_id": "national_power_outage", "action": "fail", "reason": "palace_neglect" }
+        ],
+        "result_text": "The palace chandelier remains magnificent over a completely dark nation."
+      }
+    ],
+    "tags": ["infrastructure", "crisis"]
+  }
+]

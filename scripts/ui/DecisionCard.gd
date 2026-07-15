@@ -38,8 +38,18 @@ func show_decision(decision: Dictionary, advisor: Dictionary) -> void:
 	%ProposalLabel.text = str(decision.get("proposal", ""))
 
 	var card_type: String = str(decision.get("card_type", DecisionSchema.DEFAULT_CARD_TYPE))
-	%CardTypeLabel.text = str(CARD_TYPE_BANNERS.get(card_type, ""))
-	%CardTypeLabel.visible = CARD_TYPE_BANNERS.has(card_type)
+	var banner_text: String = str(CARD_TYPE_BANNERS.get(card_type, ""))
+	if card_type == "crisis":
+		var days_left: int = GameManager.get_crisis_days_remaining()
+		var crisis_state: Dictionary = GameManager.debug_get_crisis_state()
+		var severity: int = int(crisis_state.get("severity", 0))
+		if severity > 0 or days_left > 0:
+			banner_text = "🔥 CRISIS — SEV %d — %dd left" % [severity if severity > 0 else 1, days_left]
+		modulate = Color(1.0, 0.94, 0.88)
+	else:
+		modulate = Color.WHITE
+	%CardTypeLabel.text = banner_text
+	%CardTypeLabel.visible = CARD_TYPE_BANNERS.has(card_type) or card_type == "crisis"
 
 	_rebuild_options(DecisionSchema.get_options(decision))
 	set_input_enabled(true)

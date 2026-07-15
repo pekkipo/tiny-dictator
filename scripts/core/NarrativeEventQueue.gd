@@ -184,7 +184,7 @@ func resolve_pool_decision(pool_id: String, state: RunState) -> String:
 		if id.is_empty() or not _repository.has_decision(id):
 			continue
 		var decision: Dictionary = _repository.get_decision(id)
-		if _decision_engine != null and not _decision_engine.is_decision_valid(decision, state):
+		if _decision_engine != null and not _decision_engine.is_decision_valid(decision, state, true):
 			continue
 		candidates.append(id)
 

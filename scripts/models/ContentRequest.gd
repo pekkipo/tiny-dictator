@@ -14,6 +14,8 @@ var reason: String = ""
 var queued_decision_id: String = ""
 var queued_event_id: String = ""
 var mandatory: bool = false
+var crisis_id: String = ""
+var crisis_decision_id: String = ""
 
 
 func to_dictionary() -> Dictionary:
@@ -28,4 +30,6 @@ func to_dictionary() -> Dictionary:
 		"queued_decision_id": queued_decision_id,
 		"queued_event_id": queued_event_id,
 		"mandatory": mandatory,
+		"crisis_id": crisis_id,
+		"crisis_decision_id": crisis_decision_id,
 	}

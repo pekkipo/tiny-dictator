@@ -7,6 +7,7 @@ extends RefCounted
 
 const COUNTRIES_DIR: String = "res://data/countries"
 const ARCS_DIR: String = "res://data/arcs"
+const CRISES_DIR: String = "res://data/crises"
 const ADVISORS_PATH: String = "res://data/advisors/advisors.json"
 const LAWS_PATH: String = "res://data/laws/laws.json"
 const ENDINGS_PATH: String = "res://data/endings/endings.json"
@@ -19,6 +20,7 @@ var _laws: Dictionary = {}
 var _decisions: Dictionary = {}
 var _endings: Dictionary = {}
 var _arcs: Dictionary = {}
+var _crises: Dictionary = {}
 var _follow_up_pools: Dictionary = {}
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
@@ -33,6 +35,7 @@ var _raw_laws: Array[Dictionary] = []
 var _raw_decisions: Array[Dictionary] = []
 var _raw_endings: Array[Dictionary] = []
 var _raw_arcs: Array[Dictionary] = []
+var _raw_crises: Array[Dictionary] = []
 var _raw_countries: Array[Dictionary] = []
 var _raw_follow_up_pools: Array[Dictionary] = []
 
@@ -53,6 +56,7 @@ func load_all() -> bool:
 
 	_load_countries()
 	_load_arcs()
+	_load_crises()
 	_load_follow_up_pools()
 
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
@@ -61,9 +65,9 @@ func load_all() -> bool:
 	elif parsed_map != null:
 		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
-	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d follow-up pools" % [
+	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d crises, %d follow-up pools" % [
 		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(), _arcs.size(),
-		_follow_up_pools.size(),
+		_crises.size(), _follow_up_pools.size(),
 	]
 	print(summary)
 	for error in _load_errors:
@@ -146,6 +150,26 @@ func has_arc(id: String) -> bool:
 	return _arcs.has(id)
 
 
+func get_crisis(id: String) -> Dictionary:
+	return _crises.get(id, {})
+
+
+func get_crises_for_country(country_id: String) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for crisis in _raw_crises:
+		if str(crisis.get("country_id", "")) == country_id:
+			result.append(crisis)
+	return result
+
+
+func has_crisis(id: String) -> bool:
+	return _crises.has(id)
+
+
+func get_raw_crises() -> Array[Dictionary]:
+	return _raw_crises
+
+
 func get_follow_up_pool(id: String) -> Dictionary:
 	return _follow_up_pools.get(id, {})
 
@@ -190,6 +214,7 @@ func _clear() -> void:
 	_decisions.clear()
 	_endings.clear()
 	_arcs.clear()
+	_crises.clear()
 	_follow_up_pools.clear()
 	_visual_map.clear()
 	_country_decision_ids.clear()
@@ -198,6 +223,7 @@ func _clear() -> void:
 	_raw_decisions = []
 	_raw_endings = []
 	_raw_arcs = []
+	_raw_crises = []
 	_raw_countries = []
 	_raw_follow_up_pools = []
 	_load_errors = []
@@ -239,6 +265,30 @@ func _load_arcs() -> void:
 				_load_errors.append("Duplicate arc id '%s' in %s" % [arc_id, path])
 				continue
 			_arcs[arc_id] = arc
+
+
+func _load_crises() -> void:
+	var dir := DirAccess.open(CRISES_DIR)
+	if dir == null:
+		_load_errors.append("Cannot open crises directory: %s" % CRISES_DIR)
+		return
+	var file_names := dir.get_files()
+	file_names.sort()
+	for file_name in file_names:
+		if not file_name.ends_with(".json"):
+			continue
+		var path := "%s/%s" % [CRISES_DIR, file_name]
+		var entries := _load_entry_array(path)
+		for crisis in entries:
+			_raw_crises.append(crisis)
+			var crisis_id: String = str(crisis.get("id", ""))
+			if crisis_id.is_empty():
+				_load_errors.append("Crisis missing 'id' in %s" % path)
+				continue
+			if _crises.has(crisis_id):
+				_load_errors.append("Duplicate crisis id '%s' in %s" % [crisis_id, path])
+				continue
+			_crises[crisis_id] = crisis
 
 
 func _load_countries() -> void:

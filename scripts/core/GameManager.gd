@@ -15,6 +15,7 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
 var _content_director: ContentDirector = null
 var _arc_manager: ArcManager = null
+var _crisis_manager: CrisisManager = null
 var _narrative_event_queue: NarrativeEventQueue = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
@@ -71,10 +72,12 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_decision_engine = DecisionEngine.new(_content, _rng)
 	_content_director = ContentDirector.new(_content)
 	_arc_manager = ArcManager.new(_content)
+	_crisis_manager = CrisisManager.new(_content)
 	_narrative_event_queue = NarrativeEventQueue.new(_content)
 	_narrative_event_queue.set_decision_engine(_decision_engine)
 	_narrative_event_queue.set_rng(_rng)
 	_decision_engine.set_arc_manager(_arc_manager)
+	_decision_engine.set_crisis_manager(_crisis_manager)
 	_last_result = null
 
 	print("[RUN] New run started: country=%s day=%d seed=%d" % [
@@ -130,7 +133,9 @@ func resolve_choice(option_id: String) -> DecisionResult:
 		return null
 
 	_run_state.run_phase = RunState.RunPhase.RESOLVING_DECISION
-	var result := _effect_resolver.apply_option(_current_decision, option_id, _run_state, _content, _arc_manager)
+	var result := _effect_resolver.apply_option(
+		_current_decision, option_id, _run_state, _content, _arc_manager, _crisis_manager,
+	)
 	_last_result = result
 
 	if not result.forced_next_decision_id.is_empty():
@@ -172,6 +177,12 @@ func continue_after_result() -> void:
 		_narrative_event_queue.update_for_day(_run_state.day, _run_state)
 	if _content_director != null:
 		_content_director.update_stage(_run_state)
+	if _crisis_manager != null and _crisis_manager.update_for_day(_run_state.day, _run_state):
+		_apply_crisis_timeout()
+		ending = _ending_resolver.resolve_ending(_run_state, _last_result, country, _content)
+		if not ending.is_empty():
+			_end_run(ending)
+			return
 	_select_next_decision()
 	if _current_decision.is_empty():
 		# Engine already tried the fallback decision; the country is out of content.
@@ -267,7 +278,9 @@ func _select_next_decision() -> void:
 		return
 	var request: ContentRequest = null
 	if _content_director != null:
-		request = _content_director.build_request(_run_state, _decision_engine, _narrative_event_queue)
+		request = _content_director.build_request(
+			_run_state, _decision_engine, _narrative_event_queue, _crisis_manager,
+		)
 	_current_decision = _decision_engine.select_next_decision(_run_state, request)
 	if _current_decision.is_empty():
 		# Content exhaustion triggers an ending in Milestone 7.
@@ -318,12 +331,85 @@ func debug_advance_day() -> bool:
 		_narrative_event_queue.update_for_day(_run_state.day, _run_state)
 	if _content_director != null:
 		_content_director.update_stage(_run_state)
+	if _content_director != null:
+		_content_director.update_stage(_run_state)
+	if _crisis_manager != null and _crisis_manager.update_for_day(_run_state.day, _run_state):
+		_apply_crisis_timeout()
+		var country: Dictionary = _content.get_country(_run_state.country_id)
+		var timeout_ending := _ending_resolver.resolve_ending(_run_state, _last_result, country, _content)
+		if not timeout_ending.is_empty():
+			_end_run(timeout_ending)
+			return true
 	_select_next_decision()
 	if _current_decision.is_empty():
 		push_warning("[DEBUG] No decision available after advancing to day %d." % _run_state.day)
 		return true
 	EventBus.decision_presented.emit(_current_decision)
 	return true
+
+
+func debug_force_crisis(crisis_id: String) -> bool:
+	if _crisis_manager == null:
+		return false
+	if not _crisis_manager.force_start_crisis(crisis_id, _run_state):
+		return false
+	var crisis: Dictionary = _content.get_crisis(crisis_id)
+	var entry_id: String = str(crisis.get("entry_decision_id", ""))
+	if entry_id.is_empty():
+		return false
+	if not force_decision(entry_id):
+		return false
+	if _run_state.run_phase == RunState.RunPhase.AWAITING_DECISION:
+		_select_next_decision()
+		if not _current_decision.is_empty():
+			EventBus.decision_presented.emit(_current_decision)
+	return true
+
+
+func debug_advance_crisis_duration(days: int = 1) -> bool:
+	if _crisis_manager == null or not _crisis_manager.has_active_crisis(_run_state):
+		return false
+	var runtime: Dictionary = _run_state.active_crisis.duplicate(true)
+	runtime["started_day"] = int(runtime.get("started_day", _run_state.day)) - maxi(1, days)
+	_run_state.active_crisis = runtime
+	return true
+
+
+func debug_resolve_crisis(crisis_id: String, resolution_id: String = "debug") -> bool:
+	if _crisis_manager == null:
+		return false
+	return _crisis_manager.resolve_crisis(crisis_id, resolution_id, _run_state)
+
+
+func debug_fail_crisis(crisis_id: String, reason: String = "debug") -> bool:
+	if _crisis_manager == null:
+		return false
+	return _crisis_manager.fail_crisis(crisis_id, _run_state, reason)
+
+
+func debug_get_crisis_state() -> Dictionary:
+	if _run_state == null:
+		return {}
+	return _run_state.active_crisis.duplicate(true)
+
+
+func get_crisis_days_remaining() -> int:
+	if _crisis_manager == null:
+		return 0
+	return _crisis_manager.get_days_remaining(_run_state)
+
+
+func _apply_crisis_timeout() -> void:
+	var timeout: Dictionary = _crisis_manager.get_timeout_result(_run_state)
+	var effects: Dictionary = timeout.get("effects", {})
+	for resource_id in effects:
+		_run_state.change_resource(str(resource_id), int(effects[resource_id]))
+	if _last_result == null:
+		_last_result = DecisionResult.new()
+	var ending_id: String = str(timeout.get("trigger_ending_id", ""))
+	if not ending_id.is_empty():
+		_last_result.triggered_ending_id = ending_id
+	EventBus.resources_changed.emit(_run_state.get_resources())
 
 
 ## 0 disables the fixed seed. Applies from the next run start.

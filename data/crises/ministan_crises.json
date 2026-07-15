@@ -1,0 +1,35 @@
+[
+  {
+    "id": "national_power_outage",
+    "display_name": "National Power Outage",
+    "country_id": "ministan",
+    "severity": 2,
+    "maximum_duration_days": 3,
+    "resolution_required": true,
+    "priority": 90,
+    "start_requirements": {
+      "minimum_day": 8,
+      "allowed_stages": ["escalation", "instability"]
+    },
+    "entry_decision_id": "national_power_outage",
+    "resolution_paths": [
+      { "resolution_id": "hospital", "option_id": "hospital" },
+      { "resolution_id": "television", "option_id": "television" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "palace_neglect",
+        "option_id": "palace",
+        "trigger_ending_id": "nation_in_darkness"
+      }
+    ],
+    "timeout": {
+      "trigger_ending_id": "nation_in_darkness",
+      "effects": {
+        "happiness": -8,
+        "order": -6
+      }
+    },
+    "tags": ["infrastructure", "crisis"]
+  }
+]
