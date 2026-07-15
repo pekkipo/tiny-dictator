@@ -1,0 +1,262 @@
+[
+  {
+    "id": "postal_pigeon_reform",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Clerk Zero proposes replacing the postal service with trained pigeons. Forms will still be required.",
+    "one_time": false,
+    "base_weight": 6,
+    "minimum_day": 1,
+    "maximum_day": 35,
+    "options": [
+      {
+        "id": "approve",
+        "label": "Approve pigeon post",
+        "effects": { "order": 3, "happiness": 2, "treasury": -3 },
+        "trait_changes": { "bureaucratic": 1, "chaotic": 1 },
+        "result_text": "Mail arrives faster and in feathers. Several letters are eaten."
+      },
+      {
+        "id": "reject",
+        "label": "Keep human post",
+        "effects": { "happiness": 1, "treasury": -1, "order": -1 },
+        "result_text": "Post workers celebrate. Pigeons remain unemployed."
+      }
+    ],
+    "tags": ["bureaucracy", "generic"]
+  },
+  {
+    "id": "national_anthem_remix",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Luna News wants a dance remix of the national anthem for younger citizens.",
+    "one_time": false,
+    "base_weight": 6,
+    "minimum_day": 3,
+    "maximum_day": 35,
+    "options": [
+      {
+        "id": "remix",
+        "label": "Release the remix",
+        "effects": { "happiness": 5, "order": -3, "elite_loyalty": -2 },
+        "trait_changes": { "populist": 1, "propagandist": 1 },
+        "result_text": "Youth dance at ceremonies. Elders demand volume controls."
+      },
+      {
+        "id": "traditional",
+        "label": "Keep the classic anthem",
+        "effects": { "order": 3, "happiness": -2, "elite_loyalty": 2 },
+        "result_text": "Tradition survives. Luna News adds subtle applause anyway."
+      }
+    ],
+    "tags": ["media", "generic"]
+  },
+  {
+    "id": "privatize_rainwater",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Sir Profit suggests selling exclusive rights to rainwater. He calls it sky alignment.",
+    "one_time": false,
+    "base_weight": 6,
+    "minimum_day": 4,
+    "maximum_day": 35,
+    "options": [
+      {
+        "id": "sell",
+        "label": "Sell the rain",
+        "effects": { "treasury": 8, "happiness": -7, "elite_loyalty": 4 },
+        "trait_changes": { "capitalist": 2 },
+        "result_text": "Umbrellas require a subscription. Citizens invent bucket protests."
+      },
+      {
+        "id": "refuse",
+        "label": "Rain stays public",
+        "effects": { "happiness": 4, "treasury": -2, "elite_loyalty": -3 },
+        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
+        "result_text": "Citizens cheer free drizzle. Sir Profit drafts a regret memo."
+      }
+    ],
+    "tags": ["economy", "generic"]
+  },
+  {
+    "id": "olga_bridge_repair",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "The main bridge is held together by optimism and duct tape. Repairs will cost real money.",
+    "one_time": false,
+    "base_weight": 7,
+    "minimum_day": 2,
+    "maximum_day": 35,
+    "options": [
+      {
+        "id": "repair",
+        "label": "Fund repairs",
+        "effects": { "treasury": -7, "happiness": 5, "order": 4 },
+        "trait_changes": { "populist": 1 },
+        "result_text": "The bridge creaks less. Auntie Olga says it is still suspicious."
+      },
+      {
+        "id": "delay",
+        "label": "Delay again",
+        "effects": { "treasury": 2, "happiness": -5, "order": -4 },
+        "result_text": "Citizens take the long route. Optimism declines."
+      }
+    ],
+    "tags": ["public", "generic", "infrastructure"]
+  },
+  {
+    "id": "daily_cabinet_briefing",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Today's cabinet briefing includes nine urgent items and one stapler emergency.",
+    "one_time": false,
+    "base_weight": 5,
+    "minimum_day": 5,
+    "maximum_day": 40,
+    "options": [
+      {
+        "id": "attend",
+        "label": "Attend in person",
+        "effects": { "order": 2, "elite_loyalty": 2, "happiness": -1 },
+        "result_text": "You learn about problems that already became traditions."
+      },
+      {
+        "id": "delegate",
+        "label": "Send a delegate",
+        "effects": { "elite_loyalty": -3, "treasury": 1, "happiness": 1 },
+        "result_text": "The delegate enjoys coffee and blame redistribution."
+      }
+    ],
+    "tags": ["bureaucracy", "generic", "repeatable"]
+  },
+  {
+    "id": "neighborhood_noise_complaint",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Residents complain about nighttime accordion practice near the ministry.",
+    "one_time": false,
+    "base_weight": 5,
+    "minimum_day": 4,
+    "maximum_day": 40,
+    "options": [
+      {
+        "id": "ban",
+        "label": "Ban accordions after 8pm",
+        "effects": { "order": 3, "happiness": -3 },
+        "result_text": "Silence returns. Folk musicians file a rhythmic protest."
+      },
+      {
+        "id": "sponsor",
+        "label": "Sponsor a concert",
+        "effects": { "happiness": 4, "treasury": -4, "order": -1 },
+        "result_text": "The concert is loud but officially patriotic."
+      }
+    ],
+    "tags": ["public", "generic", "repeatable"]
+  },
+  {
+    "id": "treasury_tip_jar",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Minister Penny installed a tip jar in the treasury. She says it is a pilot program.",
+    "one_time": false,
+    "base_weight": 5,
+    "minimum_day": 3,
+    "maximum_day": 40,
+    "options": [
+      {
+        "id": "approve",
+        "label": "Approve the tip jar",
+        "effects": { "treasury": 3, "happiness": -2, "elite_loyalty": -1 },
+        "result_text": "Citizens tip reluctantly. Penny calls it micro-fiscal engagement."
+      },
+      {
+        "id": "remove",
+        "label": "Remove the jar",
+        "effects": { "happiness": 2, "elite_loyalty": 1, "treasury": -1 },
+        "result_text": "Dignity returns to public finance, briefly."
+      }
+    ],
+    "tags": ["economy", "generic", "repeatable"]
+  },
+  {
+    "id": "science_grant_request",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "A local inventor requests funding to teach clouds better shapes.",
+    "one_time": false,
+    "base_weight": 5,
+    "minimum_day": 6,
+    "maximum_day": 40,
+    "options": [
+      {
+        "id": "fund",
+        "label": "Fund the clouds",
+        "effects": { "treasury": -3, "happiness": 3, "order": -1 },
+        "trait_changes": { "scientific": 1, "chaotic": 1 },
+        "result_text": "Clouds remain uncooperative but optimistic."
+      },
+      {
+        "id": "deny",
+        "label": "Deny politely",
+        "effects": { "order": 1, "happiness": -1 },
+        "result_text": "The inventor sketches revenge-shaped cumulus."
+      }
+    ],
+    "tags": ["science", "generic", "repeatable"]
+  },
+  {
+    "id": "border_parade_dispute",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "General Boom wants to answer a neighboring parade with a louder parade.",
+    "one_time": false,
+    "base_weight": 5,
+    "minimum_day": 7,
+    "maximum_day": 40,
+    "options": [
+      {
+        "id": "parade",
+        "label": "Approve the parade",
+        "effects": { "treasury": -5, "order": 3, "elite_loyalty": 4, "happiness": 1 },
+        "advisor_affinity": { "general_boom": 1 },
+        "result_text": "The parade echoes across the border. Tinyland requests volume negotiations."
+      },
+      {
+        "id": "decline",
+        "label": "Decline politely",
+        "effects": { "happiness": 2, "elite_loyalty": -4, "treasury": 1 },
+        "advisor_affinity": { "general_boom": -1 },
+        "result_text": "General Boom practices salutes in a mirror."
+      }
+    ],
+    "tags": ["military", "generic", "repeatable"]
+  }
+]

@@ -31,5 +31,173 @@
       }
     },
     "tags": ["infrastructure", "crisis"]
+  },
+  {
+    "id": "budget_meltdown",
+    "display_name": "Budget Meltdown",
+    "country_id": "ministan",
+    "severity": 2,
+    "maximum_duration_days": 2,
+    "resolution_required": true,
+    "priority": 85,
+    "start_requirements": {
+      "minimum_day": 3,
+      "allowed_stages": ["establishment", "escalation"],
+      "maximum_resources": { "treasury": 45 }
+    },
+    "entry_decision_id": "budget_meltdown_crisis",
+    "resolution_paths": [
+      { "resolution_id": "raise_taxes", "option_id": "raise_taxes" },
+      { "resolution_id": "sell_furniture", "option_id": "sell_furniture" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "hyperinflation",
+        "option_id": "print_money",
+        "trigger_ending_id": "bankrupt_leader"
+      }
+    ],
+    "timeout": {
+      "trigger_ending_id": "bankrupt_leader",
+      "effects": {
+        "treasury": -10,
+        "happiness": -5
+      }
+    },
+    "tags": ["economy", "crisis"]
+  },
+  {
+    "id": "cheese_shortage_crisis",
+    "display_name": "National Cheese Shortage",
+    "country_id": "ministan",
+    "severity": 1,
+    "maximum_duration_days": 3,
+    "resolution_required": true,
+    "priority": 75,
+    "start_requirements": {
+      "minimum_day": 10,
+      "allowed_stages": ["escalation", "instability"],
+      "any_flags": ["pizza_policy_active"]
+    },
+    "entry_decision_id": "cheese_shortage_crisis",
+    "resolution_paths": [
+      { "resolution_id": "import_cheese", "option_id": "import_cheese" },
+      { "resolution_id": "cheese_rationing", "option_id": "cheese_rationing" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "cancel_pizza",
+        "option_id": "cancel_pizza",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "happiness": -10,
+        "treasury": -5
+      }
+    },
+    "tags": ["food", "crisis", "pizza"]
+  },
+  {
+    "id": "mass_protest",
+    "display_name": "Mass Protest",
+    "country_id": "ministan",
+    "severity": 2,
+    "maximum_duration_days": 3,
+    "resolution_required": true,
+    "priority": 88,
+    "start_requirements": {
+      "minimum_day": 12,
+      "allowed_stages": ["escalation", "instability", "endgame"],
+      "maximum_resources": { "happiness": 45 }
+    },
+    "entry_decision_id": "mass_protest",
+    "resolution_paths": [
+      { "resolution_id": "negotiate", "option_id": "negotiate" },
+      { "resolution_id": "concessions", "option_id": "concessions" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "crackdown",
+        "option_id": "crackdown",
+        "trigger_ending_id": "revolution"
+      }
+    ],
+    "timeout": {
+      "trigger_ending_id": "chaos_country",
+      "effects": {
+        "order": -10,
+        "happiness": -8
+      }
+    },
+    "tags": ["protest", "crisis", "public"]
+  },
+  {
+    "id": "bank_run",
+    "display_name": "Bank Run",
+    "country_id": "ministan",
+    "severity": 3,
+    "maximum_duration_days": 2,
+    "resolution_required": true,
+    "priority": 92,
+    "start_requirements": {
+      "minimum_day": 8,
+      "allowed_stages": ["escalation", "instability", "endgame"],
+      "maximum_resources": { "treasury": 30 }
+    },
+    "entry_decision_id": "bank_run",
+    "resolution_paths": [
+      { "resolution_id": "deposit_guarantee", "option_id": "deposit_guarantee" },
+      { "resolution_id": "emergency_loan", "option_id": "emergency_loan" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "close_banks",
+        "option_id": "close_banks",
+        "trigger_ending_id": "bankrupt_leader"
+      }
+    ],
+    "timeout": {
+      "trigger_ending_id": "bankrupt_leader",
+      "effects": {
+        "treasury": -15,
+        "elite_loyalty": -10
+      }
+    },
+    "tags": ["economy", "crisis", "banking"]
+  },
+  {
+    "id": "cat_parliament_occupation",
+    "display_name": "Cat Parliament Occupation",
+    "country_id": "ministan",
+    "severity": 2,
+    "maximum_duration_days": 3,
+    "resolution_required": true,
+    "priority": 80,
+    "start_requirements": {
+      "minimum_day": 6,
+      "allowed_stages": ["establishment", "escalation", "instability"],
+      "any_flags": ["cats_enfranchised", "cats_control_parliament"]
+    },
+    "entry_decision_id": "cat_parliament_occupation",
+    "resolution_paths": [
+      { "resolution_id": "negotiate_cats", "option_id": "negotiate_cats" },
+      { "resolution_id": "fish_treaty", "option_id": "fish_treaty" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "evict_cats",
+        "option_id": "evict_cats",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "order": -8,
+        "happiness": 4
+      }
+    },
+    "tags": ["cats", "crisis", "politics"]
   }
 ]

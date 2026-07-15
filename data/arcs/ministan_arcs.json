@@ -20,6 +20,83 @@
     "tags": ["cats", "politics", "absurd"]
   },
   {
+    "id": "traffic_military",
+    "display_name": "Traffic and Military",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "minor",
+    "priority": 55,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": ["switch_off_traffic_lights"],
+    "resolution_decision_ids": [
+      "traffic_military_resolved",
+      "traffic_lights_restored"
+    ],
+    "branch_ids": ["tank_response", "restore_lights"],
+    "tags": ["traffic", "military", "infrastructure"]
+  },
+  {
+    "id": "mandatory_happiness",
+    "display_name": "Mandatory Happiness",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 58,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": ["mandatory_smiling_proposal"],
+    "resolution_decision_ids": [
+      "happiness_arc_reformed",
+      "happiness_golden_decree",
+      "happiness_arc_quiet"
+    ],
+    "branch_ids": ["propaganda_path", "reform_path", "reject_path"],
+    "tags": ["happiness", "media", "propaganda"]
+  },
+  {
+    "id": "general_boom_arc",
+    "display_name": "General Boom's Rise",
+    "country_id": "ministan",
+    "arc_type": "advisor",
+    "importance": "major",
+    "priority": 57,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "instability",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": ["military_parade"],
+    "resolution_decision_ids": [
+      "boom_loyal_protector",
+      "boom_failed_coup"
+    ],
+    "branch_ids": ["empower_boom", "restrain_boom"],
+    "tags": ["military", "general_boom", "order"]
+  },
+  {
+    "id": "doctor_maybe_arc",
+    "display_name": "Doctor Maybe's Experiments",
+    "country_id": "ministan",
+    "arc_type": "advisor",
+    "importance": "major",
+    "priority": 56,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "instability",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": ["science_gamble"],
+    "resolution_decision_ids": [
+      "maybe_golden_age",
+      "maybe_containment_protocol"
+    ],
+    "branch_ids": ["reckless_science", "cautious_oversight"],
+    "tags": ["science", "doctor_maybe", "experiments"]
+  },
+  {
     "id": "robot_government",
     "display_name": "The Robot Government Initiative",
     "country_id": "ministan",

@@ -37,13 +37,13 @@ func _check(condition: bool, message: String) -> void:
 
 func _test_legacy_normalization() -> void:
 	# Legacy card loaded from disk: normalized at load, original keys kept.
-	var legacy: Dictionary = _repo.get_decision("switch_off_traffic_lights")
+	var legacy: Dictionary = _repo.get_decision("window_tax_proposal")
 	_check(int(legacy.get("schema_version", 0)) == 1, "legacy card reports schema_version 1")
 	_check(str(legacy.get("card_type", "")) == "normal", "legacy card defaults to card_type normal")
 	var options: Array = legacy.get("options", [])
 	_check(options.size() == 2, "legacy card normalized to 2 options")
 	_check(str(options[0].get("id", "")) == "left" and str(options[1].get("id", "")) == "right", "legacy options get ids left/right")
-	_check(str(options[0].get("label", "")) == "Keep them on", "left option content preserved")
+	_check(str(options[0].get("label", "")) == "Leave windows alone", "left option content preserved")
 	_check(legacy.has("left") and legacy.has("right"), "legacy left/right keys preserved for compatibility")
 
 	# Normalization is idempotent.
@@ -149,7 +149,8 @@ func _test_game_manager_flow() -> void:
 	# Full loop on the three-option crisis via resolve_choice(option_id).
 	game_manager.start_new_run()
 	var state: RunState = game_manager.get_current_state()
-	state.day = 5  # crisis requires day >= 3
+	state.day = 5
+	state.set_resource("treasury", 40)
 	game_manager.force_decision("budget_meltdown_crisis")
 	game_manager.resolve_choice("left")
 	game_manager.continue_after_result()
@@ -188,12 +189,12 @@ func _test_decision_card_rendering() -> void:
 	_check(banner.visible and "CRISIS" in banner.text, "crisis banner shown")
 
 	# Legacy two-option card: horizontal row, no banner.
-	card.show_decision(_repo.get_decision("switch_off_traffic_lights"), advisor)
+	card.show_decision(_repo.get_decision("window_tax_proposal"), advisor)
 	buttons = card.get_option_buttons()
 	_check(buttons.size() == 2, "legacy card renders 2 buttons")
 	_check(not container.vertical, "2 options sit side by side")
 	_check(not banner.visible, "normal card shows no banner")
-	_check("Keep them on" in buttons[0].text, "legacy option label rendered")
+	_check("Leave windows alone" in buttons[0].text, "legacy option label rendered")
 
 	# Button press emits the option id.
 	card.show_decision(_repo.get_decision("free_pizza_friday"), advisor)

@@ -11,6 +11,15 @@
     "base_weight": 14,
     "minimum_day": 2,
     "maximum_day": 20,
+    "requirements": {
+      "active_arcs": ["general_boom_arc"]
+    },
+    "narrative": {
+      "arc_id": "general_boom_arc",
+      "beat_type": "escalation",
+      "step": 2,
+      "importance": "major"
+    },
     "options": [
       {
         "id": "fund_parade",
@@ -18,6 +27,11 @@
         "effects": { "treasury": -4, "order": 3, "happiness": -2 },
         "advisor_affinity": { "general_boom": 2, "auntie_olga": -1 },
         "trait_changes": { "authoritarian": 2, "populist": -1 },
+        "counter_changes": { "military_favor_choices": 1 },
+        "arc_actions": [
+          { "arc_id": "general_boom_arc", "action": "advance" }
+        ],
+        "force_next_decision": "boom_emergency_powers_demand",
         "result_text": "The parade was magnificent. Auntie Olga mutters about flour prices."
       },
       {
@@ -26,9 +40,14 @@
         "effects": { "treasury": -2, "happiness": 4, "order": -1 },
         "advisor_affinity": { "general_boom": -2, "auntie_olga": 2 },
         "trait_changes": { "populist": 2 },
+        "arc_actions": [
+          { "arc_id": "general_boom_arc", "action": "advance" }
+        ],
+        "force_next_decision": "boom_emergency_powers_demand",
         "result_text": "Citizens cheer. General Boom salutes a cardboard tank in protest."
       }
-    ]
+    ],
+    "tags": ["military", "arc_escalation"]
   },
   {
     "id": "cat_treaty_offer",
@@ -101,16 +120,38 @@
     "category": "science",
     "proposal": "Doctor Maybe wants to test whether happiness is contagious. Sample size: everyone.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 12,
     "minimum_day": 4,
     "maximum_day": 28,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation", "instability"]
+    },
     "options": [
       {
         "id": "fund_experiment",
         "label": "Fund the experiment",
         "effects": { "treasury": -4, "happiness": 3 },
+        "add_flags": ["science_experiment_funded"],
         "advisor_affinity": { "doctor_maybe": 2 },
         "trait_changes": { "scientific": 3, "chaotic": 1 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "reckless_science" }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "maybe_moon_dust_trial",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 75,
+          "required_flags": ["science_experiment_funded"]
+        },
         "result_text": "Results inconclusive but cheerful. Doctor Maybe already plans phase two."
       },
       {
@@ -119,9 +160,15 @@
         "effects": { "order": 1, "happiness": -1 },
         "advisor_affinity": { "doctor_maybe": -1 },
         "trait_changes": { "bureaucratic": 1 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" }
+        ],
+        "force_next_decision": "maybe_containment_protocol",
         "result_text": "Doctor Maybe labels you Control Group A."
       }
-    ]
+    ],
+    "tags": ["science", "arc_setup"],
+    "visual_tags": ["lab_sparks"]
   },
   {
     "id": "privatize_palace_garden",

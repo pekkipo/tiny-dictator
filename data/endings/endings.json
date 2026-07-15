@@ -100,5 +100,42 @@
     "newspaper_masthead": "THE MINISTAN TIMES",
     "placeholder_icon": "🕊️",
     "conditions": {}
+  },
+  {
+    "id": "eternal_smile_state",
+    "type": "special",
+    "priority": 98,
+    "title": "The Eternal Smile Republic",
+    "description": "Frowning was classified as treason. Historians agree everyone looked very committed.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "😁",
+    "conditions": {
+      "all_flags": ["eternal_smile_active"],
+      "minimum_counters": { "propaganda_choices": 2 }
+    }
+  },
+  {
+    "id": "general_boom_coup",
+    "type": "special",
+    "priority": 97,
+    "title": "The Parade Republic",
+    "description": "General Boom seized power during a marching rehearsal. The coup lasted four minutes but was very synchronized.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🪖",
+    "conditions": {
+      "all_flags": ["boom_emergency_powers"]
+    }
+  },
+  {
+    "id": "accidental_moon_replacement",
+    "type": "special",
+    "priority": 96,
+    "title": "The Brighter Moon Decree",
+    "description": "Doctor Maybe replaced the moon with a more efficient model. Tides filed a complaint.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🌙",
+    "conditions": {
+      "all_flags": ["moon_replacement_pending"]
+    }
   }
 ]

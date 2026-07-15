@@ -17,6 +17,7 @@ func _initialize() -> void:
 	_test_deterministic_fixed_seed(game_manager)
 	_test_report_generation(game_manager)
 	_test_simulator_1000_runs(game_manager)
+	_test_simulator_2a9_content_pack(game_manager)
 	_test_fixture_unreachable(game_manager)
 	_test_fixture_forced_cycle(game_manager)
 	_test_fixture_arc_without_resolution(game_manager)
@@ -115,6 +116,92 @@ func _test_simulator_1000_runs(game_manager: Node) -> void:
 	_check(int(sim.get("run_count", 0)) == 1000, "1000 runs completed")
 	var errors: Array = sim.get("errors", [])
 	_check(errors.is_empty(), "1000 runs completed without blocking errors (%d errors)" % errors.size())
+
+
+func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
+	var config := SimulationConfig.new()
+	config.run_count = 1000
+	config.base_seed = 20260715
+	config.include_static_diagnostics = true
+	config.export_report = false
+
+	var simulator := RunSimulator.new(game_manager)
+	var report: SimulationReport = simulator.run_batch(config)
+	var sim: Dictionary = report.simulation
+	var diagnostics: Dictionary = report.static_diagnostics
+
+	_check(int(sim.get("content_exhaustion_count", -1)) == 0,
+		"2A-9: zero content exhaustion runs (got %d)" % int(sim.get("content_exhaustion_count", -1)))
+
+	var required_arcs: Array[String] = [
+		"cat_politics", "traffic_military", "mandatory_happiness",
+		"general_boom_arc", "doctor_maybe_arc",
+	]
+	var arc_starts: Dictionary = sim.get("arc_start_rates", {})
+	var arc_completions: Dictionary = sim.get("arc_completion_rates", {})
+	for arc_id in required_arcs:
+		_check(float(arc_starts.get(arc_id, 0.0)) > 0.0,
+			"2A-9: arc '%s' started in simulation" % arc_id)
+		_check(float(arc_completions.get(arc_id, 0.0)) > 0.0,
+			"2A-9: arc '%s' completed at least once" % arc_id)
+
+	var crisis_cards: Array[String] = [
+		"national_power_outage", "cheese_shortage_crisis", "mass_protest",
+		"bank_run", "cat_parliament_occupation",
+	]
+	var decision_counts: Dictionary = sim.get("decision_selection_counts", {})
+	for crisis_id in crisis_cards:
+		_check(int(decision_counts.get(crisis_id, 0)) > 0,
+			"2A-9: crisis card '%s' appeared in simulation" % crisis_id)
+
+	var special_endings: Array[String] = [
+		"cat_republic", "nation_in_darkness", "eternal_smile_state",
+		"general_boom_coup", "accidental_moon_replacement",
+	]
+	var ending_dist: Dictionary = sim.get("ending_distribution", {})
+	var special_hit := false
+	for ending_id in special_endings:
+		if int(ending_dist.get(ending_id, 0)) > 0:
+			special_hit = true
+	_check(special_hit, "2A-9: at least one special ending occurred in simulation")
+
+	var never_selected: Array = sim.get("decisions_never_selected", [])
+	var allowed_never: Array[String] = []
+	var content: ContentRepository = game_manager.get_content()
+	for decision in content.get_all_decisions_for_country("ministan"):
+		var id: String = str(decision.get("id", ""))
+		if id.is_empty():
+			continue
+		if bool(decision.get("queue_only", false)):
+			allowed_never.append(id)
+		if str(decision.get("card_type", "")) == "resolution":
+			var requirements: Dictionary = decision.get("requirements", {})
+			if requirements.has("arc_branches"):
+				allowed_never.append(id)
+	var unexpected_never: Array[String] = []
+	for id in never_selected:
+		if id not in allowed_never:
+			unexpected_never.append(str(id))
+	_check(unexpected_never.is_empty(),
+		"2A-9: no unreachable non-debug decisions (unexpected never selected: %s)" % str(unexpected_never))
+
+	var fallback_usage: int = int(sim.get("fallback_card_usage", 0))
+	var total_picks: int = 0
+	for count in decision_counts.values():
+		total_picks += int(count)
+	var fallback_rate: float = float(fallback_usage) / float(maxi(1, total_picks))
+	_check(fallback_rate < 0.05,
+		"2A-9: fallback usage below 5%% (%.2f%%)" % (fallback_rate * 100.0))
+
+	var story_patterns: int = 0
+	for ending_id in ending_dist:
+		if float(ending_dist[ending_id]) / 1000.0 >= 0.01:
+			story_patterns += 1
+	_check(story_patterns >= 5,
+		"2A-9: at least five distinct ending patterns >=1%% (got %d)" % story_patterns)
+
+	var validator_errors: Array = diagnostics.get("findings", {}).get("validator_errors", [])
+	_check(validator_errors.is_empty(), "2A-9: static diagnostics has zero validator errors")
 
 
 func _test_fixture_unreachable(_game_manager: Node) -> void:

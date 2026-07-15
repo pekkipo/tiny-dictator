@@ -1,0 +1,177 @@
+[
+  {
+    "id": "traffic_tank_solution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "follow_up",
+    "proposal": "Traffic is chaos since the lights went dark. I can place tanks at every intersection. Tanks are very visible.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military",
+      "beat_type": "escalation",
+      "step": 2,
+      "branch_id": "tank_response",
+      "importance": "minor"
+    },
+    "requirements": {
+      "active_arcs": ["traffic_military"],
+      "arc_branches": { "traffic_military": "tank_response" },
+      "all_flags": ["traffic_lights_off"],
+      "blocked_flags": ["military_controls_traffic"]
+    },
+    "options": [
+      {
+        "id": "refuse",
+        "label": "Absolutely not",
+        "effects": { "order": -8, "happiness": 2 },
+        "arc_actions": [
+          { "arc_id": "traffic_military", "action": "branch", "branch_id": "restore_lights" }
+        ],
+        "force_next_decision": "traffic_complaint",
+        "result_text": "The tanks stay home. The cars continue negotiating right of way."
+      },
+      {
+        "id": "deploy",
+        "label": "Deploy the tanks",
+        "effects": { "treasury": -12, "order": 14, "happiness": -8, "elite_loyalty": 5 },
+        "add_laws": ["tank_traffic_control"],
+        "add_flags": ["military_controls_traffic"],
+        "counter_changes": { "military_favor_choices": 1 },
+        "arc_actions": [
+          { "arc_id": "traffic_military", "action": "advance" }
+        ],
+        "force_next_decision": "traffic_military_resolved",
+        "result_text": "Traffic becomes extremely orderly and slightly terrified."
+      }
+    ],
+    "tags": ["traffic", "follow_up", "arc_escalation"],
+    "visual_tags": ["traffic_tanks"]
+  },
+  {
+    "id": "traffic_complaint",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "follow_up",
+    "proposal": "Citizens report that crossing the street now requires courage, luck, and a written will. Something must be done.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military",
+      "beat_type": "escalation",
+      "step": 2,
+      "branch_id": "restore_lights",
+      "importance": "minor"
+    },
+    "requirements": {
+      "active_arcs": ["traffic_military"],
+      "all_flags": ["traffic_lights_off"],
+      "blocked_flags": ["military_controls_traffic", "traffic_lights_restored_flag"]
+    },
+    "options": [
+      {
+        "id": "adapt",
+        "label": "They'll adapt",
+        "effects": { "happiness": -6, "order": -4 },
+        "arc_actions": [
+          { "arc_id": "traffic_military", "action": "advance" }
+        ],
+        "force_next_decision": "traffic_military_resolved",
+        "result_text": "Citizens develop impressive sprinting skills and lasting resentment."
+      },
+      {
+        "id": "restore",
+        "label": "Turn lights back on",
+        "effects": { "treasury": -6, "happiness": 6, "order": 8 },
+        "remove_flags": ["traffic_lights_off"],
+        "add_flags": ["traffic_lights_restored_flag"],
+        "arc_actions": [
+          { "arc_id": "traffic_military", "action": "advance" }
+        ],
+        "force_next_decision": "traffic_lights_restored",
+        "result_text": "The lights return. Intersections resume being boring, which everyone appreciates."
+      }
+    ],
+    "tags": ["traffic", "follow_up", "arc_escalation"]
+  },
+  {
+    "id": "traffic_military_resolved",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Traffic policy has become a military operation. General Boom requests a commemorative tank stamp.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military",
+      "beat_type": "resolution",
+      "step": 3,
+      "resolves_arc": true,
+      "importance": "minor"
+    },
+    "requirements": {
+      "active_arcs": ["traffic_military"]
+    },
+    "options": [
+      {
+        "id": "accept_chaos",
+        "label": "Declare traffic victory",
+        "effects": { "order": 4, "happiness": -3, "elite_loyalty": 3 },
+        "result_text": "The nation learns to fear intersections. General Boom calls it discipline."
+      },
+      {
+        "id": "review",
+        "label": "Review the policy",
+        "effects": { "happiness": 2, "order": -2, "treasury": -4 },
+        "result_text": "A committee is formed. It immediately gets stuck at an intersection."
+      }
+    ],
+    "tags": ["traffic", "arc_resolution"],
+    "visual_tags": ["traffic_tanks"]
+  },
+  {
+    "id": "traffic_lights_restored",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Traffic lights glow again. Auntie Olga says she told you so, loudly.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military",
+      "beat_type": "resolution",
+      "step": 3,
+      "branch_id": "restore_lights",
+      "resolves_arc": true,
+      "importance": "minor"
+    },
+    "requirements": {
+      "active_arcs": ["traffic_military"],
+      "arc_branches": { "traffic_military": "restore_lights" }
+    },
+    "options": [
+      {
+        "id": "thank_olga",
+        "label": "Thank Auntie Olga publicly",
+        "effects": { "happiness": 5, "elite_loyalty": -2 },
+        "advisor_affinity": { "auntie_olga": 2 },
+        "result_text": "Citizens cheer. Ministers wonder why Olga is not in charge."
+      },
+      {
+        "id": "quiet",
+        "label": "Say nothing",
+        "effects": { "order": 2, "happiness": 1 },
+        "result_text": "Traffic works. Credit goes to nobody, which is how bureaucracy prefers it."
+      }
+    ],
+    "tags": ["traffic", "arc_resolution"]
+  }
+]

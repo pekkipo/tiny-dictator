@@ -1,0 +1,136 @@
+[
+  {
+    "id": "boom_emergency_powers_demand",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "General Boom demands emergency parade powers. He has already printed the uniforms.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 6,
+    "maximum_day": 30,
+    "narrative": {
+      "arc_id": "general_boom_arc",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["general_boom_arc"]
+    },
+    "options": [
+      {
+        "id": "grant_powers",
+        "label": "Grant emergency powers",
+        "effects": { "order": 8, "elite_loyalty": 8, "happiness": -6, "treasury": -10 },
+        "add_laws": ["emergency_martial_law"],
+        "add_flags": ["boom_emergency_powers"],
+        "advisor_affinity": { "general_boom": 3, "auntie_olga": -2 },
+        "trait_changes": { "authoritarian": 3 },
+        "arc_actions": [
+          { "arc_id": "general_boom_arc", "action": "branch", "branch_id": "empower_boom" },
+          { "arc_id": "general_boom_arc", "action": "advance" }
+        ],
+        "force_next_decision": "boom_loyal_protector",
+        "result_text": "General Boom salutes for eleven minutes. The nation feels very ordered."
+      },
+      {
+        "id": "deny_powers",
+        "label": "Deny the powers",
+        "effects": { "happiness": 4, "elite_loyalty": -5, "order": -4 },
+        "advisor_affinity": { "general_boom": -3 },
+        "trait_changes": { "populist": 2 },
+        "arc_actions": [
+          { "arc_id": "general_boom_arc", "action": "branch", "branch_id": "restrain_boom" },
+          { "arc_id": "general_boom_arc", "action": "advance" }
+        ],
+        "force_next_decision": "boom_failed_coup",
+        "result_text": "General Boom mutters about tanks in the garage. Luna News calls it restraint."
+      }
+    ],
+    "tags": ["military", "arc_climax"],
+    "visual_tags": ["traffic_tanks"]
+  },
+  {
+    "id": "boom_loyal_protector",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "General Boom pledges eternal loyalty. He would like a larger office and a louder anthem.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "general_boom_arc",
+      "beat_type": "resolution",
+      "step": 4,
+      "branch_id": "empower_boom",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["general_boom_arc"],
+      "arc_branches": { "general_boom_arc": "empower_boom" }
+    },
+    "options": [
+      {
+        "id": "accept",
+        "label": "Accept his loyalty",
+        "effects": { "order": 6, "elite_loyalty": 6, "happiness": -3 },
+        "advisor_affinity": { "general_boom": 2 },
+        "result_text": "Parades double in frequency. General Boom calls it security."
+      },
+      {
+        "id": "limit",
+        "label": "Limit parade frequency",
+        "effects": { "happiness": 3, "elite_loyalty": -2, "order": 2 },
+        "advisor_affinity": { "general_boom": -1 },
+        "result_text": "General Boom agrees, but only on paper. The tanks still practice at dawn."
+      }
+    ],
+    "tags": ["military", "arc_resolution"]
+  },
+  {
+    "id": "boom_failed_coup",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "luna_news",
+    "category": "military",
+    "proposal": "General Boom's parade coup stalls outside a bakery. He blames insufficient confetti.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "general_boom_arc",
+      "beat_type": "resolution",
+      "step": 4,
+      "branch_id": "restrain_boom",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["general_boom_arc"],
+      "arc_branches": { "general_boom_arc": "restrain_boom" }
+    },
+    "options": [
+      {
+        "id": "forgive",
+        "label": "Forgive the general",
+        "effects": { "elite_loyalty": 2, "order": -3, "happiness": 2 },
+        "advisor_affinity": { "general_boom": 1 },
+        "result_text": "General Boom returns to polishing tanks. Luna News calls it national maturity."
+      },
+      {
+        "id": "retire",
+        "label": "Retire him to ceremonies",
+        "effects": { "order": 3, "elite_loyalty": -4, "happiness": 4 },
+        "advisor_affinity": { "general_boom": -2 },
+        "trigger_ending": "general_boom_coup",
+        "result_text": "General Boom becomes Chief Parade Consultant. He is not pleased."
+      }
+    ],
+    "tags": ["military", "arc_resolution", "ending_setup"]
+  }
+]

@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "Cats pay taxes in fur and emotional support. They demand voting rights.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 14,
     "minimum_day": 2,
     "maximum_day": 14,
     "narrative": {

@@ -179,5 +179,120 @@
       }
     ],
     "tags": ["placeholder", "politics"]
+  },
+  {
+    "id": "recovery_martial_law_pause",
+    "schema_version": 2,
+    "card_type": "recovery",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Order is collapsing. General Boom offers a temporary pause on spontaneous parades.",
+    "one_time": false,
+    "base_weight": 10,
+    "requirements": {
+      "maximum_resources": { "order": 35 }
+    },
+    "options": [
+      {
+        "id": "accept",
+        "label": "Pause the parades",
+        "effects": { "order": 14, "happiness": -3, "elite_loyalty": -2 },
+        "result_text": "Streets become calmer. Tank crews sulk professionally."
+      },
+      {
+        "id": "refuse",
+        "label": "Keep marching",
+        "effects": { "elite_loyalty": 3, "order": -4 },
+        "result_text": "Discipline remains loud. Chaos remains present."
+      }
+    ],
+    "tags": ["recovery", "order"]
+  },
+  {
+    "id": "recovery_elite_dinner",
+    "schema_version": 2,
+    "card_type": "recovery",
+    "advisor_id": "sir_profit",
+    "category": "politics",
+    "proposal": "Elite loyalty is cratering. Sir Profit suggests a lavish palace dinner with suspiciously aligned seating.",
+    "one_time": false,
+    "base_weight": 10,
+    "requirements": {
+      "maximum_resources": { "elite_loyalty": 35 }
+    },
+    "options": [
+      {
+        "id": "host",
+        "label": "Host the dinner",
+        "effects": { "elite_loyalty": 14, "treasury": -8, "happiness": -2 },
+        "result_text": "Ministers toast your wisdom. The wine is suspiciously expensive."
+      },
+      {
+        "id": "skip",
+        "label": "Skip the dinner",
+        "effects": { "happiness": 2, "elite_loyalty": -5 },
+        "result_text": "Elites dine elsewhere. Rumors gain appetizers."
+      }
+    ],
+    "tags": ["recovery", "elite"]
+  },
+  {
+    "id": "endgame_succession_debate",
+    "schema_version": 2,
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "politics",
+    "proposal": "Your term nears its end. Clerk Zero has prepared seventeen succession forms and one stapler.",
+    "one_time": true,
+    "base_weight": 10,
+    "pacing": {
+      "allowed_stages": ["endgame"]
+    },
+    "options": [
+      {
+        "id": "dynasty",
+        "label": "Announce a dynasty",
+        "effects": { "elite_loyalty": 6, "happiness": -5, "order": 4 },
+        "trait_changes": { "authoritarian": 2 },
+        "result_text": "Succession forms multiply. Democracy files an objection."
+      },
+      {
+        "id": "election",
+        "label": "Promise an election",
+        "effects": { "happiness": 6, "elite_loyalty": -6, "order": -2 },
+        "trait_changes": { "populist": 2 },
+        "result_text": "Citizens cheer. Ministers update their résumés."
+      }
+    ],
+    "tags": ["resolution", "endgame"]
+  },
+  {
+    "id": "endgame_final_audit",
+    "schema_version": 2,
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "The final treasury audit arrives. Minister Penny smiles the way accountants smile before bad news.",
+    "one_time": true,
+    "base_weight": 10,
+    "pacing": {
+      "allowed_stages": ["endgame"]
+    },
+    "options": [
+      {
+        "id": "publish",
+        "label": "Publish the audit",
+        "effects": { "happiness": 3, "elite_loyalty": -4, "order": 2 },
+        "result_text": "Transparency shocks everyone. Several numbers apologize."
+      },
+      {
+        "id": "seal",
+        "label": "Seal the audit",
+        "effects": { "elite_loyalty": 5, "happiness": -4, "order": 3 },
+        "trait_changes": { "bureaucratic": 1 },
+        "result_text": "The audit enters a locked drawer. Rumors grow interest."
+      }
+    ],
+    "tags": ["resolution", "endgame", "economy"]
   }
 ]

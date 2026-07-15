@@ -218,11 +218,10 @@ func _graph_neighbors(
 				var pool_id: String = str(follow_up.get("pool_id", ""))
 				if not pool_id.is_empty() and content.has_follow_up_pool(pool_id):
 					var pool: Dictionary = content.get_follow_up_pool(pool_id)
-					for entry in pool.get("entries", []):
-						if entry is Dictionary:
-							var pool_decision_id: String = str(entry.get("decision_id", ""))
-							if not pool_decision_id.is_empty():
-								neighbors.append(pool_decision_id)
+					for pool_decision_id in pool.get("decision_ids", []):
+						var id: String = str(pool_decision_id)
+						if not id.is_empty():
+							neighbors.append(id)
 	return neighbors
 
 

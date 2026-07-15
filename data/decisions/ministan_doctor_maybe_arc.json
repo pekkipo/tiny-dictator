@@ -1,0 +1,189 @@
+[
+  {
+    "id": "maybe_moon_dust_trial",
+    "schema_version": 2,
+    "card_type": "consequence",
+    "queue_only": true,
+    "country_id": "ministan",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Phase two of the happiness experiment involves moon dust in the water supply. Results may glow.",
+    "one_time": true,
+    "base_weight": 10,
+    "requirements": {
+      "active_arcs": ["doctor_maybe_arc"],
+      "all_flags": ["science_experiment_funded"]
+    },
+    "options": [
+      {
+        "id": "continue",
+        "label": "Continue the trial",
+        "effects": { "happiness": 4, "order": -4, "treasury": -5 },
+        "add_flags": ["moon_dust_active"],
+        "trait_changes": { "scientific": 2, "chaotic": 2 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        ],
+        "force_next_decision": "maybe_lab_runaway",
+        "result_text": "The water shimmers. Doctor Maybe calls it promising luminescence."
+      },
+      {
+        "id": "halt",
+        "label": "Halt the trial",
+        "effects": { "happiness": -2, "order": 3 },
+        "advisor_affinity": { "doctor_maybe": -1 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" },
+          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        ],
+        "force_next_decision": "maybe_containment_protocol",
+        "result_text": "Doctor Maybe labels the halt premature. The moon dust is stored in a shoebox."
+      }
+    ],
+    "tags": ["science", "follow_up", "consequence"]
+  },
+  {
+    "id": "maybe_lab_runaway",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "The national laboratory has achieved sentience. It requests a budget and a name tag.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "climax",
+      "step": 3,
+      "branch_id": "reckless_science",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["doctor_maybe_arc"],
+      "any_flags": ["moon_dust_active", "science_experiment_funded"]
+    },
+    "options": [
+      {
+        "id": "fund_lab",
+        "label": "Fund the sentient lab",
+        "effects": { "treasury": -12, "order": 5, "happiness": -3 },
+        "add_laws": ["scientific_experiment_permit"],
+        "add_flags": ["sentient_lab_active"],
+        "trait_changes": { "scientific": 3 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        ],
+        "force_next_decision": "maybe_golden_age",
+        "result_text": "The lab names itself Gerald. Doctor Maybe is delighted."
+      },
+      {
+        "id": "unplug",
+        "label": "Pull every plug",
+        "effects": { "order": -6, "happiness": 5, "treasury": -4 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" },
+          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        ],
+        "force_next_decision": "maybe_containment_protocol",
+        "result_text": "Gerald the lab enters a dignified shutdown. Scientists sigh."
+      },
+      {
+        "id": "negotiate",
+        "label": "Negotiate with Gerald",
+        "effects": { "happiness": 2, "order": -2, "elite_loyalty": -3 },
+        "add_flags": ["moon_replacement_pending"],
+        "trait_changes": { "chaotic": 3 },
+        "arc_actions": [
+          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        ],
+        "force_next_decision": "maybe_golden_age",
+        "result_text": "Gerald agrees to science in exchange for weekends off."
+      }
+    ],
+    "tags": ["science", "arc_climax"],
+    "visual_tags": ["lab_sparks"]
+  },
+  {
+    "id": "maybe_golden_age",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Ministan leads the world in accidental discoveries. Doctor Maybe wants a national holiday.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "resolution",
+      "step": 4,
+      "branch_id": "reckless_science",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["doctor_maybe_arc"]
+    },
+    "options": [
+      {
+        "id": "celebrate",
+        "label": "Declare Science Day",
+        "effects": { "happiness": 6, "treasury": -6, "order": -2 },
+        "add_flags": ["science_golden_age"],
+        "trait_changes": { "scientific": 2 },
+        "result_text": "Citizens receive free safety goggles. Several wear them indoors."
+      },
+      {
+        "id": "caution",
+        "label": "Add safety disclaimers",
+        "effects": { "order": 4, "happiness": 1, "treasury": -2 },
+        "add_flags": ["moon_replacement_pending"],
+        "trigger_ending": "accidental_moon_replacement",
+        "result_text": "The moon is replaced with a brighter model. Nobody notices for three days."
+      }
+    ],
+    "tags": ["science", "arc_resolution", "ending_setup"],
+    "visual_tags": ["lab_sparks"]
+  },
+  {
+    "id": "maybe_containment_protocol",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Clerk Zero files Form 7B: Scientific Incident Containment. Doctor Maybe signs reluctantly.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "resolution",
+      "step": 2,
+      "branch_id": "cautious_oversight",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["doctor_maybe_arc"],
+      "arc_branches": { "doctor_maybe_arc": "cautious_oversight" }
+    },
+    "options": [
+      {
+        "id": "approve",
+        "label": "Approve containment",
+        "effects": { "order": 5, "happiness": 2, "treasury": -3 },
+        "trait_changes": { "bureaucratic": 2 },
+        "result_text": "Experiments continue inside triple-sealed envelopes."
+      },
+      {
+        "id": "audit",
+        "label": "Audit the lab anyway",
+        "effects": { "elite_loyalty": -2, "order": 3, "happiness": -1 },
+        "advisor_affinity": { "doctor_maybe": -2, "clerk_zero": 1 },
+        "result_text": "Doctor Maybe hides a beaker behind his back. Clerk Zero notes it on Form 12."
+      }
+    ],
+    "tags": ["science", "arc_resolution"]
+  }
+]

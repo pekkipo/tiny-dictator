@@ -61,5 +61,50 @@
     "placeholder_icon": "📅",
     "visual_tags": ["tired_citizens"],
     "category": "absurd_law"
+  },
+  {
+    "id": "fake_smile_standard",
+    "display_name": "Verified Smile Standard",
+    "short_name": "Smile Standard",
+    "description": "All public smiles must meet government curvature specifications.",
+    "placeholder_icon": "📏",
+    "visual_tags": ["smiling_citizens"],
+    "category": "absurd_law"
+  },
+  {
+    "id": "emergency_martial_law",
+    "display_name": "Emergency Martial Law",
+    "short_name": "Martial Law",
+    "description": "Parades are now legally classified as emergency infrastructure.",
+    "placeholder_icon": "🪖",
+    "visual_tags": ["traffic_tanks"],
+    "category": "military"
+  },
+  {
+    "id": "national_happiness_index",
+    "display_name": "National Happiness Index",
+    "short_name": "Happiness Index",
+    "description": "Happiness is measured, broadcast, and suspiciously round.",
+    "placeholder_icon": "📊",
+    "visual_tags": ["smiling_citizens"],
+    "category": "media"
+  },
+  {
+    "id": "scientific_experiment_permit",
+    "display_name": "Scientific Experiment Permit",
+    "short_name": "Science Permit",
+    "description": "All experiments are legal if someone signed Form 9C first.",
+    "placeholder_icon": "🧪",
+    "visual_tags": ["lab_sparks"],
+    "category": "science"
+  },
+  {
+    "id": "fish_emergency_reserve",
+    "display_name": "Emergency Fish Reserve",
+    "short_name": "Fish Reserve",
+    "description": "Strategic fish stockpiles for diplomatic and feline emergencies.",
+    "placeholder_icon": "🐟",
+    "visual_tags": ["cats_in_square"],
+    "category": "absurd_law"
   }
 ]
