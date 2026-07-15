@@ -39,6 +39,7 @@ var current_stage_id: String = ""
 var active_arcs: Dictionary = {}
 var completed_arc_ids: Array[String] = []
 var failed_arc_ids: Array[String] = []
+var narrative_event_queue: Array[Dictionary] = []
 var run_phase: RunPhase = RunPhase.NOT_STARTED
 var random_seed: int = 0
 
@@ -60,6 +61,7 @@ func reset() -> void:
 	active_arcs.clear()
 	completed_arc_ids.clear()
 	failed_arc_ids.clear()
+	narrative_event_queue.clear()
 	run_phase = RunPhase.NOT_STARTED
 	random_seed = 0
 
@@ -209,6 +211,7 @@ func to_dictionary() -> Dictionary:
 		"active_arcs": active_arcs.duplicate(true),
 		"completed_arc_ids": completed_arc_ids.duplicate(),
 		"failed_arc_ids": failed_arc_ids.duplicate(),
+		"narrative_event_queue": narrative_event_queue.duplicate(true),
 		"run_phase": RunPhase.keys()[run_phase],
 		"random_seed": random_seed,
 	}
@@ -241,6 +244,10 @@ func from_dictionary(data: Dictionary) -> void:
 	failed_arc_ids.clear()
 	for arc_id in data.get("failed_arc_ids", []):
 		failed_arc_ids.append(str(arc_id))
+	narrative_event_queue.clear()
+	for entry in data.get("narrative_event_queue", []):
+		if entry is Dictionary:
+			narrative_event_queue.append(entry.duplicate(true))
 	var phase_name: String = str(data.get("run_phase", "NOT_STARTED"))
 	var phase_index: int = RunPhase.keys().find(phase_name)
 	run_phase = phase_index as RunPhase if phase_index >= 0 else RunPhase.NOT_STARTED

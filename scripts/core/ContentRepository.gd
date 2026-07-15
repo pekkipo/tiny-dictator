@@ -11,6 +11,7 @@ const ADVISORS_PATH: String = "res://data/advisors/advisors.json"
 const LAWS_PATH: String = "res://data/laws/laws.json"
 const ENDINGS_PATH: String = "res://data/endings/endings.json"
 const VISUAL_MAP_PATH: String = "res://data/visual_states/country_visual_map.json"
+const FOLLOW_UP_POOLS_PATH: String = "res://data/follow_up_pools/follow_up_pools.json"
 
 var _countries: Dictionary = {}
 var _advisors: Dictionary = {}
@@ -18,6 +19,7 @@ var _laws: Dictionary = {}
 var _decisions: Dictionary = {}
 var _endings: Dictionary = {}
 var _arcs: Dictionary = {}
+var _follow_up_pools: Dictionary = {}
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
 var _visual_map: Dictionary = {}
@@ -32,6 +34,7 @@ var _raw_decisions: Array[Dictionary] = []
 var _raw_endings: Array[Dictionary] = []
 var _raw_arcs: Array[Dictionary] = []
 var _raw_countries: Array[Dictionary] = []
+var _raw_follow_up_pools: Array[Dictionary] = []
 
 var _load_errors: Array[String] = []
 
@@ -50,6 +53,7 @@ func load_all() -> bool:
 
 	_load_countries()
 	_load_arcs()
+	_load_follow_up_pools()
 
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
 	if parsed_map is Dictionary:
@@ -57,8 +61,9 @@ func load_all() -> bool:
 	elif parsed_map != null:
 		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
-	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs" % [
+	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d follow-up pools" % [
 		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(), _arcs.size(),
+		_follow_up_pools.size(),
 	]
 	print(summary)
 	for error in _load_errors:
@@ -141,6 +146,18 @@ func has_arc(id: String) -> bool:
 	return _arcs.has(id)
 
 
+func get_follow_up_pool(id: String) -> Dictionary:
+	return _follow_up_pools.get(id, {})
+
+
+func has_follow_up_pool(id: String) -> bool:
+	return _follow_up_pools.has(id)
+
+
+func get_raw_follow_up_pools() -> Array[Dictionary]:
+	return _raw_follow_up_pools
+
+
 ## Raw accessors used by ContentValidator (may contain duplicates).
 func get_raw_countries() -> Array[Dictionary]:
 	return _raw_countries
@@ -173,6 +190,7 @@ func _clear() -> void:
 	_decisions.clear()
 	_endings.clear()
 	_arcs.clear()
+	_follow_up_pools.clear()
 	_visual_map.clear()
 	_country_decision_ids.clear()
 	_raw_advisors = []
@@ -181,7 +199,22 @@ func _clear() -> void:
 	_raw_endings = []
 	_raw_arcs = []
 	_raw_countries = []
+	_raw_follow_up_pools = []
 	_load_errors = []
+
+
+func _load_follow_up_pools() -> void:
+	var entries := _load_entry_array(FOLLOW_UP_POOLS_PATH)
+	for pool in entries:
+		_raw_follow_up_pools.append(pool)
+		var pool_id: String = str(pool.get("id", ""))
+		if pool_id.is_empty():
+			_load_errors.append("Follow-up pool missing 'id' in %s" % FOLLOW_UP_POOLS_PATH)
+			continue
+		if _follow_up_pools.has(pool_id):
+			_load_errors.append("Duplicate follow-up pool id '%s' in %s" % [pool_id, FOLLOW_UP_POOLS_PATH])
+			continue
+		_follow_up_pools[pool_id] = pool
 
 
 func _load_arcs() -> void:

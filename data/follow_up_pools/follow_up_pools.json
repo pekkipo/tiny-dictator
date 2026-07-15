@@ -1,0 +1,10 @@
+[
+  {
+    "id": "free_pizza_consequences",
+    "decision_ids": [
+      "cheese_shortage",
+      "pizza_union_strike",
+      "pineapple_referendum"
+    ]
+  }
+]

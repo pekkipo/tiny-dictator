@@ -19,6 +19,10 @@ func _ready() -> void:
 	%SelectBranchButton.pressed.connect(_on_select_branch_pressed)
 	%CompleteArcButton.pressed.connect(_on_complete_arc_pressed)
 	%FailArcButton.pressed.connect(_on_fail_arc_pressed)
+	%AddQueueEventButton.pressed.connect(_on_add_queue_event_pressed)
+	%CancelQueueEventButton.pressed.connect(_on_cancel_queue_event_pressed)
+	%ConsumeQueueEventButton.pressed.connect(_on_consume_queue_event_pressed)
+	%ForceQueueEventButton.pressed.connect(_on_force_queue_event_pressed)
 	%AdvanceDayButton.pressed.connect(_on_advance_day_pressed)
 	%RestartButton.pressed.connect(_on_restart_pressed)
 	%PrintStateButton.pressed.connect(_on_print_state_pressed)
@@ -107,7 +111,27 @@ func _refresh() -> void:
 		"laws: %s" % (", ".join(state.active_laws) if not state.active_laws.is_empty() else "(none)"),
 		"flags: %s" % (", ".join(state.flags) if not state.flags.is_empty() else "(none)"),
 		"counters: %s" % (JSON.stringify(state.counters) if not state.counters.is_empty() else "(none)"),
+		"event queue:",
 	]
+	var queue: Array = GameManager.debug_get_queue_state()
+	if queue.is_empty():
+		lines.append("  (none)")
+	else:
+		for event in queue:
+			if event is Dictionary:
+				var target: String = str(event.get("decision_id", ""))
+				if target.is_empty():
+					target = str(event.get("pool_id", "(pool)"))
+				lines.append("  %s [%s] %s days %d-%d pri %d%s" % [
+					event.get("event_id", "?"),
+					event.get("status", "?"),
+					target,
+					int(event.get("earliest_day", 0)),
+					int(event.get("latest_day", 0)),
+					int(event.get("priority", 0)),
+					" MANDATORY" if bool(event.get("mandatory", false)) else "",
+				])
+	_populate_queue_options(queue)
 	%StateLabel.text = "\n".join(lines)
 
 
@@ -121,6 +145,27 @@ func _populate_arc_options() -> void:
 	%ArcOption.clear()
 	for arc in GameManager.get_content().get_raw_arcs():
 		%ArcOption.add_item(str(arc.get("id", "")))
+
+
+func _populate_queue_options(queue: Array) -> void:
+	var previous: String = ""
+	if %QueueEventOption.selected >= 0:
+		previous = %QueueEventOption.get_item_text(%QueueEventOption.selected)
+	%QueueEventOption.clear()
+	for event in queue:
+		if event is Dictionary:
+			%QueueEventOption.add_item(str(event.get("event_id", "")))
+	if not previous.is_empty():
+		for i in %QueueEventOption.item_count:
+			if %QueueEventOption.get_item_text(i) == previous:
+				%QueueEventOption.select(i)
+				return
+
+
+func _selected_queue_event_id() -> String:
+	if %QueueEventOption.selected < 0:
+		return ""
+	return %QueueEventOption.get_item_text(%QueueEventOption.selected)
 
 
 func _selected_arc_id() -> String:
@@ -240,6 +285,50 @@ func _on_fail_arc_pressed() -> void:
 		_show_feedback("Failed arc '%s'." % arc_id, true)
 	else:
 		_show_feedback("Cannot fail arc '%s'." % arc_id, false)
+
+
+func _on_add_queue_event_pressed() -> void:
+	var decision_id: String = %QueueDecisionEdit.text.strip_edges()
+	var min_delay: int = int(%QueueMinDelaySpin.value)
+	var max_delay: int = int(%QueueMaxDelaySpin.value)
+	var event_id: String = GameManager.debug_add_queued_event(decision_id, min_delay, max_delay)
+	if not event_id.is_empty():
+		_show_feedback("Queued event '%s' for '%s'." % [event_id, decision_id], true)
+	else:
+		_show_feedback("Cannot queue decision '%s'." % decision_id, false)
+
+
+func _on_cancel_queue_event_pressed() -> void:
+	var event_id: String = _selected_queue_event_id()
+	if event_id.is_empty():
+		_show_feedback("No queue event selected.", false)
+		return
+	if GameManager.debug_cancel_queued_event(event_id):
+		_show_feedback("Cancelled event '%s'." % event_id, true)
+	else:
+		_show_feedback("Cannot cancel event '%s'." % event_id, false)
+
+
+func _on_consume_queue_event_pressed() -> void:
+	var event_id: String = _selected_queue_event_id()
+	if event_id.is_empty():
+		_show_feedback("No queue event selected.", false)
+		return
+	if GameManager.debug_consume_queued_event(event_id):
+		_show_feedback("Consumed event '%s'." % event_id, true)
+	else:
+		_show_feedback("Cannot consume event '%s'." % event_id, false)
+
+
+func _on_force_queue_event_pressed() -> void:
+	var event_id: String = _selected_queue_event_id()
+	if event_id.is_empty():
+		_show_feedback("No queue event selected.", false)
+		return
+	if GameManager.debug_force_queued_event(event_id):
+		_show_feedback("Forced queued event '%s' as next decision." % event_id, true)
+	else:
+		_show_feedback("Cannot force queued event '%s'." % event_id, false)
 
 
 func _on_advance_day_pressed() -> void:

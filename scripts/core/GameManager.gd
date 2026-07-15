@@ -15,6 +15,7 @@ var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
 var _content_director: ContentDirector = null
 var _arc_manager: ArcManager = null
+var _narrative_event_queue: NarrativeEventQueue = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
 var _country_state_resolver: CountryStateResolver = CountryStateResolver.new()
@@ -70,6 +71,9 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_decision_engine = DecisionEngine.new(_content, _rng)
 	_content_director = ContentDirector.new(_content)
 	_arc_manager = ArcManager.new(_content)
+	_narrative_event_queue = NarrativeEventQueue.new(_content)
+	_narrative_event_queue.set_decision_engine(_decision_engine)
+	_narrative_event_queue.set_rng(_rng)
 	_decision_engine.set_arc_manager(_arc_manager)
 	_last_result = null
 
@@ -132,6 +136,10 @@ func resolve_choice(option_id: String) -> DecisionResult:
 	if not result.forced_next_decision_id.is_empty():
 		_decision_engine.set_forced_decision(result.forced_next_decision_id)
 
+	for queued_data in result.queued_follow_ups:
+		if _narrative_event_queue != null:
+			_narrative_event_queue.add_event(queued_data, _run_state)
+
 	EventBus.resources_changed.emit(_run_state.get_resources())
 	for law_id in result.added_laws:
 		EventBus.law_added.emit(law_id)
@@ -160,6 +168,8 @@ func continue_after_result() -> void:
 
 	# Day increments only when the run continues (PRD 01 §12).
 	_run_state.day += 1
+	if _narrative_event_queue != null:
+		_narrative_event_queue.update_for_day(_run_state.day, _run_state)
 	if _content_director != null:
 		_content_director.update_stage(_run_state)
 	_select_next_decision()
@@ -257,7 +267,7 @@ func _select_next_decision() -> void:
 		return
 	var request: ContentRequest = null
 	if _content_director != null:
-		request = _content_director.build_request(_run_state, _decision_engine)
+		request = _content_director.build_request(_run_state, _decision_engine, _narrative_event_queue)
 	_current_decision = _decision_engine.select_next_decision(_run_state, request)
 	if _current_decision.is_empty():
 		# Content exhaustion triggers an ending in Milestone 7.
@@ -265,6 +275,10 @@ func _select_next_decision() -> void:
 		_run_state.current_decision_id = ""
 		return
 	_run_state.current_decision_id = str(_current_decision["id"])
+	if request != null and not request.queued_event_id.is_empty() and _narrative_event_queue != null:
+		_narrative_event_queue.consume_event(
+			request.queued_event_id, _run_state, _run_state.current_decision_id,
+		)
 	var pool_size: int = _decision_engine.get_valid_decisions(_run_state).size()
 	print("[DECISION] Day %d selected '%s' (%d valid candidates)" % [
 		_run_state.day, _run_state.current_decision_id, pool_size,
@@ -300,6 +314,10 @@ func debug_advance_day() -> bool:
 	if _run_state.run_phase != RunState.RunPhase.AWAITING_DECISION:
 		return false
 	_run_state.day += 1
+	if _narrative_event_queue != null:
+		_narrative_event_queue.update_for_day(_run_state.day, _run_state)
+	if _content_director != null:
+		_content_director.update_stage(_run_state)
 	_select_next_decision()
 	if _current_decision.is_empty():
 		push_warning("[DEBUG] No decision available after advancing to day %d." % _run_state.day)
@@ -356,6 +374,67 @@ func debug_get_arc_state() -> Dictionary:
 		"completed_arc_ids": _run_state.completed_arc_ids.duplicate(),
 		"failed_arc_ids": _run_state.failed_arc_ids.duplicate(),
 	}
+
+
+func debug_get_queue_state() -> Array[Dictionary]:
+	if _run_state == null:
+		return []
+	return _run_state.narrative_event_queue.duplicate(true)
+
+
+func debug_add_queued_event(
+	decision_id: String,
+	min_delay: int = 1,
+	max_delay: int = 3,
+	priority: int = 50,
+	required_flags: Array = [],
+) -> String:
+	if _narrative_event_queue == null or decision_id.is_empty():
+		return ""
+	if not _content.has_decision(decision_id):
+		push_error("[DEBUG] Unknown decision '%s' for queue." % decision_id)
+		return ""
+	return _narrative_event_queue.add_event({
+		"source_decision_id": "debug",
+		"source_option_id": "debug",
+		"follow_up": {
+			"type": "soft",
+			"decision_id": decision_id,
+			"minimum_delay_days": min_delay,
+			"maximum_delay_days": max_delay,
+			"priority": priority,
+			"required_flags": required_flags,
+		},
+	}, _run_state)
+
+
+func debug_cancel_queued_event(event_id: String) -> bool:
+	if _narrative_event_queue == null or event_id.is_empty():
+		return false
+	return _narrative_event_queue.cancel_event(event_id, _run_state)
+
+
+func debug_consume_queued_event(event_id: String) -> bool:
+	if _narrative_event_queue == null or event_id.is_empty():
+		return false
+	return _narrative_event_queue.consume_event(event_id, _run_state)
+
+
+func debug_force_queued_event(event_id: String) -> bool:
+	if _narrative_event_queue == null or event_id.is_empty():
+		return false
+	for event in _run_state.narrative_event_queue:
+		if str(event.get("event_id", "")) != event_id:
+			continue
+		var status: String = str(event.get("status", ""))
+		if status not in [NarrativeEventQueue.STATUS_PENDING, NarrativeEventQueue.STATUS_ELIGIBLE]:
+			return false
+		var target_id: String = _narrative_event_queue.resolve_target_decision(event, _run_state)
+		if target_id.is_empty():
+			return false
+		_decision_engine.set_forced_decision(target_id)
+		return true
+	return false
 
 
 func _load_and_validate_content() -> void:

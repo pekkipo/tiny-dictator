@@ -68,6 +68,8 @@
   },
   {
     "id": "cheese_shortage",
+    "card_type": "consequence",
+    "queue_only": true,
     "advisor_id": "minister_penny",
     "category": "follow_up",
     "proposal": "Free Pizza Friday has consumed the national cheese reserve. Our cheese supplier demands immediate payment.",

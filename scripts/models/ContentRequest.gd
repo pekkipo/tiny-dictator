@@ -11,6 +11,9 @@ var required_tags: Array[String] = []
 var excluded_tags: Array[String] = []
 var priority: int = 0
 var reason: String = ""
+var queued_decision_id: String = ""
+var queued_event_id: String = ""
+var mandatory: bool = false
 
 
 func to_dictionary() -> Dictionary:
@@ -22,4 +25,7 @@ func to_dictionary() -> Dictionary:
 		"excluded_tags": excluded_tags.duplicate(),
 		"priority": priority,
 		"reason": reason,
+		"queued_decision_id": queued_decision_id,
+		"queued_event_id": queued_event_id,
+		"mandatory": mandatory,
 	}

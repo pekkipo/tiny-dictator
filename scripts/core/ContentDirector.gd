@@ -52,32 +52,53 @@ func _emit_stage_changed(stage_id: String) -> void:
 		event_bus.stage_changed.emit(stage_id)
 
 
-func build_request(state: RunState, decision_engine: DecisionEngine) -> ContentRequest:
+func build_request(
+	state: RunState,
+	decision_engine: DecisionEngine,
+	queue: NarrativeEventQueue = null,
+) -> ContentRequest:
 	var request := ContentRequest.new()
 
 	if decision_engine.has_forced_decision():
 		request.request_type = "forced_follow_up"
 		request.reason = "forced decision '%s'" % decision_engine.get_forced_decision_id()
-	elif _should_advance_arc(state):
-		var arc_request: Dictionary = _pick_arc_request(state)
-		request.request_type = "advance_arc"
-		request.arc_id = str(arc_request.get("arc_id", ""))
-		request.required_tags = arc_request.get("tags", [])
-		request.priority = int(arc_request.get("priority", 0))
-		request.reason = "active arc '%s' step %d" % [
-			request.arc_id, int(arc_request.get("current_step", 0)),
-		]
-	elif _needs_recovery(state):
-		var lowest: Dictionary = _lowest_resource_at_or_below_threshold(state)
-		request.request_type = "recovery"
-		request.preferred_card_types = ["recovery"]
-		request.reason = "%s at %d" % [str(lowest["id"]), int(lowest["value"])]
-	elif state.current_stage_id == "endgame":
-		request.request_type = "endgame_resolution"
-		request.preferred_card_types = ["resolution", "ending_setup"]
-		request.excluded_tags = ["long_setup"]
-	else:
-		request.request_type = "standalone"
+	elif queue != null:
+		var due_events: Array[Dictionary] = queue.get_due_events(state)
+		if not due_events.is_empty():
+			var top_event: Dictionary = due_events[0]
+			var target_id: String = queue.resolve_target_decision(top_event, state)
+			if not target_id.is_empty():
+				var is_mandatory: bool = bool(top_event.get("mandatory", false))
+				request.request_type = "mandatory_queued_event" if is_mandatory else "queued_event"
+				request.queued_decision_id = target_id
+				request.queued_event_id = str(top_event.get("event_id", ""))
+				request.mandatory = is_mandatory
+				request.priority = queue.get_effective_priority(top_event, state.day)
+				request.reason = "queued %s -> '%s' (priority %d)" % [
+					top_event.get("event_type", ""), target_id, request.priority,
+				]
+			else:
+				push_warning("[DIRECTOR] Due queue event '%s' has no valid target." % top_event.get("event_id", ""))
+
+	if request.request_type == "standalone":
+		if _should_advance_arc(state):
+			var arc_request: Dictionary = _pick_arc_request(state)
+			request.request_type = "advance_arc"
+			request.arc_id = str(arc_request.get("arc_id", ""))
+			request.required_tags = arc_request.get("tags", [])
+			request.priority = int(arc_request.get("priority", 0))
+			request.reason = "active arc '%s' step %d" % [
+				request.arc_id, int(arc_request.get("current_step", 0)),
+			]
+		elif _needs_recovery(state):
+			var lowest: Dictionary = _lowest_resource_at_or_below_threshold(state)
+			request.request_type = "recovery"
+			request.preferred_card_types = ["recovery"]
+			request.reason = "%s at %d" % [str(lowest["id"]), int(lowest["value"])]
+		elif state.current_stage_id == "endgame":
+			request.request_type = "endgame_resolution"
+			request.preferred_card_types = ["resolution", "ending_setup"]
+			request.excluded_tags = ["long_setup"]
 
 	if state.current_stage_id == "endgame":
 		request.excluded_tags = ["long_setup"]

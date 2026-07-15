@@ -85,6 +85,10 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 		for error in validate_arc(arc, repository):
 			report.errors.append(error)
 
+	for pool in repository.get_raw_follow_up_pools():
+		for error in validate_follow_up_pool(pool, repository):
+			report.errors.append(error)
+
 	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
 	var visual_map: Dictionary = repository.get_visual_map()
 	for law in repository.get_raw_laws():
@@ -272,6 +276,25 @@ func validate_arc(arc: Dictionary, repository: ContentRepository) -> Array[Strin
 	return errors
 
 
+func validate_follow_up_pool(pool: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var id: String = str(pool.get("id", ""))
+	if id.is_empty():
+		errors.append("Follow-up pool missing 'id'")
+		return errors
+
+	var decision_ids: Variant = pool.get("decision_ids", [])
+	if not (decision_ids is Array) or decision_ids.is_empty():
+		errors.append("Follow-up pool '%s' missing non-empty 'decision_ids'" % id)
+		return errors
+
+	for decision_id in decision_ids:
+		if not repository.has_decision(str(decision_id)):
+			errors.append("Follow-up pool '%s' references unknown decision '%s'" % [id, decision_id])
+
+	return errors
+
+
 func _validate_decision_narrative(decision_id: String, decision: Dictionary, repository: ContentRepository) -> Array[String]:
 	var errors: Array[String] = []
 	var narrative: Variant = decision.get("narrative", {})
@@ -338,6 +361,10 @@ func _validate_option(decision_id: String, option_id: String, option: Dictionary
 	if not forced.is_empty() and not repository.has_decision(forced):
 		errors.append("%s forces unknown decision '%s'" % [where, forced])
 
+	var follow_up: Variant = option.get("follow_up", {})
+	if follow_up is Dictionary and not follow_up.is_empty():
+		errors.append_array(_validate_follow_up(decision_id, option_id, follow_up, repository, not forced.is_empty()))
+
 	var trigger_ending: String = str(option.get("trigger_ending", ""))
 	if not trigger_ending.is_empty() and not repository.has_ending(trigger_ending):
 		errors.append("%s triggers unknown ending '%s'" % [where, trigger_ending])
@@ -366,6 +393,53 @@ func _validate_option(decision_id: String, option_id: String, option: Dictionary
 			var branch_ids: Array = arc.get("branch_ids", [])
 			if not branch_ids.is_empty() and branch_id not in branch_ids:
 				errors.append("%s arc_action branch_id '%s' invalid for arc '%s'" % [where, branch_id, arc_id])
+
+	return errors
+
+
+func _validate_follow_up(
+	decision_id: String,
+	option_id: String,
+	follow_up: Dictionary,
+	repository: ContentRepository,
+	has_forced: bool,
+) -> Array[String]:
+	var errors: Array[String] = []
+	var where := "Decision '%s' option '%s' follow_up" % [decision_id, option_id]
+
+	if has_forced:
+		errors.append("%s cannot coexist with force_next_decision on the same option" % where)
+
+	var follow_type: String = str(follow_up.get("type", ""))
+	if follow_type not in ["hard", "soft", "pool"]:
+		errors.append("%s has invalid type '%s' (expected hard, soft, or pool)" % [where, follow_type])
+		return errors
+
+	if follow_type in ["hard", "soft"]:
+		var target_id: String = str(follow_up.get("decision_id", ""))
+		if target_id.is_empty():
+			errors.append("%s type '%s' requires 'decision_id'" % [where, follow_type])
+		elif not repository.has_decision(target_id):
+			errors.append("%s references unknown decision '%s'" % [where, target_id])
+
+	if follow_type == "pool":
+		var pool_id: String = str(follow_up.get("pool_id", ""))
+		if pool_id.is_empty():
+			errors.append("%s type 'pool' requires 'pool_id'" % where)
+		elif not repository.has_follow_up_pool(pool_id):
+			errors.append("%s references unknown pool '%s'" % [where, pool_id])
+
+	if follow_type in ["soft", "pool"]:
+		var min_delay: int = int(follow_up.get("minimum_delay_days", -1))
+		var max_delay: int = int(follow_up.get("maximum_delay_days", -1))
+		if min_delay < 0:
+			errors.append("%s missing or invalid minimum_delay_days" % where)
+		if max_delay < min_delay:
+			errors.append("%s maximum_delay_days must be >= minimum_delay_days" % where)
+
+		var priority: int = int(follow_up.get("priority", 50))
+		if priority < 0 or priority > 100:
+			errors.append("%s priority %d out of range 0-100" % [where, priority])
 
 	return errors
 

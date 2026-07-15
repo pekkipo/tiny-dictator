@@ -16,6 +16,7 @@ func _initialize() -> void:
 	_test_counters()
 	_test_reset_cleanliness()
 	_test_serialization_round_trip()
+	_test_queue_serialization()
 
 	if _failures == 0:
 		print("[TEST] All RunState tests passed.")
@@ -123,6 +124,7 @@ func _test_reset_cleanliness() -> void:
 	_check(state.active_arcs.is_empty(), "reset active arcs")
 	_check(state.completed_arc_ids.is_empty(), "reset completed arcs")
 	_check(state.failed_arc_ids.is_empty(), "reset failed arcs")
+	_check(state.narrative_event_queue.is_empty(), "reset narrative event queue")
 	_check(state.run_phase == RunState.RunPhase.NOT_STARTED, "reset phase")
 
 
@@ -162,3 +164,24 @@ func _test_serialization_round_trip() -> void:
 	var legacy := RunState.new()
 	legacy.from_dictionary({"day": 2, "resources": restored.get_resources()})
 	_check(legacy.active_arcs.is_empty(), "legacy save without arc fields")
+	_check(legacy.narrative_event_queue.is_empty(), "legacy save without queue field")
+
+
+func _test_queue_serialization() -> void:
+	var state := RunState.new()
+	state.narrative_event_queue.append({
+		"event_id": "evt_0001",
+		"source_decision_id": "free_pizza_friday",
+		"event_type": "soft_follow_up",
+		"decision_id": "cheese_shortage",
+		"earliest_day": 5,
+		"latest_day": 8,
+		"priority": 70,
+		"status": "pending",
+		"mandatory": false,
+	})
+	var restored := RunState.new()
+	restored.from_dictionary(state.to_dictionary())
+	_check(restored.narrative_event_queue.size() == 1, "queue round-trip size")
+	_check(restored.narrative_event_queue[0]["event_id"] == "evt_0001", "queue round-trip event_id")
+	_check(restored.narrative_event_queue[0]["decision_id"] == "cheese_shortage", "queue round-trip decision_id")

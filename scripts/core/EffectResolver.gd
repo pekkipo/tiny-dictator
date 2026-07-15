@@ -63,6 +63,8 @@ func apply_option(
 		result.counter_changes[str(counter_id)] = delta
 
 	result.forced_next_decision_id = str(option.get("force_next_decision", ""))
+	_apply_follow_up(option, result)
+
 	result.triggered_ending_id = str(option.get("trigger_ending", ""))
 	result.result_text = str(option.get("result_text", ""))
 	if result.result_text.is_empty():
@@ -154,3 +156,26 @@ func _format_changes(changes: Dictionary) -> String:
 	for resource_id in changes:
 		parts.append("%s %+d" % [resource_id, changes[resource_id]])
 	return "no resource changes" if parts.is_empty() else ", ".join(parts)
+
+
+func _apply_follow_up(option: Dictionary, result: DecisionResult) -> void:
+	if not result.forced_next_decision_id.is_empty():
+		return
+	var follow_up: Variant = option.get("follow_up", {})
+	if not (follow_up is Dictionary) or follow_up.is_empty():
+		return
+
+	var follow_type: String = str(follow_up.get("type", ""))
+	if follow_type == "hard":
+		var hard_id: String = str(follow_up.get("decision_id", ""))
+		if not hard_id.is_empty():
+			result.forced_next_decision_id = hard_id
+		return
+
+	if follow_type in ["soft", "pool"]:
+		result.queued_follow_ups.append({
+			"source_decision_id": result.decision_id,
+			"source_option_id": result.selected_option_id,
+			"follow_up": follow_up.duplicate(true),
+		})
+

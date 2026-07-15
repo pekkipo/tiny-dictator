@@ -28,3 +28,4 @@ var result_text: String = ""
 var forced_next_decision_id: String = ""
 var triggered_ending_id: String = ""
 var arc_changes: Array[Dictionary] = []
+var queued_follow_ups: Array[Dictionary] = []

@@ -57,6 +57,14 @@ func select_next_decision(state: RunState, request: ContentRequest = null) -> Di
 			return forced
 		push_error("[DECISION] Forced decision '%s' is missing or invalid; using normal selection." % forced_id)
 
+	if request != null and not request.queued_decision_id.is_empty():
+		var queued_id := request.queued_decision_id
+		var queued: Dictionary = _repository.get_decision(queued_id)
+		if not queued.is_empty() and is_decision_valid(queued, state):
+			print("[DECISION] Using queued decision '%s' (event %s)" % [queued_id, request.queued_event_id])
+			return queued
+		push_error("[DECISION] Queued decision '%s' is missing or invalid; using normal selection." % queued_id)
+
 	var candidates := get_valid_decisions(state)
 	# Avoid presenting the same card twice in a row (relevant for reusable cards).
 	if candidates.size() > 1 and not state.current_decision_id.is_empty():
@@ -85,6 +93,8 @@ func get_valid_decisions(state: RunState) -> Array[Dictionary]:
 	var valid: Array[Dictionary] = []
 	for decision in _repository.get_all_decisions_for_country(state.country_id):
 		if bool(decision.get("fallback", false)):
+			continue
+		if bool(decision.get("queue_only", false)):
 			continue
 		if is_decision_valid(decision, state):
 			valid.append(decision)

@@ -68,6 +68,14 @@
         "counter_changes": {
           "pizza_choices": 1
         },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "cheese_shortage",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 70,
+          "required_flags": ["pizza_policy_active"]
+        },
         "result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
       }
     ],

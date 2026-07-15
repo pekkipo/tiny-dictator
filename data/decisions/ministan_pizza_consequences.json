@@ -1,0 +1,65 @@
+[
+  {
+    "id": "pizza_union_strike",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "follow_up",
+    "proposal": "The National Pizza Union demands hazard pay for working every Friday. They are armed with rolling pins.",
+    "one_time": true,
+    "weight": 10,
+    "requirements": {
+      "all_flags": ["pizza_policy_active"]
+    },
+    "left": {
+      "label": "Negotiate",
+      "effects": {
+        "treasury": -6,
+        "happiness": 4
+      },
+      "result_text": "The union accepts a modest stipend and a ceremonial slice."
+    },
+    "right": {
+      "label": "Ban unions",
+      "effects": {
+        "happiness": -10,
+        "order": 6,
+        "elite_loyalty": 3
+      },
+      "result_text": "Rolling pins are confiscated. Morale drops faster than dough can rise."
+    },
+    "tags": ["pizza", "follow_up", "consequence"]
+  },
+  {
+    "id": "pineapple_referendum",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "follow_up",
+    "proposal": "Citizens demand a national referendum on pineapple pizza. The nation is bitterly divided.",
+    "one_time": true,
+    "weight": 10,
+    "requirements": {
+      "all_flags": ["pizza_policy_active"]
+    },
+    "left": {
+      "label": "Ban pineapple",
+      "effects": {
+        "happiness": -4,
+        "order": 5
+      },
+      "result_text": "Fruit on pizza is outlawed. A quiet faction plots in pizzeria basements."
+    },
+    "right": {
+      "label": "Mandate pineapple",
+      "effects": {
+        "happiness": 6,
+        "order": -6,
+        "treasury": -4
+      },
+      "add_flags": ["pineapple_mandated"],
+      "result_text": "Every Friday pizza must include pineapple. Tourism brochures look confused."
+    },
+    "tags": ["pizza", "follow_up", "consequence"]
+  }
+]
