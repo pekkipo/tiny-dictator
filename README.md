@@ -1,10 +1,14 @@
-# Tiny Dictator — Phase 1 Prototype
+# Tiny Dictator — Phase 2A Prototype
 
 A satirical portrait-mode strategy-comedy game. You rule the tiny fictional
-country of Ministan by approving or rejecting absurd proposals from four
-advisors. Every choice moves four resources — Treasury 💰, Happiness 🙂,
-Order 🛡, Elite Loyalty 👑 — and can enact laws with lasting, visible
-consequences. Survive to day 30, or discover one of seven endings trying.
+country of Ministan through absurd laws, branching narrative arcs, crises, and
+advisor relationships. Every choice moves four resources — Treasury 💰,
+Happiness 🙂, Order 🛡, Elite Loyalty 👑 — and can enact laws with lasting,
+visible consequences. Survive to day 40, complete arcs, survive crises, and
+discover one of eleven endings.
+
+**Phase 2A status:** Architecture frozen. See
+[docs/PHASE_2A_COMPLETION_REPORT.md](docs/PHASE_2A_COMPLETION_REPORT.md).
 
 ## Requirements
 
@@ -27,82 +31,93 @@ godot --headless --path . --quit-after 10
 
 ```text
 scenes/main/Main.tscn        Screen switching + debug overlay layer
-scenes/screens/              StartScreen, GameScreen, RunEndScreen
+scenes/screens/              StartScreen, GameScreen, RunEndScreen, MetaProgressScreen
 scenes/components/           ResourceBar, DecisionCard, ResultPanel,
                              ActiveLawsBar, LawDetailPopup, CountryDiorama,
                              DebugOverlay
-scripts/core/                GameManager, EventBus (autoloads), RunState,
-                             ContentRepository, ContentValidator, DecisionEngine,
-                             DecisionSchema, EffectResolver, EndingResolver,
-                             CountryStateResolver, RequirementsEvaluator,
-                             LawImpactResolver, SaveManager (autoload)
-scripts/models/              DecisionResult, RunSummary, CountryVisualState
+scripts/core/                GameManager, EventBus, RunState, ContentDirector,
+                             ArcManager, CrisisManager, NarrativeEventQueue,
+                             AdvisorRelationshipManager, RulerTraitManager,
+                             MetaProgressionManager, ContentDiagnostics,
+                             RunSimulator, DecisionEngine, EffectResolver, …
+scripts/models/              DecisionResult, RunSummary, ContentRequest, …
 scripts/ui/                  One controller per screen/component (display only)
 data/                        All game content as JSON (countries, advisors,
-                             decisions, laws, endings, visual states)
+                             decisions, arcs, crises, laws, endings, meta)
 tests/                       Headless assertion test suites
-docs/                        Phase 1 PRDs + implementation roadmap
+docs/                        Phase 1–2A PRDs, schema reference, completion report
 ```
 
 Architecture rule of thumb: UI scripts only display state and forward input to
 `GameManager`; all gameplay logic lives in `scripts/core`, and all content
 lives in `data/` JSON.
 
-## How to add a decision
+## Content inventory (Ministan)
 
-Phase 1 legacy format (still fully supported):
+| Type | Count |
+|------|-------|
+| Decisions | 74 |
+| Arcs | 6 |
+| Crises | 6 |
+| Laws | 12 |
+| Endings | 11 |
+| Advisors | 8 |
 
-1. Open `data/decisions/ministan_core.json` (or `ministan_followups.json`).
-2. Add an entry with a unique `id`, an `advisor_id`, a `proposal`, and `left`/
-   `right` options (each with `label`, `effects`, `result_text`; optionally
-   `add_laws`, `add_flags`, `counter_changes`, `force_next_decision`,
-   `trigger_ending`, `visible_effects`).
-3. Optionally gate it with `requirements` and mark it `one_time`.
+## How to add content
 
-Schema v2 format (Phase 2A milestone 2A-1 — preferred for new content):
+See the canonical authoring reference:
+[docs/08_PHASE_2A_CONTENT_SCHEMA_REFERENCE.md](docs/08_PHASE_2A_CONTENT_SCHEMA_REFERENCE.md).
 
-1. Same file, but set `"schema_version": 2` and author an `"options"` array
-   (2–3 entries, each with a unique `"id"`, plus `label`, `effects`,
-   `result_text`). Use `"base_weight"` instead of `"weight"`.
-2. Optional `"card_type"`: `normal` (default), `crisis`, `advisor`,
-   `consequence`, `resolution`, `recovery`, `ending_setup`. Non-normal types
-   show a placeholder banner on the card; behavior comes in later milestones.
-3. At load time `DecisionSchema.normalize()` converts legacy `left`/`right`
-   into options, so the engine, resolver, and UI always read the same model.
+Quick summary for decisions:
 
-Run the game after editing. Content is validated at boot — errors name the
-file and ID, and the Start button is blocked until they are fixed. No code
-changes needed for content-only additions.
+1. Add an entry to a file listed in `data/countries/ministan.json` → `decision_files`.
+2. Use `"schema_version": 2` and an `"options"` array (2–3 options).
+3. Run validation (below). No code changes needed for normal additions.
+
+Legacy Phase 1 `left`/`right` format still works via automatic normalization.
 
 ## Debug overlay
 
 Press **F1** or **`** (backtick) at any time:
 
-- Live readout: phase, day, seed, current decision, run stage, content request, resources, laws, flags, counters
-- Set any resource, force a decision by ID, add laws/flags
-- Trigger any ending, advance the day, restart the run
-- Fixed random seed (reproducible runs), print state JSON, reload content, reset save
+- Live readout: phase, day, seed, stage, content request, arcs, crisis, queue
+- Force decisions, arcs, crises, queued events, endings
+- Set resources, laws, flags; advance day; restart run
+- Sim 100 / Sim 1000 / static diagnostics export
+- Reload content, reset save
 
 ## Tests
 
 Each suite runs headless and exits non-zero on failure:
 
 ```bash
+# Full Phase 2A acceptance matrix (recommended before commit)
+godot --headless --path . -s tests/run_phase_2a_qa.gd
+
+# Individual suites
+godot --headless --path . -s tests/test_content_validation.gd
+godot --headless --path . -s tests/test_schema_v2.gd
+godot --headless --path . -s tests/test_content_director.gd
+godot --headless --path . -s tests/test_arc_manager.gd
+godot --headless --path . -s tests/test_narrative_event_queue.gd
+godot --headless --path . -s tests/test_crisis_manager.gd
+godot --headless --path . -s tests/test_advisor_ruler_identity.gd
+godot --headless --path . -s tests/test_meta_progression.gd
+godot --headless --path . -s tests/test_diagnostics_simulation.gd
+godot --headless --path . -s tests/test_manual_path_verification.gd
+
+# Phase 1 regression
 godot --headless --path . -s tests/test_run_state.gd
 godot --headless --path . -s tests/test_game_manager.gd
-godot --headless --path . -s tests/test_content_validation.gd
 godot --headless --path . -s tests/test_decision_engine.gd
-godot --headless --path . -s tests/test_effect_resolver.gd
-godot --headless --path . -s tests/test_ending_resolver.gd
-godot --headless --path . -s tests/test_country_state.gd
-godot --headless --path . -s tests/test_game_screen.gd
-godot --headless --path . -s tests/test_run_end_screen.gd
-godot --headless --path . -s tests/test_debug_overlay.gd
 godot --headless --path . -s tests/test_save_manager.gd
-godot --headless --path . -s tests/test_law_popup.gd
-godot --headless --path . -s tests/test_schema_v2.gd   # Phase 2A schema v2
-godot --headless --path . -s tests/test_content_director.gd   # Phase 2A run stages + ContentDirector
-godot --headless --path . -s tests/playthrough_sim.gd   # 5 automated playthroughs
+godot --headless --path . -s tests/playthrough_sim.gd
+```
+
+1,000-run simulation report (seed `20260715`):
+
+```bash
+godot --headless --path . -s tests/run_2a9_sim_report.gd
 ```
 
 If a new script class is not found after pulling changes, refresh Godot's
@@ -110,11 +125,12 @@ class cache once: `godot --headless --path . --import`.
 
 ## Save file
 
-`user://save.json` (versioned). Stores unlocked endings, settings, and the
-last run summary. Corrupt or version-mismatched files reset safely to
-defaults. Delete the file or use the debug overlay's RESET SAVE to start over.
+`user://save.json` (version **2**). Stores Medals, Ending Archive, palace
+upgrades, settings, and last run summary. Corrupt or version-mismatched files
+reset safely to defaults. Delete the file or use the debug overlay's RESET SAVE
+to start over. Mid-run state is **not** saved.
 
 ## Current limitations
 
-See `KNOWN_ISSUES.md`. Phase 1 is a placeholder-art prototype: emoji visuals,
-no audio, no animations, no mobile export polish, limited content volume.
+See [KNOWN_ISSUES.md](KNOWN_ISSUES.md). Phase 2A uses placeholder art, no audio,
+no mobile export polish. Phase 2B focuses on content production and balance.

@@ -38,14 +38,14 @@ feat: complete phase 2a milestone 2a-1 schema v2
 ```text
 [x] 2A-1 Schema v2 and option normalization
 [x] 2A-2 Run stages and Content Director skeleton
-[ ] 2A-3 Arc Manager
-[ ] 2A-4 Narrative event queue
-[ ] 2A-5 Crisis system
-[ ] 2A-6 Advisors, affinity, and ruler identity
+[x] 2A-3 Arc Manager
+[x] 2A-4 Narrative event queue
+[x] 2A-5 Crisis system
+[x] 2A-6 Advisors, affinity, and ruler identity
 [x] 2A-7 Meta-progression skeleton
 [x] 2A-8 Diagnostics and simulation
-[ ] 2A-9 Representative content pack
-[ ] 2A-10 QA and architecture freeze
+[x] 2A-9 Representative content pack
+[x] 2A-10 QA and architecture freeze
 ```
 
 ---

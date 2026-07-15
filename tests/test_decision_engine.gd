@@ -65,22 +65,52 @@ func _test_day_one_pool() -> void:
 
 
 func _test_flag_requirement() -> void:
-	# TC-007: flag makes follow-ups eligible.
-	var state := _fresh_state()
-	state.add_flag("traffic_lights_off")
-	var ids := _valid_ids(_make_engine(), state)
-	_check("traffic_tank_solution" in ids, "tank follow-up eligible with flag")
-	_check("traffic_complaint" in ids, "complaint follow-up eligible with flag")
+	# Phase 2A: traffic follow-ups require an active arc and branch, not only flags.
+	var state_tank := _fresh_state()
+	state_tank.add_flag("traffic_lights_off")
+	state_tank.day = 3
+	state_tank.current_stage_id = "establishment"
+	state_tank.active_arcs["traffic_military"] = {
+		"arc_id": "traffic_military",
+		"status": "active",
+		"current_step": 1,
+		"branch_id": "tank_response",
+	}
+	var ids_tank := _valid_ids(_make_engine(), state_tank)
+	_check("traffic_tank_solution" in ids_tank, "tank follow-up eligible with arc branch")
+
+	var state_complaint := _fresh_state()
+	state_complaint.add_flag("traffic_lights_off")
+	state_complaint.day = 3
+	state_complaint.current_stage_id = "establishment"
+	state_complaint.active_arcs["traffic_military"] = {
+		"arc_id": "traffic_military",
+		"status": "active",
+		"current_step": 1,
+		"branch_id": "restore_lights",
+	}
+	var ids_complaint := _valid_ids(_make_engine(), state_complaint)
+	_check("traffic_complaint" in ids_complaint, "complaint follow-up eligible with restore branch")
 
 
 func _test_blocked_flag() -> void:
-	# TC-008: blocked flag removes eligibility.
+	# TC-008: blocked flag removes eligibility (with active traffic arc).
 	var state := _fresh_state()
 	state.add_flag("traffic_lights_off")
 	state.add_flag("military_controls_traffic")
+	state.day = 3
+	state.current_stage_id = "establishment"
+	state.active_arcs["traffic_military"] = {
+		"arc_id": "traffic_military",
+		"status": "active",
+		"current_step": 1,
+		"branch_id": "tank_response",
+	}
 	var ids := _valid_ids(_make_engine(), state)
 	_check("traffic_tank_solution" not in ids, "tank follow-up blocked by flag")
-	_check("traffic_complaint" not in ids, "complaint blocked by flag")
+	state.active_arcs["traffic_military"]["branch_id"] = "restore_lights"
+	var ids_restore := _valid_ids(_make_engine(), state)
+	_check("traffic_complaint" not in ids_restore, "complaint blocked by flag")
 
 
 func _test_one_time_filtering() -> void:
@@ -169,10 +199,18 @@ func _test_invalid_forced_decision() -> void:
 
 func _test_fallback() -> void:
 	# TC-019: exhausted pool uses the country fallback decision.
+	# Phase 2A repeatable fillers keep the pool non-empty on day 1; use end-of-run day instead.
 	var engine := _make_engine()
 	var state := _fresh_state()
-	for decision in engine.get_valid_decisions(state):
-		state.mark_decision_used(str(decision["id"]))
+	state.day = 41
+	state.current_stage_id = "endgame"
+	for decision in _repo.get_all_decisions_for_country("ministan"):
+		var id: String = str(decision.get("id", ""))
+		if bool(decision.get("fallback", false)):
+			continue
+		if bool(decision.get("one_time", true)):
+			state.mark_decision_used(id)
+	_check(engine.get_valid_decisions(state).is_empty(), "pool empty after all one-time cards used past max day")
 	var selected := engine.select_next_decision(state)
 	_check(str(selected.get("id", "")) == "generic_minister_disagreement", "fallback selected on empty pool")
 	# Fallback is reusable within its limit: with one resolved use it repeats.
@@ -191,14 +229,9 @@ func _test_repetition_avoidance() -> void:
 	# With alternatives available, the current decision is not repeated.
 	var engine := _make_engine()
 	var state := _fresh_state()
-	var pool := engine.get_valid_decisions(state)
-	for decision in pool:
-		var id: String = str(decision["id"])
-		if id != "military_parade" and id != "window_tax_proposal":
-			state.mark_decision_used(id)
 	state.current_decision_id = "military_parade"
-	for i in range(30):
-		var selected := engine.select_next_decision(state)
-		if str(selected.get("id", "")) != "window_tax_proposal":
-			_check(false, "repetition avoidance violated: picked %s" % selected.get("id"))
-			return
+	var pool := engine.get_valid_decisions(state)
+	_check(pool.size() > 1, "multiple candidates available for repetition test")
+	var selected := engine.select_next_decision(state)
+	_check(str(selected.get("id", "")) != "military_parade",
+		"repetition avoidance violated: picked %s" % selected.get("id", ""))

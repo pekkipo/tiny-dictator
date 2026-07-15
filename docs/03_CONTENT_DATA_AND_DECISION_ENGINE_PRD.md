@@ -261,6 +261,7 @@ A decision is the core content unit.
 > options model. Resolution is by option id; the legacy ids `left`/`right`
 > alias the first/second option on v2 cards. Full v2 schema:
 > `docs/06_PHASE_2A_NARRATIVE_AND_SYSTEMS_DESIGN_PRD.md` §12–13.
+> **Authoring reference (frozen):** `docs/08_PHASE_2A_CONTENT_SCHEMA_REFERENCE.md`.
 
 Legacy (schema v1) example:
 
