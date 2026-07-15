@@ -1,0 +1,36 @@
+[
+  {
+    "id": "cat_politics",
+    "display_name": "The Cat Political Movement",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "priority": 60,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": ["government_replacement_arc"],
+    "entry_decision_ids": ["cat_voting_rights"],
+    "resolution_decision_ids": [
+      "cat_republic_declared",
+      "cat_party_banned",
+      "cats_return_to_boxes"
+    ],
+    "branch_ids": ["support_cats", "oppose_cats", "negotiate_cats"],
+    "tags": ["cats", "politics", "absurd"]
+  },
+  {
+    "id": "robot_government",
+    "display_name": "The Robot Government Initiative",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "priority": 50,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": ["government_replacement_arc"],
+    "entry_decision_ids": ["robot_cabinet_proposal"],
+    "resolution_decision_ids": ["robot_government_installed"],
+    "branch_ids": ["support_robots"],
+    "tags": ["robots", "government"]
+  }
+]

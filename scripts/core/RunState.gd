@@ -36,6 +36,9 @@ var decision_history: Array[Dictionary] = []
 
 var current_decision_id: String = ""
 var current_stage_id: String = ""
+var active_arcs: Dictionary = {}
+var completed_arc_ids: Array[String] = []
+var failed_arc_ids: Array[String] = []
 var run_phase: RunPhase = RunPhase.NOT_STARTED
 var random_seed: int = 0
 
@@ -54,6 +57,9 @@ func reset() -> void:
 	decision_history.clear()
 	current_decision_id = ""
 	current_stage_id = ""
+	active_arcs.clear()
+	completed_arc_ids.clear()
+	failed_arc_ids.clear()
 	run_phase = RunPhase.NOT_STARTED
 	random_seed = 0
 
@@ -163,6 +169,31 @@ func add_history_entry(entry: Dictionary) -> void:
 	decision_history.append(entry)
 
 
+func is_arc_active(arc_id: String) -> bool:
+	var runtime: Variant = active_arcs.get(arc_id)
+	if not (runtime is Dictionary):
+		return false
+	var status: String = str(runtime.get("status", ""))
+	return status == "active" or status == "paused"
+
+
+func is_arc_completed(arc_id: String) -> bool:
+	return arc_id in completed_arc_ids
+
+
+func is_arc_failed(arc_id: String) -> bool:
+	return arc_id in failed_arc_ids
+
+
+func get_arc_runtime(arc_id: String) -> Dictionary:
+	var runtime: Variant = active_arcs.get(arc_id)
+	return runtime if runtime is Dictionary else {}
+
+
+func get_arc_branch(arc_id: String) -> String:
+	return str(get_arc_runtime(arc_id).get("branch_id", ""))
+
+
 func to_dictionary() -> Dictionary:
 	return {
 		"country_id": country_id,
@@ -175,6 +206,9 @@ func to_dictionary() -> Dictionary:
 		"decision_history": decision_history.duplicate(true),
 		"current_decision_id": current_decision_id,
 		"current_stage_id": current_stage_id,
+		"active_arcs": active_arcs.duplicate(true),
+		"completed_arc_ids": completed_arc_ids.duplicate(),
+		"failed_arc_ids": failed_arc_ids.duplicate(),
 		"run_phase": RunPhase.keys()[run_phase],
 		"random_seed": random_seed,
 	}
@@ -199,6 +233,14 @@ func from_dictionary(data: Dictionary) -> void:
 			decision_history.append(entry)
 	current_decision_id = str(data.get("current_decision_id", ""))
 	current_stage_id = str(data.get("current_stage_id", ""))
+	var loaded_arcs: Variant = data.get("active_arcs", {})
+	active_arcs = loaded_arcs.duplicate(true) if loaded_arcs is Dictionary else {}
+	completed_arc_ids.clear()
+	for arc_id in data.get("completed_arc_ids", []):
+		completed_arc_ids.append(str(arc_id))
+	failed_arc_ids.clear()
+	for arc_id in data.get("failed_arc_ids", []):
+		failed_arc_ids.append(str(arc_id))
 	var phase_name: String = str(data.get("run_phase", "NOT_STARTED"))
 	var phase_index: int = RunPhase.keys().find(phase_name)
 	run_phase = phase_index as RunPhase if phase_index >= 0 else RunPhase.NOT_STARTED

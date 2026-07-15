@@ -14,6 +14,7 @@ var _content_valid: bool = false
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _decision_engine: DecisionEngine = null
 var _content_director: ContentDirector = null
+var _arc_manager: ArcManager = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
 var _country_state_resolver: CountryStateResolver = CountryStateResolver.new()
@@ -68,6 +69,8 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_rng.seed = _run_state.random_seed
 	_decision_engine = DecisionEngine.new(_content, _rng)
 	_content_director = ContentDirector.new(_content)
+	_arc_manager = ArcManager.new(_content)
+	_decision_engine.set_arc_manager(_arc_manager)
 	_last_result = null
 
 	print("[RUN] New run started: country=%s day=%d seed=%d" % [
@@ -123,7 +126,7 @@ func resolve_choice(option_id: String) -> DecisionResult:
 		return null
 
 	_run_state.run_phase = RunState.RunPhase.RESOLVING_DECISION
-	var result := _effect_resolver.apply_option(_current_decision, option_id, _run_state, _content)
+	var result := _effect_resolver.apply_option(_current_decision, option_id, _run_state, _content, _arc_manager)
 	_last_result = result
 
 	if not result.forced_next_decision_id.is_empty():
@@ -313,6 +316,46 @@ func debug_set_fixed_seed(new_seed: int) -> void:
 
 func debug_print_state() -> void:
 	print("[DEBUG] RunState: %s" % JSON.stringify(_run_state.to_dictionary(), "  "))
+
+
+func debug_start_arc(arc_id: String, branch_id: String = "") -> bool:
+	if _arc_manager == null:
+		return false
+	return _arc_manager.start_arc(_run_state, arc_id, branch_id)
+
+
+func debug_advance_arc(arc_id: String, decision_id: String = "") -> bool:
+	if _arc_manager == null:
+		return false
+	return _arc_manager.advance_arc(_run_state, arc_id, decision_id)
+
+
+func debug_select_branch(arc_id: String, branch_id: String) -> bool:
+	if _arc_manager == null:
+		return false
+	return _arc_manager.select_branch(_run_state, arc_id, branch_id)
+
+
+func debug_complete_arc(arc_id: String, resolution_id: String = "") -> bool:
+	if _arc_manager == null:
+		return false
+	return _arc_manager.complete_arc(_run_state, arc_id, resolution_id)
+
+
+func debug_fail_arc(arc_id: String) -> bool:
+	if _arc_manager == null:
+		return false
+	return _arc_manager.fail_arc(_run_state, arc_id)
+
+
+func debug_get_arc_state() -> Dictionary:
+	if _run_state == null:
+		return {}
+	return {
+		"active_arcs": _run_state.active_arcs.duplicate(true),
+		"completed_arc_ids": _run_state.completed_arc_ids.duplicate(),
+		"failed_arc_ids": _run_state.failed_arc_ids.duplicate(),
+	}
 
 
 func _load_and_validate_content() -> void:

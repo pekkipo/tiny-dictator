@@ -14,6 +14,11 @@ func _ready() -> void:
 	%AddFlagButton.pressed.connect(_on_add_flag_pressed)
 	%TriggerEndingButton.pressed.connect(_on_trigger_ending_pressed)
 	%SetSeedButton.pressed.connect(_on_set_seed_pressed)
+	%StartArcButton.pressed.connect(_on_start_arc_pressed)
+	%AdvanceArcButton.pressed.connect(_on_advance_arc_pressed)
+	%SelectBranchButton.pressed.connect(_on_select_branch_pressed)
+	%CompleteArcButton.pressed.connect(_on_complete_arc_pressed)
+	%FailArcButton.pressed.connect(_on_fail_arc_pressed)
 	%AdvanceDayButton.pressed.connect(_on_advance_day_pressed)
 	%RestartButton.pressed.connect(_on_restart_pressed)
 	%PrintStateButton.pressed.connect(_on_print_state_pressed)
@@ -23,12 +28,18 @@ func _ready() -> void:
 	for resource_id in RunState.RESOURCE_IDS:
 		%ResourceOption.add_item(resource_id)
 	_populate_ending_options()
+	_populate_arc_options()
 
 	EventBus.decision_presented.connect(func(_decision: Dictionary) -> void: _refresh())
 	EventBus.decision_resolved.connect(func(_result: DecisionResult) -> void: _refresh())
 	EventBus.resources_changed.connect(func(_changes: Dictionary) -> void: _refresh())
 	EventBus.run_started.connect(func(_state: RunState) -> void: _refresh())
 	EventBus.run_ended.connect(func(_summary: RunSummary) -> void: _refresh())
+	EventBus.arc_started.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.arc_advanced.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.arc_completed.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.arc_failed.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
+	EventBus.arc_paused.connect(func(_arc_id: String, _runtime: Dictionary) -> void: _refresh())
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -42,6 +53,7 @@ func toggle_visibility() -> void:
 	visible = not visible
 	if visible:
 		_populate_ending_options()
+		_populate_arc_options()
 		_show_feedback("", true)
 		_refresh()
 
@@ -57,12 +69,30 @@ func _refresh() -> void:
 	else:
 		var prefer: String = ", ".join(request_dict.get("preferred_card_types", []))
 		var exclude: String = ", ".join(request_dict.get("excluded_tags", []))
-		request_line = "request: %s prefer=%s exclude=%s (%s)" % [
+		var arc_part: String = ""
+		if request_dict.get("arc_id", "") != "":
+			arc_part = " arc=%s" % request_dict.get("arc_id", "")
+		request_line = "request: %s%s prefer=%s exclude=%s (%s)" % [
 			request_dict.get("request_type", ""),
+			arc_part,
 			prefer if not prefer.is_empty() else "(none)",
 			exclude if not exclude.is_empty() else "(none)",
 			request_dict.get("reason", ""),
 		]
+
+	var arc_state: Dictionary = GameManager.debug_get_arc_state()
+	var active_lines: PackedStringArray = []
+	for arc_id in arc_state.get("active_arcs", {}):
+		var runtime: Dictionary = arc_state["active_arcs"][arc_id]
+		active_lines.append("%s [%s step %s branch %s]" % [
+			arc_id,
+			runtime.get("status", "?"),
+			str(runtime.get("current_step", "?")),
+			runtime.get("branch_id", "(none)"),
+		])
+	var completed: Array = arc_state.get("completed_arc_ids", [])
+	var failed: Array = arc_state.get("failed_arc_ids", [])
+
 	var lines: PackedStringArray = [
 		"phase: %s   day: %d   seed: %d" % [
 			RunState.RunPhase.keys()[state.run_phase], state.day, state.random_seed,
@@ -70,6 +100,9 @@ func _refresh() -> void:
 		"decision: %s" % (state.current_decision_id if not state.current_decision_id.is_empty() else "(none)"),
 		"stage: %s" % GameManager.get_current_stage_id(),
 		request_line,
+		"active arcs: %s" % (", ".join(active_lines) if not active_lines.is_empty() else "(none)"),
+		"completed arcs: %s" % (", ".join(completed) if not completed.is_empty() else "(none)"),
+		"failed arcs: %s" % (", ".join(failed) if not failed.is_empty() else "(none)"),
 		"resources: 💰 %d  🙂 %d  🛡 %d  👑 %d" % [state.treasury, state.happiness, state.order, state.elite_loyalty],
 		"laws: %s" % (", ".join(state.active_laws) if not state.active_laws.is_empty() else "(none)"),
 		"flags: %s" % (", ".join(state.flags) if not state.flags.is_empty() else "(none)"),
@@ -82,6 +115,18 @@ func _populate_ending_options() -> void:
 	%EndingOption.clear()
 	for ending in GameManager.get_content().get_raw_endings():
 		%EndingOption.add_item(str(ending.get("id", "")))
+
+
+func _populate_arc_options() -> void:
+	%ArcOption.clear()
+	for arc in GameManager.get_content().get_raw_arcs():
+		%ArcOption.add_item(str(arc.get("id", "")))
+
+
+func _selected_arc_id() -> String:
+	if %ArcOption.selected < 0:
+		return ""
+	return %ArcOption.get_item_text(%ArcOption.selected)
 
 
 func _show_feedback(message: String, ok: bool) -> void:
@@ -140,6 +185,63 @@ func _on_set_seed_pressed() -> void:
 	_show_feedback("Fixed seed cleared." if new_seed == 0 else "Next run uses seed %d." % new_seed, true)
 
 
+func _on_start_arc_pressed() -> void:
+	var arc_id: String = _selected_arc_id()
+	if arc_id.is_empty():
+		_show_feedback("Select an arc first.", false)
+		return
+	var branch_id: String = %ArcBranchEdit.text.strip_edges()
+	if GameManager.debug_start_arc(arc_id, branch_id):
+		_show_feedback("Started arc '%s'." % arc_id, true)
+	else:
+		_show_feedback("Cannot start arc '%s'." % arc_id, false)
+
+
+func _on_advance_arc_pressed() -> void:
+	var arc_id: String = _selected_arc_id()
+	if arc_id.is_empty():
+		_show_feedback("Select an arc first.", false)
+		return
+	if GameManager.debug_advance_arc(arc_id, GameManager.get_current_state().current_decision_id):
+		_show_feedback("Advanced arc '%s'." % arc_id, true)
+	else:
+		_show_feedback("Cannot advance arc '%s'." % arc_id, false)
+
+
+func _on_select_branch_pressed() -> void:
+	var arc_id: String = _selected_arc_id()
+	var branch_id: String = %ArcBranchEdit.text.strip_edges()
+	if arc_id.is_empty() or branch_id.is_empty():
+		_show_feedback("Select an arc and enter a branch id.", false)
+		return
+	if GameManager.debug_select_branch(arc_id, branch_id):
+		_show_feedback("Branch '%s' set on '%s'." % [branch_id, arc_id], true)
+	else:
+		_show_feedback("Cannot set branch on '%s'." % arc_id, false)
+
+
+func _on_complete_arc_pressed() -> void:
+	var arc_id: String = _selected_arc_id()
+	if arc_id.is_empty():
+		_show_feedback("Select an arc first.", false)
+		return
+	if GameManager.debug_complete_arc(arc_id, GameManager.get_current_state().current_decision_id):
+		_show_feedback("Completed arc '%s'." % arc_id, true)
+	else:
+		_show_feedback("Cannot complete arc '%s'." % arc_id, false)
+
+
+func _on_fail_arc_pressed() -> void:
+	var arc_id: String = _selected_arc_id()
+	if arc_id.is_empty():
+		_show_feedback("Select an arc first.", false)
+		return
+	if GameManager.debug_fail_arc(arc_id):
+		_show_feedback("Failed arc '%s'." % arc_id, true)
+	else:
+		_show_feedback("Cannot fail arc '%s'." % arc_id, false)
+
+
 func _on_advance_day_pressed() -> void:
 	if GameManager.debug_advance_day():
 		_show_feedback("Advanced to day %d." % GameManager.get_current_state().day, true)
@@ -160,6 +262,7 @@ func _on_print_state_pressed() -> void:
 func _on_reload_content_pressed() -> void:
 	var ok: bool = GameManager.reload_content()
 	_populate_ending_options()
+	_populate_arc_options()
 	_show_feedback("Content reloaded. Valid: %s." % ok, ok)
 
 

@@ -14,3 +14,8 @@ signal ending_triggered(ending_data: Dictionary)
 signal run_ended(summary: RunSummary)
 signal run_reset
 signal stage_changed(stage_id: String)
+signal arc_started(arc_id: String, runtime: Dictionary)
+signal arc_advanced(arc_id: String, runtime: Dictionary)
+signal arc_completed(arc_id: String, runtime: Dictionary)
+signal arc_failed(arc_id: String, runtime: Dictionary)
+signal arc_paused(arc_id: String, runtime: Dictionary)

@@ -28,6 +28,7 @@ const KNOWN_REQUIREMENT_KEYS: Array[String] = [
 	"minimum_counters", "maximum_counters",
 	"minimum_day", "maximum_day",
 	"used_decisions", "not_used_decisions",
+	"active_arcs", "blocked_arcs", "completed_arcs", "failed_arcs", "arc_branches",
 ]
 
 const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
@@ -45,6 +46,9 @@ const KNOWN_PACING_KEYS: Array[String] = [
 const PROPOSAL_MAX_LENGTH: int = 220
 const CHOICE_LABEL_MAX_LENGTH: int = 32
 const RESULT_TEXT_MAX_LENGTH: int = 180
+const VALID_ARC_ACTIONS: Array[String] = [
+	"start", "advance", "branch", "pause", "complete", "fail", "abandon",
+]
 
 
 func validate_repository(repository: ContentRepository) -> ValidationReport:
@@ -76,6 +80,10 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 			report.errors.append(error)
 		for warning in _decision_warnings(decision, repository):
 			report.warnings.append(warning)
+
+	for arc in repository.get_raw_arcs():
+		for error in validate_arc(arc, repository):
+			report.errors.append(error)
 
 	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
 	var visual_map: Dictionary = repository.get_visual_map()
@@ -213,6 +221,94 @@ func validate_decision(decision: Dictionary, repository: ContentRepository) -> A
 						errors.append("Decision '%s' pacing.allowed_stages must contain only strings" % id)
 						break
 
+	errors.append_array(_validate_decision_narrative(id, decision, repository))
+
+	return errors
+
+
+func validate_arc(arc: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var id: String = str(arc.get("id", ""))
+	if id.is_empty():
+		errors.append("Arc missing 'id'")
+		return errors
+
+	var country_id: String = str(arc.get("country_id", ""))
+	if country_id.is_empty():
+		errors.append("Arc '%s' missing 'country_id'" % id)
+	elif not repository.has_country(country_id):
+		errors.append("Arc '%s' references unknown country '%s'" % [id, country_id])
+
+	for entry_id in arc.get("entry_decision_ids", []):
+		var decision_id := str(entry_id)
+		if not repository.has_decision(decision_id):
+			errors.append("Arc '%s' entry decision '%s' not found" % [id, decision_id])
+
+	for resolution_id in arc.get("resolution_decision_ids", []):
+		var decision_id := str(resolution_id)
+		if not repository.has_decision(decision_id):
+			errors.append("Arc '%s' resolution decision '%s' not found" % [id, decision_id])
+
+	for group in arc.get("exclusive_groups", []):
+		if str(group).is_empty():
+			errors.append("Arc '%s' has empty exclusive_groups entry" % id)
+
+	var branch_ids: Array = arc.get("branch_ids", [])
+	for branch_id in branch_ids:
+		if str(branch_id).is_empty():
+			errors.append("Arc '%s' has empty branch_ids entry" % id)
+
+	if country_id and repository.has_country(country_id):
+		var country: Dictionary = repository.get_country(country_id)
+		var stage_ids: Array[String] = []
+		for stage in country.get("run_stages", []):
+			if stage is Dictionary:
+				stage_ids.append(str(stage.get("id", "")))
+		for stage_key in ["minimum_start_stage", "maximum_start_stage"]:
+			var stage_id: String = str(arc.get(stage_key, ""))
+			if not stage_id.is_empty() and stage_id not in stage_ids:
+				errors.append("Arc '%s' %s '%s' not in country run_stages" % [id, stage_key, stage_id])
+
+	return errors
+
+
+func _validate_decision_narrative(decision_id: String, decision: Dictionary, repository: ContentRepository) -> Array[String]:
+	var errors: Array[String] = []
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return errors
+
+	var arc_id: String = str(narrative.get("arc_id", ""))
+	if arc_id.is_empty():
+		errors.append("Decision '%s' narrative missing 'arc_id'" % decision_id)
+		return errors
+	if not repository.has_arc(arc_id):
+		errors.append("Decision '%s' references unknown arc '%s'" % [decision_id, arc_id])
+		return errors
+
+	var arc: Dictionary = repository.get_arc(arc_id)
+	var branch_id: String = str(narrative.get("branch_id", ""))
+	if narrative.get("branch_id") != null and not branch_id.is_empty() and branch_id != "<null>":
+		var branch_ids: Array = arc.get("branch_ids", [])
+		if not branch_ids.is_empty() and branch_id not in branch_ids:
+			errors.append("Decision '%s' narrative branch_id '%s' invalid for arc '%s'" % [
+				decision_id, branch_id, arc_id,
+			])
+
+	if bool(narrative.get("starts_arc", false)):
+		var entry_ids: Array = arc.get("entry_decision_ids", [])
+		if decision_id not in entry_ids:
+			errors.append("Decision '%s' starts arc '%s' but is not listed in entry_decision_ids" % [
+				decision_id, arc_id,
+			])
+
+	if bool(narrative.get("resolves_arc", false)):
+		var resolution_ids: Array = arc.get("resolution_decision_ids", [])
+		if decision_id not in resolution_ids:
+			errors.append("Decision '%s' resolves arc '%s' but is not listed in resolution_decision_ids" % [
+				decision_id, arc_id,
+			])
+
 	return errors
 
 
@@ -250,6 +346,27 @@ func _validate_option(decision_id: String, option_id: String, option: Dictionary
 		if str(resource_id) not in RunState.RESOURCE_IDS:
 			errors.append("%s has unknown resource '%s' in visible_effects" % [where, resource_id])
 
+	for action_data in option.get("arc_actions", []):
+		if not (action_data is Dictionary):
+			errors.append("%s has non-object arc_action" % where)
+			continue
+		var arc_id: String = str(action_data.get("arc_id", ""))
+		var action: String = str(action_data.get("action", ""))
+		if arc_id.is_empty():
+			errors.append("%s arc_action missing 'arc_id'" % where)
+		elif not repository.has_arc(arc_id):
+			errors.append("%s arc_action references unknown arc '%s'" % [where, arc_id])
+		if action.is_empty():
+			errors.append("%s arc_action missing 'action'" % where)
+		elif action not in VALID_ARC_ACTIONS:
+			errors.append("%s arc_action has invalid action '%s'" % [where, action])
+		var branch_id: String = str(action_data.get("branch_id", ""))
+		if action in ["branch", "advance"] and not branch_id.is_empty():
+			var arc: Dictionary = repository.get_arc(arc_id)
+			var branch_ids: Array = arc.get("branch_ids", [])
+			if not branch_ids.is_empty() and branch_id not in branch_ids:
+				errors.append("%s arc_action branch_id '%s' invalid for arc '%s'" % [where, branch_id, arc_id])
+
 	return errors
 
 
@@ -268,6 +385,22 @@ func _validate_requirements(decision_id: String, requirements: Dictionary, repos
 			for resource_id in thresholds:
 				if str(resource_id) not in RunState.RESOURCE_IDS:
 					errors.append("Decision '%s' requirement %s has unknown resource '%s'" % [decision_id, key, resource_id])
+	for key in ["active_arcs", "blocked_arcs", "completed_arcs", "failed_arcs"]:
+		for arc_id in requirements.get(key, []):
+			if not repository.has_arc(str(arc_id)):
+				errors.append("Decision '%s' requirement %s references unknown arc '%s'" % [decision_id, key, arc_id])
+	var arc_branches: Variant = requirements.get("arc_branches", {})
+	if arc_branches is Dictionary:
+		for arc_id in arc_branches:
+			if not repository.has_arc(str(arc_id)):
+				errors.append("Decision '%s' arc_branches references unknown arc '%s'" % [decision_id, arc_id])
+			var branch_id: String = str(arc_branches[arc_id])
+			var arc: Dictionary = repository.get_arc(str(arc_id))
+			var branch_ids: Array = arc.get("branch_ids", [])
+			if not branch_ids.is_empty() and branch_id not in branch_ids:
+				errors.append("Decision '%s' arc_branches '%s' has invalid branch '%s'" % [
+					decision_id, arc_id, branch_id,
+				])
 	return errors
 
 

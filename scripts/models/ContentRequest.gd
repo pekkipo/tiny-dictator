@@ -5,6 +5,7 @@ extends RefCounted
 ## DecisionEngine uses this as a soft bias, not a hard filter.
 
 var request_type: String = "standalone"
+var arc_id: String = ""
 var preferred_card_types: Array[String] = []
 var required_tags: Array[String] = []
 var excluded_tags: Array[String] = []
@@ -15,6 +16,7 @@ var reason: String = ""
 func to_dictionary() -> Dictionary:
 	return {
 		"request_type": request_type,
+		"arc_id": arc_id,
 		"preferred_card_types": preferred_card_types.duplicate(),
 		"required_tags": required_tags.duplicate(),
 		"excluded_tags": excluded_tags.duplicate(),

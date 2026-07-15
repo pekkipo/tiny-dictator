@@ -6,6 +6,7 @@ extends RefCounted
 ## schemas: docs/03_CONTENT_DATA_AND_DECISION_ENGINE_PRD.md.
 
 const COUNTRIES_DIR: String = "res://data/countries"
+const ARCS_DIR: String = "res://data/arcs"
 const ADVISORS_PATH: String = "res://data/advisors/advisors.json"
 const LAWS_PATH: String = "res://data/laws/laws.json"
 const ENDINGS_PATH: String = "res://data/endings/endings.json"
@@ -16,6 +17,7 @@ var _advisors: Dictionary = {}
 var _laws: Dictionary = {}
 var _decisions: Dictionary = {}
 var _endings: Dictionary = {}
+var _arcs: Dictionary = {}
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
 var _visual_map: Dictionary = {}
@@ -28,6 +30,7 @@ var _raw_advisors: Array[Dictionary] = []
 var _raw_laws: Array[Dictionary] = []
 var _raw_decisions: Array[Dictionary] = []
 var _raw_endings: Array[Dictionary] = []
+var _raw_arcs: Array[Dictionary] = []
 var _raw_countries: Array[Dictionary] = []
 
 var _load_errors: Array[String] = []
@@ -46,6 +49,7 @@ func load_all() -> bool:
 	_index_catalog(_raw_endings, _endings, "ending", ENDINGS_PATH)
 
 	_load_countries()
+	_load_arcs()
 
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
 	if parsed_map is Dictionary:
@@ -53,8 +57,8 @@ func load_all() -> bool:
 	elif parsed_map != null:
 		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
-	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings" % [
-		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(),
+	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs" % [
+		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(), _arcs.size(),
 	]
 	print(summary)
 	for error in _load_errors:
@@ -121,6 +125,22 @@ func has_ending(id: String) -> bool:
 	return _endings.has(id)
 
 
+func get_arc(id: String) -> Dictionary:
+	return _arcs.get(id, {})
+
+
+func get_arcs_for_country(country_id: String) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for arc in _raw_arcs:
+		if str(arc.get("country_id", "")) == country_id:
+			result.append(arc)
+	return result
+
+
+func has_arc(id: String) -> bool:
+	return _arcs.has(id)
+
+
 ## Raw accessors used by ContentValidator (may contain duplicates).
 func get_raw_countries() -> Array[Dictionary]:
 	return _raw_countries
@@ -142,20 +162,50 @@ func get_raw_endings() -> Array[Dictionary]:
 	return _raw_endings
 
 
+func get_raw_arcs() -> Array[Dictionary]:
+	return _raw_arcs
+
+
 func _clear() -> void:
 	_countries.clear()
 	_advisors.clear()
 	_laws.clear()
 	_decisions.clear()
 	_endings.clear()
+	_arcs.clear()
 	_visual_map.clear()
 	_country_decision_ids.clear()
 	_raw_advisors = []
 	_raw_laws = []
 	_raw_decisions = []
 	_raw_endings = []
+	_raw_arcs = []
 	_raw_countries = []
 	_load_errors = []
+
+
+func _load_arcs() -> void:
+	var dir := DirAccess.open(ARCS_DIR)
+	if dir == null:
+		_load_errors.append("Cannot open arcs directory: %s" % ARCS_DIR)
+		return
+	var file_names := dir.get_files()
+	file_names.sort()
+	for file_name in file_names:
+		if not file_name.ends_with(".json"):
+			continue
+		var path := "%s/%s" % [ARCS_DIR, file_name]
+		var entries := _load_entry_array(path)
+		for arc in entries:
+			_raw_arcs.append(arc)
+			var arc_id: String = str(arc.get("id", ""))
+			if arc_id.is_empty():
+				_load_errors.append("Arc missing 'id' in %s" % path)
+				continue
+			if _arcs.has(arc_id):
+				_load_errors.append("Duplicate arc id '%s' in %s" % [arc_id, path])
+				continue
+			_arcs[arc_id] = arc
 
 
 func _load_countries() -> void:

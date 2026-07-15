@@ -17,12 +17,17 @@ const DEFAULT_FALLBACK_LIMIT: int = 2
 
 var _repository: ContentRepository
 var _rng: RandomNumberGenerator
+var _arc_manager: ArcManager = null
 var _forced_decision_id: String = ""
 
 
 func _init(repository: ContentRepository, rng: RandomNumberGenerator) -> void:
 	_repository = repository
 	_rng = rng
+
+
+func set_arc_manager(arc_manager: ArcManager) -> void:
+	_arc_manager = arc_manager
 
 
 func set_forced_decision(decision_id: String) -> void:
@@ -109,7 +114,45 @@ func is_decision_valid(decision: Dictionary, state: RunState) -> bool:
 	var requirements: Variant = decision.get("requirements", {})
 	if not (requirements is Dictionary):
 		return false
-	return evaluate_requirements(requirements, state)
+	if not evaluate_requirements(requirements, state):
+		return false
+	return _narrative_is_valid(decision, state)
+
+
+func _narrative_is_valid(decision: Dictionary, state: RunState) -> bool:
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return true
+
+	var arc_id: String = str(narrative.get("arc_id", ""))
+	if arc_id.is_empty():
+		return true
+
+	if bool(narrative.get("starts_arc", false)):
+		if _arc_manager != null and not _arc_manager.can_start_arc(arc_id, state):
+			return false
+
+	var branch_id: String = str(narrative.get("branch_id", ""))
+	if not branch_id.is_empty():
+		if not state.is_arc_active(arc_id):
+			return false
+		if state.get_arc_branch(arc_id) != branch_id:
+			return false
+
+	var step: int = int(narrative.get("step", 0))
+	if step > 1:
+		if not state.is_arc_active(arc_id):
+			return false
+		var runtime: Dictionary = state.get_arc_runtime(arc_id)
+		var expected_step: int = int(runtime.get("current_step", 0)) + 1
+		if step != expected_step:
+			return false
+
+	if bool(narrative.get("resolves_arc", false)):
+		if not state.is_arc_active(arc_id):
+			return false
+
+	return true
 
 
 func evaluate_requirements(requirements: Dictionary, state: RunState) -> bool:
@@ -135,6 +178,10 @@ func _weighted_pick(candidates: Array[Dictionary], request: ContentRequest = nul
 
 
 func _is_preferred_decision(decision: Dictionary, request: ContentRequest) -> bool:
+	if request.request_type == "advance_arc" and not request.arc_id.is_empty():
+		var narrative: Variant = decision.get("narrative", {})
+		if narrative is Dictionary and str(narrative.get("arc_id", "")) == request.arc_id:
+			return true
 	var card_type: String = str(decision.get("card_type", ""))
 	if card_type in request.preferred_card_types:
 		return true

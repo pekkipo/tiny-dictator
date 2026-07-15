@@ -208,6 +208,75 @@ text = "SET SEED"
 [node name="Separator2" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 
+[node name="ArcTitle" type="Label" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "ARC CONTROLS"
+
+[node name="ArcRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ArcOption" type="OptionButton" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+
+[node name="ArcBranchEdit" type="LineEdit" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+placeholder_text = "branch id"
+
+[node name="StartArcButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "START"
+
+[node name="ArcActionsRow" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AdvanceArcButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcActionsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "ADVANCE"
+
+[node name="SelectBranchButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcActionsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "SET BRANCH"
+
+[node name="CompleteArcButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcActionsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "COMPLETE"
+
+[node name="FailArcButton" type="Button" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox/ArcActionsRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "FAIL"
+
+[node name="Separator3" type="HSeparator" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
+layout_mode = 2
+
 [node name="ActionsRow1" type="HBoxContainer" parent="PanelMargin/Panel/Scroll/ContentMargin/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 8

@@ -58,6 +58,15 @@ func build_request(state: RunState, decision_engine: DecisionEngine) -> ContentR
 	if decision_engine.has_forced_decision():
 		request.request_type = "forced_follow_up"
 		request.reason = "forced decision '%s'" % decision_engine.get_forced_decision_id()
+	elif _should_advance_arc(state):
+		var arc_request: Dictionary = _pick_arc_request(state)
+		request.request_type = "advance_arc"
+		request.arc_id = str(arc_request.get("arc_id", ""))
+		request.required_tags = arc_request.get("tags", [])
+		request.priority = int(arc_request.get("priority", 0))
+		request.reason = "active arc '%s' step %d" % [
+			request.arc_id, int(arc_request.get("current_step", 0)),
+		]
 	elif _needs_recovery(state):
 		var lowest: Dictionary = _lowest_resource_at_or_below_threshold(state)
 		request.request_type = "recovery"
@@ -97,3 +106,31 @@ func _lowest_resource_at_or_below_threshold(state: RunState) -> Dictionary:
 			lowest_value = value
 			lowest_id = resource_id
 	return {"id": lowest_id, "value": lowest_value}
+
+
+func _should_advance_arc(state: RunState) -> bool:
+	for arc_id in state.active_arcs:
+		var runtime: Dictionary = state.get_arc_runtime(str(arc_id))
+		if str(runtime.get("status", "")) == "active":
+			return true
+	return false
+
+
+func _pick_arc_request(state: RunState) -> Dictionary:
+	var best: Dictionary = {}
+	var best_priority: int = -1
+	for arc_id in state.active_arcs:
+		var runtime: Dictionary = state.get_arc_runtime(str(arc_id))
+		if str(runtime.get("status", "")) != "active":
+			continue
+		var arc: Dictionary = _repository.get_arc(str(arc_id))
+		var priority: int = int(arc.get("priority", 0))
+		if priority > best_priority:
+			best_priority = priority
+			best = {
+				"arc_id": str(arc_id),
+				"current_step": int(runtime.get("current_step", 0)),
+				"priority": priority,
+				"tags": arc.get("tags", []),
+			}
+	return best

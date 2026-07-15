@@ -18,7 +18,8 @@
   "decision_files": [
     "res://data/decisions/ministan_core.json",
     "res://data/decisions/ministan_followups.json",
-    "res://data/decisions/ministan_stage_placeholders.json"
+    "res://data/decisions/ministan_stage_placeholders.json",
+    "res://data/decisions/ministan_cat_politics.json"
   ],
   "fallback_decision_id": "generic_minister_disagreement",
   "fallback_decision_limit": 2,

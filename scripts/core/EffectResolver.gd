@@ -11,7 +11,13 @@ extends RefCounted
 const FALLBACK_RESULT_TEXT: String = "The country reacts to your decision."
 
 
-func apply_option(decision: Dictionary, option_id: String, state: RunState, repository: ContentRepository) -> DecisionResult:
+func apply_option(
+	decision: Dictionary,
+	option_id: String,
+	state: RunState,
+	repository: ContentRepository,
+	arc_manager: ArcManager = null,
+) -> DecisionResult:
 	var result := DecisionResult.new()
 	result.decision_id = str(decision.get("id", ""))
 
@@ -63,6 +69,10 @@ func apply_option(decision: Dictionary, option_id: String, state: RunState, repo
 		push_warning("[EFFECT] Decision '%s' option '%s' has no result_text; using fallback." % [result.decision_id, result.selected_option_id])
 		result.result_text = FALLBACK_RESULT_TEXT
 
+	if arc_manager != null:
+		_apply_narrative_arc_effects(decision, result.decision_id, state, arc_manager, result)
+		_apply_option_arc_actions(option, result.decision_id, state, arc_manager, result)
+
 	state.add_history_entry({
 		"day": state.day,
 		"decision_id": result.decision_id,
@@ -83,6 +93,60 @@ func apply_option(decision: Dictionary, option_id: String, state: RunState, repo
 		"" if result.added_laws.is_empty() else " | new laws: %s" % ", ".join(result.added_laws),
 	])
 	return result
+
+
+func _apply_narrative_arc_effects(
+	decision: Dictionary,
+	decision_id: String,
+	state: RunState,
+	arc_manager: ArcManager,
+	result: DecisionResult,
+) -> void:
+	var narrative: Variant = decision.get("narrative", {})
+	if not (narrative is Dictionary) or narrative.is_empty():
+		return
+	var arc_id: String = str(narrative.get("arc_id", ""))
+	if arc_id.is_empty():
+		return
+
+	if bool(narrative.get("starts_arc", false)):
+		var branch_id: String = str(narrative.get("branch_id", ""))
+		if arc_manager.apply_action(state, arc_id, "start", decision_id, branch_id):
+			result.arc_changes.append({"arc_id": arc_id, "action": "start", "branch_id": branch_id})
+
+	if bool(narrative.get("advances_arc", false)):
+		var branch_id: String = str(narrative.get("branch_id", ""))
+		if arc_manager.apply_action(state, arc_id, "advance", decision_id, branch_id):
+			result.arc_changes.append({"arc_id": arc_id, "action": "advance", "branch_id": branch_id})
+
+	if bool(narrative.get("resolves_arc", false)):
+		if arc_manager.apply_action(state, arc_id, "complete", decision_id):
+			result.arc_changes.append({"arc_id": arc_id, "action": "complete"})
+
+
+func _apply_option_arc_actions(
+	option: Dictionary,
+	decision_id: String,
+	state: RunState,
+	arc_manager: ArcManager,
+	result: DecisionResult,
+) -> void:
+	for action_data in option.get("arc_actions", []):
+		if not (action_data is Dictionary):
+			continue
+		var arc_id: String = str(action_data.get("arc_id", ""))
+		var action: String = str(action_data.get("action", ""))
+		var branch_id: String = str(action_data.get("branch_id", ""))
+		var reason: String = str(action_data.get("reason", ""))
+		if arc_id.is_empty() or action.is_empty():
+			continue
+		if arc_manager.apply_action(state, arc_id, action, decision_id, branch_id, reason):
+			result.arc_changes.append({
+				"arc_id": arc_id,
+				"action": action,
+				"branch_id": branch_id,
+				"reason": reason,
+			})
 
 
 func _format_changes(changes: Dictionary) -> String:

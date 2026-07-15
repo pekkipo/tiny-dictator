@@ -63,4 +63,29 @@ static func matches(requirements: Dictionary, state: RunState) -> bool:
 		if str(decision_id) in state.used_decision_ids:
 			return false
 
+	for arc_id in requirements.get("active_arcs", []):
+		if not state.is_arc_active(str(arc_id)):
+			return false
+
+	for arc_id in requirements.get("blocked_arcs", []):
+		var blocked_id := str(arc_id)
+		if state.is_arc_active(blocked_id) or state.is_arc_completed(blocked_id):
+			return false
+
+	for arc_id in requirements.get("completed_arcs", []):
+		if not state.is_arc_completed(str(arc_id)):
+			return false
+
+	for arc_id in requirements.get("failed_arcs", []):
+		if not state.is_arc_failed(str(arc_id)):
+			return false
+
+	var arc_branches: Variant = requirements.get("arc_branches", {})
+	if arc_branches is Dictionary:
+		for arc_id in arc_branches:
+			if not state.is_arc_active(str(arc_id)):
+				return false
+			if state.get_arc_branch(str(arc_id)) != str(arc_branches[arc_id]):
+				return false
+
 	return true

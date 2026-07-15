@@ -95,6 +95,18 @@ func _test_reset_cleanliness() -> void:
 	state.add_law("mandatory_smiling")
 	state.add_flag("cats_enfranchised")
 	state.change_counter("cat_favor_choices", 3)
+	state.active_arcs["cat_politics"] = {
+		"arc_id": "cat_politics",
+		"status": "active",
+		"current_step": 2,
+		"branch_id": "support_cats",
+		"started_day": 3,
+		"last_advanced_day": 3,
+		"completed_day": null,
+		"history": ["cat_voting_rights"],
+	}
+	state.completed_arc_ids.append("robot_government")
+	state.failed_arc_ids.append("old_arc")
 	state.mark_decision_used("budget_crisis")
 	state.add_history_entry({"day": 12})
 	state.current_decision_id = "budget_crisis"
@@ -108,6 +120,9 @@ func _test_reset_cleanliness() -> void:
 	_check(state.used_decision_ids.is_empty(), "reset used decisions")
 	_check(state.decision_history.is_empty(), "reset history")
 	_check(state.current_decision_id == "", "reset current decision")
+	_check(state.active_arcs.is_empty(), "reset active arcs")
+	_check(state.completed_arc_ids.is_empty(), "reset completed arcs")
+	_check(state.failed_arc_ids.is_empty(), "reset failed arcs")
 	_check(state.run_phase == RunState.RunPhase.NOT_STARTED, "reset phase")
 
 
@@ -119,6 +134,12 @@ func _test_serialization_round_trip() -> void:
 	state.add_flag("cheese_shortage")
 	state.change_counter("public_scandals", 2)
 	state.mark_decision_used("free_pizza_friday")
+	state.current_stage_id = "escalation"
+	state.active_arcs["cat_politics"] = {
+		"arc_id": "cat_politics", "status": "active", "current_step": 1, "branch_id": "support_cats",
+	}
+	state.completed_arc_ids.append("robot_government")
+	state.failed_arc_ids.append("old_arc")
 	state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	state.random_seed = 12345
 
@@ -132,3 +153,12 @@ func _test_serialization_round_trip() -> void:
 	_check(restored.used_decision_ids.size() == 1 and restored.used_decision_ids[0] == "free_pizza_friday", "round-trip used decisions")
 	_check(restored.run_phase == RunState.RunPhase.AWAITING_DECISION, "round-trip phase")
 	_check(restored.random_seed == 12345, "round-trip seed")
+	_check(restored.current_stage_id == "escalation", "round-trip stage")
+	_check(restored.is_arc_active("cat_politics"), "round-trip active arc")
+	_check(restored.get_arc_branch("cat_politics") == "support_cats", "round-trip arc branch")
+	_check(restored.is_arc_completed("robot_government"), "round-trip completed arc")
+	_check(restored.is_arc_failed("old_arc"), "round-trip failed arc")
+
+	var legacy := RunState.new()
+	legacy.from_dictionary({"day": 2, "resources": restored.get_resources()})
+	_check(legacy.active_arcs.is_empty(), "legacy save without arc fields")
