@@ -18,6 +18,8 @@ func apply_option(
 	repository: ContentRepository,
 	arc_manager: ArcManager = null,
 	crisis_manager: CrisisManager = null,
+	advisor_manager: AdvisorRelationshipManager = null,
+	trait_manager: RulerTraitManager = null,
 ) -> DecisionResult:
 	var result := DecisionResult.new()
 	result.decision_id = str(decision.get("id", ""))
@@ -79,6 +81,12 @@ func apply_option(
 	if crisis_manager != null:
 		_apply_narrative_crisis_effects(decision, state, crisis_manager, result)
 		_apply_option_crisis_actions(option, result.decision_id, state, crisis_manager, result)
+
+	if advisor_manager != null:
+		advisor_manager.apply_option_affinity(option, state, repository, result)
+
+	if trait_manager != null:
+		trait_manager.apply_option_traits(option, state, result)
 
 	state.add_history_entry({
 		"day": state.day,

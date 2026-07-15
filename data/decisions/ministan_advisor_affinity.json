@@ -1,0 +1,256 @@
+[
+  {
+    "id": "parade_budget_boost",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "General Boom wants a bigger parade budget. Auntie Olga thinks the money should go to bread.",
+    "one_time": true,
+    "base_weight": 14,
+    "minimum_day": 2,
+    "maximum_day": 20,
+    "options": [
+      {
+        "id": "fund_parade",
+        "label": "Fund the parade",
+        "effects": { "treasury": -4, "order": 3, "happiness": -2 },
+        "advisor_affinity": { "general_boom": 2, "auntie_olga": -1 },
+        "trait_changes": { "authoritarian": 2, "populist": -1 },
+        "result_text": "The parade was magnificent. Auntie Olga mutters about flour prices."
+      },
+      {
+        "id": "fund_bread",
+        "label": "Fund bread instead",
+        "effects": { "treasury": -2, "happiness": 4, "order": -1 },
+        "advisor_affinity": { "general_boom": -2, "auntie_olga": 2 },
+        "trait_changes": { "populist": 2 },
+        "result_text": "Citizens cheer. General Boom salutes a cardboard tank in protest."
+      }
+    ]
+  },
+  {
+    "id": "cat_treaty_offer",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "Comrade Whiskers proposes a formal Fish Treaty. General Boom calls it treason.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 3,
+    "maximum_day": 25,
+    "options": [
+      {
+        "id": "reject_treaty",
+        "label": "Reject the treaty",
+        "effects": { "happiness": -2, "order": 2 },
+        "advisor_affinity": { "comrade_whiskers": -2, "general_boom": 1 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "Cats knock over a ministry sign. General Boom approves of your firmness."
+      },
+      {
+        "id": "sign_treaty",
+        "label": "Sign the Fish Treaty",
+        "effects": { "happiness": 5, "treasury": -3, "order": -2 },
+        "advisor_affinity": { "comrade_whiskers": 3, "general_boom": -1 },
+        "trait_changes": { "cat_friendly": 3, "populist": 1 },
+        "result_text": "Comrade Whiskers purrs on the treaty table. Luna News calls it historic diplomacy."
+      }
+    ]
+  },
+  {
+    "id": "bureaucracy_expansion",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Clerk Zero requests a Ministry of Forms About Forms.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 2,
+    "maximum_day": 30,
+    "options": [
+      {
+        "id": "approve_ministry",
+        "label": "Approve the ministry",
+        "effects": { "order": 4, "treasury": -3, "happiness": -2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 3 },
+        "result_text": "Three new stamp categories appear overnight. Clerk Zero is pleased."
+      },
+      {
+        "id": "reject_ministry",
+        "label": "Reject the ministry",
+        "effects": { "happiness": 2, "order": -1 },
+        "advisor_affinity": { "clerk_zero": -1 },
+        "trait_changes": { "chaotic": 1 },
+        "result_text": "Clerk Zero files your rejection in triplicate anyway."
+      }
+    ]
+  },
+  {
+    "id": "science_gamble",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Doctor Maybe wants to test whether happiness is contagious. Sample size: everyone.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 4,
+    "maximum_day": 28,
+    "options": [
+      {
+        "id": "fund_experiment",
+        "label": "Fund the experiment",
+        "effects": { "treasury": -4, "happiness": 3 },
+        "advisor_affinity": { "doctor_maybe": 2 },
+        "trait_changes": { "scientific": 3, "chaotic": 1 },
+        "result_text": "Results inconclusive but cheerful. Doctor Maybe already plans phase two."
+      },
+      {
+        "id": "deny_experiment",
+        "label": "Deny funding",
+        "effects": { "order": 1, "happiness": -1 },
+        "advisor_affinity": { "doctor_maybe": -1 },
+        "trait_changes": { "bureaucratic": 1 },
+        "result_text": "Doctor Maybe labels you Control Group A."
+      }
+    ]
+  },
+  {
+    "id": "privatize_palace_garden",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Sir Profit suggests privatizing the palace garden. Entry fee: one smile.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 30,
+    "options": [
+      {
+        "id": "privatize",
+        "label": "Privatize the garden",
+        "effects": { "treasury": 5, "happiness": -4, "elite_loyalty": 2 },
+        "advisor_affinity": { "sir_profit": 2, "auntie_olga": -2 },
+        "trait_changes": { "capitalist": 3, "authoritarian": 1 },
+        "result_text": "Sir Profit calls it alignment. Auntie Olga calls it a fence."
+      },
+      {
+        "id": "keep_public",
+        "label": "Keep it public",
+        "effects": { "happiness": 3, "treasury": -1 },
+        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
+        "trait_changes": { "populist": 2 },
+        "result_text": "Families picnic freely. Sir Profit drafts a regret memo."
+      }
+    ]
+  },
+  {
+    "id": "propaganda_smile_campaign",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Luna News proposes a mandatory national smile hour broadcast every morning.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 2,
+    "maximum_day": 25,
+    "options": [
+      {
+        "id": "mandate_smiles",
+        "label": "Mandate smile hour",
+        "effects": { "happiness": 2, "order": 3, "elite_loyalty": -1 },
+        "advisor_affinity": { "luna_news": 2, "auntie_olga": -1 },
+        "trait_changes": { "propagandist": 3, "authoritarian": 2 },
+        "result_text": "The nation grins on camera. Luna News declares a mood miracle."
+      },
+      {
+        "id": "optional_smiles",
+        "label": "Make it optional",
+        "effects": { "happiness": 1, "order": -1 },
+        "advisor_affinity": { "luna_news": -1 },
+        "trait_changes": { "populist": 1 },
+        "result_text": "Ratings drop slightly. Luna News reframes it as authentic skepticism."
+      }
+    ]
+  },
+  {
+    "id": "olga_loyal_council",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Auntie Olga offers to organize a citizen repair brigade — but only if you trust her.",
+    "one_time": true,
+    "base_weight": 20,
+    "minimum_day": 5,
+    "maximum_day": 35,
+    "requirements": {
+      "minimum_advisor_affinity": { "auntie_olga": 3 }
+    },
+    "options": [
+      {
+        "id": "empower_brigade",
+        "label": "Empower the brigade",
+        "effects": { "happiness": 6, "order": 2, "elite_loyalty": -2 },
+        "advisor_affinity": { "auntie_olga": 1 },
+        "trait_changes": { "populist": 2 },
+        "result_text": "Broken sidewalks fixed in a week. Auntie Olga says you might not be hopeless."
+      },
+      {
+        "id": "supervise_brigade",
+        "label": "Supervise closely",
+        "effects": { "happiness": 3, "order": 1 },
+        "advisor_affinity": { "auntie_olga": -1 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "The brigade works, but Auntie Olga notices the inspectors."
+      }
+    ]
+  },
+  {
+    "id": "boom_hostile_coup_rumor",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "advisor",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Rumors say General Boom is plotting something dramatic. He denies everything loudly.",
+    "one_time": true,
+    "base_weight": 18,
+    "minimum_day": 6,
+    "maximum_day": 35,
+    "requirements": {
+      "maximum_advisor_affinity": { "general_boom": -3 }
+    },
+    "options": [
+      {
+        "id": "public_reconciliation",
+        "label": "Public reconciliation ceremony",
+        "effects": { "elite_loyalty": 3, "happiness": 2, "treasury": -3 },
+        "advisor_affinity": { "general_boom": 2 },
+        "trait_changes": { "propagandist": 1 },
+        "result_text": "General Boom accepts medals and stops muttering about tanks."
+      },
+      {
+        "id": "strip_influence",
+        "label": "Strip his parade budget",
+        "effects": { "order": -4, "elite_loyalty": -3, "happiness": 1 },
+        "advisor_affinity": { "general_boom": -2 },
+        "trait_changes": { "authoritarian": 2 },
+        "result_text": "General Boom salutes with visible contempt. Luna News calls it fiscal discipline."
+      }
+    ]
+  }
+]

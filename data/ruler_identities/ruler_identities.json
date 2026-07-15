@@ -1,0 +1,62 @@
+[
+  {
+    "id": "the_smiling_tyrant",
+    "display_name": "The Smiling Tyrant",
+    "priority": 90,
+    "conditions": {
+      "minimum_traits": { "authoritarian": 4, "propagandist": 3 },
+      "dominant_trait": "authoritarian"
+    }
+  },
+  {
+    "id": "the_spreadsheet_emperor",
+    "display_name": "The Spreadsheet Emperor",
+    "priority": 85,
+    "conditions": {
+      "minimum_traits": { "bureaucratic": 4 },
+      "dominant_trait": "bureaucratic"
+    }
+  },
+  {
+    "id": "supreme_cat_servant",
+    "display_name": "Supreme Cat Servant",
+    "priority": 80,
+    "conditions": {
+      "minimum_traits": { "cat_friendly": 5 },
+      "dominant_trait": "cat_friendly"
+    }
+  },
+  {
+    "id": "the_chaotic_reformer",
+    "display_name": "The Chaotic Reformer",
+    "priority": 75,
+    "conditions": {
+      "minimum_traits": { "chaotic": 4, "populist": 2 },
+      "dominant_trait": "chaotic"
+    }
+  },
+  {
+    "id": "the_technocratic_accident",
+    "display_name": "The Technocratic Accident",
+    "priority": 70,
+    "conditions": {
+      "minimum_traits": { "scientific": 4 },
+      "dominant_trait": "scientific"
+    }
+  },
+  {
+    "id": "the_golden_oligarch",
+    "display_name": "The Golden Oligarch",
+    "priority": 65,
+    "conditions": {
+      "minimum_traits": { "capitalist": 4 },
+      "dominant_trait": "capitalist"
+    }
+  },
+  {
+    "id": "the_accidental_ruler",
+    "display_name": "The Accidental Ruler",
+    "priority": 0,
+    "conditions": {}
+  }
+]

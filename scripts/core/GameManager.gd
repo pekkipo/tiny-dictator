@@ -16,6 +16,8 @@ var _decision_engine: DecisionEngine = null
 var _content_director: ContentDirector = null
 var _arc_manager: ArcManager = null
 var _crisis_manager: CrisisManager = null
+var _advisor_manager: AdvisorRelationshipManager = null
+var _trait_manager: RulerTraitManager = null
 var _narrative_event_queue: NarrativeEventQueue = null
 var _effect_resolver: EffectResolver = EffectResolver.new()
 var _ending_resolver: EndingResolver = EndingResolver.new()
@@ -73,11 +75,15 @@ func start_new_run(country_id: String = "ministan") -> void:
 	_content_director = ContentDirector.new(_content)
 	_arc_manager = ArcManager.new(_content)
 	_crisis_manager = CrisisManager.new(_content)
+	_advisor_manager = AdvisorRelationshipManager.new()
+	_trait_manager = RulerTraitManager.new()
 	_narrative_event_queue = NarrativeEventQueue.new(_content)
 	_narrative_event_queue.set_decision_engine(_decision_engine)
 	_narrative_event_queue.set_rng(_rng)
 	_decision_engine.set_arc_manager(_arc_manager)
 	_decision_engine.set_crisis_manager(_crisis_manager)
+	_advisor_manager.initialize_for_run(_run_state, _content)
+	_trait_manager.initialize_for_run(_run_state)
 	_last_result = null
 
 	print("[RUN] New run started: country=%s day=%d seed=%d" % [
@@ -134,7 +140,8 @@ func resolve_choice(option_id: String) -> DecisionResult:
 
 	_run_state.run_phase = RunState.RunPhase.RESOLVING_DECISION
 	var result := _effect_resolver.apply_option(
-		_current_decision, option_id, _run_state, _content, _arc_manager, _crisis_manager,
+		_current_decision, option_id, _run_state, _content,
+		_arc_manager, _crisis_manager, _advisor_manager, _trait_manager,
 	)
 	_last_result = result
 
@@ -239,10 +246,14 @@ func _build_run_summary(ending: Dictionary) -> RunSummary:
 	summary.active_laws = _run_state.active_laws.duplicate()
 	summary.decision_history = _run_state.decision_history.duplicate(true)
 	summary.random_seed = _run_state.random_seed
-	summary.legacy_text = "Ruled for %d day%s. Made %d decision%s. Enacted %d law%s. History will judge accordingly." % [
+	var identity: Dictionary = _trait_manager.resolve_identity(_run_state, _content)
+	summary.ruler_identity_id = str(identity.get("id", ""))
+	summary.ruler_identity_title = str(identity.get("display_name", ""))
+	summary.legacy_text = "Ruled for %d day%s. Made %d decision%s. Enacted %d law%s. History remembers you as %s." % [
 		summary.final_day, "" if summary.final_day == 1 else "s",
 		summary.decision_history.size(), "" if summary.decision_history.size() == 1 else "s",
 		summary.active_laws.size(), "" if summary.active_laws.size() == 1 else "s",
+		summary.ruler_identity_title,
 	]
 	return summary
 
@@ -521,6 +532,34 @@ func debug_force_queued_event(event_id: String) -> bool:
 		_decision_engine.set_forced_decision(target_id)
 		return true
 	return false
+
+
+func debug_get_advisor_affinity() -> Dictionary:
+	if _run_state == null:
+		return {}
+	return _run_state.advisor_affinity.duplicate(true)
+
+
+func debug_get_ruler_traits() -> Dictionary:
+	if _run_state == null:
+		return {}
+	return _run_state.ruler_traits.duplicate(true)
+
+
+func debug_set_advisor_affinity(advisor_id: String, value: int) -> bool:
+	if _run_state == null or not _content.has_advisor(advisor_id):
+		return false
+	_run_state.advisor_affinity[advisor_id] = clampi(
+		value, AdvisorRelationshipManager.AFFINITY_MIN, AdvisorRelationshipManager.AFFINITY_MAX,
+	)
+	return true
+
+
+func debug_change_trait(trait_id: String, delta: int) -> bool:
+	if _run_state == null or trait_id not in RulerTraitManager.VALID_TRAIT_IDS:
+		return false
+	_run_state.change_ruler_trait(trait_id, delta)
+	return true
 
 
 func _load_and_validate_content() -> void:

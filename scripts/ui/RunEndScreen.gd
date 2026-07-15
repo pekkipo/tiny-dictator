@@ -19,6 +19,8 @@ func _populate() -> void:
 		%FinalStatsLabel.text = ""
 		%LawsCountLabel.text = ""
 		%EndingsUnlockedLabel.text = ""
+		%RulerIdentityLabel.text = ""
+		%RulerIdentityLabel.visible = false
 		%LegacySummaryLabel.text = ""
 		return
 
@@ -39,6 +41,12 @@ func _populate() -> void:
 		SaveManager.get_unlocked_endings().size(),
 		GameManager.get_content().get_raw_endings().size(),
 	]
+	if summary.ruler_identity_title.is_empty():
+		%RulerIdentityLabel.text = ""
+		%RulerIdentityLabel.visible = false
+	else:
+		%RulerIdentityLabel.text = "Ruler identity: %s" % summary.ruler_identity_title
+		%RulerIdentityLabel.visible = true
 	%LegacySummaryLabel.text = summary.legacy_text
 
 

@@ -30,10 +30,11 @@ func _test_repository_loads() -> void:
 	var ok := repo.load_all()
 	_check(ok, "repository loads without errors")
 	_check(repo.has_country("ministan"), "ministan country loaded")
-	_check(repo.get_raw_advisors().size() == 4, "4 advisors loaded")
+	_check(repo.get_raw_advisors().size() == 8, "8 advisors loaded")
 	_check(repo.get_raw_laws().size() == 7, "7 laws loaded")
 	_check(repo.get_raw_endings().size() == 8, "8 endings loaded")
-	_check(repo.get_all_decisions_for_country("ministan").size() == 35, "35 decisions loaded for ministan")
+	_check(repo.get_all_decisions_for_country("ministan").size() == 43, "43 decisions loaded for ministan")
+	_check(repo.get_raw_ruler_identities().size() == 7, "7 ruler identities loaded")
 	_check(repo.get_raw_arcs().size() == 2, "2 arcs loaded")
 	_check(repo.get_raw_crises().size() == 1, "1 crisis loaded")
 	_check(repo.get_raw_follow_up_pools().size() == 1, "1 follow-up pool loaded")
@@ -43,6 +44,9 @@ func _test_repository_loads() -> void:
 	_check(repo.has_decision("switch_off_traffic_lights"), "example decision present")
 	_check(repo.has_decision("traffic_tank_solution"), "follow-up decision present")
 	_check(repo.has_advisor("general_boom"), "advisor lookup works")
+	_check(repo.has_advisor("comrade_whiskers"), "new advisor lookup works")
+	_check(repo.has_ruler_identity("the_smiling_tyrant"), "ruler identity lookup works")
+	_check(repo.has_decision("olga_loyal_council"), "affinity-gated decision present")
 	_check(repo.has_law("free_pizza_friday"), "law lookup works")
 	_check(repo.has_ending("cat_republic"), "ending lookup works")
 	_check(repo.get_decision("nonexistent").is_empty(), "unknown decision returns empty")
@@ -102,6 +106,14 @@ func _test_validator_catches_bad_decisions() -> void:
 	var bad_pool := _minimal_decision()
 	bad_pool["right"]["follow_up"] = {"type": "pool", "pool_id": "nonexistent_pool", "minimum_delay_days": 1, "maximum_delay_days": 2}
 	_check(not validator.validate_decision(bad_pool, repo).is_empty(), "unknown follow-up pool detected")
+
+	var bad_affinity := _minimal_decision()
+	bad_affinity["left"]["advisor_affinity"] = {"unknown_advisor": 1}
+	_check(not validator.validate_decision(bad_affinity, repo).is_empty(), "unknown advisor in affinity detected")
+
+	var bad_trait := _minimal_decision()
+	bad_trait["left"]["trait_changes"] = {"not_a_trait": 1}
+	_check(not validator.validate_decision(bad_trait, repo).is_empty(), "unknown trait detected")
 
 
 func _test_validator_catches_bad_endings() -> void:

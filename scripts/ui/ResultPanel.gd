@@ -17,7 +17,10 @@ func _ready() -> void:
 
 
 func show_result(result: DecisionResult, content: ContentRepository) -> void:
-	%ResultTextLabel.text = result.result_text
+	var text: String = result.result_text
+	if not result.advisor_feedback.is_empty():
+		text += "\n\n" + "\n".join(result.advisor_feedback)
+	%ResultTextLabel.text = text
 
 	var deltas: PackedStringArray = []
 	for resource_id in RESOURCE_ICONS:

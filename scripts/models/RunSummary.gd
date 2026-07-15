@@ -14,3 +14,5 @@ var active_laws: Array[String] = []
 var decision_history: Array[Dictionary] = []
 var random_seed: int = 0
 var legacy_text: String = ""
+var ruler_identity_id: String = ""
+var ruler_identity_title: String = ""

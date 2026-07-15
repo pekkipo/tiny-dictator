@@ -116,4 +116,14 @@ static func matches(requirements: Dictionary, state: RunState) -> bool:
 		if str(state.active_crisis.get("status", "")) != "failed":
 			return false
 
+	var minimum_advisor_affinity: Dictionary = requirements.get("minimum_advisor_affinity", {})
+	for advisor_id in minimum_advisor_affinity:
+		if state.get_advisor_affinity(str(advisor_id)) < int(minimum_advisor_affinity[advisor_id]):
+			return false
+
+	var maximum_advisor_affinity: Dictionary = requirements.get("maximum_advisor_affinity", {})
+	for advisor_id in maximum_advisor_affinity:
+		if state.get_advisor_affinity(str(advisor_id)) > int(maximum_advisor_affinity[advisor_id]):
+			return false
+
 	return true

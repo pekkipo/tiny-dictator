@@ -30,6 +30,7 @@ const KNOWN_REQUIREMENT_KEYS: Array[String] = [
 	"used_decisions", "not_used_decisions",
 	"active_arcs", "blocked_arcs", "completed_arcs", "failed_arcs", "arc_branches",
 	"active_crisis", "blocked_crisis", "completed_crisis", "failed_crisis",
+	"minimum_advisor_affinity", "maximum_advisor_affinity",
 ]
 
 const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
@@ -95,6 +96,10 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 		for error in validate_follow_up_pool(pool, repository):
 			report.errors.append(error)
 
+	for identity in repository.get_raw_ruler_identities():
+		for error in validate_ruler_identity(identity):
+			report.errors.append(error)
+
 	# Unmapped visual tags render nothing in the diorama; warn, don't fail.
 	var visual_map: Dictionary = repository.get_visual_map()
 	for law in repository.get_raw_laws():
@@ -105,6 +110,34 @@ func validate_repository(repository: ContentRepository) -> ValidationReport:
 				])
 
 	return report
+
+
+func validate_ruler_identity(identity: Dictionary) -> Array[String]:
+	var errors: Array[String] = []
+	var id: String = str(identity.get("id", ""))
+	if id.is_empty():
+		errors.append("Ruler identity missing 'id'")
+		return errors
+	if str(identity.get("display_name", "")).is_empty():
+		errors.append("Ruler identity '%s' missing 'display_name'" % id)
+
+	var conditions: Variant = identity.get("conditions", {})
+	if not (conditions is Dictionary):
+		errors.append("Ruler identity '%s' conditions must be an object" % id)
+		return errors
+
+	for key in ["minimum_traits", "maximum_traits"]:
+		var traits: Variant = conditions.get(key, {})
+		if traits is Dictionary:
+			for trait_id in traits:
+				if str(trait_id) not in RulerTraitManager.VALID_TRAIT_IDS:
+					errors.append("Ruler identity '%s' %s references unknown trait '%s'" % [id, key, trait_id])
+
+	var dominant: String = str(conditions.get("dominant_trait", ""))
+	if not dominant.is_empty() and dominant not in RulerTraitManager.VALID_TRAIT_IDS:
+		errors.append("Ruler identity '%s' dominant_trait '%s' is invalid" % [id, dominant])
+
+	return errors
 
 
 func validate_advisor(advisor: Dictionary) -> Array[String]:
@@ -539,6 +572,28 @@ func _validate_option(decision_id: String, option_id: String, option: Dictionary
 		if action == "resolve" and str(action_data.get("resolution_id", "")).is_empty():
 			errors.append("%s crisis_action resolve missing 'resolution_id'" % where)
 
+	var affinity_changes: Variant = option.get("advisor_affinity", {})
+	if affinity_changes is Dictionary:
+		for advisor_id in affinity_changes:
+			if not repository.has_advisor(str(advisor_id)):
+				errors.append("%s advisor_affinity references unknown advisor '%s'" % [where, advisor_id])
+			var delta: int = int(affinity_changes[advisor_id])
+			if delta < AdvisorRelationshipManager.AFFINITY_MIN or delta > AdvisorRelationshipManager.AFFINITY_MAX:
+				errors.append("%s advisor_affinity delta %d for '%s' out of range %d to %d" % [
+					where, delta, advisor_id,
+					AdvisorRelationshipManager.AFFINITY_MIN, AdvisorRelationshipManager.AFFINITY_MAX,
+				])
+	elif option.has("advisor_affinity"):
+		errors.append("%s has non-object 'advisor_affinity'" % where)
+
+	var trait_changes: Variant = option.get("trait_changes", {})
+	if trait_changes is Dictionary:
+		for trait_id in trait_changes:
+			if str(trait_id) not in RulerTraitManager.VALID_TRAIT_IDS:
+				errors.append("%s trait_changes references unknown trait '%s'" % [where, trait_id])
+	elif option.has("trait_changes"):
+		errors.append("%s has non-object 'trait_changes'" % where)
+
 	return errors
 
 
@@ -620,6 +675,21 @@ func _validate_requirements(decision_id: String, requirements: Dictionary, repos
 				errors.append("Decision '%s' arc_branches '%s' has invalid branch '%s'" % [
 					decision_id, arc_id, branch_id,
 				])
+	for key in ["minimum_advisor_affinity", "maximum_advisor_affinity"]:
+		var thresholds: Variant = requirements.get(key, {})
+		if thresholds is Dictionary:
+			for advisor_id in thresholds:
+				if not repository.has_advisor(str(advisor_id)):
+					errors.append("Decision '%s' requirement %s references unknown advisor '%s'" % [
+						decision_id, key, advisor_id,
+					])
+				var threshold: int = int(thresholds[advisor_id])
+				if threshold < AdvisorRelationshipManager.AFFINITY_MIN \
+						or threshold > AdvisorRelationshipManager.AFFINITY_MAX:
+					errors.append("Decision '%s' requirement %s threshold %d for '%s' out of range %d to %d" % [
+						decision_id, key, threshold, advisor_id,
+						AdvisorRelationshipManager.AFFINITY_MIN, AdvisorRelationshipManager.AFFINITY_MAX,
+					])
 	return errors
 
 

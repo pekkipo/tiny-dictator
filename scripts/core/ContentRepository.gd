@@ -13,6 +13,7 @@ const LAWS_PATH: String = "res://data/laws/laws.json"
 const ENDINGS_PATH: String = "res://data/endings/endings.json"
 const VISUAL_MAP_PATH: String = "res://data/visual_states/country_visual_map.json"
 const FOLLOW_UP_POOLS_PATH: String = "res://data/follow_up_pools/follow_up_pools.json"
+const RULER_IDENTITIES_PATH: String = "res://data/ruler_identities/ruler_identities.json"
 
 var _countries: Dictionary = {}
 var _advisors: Dictionary = {}
@@ -22,6 +23,7 @@ var _endings: Dictionary = {}
 var _arcs: Dictionary = {}
 var _crises: Dictionary = {}
 var _follow_up_pools: Dictionary = {}
+var _ruler_identities: Dictionary = {}
 
 ## Visual tag -> placeholder prop (emoji), consumed by CountryDiorama.
 var _visual_map: Dictionary = {}
@@ -38,6 +40,7 @@ var _raw_arcs: Array[Dictionary] = []
 var _raw_crises: Array[Dictionary] = []
 var _raw_countries: Array[Dictionary] = []
 var _raw_follow_up_pools: Array[Dictionary] = []
+var _raw_ruler_identities: Array[Dictionary] = []
 
 var _load_errors: Array[String] = []
 
@@ -59,15 +62,18 @@ func load_all() -> bool:
 	_load_crises()
 	_load_follow_up_pools()
 
+	_raw_ruler_identities = _load_entry_array(RULER_IDENTITIES_PATH)
+	_index_catalog(_raw_ruler_identities, _ruler_identities, "ruler identity", RULER_IDENTITIES_PATH)
+
 	var parsed_map: Variant = _parse_json_file(VISUAL_MAP_PATH)
 	if parsed_map is Dictionary:
 		_visual_map = parsed_map
 	elif parsed_map != null:
 		_load_errors.append("Expected a JSON object at root of %s" % VISUAL_MAP_PATH)
 
-	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d crises, %d follow-up pools" % [
+	var summary := "[CONTENT] Loaded: %d countries, %d advisors, %d laws, %d decisions, %d endings, %d arcs, %d crises, %d follow-up pools, %d ruler identities" % [
 		_countries.size(), _advisors.size(), _laws.size(), _decisions.size(), _endings.size(), _arcs.size(),
-		_crises.size(), _follow_up_pools.size(),
+		_crises.size(), _follow_up_pools.size(), _ruler_identities.size(),
 	]
 	print(summary)
 	for error in _load_errors:
@@ -207,6 +213,18 @@ func get_raw_arcs() -> Array[Dictionary]:
 	return _raw_arcs
 
 
+func get_ruler_identity(id: String) -> Dictionary:
+	return _ruler_identities.get(id, {})
+
+
+func has_ruler_identity(id: String) -> bool:
+	return _ruler_identities.has(id)
+
+
+func get_raw_ruler_identities() -> Array[Dictionary]:
+	return _raw_ruler_identities
+
+
 func _clear() -> void:
 	_countries.clear()
 	_advisors.clear()
@@ -216,6 +234,7 @@ func _clear() -> void:
 	_arcs.clear()
 	_crises.clear()
 	_follow_up_pools.clear()
+	_ruler_identities.clear()
 	_visual_map.clear()
 	_country_decision_ids.clear()
 	_raw_advisors = []
@@ -226,6 +245,7 @@ func _clear() -> void:
 	_raw_crises = []
 	_raw_countries = []
 	_raw_follow_up_pools = []
+	_raw_ruler_identities = []
 	_load_errors = []
 
 

@@ -41,6 +41,8 @@ var completed_arc_ids: Array[String] = []
 var failed_arc_ids: Array[String] = []
 var narrative_event_queue: Array[Dictionary] = []
 var active_crisis: Dictionary = {}
+var advisor_affinity: Dictionary = {}
+var ruler_traits: Dictionary = {}
 var run_phase: RunPhase = RunPhase.NOT_STARTED
 var random_seed: int = 0
 
@@ -64,6 +66,8 @@ func reset() -> void:
 	failed_arc_ids.clear()
 	narrative_event_queue.clear()
 	active_crisis.clear()
+	advisor_affinity.clear()
+	ruler_traits.clear()
 	run_phase = RunPhase.NOT_STARTED
 	random_seed = 0
 
@@ -164,6 +168,28 @@ func change_counter(counter_id: String, delta: int) -> int:
 	return new_value
 
 
+func get_advisor_affinity(advisor_id: String) -> int:
+	return int(advisor_affinity.get(advisor_id, 0))
+
+
+func change_advisor_affinity(advisor_id: String, delta: int) -> int:
+	var before: int = get_advisor_affinity(advisor_id)
+	var after: int = clampi(before + delta, AdvisorRelationshipManager.AFFINITY_MIN, AdvisorRelationshipManager.AFFINITY_MAX)
+	advisor_affinity[advisor_id] = after
+	return after - before
+
+
+func get_ruler_trait(trait_id: String) -> int:
+	return int(ruler_traits.get(trait_id, 0))
+
+
+func change_ruler_trait(trait_id: String, delta: int) -> int:
+	var before: int = get_ruler_trait(trait_id)
+	var after: int = before + delta
+	ruler_traits[trait_id] = after
+	return after - before
+
+
 func mark_decision_used(decision_id: String) -> void:
 	if decision_id not in used_decision_ids:
 		used_decision_ids.append(decision_id)
@@ -215,6 +241,8 @@ func to_dictionary() -> Dictionary:
 		"failed_arc_ids": failed_arc_ids.duplicate(),
 		"narrative_event_queue": narrative_event_queue.duplicate(true),
 		"active_crisis": active_crisis.duplicate(true),
+		"advisor_affinity": advisor_affinity.duplicate(true),
+		"ruler_traits": ruler_traits.duplicate(true),
 		"run_phase": RunPhase.keys()[run_phase],
 		"random_seed": random_seed,
 	}
@@ -253,6 +281,10 @@ func from_dictionary(data: Dictionary) -> void:
 			narrative_event_queue.append(entry.duplicate(true))
 	var loaded_crisis: Variant = data.get("active_crisis", {})
 	active_crisis = loaded_crisis.duplicate(true) if loaded_crisis is Dictionary else {}
+	var loaded_affinity: Variant = data.get("advisor_affinity", {})
+	advisor_affinity = loaded_affinity.duplicate(true) if loaded_affinity is Dictionary else {}
+	var loaded_traits: Variant = data.get("ruler_traits", {})
+	ruler_traits = loaded_traits.duplicate(true) if loaded_traits is Dictionary else {}
 	var phase_name: String = str(data.get("run_phase", "NOT_STARTED"))
 	var phase_index: int = RunPhase.keys().find(phase_name)
 	run_phase = phase_index as RunPhase if phase_index >= 0 else RunPhase.NOT_STARTED

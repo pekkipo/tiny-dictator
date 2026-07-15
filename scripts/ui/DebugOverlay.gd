@@ -134,6 +134,8 @@ func _refresh() -> void:
 		"laws: %s" % (", ".join(state.active_laws) if not state.active_laws.is_empty() else "(none)"),
 		"flags: %s" % (", ".join(state.flags) if not state.flags.is_empty() else "(none)"),
 		"counters: %s" % (JSON.stringify(state.counters) if not state.counters.is_empty() else "(none)"),
+		"affinity: %s" % AdvisorRelationshipManager.format_affinity_dict(state, GameManager.get_content()),
+		"traits: %s" % RulerTraitManager.format_traits_dict(state),
 		"event queue:",
 	]
 	var queue: Array = GameManager.debug_get_queue_state()

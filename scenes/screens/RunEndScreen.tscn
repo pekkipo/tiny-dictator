@@ -125,6 +125,14 @@ theme_override_font_sizes/font_size = 24
 text = "Endings discovered: 1 of 7"
 horizontal_alignment = 1
 
+[node name="RulerIdentityLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.35, 0.22, 0.08, 1)
+theme_override_font_sizes/font_size = 26
+text = "Ruler identity: The Accidental Ruler"
+horizontal_alignment = 1
+
 [node name="LegacySummaryLabel" type="Label" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
 unique_name_in_owner = true
 layout_mode = 2

@@ -30,3 +30,6 @@ var triggered_ending_id: String = ""
 var arc_changes: Array[Dictionary] = []
 var queued_follow_ups: Array[Dictionary] = []
 var crisis_changes: Array[Dictionary] = []
+var advisor_affinity_changes: Dictionary = {}
+var ruler_trait_changes: Dictionary = {}
+var advisor_feedback: Array[String] = []

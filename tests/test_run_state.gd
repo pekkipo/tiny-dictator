@@ -18,6 +18,7 @@ func _initialize() -> void:
 	_test_serialization_round_trip()
 	_test_queue_serialization()
 	_test_crisis_serialization()
+	_test_affinity_traits_serialization()
 
 	if _failures == 0:
 		print("[TEST] All RunState tests passed.")
@@ -128,6 +129,8 @@ func _test_reset_cleanliness() -> void:
 	_check(state.failed_arc_ids.is_empty(), "reset failed arcs")
 	_check(state.narrative_event_queue.is_empty(), "reset narrative event queue")
 	_check(state.active_crisis.is_empty(), "reset active crisis")
+	_check(state.advisor_affinity.is_empty(), "reset advisor affinity")
+	_check(state.ruler_traits.is_empty(), "reset ruler traits")
 	_check(state.run_phase == RunState.RunPhase.NOT_STARTED, "reset phase")
 
 
@@ -147,6 +150,8 @@ func _test_serialization_round_trip() -> void:
 	state.failed_arc_ids.append("old_arc")
 	state.run_phase = RunState.RunPhase.AWAITING_DECISION
 	state.random_seed = 12345
+	state.advisor_affinity = {"general_boom": 2, "auntie_olga": -1}
+	state.ruler_traits = {"authoritarian": 3, "cat_friendly": 1}
 
 	var restored := RunState.new()
 	restored.from_dictionary(state.to_dictionary())
@@ -163,11 +168,23 @@ func _test_serialization_round_trip() -> void:
 	_check(restored.get_arc_branch("cat_politics") == "support_cats", "round-trip arc branch")
 	_check(restored.is_arc_completed("robot_government"), "round-trip completed arc")
 	_check(restored.is_arc_failed("old_arc"), "round-trip failed arc")
+	_check(restored.get_advisor_affinity("general_boom") == 2, "round-trip advisor affinity")
+	_check(restored.get_ruler_trait("authoritarian") == 3, "round-trip ruler traits")
 
 	var legacy := RunState.new()
 	legacy.from_dictionary({"day": 2, "resources": restored.get_resources()})
 	_check(legacy.active_arcs.is_empty(), "legacy save without arc fields")
 	_check(legacy.narrative_event_queue.is_empty(), "legacy save without queue field")
+	_check(legacy.get_advisor_affinity("general_boom") == 0, "legacy save defaults missing affinity")
+
+
+func _test_affinity_traits_serialization() -> void:
+	var state := RunState.new()
+	state.advisor_affinity["clerk_zero"] = 4
+	state.ruler_traits["bureaucratic"] = 5
+	state.reset()
+	_check(state.advisor_affinity.is_empty(), "reset clears advisor_affinity dict")
+	_check(state.ruler_traits.is_empty(), "reset clears ruler_traits dict")
 
 
 func _test_queue_serialization() -> void:

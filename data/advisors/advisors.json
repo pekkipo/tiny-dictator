@@ -30,5 +30,37 @@
     "short_description": "Deeply suspicious of government nonsense.",
     "placeholder_icon": "🧹",
     "accent_key": "public"
+  },
+  {
+    "id": "doctor_maybe",
+    "display_name": "Doctor Maybe",
+    "role": "Science Advisor",
+    "short_description": "Excited by side effects. Uncertain about causes.",
+    "placeholder_icon": "🧪",
+    "accent_key": "science"
+  },
+  {
+    "id": "sir_profit",
+    "display_name": "Sir Profit",
+    "role": "Business Advisor",
+    "short_description": "Calls corruption alignment and privatization progress.",
+    "placeholder_icon": "🏦",
+    "accent_key": "business"
+  },
+  {
+    "id": "comrade_whiskers",
+    "display_name": "Comrade Whiskers",
+    "role": "Cat Union Representative",
+    "short_description": "Demands fish, warm furniture, and political recognition.",
+    "placeholder_icon": "🐱",
+    "accent_key": "cats"
+  },
+  {
+    "id": "clerk_zero",
+    "display_name": "Clerk Zero",
+    "role": "Bureaucracy Advisor",
+    "short_description": "Emotionless. Literal. Procedural.",
+    "placeholder_icon": "📋",
+    "accent_key": "bureaucracy"
   }
 ]
