@@ -25,6 +25,7 @@ func _initialize() -> void:
 	_test_runtime_sync(manifest, repo)
 	_test_no_duplicate_ids(manifest)
 	_test_quota_recompute(manifest)
+	_test_quality_findings(manifest)
 	_test_required_fields(manifest)
 	_test_expected_counts(manifest)
 
@@ -97,12 +98,28 @@ func _test_quota_recompute(manifest: Dictionary) -> void:
 		"quota_report approved_total matches manifest (%d)" % approved)
 	_check(int(quota.get("total_cataloged", -1)) == decisions.size(),
 		"quota_report total_cataloged matches manifest size")
+	_check(quota.has("draft_total"), "quota_report has draft_total")
+	_check(quota.has("by_category"), "quota_report has by_category")
+	_check(quota.has("by_speaker"), "quota_report has by_speaker")
+	_check(quota.has("by_stage"), "quota_report has by_stage")
 
 	var by_class: Dictionary = quota.get("by_class", {})
 	for quota_class in by_class:
 		var row: Dictionary = by_class[quota_class]
 		_check(int(row.get("total_cataloged", -1)) == int(class_counts.get(quota_class, 0)),
 			"quota by_class %s total_cataloged matches" % quota_class)
+
+
+func _test_quality_findings(manifest: Dictionary) -> void:
+	var qf: Dictionary = manifest.get("quality_findings", {})
+	_check(qf.has("untested_content"), "quality_findings has untested_content")
+	_check(qf.has("missing_visual_tags"), "quality_findings has missing_visual_tags")
+	_check(qf.has("missing_review_status"), "quality_findings has missing_review_status")
+	_check(qf.get("untested_content", []).size() > 0, "untested_content populated")
+	_check(qf.get("missing_review_status", []).size() > 0, "missing_review_status populated")
+
+	var dist: Dictionary = manifest.get("distribution_report", {})
+	_check(dist.has("by_review_status"), "distribution_report has by_review_status")
 
 
 func _test_required_fields(manifest: Dictionary) -> void:

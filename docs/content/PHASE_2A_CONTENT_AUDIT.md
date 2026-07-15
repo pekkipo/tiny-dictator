@@ -1,7 +1,7 @@
 # Phase 2A Content Audit
 
-**Milestone:** 2B-0 — Existing-Content Audit and Manifest
-**Generated:** 2026-07-15T16:43:46
+**Milestone:** 2B-1 — Voice Bible and Production Scaffolding
+**Generated:** 2026-07-15T16:56:25
 **Country:** ministan
 **Manifest version:** 1
 
@@ -21,7 +21,8 @@
 | Palace Upgrades | 0 | 0 | 24 | 24 |
 | Ruler Identities | 7 | 0 | 12 | 12 |
 
-**Approved decision count:** 0 (voice review blocked until 2B-1).
+**Approved decision count:** 0 (voice bible complete; approval requires rubric ≥16/20 per batch).
+**Draft decision count:** 0
 
 ## 2. Decision-class quota gaps (approved vs target)
 
@@ -67,6 +68,16 @@
 - **science:** 6
 - **government:** 2
 
+### by_primary_category_canonical
+
+- **military_and_order:** 10
+- **economy:** 10
+- **bureaucracy:** 5
+- **public_life:** 30
+- **media_and_propaganda:** 8
+- **infrastructure:** 5
+- **science_and_technology:** 6
+
 ### by_primary_speaker
 
 - **general_boom:** 15
@@ -84,6 +95,43 @@
 - **escalation:** 5
 - **endgame:** 2
 - **instability:** 1
+
+## 3b. Category quota (canonical)
+
+| Dimension | Cataloged | Approved | Draft | Target | Gap |
+|---|---:|---:|---:|---:|---:|
+| economy | 10 | 0 | 0 | 50 | 50 |
+| public_life | 30 | 0 | 0 | 48 | 48 |
+| military_and_order | 10 | 0 | 0 | 38 | 38 |
+| media_and_propaganda | 8 | 0 | 0 | 34 | 34 |
+| science_and_technology | 6 | 0 | 0 | 40 | 40 |
+| business_and_privatization | 0 | 0 | 0 | 32 | 32 |
+| bureaucracy | 5 | 0 | 0 | 32 | 32 |
+| cats_and_animals | 0 | 0 | 0 | 26 | 26 |
+| infrastructure | 5 | 0 | 0 | 30 | 30 |
+
+## 3c. Speaker quota
+
+| Dimension | Cataloged | Approved | Draft | Target | Gap |
+|---|---:|---:|---:|---:|---:|
+| general_boom | 15 | 0 | 0 | 38 | 38 |
+| minister_penny | 14 | 0 | 0 | 40 | 40 |
+| luna_news | 15 | 0 | 0 | 38 | 38 |
+| auntie_olga | 14 | 0 | 0 | 42 | 42 |
+| doctor_maybe | 5 | 0 | 0 | 38 | 38 |
+| sir_profit | 4 | 0 | 0 | 36 | 36 |
+| comrade_whiskers | 2 | 0 | 0 | 34 | 34 |
+| clerk_zero | 5 | 0 | 0 | 36 | 36 |
+| guest_and_system | 0 | 0 | 0 | 28 | 28 |
+
+## 3d. Stage quota
+
+| Dimension | Cataloged | Approved | Draft | Target | Gap |
+|---|---:|---:|---:|---:|---:|
+| establishment | 66 | 0 | 0 | 83 | 83 |
+| escalation | 5 | 0 | 0 | 99 | 99 |
+| instability | 1 | 0 | 0 | 89 | 89 |
+| endgame | 2 | 0 | 0 | 59 | 59 |
 
 ## 4. Decision IDs by primary content class
 
@@ -308,6 +356,205 @@
 - `parade_budget_boost`
 - `window_tax_proposal`
 
+### Missing visual tags (all decisions)
+
+- `army_snack_budget`
+- `boom_failed_coup`
+- `boom_hostile_coup_rumor`
+- `boom_loyal_protector`
+- `border_parade_dispute`
+- `budget_meltdown_crisis`
+- `bureaucracy_expansion`
+- `cat_fish_budget`
+- `cat_limited_council`
+- `cat_parliament`
+- `cat_party_banned`
+- `cat_party_enters_parliament`
+- `cat_politics_fish_budget`
+- `cat_protest`
+- `cat_republic_declared`
+- `cat_treaty_offer`
+- `cat_voting_proposal`
+- `cats_return_to_boxes`
+- `cheese_shortage`
+- `cheese_shortage_crisis`
+- `daily_cabinet_briefing`
+- `endgame_final_audit`
+- `endgame_legacy_statue`
+- `endgame_succession_debate`
+- `escalation_only_rival_parade`
+- `free_pizza_friday`
+- `generic_minister_disagreement`
+- `happiness_arc_quiet`
+- `happiness_arc_reformed`
+- `happiness_backlash`
+- `long_setup_grand_canal`
+- `luna_good_news_only`
+- `maybe_containment_protocol`
+- `maybe_moon_dust_trial`
+- `military_parade`
+- `national_anthem_remix`
+- `national_power_outage`
+- `neighborhood_noise_complaint`
+- `no_weekends_proposal`
+- `olga_bridge_repair`
+- `olga_loyal_council`
+- `parade_budget_boost`
+- `pineapple_referendum`
+- `pizza_union_strike`
+- `postal_pigeon_reform`
+- `privatize_palace_garden`
+- `privatize_rainwater`
+- `propaganda_smile_campaign`
+- `recovery_elite_dinner`
+- `recovery_international_bank`
+- `recovery_martial_law_pause`
+- `recovery_national_smile_day`
+- `robot_cabinet_proposal`
+- `robot_government_installed`
+- `science_grant_request`
+- `traffic_complaint`
+- `traffic_lights_restored`
+- `treasury_tip_jar`
+- `window_tax_proposal`
+
+### Untested content (manual_test_status = untested)
+
+- `boom_hostile_coup_rumor`
+- `border_parade_dispute`
+- `bureaucracy_expansion`
+- `cat_fish_budget`
+- `cat_parliament`
+- `cat_treaty_offer`
+- `cat_voting_proposal`
+- `cheese_shortage`
+- `daily_cabinet_briefing`
+- `escalation_only_rival_parade`
+- `free_pizza_friday`
+- `generic_minister_disagreement`
+- `happiness_backlash`
+- `long_setup_grand_canal`
+- `luna_good_news_only`
+- `maybe_moon_dust_trial`
+- `national_anthem_remix`
+- `neighborhood_noise_complaint`
+- `no_weekends_proposal`
+- `olga_bridge_repair`
+- `olga_loyal_council`
+- `pineapple_referendum`
+- `pizza_union_strike`
+- `postal_pigeon_reform`
+- `privatize_palace_garden`
+- `privatize_rainwater`
+- `propaganda_smile_campaign`
+- `robot_cabinet_proposal`
+- `robot_government_installed`
+- `science_grant_request`
+- `traffic_complaint`
+- `traffic_lights_restored`
+- `traffic_military_resolved`
+- `traffic_tank_solution`
+- `treasury_tip_jar`
+- `window_tax_proposal`
+
+### Missing review status (any gate not pass)
+
+- `army_snack_budget`
+- `bank_run`
+- `boom_emergency_powers_demand`
+- `boom_failed_coup`
+- `boom_hostile_coup_rumor`
+- `boom_loyal_protector`
+- `border_parade_dispute`
+- `budget_meltdown_crisis`
+- `bureaucracy_expansion`
+- `cat_fish_budget`
+- `cat_limited_council`
+- `cat_parliament`
+- `cat_parliament_occupation`
+- `cat_party_banned`
+- `cat_party_enters_parliament`
+- `cat_politics_fish_budget`
+- `cat_protest`
+- `cat_republic_declared`
+- `cat_treaty_offer`
+- `cat_voting_proposal`
+- `cat_voting_rights`
+- `cats_return_to_boxes`
+- `cheese_shortage`
+- `cheese_shortage_crisis`
+- `daily_cabinet_briefing`
+- `endgame_final_audit`
+- `endgame_legacy_statue`
+- `endgame_succession_debate`
+- `escalation_only_rival_parade`
+- `fake_smile_industry`
+- `free_pizza_friday`
+- `generic_minister_disagreement`
+- `happiness_arc_quiet`
+- `happiness_arc_reformed`
+- `happiness_backlash`
+- `happiness_bureau_crackdown`
+- `happiness_golden_decree`
+- `long_setup_grand_canal`
+- `luna_good_news_only`
+- `mandatory_smiling_proposal`
+- `mass_protest`
+- `maybe_containment_protocol`
+- `maybe_golden_age`
+- `maybe_lab_runaway`
+- `maybe_moon_dust_trial`
+- `military_parade`
+- `national_anthem_remix`
+- `national_power_outage`
+- `neighborhood_noise_complaint`
+- `no_weekends_proposal`
+- `olga_bridge_repair`
+- `olga_loyal_council`
+- `parade_budget_boost`
+- `pineapple_referendum`
+- `pizza_union_strike`
+- `postal_pigeon_reform`
+- `privatize_palace_garden`
+- `privatize_rainwater`
+- `propaganda_smile_campaign`
+- `recovery_elite_dinner`
+- `recovery_international_bank`
+- `recovery_martial_law_pause`
+- `recovery_national_smile_day`
+- `robot_cabinet_proposal`
+- `robot_government_installed`
+- `science_gamble`
+- `science_grant_request`
+- `switch_off_traffic_lights`
+- `traffic_complaint`
+- `traffic_lights_restored`
+- `traffic_military_resolved`
+- `traffic_tank_solution`
+- `treasury_tip_jar`
+- `window_tax_proposal`
+
+### Review status distribution
+
+#### voice_review_status
+
+- **not_reviewed:** 74
+
+#### balance_review_status
+
+- **partial:** 74
+
+#### manual_test_status
+
+- **partial:** 28
+- **pass:** 10
+- **untested:** 36
+
+#### graph_validation_status
+
+- **partial:** 42
+- **pass:** 32
+
 ## 7. Rewrite, defer, and reclassify recommendations
 
 ### Needs rewrite
@@ -337,13 +584,13 @@
 
 ## 8. Assumptions and unresolved issues
 
-1. **Minor arcs = short chains** for quota until 2B-1 arc catalog.
-2. **Voice review blocked** — no decision can be `approved` until 2B-1 voice bible.
+1. **Planning catalogs** — [`MINISTAN_ARC_CATALOG.md`](MINISTAN_ARC_CATALOG.md), [`MINISTAN_CHAIN_CATALOG.md`](MINISTAN_CHAIN_CATALOG.md), [`MINISTAN_CRISIS_CATALOG.md`](MINISTAN_CRISIS_CATALOG.md) are authoritative for 2B production inventory.
+2. **Voice bible complete** — approval still requires per-card rubric ≥16/20 during batch review.
 3. **Unreachable diagnostics** — 42 optimistic-graph warnings expected for arc-gated cards.
 4. **Resource-failure endings** — `bankrupt_leader`, `revolution`, `elite_coup`, `chaos_country` flagged impossible from day-1 by design.
-5. **Guest speakers** — 0 of 6 target; not present in Phase 2A.
+5. **Guest speakers** — 0 of 6 target in runtime; voice cards in voice bible only.
 6. **Simulation snapshot** — embedded from Phase 2A 1000-run report (seed 20260715).
-7. **Onboarding IDs** — provisional 6-card list; full 10-card pack is 2B-2.
+7. **Onboarding IDs** — provisional 3-card classification; full 10-card pack is 2B-2.
 
 ## 9. Manifest maintenance
 
@@ -358,16 +605,17 @@
 
 ## 10. Manual test checklist
 
-1. `godot --headless --path . -s tests/run_content_manifest.gd` — manifest builds, quota prints, no sync errors
-2. `godot --headless --path . -s tests/test_content_manifest.gd` — manifest assertions pass
-3. `godot --headless --path . -s tests/test_content_validation.gd` — 74 decisions, 0 validator errors
-4. `godot --headless --path . -s tests/run_phase_2a_qa.gd` — full 17-suite matrix passes
-5. Open `data/content_manifest.json` — 74 decision records, no duplicate IDs
-6. Spot-check: `switch_off_traffic_lights`, `recovery_international_bank`, `national_power_outage`, `endgame_final_audit`, `generic_minister_disagreement`
-7. Change one record to `approved` locally — verify `quota_report` recomputes on rebuild
-8. Launch game in editor — boot, start run, resolve 3 decisions
-9. F1 debug overlay → Run Static Diagnostics
-10. Audit gap table matches manifest `quota_report`
+1. `godot --headless --path . -s tests/run_content_manifest.gd` — quota includes draft/category/speaker/stage gaps
+2. `godot --headless --path . -s tests/test_content_manifest.gd` — manifest sync passes
+3. `godot --headless --path . -s tests/test_content_scaffolding.gd` — voice bible + catalogs complete
+4. `godot --headless --path . -s tests/test_content_validation.gd` — 74 decisions, 0 validator errors
+5. `godot --headless --path . -s tests/run_phase_2a_qa.gd` — full QA matrix passes
+6. Open `data/content_manifest.json` — 74 decision records, no duplicate IDs
+7. Spot-read each advisor in `MINISTAN_CHARACTER_VOICE_BIBLE.md` — 5 proposals/results/out-of-character present
+8. Spot-read arc/chain/crisis catalogs — 18/32/18 entries with required fields
+9. Confirm `docs/content/drafts/` has no runtime JSON; no new `data/decisions/*.json`
+10. Confirm canonical examples marked NOT RUNTIME
+11. Launch editor — boot run, resolve 3 decisions — behavior unchanged
 
 ## 11. Manifest validation status
 

@@ -1,11 +1,15 @@
 extends RefCounted
 
 ## Development-only manifest builder for Phase 2B content tracking.
-## Spec: docs/09_PHASE_2B_STRONG_LAUNCH_CONTENT_PRODUCTION_PRD.md §20, Milestone 2B-0.
+## Spec: docs/09_PHASE_2B_STRONG_LAUNCH_CONTENT_PRODUCTION_PRD.md §20, Milestones 2B-0 / 2B-1.
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const BATCH_ID: String = "2a-9"
+const PHASE: String = "2b_1_scaffolding"
+const BATCH_ID: String = "2b-1"
+const DECISION_BATCH_ID: String = "2a-9"
+
+const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
 const TARGETS: Dictionary = {
 	"decisions_by_class": {
@@ -16,6 +20,34 @@ const TARGETS: Dictionary = {
 		"crisis": 28,
 		"recovery": 24,
 		"endgame": 20,
+	},
+	"decisions_by_category": {
+		"economy": 50,
+		"public_life": 48,
+		"military_and_order": 38,
+		"media_and_propaganda": 34,
+		"science_and_technology": 40,
+		"business_and_privatization": 32,
+		"bureaucracy": 32,
+		"cats_and_animals": 26,
+		"infrastructure": 30,
+	},
+	"decisions_by_speaker": {
+		"general_boom": 38,
+		"minister_penny": 40,
+		"luna_news": 38,
+		"auntie_olga": 42,
+		"doctor_maybe": 38,
+		"sir_profit": 36,
+		"comrade_whiskers": 34,
+		"clerk_zero": 36,
+		"guest_and_system": 28,
+	},
+	"decisions_by_stage": {
+		"establishment": 83,
+		"escalation": 99,
+		"instability": 89,
+		"endgame": 59,
 	},
 	"decisions_total": 330,
 	"major_arcs": 18,
@@ -28,6 +60,29 @@ const TARGETS: Dictionary = {
 	"advisors": 8,
 	"guest_speakers": 6,
 }
+
+const LEGACY_CATEGORY_MAP: Dictionary = {
+	"military": "military_and_order",
+	"media": "media_and_propaganda",
+	"science": "science_and_technology",
+	"administration": "bureaucracy",
+	"government": "bureaucracy",
+	"politics": "public_life",
+	"absurd_law": "public_life",
+	"follow_up": "public_life",
+	"economy": "economy",
+	"public_life": "public_life",
+	"infrastructure": "infrastructure",
+}
+
+const GUEST_SPEAKER_IDS: Array[String] = [
+	"foreign_ambassador",
+	"chief_judge",
+	"palace_chef",
+	"youth_representative",
+	"workers_union_leader",
+	"neighboring_president",
+]
 
 const MAJOR_ARC_IDS: Array[String] = [
 	"cat_politics", "mandatory_happiness", "general_boom_arc", "doctor_maybe_arc",
@@ -144,7 +199,7 @@ func _build(repository: ContentRepository, diagnostics: Dictionary) -> Dictionar
 		"manifest_version": MANIFEST_VERSION,
 		"generated_at": Time.get_datetime_string_from_system(true),
 		"country_id": COUNTRY_ID,
-		"phase": "2a_baseline",
+		"phase": PHASE,
 		"batch_id": BATCH_ID,
 		"targets": TARGETS.duplicate(true),
 		"simulation_snapshot": SIMULATION_SNAPSHOT.duplicate(true),
@@ -178,7 +233,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"content_type": "advisor",
 			"display_name": str(advisor.get("display_name", "")),
 			"status": "integrated",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"notes": "Phase 2A advisor catalog entry.",
 		})
 
@@ -188,7 +243,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"content_type": "ruler_identity",
 			"display_name": str(identity.get("display_name", "")),
 			"status": "integrated",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"notes": "",
 		})
 
@@ -198,7 +253,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"content_type": "law",
 			"primary_category": str(law.get("category", "")),
 			"status": "integrated",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"visual_tags": law.get("visual_tags", []),
 			"notes": "",
 		})
@@ -213,7 +268,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"content_type": "ending",
 			"ending_type": str(ending.get("type", "")),
 			"status": "integrated",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"notes": notes,
 		})
 
@@ -222,7 +277,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"id": str(upgrade.get("id", "")),
 			"content_type": "palace_upgrade",
 			"status": "needs_rewrite",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 		})
 
@@ -239,7 +294,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"importance": str(arc.get("importance", "")),
 			"arc_type": str(arc.get("arc_type", "")),
 			"status": status,
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"decision_count": _count_decisions_for_arc(decisions, arc_id),
 			"notes": "Minor arcs counted toward short_chain quota, not major_arc quota." if arc_id in MINOR_ARC_IDS else "",
 		})
@@ -253,7 +308,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"id": chain_id,
 			"content_type": "chain",
 			"status": chain_status,
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"decision_ids": member_ids.duplicate(),
 			"target_length": member_ids.size(),
 			"notes": "Manifest-invented chain_id; no runtime field yet.",
@@ -267,7 +322,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"severity": int(crisis.get("severity", 0)),
 			"entry_decision_id": str(crisis.get("entry_decision_id", "")),
 			"status": "deferred" if crisis_id in DEFERRED_CRISIS_IDS else "integrated",
-			"batch_id": BATCH_ID,
+			"batch_id": DECISION_BATCH_ID,
 			"notes": "",
 		})
 
@@ -322,7 +377,7 @@ func _build_decision_record(
 		"manual_test_status": manual_status,
 		"voice_review_status": voice_status,
 		"balance_review_status": balance_status,
-		"batch_id": BATCH_ID,
+		"batch_id": DECISION_BATCH_ID,
 		"visual_tags": decision.get("visual_tags", []),
 		"runtime_source_file": _source_file_hint(id),
 		"card_type": str(decision.get("card_type", "normal")),
@@ -576,21 +631,93 @@ func _count_decisions_for_arc(decisions: Array[Dictionary], arc_id: String) -> i
 	return count
 
 
+func _canonical_category(raw_category: String) -> String:
+	if LEGACY_CATEGORY_MAP.has(raw_category):
+		return str(LEGACY_CATEGORY_MAP[raw_category])
+	return raw_category
+
+
+func _canonical_speaker(raw_speaker: String) -> String:
+	if raw_speaker in GUEST_SPEAKER_IDS:
+		return "guest_and_system"
+	if raw_speaker.is_empty():
+		return "guest_and_system"
+	return raw_speaker
+
+
+func _is_draft_status(status: String) -> bool:
+	return status in DRAFT_STATUSES
+
+
+func _build_dimension_quota(
+	decisions: Array,
+	targets_map: Dictionary,
+	key_field: String,
+	key_transform: Callable = Callable(),
+) -> Dictionary:
+	var approved: Dictionary = {}
+	var draft: Dictionary = {}
+	var integrated: Dictionary = {}
+	var cataloged: Dictionary = {}
+	for dim in targets_map:
+		approved[dim] = 0
+		draft[dim] = 0
+		integrated[dim] = 0
+		cataloged[dim] = 0
+
+	for record in decisions:
+		if not (record is Dictionary):
+			continue
+		var raw_key := str(record.get(key_field, ""))
+		var dim := raw_key
+		if key_transform.is_valid():
+			dim = str(key_transform.call(raw_key))
+		if not targets_map.has(dim):
+			continue
+		var status := str(record.get("status", ""))
+		cataloged[dim] += 1
+		if status == "approved":
+			approved[dim] += 1
+		if _is_draft_status(status):
+			draft[dim] += 1
+		if status in ["integrated", "approved"]:
+			integrated[dim] += 1
+
+	var rows: Dictionary = {}
+	for dim in targets_map:
+		var target: int = int(targets_map[dim])
+		rows[dim] = {
+			"target": target,
+			"approved": int(approved.get(dim, 0)),
+			"draft": int(draft.get(dim, 0)),
+			"integrated": int(integrated.get(dim, 0)),
+			"cataloged": int(cataloged.get(dim, 0)),
+			"gap_approved": target - int(approved.get(dim, 0)),
+		}
+	return rows
+
+
 func _compute_quota_report(manifest: Dictionary) -> Dictionary:
 	var targets: Dictionary = manifest.get("targets", {})
 	var class_targets: Dictionary = targets.get("decisions_by_class", {})
+	var category_targets: Dictionary = targets.get("decisions_by_category", {})
+	var speaker_targets: Dictionary = targets.get("decisions_by_speaker", {})
+	var stage_targets: Dictionary = targets.get("decisions_by_stage", {})
 	var decisions: Array = manifest.get("decisions", [])
 	var catalogs: Dictionary = manifest.get("catalogs", {})
 
 	var by_class_approved: Dictionary = {}
 	var by_class_integrated: Dictionary = {}
+	var by_class_draft: Dictionary = {}
 	var by_class_all: Dictionary = {}
 	for quota_class in class_targets:
 		by_class_approved[quota_class] = 0
 		by_class_integrated[quota_class] = 0
+		by_class_draft[quota_class] = 0
 		by_class_all[quota_class] = 0
 
 	var approved_total := 0
+	var draft_total := 0
 	var integrated_total := 0
 	for record in decisions:
 		if not (record is Dictionary):
@@ -603,6 +730,10 @@ func _compute_quota_report(manifest: Dictionary) -> Dictionary:
 			approved_total += 1
 			if by_class_approved.has(cls):
 				by_class_approved[cls] += 1
+		if _is_draft_status(status):
+			draft_total += 1
+			if by_class_draft.has(cls):
+				by_class_draft[cls] += 1
 		if status in ["integrated", "approved"]:
 			integrated_total += 1
 			if by_class_integrated.has(cls):
@@ -614,6 +745,7 @@ func _compute_quota_report(manifest: Dictionary) -> Dictionary:
 		decision_classes[quota_class] = {
 			"target": target,
 			"approved": int(by_class_approved.get(quota_class, 0)),
+			"draft": int(by_class_draft.get(quota_class, 0)),
 			"integrated": int(by_class_integrated.get(quota_class, 0)),
 			"total_cataloged": int(by_class_all.get(quota_class, 0)),
 			"gap_approved": target - int(by_class_approved.get(quota_class, 0)),
@@ -639,14 +771,28 @@ func _compute_quota_report(manifest: Dictionary) -> Dictionary:
 	var upgrades_approved := _count_catalog_by_status(catalogs.get("palace_upgrades", []), "approved")
 	var identities_approved := _count_catalog_by_status(catalogs.get("ruler_identities", []), "approved")
 
+	var by_category := _build_dimension_quota(
+		decisions, category_targets, "primary_category", _canonical_category,
+	)
+	var by_speaker := _build_dimension_quota(
+		decisions, speaker_targets, "primary_speaker", _canonical_speaker,
+	)
+	var by_stage := _build_dimension_quota(
+		decisions, stage_targets, "primary_run_stage",
+	)
+
 	return {
 		"decisions": {
 			"target_total": int(targets.get("decisions_total", 330)),
 			"approved_total": approved_total,
+			"draft_total": draft_total,
 			"integrated_total": integrated_total,
 			"total_cataloged": decisions.size(),
 			"gap_approved": int(targets.get("decisions_total", 330)) - approved_total,
 			"by_class": decision_classes,
+			"by_category": by_category,
+			"by_speaker": by_speaker,
+			"by_stage": by_stage,
 		},
 		"major_arcs": {
 			"target": int(targets.get("major_arcs", 18)),
@@ -726,29 +872,80 @@ func _compute_distribution_report(manifest: Dictionary) -> Dictionary:
 	var by_status: Dictionary = {}
 	var by_class: Dictionary = {}
 	var by_category: Dictionary = {}
+	var by_category_canonical: Dictionary = {}
 	var by_speaker: Dictionary = {}
 	var by_stage: Dictionary = {}
+	var by_voice_review: Dictionary = {}
+	var by_balance_review: Dictionary = {}
+	var by_manual_test: Dictionary = {}
+	var by_graph_validation: Dictionary = {}
+	var approved_by_category: Dictionary = {}
+	var approved_by_speaker: Dictionary = {}
+	var approved_by_stage: Dictionary = {}
 
 	for record in decisions:
 		if not (record is Dictionary):
 			continue
-		_increment(by_status, str(record.get("status", "unknown")))
+		var status := str(record.get("status", "unknown"))
+		var raw_category := str(record.get("primary_category", "unknown"))
+		var canonical_category := _canonical_category(raw_category)
+		var raw_speaker := str(record.get("primary_speaker", "unknown"))
+		var canonical_speaker := _canonical_speaker(raw_speaker)
+		var stage := str(record.get("primary_run_stage", "unknown"))
+
+		_increment(by_status, status)
 		_increment(by_class, str(record.get("primary_content_class", "unknown")))
-		_increment(by_category, str(record.get("primary_category", "unknown")))
-		_increment(by_speaker, str(record.get("primary_speaker", "unknown")))
-		_increment(by_stage, str(record.get("primary_run_stage", "unknown")))
+		_increment(by_category, raw_category)
+		_increment(by_category_canonical, canonical_category)
+		_increment(by_speaker, raw_speaker)
+		_increment(by_stage, stage)
+		_increment(by_voice_review, str(record.get("voice_review_status", "unknown")))
+		_increment(by_balance_review, str(record.get("balance_review_status", "unknown")))
+		_increment(by_manual_test, str(record.get("manual_test_status", "unknown")))
+		_increment(by_graph_validation, str(record.get("graph_validation_status", "unknown")))
+
+		if status == "approved":
+			_increment(approved_by_category, canonical_category)
+			_increment(approved_by_speaker, canonical_speaker)
+			_increment(approved_by_stage, stage)
 
 	return {
 		"by_status": by_status,
 		"by_primary_content_class": by_class,
 		"by_primary_category": by_category,
+		"by_primary_category_canonical": by_category_canonical,
 		"by_primary_speaker": by_speaker,
 		"by_primary_run_stage": by_stage,
+		"by_review_status": {
+			"voice_review_status": by_voice_review,
+			"balance_review_status": by_balance_review,
+			"manual_test_status": by_manual_test,
+			"graph_validation_status": by_graph_validation,
+		},
+		"approved_only": {
+			"by_primary_category_canonical": approved_by_category,
+			"by_primary_speaker": approved_by_speaker,
+			"by_primary_run_stage": approved_by_stage,
+		},
 	}
 
 
 func _increment(counter: Dictionary, key: String) -> void:
 	counter[key] = int(counter.get(key, 0)) + 1
+
+
+func _record_missing_review(record: Dictionary) -> bool:
+	if str(record.get("voice_review_status", "")) != "pass":
+		return true
+	if str(record.get("balance_review_status", "")) != "pass":
+		return true
+	if str(record.get("manual_test_status", "")) != "pass":
+		return true
+	if str(record.get("graph_validation_status", "")) not in ["pass"]:
+		return true
+	if str(record.get("schema_validation_status", "")) != "pass":
+		return true
+	return false
 
 
 func _compute_quality_findings(manifest: Dictionary, diagnostics: Dictionary) -> Dictionary:
@@ -757,6 +954,9 @@ func _compute_quality_findings(manifest: Dictionary, diagnostics: Dictionary) ->
 	var deferred_ids: Array[String] = []
 	var integrated_ids: Array[String] = []
 	var missing_visual_hooks: Array[String] = []
+	var missing_visual_tags: Array[String] = []
+	var untested_content: Array[String] = []
+	var missing_review_status: Array[String] = []
 
 	for record in decisions:
 		if not (record is Dictionary):
@@ -770,8 +970,14 @@ func _compute_quality_findings(manifest: Dictionary, diagnostics: Dictionary) ->
 		elif status == "integrated":
 			integrated_ids.append(id)
 		var visual_tags: Array = record.get("visual_tags", [])
-		if visual_tags.is_empty() and str(record.get("primary_content_class", "")) in ["major_arc", "onboarding"]:
-			missing_visual_hooks.append(id)
+		if visual_tags.is_empty():
+			missing_visual_tags.append(id)
+			if str(record.get("primary_content_class", "")) in ["major_arc", "onboarding"]:
+				missing_visual_hooks.append(id)
+		if str(record.get("manual_test_status", "")) == "untested":
+			untested_content.append(id)
+		if _record_missing_review(record):
+			missing_review_status.append(id)
 
 	var diag_summary: Dictionary = {}
 	var findings: Dictionary = diagnostics.get("findings", {})
@@ -783,28 +989,60 @@ func _compute_quality_findings(manifest: Dictionary, diagnostics: Dictionary) ->
 		var items: Array = findings.get(category, [])
 		diag_summary[category] = items.size()
 
+	missing_visual_tags.sort()
+	untested_content.sort()
+	missing_review_status.sort()
+
 	return {
 		"needs_rewrite_ids": rewrite_ids,
 		"deferred_ids": deferred_ids,
 		"integrated_ids": integrated_ids,
 		"duplicate_premise_groups": DUPLICATE_PREMISE_GROUPS.duplicate(true),
 		"missing_visual_hooks": missing_visual_hooks,
+		"missing_visual_tags": missing_visual_tags,
+		"untested_content": untested_content,
+		"missing_review_status": missing_review_status,
 		"diagnostics_summary": diag_summary,
 		"simulation_never_selected": SIM_NEVER_SELECTED.duplicate(),
 	}
 
 
+static func _append_dimension_quota_lines(
+	lines: PackedStringArray,
+	title: String,
+	rows: Dictionary,
+) -> void:
+	if rows.is_empty():
+		return
+	lines.append("")
+	lines.append(title)
+	for dim in rows:
+		var row: Dictionary = rows[dim]
+		lines.append(
+			"  %s: %d approved / %d target (gap %d); %d draft; %d cataloged" % [
+				dim,
+				int(row.get("approved", 0)),
+				int(row.get("target", 0)),
+				int(row.get("gap_approved", 0)),
+				int(row.get("draft", 0)),
+				int(row.get("cataloged", 0)),
+			]
+		)
+
+
 static func format_quota_text(manifest: Dictionary) -> String:
 	var report: Dictionary = manifest.get("quota_report", {})
+	var qf: Dictionary = manifest.get("quality_findings", {})
 	var lines: PackedStringArray = ["Content manifest quota report (approved vs target):"]
 
 	var decisions: Dictionary = report.get("decisions", {})
 	lines.append("")
 	lines.append(
-		"Decisions: %d approved / %d target (gap %d); %d integrated; %d cataloged" % [
+		"Decisions: %d approved / %d target (gap %d); %d draft; %d integrated; %d cataloged" % [
 			int(decisions.get("approved_total", 0)),
 			int(decisions.get("target_total", 0)),
 			int(decisions.get("gap_approved", 0)),
+			int(decisions.get("draft_total", 0)),
 			int(decisions.get("integrated_total", 0)),
 			int(decisions.get("total_cataloged", 0)),
 		]
@@ -813,14 +1051,25 @@ static func format_quota_text(manifest: Dictionary) -> String:
 	for quota_class in by_class:
 		var row: Dictionary = by_class[quota_class]
 		lines.append(
-			"  %s: %d approved / %d target (gap %d); %d integrated cataloged" % [
+			"  %s: %d approved / %d target (gap %d); %d draft; %d integrated" % [
 				quota_class,
 				int(row.get("approved", 0)),
 				int(row.get("target", 0)),
 				int(row.get("gap_approved", 0)),
+				int(row.get("draft", 0)),
 				int(row.get("integrated", 0)),
 			]
 		)
+
+	_append_dimension_quota_lines(
+		lines, "By category (canonical):", decisions.get("by_category", {}),
+	)
+	_append_dimension_quota_lines(
+		lines, "By speaker:", decisions.get("by_speaker", {}),
+	)
+	_append_dimension_quota_lines(
+		lines, "By stage:", decisions.get("by_stage", {}),
+	)
 
 	for key in ["major_arcs", "short_chains", "crises", "laws", "endings", "palace_upgrades", "ruler_identities", "guest_speakers"]:
 		if not report.has(key):
@@ -834,6 +1083,12 @@ static func format_quota_text(manifest: Dictionary) -> String:
 				int(row.get("gap_approved", 0)),
 			]
 		)
+
+	lines.append("")
+	lines.append("Quality flags:")
+	lines.append("  untested_content: %d" % qf.get("untested_content", []).size())
+	lines.append("  missing_visual_tags: %d" % qf.get("missing_visual_tags", []).size())
+	lines.append("  missing_review_status: %d" % qf.get("missing_review_status", []).size())
 	return "\n".join(lines)
 
 

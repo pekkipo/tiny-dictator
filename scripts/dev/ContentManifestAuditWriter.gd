@@ -7,7 +7,7 @@ static func format(manifest: Dictionary, validation) -> String:
 	var lines: PackedStringArray = []
 	lines.append("# Phase 2A Content Audit")
 	lines.append("")
-	lines.append("**Milestone:** 2B-0 — Existing-Content Audit and Manifest")
+	lines.append("**Milestone:** 2B-1 — Voice Bible and Production Scaffolding")
 	lines.append("**Generated:** %s" % str(manifest.get("generated_at", "")))
 	lines.append("**Country:** %s" % str(manifest.get("country_id", "")))
 	lines.append("**Manifest version:** %d" % int(manifest.get("manifest_version", 0)))
@@ -19,6 +19,7 @@ static func format(manifest: Dictionary, validation) -> String:
 	_append_executive_summary(lines, manifest)
 	_append_quota_gaps(lines, manifest)
 	_append_distribution(lines, manifest)
+	_append_dimension_quotas(lines, manifest)
 	_append_class_breakdown(lines, manifest)
 	_append_catalog_inventory(lines, manifest)
 	_append_quality_findings(lines, manifest)
@@ -54,7 +55,8 @@ static func _append_executive_summary(lines: PackedStringArray, manifest: Dictio
 			int(row.get("gap_approved", 0)),
 		])
 	lines.append("")
-	lines.append("**Approved decision count:** %d (voice review blocked until 2B-1)." % int(decisions.get("approved_total", 0)))
+	lines.append("**Approved decision count:** %d (voice bible complete; approval requires rubric ≥16/20 per batch)." % int(decisions.get("approved_total", 0)))
+	lines.append("**Draft decision count:** %d" % int(decisions.get("draft_total", 0)))
 	lines.append("")
 
 
@@ -83,7 +85,7 @@ static func _append_distribution(lines: PackedStringArray, manifest: Dictionary)
 	var dist: Dictionary = manifest.get("distribution_report", {})
 	for section in [
 		"by_status", "by_primary_content_class", "by_primary_category",
-		"by_primary_speaker", "by_primary_run_stage",
+		"by_primary_category_canonical", "by_primary_speaker", "by_primary_run_stage",
 	]:
 		lines.append("### %s" % section)
 		lines.append("")
@@ -93,6 +95,35 @@ static func _append_distribution(lines: PackedStringArray, manifest: Dictionary)
 		else:
 			for key in data:
 				lines.append("- **%s:** %d" % [key, int(data[key])])
+		lines.append("")
+
+
+static func _append_dimension_quotas(lines: PackedStringArray, manifest: Dictionary) -> void:
+	var decisions_quota: Dictionary = manifest.get("quota_report", {}).get("decisions", {})
+	for title_key in [
+		["## 3b. Category quota (canonical)", "by_category"],
+		["## 3c. Speaker quota", "by_speaker"],
+		["## 3d. Stage quota", "by_stage"],
+	]:
+		var title: String = title_key[0]
+		var key: String = title_key[1]
+		var rows: Dictionary = decisions_quota.get(key, {})
+		if rows.is_empty():
+			continue
+		lines.append(title)
+		lines.append("")
+		lines.append("| Dimension | Cataloged | Approved | Draft | Target | Gap |")
+		lines.append("|---|---:|---:|---:|---:|---:|")
+		for dim in rows:
+			var row: Dictionary = rows[dim]
+			lines.append("| %s | %d | %d | %d | %d | %d |" % [
+				dim,
+				int(row.get("cataloged", 0)),
+				int(row.get("approved", 0)),
+				int(row.get("draft", 0)),
+				int(row.get("target", 0)),
+				int(row.get("gap_approved", 0)),
+			])
 		lines.append("")
 
 
@@ -160,6 +191,32 @@ static func _append_quality_findings(lines: PackedStringArray, manifest: Diction
 	for id in qf.get("missing_visual_hooks", []):
 		lines.append("- `%s`" % str(id))
 	lines.append("")
+	lines.append("### Missing visual tags (all decisions)")
+	lines.append("")
+	for id in qf.get("missing_visual_tags", []):
+		lines.append("- `%s`" % str(id))
+	lines.append("")
+	lines.append("### Untested content (manual_test_status = untested)")
+	lines.append("")
+	for id in qf.get("untested_content", []):
+		lines.append("- `%s`" % str(id))
+	lines.append("")
+	lines.append("### Missing review status (any gate not pass)")
+	lines.append("")
+	for id in qf.get("missing_review_status", []):
+		lines.append("- `%s`" % str(id))
+	lines.append("")
+	var review_dist: Dictionary = manifest.get("distribution_report", {}).get("by_review_status", {})
+	if not review_dist.is_empty():
+		lines.append("### Review status distribution")
+		lines.append("")
+		for gate in review_dist:
+			lines.append("#### %s" % gate)
+			lines.append("")
+			var gate_data: Dictionary = review_dist[gate]
+			for key in gate_data:
+				lines.append("- **%s:** %d" % [key, int(gate_data[key])])
+			lines.append("")
 
 
 static func _append_rewrite_lists(lines: PackedStringArray, manifest: Dictionary) -> void:
@@ -188,13 +245,13 @@ static func _append_rewrite_lists(lines: PackedStringArray, manifest: Dictionary
 static func _append_assumptions(lines: PackedStringArray) -> void:
 	lines.append("## 8. Assumptions and unresolved issues")
 	lines.append("")
-	lines.append("1. **Minor arcs = short chains** for quota until 2B-1 arc catalog.")
-	lines.append("2. **Voice review blocked** — no decision can be `approved` until 2B-1 voice bible.")
+	lines.append("1. **Planning catalogs** — [`MINISTAN_ARC_CATALOG.md`](MINISTAN_ARC_CATALOG.md), [`MINISTAN_CHAIN_CATALOG.md`](MINISTAN_CHAIN_CATALOG.md), [`MINISTAN_CRISIS_CATALOG.md`](MINISTAN_CRISIS_CATALOG.md) are authoritative for 2B production inventory.")
+	lines.append("2. **Voice bible complete** — approval still requires per-card rubric ≥16/20 during batch review.")
 	lines.append("3. **Unreachable diagnostics** — 42 optimistic-graph warnings expected for arc-gated cards.")
 	lines.append("4. **Resource-failure endings** — `bankrupt_leader`, `revolution`, `elite_coup`, `chaos_country` flagged impossible from day-1 by design.")
-	lines.append("5. **Guest speakers** — 0 of 6 target; not present in Phase 2A.")
+	lines.append("5. **Guest speakers** — 0 of 6 target in runtime; voice cards in voice bible only.")
 	lines.append("6. **Simulation snapshot** — embedded from Phase 2A 1000-run report (seed 20260715).")
-	lines.append("7. **Onboarding IDs** — provisional 6-card list; full 10-card pack is 2B-2.")
+	lines.append("7. **Onboarding IDs** — provisional 3-card classification; full 10-card pack is 2B-2.")
 	lines.append("")
 
 
@@ -216,16 +273,17 @@ static func _append_manual_checklist(lines: PackedStringArray) -> void:
 	lines.append("## 10. Manual test checklist")
 	lines.append("")
 	var items: PackedStringArray = [
-		"`godot --headless --path . -s tests/run_content_manifest.gd` — manifest builds, quota prints, no sync errors",
-		"`godot --headless --path . -s tests/test_content_manifest.gd` — manifest assertions pass",
+		"`godot --headless --path . -s tests/run_content_manifest.gd` — quota includes draft/category/speaker/stage gaps",
+		"`godot --headless --path . -s tests/test_content_manifest.gd` — manifest sync passes",
+		"`godot --headless --path . -s tests/test_content_scaffolding.gd` — voice bible + catalogs complete",
 		"`godot --headless --path . -s tests/test_content_validation.gd` — 74 decisions, 0 validator errors",
-		"`godot --headless --path . -s tests/run_phase_2a_qa.gd` — full 17-suite matrix passes",
+		"`godot --headless --path . -s tests/run_phase_2a_qa.gd` — full QA matrix passes",
 		"Open `data/content_manifest.json` — 74 decision records, no duplicate IDs",
-		"Spot-check: `switch_off_traffic_lights`, `recovery_international_bank`, `national_power_outage`, `endgame_final_audit`, `generic_minister_disagreement`",
-		"Change one record to `approved` locally — verify `quota_report` recomputes on rebuild",
-		"Launch game in editor — boot, start run, resolve 3 decisions",
-		"F1 debug overlay → Run Static Diagnostics",
-		"Audit gap table matches manifest `quota_report`",
+		"Spot-read each advisor in `MINISTAN_CHARACTER_VOICE_BIBLE.md` — 5 proposals/results/out-of-character present",
+		"Spot-read arc/chain/crisis catalogs — 18/32/18 entries with required fields",
+		"Confirm `docs/content/drafts/` has no runtime JSON; no new `data/decisions/*.json`",
+		"Confirm canonical examples marked NOT RUNTIME",
+		"Launch editor — boot run, resolve 3 decisions — behavior unchanged",
 	]
 	for i in range(items.size()):
 		lines.append("%d. %s" % [i + 1, items[i]])
