@@ -18,5 +18,17 @@
     "decision_ids": [
       "bench_subscription_backlash"
     ]
+  },
+  {
+    "id": "meme_department_consequences",
+    "decision_ids": [
+      "meme_virality_crisis"
+    ]
+  },
+  {
+    "id": "artificial_sun_consequences",
+    "decision_ids": [
+      "artificial_sun_escalation"
+    ]
   }
 ]

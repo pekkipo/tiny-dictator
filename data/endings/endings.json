@@ -149,5 +149,17 @@
     "conditions": {
       "all_flags": ["corporate_benches_empire", "corporate_branding_soft"]
     }
+  },
+  {
+    "id": "scientific_golden_age",
+    "type": "special",
+    "priority": 93,
+    "title": "Scientific Golden Age (Preliminary)",
+    "description": "The artificial sun stayed up. Historians call it a golden age with invoices attached and nights marked optional.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "☀️",
+    "conditions": {
+      "all_flags": ["artificial_sun_success", "scientific_golden_soft"]
+    }
   }
 ]

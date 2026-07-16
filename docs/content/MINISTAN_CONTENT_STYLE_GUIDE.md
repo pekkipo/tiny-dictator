@@ -337,7 +337,7 @@ Every sub-batch (max **12–15** candidate decisions; one major arc per sub-batc
 | `cat_voting_proposal` vs `cat_voting_rights` | **Resolved 2B-5A** — duplicate removed from runtime |
 | Minor arc `traffic_military` vs PRD arc/chain split | Planning catalogs document overlap |
 | Placeholder recovery/endgame cards | 2B-15 / 2B-16 rewrite |
-| Legacy `free_pizza_consequences` (4 cards) | Refactor in 2B-7+ chain packs |
+| Legacy `free_pizza_consequences` (4 cards) | Refactor in 2B-8+ chain packs |
 | Zero guest speakers in runtime | 2B-14+ crisis/international batches |
 
 ---

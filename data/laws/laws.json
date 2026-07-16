@@ -412,5 +412,59 @@
     "placeholder_icon": "🕳️",
     "visual_tags": ["sponsored_potholes"],
     "category": "infrastructure"
+  },
+  {
+    "id": "coin_rounding_act",
+    "display_name": "Coin Rounding Act",
+    "short_name": "Round Up",
+    "description": "Prices round up when coins are scarce. Exact change becomes nostalgia.",
+    "placeholder_icon": "🪙",
+    "visual_tags": ["rounding_booths"],
+    "category": "economy"
+  },
+  {
+    "id": "ministry_of_memes",
+    "display_name": "Ministry of Memes",
+    "short_name": "Meme Ministry",
+    "description": "Official templates may govern captions. Stamps required for virality.",
+    "placeholder_icon": "🖼️",
+    "visual_tags": ["meme_ministry_desk"],
+    "category": "media"
+  },
+  {
+    "id": "weather_censorship_act",
+    "display_name": "Weather Censorship Act",
+    "short_name": "Storm Censor",
+    "description": "Storm maps may be withheld. Rain remains unofficial.",
+    "placeholder_icon": "🌧️",
+    "visual_tags": ["censored_storm_maps"],
+    "category": "media"
+  },
+  {
+    "id": "national_reality_show",
+    "display_name": "National Reality Show Act",
+    "short_name": "Talent Show",
+    "description": "A state talent program with live judging and budget consequences.",
+    "placeholder_icon": "🎤",
+    "visual_tags": ["state_talent_stage"],
+    "category": "media"
+  },
+  {
+    "id": "mandatory_applause",
+    "display_name": "Mandatory Applause Quotas",
+    "short_name": "Applause Quotas",
+    "description": "Public applause must meet meter quotas. Silence is a citation.",
+    "placeholder_icon": "👏",
+    "visual_tags": ["applause_meters"],
+    "category": "media"
+  },
+  {
+    "id": "artificial_sun_program",
+    "display_name": "Artificial Sun Program",
+    "short_name": "Pilot Sun",
+    "description": "A provisional sun over the capital. Nights are under review.",
+    "placeholder_icon": "☀️",
+    "visual_tags": ["pilot_sun_over_capital"],
+    "category": "science"
   }
 ]

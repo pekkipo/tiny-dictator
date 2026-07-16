@@ -1,0 +1,2068 @@
+[
+  {
+    "id": "coin_shortage_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Markets stall on exact change. Vendors refuse bills. Coins have left the country like unpaid interns.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment"
+      ]
+    },
+    "options": [
+      {
+        "id": "admit_shortage",
+        "label": "Admit the coin shortage",
+        "effects": {
+          "treasury": -2,
+          "order": -4,
+          "happiness": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "coin_shortage_active"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coin_shortage_remedy",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "coin_shortage_active"
+          ]
+        },
+        "result_text": "Penny posts Form Coin-0. Queues form around empty trays."
+      },
+      {
+        "id": "blame_hoarders",
+        "label": "Blame private piggy banks",
+        "effects": {
+          "order": -2,
+          "elite_loyalty": -3,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": -1
+        },
+        "add_flags": [
+          "coin_shortage_active",
+          "coin_hoarder_blamed"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coin_shortage_remedy",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "coin_shortage_active"
+          ]
+        },
+        "result_text": "Elites hide jars. Markets still cannot make change for bread."
+      },
+      {
+        "id": "ignore_coins",
+        "label": "Call it a rounding mood",
+        "effects": {
+          "happiness": 2,
+          "treasury": -4,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": -2
+        },
+        "result_text": "Vendors invent creative math. Penny refuses to watch."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "economy",
+      "coin_shortage"
+    ],
+    "visual_tags": [
+      "empty_coin_trays"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "coin_shortage",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "empty coin trays at market stalls",
+      "writer_notes": "Distinct from tip jar; soft remedy only on shortage paths."
+    }
+  },
+  {
+    "id": "coin_shortage_remedy",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Your coin shortage still freezes stalls. Penny offers temporary fixes before the ledger invents barter.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "coin_shortage_active"
+      ]
+    },
+    "options": [
+      {
+        "id": "round_up_law",
+        "label": "Mandate price rounding up",
+        "effects": {
+          "treasury": 8,
+          "happiness": -7,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "coin_rounding_act"
+        ],
+        "add_flags": [
+          "coin_rounding_live",
+          "coin_chain_complete"
+        ],
+        "remove_flags": [
+          "coin_shortage_active"
+        ],
+        "result_text": "Every loaf gains a tax of dignity. Coins become optional mythology."
+      },
+      {
+        "id": "issue_tokens",
+        "label": "Issue temporary market tokens",
+        "effects": {
+          "treasury": -5,
+          "happiness": 2,
+          "order": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "market_tokens_issued",
+          "coin_chain_complete"
+        ],
+        "remove_flags": [
+          "coin_shortage_active"
+        ],
+        "result_text": "Cardboard coins circulate. Form Token-1 smells like wet ink."
+      },
+      {
+        "id": "emergency_mint",
+        "label": "Mint emergency coins overnight",
+        "effects": {
+          "treasury": -12,
+          "happiness": 4,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "chaotic": 1
+        },
+        "add_flags": [
+          "emergency_mint_run",
+          "coin_chain_complete"
+        ],
+        "remove_flags": [
+          "coin_shortage_active"
+        ],
+        "result_text": "Soft metal discs appear by dawn. Some still say 'prototype'."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "coin_shortage"
+    ],
+    "visual_tags": [
+      "rounding_booths"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "coin_shortage",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "rounding booths and cardboard tokens",
+      "writer_notes": "Explicit callback to coin shortage; three temporary remedies."
+    }
+  },
+  {
+    "id": "national_clock_sync",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Public clocks disagree by eleven minutes. Mandate Form 12-Time for national synchronization.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment"
+      ]
+    },
+    "options": [
+      {
+        "id": "sync_all",
+        "label": "Synchronize every clock",
+        "effects": {
+          "order": 5,
+          "treasury": -5,
+          "happiness": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "add_flags": [
+          "clocks_synchronized",
+          "clock_reform_active"
+        ],
+        "add_laws": [
+          "national_clock_law"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "clock_appointment_chaos"
+        },
+        "result_text": "Every clock ticks in unison. Late people lose their excuses — briefly."
+      },
+      {
+        "id": "allow_drift",
+        "label": "Allow local drift",
+        "effects": {
+          "happiness": 3,
+          "order": -4
+        },
+        "advisor_affinity": {
+          "clerk_zero": -1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "clock_chain_complete"
+        ],
+        "result_text": "Villages keep cozy wrong-o'clock. Trains invent creative arrivals."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "bureaucracy",
+      "clock_reform"
+    ],
+    "visual_tags": [
+      "synchronized_clocks"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_clock_reform",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "identical public clocks nationwide",
+      "writer_notes": "REWRITE from standalone; hard follow-up on sync path only."
+    }
+  },
+  {
+    "id": "clock_appointment_chaos",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "bureaucracy",
+    "proposal": "Your Form 12-Time sync made every clock agree — and every appointment wrong. Midwives, trains, and bakery shifts arrive together and late.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "clock_reform_active",
+        "clocks_synchronized"
+      ],
+      "all_laws": [
+        "national_clock_law"
+      ]
+    },
+    "options": [
+      {
+        "id": "keep_rigid_time",
+        "label": "Keep rigid national time",
+        "effects": {
+          "order": 4,
+          "happiness": -6,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "rigid_national_time",
+          "clock_chain_complete"
+        ],
+        "result_text": "Missed buses become civic education. Olga files Complaint Form: Time."
+      },
+      {
+        "id": "stagger_zones",
+        "label": "Allow staggered district zones",
+        "effects": {
+          "order": -2,
+          "happiness": 3,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": -1
+        },
+        "add_flags": [
+          "staggered_clock_zones",
+          "clock_chain_complete"
+        ],
+        "result_text": "Districts get polite disagreements. Trains negotiate arrival."
+      },
+      {
+        "id": "repeal_sync",
+        "label": "Repeal the sync mandate",
+        "effects": {
+          "happiness": 5,
+          "order": -3,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "clerk_zero": -2
+        },
+        "remove_laws": [
+          "national_clock_law"
+        ],
+        "remove_flags": [
+          "clocks_synchronized",
+          "clock_reform_active"
+        ],
+        "add_flags": [
+          "clock_chain_complete"
+        ],
+        "result_text": "Clocks drift again. Excuses return with paperwork."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "clock_reform"
+    ],
+    "visual_tags": [
+      "missed_appointment_boards"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_clock_reform",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "missed appointment boards under synced clocks",
+      "writer_notes": "Civic consequence of sync; cancels if law removed."
+    }
+  },
+  {
+    "id": "no_weekends_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "public_life",
+    "proposal": "Weekends produce zero invoiceable output. Abolish them and gain two sevenths productivity.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 4,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "abolish",
+        "label": "Abolish weekends",
+        "effects": {
+          "treasury": 9,
+          "happiness": -11,
+          "order": -4,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "no_weekends"
+        ],
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -2
+        },
+        "add_flags": [
+          "weekends_abolished"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "weekend_burnout_wave",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "weekends_abolished"
+          ]
+        },
+        "result_text": "Calendars enter mourning. Payroll smiles. Citizens invent casual Mondays."
+      },
+      {
+        "id": "half_day",
+        "label": "Half-day Saturday only",
+        "effects": {
+          "treasury": 3,
+          "happiness": -4,
+          "order": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": -1
+        },
+        "add_flags": [
+          "partial_weekend_cut"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "weekend_burnout_wave",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 50,
+          "required_flags": [
+            "partial_weekend_cut"
+          ]
+        },
+        "result_text": "Saturday mornings become invoices. Brunch relocates to guilt."
+      },
+      {
+        "id": "keep",
+        "label": "Keep weekends",
+        "effects": {
+          "happiness": 5,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "minister_penny": -1
+        },
+        "add_flags": [
+          "weekend_chain_complete"
+        ],
+        "result_text": "Weekends survive. Penny files a lament titled Lost Sundays."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "public_life",
+      "weekend_abolition"
+    ],
+    "visual_tags": [
+      "tired_citizens"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "weekend_abolition",
+      "primary_category": "public_life",
+      "primary_stage": "establishment",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "tired citizens under mourning calendars",
+      "writer_notes": "REWRITE from standalone; compromise half-day path required."
+    }
+  },
+  {
+    "id": "weekend_burnout_wave",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Your weekend policy left citizens horizontal. Nap lines form at noon. Productivity invented a limp.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "weekends_abolished",
+        "partial_weekend_cut"
+      ]
+    },
+    "options": [
+      {
+        "id": "acknowledge_burnout",
+        "label": "Acknowledge the burnout",
+        "effects": {
+          "happiness": 2,
+          "order": -3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": -1
+        },
+        "add_flags": [
+          "weekend_burnout_admitted"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "weekend_policy_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "weekend_burnout_admitted"
+          ]
+        },
+        "result_text": "Olga names the nap lines. Penny calls them unscheduled audits."
+      },
+      {
+        "id": "spin_as_hustle",
+        "label": "Call it national hustle",
+        "effects": {
+          "elite_loyalty": 2,
+          "happiness": -5,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "weekend_hustle_spun"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "weekend_policy_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "weekend_hustle_spun"
+          ]
+        },
+        "result_text": "Posters praise exhaustion. Citizens sleep through them."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "weekend_abolition"
+    ],
+    "visual_tags": [
+      "burnout_nap_lines"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "weekend_abolition",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "noon nap lines after weekend cuts",
+      "writer_notes": "Callback to abolish or half-day path."
+    }
+  },
+  {
+    "id": "weekend_policy_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "public_life",
+    "proposal": "Form W-7 asks whether weekends return, stay abolished, or lock your compromise. Attach nap-line attendance.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "weekend_burnout_admitted",
+        "weekend_hustle_spun"
+      ]
+    },
+    "options": [
+      {
+        "id": "restore_weekends",
+        "label": "Restore full weekends",
+        "effects": {
+          "happiness": 8,
+          "treasury": -8,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": -2
+        },
+        "remove_laws": [
+          "no_weekends"
+        ],
+        "remove_flags": [
+          "weekends_abolished",
+          "partial_weekend_cut"
+        ],
+        "add_flags": [
+          "weekends_restored",
+          "weekend_chain_complete"
+        ],
+        "result_text": "Sundays return. Penny files Lost Productivity with a soft stamp."
+      },
+      {
+        "id": "keep_abolished",
+        "label": "Keep weekends abolished",
+        "effects": {
+          "treasury": 4,
+          "happiness": -6,
+          "elite_loyalty": 2,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "weekend_abolition_locked",
+          "weekend_chain_complete"
+        ],
+        "result_text": "Calendars stay in mourning. Payroll remains cheerfully cruel."
+      },
+      {
+        "id": "lock_compromise",
+        "label": "Lock civic rest coupons",
+        "effects": {
+          "treasury": -3,
+          "happiness": 3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "no_weekends"
+        ],
+        "remove_flags": [
+          "weekends_abolished"
+        ],
+        "add_flags": [
+          "civic_rest_coupons",
+          "partial_weekend_cut",
+          "weekend_chain_complete"
+        ],
+        "result_text": "Rest becomes a stamped coupon. Brunch files Form Brunch-1."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "weekend_abolition"
+    ],
+    "visual_tags": [
+      "calendar_mourning"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "weekend_abolition",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "mourning calendars vs rest coupons",
+      "writer_notes": "State-dependent compromise branch required."
+    }
+  },
+  {
+    "id": "state_meme_department",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Policy needs templates. Found a State Meme Department. Citizens will share governance whether they mean to or not.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "found_ministry",
+        "label": "Found the meme ministry",
+        "effects": {
+          "treasury": -4,
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_laws": [
+          "ministry_of_memes"
+        ],
+        "add_flags": [
+          "meme_ministry_open"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "meme_department_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "meme_ministry_open"
+          ]
+        },
+        "result_text": "Templates get letterhead. Luna sparkles. Clerks request caption stamps."
+      },
+      {
+        "id": "pilot_desk",
+        "label": "Pilot a caption desk only",
+        "effects": {
+          "treasury": -2,
+          "order": 1,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "luna_news": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "meme_caption_pilot"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "meme_department_resolution",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 46,
+          "required_flags": [
+            "meme_caption_pilot"
+          ]
+        },
+        "result_text": "One desk captions civic notices. Virality remains a rumor."
+      },
+      {
+        "id": "refuse_memes",
+        "label": "Refuse state memes",
+        "effects": {
+          "elite_loyalty": -2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
+        "add_flags": [
+          "meme_chain_complete"
+        ],
+        "result_text": "Policy stays in paragraphs. Luna schedules a lonely smile segment."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "media",
+      "state_memes"
+    ],
+    "visual_tags": [
+      "meme_ministry_desk"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "state_meme_department",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "letterheaded meme ministry desk",
+      "writer_notes": "Pool on full ministry; soft resolution on pilot."
+    }
+  },
+  {
+    "id": "meme_virality_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "media",
+    "proposal": "Your State Meme Department went viral. Captions outrun laws. Form M-1 asks whether this is propaganda success or governance failure.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "meme_ministry_open"
+      ],
+      "all_laws": [
+        "ministry_of_memes"
+      ]
+    },
+    "options": [
+      {
+        "id": "spin_virality",
+        "label": "Call virality policy success",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 3,
+          "happiness": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "meme_propaganda_scored"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "meme_department_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "meme_ministry_open"
+          ]
+        },
+        "result_text": "Luna airs 'Template Triumph.' Forms still wait unsigned."
+      },
+      {
+        "id": "govern_the_templates",
+        "label": "Force templates through Form M-1",
+        "effects": {
+          "order": -3,
+          "treasury": -4,
+          "happiness": -3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "meme_governance_cost"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "meme_department_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "meme_ministry_open"
+          ]
+        },
+        "result_text": "Every joke needs a stamp. Virality slows. Governance limps forward."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "state_memes"
+    ],
+    "visual_tags": [
+      "viral_template_walls"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "state_meme_department",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "walls of stamped viral templates",
+      "writer_notes": "Propaganda effectiveness vs governance cost branch."
+    }
+  },
+  {
+    "id": "meme_department_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Decide the meme desk's fate. Institutionalize the templates — or shut the department before captions pass a budget.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "meme_ministry_open",
+        "meme_caption_pilot",
+        "meme_propaganda_scored",
+        "meme_governance_cost"
+      ]
+    },
+    "options": [
+      {
+        "id": "institutionalize",
+        "label": "Make memes permanent policy",
+        "effects": {
+          "treasury": -5,
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "meme_policy_permanent",
+          "meme_chain_complete"
+        ],
+        "result_text": "The ministry gets a permanent stamp drawer. Luna never blinks."
+      },
+      {
+        "id": "shut_desk",
+        "label": "Shut the meme department",
+        "effects": {
+          "treasury": 3,
+          "happiness": 2,
+          "elite_loyalty": -3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2,
+          "clerk_zero": 1
+        },
+        "remove_laws": [
+          "ministry_of_memes"
+        ],
+        "remove_flags": [
+          "meme_ministry_open",
+          "meme_caption_pilot"
+        ],
+        "add_flags": [
+          "meme_desk_closed",
+          "meme_chain_complete"
+        ],
+        "result_text": "Templates archive themselves. Policy returns to dull sentences."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "state_memes"
+    ],
+    "visual_tags": [
+      "meme_policy_vault"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "state_meme_department",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7A",
+      "localization_risk": "low",
+      "visual_hook": "locked meme policy vault",
+      "writer_notes": "Completes ministry or pilot path."
+    }
+  },
+  {
+    "id": "weather_censorship_mandate",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Storms poll poorly. Censor weather maps that show rain. Umbrellas are unofficial speculation.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "censor_storms",
+        "label": "Censor storm reporting",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_laws": [
+          "weather_censorship_act"
+        ],
+        "add_flags": [
+          "weather_censorship_live"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "weather_credibility_crisis",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "weather_censorship_live"
+          ]
+        },
+        "result_text": "Maps stay sunny. Citizens leave umbrellas at home on principle."
+      },
+      {
+        "id": "allow_storm_maps",
+        "label": "Allow honest storm maps",
+        "effects": {
+          "order": 1,
+          "elite_loyalty": -2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
+        "add_flags": [
+          "weather_chain_complete"
+        ],
+        "result_text": "Rain is named rain. Luna schedules a cheerful puddle segment."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "media",
+      "weather_censorship"
+    ],
+    "visual_tags": [
+      "censored_storm_maps"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "weather_censorship",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "blacked-out storm icons on civic maps",
+      "writer_notes": "Distinct from weather_optimism_bulletin; soft credibility follow-up."
+    }
+  },
+  {
+    "id": "weather_credibility_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Your censored storm maps met real rain. Umbrella lines panic. Broadcast credibility drips onto the sidewalk.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "weather_censorship_live"
+      ],
+      "all_laws": [
+        "weather_censorship_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "double_down_sunshine",
+        "label": "Insist the rain is optional",
+        "effects": {
+          "order": -5,
+          "elite_loyalty": 2,
+          "happiness": -4,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "weather_denial_doubled",
+          "weather_chain_complete"
+        ],
+        "result_text": "Anchors smile through puddles. Trust evaporates faster than fog."
+      },
+      {
+        "id": "restore_storm_maps",
+        "label": "Restore storm maps quietly",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": -3,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "luna_news": -1,
+          "clerk_zero": 1
+        },
+        "remove_laws": [
+          "weather_censorship_act"
+        ],
+        "remove_flags": [
+          "weather_censorship_live"
+        ],
+        "add_flags": [
+          "weather_maps_restored",
+          "weather_chain_complete"
+        ],
+        "result_text": "Umbrellas return. Luna calls it a formatting update."
+      },
+      {
+        "id": "umbrella_amnesty",
+        "label": "Issue emergency umbrella amnesty",
+        "effects": {
+          "order": 2,
+          "treasury": -4,
+          "happiness": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "umbrella_amnesty_live",
+          "weather_chain_complete"
+        ],
+        "result_text": "Umbrellas become civic infrastructure. Forecasts stay optimistic on air."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "weather_censorship"
+    ],
+    "visual_tags": [
+      "umbrella_panic_lines"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "weather_censorship",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "umbrella panic lines under sunny bulletins",
+      "writer_notes": "Affects order/credibility/behavior, not happiness-only."
+    }
+  },
+  {
+    "id": "national_talent_show",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Launch a National Talent Show. The ruler judges live. Ratings invent themselves.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 9,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_show",
+        "label": "Launch the talent show",
+        "effects": {
+          "treasury": -6,
+          "happiness": 4,
+          "elite_loyalty": 2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "populist": 1
+        },
+        "add_laws": [
+          "national_reality_show"
+        ],
+        "add_flags": [
+          "talent_show_live"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "talent_show_budget_scandal",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "talent_show_live"
+          ]
+        },
+        "result_text": "Spotlights heat the square. Elites book front-row loyalty."
+      },
+      {
+        "id": "refuse_show",
+        "label": "Refuse live judging",
+        "effects": {
+          "elite_loyalty": -2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
+        "add_flags": [
+          "talent_chain_complete"
+        ],
+        "result_text": "The stage stays dark. Luna files a lonely audition tape."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "media",
+      "talent_show"
+    ],
+    "visual_tags": [
+      "state_talent_stage"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_talent_show",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "state talent stage with ruler chair",
+      "writer_notes": "Soft budget scandal follow-up is the government consequence."
+    }
+  },
+  {
+    "id": "talent_show_budget_scandal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "media",
+    "proposal": "Your National Talent Show ate the culture budget. Elites want VIP seats. The ledger wants an intermission.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "talent_show_live"
+      ],
+      "all_laws": [
+        "national_reality_show"
+      ]
+    },
+    "options": [
+      {
+        "id": "bailout_show",
+        "label": "Bail out the production",
+        "effects": {
+          "treasury": -12,
+          "happiness": 3,
+          "elite_loyalty": 3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "luna_news": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "talent_show_bailed",
+          "talent_chain_complete"
+        ],
+        "result_text": "Spotlights stay on. The treasury learns jazz hands."
+      },
+      {
+        "id": "elite_sponsors",
+        "label": "Sell elite sponsor seats",
+        "effects": {
+          "treasury": 6,
+          "elite_loyalty": 4,
+          "happiness": -5,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "luna_news": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_flags": [
+          "talent_elite_sponsors",
+          "corporate_branding_soft",
+          "talent_chain_complete"
+        ],
+        "result_text": "Front rows become invoices. Applause arrives pre-purchased."
+      },
+      {
+        "id": "cancel_show",
+        "label": "Cancel the talent show",
+        "effects": {
+          "treasury": 4,
+          "happiness": -6,
+          "elite_loyalty": -2,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "luna_news": -2,
+          "minister_penny": 1
+        },
+        "remove_laws": [
+          "national_reality_show"
+        ],
+        "remove_flags": [
+          "talent_show_live"
+        ],
+        "add_flags": [
+          "talent_show_cancelled",
+          "talent_chain_complete"
+        ],
+        "result_text": "Curtains drop mid-note. The culture line item exhales."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "talent_show"
+    ],
+    "visual_tags": [
+      "talent_budget_charts"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_talent_show",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "budget charts taped to stage lights",
+      "writer_notes": "Meaningful budget/government consequence, not ratings fluff."
+    }
+  },
+  {
+    "id": "applause_quotas_mandate",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Silence reads as disloyalty on camera. Mandate applause quotas. Clap meters will smile for you.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "enact_applause",
+        "label": "Enact applause quotas",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": -3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "mandatory_applause"
+        ],
+        "add_flags": [
+          "applause_quotas_live"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "applause_enforcement_squad"
+        },
+        "result_text": "Meters tick. Soft hands become civic infrastructure."
+      },
+      {
+        "id": "optional_applause",
+        "label": "Keep applause voluntary",
+        "effects": {
+          "happiness": 2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
+        "add_flags": [
+          "applause_chain_complete"
+        ],
+        "result_text": "Clapping stays sincere and rare. Luna calls it authentic risk."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "media",
+      "applause_quotas"
+    ],
+    "visual_tags": [
+      "applause_meters"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "applause_quotas",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "public applause meters on plazas",
+      "writer_notes": "Distinct from compliment quota; hard Boom enforcement."
+    }
+  },
+  {
+    "id": "applause_enforcement_squad",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "media",
+    "proposal": "Your applause quotas need boots. Soft hands miss quota. Boom offers a clap patrol with gentle elbows.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "applause_quotas_live"
+      ],
+      "all_laws": [
+        "mandatory_applause"
+      ]
+    },
+    "options": [
+      {
+        "id": "deploy_clap_patrol",
+        "label": "Deploy the clap patrol",
+        "effects": {
+          "order": 5,
+          "happiness": -7,
+          "elite_loyalty": 2,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "luna_news": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "clap_patrol_active"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "applause_public_adaptation",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 57,
+          "required_flags": [
+            "clap_patrol_active"
+          ]
+        },
+        "result_text": "Boots keep rhythm. Applause becomes a marching order."
+      },
+      {
+        "id": "meter_fines_only",
+        "label": "Fine quiet citizens only",
+        "effects": {
+          "treasury": 5,
+          "happiness": -5,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "applause_fines_active"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "applause_public_adaptation",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 57,
+          "required_flags": [
+            "applause_fines_active"
+          ]
+        },
+        "result_text": "Quiet moments cost coins. Meters chirp like guilt."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "applause_quotas"
+    ],
+    "visual_tags": [
+      "clap_patrol_boots"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "applause_quotas",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "clap patrol boots beside meters",
+      "writer_notes": "Escalating enforcement; soft adaptation next."
+    }
+  },
+  {
+    "id": "applause_public_adaptation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Citizens adapted to your applause quotas with clap tracks and silent hand waves. Ratings still demand noise.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "clap_patrol_active",
+        "applause_fines_active"
+      ]
+    },
+    "options": [
+      {
+        "id": "ban_clap_tracks",
+        "label": "Ban clap tracks",
+        "effects": {
+          "order": 4,
+          "happiness": -6,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 1,
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "live_applause_only",
+          "applause_chain_complete"
+        ],
+        "result_text": "Hands blister on schedule. Luna airs 'Authentic Thunder.'"
+      },
+      {
+        "id": "license_clap_tracks",
+        "label": "License official clap tracks",
+        "effects": {
+          "treasury": 4,
+          "order": 1,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "capitalist": 1
+        },
+        "add_flags": [
+          "licensed_clap_tracks",
+          "applause_chain_complete"
+        ],
+        "result_text": "Applause becomes a product. Silence requires headphones."
+      },
+      {
+        "id": "end_quotas",
+        "label": "End applause quotas",
+        "effects": {
+          "happiness": 5,
+          "order": -2,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "luna_news": -2,
+          "auntie_olga": 2
+        },
+        "remove_laws": [
+          "mandatory_applause"
+        ],
+        "remove_flags": [
+          "applause_quotas_live",
+          "clap_patrol_active",
+          "applause_fines_active"
+        ],
+        "add_flags": [
+          "applause_quotas_ended",
+          "applause_chain_complete"
+        ],
+        "result_text": "Meters power down. Clapping becomes optional again — briefly shocking."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "applause_quotas"
+    ],
+    "visual_tags": [
+      "silent_clap_tracks"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "applause_quotas",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "silent clap tracks and empty meters",
+      "writer_notes": "Public adaptation outcomes; completes enforcement path."
+    }
+  },
+  {
+    "id": "artificial_sun_pilot",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Pilot an artificial sun over the capital. Nights become optional. Preliminary brightness only — maybe.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 9,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_pilot",
+        "label": "Launch the pilot sun",
+        "effects": {
+          "treasury": -8,
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "add_laws": [
+          "artificial_sun_program"
+        ],
+        "add_flags": [
+          "artificial_sun_pilot_live"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "artificial_sun_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "artificial_sun_pilot_live"
+          ]
+        },
+        "result_text": "A small sun hums above the square. Shadows look confused."
+      },
+      {
+        "id": "desk_lamp_trial",
+        "label": "Try a civic desk-lamp grid first",
+        "effects": {
+          "treasury": -3,
+          "order": 1,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_flags": [
+          "desk_lamp_sun_trial"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "artificial_sun_resolution",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 48,
+          "required_flags": [
+            "desk_lamp_sun_trial"
+          ]
+        },
+        "result_text": "Streetlamps get ambitious. Night stays mostly night."
+      },
+      {
+        "id": "refuse_sun",
+        "label": "Refuse the artificial sun",
+        "effects": {
+          "elite_loyalty": -1,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
+        "add_flags": [
+          "sun_chain_complete"
+        ],
+        "result_text": "Maybe shrugs. The moon keeps its job."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "science",
+      "artificial_sun"
+    ],
+    "visual_tags": [
+      "pilot_sun_over_capital"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "artificial_sun",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "tiny artificial sun over capital square",
+      "writer_notes": "Pool on full pilot; soft resolution on desk-lamp path."
+    }
+  },
+  {
+    "id": "artificial_sun_escalation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Your pilot sun grew. Midnight looks like lunch. Chickens filed a complaint. Brightness is still preliminary.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "artificial_sun_pilot_live"
+      ],
+      "all_laws": [
+        "artificial_sun_program"
+      ]
+    },
+    "options": [
+      {
+        "id": "increase_brightness",
+        "label": "Increase brightness carefully",
+        "effects": {
+          "treasury": -6,
+          "happiness": -3,
+          "order": -3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "sun_brightness_up"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "artificial_sun_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 56,
+          "required_flags": [
+            "artificial_sun_pilot_live"
+          ]
+        },
+        "result_text": "Noon arrives at midnight. Maybe calls it a promising maybe."
+      },
+      {
+        "id": "dim_to_safe",
+        "label": "Dim to a safer glow",
+        "effects": {
+          "treasury": -2,
+          "order": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "sun_dimmed_safe"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "artificial_sun_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 56,
+          "required_flags": [
+            "artificial_sun_pilot_live"
+          ]
+        },
+        "result_text": "The sun blushes softer. Sleep returns in draft form."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "artificial_sun"
+    ],
+    "visual_tags": [
+      "noon_at_midnight"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "artificial_sun",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "noon lighting at midnight in the capital",
+      "writer_notes": "Escalation from pilot; outcomes follow chosen brightness path."
+    }
+  },
+  {
+    "id": "artificial_sun_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Form S-1 asks whether the artificial sun becomes a costly success, a shut-down experiment, or a dangerous failure. Attach shadow inventory.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "artificial_sun_pilot_live",
+        "desk_lamp_sun_trial",
+        "sun_brightness_up",
+        "sun_dimmed_safe"
+      ]
+    },
+    "options": [
+      {
+        "id": "costly_success",
+        "label": "Declare costly success",
+        "effects": {
+          "treasury": -10,
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "add_flags": [
+          "artificial_sun_success",
+          "scientific_golden_soft",
+          "sun_chain_complete"
+        ],
+        "result_text": "The sun stays — expensive and official. Historians buy sunglasses."
+      },
+      {
+        "id": "shutdown_sun",
+        "label": "Shut the sun down with forms",
+        "effects": {
+          "treasury": 3,
+          "happiness": -2,
+          "order": 3
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "artificial_sun_program"
+        ],
+        "remove_flags": [
+          "artificial_sun_pilot_live",
+          "desk_lamp_sun_trial"
+        ],
+        "add_flags": [
+          "artificial_sun_shutdown",
+          "sun_chain_complete"
+        ],
+        "result_text": "Form S-1 extinguishes daylight. Night clocks in on time."
+      },
+      {
+        "id": "dangerous_failure",
+        "label": "Force max brightness",
+        "effects": {
+          "treasury": -8,
+          "happiness": -6,
+          "order": -6,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "chaotic": 2,
+          "scientific": 1
+        },
+        "add_flags": [
+          "artificial_sun_failure",
+          "sun_chain_complete"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "national_power_outage",
+            "action": "start"
+          }
+        ],
+        "result_text": "The sun hiccups. The grid screams. Maybe says this was not the preferred maybe."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "artificial_sun",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "sun_shutdown_forms"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "artificial_sun",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-7B",
+      "localization_risk": "low",
+      "visual_hook": "forms stamped over a dimming artificial sun",
+      "writer_notes": "Costly success ending flags; fail starts national_power_outage."
+    }
+  }
+]

@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_6_short_chain_pack_a"
-const BATCH_ID: String = "2B-6B"
-const DECISION_BATCH_ID: String = "2B-6B"
+const PHASE: String = "2b_7_short_chain_pack_b"
+const BATCH_ID: String = "2B-7B"
+const DECISION_BATCH_ID: String = "2B-7B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -119,11 +119,29 @@ const CHAIN_MEMBERS: Dictionary = {
 	"bridge_to_nowhere": [
 		"long_setup_grand_canal", "bridge_budget_overrun", "bridge_to_nowhere_resolution",
 	],
+	"coin_shortage": ["coin_shortage_crisis", "coin_shortage_remedy"],
+	"national_clock_reform": ["national_clock_sync", "clock_appointment_chaos"],
+	"weekend_abolition": [
+		"no_weekends_proposal", "weekend_burnout_wave", "weekend_policy_resolution",
+	],
+	"state_meme_department": [
+		"state_meme_department", "meme_virality_crisis", "meme_department_resolution",
+	],
+	"weather_censorship": ["weather_censorship_mandate", "weather_credibility_crisis"],
+	"national_talent_show": ["national_talent_show", "talent_show_budget_scandal"],
+	"applause_quotas": [
+		"applause_quotas_mandate", "applause_enforcement_squad", "applause_public_adaptation",
+	],
+	"artificial_sun": [
+		"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
+	],
 }
 
 const APPROVED_CHAIN_IDS: Array[String] = [
 	"umbrella_tax", "national_coffee_reserve", "privatized_public_benches", "lottery_budget",
 	"palace_gift_shop", "elevator_wifi", "pothole_naming_rights", "bridge_to_nowhere",
+	"coin_shortage", "national_clock_reform", "weekend_abolition", "state_meme_department",
+	"weather_censorship", "national_talent_show", "applause_quotas", "artificial_sun",
 ]
 
 const ONBOARDING_IDS: Array[String] = [
@@ -134,9 +152,9 @@ const ONBOARDING_IDS: Array[String] = [
 ]
 
 const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
-	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
+	"privatize_rainwater", "treasury_tip_jar", "luxury_chair_tax",
 	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
-	"perfumed_sewage_reform", "national_clock_sync",
+	"perfumed_sewage_reform",
 	"commemorative_debt_sale", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
 	"absurd_civic_sweeping", "flag_traffic_system",
@@ -174,6 +192,17 @@ const SHORT_CHAIN_PACK_A_APPROVED_IDS: Array[String] = [
 	"elevator_wifi_mandate", "elevator_wifi_trap",
 	"sponsored_potholes", "pothole_brand_war", "pothole_naming_resolution",
 	"long_setup_grand_canal", "bridge_budget_overrun", "bridge_to_nowhere_resolution",
+]
+
+const SHORT_CHAIN_PACK_B_APPROVED_IDS: Array[String] = [
+	"coin_shortage_crisis", "coin_shortage_remedy",
+	"national_clock_sync", "clock_appointment_chaos",
+	"no_weekends_proposal", "weekend_burnout_wave", "weekend_policy_resolution",
+	"state_meme_department", "meme_virality_crisis", "meme_department_resolution",
+	"weather_censorship_mandate", "weather_credibility_crisis",
+	"national_talent_show", "talent_show_budget_scandal",
+	"applause_quotas_mandate", "applause_enforcement_squad", "applause_public_adaptation",
+	"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
 ]
 
 const DEFERRED_DECISION_IDS: Array[String] = [
@@ -226,6 +255,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"palace_gift_shop_opening", "gift_shop_merch_scandal",
 	"elevator_wifi_trap", "pothole_brand_war", "pothole_naming_resolution",
 	"bridge_budget_overrun", "bridge_to_nowhere_resolution",
+	"coin_shortage_crisis", "coin_shortage_remedy",
+	"national_clock_sync", "clock_appointment_chaos",
+	"no_weekends_proposal", "weekend_burnout_wave", "weekend_policy_resolution",
+	"state_meme_department", "meme_virality_crisis", "meme_department_resolution",
+	"weather_censorship_mandate", "weather_credibility_crisis",
+	"national_talent_show", "talent_show_budget_scandal",
+	"applause_quotas_mandate", "applause_enforcement_squad", "applause_public_adaptation",
+	"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -579,6 +616,9 @@ func _resolve_status(
 	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in SHORT_CHAIN_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -649,6 +689,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-5 approved standalone policy card.")
 	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS:
 		notes.append("Milestone 2B-6 approved short-chain card.")
+	if id in SHORT_CHAIN_PACK_B_APPROVED_IDS:
+		notes.append("Milestone 2B-7 approved short-chain card.")
 	return ", ".join(notes)
 
 
@@ -668,13 +710,13 @@ func _source_file_hint(id: String) -> String:
 		"pantry_moth_crisis": "ministan_onboarding.json",
 		"privatize_rainwater": "ministan_standalone_pack_a.json",
 		"treasury_tip_jar": "ministan_standalone_pack_a.json",
-		"no_weekends_proposal": "ministan_standalone_pack_a.json",
+		"no_weekends_proposal": "ministan_short_chain_pack_b.json",
 		"luxury_chair_tax": "ministan_standalone_pack_a.json",
 		"neighborhood_noise_complaint": "ministan_standalone_pack_a.json",
 		"olga_loyal_council": "ministan_standalone_pack_a.json",
 		"national_bedtime_decree": "ministan_standalone_pack_a.json",
 		"perfumed_sewage_reform": "ministan_standalone_pack_a.json",
-		"national_clock_sync": "ministan_standalone_pack_a.json",
+		"national_clock_sync": "ministan_short_chain_pack_b.json",
 		"commemorative_debt_sale": "ministan_standalone_pack_a.json",
 		"wage_freeze_mandate": "ministan_standalone_pack_a.json",
 		"palace_room_rental": "ministan_standalone_pack_a.json",
@@ -705,6 +747,24 @@ func _source_file_hint(id: String) -> String:
 		"long_setup_grand_canal": "ministan_short_chain_pack_a.json",
 		"bridge_budget_overrun": "ministan_short_chain_pack_a.json",
 		"bridge_to_nowhere_resolution": "ministan_short_chain_pack_a.json",
+		"coin_shortage_crisis": "ministan_short_chain_pack_b.json",
+		"coin_shortage_remedy": "ministan_short_chain_pack_b.json",
+		"clock_appointment_chaos": "ministan_short_chain_pack_b.json",
+		"weekend_burnout_wave": "ministan_short_chain_pack_b.json",
+		"weekend_policy_resolution": "ministan_short_chain_pack_b.json",
+		"state_meme_department": "ministan_short_chain_pack_b.json",
+		"meme_virality_crisis": "ministan_short_chain_pack_b.json",
+		"meme_department_resolution": "ministan_short_chain_pack_b.json",
+		"weather_censorship_mandate": "ministan_short_chain_pack_b.json",
+		"weather_credibility_crisis": "ministan_short_chain_pack_b.json",
+		"national_talent_show": "ministan_short_chain_pack_b.json",
+		"talent_show_budget_scandal": "ministan_short_chain_pack_b.json",
+		"applause_quotas_mandate": "ministan_short_chain_pack_b.json",
+		"applause_enforcement_squad": "ministan_short_chain_pack_b.json",
+		"applause_public_adaptation": "ministan_short_chain_pack_b.json",
+		"artificial_sun_pilot": "ministan_short_chain_pack_b.json",
+		"artificial_sun_escalation": "ministan_short_chain_pack_b.json",
+		"artificial_sun_resolution": "ministan_short_chain_pack_b.json",
 		"escalation_only_rival_parade": "ministan_standalone_pack_b.json",
 		"palace_curfew_drill": "ministan_standalone_pack_b.json",
 		"emergency_salute_protocol": "ministan_standalone_pack_b.json",

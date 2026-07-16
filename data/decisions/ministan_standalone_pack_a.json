@@ -12,37 +12,74 @@
     "minimum_day": 3,
     "maximum_day": 28,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "sell",
         "label": "Monetize the rain",
-        "effects": { "treasury": 8, "happiness": -7, "elite_loyalty": 4 },
-        "advisor_affinity": { "sir_profit": 2, "auntie_olga": -1 },
-        "trait_changes": { "capitalist": 2 },
-        "add_flags": ["rain_privatized"],
+        "effects": {
+          "treasury": 8,
+          "happiness": -7,
+          "elite_loyalty": 4
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_flags": [
+          "rain_privatized"
+        ],
         "result_text": "Umbrellas need a subscription code. Bucket protests begin at dawn."
       },
       {
         "id": "refuse",
         "label": "Keep rain public",
-        "effects": { "happiness": 4, "treasury": -2, "elite_loyalty": -3 },
-        "advisor_affinity": { "sir_profit": -2, "auntie_olga": 1 },
+        "effects": {
+          "happiness": 4,
+          "treasury": -2,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "auntie_olga": 1
+        },
         "result_text": "Drizzle remains free. A regret memo arrives on golden letterhead."
       },
       {
         "id": "shared_franchise",
         "label": "Sell half the clouds",
-        "effects": { "treasury": 4, "happiness": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "sir_profit": 1 },
-        "trait_changes": { "capitalist": 1 },
-        "add_flags": ["partial_rain_franchise"],
+        "effects": {
+          "treasury": 4,
+          "happiness": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "partial_rain_franchise"
+        ],
         "result_text": "Only odd-numbered puddles are private. Lawyers love it."
       }
     ],
-    "tags": ["standalone", "economy", "privatization"],
-    "visual_tags": ["rain_bucket_protests"]
+    "tags": [
+      "standalone",
+      "economy",
+      "privatization"
+    ],
+    "visual_tags": [
+      "rain_bucket_protests"
+    ]
   },
   {
     "id": "treasury_tip_jar",
@@ -57,71 +94,48 @@
     "minimum_day": 2,
     "maximum_day": 24,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
     "options": [
       {
         "id": "approve",
         "label": "Keep the tip jar",
-        "effects": { "treasury": 4, "happiness": -3, "elite_loyalty": -1 },
-        "advisor_affinity": { "minister_penny": 1 },
-        "add_flags": ["treasury_tips_active"],
+        "effects": {
+          "treasury": 4,
+          "happiness": -3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "treasury_tips_active"
+        ],
         "result_text": "Coins clink into the deficit. Penny labels it voluntary austerity."
       },
       {
         "id": "remove",
         "label": "Remove the jar",
-        "effects": { "happiness": 3, "elite_loyalty": 1, "treasury": -2 },
-        "advisor_affinity": { "minister_penny": -1 },
+        "effects": {
+          "happiness": 3,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": -1
+        },
         "result_text": "Dignity returns to public finance. The jar becomes a plant pot."
       }
     ],
-    "tags": ["standalone", "economy"],
-    "visual_tags": ["treasury_tip_jar"]
-  },
-  {
-    "id": "no_weekends_proposal",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "economy",
-    "proposal": "Weekends produce zero invoiceable output. Abolish them and gain two sevenths productivity.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 4,
-    "maximum_day": 22,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "abolish",
-        "label": "Abolish weekends",
-        "effects": { "treasury": 9, "happiness": -11, "order": -4, "elite_loyalty": 3 },
-        "add_laws": ["no_weekends"],
-        "trait_changes": { "authoritarian": 1, "bureaucratic": 1 },
-        "advisor_affinity": { "minister_penny": 2, "auntie_olga": -2 },
-        "result_text": "Calendars enter mourning. Payroll smiles. Citizens invent casual Mondays."
-      },
-      {
-        "id": "keep",
-        "label": "Keep weekends",
-        "effects": { "happiness": 5, "treasury": -3 },
-        "advisor_affinity": { "auntie_olga": 1, "minister_penny": -1 },
-        "result_text": "Weekends survive. Penny files a lament titled Lost Sundays."
-      },
-      {
-        "id": "half_day",
-        "label": "Half-day Saturday only",
-        "effects": { "treasury": 3, "happiness": -4, "order": -1 },
-        "trait_changes": { "bureaucratic": 1 },
-        "add_flags": ["partial_weekend_cut"],
-        "result_text": "Saturday mornings become invoices. Brunch relocates to guilt."
-      }
+    "tags": [
+      "standalone",
+      "economy"
     ],
-    "tags": ["standalone", "economy", "labor"],
-    "visual_tags": ["tired_citizens"]
+    "visual_tags": [
+      "treasury_tip_jar"
+    ]
   },
   {
     "id": "luxury_chair_tax",
@@ -136,35 +150,64 @@
     "minimum_day": 3,
     "maximum_day": 26,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
     "options": [
       {
         "id": "tax_chairs",
         "label": "Tax armrest chairs",
-        "effects": { "treasury": 7, "happiness": -6, "elite_loyalty": -2 },
-        "add_laws": ["luxury_chair_tax"],
-        "trait_changes": { "bureaucratic": 1 },
+        "effects": {
+          "treasury": 7,
+          "happiness": -6,
+          "elite_loyalty": -2
+        },
+        "add_laws": [
+          "luxury_chair_tax"
+        ],
+        "trait_changes": {
+          "bureaucratic": 1
+        },
         "result_text": "Citizens saw off armrests overnight. Stools become patriotic."
       },
       {
         "id": "exempt_palace",
         "label": "Tax them, exempt palace",
-        "effects": { "treasury": 4, "happiness": -8, "elite_loyalty": 3 },
-        "add_laws": ["luxury_chair_tax"],
-        "add_flags": ["palace_chair_exemption"],
-        "advisor_affinity": { "sir_profit": 1 },
+        "effects": {
+          "treasury": 4,
+          "happiness": -8,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "luxury_chair_tax"
+        ],
+        "add_flags": [
+          "palace_chair_exemption"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
         "result_text": "Palace thrones glitter. Street chairs lose arms in solidarity."
       },
       {
         "id": "reject_tax",
         "label": "Leave chairs alone",
-        "effects": { "happiness": 3, "treasury": -1 },
+        "effects": {
+          "happiness": 3,
+          "treasury": -1
+        },
         "result_text": "Armrests remain free. Penny crosses Comfort Offenses off her list."
       }
     ],
-    "tags": ["standalone", "economy", "tax"],
-    "visual_tags": ["taxed_chairs"]
+    "tags": [
+      "standalone",
+      "economy",
+      "tax"
+    ],
+    "visual_tags": [
+      "taxed_chairs"
+    ]
   },
   {
     "id": "neighborhood_noise_complaint",
@@ -179,34 +222,62 @@
     "minimum_day": 3,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "ban_late",
         "label": "Ban music after 9pm",
-        "effects": { "order": 4, "happiness": -4 },
-        "advisor_affinity": { "auntie_olga": 1 },
-        "add_flags": ["accordion_curfew"],
+        "effects": {
+          "order": 4,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "accordion_curfew"
+        ],
         "result_text": "Silence returns. Folk musicians protest with very quiet shoes."
       },
       {
         "id": "sponsor_noon",
         "label": "Move them to noon concerts",
-        "effects": { "happiness": 5, "treasury": -4, "order": -2 },
-        "advisor_affinity": { "auntie_olga": 1, "luna_news": 1 },
+        "effects": {
+          "happiness": 5,
+          "treasury": -4,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "luna_news": 1
+        },
         "result_text": "Noon becomes patriotic polka hour. Bread rises on the beat."
       },
       {
         "id": "ignore_noise",
         "label": "Ignore the complaint",
-        "effects": { "happiness": -3, "order": -3, "elite_loyalty": 1 },
-        "advisor_affinity": { "auntie_olga": -2 },
+        "effects": {
+          "happiness": -3,
+          "order": -3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": -2
+        },
         "result_text": "Accordions escalate. Auntie Olga files Complaint Form in her voice."
       }
     ],
-    "tags": ["standalone", "public_life"],
-    "visual_tags": ["accordion_alley"]
+    "tags": [
+      "standalone",
+      "public_life"
+    ],
+    "visual_tags": [
+      "accordion_alley"
+    ]
   },
   {
     "id": "olga_loyal_council",
@@ -221,32 +292,61 @@
     "minimum_day": 6,
     "maximum_day": 32,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "requirements": {
-      "minimum_advisor_affinity": { "auntie_olga": 3 }
+      "minimum_advisor_affinity": {
+        "auntie_olga": 3
+      }
     },
     "options": [
       {
         "id": "empower_brigade",
         "label": "Empower the brigade",
-        "effects": { "happiness": 6, "order": 2, "elite_loyalty": -3 },
-        "advisor_affinity": { "auntie_olga": 2 },
-        "trait_changes": { "populist": 2 },
-        "add_flags": ["citizen_brigade_active"],
+        "effects": {
+          "happiness": 6,
+          "order": 2,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "citizen_brigade_active"
+        ],
         "result_text": "Sidewalks straighten in a week. Olga says you might not be hopeless."
       },
       {
         "id": "supervise_brigade",
         "label": "Supervise with inspectors",
-        "effects": { "happiness": 3, "order": 2, "treasury": -2 },
-        "advisor_affinity": { "auntie_olga": -1 },
-        "trait_changes": { "authoritarian": 1 },
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
         "result_text": "Repairs happen under clipboards. Olga notices every inspector."
       }
     ],
-    "tags": ["standalone", "public_life", "affinity"],
-    "visual_tags": ["citizen_brigade"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "affinity"
+    ],
+    "visual_tags": [
+      "citizen_brigade"
+    ]
   },
   {
     "id": "national_bedtime_decree",
@@ -261,35 +361,65 @@
     "minimum_day": 4,
     "maximum_day": 28,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "enact_bedtime",
         "label": "Lights out at ten",
-        "effects": { "order": 6, "happiness": -5, "treasury": -1 },
-        "add_laws": ["national_bedtime"],
-        "trait_changes": { "authoritarian": 1 },
-        "advisor_affinity": { "auntie_olga": 1, "general_boom": 1 },
+        "effects": {
+          "order": 6,
+          "happiness": -5,
+          "treasury": -1
+        },
+        "add_laws": [
+          "national_bedtime"
+        ],
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "general_boom": 1
+        },
         "result_text": "Streetlamps dim on cue. Whispering becomes a competitive sport."
       },
       {
         "id": "soft_recommendation",
         "label": "Suggest bedtime politely",
-        "effects": { "order": 2, "happiness": 1 },
-        "add_flags": ["bedtime_suggestion"],
+        "effects": {
+          "order": 2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "bedtime_suggestion"
+        ],
         "result_text": "Posters recommend sleep. Teenagers frame them as art."
       },
       {
         "id": "reject_bedtime",
         "label": "Keep nights free",
-        "effects": { "happiness": 4, "order": -4 },
-        "advisor_affinity": { "auntie_olga": -1 },
+        "effects": {
+          "happiness": 4,
+          "order": -4
+        },
+        "advisor_affinity": {
+          "auntie_olga": -1
+        },
         "result_text": "Midnight debates continue. Bakery alarms curse the state."
       }
     ],
-    "tags": ["standalone", "public_life", "routine"],
-    "visual_tags": ["curtains_drawn"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "routine"
+    ],
+    "visual_tags": [
+      "curtains_drawn"
+    ]
   },
   {
     "id": "perfumed_sewage_reform",
@@ -304,71 +434,62 @@
     "minimum_day": 9,
     "maximum_day": 32,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "options": [
       {
         "id": "perfume",
         "label": "Spray the sewers",
-        "effects": { "treasury": -4, "happiness": 4, "order": -2 },
-        "add_flags": ["perfumed_sewers"],
-        "advisor_affinity": { "minister_penny": 1 },
+        "effects": {
+          "treasury": -4,
+          "happiness": 4,
+          "order": -2
+        },
+        "add_flags": [
+          "perfumed_sewers"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
         "result_text": "Lavender rises from manholes. Cats look personally offended."
       },
       {
         "id": "real_repair",
         "label": "Fund real pipe repairs",
-        "effects": { "treasury": -11, "happiness": 3, "order": 4 },
-        "trait_changes": { "bureaucratic": 1 },
-        "add_flags": ["pipes_actually_fixed"],
+        "effects": {
+          "treasury": -11,
+          "happiness": 3,
+          "order": 4
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "pipes_actually_fixed"
+        ],
         "result_text": "Pipes stop singing. Penny invoices the odorless victory."
       },
       {
         "id": "do_nothing",
         "label": "Leave the smell alone",
-        "effects": { "happiness": -5, "order": -2, "treasury": 1 },
+        "effects": {
+          "happiness": -5,
+          "order": -2,
+          "treasury": 1
+        },
         "result_text": "The capital remains fragrant in the wrong way."
       }
     ],
-    "tags": ["standalone", "infrastructure"],
-    "visual_tags": ["perfumed_sewers"]
-  },
-  {
-    "id": "national_clock_sync",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "clerk_zero",
-    "category": "infrastructure",
-    "proposal": "Public clocks disagree by eleven minutes. Mandate Form 12-Time for national synchronization.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 3,
-    "maximum_day": 28,
-    "pacing": {
-      "allowed_stages": ["establishment"]
-    },
-    "options": [
-      {
-        "id": "sync_all",
-        "label": "Synchronize every clock",
-        "effects": { "order": 6, "treasury": -5, "happiness": -2 },
-        "trait_changes": { "bureaucratic": 2 },
-        "advisor_affinity": { "clerk_zero": 2 },
-        "add_flags": ["clocks_synchronized"],
-        "add_laws": ["national_clock_law"],
-        "result_text": "Every clock ticks in unison. Late people lose their excuses."
-      },
-      {
-        "id": "allow_drift",
-        "label": "Allow local drift",
-        "effects": { "happiness": 3, "order": -4 },
-        "advisor_affinity": { "clerk_zero": -1 },
-        "result_text": "Villages keep cozy wrong-o'clock. Trains invent creative arrivals."
-      }
+    "tags": [
+      "standalone",
+      "infrastructure"
     ],
-    "tags": ["standalone", "infrastructure", "bureaucracy"],
-    "visual_tags": ["synchronized_clocks"]
+    "visual_tags": [
+      "perfumed_sewers"
+    ]
   },
   {
     "id": "commemorative_debt_sale",
@@ -383,28 +504,53 @@
     "minimum_day": 8,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "options": [
       {
         "id": "sell_debt",
         "label": "Sell the certificates",
-        "effects": { "treasury": 10, "happiness": -5, "elite_loyalty": 4 },
-        "advisor_affinity": { "sir_profit": 2 },
-        "trait_changes": { "capitalist": 2 },
-        "add_flags": ["commemorative_debt_sold"],
+        "effects": {
+          "treasury": 10,
+          "happiness": -5,
+          "elite_loyalty": 4
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_flags": [
+          "commemorative_debt_sold"
+        ],
         "result_text": "Gold-edged I.O.U.s sell out. Nobody knows what they bought."
       },
       {
         "id": "refuse_debt",
         "label": "Refuse fancy debt",
-        "effects": { "happiness": 3, "elite_loyalty": -3, "treasury": -1 },
-        "advisor_affinity": { "sir_profit": -1 },
+        "effects": {
+          "happiness": 3,
+          "elite_loyalty": -3,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": -1
+        },
         "result_text": "Investors pout. The treasury keeps its boring honesty."
       }
     ],
-    "tags": ["standalone", "economy", "debt"],
-    "visual_tags": ["debt_certificates"]
+    "tags": [
+      "standalone",
+      "economy",
+      "debt"
+    ],
+    "visual_tags": [
+      "debt_certificates"
+    ]
   },
   {
     "id": "wage_freeze_mandate",
@@ -419,39 +565,77 @@
     "minimum_day": 8,
     "maximum_day": 32,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "requirements": {
-      "maximum_resources": { "treasury": 45 }
+      "maximum_resources": {
+        "treasury": 45
+      }
     },
     "options": [
       {
         "id": "freeze_wages",
         "label": "Freeze public wages",
-        "effects": { "treasury": 8, "happiness": -9, "order": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "minister_penny": 2, "auntie_olga": -2 },
-        "trait_changes": { "authoritarian": 1 },
-        "add_flags": ["wage_freeze_active"],
+        "effects": {
+          "treasury": 8,
+          "happiness": -9,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "wage_freeze_active"
+        ],
         "result_text": "Pay stubs stop growing. Solidarity arrives as a footnote."
       },
       {
         "id": "cut_palace",
         "label": "Cut palace stipends instead",
-        "effects": { "treasury": 5, "elite_loyalty": -6, "happiness": 3 },
-        "advisor_affinity": { "auntie_olga": 1, "sir_profit": -1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "treasury": 5,
+          "elite_loyalty": -6,
+          "happiness": 3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "result_text": "Gold desks glance nervously. Citizens clap for the spreadsheet."
       },
       {
         "id": "borrow_quietly",
         "label": "Borrow and wait",
-        "effects": { "treasury": 4, "elite_loyalty": -2, "happiness": -1 },
-        "add_flags": ["quiet_borrowing"],
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": -2,
+          "happiness": -1
+        },
+        "add_flags": [
+          "quiet_borrowing"
+        ],
         "result_text": "Interest accrues politely. Penny hates the politeness."
       }
     ],
-    "tags": ["standalone", "economy", "wages"],
-    "visual_tags": ["frozen_payroll"]
+    "tags": [
+      "standalone",
+      "economy",
+      "wages"
+    ],
+    "visual_tags": [
+      "frozen_payroll"
+    ]
   },
   {
     "id": "palace_room_rental",
@@ -466,28 +650,52 @@
     "minimum_day": 9,
     "maximum_day": 34,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "rent_rooms",
         "label": "Open palace rentals",
-        "effects": { "treasury": 7, "happiness": -3, "elite_loyalty": 3 },
-        "advisor_affinity": { "sir_profit": 2 },
-        "trait_changes": { "capitalist": 2 },
-        "add_flags": ["palace_rooms_rented"],
+        "effects": {
+          "treasury": 7,
+          "happiness": -3,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_flags": [
+          "palace_rooms_rented"
+        ],
         "result_text": "Tourists photograph the throne. Gift shop takes thirty percent."
       },
       {
         "id": "keep_private",
         "label": "Keep rooms private",
-        "effects": { "elite_loyalty": 2, "treasury": -2, "happiness": 1 },
-        "advisor_affinity": { "sir_profit": -1 },
+        "effects": {
+          "elite_loyalty": 2,
+          "treasury": -2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "sir_profit": -1
+        },
         "result_text": "Dust gathers in regal rooms. Dignity invoices nobody."
       }
     ],
-    "tags": ["standalone", "economy", "revenue"],
-    "visual_tags": ["palace_tour_rooms"]
+    "tags": [
+      "standalone",
+      "economy",
+      "revenue"
+    ],
+    "visual_tags": [
+      "palace_tour_rooms"
+    ]
   },
   {
     "id": "official_queue_etiquette",
@@ -502,36 +710,69 @@
     "minimum_day": 4,
     "maximum_day": 28,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "enact_etiquette",
         "label": "Enact queue law",
-        "effects": { "order": 6, "happiness": -3, "treasury": -2 },
-        "add_laws": ["queue_etiquette_law"],
-        "trait_changes": { "bureaucratic": 2 },
-        "advisor_affinity": { "clerk_zero": 2 },
+        "effects": {
+          "order": 6,
+          "happiness": -3,
+          "treasury": -2
+        },
+        "add_laws": [
+          "queue_etiquette_law"
+        ],
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
         "result_text": "Numbers flutter. Cutting line becomes a felony with gentle paperwork."
       },
       {
         "id": "volunteer_ushers",
         "label": "Train volunteer ushers",
-        "effects": { "order": 3, "happiness": 2, "treasury": -4 },
-        "advisor_affinity": { "clerk_zero": 1, "auntie_olga": 1 },
-        "add_flags": ["queue_ushers"],
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "treasury": -4
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "queue_ushers"
+        ],
         "result_text": "Ushers wear badges. Arguments relocate to Form Appeals."
       },
       {
         "id": "chaos_queues",
         "label": "Leave queues chaotic",
-        "effects": { "happiness": 2, "order": -5 },
-        "advisor_affinity": { "clerk_zero": -2 },
+        "effects": {
+          "happiness": 2,
+          "order": -5
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2
+        },
         "result_text": "Elbows remain law. Clerk Zero files a grief memorandum."
       }
     ],
-    "tags": ["standalone", "public_life", "queues"],
-    "visual_tags": ["numbered_queues"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "queues"
+    ],
+    "visual_tags": [
+      "numbered_queues"
+    ]
   },
   {
     "id": "universal_birthday_holiday",
@@ -546,44 +787,79 @@
     "minimum_day": 8,
     "maximum_day": 32,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "declare_holiday",
         "label": "Make birthdays national",
-        "effects": { "happiness": 8, "treasury": -7, "order": -3 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "populist": 1, "propagandist": 1 },
-        "add_flags": ["universal_birthdays"],
+        "effects": {
+          "happiness": 8,
+          "treasury": -7,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "populist": 1,
+          "propagandist": 1
+        },
+        "add_flags": [
+          "universal_birthdays"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "public_compliment_quota",
           "minimum_delay_days": 2,
           "maximum_delay_days": 5,
           "priority": 30,
-          "required_flags": ["universal_birthdays"]
+          "required_flags": [
+            "universal_birthdays"
+          ]
         },
         "result_text": "Cake becomes infrastructure. Luna News hosts thirty birthday segments a day."
       },
       {
         "id": "one_shared_day",
         "label": "One shared birthday week",
-        "effects": { "happiness": 4, "treasury": -3, "order": -1 },
-        "advisor_affinity": { "luna_news": 1 },
-        "add_flags": ["birthday_week"],
+        "effects": {
+          "happiness": 4,
+          "treasury": -3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "add_flags": [
+          "birthday_week"
+        ],
         "result_text": "Everyone ages officially on Tuesday. Bakeries file for overtime."
       },
       {
         "id": "reject_holiday",
         "label": "Keep private birthdays",
-        "effects": { "order": 2, "happiness": -2, "treasury": 1 },
-        "advisor_affinity": { "luna_news": -1 },
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
         "result_text": "Candles stay domestic. Ratings invent a substitute holiday."
       }
     ],
-    "tags": ["standalone", "public_life", "celebration"],
-    "visual_tags": ["birthday_banners"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "celebration"
+    ],
+    "visual_tags": [
+      "birthday_banners"
+    ]
   },
   {
     "id": "public_compliment_quota",
@@ -598,28 +874,52 @@
     "minimum_day": 5,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "enact_quota",
         "label": "Enact compliment quota",
-        "effects": { "happiness": 5, "order": 2, "elite_loyalty": -2 },
-        "add_laws": ["compliment_quota_law"],
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2 },
+        "effects": {
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": -2
+        },
+        "add_laws": [
+          "compliment_quota_law"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
         "result_text": "Meters measure praise. Three citizens fined for thoughtful pauses."
       },
       {
         "id": "optional_praise",
         "label": "Make compliments optional",
-        "effects": { "happiness": 2, "order": -1 },
-        "advisor_affinity": { "luna_news": -1 },
+        "effects": {
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
         "result_text": "Praise remains sincere and rare. Luna News calls it authentic risk."
       }
     ],
-    "tags": ["standalone", "public_life", "social"],
-    "visual_tags": ["compliment_meters"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "social"
+    ],
+    "visual_tags": [
+      "compliment_meters"
+    ]
   },
   {
     "id": "absurd_civic_sweeping",
@@ -634,35 +934,65 @@
     "minimum_day": 17,
     "maximum_day": 36,
     "pacing": {
-      "allowed_stages": ["instability"]
+      "allowed_stages": [
+        "instability"
+      ]
     },
     "options": [
       {
         "id": "mandate_sweep",
         "label": "Mandate civic sweeping",
-        "effects": { "order": 5, "happiness": -4, "treasury": -1 },
-        "advisor_affinity": { "auntie_olga": 2 },
-        "trait_changes": { "populist": 1, "authoritarian": 1 },
-        "add_flags": ["civic_sweeping"],
+        "effects": {
+          "order": 5,
+          "happiness": -4,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "civic_sweeping"
+        ],
         "result_text": "Brooms bloom at dawn. Dust relocates to neighboring blocks on schedule."
       },
       {
         "id": "hire_cleaners",
         "label": "Hire neighborhood cleaners",
-        "effects": { "treasury": -6, "happiness": 4, "order": 2 },
-        "advisor_affinity": { "auntie_olga": 1 },
+        "effects": {
+          "treasury": -6,
+          "happiness": 4,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1
+        },
         "result_text": "Professionals sweep. Neighbors drink tea and supervise critically."
       },
       {
         "id": "ignore_dust",
         "label": "Ignore the dust",
-        "effects": { "happiness": -3, "order": -3 },
-        "advisor_affinity": { "auntie_olga": -2 },
+        "effects": {
+          "happiness": -3,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": -2
+        },
         "result_text": "Leaves win. Auntie Olga starts a whisper campaign about grit."
       }
     ],
-    "tags": ["standalone", "public_life", "civic_duty"],
-    "visual_tags": ["broom_brigades"]
+    "tags": [
+      "standalone",
+      "public_life",
+      "civic_duty"
+    ],
+    "visual_tags": [
+      "broom_brigades"
+    ]
   },
   {
     "id": "flag_traffic_system",
@@ -677,37 +1007,72 @@
     "minimum_day": 8,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "approve_flags",
         "label": "Install flag traffic",
-        "effects": { "order": 5, "happiness": -4, "treasury": -4, "elite_loyalty": 3 },
-        "add_laws": ["flag_traffic_law"],
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "authoritarian": 2 },
-        "add_flags": ["flag_traffic_active"],
+        "effects": {
+          "order": 5,
+          "happiness": -4,
+          "treasury": -4,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "flag_traffic_law"
+        ],
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "flag_traffic_active"
+        ],
         "result_text": "Intersections become parades. Left turns require medal checks."
       },
       {
         "id": "keep_lights",
         "label": "Keep electric lights",
-        "effects": { "happiness": 2, "order": 1, "elite_loyalty": -2 },
-        "advisor_affinity": { "general_boom": -1 },
+        "effects": {
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -1
+        },
         "result_text": "Bulbs stay boringly effective. Boom drafts a dissent salute."
       },
       {
         "id": "hybrid_signals",
         "label": "Flags on weekends only",
-        "effects": { "order": 2, "happiness": -1, "treasury": -2 },
-        "advisor_affinity": { "general_boom": 1 },
-        "add_flags": ["weekend_flag_traffic"],
+        "effects": {
+          "order": 2,
+          "happiness": -1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 1
+        },
+        "add_flags": [
+          "weekend_flag_traffic"
+        ],
         "result_text": "Saturday driving becomes ceremonial. Monday resumes physics."
       }
     ],
-    "tags": ["standalone", "infrastructure", "traffic"],
-    "visual_tags": ["flag_intersections"]
+    "tags": [
+      "standalone",
+      "infrastructure",
+      "traffic"
+    ],
+    "visual_tags": [
+      "flag_intersections"
+    ]
   },
   {
     "id": "palace_bus_routes",
@@ -722,38 +1087,75 @@
     "minimum_day": 8,
     "maximum_day": 34,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "requirements": {
-      "any_flags": ["bridge_groundbroken", "canal_groundbroken", "sponsored_roads", "roads_repaired_public"]
+      "any_flags": [
+        "bridge_groundbroken",
+        "canal_groundbroken",
+        "sponsored_roads",
+        "roads_repaired_public"
+      ]
     },
     "options": [
       {
         "id": "open_routes",
         "label": "Open palace bus routes",
-        "effects": { "treasury": 4, "happiness": 3, "elite_loyalty": -4, "order": -2 },
-        "advisor_affinity": { "minister_penny": 1, "sir_profit": 1 },
-        "add_flags": ["palace_buses_active"],
+        "effects": {
+          "treasury": 4,
+          "happiness": 3,
+          "elite_loyalty": -4,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": 1
+        },
+        "add_flags": [
+          "palace_buses_active"
+        ],
         "result_text": "Buses splash the fountain. Guides sell courtyard transfers."
       },
       {
         "id": "citizen_priority",
         "label": "Citizen routes, no tours",
-        "effects": { "treasury": -4, "happiness": 6, "elite_loyalty": -2 },
-        "advisor_affinity": { "auntie_olga": 1 },
-        "trait_changes": { "populist": 1 },
-        "add_flags": ["citizen_bus_priority"],
+        "effects": {
+          "treasury": -4,
+          "happiness": 6,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "citizen_bus_priority"
+        ],
         "result_text": "Seats fill with lunch boxes. Tourists sulk outside the gate."
       },
       {
         "id": "cancel_plan",
         "label": "Cancel courtyard routes",
-        "effects": { "elite_loyalty": 2, "happiness": -2 },
+        "effects": {
+          "elite_loyalty": 2,
+          "happiness": -2
+        },
         "result_text": "The courtyard stays solemn. Bus maps regain their dignity."
       }
     ],
-    "tags": ["standalone", "infrastructure", "transit"],
-    "visual_tags": ["palace_buses"]
+    "tags": [
+      "standalone",
+      "infrastructure",
+      "transit"
+    ],
+    "visual_tags": [
+      "palace_buses"
+    ]
   },
   {
     "id": "bridge_toll_concession",
@@ -768,36 +1170,72 @@
     "minimum_day": 28,
     "maximum_day": 40,
     "pacing": {
-      "allowed_stages": ["endgame"]
+      "allowed_stages": [
+        "endgame"
+      ]
     },
     "options": [
       {
         "id": "sell_tolls",
         "label": "Sell bridge toll rights",
-        "effects": { "treasury": 12, "happiness": -8, "elite_loyalty": 5 },
-        "advisor_affinity": { "sir_profit": 3, "auntie_olga": -2 },
-        "trait_changes": { "capitalist": 3 },
-        "add_flags": ["bridge_tolls_private"],
+        "effects": {
+          "treasury": 12,
+          "happiness": -8,
+          "elite_loyalty": 5
+        },
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "add_flags": [
+          "bridge_tolls_private"
+        ],
         "result_text": "Booths accept three payment apps. Swimmers invent a loophole."
       },
       {
         "id": "keep_public_tolls",
         "label": "Keep tolls public",
-        "effects": { "happiness": 3, "treasury": -3, "elite_loyalty": -3 },
-        "advisor_affinity": { "sir_profit": -2 },
+        "effects": {
+          "happiness": 3,
+          "treasury": -3,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "sir_profit": -2
+        },
         "result_text": "Coins clink into state coffers. Alignment memos go unread."
       },
       {
         "id": "abolish_tolls",
         "label": "Abolish tolls entirely",
-        "effects": { "happiness": 7, "treasury": -6, "order": 1 },
-        "advisor_affinity": { "auntie_olga": 2, "sir_profit": -3 },
-        "trait_changes": { "populist": 2 },
-        "add_flags": ["free_bridge_crossing"],
+        "effects": {
+          "happiness": 7,
+          "treasury": -6,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "sir_profit": -3
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "free_bridge_crossing"
+        ],
         "result_text": "The bridge becomes popular again. Sir Profit bills the sunset."
       }
     ],
-    "tags": ["standalone", "infrastructure", "tolls"],
-    "visual_tags": ["toll_booths"]
+    "tags": [
+      "standalone",
+      "infrastructure",
+      "tolls"
+    ],
+    "visual_tags": [
+      "toll_booths"
+    ]
   }
 ]

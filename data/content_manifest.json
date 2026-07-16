@@ -1,9 +1,9 @@
 {
-	"batch_id": "2B-6B",
+	"batch_id": "2B-7B",
 	"catalogs": {
 		"advisors": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "General Boom",
 				"id": "general_boom",
@@ -11,7 +11,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Minister Penny",
 				"id": "minister_penny",
@@ -19,7 +19,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Luna News",
 				"id": "luna_news",
@@ -27,7 +27,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Auntie Olga",
 				"id": "auntie_olga",
@@ -35,7 +35,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Doctor Maybe",
 				"id": "doctor_maybe",
@@ -43,7 +43,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Sir Profit",
 				"id": "sir_profit",
@@ -51,7 +51,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Comrade Whiskers",
 				"id": "comrade_whiskers",
@@ -59,7 +59,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "advisor",
 				"display_name": "Clerk Zero",
 				"id": "clerk_zero",
@@ -70,7 +70,7 @@
 		"arcs": [
 			{
 				"arc_type": "national",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 8,
 				"id": "cat_politics",
@@ -80,7 +80,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 5,
 				"id": "traffic_military",
@@ -90,7 +90,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 7,
 				"id": "mandatory_happiness",
@@ -100,7 +100,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "general_boom_arc",
@@ -110,7 +110,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 5,
 				"id": "doctor_maybe_arc",
@@ -120,7 +120,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "arc",
 				"decision_count": 2,
 				"id": "robot_government",
@@ -131,7 +131,7 @@
 		],
 		"chains": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"free_pizza_friday",
@@ -145,7 +145,7 @@
 				"target_length": 4
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"switch_off_traffic_lights",
@@ -160,7 +160,7 @@
 				"target_length": 5
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"robot_cabinet_proposal",
@@ -172,7 +172,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"cat_parliament",
@@ -184,7 +184,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"umbrella_tax_proposal",
@@ -196,7 +196,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"free_coffee_morning",
@@ -209,7 +209,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"privatized_benches_proposal",
@@ -222,7 +222,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"lottery_treasury_fund",
@@ -234,7 +234,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"palace_gift_shop_opening",
@@ -246,7 +246,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"elevator_wifi_mandate",
@@ -258,7 +258,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"sponsored_potholes",
@@ -271,7 +271,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "chain",
 				"decision_ids": [
 					"long_setup_grand_canal",
@@ -282,11 +282,111 @@
 				"notes": "Manifest-invented chain_id; no runtime field yet.",
 				"status": "approved",
 				"target_length": 3
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"coin_shortage_crisis",
+					"coin_shortage_remedy"
+				],
+				"id": "coin_shortage",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"national_clock_sync",
+					"clock_appointment_chaos"
+				],
+				"id": "national_clock_reform",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"no_weekends_proposal",
+					"weekend_burnout_wave",
+					"weekend_policy_resolution"
+				],
+				"id": "weekend_abolition",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"state_meme_department",
+					"meme_virality_crisis",
+					"meme_department_resolution"
+				],
+				"id": "state_meme_department",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"weather_censorship_mandate",
+					"weather_credibility_crisis"
+				],
+				"id": "weather_censorship",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"national_talent_show",
+					"talent_show_budget_scandal"
+				],
+				"id": "national_talent_show",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"applause_quotas_mandate",
+					"applause_enforcement_squad",
+					"applause_public_adaptation"
+				],
+				"id": "applause_quotas",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "chain",
+				"decision_ids": [
+					"artificial_sun_pilot",
+					"artificial_sun_escalation",
+					"artificial_sun_resolution"
+				],
+				"id": "artificial_sun",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
 			}
 		],
 		"crises": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "national_power_outage",
 				"id": "national_power_outage",
@@ -295,7 +395,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "budget_meltdown_crisis",
 				"id": "budget_meltdown",
@@ -304,7 +404,7 @@
 				"status": "deferred"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "cheese_shortage_crisis",
 				"id": "cheese_shortage_crisis",
@@ -313,7 +413,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "mass_protest",
 				"id": "mass_protest",
@@ -322,7 +422,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "bank_run",
 				"id": "bank_run",
@@ -331,7 +431,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "cat_parliament_occupation",
 				"id": "cat_parliament_occupation",
@@ -340,7 +440,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "crisis",
 				"entry_decision_id": "pantry_moth_crisis",
 				"id": "pantry_moth_crisis",
@@ -351,7 +451,7 @@
 		],
 		"endings": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "elite_coup",
@@ -359,7 +459,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "revolution",
@@ -367,7 +467,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "chaos_country",
@@ -375,7 +475,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "bankrupt_leader",
@@ -383,7 +483,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "nation_in_darkness",
@@ -391,7 +491,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "cat_republic",
@@ -399,7 +499,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "survival",
 				"id": "survived_the_prototype",
@@ -407,7 +507,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "fallback",
 				"id": "content_exhausted",
@@ -415,7 +515,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "eternal_smile_state",
@@ -423,7 +523,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "general_boom_coup",
@@ -431,7 +531,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "accidental_moon_replacement",
@@ -439,17 +539,25 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "corporate_ministan",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "scientific_golden_age",
 				"notes": "",
 				"status": "integrated"
 			}
 		],
 		"laws": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "free_pizza_friday",
 				"notes": "",
@@ -460,7 +568,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "mandatory_smiling",
 				"notes": "",
@@ -471,7 +579,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "window_tax",
 				"notes": "",
@@ -482,7 +590,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "cat_voting_rights",
 				"notes": "",
@@ -493,7 +601,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "tank_traffic_control",
 				"notes": "",
@@ -504,7 +612,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "emergency_broadcast_priority",
 				"notes": "",
@@ -515,7 +623,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "no_weekends",
 				"notes": "",
@@ -526,7 +634,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "fake_smile_standard",
 				"notes": "",
@@ -537,7 +645,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "emergency_martial_law",
 				"notes": "",
@@ -548,7 +656,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "national_happiness_index",
 				"notes": "",
@@ -559,7 +667,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "scientific_experiment_permit",
 				"notes": "",
@@ -570,7 +678,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "fish_emergency_reserve",
 				"notes": "",
@@ -581,7 +689,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "luxury_chair_tax",
 				"notes": "",
@@ -592,7 +700,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "national_bedtime",
 				"notes": "",
@@ -603,7 +711,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "national_clock_law",
 				"notes": "",
@@ -614,7 +722,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "queue_etiquette_law",
 				"notes": "",
@@ -625,7 +733,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "compliment_quota_law",
 				"notes": "",
@@ -636,7 +744,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "flag_traffic_law",
 				"notes": "",
@@ -647,7 +755,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "rival_parade_response_act",
 				"notes": "",
@@ -658,7 +766,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "palace_curfew_act",
 				"notes": "",
@@ -669,7 +777,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "emergency_salute_law",
 				"notes": "",
@@ -680,7 +788,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "one_headline_policy",
 				"notes": "",
@@ -691,7 +799,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "public_rumor_license",
 				"notes": "",
@@ -702,7 +810,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "predictive_toaster_act",
 				"notes": "",
@@ -713,7 +821,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "ceremonial_tank_florist_act",
 				"notes": "",
@@ -724,7 +832,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "weather_optimism_act",
 				"notes": "",
@@ -735,7 +843,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "catchphrase_registry_act",
 				"notes": "",
@@ -746,7 +854,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "labcoat_lighting_act",
 				"notes": "",
@@ -757,7 +865,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "capital_square_naming_act",
 				"notes": "",
@@ -768,7 +876,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "citizen_service_subscription_act",
 				"notes": "",
@@ -779,7 +887,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "cabinet_briefing_protocol",
 				"notes": "",
@@ -790,7 +898,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "complaint_permit_act",
 				"notes": "",
@@ -801,7 +909,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "contradictory_signage_law",
 				"notes": "",
@@ -812,7 +920,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "mouse_protection_law",
 				"notes": "",
@@ -823,7 +931,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "fish_market_subsidy_act",
 				"notes": "",
@@ -834,7 +942,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "palace_tour_act",
 				"notes": "",
@@ -845,7 +953,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "anthem_sponsor_act",
 				"notes": "",
@@ -856,7 +964,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "emergency_efficiency_act",
 				"notes": "",
@@ -867,7 +975,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "notarized_apology_act",
 				"notes": "",
@@ -878,7 +986,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "official_palace_pet_act",
 				"notes": "",
@@ -889,7 +997,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "umbrella_tax",
 				"notes": "",
@@ -900,7 +1008,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "national_coffee_reserve",
 				"notes": "",
@@ -911,7 +1019,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "bench_subscription_act",
 				"notes": "",
@@ -922,7 +1030,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "national_lottery_budget",
 				"notes": "",
@@ -933,7 +1041,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "palace_gift_shop_act",
 				"notes": "",
@@ -944,7 +1052,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "law",
 				"id": "sponsored_potholes_act",
 				"notes": "",
@@ -953,25 +1061,91 @@
 				"visual_tags": [
 					"sponsored_potholes"
 				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "coin_rounding_act",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"rounding_booths"
+				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "ministry_of_memes",
+				"notes": "",
+				"primary_category": "media",
+				"status": "integrated",
+				"visual_tags": [
+					"meme_ministry_desk"
+				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "weather_censorship_act",
+				"notes": "",
+				"primary_category": "media",
+				"status": "integrated",
+				"visual_tags": [
+					"censored_storm_maps"
+				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "national_reality_show",
+				"notes": "",
+				"primary_category": "media",
+				"status": "integrated",
+				"visual_tags": [
+					"state_talent_stage"
+				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "mandatory_applause",
+				"notes": "",
+				"primary_category": "media",
+				"status": "integrated",
+				"visual_tags": [
+					"applause_meters"
+				]
+			},
+			{
+				"batch_id": "2B-7B",
+				"content_type": "law",
+				"id": "artificial_sun_program",
+				"notes": "",
+				"primary_category": "science",
+				"status": "integrated",
+				"visual_tags": [
+					"pilot_sun_over_capital"
+				]
 			}
 		],
 		"palace_upgrades": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "palace_upgrade",
 				"id": "gold_desk",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "palace_upgrade",
 				"id": "propaganda_studio",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "palace_upgrade",
 				"id": "emergency_bunker",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
@@ -980,7 +1154,7 @@
 		],
 		"ruler_identities": [
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Smiling Tyrant",
 				"id": "the_smiling_tyrant",
@@ -988,7 +1162,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Spreadsheet Emperor",
 				"id": "the_spreadsheet_emperor",
@@ -996,7 +1170,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "Supreme Cat Servant",
 				"id": "supreme_cat_servant",
@@ -1004,7 +1178,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Chaotic Reformer",
 				"id": "the_chaotic_reformer",
@@ -1012,7 +1186,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Technocratic Accident",
 				"id": "the_technocratic_accident",
@@ -1020,7 +1194,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Golden Oligarch",
 				"id": "the_golden_oligarch",
@@ -1028,7 +1202,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-6B",
+				"batch_id": "2B-7B",
 				"content_type": "ruler_identity",
 				"display_name": "The Accidental Ruler",
 				"id": "the_accidental_ruler",
@@ -1042,7 +1216,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1066,7 +1240,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1088,9 +1262,81 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "applause_quotas",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "applause_enforcement_squad",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "general_boom",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"clap_patrol_boots"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "applause_quotas",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "applause_public_adaptation",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"silent_clap_tracks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "applause_quotas",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "applause_quotas_mandate",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"applause_meters"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1112,7 +1358,79 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "artificial_sun",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "artificial_sun_escalation",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "science",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"noon_at_midnight"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "artificial_sun",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "artificial_sun_pilot",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "science",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"pilot_sun_over_capital"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "artificial_sun",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "artificial_sun_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "science",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"sun_shutdown_forms"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1136,7 +1454,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -1160,7 +1478,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -1184,7 +1502,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1208,7 +1526,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1230,7 +1548,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1254,7 +1572,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1276,7 +1594,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1300,7 +1618,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1324,7 +1642,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -1348,7 +1666,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -1372,7 +1690,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1396,7 +1714,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1418,7 +1736,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1442,7 +1760,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1466,7 +1784,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1490,7 +1808,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
@@ -1512,7 +1830,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1534,7 +1852,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
@@ -1556,7 +1874,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1580,7 +1898,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1602,7 +1920,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1624,7 +1942,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1646,7 +1964,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1668,7 +1986,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1690,7 +2008,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1714,7 +2032,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1738,7 +2056,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1762,7 +2080,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1784,7 +2102,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1808,7 +2126,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -1830,7 +2148,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1852,7 +2170,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1876,7 +2194,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1900,7 +2218,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1924,7 +2242,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "national_clock_reform",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "clock_appointment_chaos",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"missed_appointment_boards"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1948,7 +2290,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -1972,7 +2314,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -1996,7 +2338,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "coin_shortage",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "coin_shortage_crisis",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"empty_coin_trays"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "coin_shortage",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "coin_shortage_remedy",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"rounding_booths"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2020,7 +2410,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2044,7 +2434,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2068,7 +2458,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2092,7 +2482,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2116,7 +2506,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2140,7 +2530,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2164,7 +2554,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2188,7 +2578,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "elevator_wifi",
 			"content_type": "decision",
@@ -2212,7 +2602,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "elevator_wifi",
 			"content_type": "decision",
@@ -2236,7 +2626,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2260,7 +2650,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2284,7 +2674,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2306,7 +2696,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2328,7 +2718,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2350,7 +2740,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2374,7 +2764,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2398,7 +2788,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2422,7 +2812,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2446,7 +2836,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2470,7 +2860,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -2494,7 +2884,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -2516,7 +2906,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2538,7 +2928,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "palace_gift_shop",
 			"content_type": "decision",
@@ -2562,7 +2952,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2584,7 +2974,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2606,7 +2996,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2628,7 +3018,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2652,7 +3042,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2676,7 +3066,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2700,7 +3090,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2724,7 +3114,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2748,7 +3138,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -2772,7 +3162,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "lottery_budget",
 			"content_type": "decision",
@@ -2796,7 +3186,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "lottery_budget",
 			"content_type": "decision",
@@ -2820,7 +3210,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2844,7 +3234,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2868,7 +3258,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2892,7 +3282,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2916,7 +3306,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2940,7 +3330,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2962,7 +3352,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2986,7 +3376,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3010,7 +3400,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3032,7 +3422,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "state_meme_department",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "meme_department_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"meme_policy_vault"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "state_meme_department",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "meme_virality_crisis",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"viral_template_walls"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3056,7 +3494,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3078,7 +3516,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3102,7 +3540,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3126,7 +3564,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3150,7 +3588,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3174,20 +3612,20 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
-			"chain_id": null,
+			"chain_id": "national_clock_reform",
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "national_clock_sync",
 			"manual_test_status": "pass",
-			"notes": "Milestone 2B-3 approved standalone policy card.",
-			"primary_category": "infrastructure",
-			"primary_content_class": "standalone",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "clerk_zero",
-			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
 			"schema_validation_status": "pass",
 			"status": "approved",
 			"visual_tags": [
@@ -3198,7 +3636,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3222,7 +3660,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3244,7 +3682,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "national_talent_show",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "national_talent_show",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"state_talent_stage"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3268,20 +3730,20 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
-			"chain_id": null,
+			"chain_id": "weekend_abolition",
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "no_weekends_proposal",
 			"manual_test_status": "pass",
-			"notes": "Milestone 2B-3 approved standalone policy card.",
-			"primary_category": "economy",
-			"primary_content_class": "standalone",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "minister_penny",
-			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
 			"schema_validation_status": "pass",
 			"status": "approved",
 			"visual_tags": [
@@ -3292,7 +3754,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3316,7 +3778,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3340,7 +3802,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3364,7 +3826,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3388,7 +3850,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3410,7 +3872,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3434,7 +3896,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3458,7 +3920,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3482,7 +3944,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3506,7 +3968,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "palace_gift_shop",
 			"content_type": "decision",
@@ -3530,7 +3992,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3554,7 +4016,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3578,7 +4040,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3602,7 +4064,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3624,7 +4086,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3648,7 +4110,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -3670,7 +4132,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -3692,7 +4154,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3716,7 +4178,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -3740,7 +4202,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -3764,7 +4226,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3788,7 +4250,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3812,7 +4274,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3836,7 +4298,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -3860,7 +4322,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3882,7 +4344,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3906,7 +4368,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3930,7 +4392,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3954,7 +4416,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3978,7 +4440,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4000,7 +4462,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4022,7 +4484,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4044,7 +4506,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4066,7 +4528,7 @@
 		{
 			"arc_id": "robot_government",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "robot_government",
 			"content_type": "decision",
@@ -4088,7 +4550,7 @@
 		{
 			"arc_id": "robot_government",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": "robot_government",
 			"content_type": "decision",
@@ -4110,7 +4572,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4132,7 +4594,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4156,7 +4618,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4180,7 +4642,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4204,7 +4666,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -4228,7 +4690,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4250,9 +4712,33 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "state_meme_department",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "state_meme_department",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"meme_ministry_desk"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -4274,9 +4760,33 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "national_talent_show",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "talent_show_budget_scandal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"talent_budget_charts"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -4298,7 +4808,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -4320,7 +4830,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -4344,7 +4854,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -4368,7 +4878,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4392,7 +4902,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "consequence",
 			"chain_id": "umbrella_tax",
 			"content_type": "decision",
@@ -4416,7 +4926,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": "umbrella_tax",
 			"content_type": "decision",
@@ -4440,7 +4950,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4464,7 +4974,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4488,7 +4998,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4512,7 +5022,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "normal",
+			"chain_id": "weather_censorship",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "weather_censorship_mandate",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"censored_storm_maps"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "weather_censorship",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "weather_credibility_crisis",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "media",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"umbrella_panic_lines"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4536,7 +5094,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "weekend_abolition",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "weekend_burnout_wave",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"burnout_nap_lines"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
+			"card_type": "consequence",
+			"chain_id": "weekend_abolition",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "weekend_policy_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-7 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_b.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"calendar_mourning"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-7B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4560,7 +5166,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-6B",
+			"batch_id": "2B-7B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4585,58 +5191,58 @@
 	"distribution_report": {
 		"approved_only": {
 			"by_primary_category_canonical": {
-				"bureaucracy": 9,
+				"bureaucracy": 11,
 				"business_and_privatization": 13,
 				"cats_and_animals": 8,
-				"economy": 13,
-				"infrastructure": 14,
-				"media_and_propaganda": 9,
+				"economy": 14,
+				"infrastructure": 13,
+				"media_and_propaganda": 19,
 				"military_and_order": 9,
-				"public_life": 13,
-				"science_and_technology": 9
+				"public_life": 16,
+				"science_and_technology": 12
 			},
 			"by_primary_run_stage": {
 				"endgame": 6,
-				"escalation": 29,
-				"establishment": 53,
+				"escalation": 34,
+				"establishment": 66,
 				"instability": 9
 			},
 			"by_primary_speaker": {
-				"auntie_olga": 11,
-				"clerk_zero": 14,
+				"auntie_olga": 13,
+				"clerk_zero": 16,
 				"comrade_whiskers": 7,
-				"doctor_maybe": 9,
-				"general_boom": 10,
-				"luna_news": 12,
-				"minister_penny": 17,
-				"sir_profit": 17
+				"doctor_maybe": 11,
+				"general_boom": 11,
+				"luna_news": 19,
+				"minister_penny": 20,
+				"sir_profit": 18
 			}
 		},
 		"by_primary_category": {
 			"administration": 1,
-			"bureaucracy": 9,
+			"bureaucracy": 11,
 			"business_and_privatization": 13,
 			"cats_and_animals": 8,
-			"economy": 19,
+			"economy": 20,
 			"follow_up": 9,
 			"government": 2,
-			"infrastructure": 18,
-			"media": 15,
+			"infrastructure": 17,
+			"media": 25,
 			"military": 16,
 			"politics": 4,
-			"public_life": 24,
-			"science": 13
+			"public_life": 27,
+			"science": 16
 		},
 		"by_primary_category_canonical": {
-			"bureaucracy": 12,
+			"bureaucracy": 14,
 			"business_and_privatization": 13,
 			"cats_and_animals": 8,
-			"economy": 19,
-			"infrastructure": 18,
-			"media_and_propaganda": 15,
+			"economy": 20,
+			"infrastructure": 17,
+			"media_and_propaganda": 25,
 			"military_and_order": 16,
-			"public_life": 37,
-			"science_and_technology": 13
+			"public_life": 40,
+			"science_and_technology": 16
 		},
 		"by_primary_content_class": {
 			"crisis": 6,
@@ -4644,52 +5250,52 @@
 			"major_arc": 25,
 			"onboarding": 10,
 			"recovery": 4,
-			"short_chain": 33,
-			"standalone": 70
+			"short_chain": 53,
+			"standalone": 68
 		},
 		"by_primary_run_stage": {
 			"endgame": 8,
-			"escalation": 34,
-			"establishment": 99,
+			"escalation": 39,
+			"establishment": 112,
 			"instability": 10
 		},
 		"by_primary_speaker": {
-			"auntie_olga": 21,
-			"clerk_zero": 17,
+			"auntie_olga": 23,
+			"clerk_zero": 19,
 			"comrade_whiskers": 8,
-			"doctor_maybe": 12,
-			"general_boom": 22,
-			"luna_news": 25,
-			"minister_penny": 27,
-			"sir_profit": 19
+			"doctor_maybe": 14,
+			"general_boom": 23,
+			"luna_news": 32,
+			"minister_penny": 30,
+			"sir_profit": 20
 		},
 		"by_review_status": {
 			"balance_review_status": {
-				"partial": 151
+				"partial": 169
 			},
 			"graph_validation_status": {
-				"partial": 110,
-				"pass": 41
+				"partial": 116,
+				"pass": 53
 			},
 			"manual_test_status": {
 				"partial": 30,
-				"pass": 97,
+				"pass": 115,
 				"untested": 24
 			},
 			"voice_review_status": {
-				"not_reviewed": 151
+				"not_reviewed": 169
 			}
 		},
 		"by_status": {
-			"approved": 97,
+			"approved": 115,
 			"deferred": 4,
 			"integrated": 42,
 			"needs_rewrite": 8
 		}
 	},
-	"generated_at": "2026-07-16T13:30:16",
+	"generated_at": "2026-07-16T13:47:48",
 	"manifest_version": 1,
-	"phase": "2b_6_short_chain_pack_a",
+	"phase": "2b_7_short_chain_pack_b",
 	"quality_findings": {
 		"deferred_ids": [
 			"budget_meltdown_crisis",
@@ -4703,8 +5309,8 @@
 			"dominant_choice_options": 0,
 			"endings_impossible": 4,
 			"excessive_advisor_concentration": 2,
-			"excessive_tag_concentration": 1,
-			"unreachable_decisions": 110
+			"excessive_tag_concentration": 3,
+			"unreachable_decisions": 116
 		},
 		"duplicate_premise_groups": [
 			{
@@ -4773,7 +5379,13 @@
 		"missing_review_status": [
 			"absurd_civic_sweeping",
 			"anthem_sponsor_reads",
+			"applause_enforcement_squad",
+			"applause_public_adaptation",
+			"applause_quotas_mandate",
 			"army_snack_budget",
+			"artificial_sun_escalation",
+			"artificial_sun_pilot",
+			"artificial_sun_resolution",
 			"bank_run",
 			"bench_policy_resolution",
 			"bench_subscription_backlash",
@@ -4809,9 +5421,12 @@
 			"citizen_service_subscription",
 			"civilian_marching_band",
 			"clinic_maybe_pilot",
+			"clock_appointment_chaos",
 			"cloud_relocation_trial",
 			"coffee_hoarding_crisis",
 			"coffee_reserve_resolution",
+			"coin_shortage_crisis",
+			"coin_shortage_remedy",
 			"commemorative_debt_sale",
 			"complaint_permit_office",
 			"contradictory_signage_act",
@@ -4856,6 +5471,8 @@
 			"maybe_golden_age",
 			"maybe_lab_runaway",
 			"maybe_moon_dust_trial",
+			"meme_department_resolution",
+			"meme_virality_crisis",
 			"midnight_filing_amnesty",
 			"military_parade",
 			"mouse_protection_act",
@@ -4865,6 +5482,7 @@
 			"national_clock_sync",
 			"national_nap_grid",
 			"national_power_outage",
+			"national_talent_show",
 			"neighborhood_noise_complaint",
 			"no_weekends_proposal",
 			"notarized_apology_requirement",
@@ -4908,7 +5526,9 @@
 			"sovereign_cookie_futures",
 			"sponsored_potholes",
 			"squirrel_union_recognition",
+			"state_meme_department",
 			"switch_off_traffic_lights",
+			"talent_show_budget_scandal",
 			"traffic_complaint",
 			"traffic_lights_restored",
 			"traffic_military_resolved",
@@ -4919,7 +5539,11 @@
 			"universal_birthday_holiday",
 			"volunteer_night_watch",
 			"wage_freeze_mandate",
+			"weather_censorship_mandate",
+			"weather_credibility_crisis",
 			"weather_optimism_bulletin",
+			"weekend_burnout_wave",
+			"weekend_policy_resolution",
 			"window_tax_proposal",
 			"working_palace_tours"
 		],
@@ -5041,14 +5665,14 @@
 			"target": 18
 		},
 		"decisions": {
-			"approved_total": 97,
+			"approved_total": 115,
 			"by_category": {
 				"bureaucracy": {
-					"approved": 9,
-					"cataloged": 12,
+					"approved": 11,
+					"cataloged": 14,
 					"draft": 0,
-					"gap_approved": 23,
-					"integrated": 9,
+					"gap_approved": 21,
+					"integrated": 11,
 					"target": 32
 				},
 				"business_and_privatization": {
@@ -5068,27 +5692,27 @@
 					"target": 26
 				},
 				"economy": {
-					"approved": 13,
-					"cataloged": 19,
+					"approved": 14,
+					"cataloged": 20,
 					"draft": 0,
-					"gap_approved": 37,
-					"integrated": 16,
+					"gap_approved": 36,
+					"integrated": 17,
 					"target": 50
 				},
 				"infrastructure": {
-					"approved": 14,
-					"cataloged": 18,
+					"approved": 13,
+					"cataloged": 17,
 					"draft": 0,
-					"gap_approved": 16,
-					"integrated": 18,
+					"gap_approved": 17,
+					"integrated": 17,
 					"target": 30
 				},
 				"media_and_propaganda": {
-					"approved": 9,
-					"cataloged": 15,
+					"approved": 19,
+					"cataloged": 25,
 					"draft": 0,
-					"gap_approved": 25,
-					"integrated": 14,
+					"gap_approved": 15,
+					"integrated": 24,
 					"target": 34
 				},
 				"military_and_order": {
@@ -5100,19 +5724,19 @@
 					"target": 38
 				},
 				"public_life": {
-					"approved": 13,
-					"cataloged": 37,
+					"approved": 16,
+					"cataloged": 40,
 					"draft": 0,
-					"gap_approved": 35,
-					"integrated": 33,
+					"gap_approved": 32,
+					"integrated": 36,
 					"target": 48
 				},
 				"science_and_technology": {
-					"approved": 9,
-					"cataloged": 13,
+					"approved": 12,
+					"cataloged": 16,
 					"draft": 0,
-					"gap_approved": 31,
-					"integrated": 13,
+					"gap_approved": 28,
+					"integrated": 16,
 					"target": 40
 				}
 			},
@@ -5158,37 +5782,37 @@
 					"total_cataloged": 4
 				},
 				"short_chain": {
-					"approved": 20,
+					"approved": 40,
 					"draft": 0,
-					"gap_approved": 60,
-					"integrated": 31,
+					"gap_approved": 40,
+					"integrated": 51,
 					"target": 80,
-					"total_cataloged": 33
+					"total_cataloged": 53
 				},
 				"standalone": {
-					"approved": 67,
+					"approved": 65,
 					"draft": 0,
-					"gap_approved": 5,
-					"integrated": 68,
+					"gap_approved": 7,
+					"integrated": 66,
 					"target": 72,
-					"total_cataloged": 70
+					"total_cataloged": 68
 				}
 			},
 			"by_speaker": {
 				"auntie_olga": {
-					"approved": 11,
-					"cataloged": 21,
+					"approved": 13,
+					"cataloged": 23,
 					"draft": 0,
-					"gap_approved": 31,
-					"integrated": 21,
+					"gap_approved": 29,
+					"integrated": 23,
 					"target": 42
 				},
 				"clerk_zero": {
-					"approved": 14,
-					"cataloged": 17,
+					"approved": 16,
+					"cataloged": 19,
 					"draft": 0,
-					"gap_approved": 22,
-					"integrated": 15,
+					"gap_approved": 20,
+					"integrated": 17,
 					"target": 36
 				},
 				"comrade_whiskers": {
@@ -5200,19 +5824,19 @@
 					"target": 34
 				},
 				"doctor_maybe": {
-					"approved": 9,
-					"cataloged": 12,
+					"approved": 11,
+					"cataloged": 14,
 					"draft": 0,
-					"gap_approved": 29,
-					"integrated": 12,
+					"gap_approved": 27,
+					"integrated": 14,
 					"target": 38
 				},
 				"general_boom": {
-					"approved": 10,
-					"cataloged": 22,
+					"approved": 11,
+					"cataloged": 23,
 					"draft": 0,
-					"gap_approved": 28,
-					"integrated": 18,
+					"gap_approved": 27,
+					"integrated": 19,
 					"target": 38
 				},
 				"guest_and_system": {
@@ -5224,27 +5848,27 @@
 					"target": 28
 				},
 				"luna_news": {
-					"approved": 12,
-					"cataloged": 25,
+					"approved": 19,
+					"cataloged": 32,
 					"draft": 0,
-					"gap_approved": 26,
-					"integrated": 23,
+					"gap_approved": 19,
+					"integrated": 30,
 					"target": 38
 				},
 				"minister_penny": {
-					"approved": 17,
-					"cataloged": 27,
+					"approved": 20,
+					"cataloged": 30,
 					"draft": 0,
-					"gap_approved": 23,
-					"integrated": 24,
+					"gap_approved": 20,
+					"integrated": 27,
 					"target": 40
 				},
 				"sir_profit": {
-					"approved": 17,
-					"cataloged": 19,
+					"approved": 18,
+					"cataloged": 20,
 					"draft": 0,
-					"gap_approved": 19,
-					"integrated": 18,
+					"gap_approved": 18,
+					"integrated": 19,
 					"target": 36
 				}
 			},
@@ -5258,19 +5882,19 @@
 					"target": 59
 				},
 				"escalation": {
-					"approved": 29,
-					"cataloged": 34,
+					"approved": 34,
+					"cataloged": 39,
 					"draft": 0,
-					"gap_approved": 70,
-					"integrated": 33,
+					"gap_approved": 65,
+					"integrated": 38,
 					"target": 99
 				},
 				"establishment": {
-					"approved": 53,
-					"cataloged": 99,
+					"approved": 66,
+					"cataloged": 112,
 					"draft": 0,
-					"gap_approved": 30,
-					"integrated": 91,
+					"gap_approved": 17,
+					"integrated": 104,
 					"target": 83
 				},
 				"instability": {
@@ -5283,15 +5907,15 @@
 				}
 			},
 			"draft_total": 0,
-			"gap_approved": 233,
-			"integrated_total": 139,
+			"gap_approved": 215,
+			"integrated_total": 157,
 			"target_total": 330,
-			"total_cataloged": 151
+			"total_cataloged": 169
 		},
 		"endings": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 12,
+			"integrated": 13,
 			"target": 50
 		},
 		"guest_speakers": {
@@ -5303,7 +5927,7 @@
 		"laws": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 46,
+			"integrated": 52,
 			"target": 50
 		},
 		"major_arcs": {
@@ -5325,8 +5949,8 @@
 			"target": 12
 		},
 		"short_chains": {
-			"approved": 8,
-			"gap_approved": 24,
+			"approved": 16,
+			"gap_approved": 16,
 			"integrated": 3,
 			"target": 32
 		}

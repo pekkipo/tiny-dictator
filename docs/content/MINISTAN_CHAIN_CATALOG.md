@@ -85,7 +85,7 @@
 ### chain_coin_shortage
 
 - **Title:** Coin Shortage
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** minister_penny
 - **Category:** economy
@@ -95,11 +95,13 @@
 - **Likely laws:** coin_rounding_act
 - **Likely endings:** —
 - **Known risks:** treasury_tip_jar standalone overlap
+- **Decision IDs:** coin_shortage_crisis, coin_shortage_remedy
+- **Batch:** 2B-7A
 
 ### chain_weekend_abolition
 
 - **Title:** Weekend Abolition
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** minister_penny
 - **Category:** public_life
@@ -109,7 +111,8 @@
 - **Likely laws:** no_weekends
 - **Likely endings:** —
 - **Known risks:** Onboarding card `no_weekends_proposal` already exists
-
+- **Decision IDs:** no_weekends_proposal, weekend_burnout_wave, weekend_policy_resolution
+- **Batch:** 2B-7A
 ### chain_palace_gift_shop
 
 - **Title:** Palace Gift Shop
@@ -205,21 +208,23 @@
 ### chain_national_clock_reform
 
 - **Title:** National Clock Reform
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** clerk_zero
 - **Category:** bureaucracy
 - **Intended stage:** establishment
 - **Premise:** Synchronized clocks break appointments nationwide.
 - **Dependencies:** —
-- **Likely laws:** —
+- **Likely laws:** national_clock_law
 - **Likely endings:** —
 - **Known risks:** Clerk Zero flat voice needs visual gag
+- **Decision IDs:** national_clock_sync, clock_appointment_chaos
+- **Batch:** 2B-7A
 
 ### chain_state_meme_department
 
 - **Title:** State Meme Department
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
@@ -229,25 +234,29 @@
 - **Likely laws:** ministry_of_memes
 - **Likely endings:** —
 - **Known risks:** Dated meme references — keep timeless absurd
+- **Decision IDs:** state_meme_department, meme_virality_crisis, meme_department_resolution
+- **Batch:** 2B-7A
 
 ### chain_weather_censorship
 
 - **Title:** Weather Censorship
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
 - **Intended stage:** escalation
 - **Premise:** Optimistic weather reports vs visible storms.
 - **Dependencies:** —
-- **Likely laws:** weather_optimism_act
+- **Likely laws:** weather_censorship_act
 - **Likely endings:** —
 - **Known risks:** luna_good_news_only onboarding overlap
+- **Decision IDs:** weather_censorship_mandate, weather_credibility_crisis
+- **Batch:** 2B-7B
 
 ### chain_applause_quotas
 
 - **Title:** Applause Quotas
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
@@ -257,11 +266,13 @@
 - **Likely laws:** mandatory_applause
 - **Likely endings:** eternal_smile_state (soft)
 - **Known risks:** Smile cluster repetition
+- **Decision IDs:** applause_quotas_mandate, applause_enforcement_squad, applause_public_adaptation
+- **Batch:** 2B-7B
 
 ### chain_national_talent_show
 
 - **Title:** National Talent Show
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
@@ -271,11 +282,13 @@
 - **Likely laws:** national_reality_show
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** national_talent_show, talent_show_budget_scandal
+- **Batch:** 2B-7B
 
 ### chain_artificial_sun
 
 - **Title:** Artificial Sun
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** doctor_maybe
 - **Category:** science_and_technology
@@ -285,6 +298,8 @@
 - **Likely laws:** artificial_sun_program
 - **Likely endings:** scientific_golden_age
 - **Known risks:** Arc vs chain card budget — don't double-count premise
+- **Decision IDs:** artificial_sun_pilot, artificial_sun_escalation, artificial_sun_resolution
+- **Batch:** 2B-7B
 
 ### chain_robot_queue_manager
 
