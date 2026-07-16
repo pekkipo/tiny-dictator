@@ -237,7 +237,7 @@ static func _append_rewrite_lists(lines: PackedStringArray, manifest: Dictionary
 	lines.append("")
 	lines.append("- Minor arcs (`traffic_military`, `robot_government`) count toward **short_chain**, not major_arc.")
 	lines.append("- `generic_minister_disagreement` is **standalone** fallback filler.")
-	lines.append("- `cat_voting_proposal` remains **standalone** with duplicate-premise flag vs `cat_voting_rights`.")
+	lines.append("- `cat_voting_proposal` was **rejected** in 2B-5A (duplicate of arc `cat_voting_rights`); removed from runtime.")
 	lines.append("- `chain_id` values are manifest-invented; runtime JSON has no chain field yet.")
 	lines.append("")
 

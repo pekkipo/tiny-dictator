@@ -1,0 +1,1341 @@
+[
+  {
+    "id": "capital_square_naming_rights",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Central Square lacks brand alignment. Sell naming rights to a biscuit conglomerate. Maps will update for a fee.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "sell_naming",
+        "label": "Sell the naming rights",
+        "effects": { "treasury": 10, "elite_loyalty": 4, "happiness": -5, "order": -1 },
+        "advisor_affinity": { "sir_profit": 2 },
+        "trait_changes": { "capitalist": 2 },
+        "add_laws": ["capital_square_naming_act"],
+        "add_flags": ["square_naming_sold", "corporate_branding_soft"],
+        "result_text": "Crispy Square opens. Tourists ask for the old name. Guides charge for both."
+      },
+      {
+        "id": "lease_week",
+        "label": "Lease for one festival",
+        "effects": { "treasury": 4, "happiness": -2, "elite_loyalty": 2 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "trait_changes": { "capitalist": 1 },
+        "add_flags": ["square_naming_trial"],
+        "result_text": "Banners hang for seven days. Glue remains for months."
+      },
+      {
+        "id": "keep_civic",
+        "label": "Keep the civic name",
+        "effects": { "happiness": 3, "elite_loyalty": -4, "order": 1 },
+        "advisor_affinity": { "sir_profit": -2 },
+        "result_text": "Square stays public. Profit files a polite disappointment memo."
+      }
+    ],
+    "tags": ["standalone", "business", "naming_sponsorship"],
+    "visual_tags": ["sponsored_square_signs"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "establishment",
+      "humor_tags": ["naming_sponsorship"],
+      "emotional_goal": "polite corporate horror",
+      "visual_hook": "biscuit logos over civic square plaques",
+      "localization_risk": "low",
+      "writer_notes": "Non-privatization: sponsorship/naming only. Soft corporate identity flag."
+    }
+  },
+  {
+    "id": "citizen_service_subscription",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Public services feel free. Offer Bronze, Silver, and Platinum citizen tiers. Support tickets optional.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "options": [
+      {
+        "id": "launch_tiers",
+        "label": "Launch the tiers",
+        "effects": { "treasury": 8, "elite_loyalty": 5, "happiness": -6, "order": -2 },
+        "advisor_affinity": { "sir_profit": 2 },
+        "trait_changes": { "capitalist": 2 },
+        "add_laws": ["citizen_service_subscription_act"],
+        "add_flags": ["citizen_tiers_live", "palace_tour_unlocked"],
+        "result_text": "Platinum citizens skip lines. Bronze citizens invent new lines."
+      },
+      {
+        "id": "pilot_bronze",
+        "label": "Pilot Bronze only",
+        "effects": { "treasury": 3, "happiness": -2, "elite_loyalty": 1, "order": -1 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "add_flags": ["bronze_tier_pilot"],
+        "result_text": "Bronze includes 'maybe a stamp.' Support is a chalkboard."
+      },
+      {
+        "id": "reject_saas",
+        "label": "Keep services public",
+        "effects": { "happiness": 4, "elite_loyalty": -5, "treasury": -2 },
+        "advisor_affinity": { "sir_profit": -2 },
+        "result_text": "Services remain free. Profit recalculates the country's valuation."
+      }
+    ],
+    "tags": ["standalone", "business", "subscription_state"],
+    "visual_tags": ["service_tier_kiosks"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "humor_tags": ["subscription_state"],
+      "emotional_goal": "subscription satire",
+      "visual_hook": "tier kiosks with bronze silver platinum badges",
+      "localization_risk": "low",
+      "writer_notes": "Soft unlock for working_palace_tours in 2B-5B via palace_tour_unlocked."
+    }
+  },
+  {
+    "id": "national_biscuit_ipo",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "The state biscuit works still bake for glory. Float them on the exchange. Crumbs for stakeholders.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": ["escalation", "instability"]
+    },
+    "options": [
+      {
+        "id": "full_ipo",
+        "label": "Full public offering",
+        "effects": { "treasury": 12, "elite_loyalty": 6, "happiness": -4, "order": -3 },
+        "advisor_affinity": { "sir_profit": 2 },
+        "trait_changes": { "capitalist": 2 },
+        "add_flags": ["biscuit_ipo_complete", "corporate_branding_soft"],
+        "result_text": "Shares rise. Workers get prospectus hats. Flour becomes confidential."
+      },
+      {
+        "id": "partial_sale",
+        "label": "Sell a minority stake",
+        "effects": { "treasury": 6, "elite_loyalty": 3, "happiness": -2, "order": -1 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "trait_changes": { "capitalist": 1 },
+        "add_flags": ["biscuit_partial_sale"],
+        "result_text": "State keeps the recipe. Investors keep the profits. Oven shared awkwardly."
+      },
+      {
+        "id": "keep_state",
+        "label": "Keep biscuits public",
+        "effects": { "happiness": 3, "elite_loyalty": -4, "order": 1 },
+        "advisor_affinity": { "sir_profit": -2, "auntie_olga": 1 },
+        "result_text": "Bakers cheer. Profit drafts a 'missed opportunity' newsletter."
+      }
+    ],
+    "tags": ["standalone", "business", "state_company_sale"],
+    "visual_tags": ["biscuit_ipo_banners"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "humor_tags": ["state_company_sale"],
+      "emotional_goal": "IPO absurdity",
+      "visual_hook": "biscuit share banners over the bakery chimney",
+      "localization_risk": "low",
+      "writer_notes": "State-company sale path; three meaningful options."
+    }
+  },
+  {
+    "id": "express_sidewalk_franchise",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Sidewalks are congested. Franchise express lanes for paying pedestrians. Slow lane remains charitable.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 3,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "franchise_lanes",
+        "label": "Franchise express lanes",
+        "effects": { "treasury": 7, "elite_loyalty": 3, "happiness": -5, "order": -4 },
+        "advisor_affinity": { "sir_profit": 2 },
+        "trait_changes": { "capitalist": 1, "chaotic": 1 },
+        "add_flags": ["express_sidewalks_live"],
+        "result_text": "Fast walkers blur past. Slow lane invents new vocabulary for elbows."
+      },
+      {
+        "id": "peak_hours_only",
+        "label": "Peak hours only",
+        "effects": { "treasury": 3, "happiness": -2, "order": -2, "elite_loyalty": 1 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "add_flags": ["peak_sidewalk_fees"],
+        "result_text": "Noon costs a coin. Midnight is free and lonely."
+      },
+      {
+        "id": "reject_lanes",
+        "label": "Keep sidewalks equal",
+        "effects": { "happiness": 3, "order": 2, "elite_loyalty": -3, "treasury": -1 },
+        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
+        "result_text": "Everyone walks together. Profit times their inefficiency."
+      }
+    ],
+    "tags": ["standalone", "business", "private_infrastructure"],
+    "visual_tags": ["express_sidewalk_lanes"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "establishment",
+      "humor_tags": ["private_infrastructure"],
+      "emotional_goal": "class-lane satire",
+      "visual_hook": "painted express sidewalk with turnstile ankles",
+      "localization_risk": "low",
+      "writer_notes": "Private infrastructure; hits order beyond obvious treasury joke."
+    }
+  },
+  {
+    "id": "daily_cabinet_briefing",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Cabinet briefing lists nine urgencies and one stapler emergency. Attend, audit, or delegate Form 0.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "full_audit",
+        "label": "Attend and audit",
+        "effects": { "order": 5, "elite_loyalty": 2, "treasury": -4, "happiness": -2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2 },
+        "add_laws": ["cabinet_briefing_protocol"],
+        "add_flags": ["cabinet_audit_done", "bureaucracy_useful_path"],
+        "result_text": "Three crises shrink. Two grow paperwork. The stapler is inventoried."
+      },
+      {
+        "id": "delegate",
+        "label": "Send a delegate",
+        "effects": { "elite_loyalty": -3, "treasury": 1, "happiness": 1, "order": -2 },
+        "advisor_affinity": { "clerk_zero": -1 },
+        "add_flags": ["briefing_delegated"],
+        "result_text": "Delegate drinks coffee. Minutes arrive next week with coffee rings."
+      },
+      {
+        "id": "skip_briefing",
+        "label": "Skip until stamped",
+        "effects": { "order": -4, "happiness": 2, "elite_loyalty": -2 },
+        "advisor_affinity": { "clerk_zero": -2 },
+        "result_text": "Agenda freezes. Clerk Zero marks the day Unofficial."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "useful_bureaucracy"],
+    "visual_tags": ["cabinet_briefing_stack"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "humor_tags": ["useful_bureaucracy"],
+      "emotional_goal": "kafka with payoff",
+      "visual_hook": "towering briefing stack with stapler on top",
+      "localization_risk": "low",
+      "writer_notes": "REWRITE of thin generic fill; useful audit path at real cost."
+    }
+  },
+  {
+    "id": "complaint_permit_office",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Citizens complain without permits. Open an office: Form C-1 before any grievance may be spoken.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "open_office",
+        "label": "Open the permit office",
+        "effects": { "order": 6, "happiness": -5, "treasury": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2 },
+        "add_laws": ["complaint_permit_act"],
+        "add_flags": ["complaint_permits_required", "apology_notarization_unlocked"],
+        "result_text": "Complaints queue for permission to exist. Silence becomes pending."
+      },
+      {
+        "id": "soft_window",
+        "label": "Verbal complaints allowed",
+        "effects": { "order": 2, "happiness": -1, "treasury": -1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "add_flags": ["soft_complaint_window"],
+        "result_text": "Spoken gripes accepted Tuesdays. Wednesdays require ink."
+      },
+      {
+        "id": "reject_permits",
+        "label": "Allow free complaints",
+        "effects": { "happiness": 4, "order": -4, "elite_loyalty": -2 },
+        "advisor_affinity": { "clerk_zero": -2, "auntie_olga": 1 },
+        "result_text": "Grievances flow freely. Filing cabinets look lonely."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "permit_office"],
+    "visual_tags": ["complaint_permit_desk"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "humor_tags": ["permit_office"],
+      "emotional_goal": "permit-before-speech satire",
+      "visual_hook": "desk where people request permission to complain",
+      "localization_risk": "low",
+      "writer_notes": "Soft unlock for notarized_apology_requirement in 2B-5B."
+    }
+  },
+  {
+    "id": "contradictory_signage_act",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Street signs say Walk and Don't Walk on the same pole. Fund a clarity audit or keep both valid.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "requirements": {
+      "any_flags": ["cabinet_audit_done", "complaint_permits_required", "briefing_delegated"]
+    },
+    "options": [
+      {
+        "id": "clarity_audit",
+        "label": "Fund the clarity audit",
+        "effects": { "treasury": -8, "order": 6, "happiness": 2, "elite_loyalty": 1 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 1 },
+        "add_laws": ["contradictory_signage_law"],
+        "add_flags": ["signage_clarified", "bureaucracy_useful_path"],
+        "result_text": "Poles choose one instruction. Pedestrians walk with suspicious confidence."
+      },
+      {
+        "id": "keep_both",
+        "label": "Keep both instructions",
+        "effects": { "order": -3, "happiness": 1, "treasury": 1, "elite_loyalty": -1 },
+        "advisor_affinity": { "clerk_zero": -1 },
+        "trait_changes": { "chaotic": 1 },
+        "add_flags": ["dual_signage_preserved"],
+        "result_text": "Lawyers celebrate. Crosswalks become interpretive dance."
+      },
+      {
+        "id": "add_third",
+        "label": "Add a third sign",
+        "effects": { "treasury": -2, "order": -4, "happiness": 2, "elite_loyalty": -1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "trait_changes": { "chaotic": 2 },
+        "result_text": "New sign reads 'Interpret locally.' Tourism spikes briefly."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "useful_bureaucracy"],
+    "visual_tags": ["crossed_out_signs"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "humor_tags": ["useful_bureaucracy"],
+      "emotional_goal": "clarity bought at cost",
+      "visual_hook": "contradictory street signs with audit stickers",
+      "localization_risk": "low",
+      "writer_notes": "Genuinely useful outcome (clarity) at treasury cost; state-gated."
+    }
+  },
+  {
+    "id": "department_of_renaming",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Ministries rename each other weekly. Create a Department of Renaming to stabilize the letterhead.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 8,
+    "maximum_day": 24,
+    "pacing": {
+      "allowed_stages": ["escalation", "instability"]
+    },
+    "options": [
+      {
+        "id": "create_department",
+        "label": "Create the department",
+        "effects": { "order": 4, "treasury": -5, "happiness": -2, "elite_loyalty": 2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2 },
+        "add_flags": ["renaming_department_live"],
+        "result_text": "Letterhead freezes for a quarter. Business cards become heirlooms."
+      },
+      {
+        "id": "freeze_names",
+        "label": "Freeze all names one year",
+        "effects": { "order": 5, "happiness": -3, "treasury": -2, "elite_loyalty": 1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "trait_changes": { "authoritarian": 1, "bureaucratic": 1 },
+        "add_flags": ["name_freeze_active"],
+        "result_text": "Signs stay. Creativity files for leave."
+      },
+      {
+        "id": "allow_chaos",
+        "label": "Allow weekly renames",
+        "effects": { "happiness": 3, "order": -5, "elite_loyalty": -2, "treasury": 1 },
+        "advisor_affinity": { "clerk_zero": -2 },
+        "trait_changes": { "chaotic": 2 },
+        "result_text": "Couriers deliver to yesterday's titles. Adventure classified as mail."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "admin_department"],
+    "visual_tags": ["renaming_plaques"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "humor_tags": ["admin_department"],
+      "emotional_goal": "letterhead chaos",
+      "visual_hook": "stacked ministry plaques being swapped",
+      "localization_risk": "low",
+      "writer_notes": "Department premise without form-about-forms; three options."
+    }
+  },
+  {
+    "id": "postal_pigeon_reform",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "cats_and_animals",
+    "proposal": "Human post is slow and expensive. Train pigeons for mail. Forms still required. Feathers optional.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 2,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "options": [
+      {
+        "id": "approve_pigeons",
+        "label": "Approve pigeon post",
+        "effects": { "treasury": -6, "order": 3, "happiness": 2, "elite_loyalty": -1 },
+        "advisor_affinity": { "clerk_zero": 1, "comrade_whiskers": -1 },
+        "trait_changes": { "bureaucratic": 1, "chaotic": 1 },
+        "add_flags": ["pigeon_post_active", "animal_infra_live"],
+        "result_text": "Mail arrives faster and in feathers. Budget lines smell like grain."
+      },
+      {
+        "id": "hybrid_routes",
+        "label": "Hybrid human-pigeon routes",
+        "effects": { "treasury": -3, "order": 1, "happiness": 1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "add_flags": ["hybrid_pigeon_routes"],
+        "result_text": "Humans carry forms. Pigeons carry excuses. Both clock in."
+      },
+      {
+        "id": "keep_human",
+        "label": "Keep human post only",
+        "effects": { "happiness": 1, "treasury": -2, "order": -1, "elite_loyalty": 1 },
+        "advisor_affinity": { "clerk_zero": -1 },
+        "result_text": "Post workers celebrate. Pigeons file for unemployment stamps."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "animal_mail"],
+    "visual_tags": ["pigeon_mail_coops"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "humor_tags": ["animal_mail"],
+      "emotional_goal": "animal infrastructure cost",
+      "visual_hook": "coops on post-office roof with form clipboards",
+      "localization_risk": "low",
+      "writer_notes": "REWRITE+reclassify from administration filler; serious treasury/order stakes."
+    }
+  },
+  {
+    "id": "public_cat_baskets",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Comrades need public baskets in every plaza. Soft power starts with soft landing.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "options": [
+      {
+        "id": "install_baskets",
+        "label": "Install plaza baskets",
+        "effects": { "happiness": 5, "order": -3, "treasury": -4, "elite_loyalty": -1 },
+        "advisor_affinity": { "comrade_whiskers": 2 },
+        "trait_changes": { "populist": 1 },
+        "add_flags": ["public_cat_baskets", "palace_pet_unlocked"],
+        "result_text": "Baskets fill by noon. Bench space becomes negotiable territory."
+      },
+      {
+        "id": "pilot_one_plaza",
+        "label": "Pilot one plaza",
+        "effects": { "happiness": 2, "order": -1, "treasury": -2 },
+        "advisor_affinity": { "comrade_whiskers": 1 },
+        "add_flags": ["basket_pilot"],
+        "result_text": "One plaza purrs. Neighbor plazas file solidarity petitions."
+      },
+      {
+        "id": "reject_baskets",
+        "label": "Deny the baskets",
+        "effects": { "order": 3, "happiness": -4, "elite_loyalty": 2 },
+        "advisor_affinity": { "comrade_whiskers": -2 },
+        "result_text": "Hard pavement remains. Whiskers schedules a dignified glare."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "public_pets"],
+    "visual_tags": ["plaza_cat_baskets"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "humor_tags": ["public_pets"],
+      "emotional_goal": "cute demand with order cost",
+      "visual_hook": "woven baskets occupying civic plaza benches",
+      "localization_risk": "low",
+      "writer_notes": "Not automatically favorable; order/elite costs. Soft unlock palace pet (B)."
+    }
+  },
+  {
+    "id": "mouse_protection_act",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Mice demand hunting permits for cats. Predators must apply. Diplomacy smells like cheese.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "requirements": {
+      "any_flags": ["public_cat_baskets", "basket_pilot", "pigeon_post_active"]
+    },
+    "options": [
+      {
+        "id": "pass_protection",
+        "label": "Pass mouse protection",
+        "effects": { "order": -6, "happiness": 2, "elite_loyalty": -3, "treasury": -2 },
+        "advisor_affinity": { "comrade_whiskers": -1, "clerk_zero": 1 },
+        "trait_changes": { "bureaucratic": 1, "populist": 1 },
+        "add_laws": ["mouse_protection_law"],
+        "add_flags": ["mice_protected", "species_politics_live"],
+        "result_text": "Mice file permits. Cats file complaints about paperwork. Order wobbles."
+      },
+      {
+        "id": "hunter_exemption",
+        "label": "Exempt registered hunters",
+        "effects": { "order": -2, "happiness": 1, "elite_loyalty": -1 },
+        "advisor_affinity": { "comrade_whiskers": 1 },
+        "add_flags": ["hunter_cat_registry"],
+        "result_text": "Some cats wear badges. Mice memorize badge numbers."
+      },
+      {
+        "id": "reject_mice",
+        "label": "Reject mouse petitions",
+        "effects": { "order": 3, "happiness": -2, "elite_loyalty": 2 },
+        "advisor_affinity": { "comrade_whiskers": 2 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "Natural order resumes. Mice retreat to the walls with lawyers."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "species_rights"],
+    "visual_tags": ["mouse_permit_booths"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "humor_tags": ["species_rights"],
+      "emotional_goal": "serious political absurdity",
+      "visual_hook": "tiny permit booths for mice beside cat plazas",
+      "localization_risk": "low",
+      "writer_notes": "Serious political consequences; cats not always favored; state-gated."
+    }
+  },
+  {
+    "id": "fish_market_subsidy",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Fish prices rise. Comrade Whiskers demands a market subsidy. Treasury will smell optimistic.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 24,
+    "pacing": {
+      "allowed_stages": ["escalation", "instability"]
+    },
+    "options": [
+      {
+        "id": "full_subsidy",
+        "label": "Fund the fish subsidy",
+        "effects": { "treasury": -10, "happiness": 6, "order": -2, "elite_loyalty": -3 },
+        "advisor_affinity": { "comrade_whiskers": 2, "minister_penny": -1 },
+        "trait_changes": { "populist": 2 },
+        "add_laws": ["fish_market_subsidy_act"],
+        "add_flags": ["fish_subsidy_active", "cat_economic_pressure"],
+        "result_text": "Fish trucks arrive daily. Budget meetings move outdoors for air."
+      },
+      {
+        "id": "token_ration",
+        "label": "Token fish ration",
+        "effects": { "treasury": -4, "happiness": 2, "elite_loyalty": -1 },
+        "advisor_affinity": { "comrade_whiskers": 1 },
+        "add_flags": ["fish_ration_token"],
+        "result_text": "One fish per registered paw. Lines form before dawn."
+      },
+      {
+        "id": "reject_subsidy",
+        "label": "Refuse the subsidy",
+        "effects": { "treasury": 2, "happiness": -5, "order": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "comrade_whiskers": -2, "minister_penny": 1 },
+        "trait_changes": { "capitalist": 1 },
+        "result_text": "Markets stay free. Whiskers schedules a dignified hunger meeting."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "fish_subsidy"],
+    "visual_tags": ["fish_subsidy_trucks"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "humor_tags": ["fish_subsidy"],
+      "emotional_goal": "economic bite under cute demand",
+      "visual_hook": "fish trucks unloading at palace gates",
+      "localization_risk": "low",
+      "writer_notes": "Serious treasury consequences; not fish-currency chain premise."
+    }
+  },
+  {
+    "id": "working_palace_tours",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Premium citizens want palace tours during working meetings. Charge for velvet ropes and whispered agendas.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 17,
+    "maximum_day": 30,
+    "pacing": {
+      "allowed_stages": ["instability"]
+    },
+    "requirements": {
+      "any_flags": ["palace_tour_unlocked", "citizen_tiers_live", "bronze_tier_pilot"]
+    },
+    "options": [
+      {
+        "id": "open_tours",
+        "label": "Open working tours",
+        "effects": { "treasury": 8, "elite_loyalty": 4, "order": -4, "happiness": -2 },
+        "advisor_affinity": { "sir_profit": 2 },
+        "trait_changes": { "capitalist": 2 },
+        "add_laws": ["palace_tour_act"],
+        "add_flags": ["palace_tours_live", "corporate_branding_soft"],
+        "result_text": "Tourists photograph decrees mid-signature. Security invents quieter stamps."
+      },
+      {
+        "id": "night_only",
+        "label": "Night tours only",
+        "effects": { "treasury": 4, "elite_loyalty": 2, "order": -1, "happiness": -1 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "add_flags": ["night_palace_tours"],
+        "result_text": "Moonlit corridors sell out. Advisors bump into gift bags."
+      },
+      {
+        "id": "refuse_tours",
+        "label": "Keep the palace closed",
+        "effects": { "order": 3, "happiness": 1, "elite_loyalty": -4, "treasury": -1 },
+        "advisor_affinity": { "sir_profit": -2 },
+        "result_text": "Doors stay official. Profit invoices the missed revenue in triplicate."
+      }
+    ],
+    "tags": ["standalone", "business", "palace_commercial"],
+    "visual_tags": ["palace_tour_velvet"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "instability",
+      "humor_tags": ["palace_commercial"],
+      "emotional_goal": "monetized privacy",
+      "visual_hook": "velvet ropes through the working cabinet room",
+      "localization_risk": "low",
+      "writer_notes": "Consumes subscription soft flag; not gift-shop chain premise."
+    }
+  },
+  {
+    "id": "anthem_sponsor_reads",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Endgame needs revenue. Lease thirty seconds of the anthem to a snack brand. Patriotism with crunch.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": ["endgame"]
+    },
+    "options": [
+      {
+        "id": "lease_anthem",
+        "label": "Lease the anthem read",
+        "effects": { "treasury": 10, "elite_loyalty": 5, "happiness": -4, "order": -1 },
+        "advisor_affinity": { "sir_profit": 2, "luna_news": -1 },
+        "trait_changes": { "capitalist": 2, "propagandist": 1 },
+        "add_laws": ["anthem_sponsor_act"],
+        "add_flags": ["anthem_sponsored", "corporate_ministan_soft"],
+        "result_text": "Citizens sing about crackers. Maps stay the same. Branding does not."
+      },
+      {
+        "id": "soft_jingle",
+        "label": "Add a soft jingle only",
+        "effects": { "treasury": 4, "happiness": -1, "elite_loyalty": 2 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "add_flags": ["anthem_jingle_trial"],
+        "result_text": "A polite chime follows the last verse. Children hum logos."
+      },
+      {
+        "id": "refuse_sponsor",
+        "label": "Keep the anthem clean",
+        "effects": { "happiness": 3, "elite_loyalty": -5, "order": 1 },
+        "advisor_affinity": { "sir_profit": -2, "luna_news": 1 },
+        "result_text": "Anthem remains unbranded. Profit calls it a branding tragedy."
+      }
+    ],
+    "tags": ["standalone", "business", "sponsor_reads"],
+    "visual_tags": ["anthem_sponsor_banners"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "endgame",
+      "humor_tags": ["sponsor_reads"],
+      "emotional_goal": "patriotic product placement",
+      "visual_hook": "snack banners under the flag during anthem",
+      "localization_risk": "low",
+      "writer_notes": "Non-privatization sponsorship; soft corporate_ministan identity flag."
+    }
+  },
+  {
+    "id": "sovereign_cookie_futures",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "business_and_privatization",
+    "proposal": "Treasury proposes cookie futures: bet on next festival's biscuit yield. Spreadsheets smell delicious.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "options": [
+      {
+        "id": "open_futures",
+        "label": "Open the futures desk",
+        "effects": { "treasury": 6, "order": -4, "happiness": 2, "elite_loyalty": 3 },
+        "advisor_affinity": { "minister_penny": 2, "sir_profit": 1 },
+        "trait_changes": { "capitalist": 2 },
+        "add_flags": ["cookie_futures_open"],
+        "result_text": "Traders shout crumb prices. Bakers refuse to be derivatives."
+      },
+      {
+        "id": "pilot_desk",
+        "label": "Pilot with palace cooks",
+        "effects": { "treasury": 2, "order": -1, "happiness": 1, "elite_loyalty": 1 },
+        "advisor_affinity": { "minister_penny": 1 },
+        "add_flags": ["cookie_futures_pilot"],
+        "result_text": "Cooks hedge flour. The oven becomes a trading floor."
+      },
+      {
+        "id": "ban_futures",
+        "label": "Ban cookie futures",
+        "effects": { "order": 3, "happiness": -1, "elite_loyalty": -3, "treasury": -1 },
+        "advisor_affinity": { "minister_penny": -1 },
+        "result_text": "Futures banned. Cookies return to being merely cookies."
+      }
+    ],
+    "tags": ["standalone", "business", "unusual_investment"],
+    "visual_tags": ["cookie_futures_board"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "humor_tags": ["unusual_investment"],
+      "emotional_goal": "spreadsheet absurdity",
+      "visual_hook": "chalk futures board covered in biscuit symbols",
+      "localization_risk": "low",
+      "writer_notes": "Non-obvious resources: order and happiness, not treasury-only."
+    }
+  },
+  {
+    "id": "border_lane_concession",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "business_and_privatization",
+    "proposal": "Border queues embarrass the parade. Lease an express inspection lane to a private booth company.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 17,
+    "maximum_day": 30,
+    "pacing": {
+      "allowed_stages": ["instability"]
+    },
+    "options": [
+      {
+        "id": "lease_lane",
+        "label": "Lease the express lane",
+        "effects": { "treasury": 7, "elite_loyalty": 4, "order": 2, "happiness": -5 },
+        "advisor_affinity": { "general_boom": 1, "sir_profit": 2 },
+        "trait_changes": { "capitalist": 1, "authoritarian": 1 },
+        "add_flags": ["border_lane_leased"],
+        "result_text": "Fast lane salutes for a fee. Slow lane invents longer forms."
+      },
+      {
+        "id": "military_staffed",
+        "label": "Staff it with soldiers",
+        "effects": { "order": 5, "treasury": -3, "happiness": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "general_boom": 2 },
+        "trait_changes": { "authoritarian": 2 },
+        "add_flags": ["border_lane_military"],
+        "result_text": "Soldiers stamp passports with enthusiasm. Tourists stand straighter."
+      },
+      {
+        "id": "keep_equal",
+        "label": "Keep one equal lane",
+        "effects": { "happiness": 3, "order": -2, "elite_loyalty": -3, "treasury": -1 },
+        "advisor_affinity": { "general_boom": -1, "auntie_olga": 1 },
+        "result_text": "Everyone waits together. Boom times the inefficiency aloud."
+      }
+    ],
+    "tags": ["standalone", "business", "private_infrastructure"],
+    "visual_tags": ["border_express_booths"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "instability",
+      "humor_tags": ["private_infrastructure"],
+      "emotional_goal": "border commerce vs pride",
+      "visual_hook": "private booth beside military border post",
+      "localization_risk": "low",
+      "writer_notes": "Boom speaker diversity; private infrastructure at border."
+    }
+  },
+  {
+    "id": "emergency_efficiency_week",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Backlog exceeds shelves. Declare Emergency Efficiency Week. Stamp faster. Sleep optional.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 17,
+    "maximum_day": 30,
+    "pacing": {
+      "allowed_stages": ["instability"]
+    },
+    "options": [
+      {
+        "id": "declare_week",
+        "label": "Declare efficiency week",
+        "effects": { "order": 7, "treasury": -6, "happiness": -5, "elite_loyalty": 2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2 },
+        "add_laws": ["emergency_efficiency_act"],
+        "add_flags": ["efficiency_week_active", "bureaucracy_useful_path"],
+        "result_text": "Backlog shrinks. Clerks gain eye bags and medals."
+      },
+      {
+        "id": "hire_temps",
+        "label": "Hire temporary stampers",
+        "effects": { "order": 4, "treasury": -8, "happiness": -1, "elite_loyalty": 1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "add_flags": ["temp_stampers_hired"],
+        "result_text": "Temps stamp bravely. Half the stamps are upside down."
+      },
+      {
+        "id": "ignore_backlog",
+        "label": "Ignore the backlog",
+        "effects": { "happiness": 2, "order": -5, "elite_loyalty": -2 },
+        "advisor_affinity": { "clerk_zero": -2 },
+        "result_text": "Shelves lean. Clerk Zero files a complaint about gravity."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "useful_bureaucracy"],
+    "visual_tags": ["efficiency_week_timers"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "instability",
+      "humor_tags": ["useful_bureaucracy"],
+      "emotional_goal": "useful pain",
+      "visual_hook": "countdown timers over filing cabinets",
+      "localization_risk": "low",
+      "writer_notes": "Genuinely useful backlog clear at happiness/treasury cost."
+    }
+  },
+  {
+    "id": "notarized_apology_requirement",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Verbal apologies lack stamps. Require notarized apologies before forgiveness may proceed.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "requirements": {
+      "any_flags": ["apology_notarization_unlocked", "complaint_permits_required", "soft_complaint_window"]
+    },
+    "options": [
+      {
+        "id": "require_notary",
+        "label": "Require notarized apologies",
+        "effects": { "order": 5, "happiness": -4, "treasury": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2 },
+        "add_laws": ["notarized_apology_act"],
+        "add_flags": ["notarized_apologies_required"],
+        "result_text": "Sorry now needs wax. Friendships schedule appointments."
+      },
+      {
+        "id": "stamp_optional",
+        "label": "Stamp optional for minor slights",
+        "effects": { "order": 2, "happiness": -1, "treasury": -1 },
+        "advisor_affinity": { "clerk_zero": 1 },
+        "add_flags": ["soft_apology_stamps"],
+        "result_text": "Minor sorry remains free. Major sorry requires a queue."
+      },
+      {
+        "id": "reject_notary",
+        "label": "Allow spoken apologies",
+        "effects": { "happiness": 3, "order": -3, "elite_loyalty": -1 },
+        "advisor_affinity": { "clerk_zero": -2, "auntie_olga": 1 },
+        "result_text": "People apologize immediately. Notaries look underemployed."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "absurd_docs"],
+    "visual_tags": ["notarized_apology_desk"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "humor_tags": ["absurd_docs"],
+      "emotional_goal": "stamped remorse",
+      "visual_hook": "wax-seal apology desk",
+      "localization_risk": "low",
+      "writer_notes": "State-gated from complaint permit soft unlock."
+    }
+  },
+  {
+    "id": "queue_priority_auction",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "bureaucracy",
+    "proposal": "Queues waste time. Auction priority numbers. Highest bid waits least. Spreadsheet approves.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": ["escalation"]
+    },
+    "options": [
+      {
+        "id": "run_auction",
+        "label": "Run queue auctions",
+        "effects": { "treasury": 8, "happiness": -6, "order": -2, "elite_loyalty": 4 },
+        "advisor_affinity": { "minister_penny": 2, "clerk_zero": 1 },
+        "trait_changes": { "capitalist": 1, "bureaucratic": 1 },
+        "add_flags": ["queue_auctions_live"],
+        "result_text": "Rich citizens skip ahead. Poor citizens invent longer books."
+      },
+      {
+        "id": "lottery_numbers",
+        "label": "Lottery the numbers",
+        "effects": { "treasury": 1, "happiness": 2, "order": -1, "elite_loyalty": -2 },
+        "advisor_affinity": { "minister_penny": 1, "auntie_olga": 1 },
+        "trait_changes": { "chaotic": 1 },
+        "add_flags": ["queue_lottery_numbers"],
+        "result_text": "Luck decides the line. Clerks shrug with forms."
+      },
+      {
+        "id": "keep_fifo",
+        "label": "Keep first-come order",
+        "effects": { "happiness": 3, "order": 2, "elite_loyalty": -3, "treasury": -1 },
+        "advisor_affinity": { "minister_penny": -1, "clerk_zero": 1 },
+        "result_text": "Fairness remains. Penny notes the inefficiency in red ink."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "queue_economy"],
+    "visual_tags": ["queue_auction_paddles"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "humor_tags": ["queue_economy"],
+      "emotional_goal": "auctioned waiting",
+      "visual_hook": "auction paddles in a government queue hall",
+      "localization_risk": "low",
+      "writer_notes": "Bureaucracy with treasury economics; three options."
+    }
+  },
+  {
+    "id": "midnight_filing_amnesty",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "bureaucracy",
+    "proposal": "Dear, half the country owes unfinished forms. One midnight amnesty — or they stay guilty forever.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": ["endgame"]
+    },
+    "options": [
+      {
+        "id": "grant_amnesty",
+        "label": "Grant midnight amnesty",
+        "effects": { "happiness": 6, "order": -3, "treasury": -2, "elite_loyalty": -2 },
+        "advisor_affinity": { "auntie_olga": 2, "clerk_zero": -1 },
+        "trait_changes": { "populist": 2 },
+        "add_flags": ["filing_amnesty_granted", "government_by_form_soft"],
+        "result_text": "Citizens file until dawn. Clerks invent new coffee."
+      },
+      {
+        "id": "partial_amnesty",
+        "label": "Amnesty minor forms only",
+        "effects": { "happiness": 3, "order": -1, "elite_loyalty": -1 },
+        "advisor_affinity": { "auntie_olga": 1, "clerk_zero": 1 },
+        "add_flags": ["partial_filing_amnesty"],
+        "result_text": "Small sins forgiven. Large sins get larger stamps."
+      },
+      {
+        "id": "no_amnesty",
+        "label": "No amnesty",
+        "effects": { "order": 4, "happiness": -5, "elite_loyalty": 3, "treasury": 1 },
+        "advisor_affinity": { "auntie_olga": -2, "clerk_zero": 2 },
+        "trait_changes": { "bureaucratic": 2, "authoritarian": 1 },
+        "add_flags": ["form_guilt_permanent", "government_by_form_soft"],
+        "result_text": "Guilt remains filed. Olga brings soup to the queues anyway."
+      }
+    ],
+    "tags": ["standalone", "bureaucracy", "useful_bureaucracy"],
+    "visual_tags": ["midnight_filing_lamps"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "endgame",
+      "humor_tags": ["useful_bureaucracy"],
+      "emotional_goal": "mercy vs procedure",
+      "visual_hook": "midnight lamps over a form-amnesty desk",
+      "localization_risk": "low",
+      "writer_notes": "Useful outcome path; soft government_by_form identity; Olga voice."
+    }
+  },
+  {
+    "id": "official_palace_pet",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "The palace needs an official pet with a cushion budget. Elites prefer something quieter than democracy.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 17,
+    "maximum_day": 30,
+    "pacing": {
+      "allowed_stages": ["instability"]
+    },
+    "requirements": {
+      "any_flags": ["palace_pet_unlocked", "public_cat_baskets", "basket_pilot"]
+    },
+    "options": [
+      {
+        "id": "appoint_cat",
+        "label": "Appoint a palace cat",
+        "effects": { "happiness": 4, "elite_loyalty": -5, "order": -2, "treasury": -3 },
+        "advisor_affinity": { "comrade_whiskers": 2 },
+        "trait_changes": { "populist": 1 },
+        "add_laws": ["official_palace_pet_act"],
+        "add_flags": ["palace_cat_appointed", "cat_identity_soft"],
+        "result_text": "Cushion installed. Ministers negotiate sitting rights."
+      },
+      {
+        "id": "rotate_pets",
+        "label": "Rotate weekly pets",
+        "effects": { "happiness": 2, "elite_loyalty": -2, "order": -3, "treasury": -2 },
+        "advisor_affinity": { "comrade_whiskers": 1, "auntie_olga": 1 },
+        "trait_changes": { "chaotic": 1 },
+        "add_flags": ["rotating_palace_pets"],
+        "result_text": "Monday is cat. Thursday is confused pigeon. Protocol weeps."
+      },
+      {
+        "id": "refuse_pet",
+        "label": "Refuse an official pet",
+        "effects": { "elite_loyalty": 3, "order": 2, "happiness": -4 },
+        "advisor_affinity": { "comrade_whiskers": -2 },
+        "result_text": "No cushion. Whiskers marks the palace Unfriendly."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "public_pets"],
+    "visual_tags": ["palace_pet_cushion"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "instability",
+      "humor_tags": ["public_pets"],
+      "emotional_goal": "cute vs elite loyalty",
+      "visual_hook": "throne-side cushion with name plaque",
+      "localization_risk": "low",
+      "writer_notes": "State-gated from baskets; elite clash; soft cat identity."
+    }
+  },
+  {
+    "id": "dog_apology_festival",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "cats_and_animals",
+    "proposal": "Dogs feel overlooked. Hold an Apology Festival — or let the cats keep winning the plazas.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": ["establishment"]
+    },
+    "options": [
+      {
+        "id": "hold_festival",
+        "label": "Hold the dog festival",
+        "effects": { "happiness": 4, "order": -2, "treasury": -3, "elite_loyalty": 1 },
+        "advisor_affinity": { "auntie_olga": 2, "comrade_whiskers": -2 },
+        "trait_changes": { "populist": 1 },
+        "add_flags": ["dog_apology_festival"],
+        "result_text": "Dogs parade. Cats boycott the square with dignity."
+      },
+      {
+        "id": "joint_picnic",
+        "label": "Joint species picnic",
+        "effects": { "happiness": 3, "order": -3, "treasury": -2 },
+        "advisor_affinity": { "auntie_olga": 1, "comrade_whiskers": 1 },
+        "add_flags": ["species_picnic"],
+        "result_text": "Picnic happens. Someone steals the sausages. Peace holds briefly."
+      },
+      {
+        "id": "skip_festival",
+        "label": "Skip the festival",
+        "effects": { "order": 2, "happiness": -2, "elite_loyalty": 1 },
+        "advisor_affinity": { "auntie_olga": -1, "comrade_whiskers": 1 },
+        "result_text": "No festival. Dogs sigh. Cats claim it was never needed."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "species_competition"],
+    "visual_tags": ["dog_apology_banners"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "humor_tags": ["species_competition"],
+      "emotional_goal": "interspecies politics",
+      "visual_hook": "dog banners opposite cat baskets",
+      "localization_risk": "low",
+      "writer_notes": "Species competition; Whiskers affinity risk on dog path."
+    }
+  },
+  {
+    "id": "squirrel_union_recognition",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Squirrels demand union recognition and park voting observers. Nuts are only the beginning.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 17,
+    "maximum_day": 30,
+    "pacing": {
+      "allowed_stages": ["instability"]
+    },
+    "options": [
+      {
+        "id": "recognize_union",
+        "label": "Recognize the union",
+        "effects": { "order": -5, "happiness": 3, "elite_loyalty": -4, "treasury": -2 },
+        "advisor_affinity": { "comrade_whiskers": 1 },
+        "trait_changes": { "populist": 2 },
+        "add_flags": ["squirrel_union_recognized", "species_politics_live"],
+        "result_text": "Squirrels elect a shop steward. Parks gain tiny picket signs."
+      },
+      {
+        "id": "observer_status",
+        "label": "Observer status only",
+        "effects": { "order": -2, "happiness": 1, "elite_loyalty": -1 },
+        "advisor_affinity": { "comrade_whiskers": 1, "clerk_zero": 1 },
+        "add_flags": ["squirrel_observers"],
+        "result_text": "Observers watch. They also bury ballots for winter."
+      },
+      {
+        "id": "refuse_union",
+        "label": "Refuse recognition",
+        "effects": { "order": 3, "happiness": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "comrade_whiskers": -1 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "Union denied. Acorns appear in unexpected desks."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "animal_union"],
+    "visual_tags": ["squirrel_union_signs"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "instability",
+      "humor_tags": ["animal_union"],
+      "emotional_goal": "serious animal politics",
+      "visual_hook": "tiny picket signs in the park canopy",
+      "localization_risk": "low",
+      "writer_notes": "Serious political consequences; three options; not cat-voting arc."
+    }
+  },
+  {
+    "id": "crosswalk_cat_priority",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Endgame traffic ignores paws. Grant cats crosswalk priority — or admit the street belongs to boots.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": ["endgame"]
+    },
+    "options": [
+      {
+        "id": "grant_priority",
+        "label": "Grant cat priority",
+        "effects": { "happiness": 5, "order": -6, "elite_loyalty": -3, "treasury": -2 },
+        "advisor_affinity": { "comrade_whiskers": 2 },
+        "trait_changes": { "populist": 2 },
+        "add_flags": ["cat_crosswalk_priority", "cat_identity_soft"],
+        "result_text": "Cars wait. Cats nap mid-stripe. Timetables become suggestions."
+      },
+      {
+        "id": "shared_signals",
+        "label": "Add shared paw signals",
+        "effects": { "happiness": 2, "order": -2, "treasury": -3, "elite_loyalty": -1 },
+        "advisor_affinity": { "comrade_whiskers": 1, "clerk_zero": 1 },
+        "trait_changes": { "bureaucratic": 1 },
+        "add_flags": ["paw_signal_lights"],
+        "result_text": "New lights blink. Nobody agrees what the blink means."
+      },
+      {
+        "id": "refuse_priority",
+        "label": "Refuse cat priority",
+        "effects": { "order": 4, "happiness": -4, "elite_loyalty": 2 },
+        "advisor_affinity": { "comrade_whiskers": -2 },
+        "trait_changes": { "authoritarian": 1 },
+        "result_text": "Boots keep the street. Whiskers files a traffic manifesto."
+      }
+    ],
+    "tags": ["standalone", "cats_and_animals", "cat_public_service"],
+    "visual_tags": ["cat_crosswalk_paws"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "endgame",
+      "humor_tags": ["cat_public_service"],
+      "emotional_goal": "endgame animal identity",
+      "visual_hook": "paw-print crosswalk paint",
+      "localization_risk": "low",
+      "writer_notes": "Cat public service with serious order cost; soft cat identity flag."
+    }
+  }
+]

@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_4_standalone_pack_b"
-const BATCH_ID: String = "2B-4B"
-const DECISION_BATCH_ID: String = "2B-4B"
+const PHASE: String = "2b_5_standalone_pack_c"
+const BATCH_ID: String = "2B-5B"
+const DECISION_BATCH_ID: String = "2B-5B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -73,6 +73,9 @@ const LEGACY_CATEGORY_MAP: Dictionary = {
 	"economy": "economy",
 	"public_life": "public_life",
 	"infrastructure": "infrastructure",
+	"business_and_privatization": "business_and_privatization",
+	"bureaucracy": "bureaucracy",
+	"cats_and_animals": "cats_and_animals",
 }
 
 const GUEST_SPEAKER_IDS: Array[String] = [
@@ -131,11 +134,20 @@ const STANDALONE_PACK_B_APPROVED_IDS: Array[String] = [
 	"national_nap_grid", "clinic_maybe_pilot", "cabinet_hypothesis_board",
 ]
 
+const STANDALONE_PACK_C_APPROVED_IDS: Array[String] = [
+	"capital_square_naming_rights", "citizen_service_subscription", "national_biscuit_ipo",
+	"express_sidewalk_franchise", "daily_cabinet_briefing", "complaint_permit_office",
+	"contradictory_signage_act", "department_of_renaming", "postal_pigeon_reform",
+	"public_cat_baskets", "mouse_protection_act", "fish_market_subsidy",
+	"working_palace_tours", "anthem_sponsor_reads", "sovereign_cookie_futures",
+	"border_lane_concession", "emergency_efficiency_week", "notarized_apology_requirement",
+	"queue_priority_auction", "midnight_filing_amnesty", "official_palace_pet",
+	"dog_apology_festival", "squirrel_union_recognition", "crosswalk_cat_priority",
+]
+
 const DEFERRED_DECISION_IDS: Array[String] = [
 	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
-	"cat_voting_proposal",
 	"propaganda_smile_campaign",
-	"daily_cabinet_briefing", "postal_pigeon_reform",
 ]
 
 const DEFERRED_ARC_IDS: Array[String] = ["robot_government"]
@@ -145,6 +157,7 @@ const PLACEHOLDER_DECISION_IDS: Array[String] = [
 	"recovery_international_bank", "recovery_national_smile_day", "endgame_legacy_statue",
 	"recovery_martial_law_pause",
 	"recovery_elite_dinner", "endgame_succession_debate", "endgame_final_audit",
+	"routine_form_inventory",
 ]
 
 const MANUAL_TEST_DECISION_IDS: Array[String] = [
@@ -167,6 +180,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"volunteer_night_watch", "weather_optimism_bulletin", "loyalty_variety_hour",
 	"catchphrase_registry", "crisis_reframing_desk", "lab_coat_streetlights",
 	"national_nap_grid", "clinic_maybe_pilot", "cabinet_hypothesis_board",
+	"capital_square_naming_rights", "citizen_service_subscription", "national_biscuit_ipo",
+	"express_sidewalk_franchise", "daily_cabinet_briefing", "complaint_permit_office",
+	"contradictory_signage_act", "department_of_renaming", "postal_pigeon_reform",
+	"public_cat_baskets", "mouse_protection_act", "fish_market_subsidy",
+	"working_palace_tours", "anthem_sponsor_reads", "sovereign_cookie_futures",
+	"border_lane_concession", "emergency_efficiency_week", "notarized_apology_requirement",
+	"queue_priority_auction", "midnight_filing_amnesty", "official_palace_pet",
+	"dog_apology_festival", "squirrel_union_recognition", "crosswalk_cat_priority",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -176,17 +197,12 @@ const SIMULATION_SNAPSHOT: Dictionary = {
 	"run_count": 1000,
 	"date": "2026-07-16",
 	"decisions_never_selected": ["boom_loyal_protector", "happiness_backlash"],
-	"average_run_length": 24.4,
+	"average_run_length": 25.9,
 	"content_exhaustion_count": 0,
 	"fallback_card_usage": 0,
 }
 
 const DUPLICATE_PREMISE_GROUPS: Array[Dictionary] = [
-	{
-		"group_id": "cat_voting_duplicate",
-		"ids": ["cat_voting_proposal", "cat_voting_rights"],
-		"reason": "Both propose cat voting rights; core card may be legacy duplicate of arc entry.",
-	},
 	{
 		"group_id": "smile_happiness_cluster",
 		"ids": ["mandatory_smiling_proposal", "propaganda_smile_campaign", "fake_smile_industry"],
@@ -517,6 +533,9 @@ func _resolve_status(
 	if id in STANDALONE_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in STANDALONE_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -567,8 +586,6 @@ func _balance_review_status(id: String) -> String:
 
 func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_id: Variant) -> String:
 	var notes: PackedStringArray = []
-	if id == "cat_voting_proposal":
-		notes.append("Legacy core card; duplicate premise of cat_voting_rights arc entry.")
 	if id == "generic_minister_disagreement":
 		notes.append("Country fallback filler; classified as standalone.")
 	if chain_id != null:
@@ -585,6 +602,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-3 approved standalone policy card.")
 	if id in STANDALONE_PACK_B_APPROVED_IDS:
 		notes.append("Milestone 2B-4 approved standalone policy card.")
+	if id in STANDALONE_PACK_C_APPROVED_IDS:
+		notes.append("Milestone 2B-5 approved standalone policy card.")
 	return ", ".join(notes)
 
 
@@ -593,7 +612,6 @@ func _source_file_hint(id: String) -> String:
 		"switch_off_traffic_lights": "ministan_core.json",
 		"free_pizza_friday": "ministan_core.json",
 		"mandatory_smiling_proposal": "ministan_core.json",
-		"cat_voting_proposal": "ministan_core.json",
 		"military_parade": "ministan_core.json",
 		"window_tax_proposal": "ministan_core.json",
 		"luna_good_news_only": "ministan_core.json",
@@ -651,6 +669,30 @@ func _source_file_hint(id: String) -> String:
 		"national_nap_grid": "ministan_standalone_pack_b.json",
 		"clinic_maybe_pilot": "ministan_standalone_pack_b.json",
 		"cabinet_hypothesis_board": "ministan_standalone_pack_b.json",
+		"capital_square_naming_rights": "ministan_standalone_pack_c.json",
+		"citizen_service_subscription": "ministan_standalone_pack_c.json",
+		"national_biscuit_ipo": "ministan_standalone_pack_c.json",
+		"express_sidewalk_franchise": "ministan_standalone_pack_c.json",
+		"daily_cabinet_briefing": "ministan_standalone_pack_c.json",
+		"complaint_permit_office": "ministan_standalone_pack_c.json",
+		"contradictory_signage_act": "ministan_standalone_pack_c.json",
+		"department_of_renaming": "ministan_standalone_pack_c.json",
+		"postal_pigeon_reform": "ministan_standalone_pack_c.json",
+		"public_cat_baskets": "ministan_standalone_pack_c.json",
+		"mouse_protection_act": "ministan_standalone_pack_c.json",
+		"fish_market_subsidy": "ministan_standalone_pack_c.json",
+		"working_palace_tours": "ministan_standalone_pack_c.json",
+		"anthem_sponsor_reads": "ministan_standalone_pack_c.json",
+		"sovereign_cookie_futures": "ministan_standalone_pack_c.json",
+		"border_lane_concession": "ministan_standalone_pack_c.json",
+		"emergency_efficiency_week": "ministan_standalone_pack_c.json",
+		"notarized_apology_requirement": "ministan_standalone_pack_c.json",
+		"queue_priority_auction": "ministan_standalone_pack_c.json",
+		"midnight_filing_amnesty": "ministan_standalone_pack_c.json",
+		"official_palace_pet": "ministan_standalone_pack_c.json",
+		"dog_apology_festival": "ministan_standalone_pack_c.json",
+		"squirrel_union_recognition": "ministan_standalone_pack_c.json",
+		"crosswalk_cat_priority": "ministan_standalone_pack_c.json",
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]

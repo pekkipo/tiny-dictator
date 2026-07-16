@@ -250,5 +250,113 @@
     "placeholder_icon": "🥼",
     "visual_tags": ["labcoat_streetlights"],
     "category": "science"
+  },
+  {
+    "id": "capital_square_naming_act",
+    "display_name": "Capital Square Naming Rights",
+    "short_name": "Square Naming",
+    "description": "Central Square may carry a corporate name. Maps update for a fee.",
+    "placeholder_icon": "🍪",
+    "visual_tags": ["sponsored_square_signs"],
+    "category": "business"
+  },
+  {
+    "id": "citizen_service_subscription_act",
+    "display_name": "Citizen Service Subscription",
+    "short_name": "Service Tiers",
+    "description": "Public services offered in Bronze, Silver, and Platinum tiers.",
+    "placeholder_icon": "💳",
+    "visual_tags": ["service_tier_kiosks"],
+    "category": "business"
+  },
+  {
+    "id": "cabinet_briefing_protocol",
+    "display_name": "Cabinet Briefing Protocol",
+    "short_name": "Briefing Protocol",
+    "description": "Urgencies require attendance or Form 0. Staplers are inventoried.",
+    "placeholder_icon": "📎",
+    "visual_tags": ["cabinet_briefing_stack"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "complaint_permit_act",
+    "display_name": "Complaint Permit Act",
+    "short_name": "Complaint Permits",
+    "description": "Form C-1 required before a grievance may be spoken aloud.",
+    "placeholder_icon": "🗣️",
+    "visual_tags": ["complaint_permit_desk"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "contradictory_signage_law",
+    "display_name": "Contradictory Signage Law",
+    "short_name": "Sign Clarity",
+    "description": "Each pole may display only one instruction after audit.",
+    "placeholder_icon": "🚧",
+    "visual_tags": ["crossed_out_signs"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "mouse_protection_law",
+    "display_name": "Mouse Protection Act",
+    "short_name": "Mouse Permits",
+    "description": "Cats that hunt must apply. Mice may file. Cheese is evidence.",
+    "placeholder_icon": "🐭",
+    "visual_tags": ["mouse_permit_booths"],
+    "category": "animals"
+  },
+  {
+    "id": "fish_market_subsidy_act",
+    "display_name": "Fish Market Subsidy",
+    "short_name": "Fish Subsidy",
+    "description": "Market fish prices supported for registered paws. Treasury smells optimistic.",
+    "placeholder_icon": "🐟",
+    "visual_tags": ["fish_subsidy_trucks"],
+    "category": "animals"
+  },
+  {
+    "id": "palace_tour_act",
+    "display_name": "Working Palace Tours",
+    "short_name": "Palace Tours",
+    "description": "Premium tours during working meetings. Velvet ropes optional. Whispering mandatory.",
+    "placeholder_icon": "🎟️",
+    "visual_tags": ["palace_tour_velvet"],
+    "category": "business"
+  },
+  {
+    "id": "anthem_sponsor_act",
+    "display_name": "Anthem Sponsor Reads",
+    "short_name": "Anthem Ads",
+    "description": "Brief brand reads may follow the national anthem. Patriotism with crunch.",
+    "placeholder_icon": "📣",
+    "visual_tags": ["anthem_sponsor_banners"],
+    "category": "business"
+  },
+  {
+    "id": "emergency_efficiency_act",
+    "display_name": "Emergency Efficiency Week",
+    "short_name": "Efficiency Week",
+    "description": "Backlog clearance week. Stamp faster. Sleep optional.",
+    "placeholder_icon": "⏱️",
+    "visual_tags": ["efficiency_week_timers"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "notarized_apology_act",
+    "display_name": "Notarized Apology Requirement",
+    "short_name": "Notary Sorry",
+    "description": "Forgiveness requires a stamped apology. Wax recommended.",
+    "placeholder_icon": "🔏",
+    "visual_tags": ["notarized_apology_desk"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "official_palace_pet_act",
+    "display_name": "Official Palace Pet",
+    "short_name": "Palace Pet",
+    "description": "An official palace pet with cushion budget and sitting rights.",
+    "placeholder_icon": "🐈",
+    "visual_tags": ["palace_pet_cushion"],
+    "category": "animals"
   }
 ]

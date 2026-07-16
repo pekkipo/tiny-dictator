@@ -1,34 +1,5 @@
 [
   {
-    "id": "postal_pigeon_reform",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "clerk_zero",
-    "category": "administration",
-    "proposal": "Clerk Zero proposes replacing the postal service with trained pigeons. Forms will still be required.",
-    "one_time": false,
-    "base_weight": 6,
-    "minimum_day": 1,
-    "maximum_day": 35,
-    "options": [
-      {
-        "id": "approve",
-        "label": "Approve pigeon post",
-        "effects": { "order": 3, "happiness": 2, "treasury": -3 },
-        "trait_changes": { "bureaucratic": 1, "chaotic": 1 },
-        "result_text": "Mail arrives faster and in feathers. Several letters are eaten."
-      },
-      {
-        "id": "reject",
-        "label": "Keep human post",
-        "effects": { "happiness": 1, "treasury": -1, "order": -1 },
-        "result_text": "Post workers celebrate. Pigeons remain unemployed."
-      }
-    ],
-    "tags": ["bureaucracy", "generic"]
-  },
-  {
     "id": "olga_bridge_repair",
     "schema_version": 2,
     "country_id": "ministan",
@@ -62,31 +33,41 @@
     "tags": ["onboarding", "public", "infrastructure"]
   },
   {
-    "id": "daily_cabinet_briefing",
+    "id": "routine_form_inventory",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "normal",
     "advisor_id": "clerk_zero",
-    "category": "administration",
-    "proposal": "Today's cabinet briefing includes nine urgent items and one stapler emergency.",
+    "category": "bureaucracy",
+    "proposal": "Form inventory day. Count stamps, miscount stamps, recount stamps. Procedure continues.",
     "one_time": false,
-    "base_weight": 5,
-    "minimum_day": 5,
+    "base_weight": 3,
+    "minimum_day": 10,
     "maximum_day": 40,
     "options": [
       {
-        "id": "attend",
-        "label": "Attend in person",
-        "effects": { "order": 2, "elite_loyalty": 2, "happiness": -1 },
-        "result_text": "You learn about problems that already became traditions."
+        "id": "count_carefully",
+        "label": "Count carefully",
+        "effects": { "order": 1, "treasury": -1 },
+        "result_text": "Stamps are counted. One is missing. It was always missing."
       },
       {
-        "id": "delegate",
-        "label": "Send a delegate",
-        "effects": { "elite_loyalty": -3, "treasury": 1, "happiness": 1 },
-        "result_text": "The delegate enjoys coffee and blame redistribution."
+        "id": "estimate",
+        "label": "Estimate and move on",
+        "effects": { "happiness": 1, "order": -1 },
+        "result_text": "Estimate filed. Accuracy deferred to next inventory."
       }
     ],
-    "tags": ["bureaucracy", "generic", "repeatable"]
+    "tags": ["bureaucracy", "generic", "repeatable", "placeholder"],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "humor_tags": ["routine_filler"],
+      "emotional_goal": "pool safety valve",
+      "visual_hook": "stamp trays being counted",
+      "localization_risk": "low",
+      "writer_notes": "Temporary low-weight repeatable after Pack C removed one-time fillers; not Pack C approved. Rewrite in 2B-6+."
+    }
   }
 ]

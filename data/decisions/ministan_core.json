@@ -145,46 +145,6 @@
     "visual_tags": ["smiling_citizens"]
   },
   {
-    "id": "cat_voting_proposal",
-    "schema_version": 2,
-    "card_type": "normal",
-    "advisor_id": "auntie_olga",
-    "category": "absurd_law",
-    "proposal": "My cat Barsik has strong opinions about local politics. Perhaps cats should be allowed to vote?",
-    "one_time": true,
-    "base_weight": 8,
-    "requirements": {
-      "blocked_arcs": ["cat_politics"]
-    },
-    "options": [
-      {
-        "id": "reject",
-        "label": "Cats can't vote",
-        "effects": {
-          "order": 2,
-          "happiness": -3
-        },
-        "result_text": "Democracy remains human-only. Barsik files a formal complaint by scratching the door."
-      },
-      {
-        "id": "enfranchise",
-        "label": "Enfranchise the cats",
-        "effects": {
-          "happiness": 8,
-          "order": -5,
-          "elite_loyalty": -4
-        },
-        "add_laws": ["cat_voting_rights"],
-        "add_flags": ["cats_enfranchised"],
-        "counter_changes": {
-          "cat_favor_choices": 1
-        },
-        "result_text": "Cats receive ballots. Voter turnout now depends on the weather and naps."
-      }
-    ],
-    "tags": ["absurd", "cats", "setup"]
-  },
-  {
     "id": "military_parade",
     "schema_version": 2,
     "card_type": "normal",
