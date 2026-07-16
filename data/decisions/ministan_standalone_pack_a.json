@@ -292,144 +292,6 @@
     "visual_tags": ["curtains_drawn"]
   },
   {
-    "id": "free_coffee_morning",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "One free coffee each morning at every kiosk. People smile before complaining.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 8,
-    "maximum_day": 30,
-    "pacing": {
-      "allowed_stages": ["escalation"]
-    },
-    "options": [
-      {
-        "id": "fund_coffee",
-        "label": "Fund free coffee",
-        "effects": { "treasury": -6, "happiness": 7, "order": 1 },
-        "advisor_affinity": { "auntie_olga": 2 },
-        "trait_changes": { "populist": 1 },
-        "add_flags": ["free_coffee_mornings"],
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "absurd_civic_sweeping",
-          "minimum_delay_days": 3,
-          "maximum_delay_days": 7,
-          "priority": 40,
-          "required_flags": ["free_coffee_mornings"]
-        },
-        "result_text": "Kiosks steam at dawn. Lines form for foam, not forms."
-      },
-      {
-        "id": "half_price",
-        "label": "Half-price coffee only",
-        "effects": { "treasury": -3, "happiness": 3 },
-        "add_flags": ["discount_coffee"],
-        "result_text": "Citizens tip twice to feel generous. Penny calls the math soft."
-      },
-      {
-        "id": "deny_coffee",
-        "label": "No free coffee",
-        "effects": { "treasury": 1, "happiness": -4 },
-        "advisor_affinity": { "auntie_olga": -1, "minister_penny": 1 },
-        "result_text": "Kiosks stay commercial. Morning mood becomes transactional."
-      }
-    ],
-    "tags": ["standalone", "public_life", "comfort"],
-    "visual_tags": ["coffee_kiosks"]
-  },
-  {
-    "id": "long_setup_grand_canal",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "infrastructure",
-    "proposal": "Dig a Grand Canal linking every village. Budget covers groundbreaking photos; completion TBD.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 4,
-    "maximum_day": 26,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "dig",
-        "label": "Break ground now",
-        "effects": { "treasury": -10, "happiness": 5, "order": -3 },
-        "add_flags": ["canal_groundbroken"],
-        "trait_changes": { "chaotic": 1 },
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "palace_bus_routes",
-          "minimum_delay_days": 4,
-          "maximum_delay_days": 8,
-          "priority": 45,
-          "required_flags": ["canal_groundbroken"]
-        },
-        "result_text": "Shovels turn one inch of soil. A sign promises Year 3000."
-      },
-      {
-        "id": "paper_canal",
-        "label": "Commission maps only",
-        "effects": { "treasury": -3, "elite_loyalty": 2, "happiness": -1 },
-        "add_flags": ["canal_on_paper"],
-        "advisor_affinity": { "clerk_zero": 1 },
-        "result_text": "Engineers draw maps of maps. Tours of the planning office sell out."
-      },
-      {
-        "id": "postpone",
-        "label": "Postpone forever",
-        "effects": { "treasury": 2, "elite_loyalty": -3 },
-        "result_text": "The canal enters permanent planning. Nobody digs; everyone debates."
-      }
-    ],
-    "tags": ["standalone", "infrastructure"],
-    "visual_tags": ["grand_canal_sign"]
-  },
-  {
-    "id": "sponsored_potholes",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "sir_profit",
-    "category": "infrastructure",
-    "proposal": "Let brands sponsor potholes. Drivers see logos. Roads fund themselves.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 5,
-    "maximum_day": 30,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "approve_sponsors",
-        "label": "Sell pothole sponsorships",
-        "effects": { "treasury": 7, "happiness": -4, "order": -2, "elite_loyalty": 3 },
-        "advisor_affinity": { "sir_profit": 2 },
-        "trait_changes": { "capitalist": 2 },
-        "add_flags": ["sponsored_roads"],
-        "result_text": "Potholes wear logos. A cheese brand claims the worst bend."
-      },
-      {
-        "id": "repair_public",
-        "label": "Repair with public funds",
-        "effects": { "treasury": -7, "happiness": 5, "order": 3 },
-        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
-        "add_flags": ["roads_repaired_public"],
-        "result_text": "Asphalt returns without slogans. Billboards look lonely."
-      }
-    ],
-    "tags": ["standalone", "infrastructure", "privatization"],
-    "visual_tags": ["sponsored_potholes"]
-  },
-  {
     "id": "perfumed_sewage_reform",
     "schema_version": 2,
     "country_id": "ministan",
@@ -543,57 +405,6 @@
     ],
     "tags": ["standalone", "economy", "debt"],
     "visual_tags": ["debt_certificates"]
-  },
-  {
-    "id": "lottery_treasury_fund",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "sir_profit",
-    "category": "economy",
-    "proposal": "A national lottery funds the budget. Ticket sellers already printed the winners.",
-    "one_time": true,
-    "base_weight": 9,
-    "minimum_day": 5,
-    "maximum_day": 28,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "launch_lottery",
-        "label": "Launch the lottery",
-        "effects": { "treasury": 9, "happiness": 3, "order": -4 },
-        "advisor_affinity": { "sir_profit": 1 },
-        "trait_changes": { "chaotic": 1 },
-        "add_flags": ["national_lottery_active"],
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "universal_birthday_holiday",
-          "minimum_delay_days": 3,
-          "maximum_delay_days": 6,
-          "priority": 35,
-          "required_flags": ["national_lottery_active"]
-        },
-        "result_text": "Every street corner blooms into hope. Winning tickets prefer friends of Sir Profit."
-      },
-      {
-        "id": "ban_lottery",
-        "label": "Ban the lottery",
-        "effects": { "order": 3, "happiness": -2, "elite_loyalty": -2 },
-        "advisor_affinity": { "sir_profit": -2, "auntie_olga": 1 },
-        "result_text": "Tickets become bookmarks. The budget looks for a quieter miracle."
-      },
-      {
-        "id": "palace_only",
-        "label": "Palace staff lottery only",
-        "effects": { "treasury": 3, "elite_loyalty": 3, "happiness": -4 },
-        "add_flags": ["elite_lottery"],
-        "result_text": "Only golden names win. Citizens invent underground raffles."
-      }
-    ],
-    "tags": ["standalone", "economy", "lottery"],
-    "visual_tags": ["national_lottery"]
   },
   {
     "id": "wage_freeze_mandate",
@@ -899,42 +710,6 @@
     "visual_tags": ["flag_intersections"]
   },
   {
-    "id": "elevator_wifi_mandate",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "doctor_maybe",
-    "category": "infrastructure",
-    "proposal": "Pilot elevator Wi-Fi that predicts floor choice. Possibly. Side effects may include floating.",
-    "one_time": true,
-    "base_weight": 8,
-    "minimum_day": 6,
-    "maximum_day": 28,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "pilot_wifi",
-        "label": "Pilot predictive elevators",
-        "effects": { "treasury": -5, "happiness": 4, "order": -3 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 2, "chaotic": 1 },
-        "add_flags": ["elevator_wifi_pilot"],
-        "result_text": "Elevators guess destinations. Two never stop. Commuters adapt spiritually."
-      },
-      {
-        "id": "plain_buttons",
-        "label": "Keep plain buttons",
-        "effects": { "order": 2, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
-        "result_text": "Buttons stay mechanical. Doctor Maybe labels you Control Group B."
-      }
-    ],
-    "tags": ["standalone", "infrastructure", "science"],
-    "visual_tags": ["elevator_wifi"]
-  },
-  {
     "id": "palace_bus_routes",
     "schema_version": 2,
     "country_id": "ministan",
@@ -950,7 +725,7 @@
       "allowed_stages": ["escalation", "instability"]
     },
     "requirements": {
-      "any_flags": ["canal_groundbroken", "sponsored_roads", "roads_repaired_public"]
+      "any_flags": ["bridge_groundbroken", "canal_groundbroken", "sponsored_roads", "roads_repaired_public"]
     },
     "options": [
       {

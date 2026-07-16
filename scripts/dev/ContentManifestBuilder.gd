@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_5_standalone_pack_c"
-const BATCH_ID: String = "2B-5B"
-const DECISION_BATCH_ID: String = "2B-5B"
+const PHASE: String = "2b_6_short_chain_pack_a"
+const BATCH_ID: String = "2B-6B"
+const DECISION_BATCH_ID: String = "2B-6B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -103,7 +103,28 @@ const CHAIN_MEMBERS: Dictionary = {
 	],
 	"robot_government": ["robot_cabinet_proposal", "robot_government_installed"],
 	"cat_politics_followups": ["cat_parliament", "cat_fish_budget"],
+	"umbrella_tax": ["umbrella_tax_proposal", "umbrella_tax_enforcement"],
+	"national_coffee_reserve": [
+		"free_coffee_morning", "coffee_hoarding_crisis", "coffee_reserve_resolution",
+	],
+	"privatized_public_benches": [
+		"privatized_benches_proposal", "bench_subscription_backlash", "bench_policy_resolution",
+	],
+	"lottery_budget": ["lottery_treasury_fund", "lottery_odds_collapse"],
+	"palace_gift_shop": ["palace_gift_shop_opening", "gift_shop_merch_scandal"],
+	"elevator_wifi": ["elevator_wifi_mandate", "elevator_wifi_trap"],
+	"pothole_naming_rights": [
+		"sponsored_potholes", "pothole_brand_war", "pothole_naming_resolution",
+	],
+	"bridge_to_nowhere": [
+		"long_setup_grand_canal", "bridge_budget_overrun", "bridge_to_nowhere_resolution",
+	],
 }
+
+const APPROVED_CHAIN_IDS: Array[String] = [
+	"umbrella_tax", "national_coffee_reserve", "privatized_public_benches", "lottery_budget",
+	"palace_gift_shop", "elevator_wifi", "pothole_naming_rights", "bridge_to_nowhere",
+]
 
 const ONBOARDING_IDS: Array[String] = [
 	"palace_roof_leak", "border_parade_dispute", "window_tax_proposal",
@@ -115,11 +136,10 @@ const ONBOARDING_IDS: Array[String] = [
 const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
 	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
 	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
-	"free_coffee_morning", "long_setup_grand_canal", "sponsored_potholes",
 	"perfumed_sewage_reform", "national_clock_sync",
-	"commemorative_debt_sale", "lottery_treasury_fund", "wage_freeze_mandate", "palace_room_rental",
+	"commemorative_debt_sale", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
-	"absurd_civic_sweeping", "flag_traffic_system", "elevator_wifi_mandate",
+	"absurd_civic_sweeping", "flag_traffic_system",
 	"palace_bus_routes", "bridge_toll_concession",
 ]
 
@@ -143,6 +163,17 @@ const STANDALONE_PACK_C_APPROVED_IDS: Array[String] = [
 	"border_lane_concession", "emergency_efficiency_week", "notarized_apology_requirement",
 	"queue_priority_auction", "midnight_filing_amnesty", "official_palace_pet",
 	"dog_apology_festival", "squirrel_union_recognition", "crosswalk_cat_priority",
+]
+
+const SHORT_CHAIN_PACK_A_APPROVED_IDS: Array[String] = [
+	"umbrella_tax_proposal", "umbrella_tax_enforcement",
+	"free_coffee_morning", "coffee_hoarding_crisis", "coffee_reserve_resolution",
+	"privatized_benches_proposal", "bench_subscription_backlash", "bench_policy_resolution",
+	"lottery_treasury_fund", "lottery_odds_collapse",
+	"palace_gift_shop_opening", "gift_shop_merch_scandal",
+	"elevator_wifi_mandate", "elevator_wifi_trap",
+	"sponsored_potholes", "pothole_brand_war", "pothole_naming_resolution",
+	"long_setup_grand_canal", "bridge_budget_overrun", "bridge_to_nowhere_resolution",
 ]
 
 const DEFERRED_DECISION_IDS: Array[String] = [
@@ -188,6 +219,13 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"border_lane_concession", "emergency_efficiency_week", "notarized_apology_requirement",
 	"queue_priority_auction", "midnight_filing_amnesty", "official_palace_pet",
 	"dog_apology_festival", "squirrel_union_recognition", "crosswalk_cat_priority",
+	"umbrella_tax_proposal", "umbrella_tax_enforcement",
+	"coffee_hoarding_crisis", "coffee_reserve_resolution",
+	"privatized_benches_proposal", "bench_subscription_backlash", "bench_policy_resolution",
+	"lottery_odds_collapse",
+	"palace_gift_shop_opening", "gift_shop_merch_scandal",
+	"elevator_wifi_trap", "pothole_brand_war", "pothole_naming_resolution",
+	"bridge_budget_overrun", "bridge_to_nowhere_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -367,6 +405,8 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 		var chain_status := "integrated"
 		if chain_id == "robot_government":
 			chain_status = "deferred"
+		elif chain_id in APPROVED_CHAIN_IDS:
+			chain_status = "approved"
 		catalogs["chains"].append({
 			"id": chain_id,
 			"content_type": "chain",
@@ -536,6 +576,9 @@ func _resolve_status(
 	if id in STANDALONE_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -604,6 +647,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-4 approved standalone policy card.")
 	if id in STANDALONE_PACK_C_APPROVED_IDS:
 		notes.append("Milestone 2B-5 approved standalone policy card.")
+	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS:
+		notes.append("Milestone 2B-6 approved short-chain card.")
 	return ", ".join(notes)
 
 
@@ -628,13 +673,9 @@ func _source_file_hint(id: String) -> String:
 		"neighborhood_noise_complaint": "ministan_standalone_pack_a.json",
 		"olga_loyal_council": "ministan_standalone_pack_a.json",
 		"national_bedtime_decree": "ministan_standalone_pack_a.json",
-		"free_coffee_morning": "ministan_standalone_pack_a.json",
-		"long_setup_grand_canal": "ministan_standalone_pack_a.json",
-		"sponsored_potholes": "ministan_standalone_pack_a.json",
 		"perfumed_sewage_reform": "ministan_standalone_pack_a.json",
 		"national_clock_sync": "ministan_standalone_pack_a.json",
 		"commemorative_debt_sale": "ministan_standalone_pack_a.json",
-		"lottery_treasury_fund": "ministan_standalone_pack_a.json",
 		"wage_freeze_mandate": "ministan_standalone_pack_a.json",
 		"palace_room_rental": "ministan_standalone_pack_a.json",
 		"official_queue_etiquette": "ministan_standalone_pack_a.json",
@@ -642,9 +683,28 @@ func _source_file_hint(id: String) -> String:
 		"public_compliment_quota": "ministan_standalone_pack_a.json",
 		"absurd_civic_sweeping": "ministan_standalone_pack_a.json",
 		"flag_traffic_system": "ministan_standalone_pack_a.json",
-		"elevator_wifi_mandate": "ministan_standalone_pack_a.json",
 		"palace_bus_routes": "ministan_standalone_pack_a.json",
 		"bridge_toll_concession": "ministan_standalone_pack_a.json",
+		"umbrella_tax_proposal": "ministan_short_chain_pack_a.json",
+		"umbrella_tax_enforcement": "ministan_short_chain_pack_a.json",
+		"free_coffee_morning": "ministan_short_chain_pack_a.json",
+		"coffee_hoarding_crisis": "ministan_short_chain_pack_a.json",
+		"coffee_reserve_resolution": "ministan_short_chain_pack_a.json",
+		"privatized_benches_proposal": "ministan_short_chain_pack_a.json",
+		"bench_subscription_backlash": "ministan_short_chain_pack_a.json",
+		"bench_policy_resolution": "ministan_short_chain_pack_a.json",
+		"lottery_treasury_fund": "ministan_short_chain_pack_a.json",
+		"lottery_odds_collapse": "ministan_short_chain_pack_a.json",
+		"palace_gift_shop_opening": "ministan_short_chain_pack_a.json",
+		"gift_shop_merch_scandal": "ministan_short_chain_pack_a.json",
+		"elevator_wifi_mandate": "ministan_short_chain_pack_a.json",
+		"elevator_wifi_trap": "ministan_short_chain_pack_a.json",
+		"sponsored_potholes": "ministan_short_chain_pack_a.json",
+		"pothole_brand_war": "ministan_short_chain_pack_a.json",
+		"pothole_naming_resolution": "ministan_short_chain_pack_a.json",
+		"long_setup_grand_canal": "ministan_short_chain_pack_a.json",
+		"bridge_budget_overrun": "ministan_short_chain_pack_a.json",
+		"bridge_to_nowhere_resolution": "ministan_short_chain_pack_a.json",
 		"escalation_only_rival_parade": "ministan_standalone_pack_b.json",
 		"palace_curfew_drill": "ministan_standalone_pack_b.json",
 		"emergency_salute_protocol": "ministan_standalone_pack_b.json",

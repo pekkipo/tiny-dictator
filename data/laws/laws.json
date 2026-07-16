@@ -358,5 +358,59 @@
     "placeholder_icon": "🐈",
     "visual_tags": ["palace_pet_cushion"],
     "category": "animals"
+  },
+  {
+    "id": "umbrella_tax",
+    "display_name": "Umbrella Tax",
+    "short_name": "Umbrella Tax",
+    "description": "Rain gear requires a stamp. Buckets are under review.",
+    "placeholder_icon": "☂️",
+    "visual_tags": ["umbrella_tax_booths"],
+    "category": "economy"
+  },
+  {
+    "id": "national_coffee_reserve",
+    "display_name": "National Coffee Reserve",
+    "short_name": "Coffee Reserve",
+    "description": "Morning coffee is a strategic civic resource. Thermoses may be audited.",
+    "placeholder_icon": "☕",
+    "visual_tags": ["coffee_reserve_vault"],
+    "category": "public_life"
+  },
+  {
+    "id": "bench_subscription_act",
+    "display_name": "Bench Subscription Act",
+    "short_name": "Bench Subs",
+    "description": "Sitting requires a plan. Standing remains complimentary.",
+    "placeholder_icon": "🪑",
+    "visual_tags": ["bench_paywalls"],
+    "category": "business"
+  },
+  {
+    "id": "national_lottery_budget",
+    "display_name": "National Lottery Budget",
+    "short_name": "Lottery Budget",
+    "description": "Hope funds the ledger. Odds are a quarterly surprise.",
+    "placeholder_icon": "🎟️",
+    "visual_tags": ["national_lottery"],
+    "category": "economy"
+  },
+  {
+    "id": "palace_gift_shop_act",
+    "display_name": "Palace Gift Shop Act",
+    "short_name": "Gift Shop",
+    "description": "Official merch may be sold beside the throne. Decrees not included.",
+    "placeholder_icon": "🛍️",
+    "visual_tags": ["palace_gift_kiosk"],
+    "category": "business"
+  },
+  {
+    "id": "sponsored_potholes_act",
+    "display_name": "Sponsored Potholes Act",
+    "short_name": "Pothole Ads",
+    "description": "Road hazards may carry brand logos. Drivers receive sponsorship.",
+    "placeholder_icon": "🕳️",
+    "visual_tags": ["sponsored_potholes"],
+    "category": "infrastructure"
   }
 ]

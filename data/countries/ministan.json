@@ -31,7 +31,8 @@
     "res://data/decisions/ministan_onboarding.json",
     "res://data/decisions/ministan_standalone_pack_a.json",
     "res://data/decisions/ministan_standalone_pack_b.json",
-    "res://data/decisions/ministan_standalone_pack_c.json"
+    "res://data/decisions/ministan_standalone_pack_c.json",
+    "res://data/decisions/ministan_short_chain_pack_a.json"
   ],
   "fallback_decision_id": "generic_minister_disagreement",
   "fallback_decision_limit": 2,

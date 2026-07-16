@@ -1,0 +1,1848 @@
+[
+  {
+    "id": "umbrella_tax_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Rain gear escapes every levy. Tax umbrellas. Buckets are a separate line item later.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment"
+      ]
+    },
+    "options": [
+      {
+        "id": "pass_tax",
+        "label": "Tax the umbrellas",
+        "effects": {
+          "treasury": 8,
+          "happiness": -6,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "umbrella_tax"
+        ],
+        "add_flags": [
+          "umbrella_tax_active"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "umbrella_tax_enforcement"
+        },
+        "result_text": "Umbrella stamps appear at every doorway. Drizzle suddenly costs money."
+      },
+      {
+        "id": "tax_days_only",
+        "label": "Tax rainy days only",
+        "effects": {
+          "treasury": 4,
+          "happiness": -3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "rainy_day_umbrella_fee"
+        ],
+        "result_text": "Clerks argue what counts as rain. Revenue arrives wet and late."
+      },
+      {
+        "id": "refuse_tax",
+        "label": "Leave rain gear free",
+        "effects": {
+          "happiness": 3,
+          "treasury": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "auntie_olga": 1
+        },
+        "result_text": "Umbrellas stay public. Penny files a damp memo of regret."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "economy",
+      "umbrella_levy"
+    ],
+    "visual_tags": [
+      "umbrella_tax_booths"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "umbrella_tax",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "stamped umbrellas at civic doorways",
+      "writer_notes": "Hard follow-up only on full tax path."
+    }
+  },
+  {
+    "id": "umbrella_tax_enforcement",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Citizens dodge your umbrella tax with buckets, pots, and one ceremonial casserole. The levy looks soggy.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "umbrella_tax_active"
+      ],
+      "all_laws": [
+        "umbrella_tax"
+      ]
+    },
+    "options": [
+      {
+        "id": "tax_buckets",
+        "label": "Tax buckets too",
+        "effects": {
+          "treasury": 6,
+          "happiness": -8,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "bucket_tax_active",
+          "umbrella_chain_complete"
+        ],
+        "result_text": "Buckets join the tax code. A casserole lobby forms overnight."
+      },
+      {
+        "id": "repeal_umbrella",
+        "label": "Repeal the umbrella tax",
+        "effects": {
+          "happiness": 6,
+          "treasury": -5,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "auntie_olga": 2
+        },
+        "remove_laws": [
+          "umbrella_tax"
+        ],
+        "remove_flags": [
+          "umbrella_tax_active"
+        ],
+        "add_flags": [
+          "umbrella_chain_complete"
+        ],
+        "result_text": "The stamp booths close. Rain feels briefly democratic."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "umbrella_levy"
+    ],
+    "visual_tags": [
+      "bucket_loopholes"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "umbrella_tax",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "bucket and casserole rain shelters",
+      "writer_notes": "Explicit callback to umbrella tax; cancels if law removed."
+    }
+  },
+  {
+    "id": "free_coffee_morning",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "One free coffee each morning at every kiosk. People smile before complaining.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "fund_coffee",
+        "label": "Fund free coffee",
+        "effects": {
+          "treasury": -6,
+          "happiness": 7,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_laws": [
+          "national_coffee_reserve"
+        ],
+        "add_flags": [
+          "free_coffee_mornings"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "coffee_reserve_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 60,
+          "required_flags": [
+            "free_coffee_mornings"
+          ]
+        },
+        "result_text": "Kiosks steam at dawn. Lines form for foam, not forms."
+      },
+      {
+        "id": "half_price",
+        "label": "Half-price coffee only",
+        "effects": {
+          "treasury": -3,
+          "happiness": 3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "discount_coffee"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coffee_reserve_resolution",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 45,
+          "required_flags": [
+            "discount_coffee"
+          ]
+        },
+        "result_text": "Citizens tip twice to feel generous. Penny calls the math soft."
+      },
+      {
+        "id": "deny_coffee",
+        "label": "No free coffee",
+        "effects": {
+          "treasury": 1,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "auntie_olga": -1,
+          "minister_penny": 1
+        },
+        "result_text": "Kiosks stay commercial. Morning mood becomes transactional."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "public_life",
+      "coffee_reserve"
+    ],
+    "visual_tags": [
+      "coffee_kiosks"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_coffee_reserve",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "steaming morning kiosks",
+      "writer_notes": "REWRITE from Pack A standalone; pool on full fund path."
+    }
+  },
+  {
+    "id": "coffee_hoarding_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "public_life",
+    "proposal": "Your free coffee mornings created dawn hoarding. Citizens fill thermoses like strategic reserves. Ratings love the steam.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "free_coffee_mornings"
+      ],
+      "all_laws": [
+        "national_coffee_reserve"
+      ]
+    },
+    "options": [
+      {
+        "id": "spin_queues",
+        "label": "Call it national spirit",
+        "effects": {
+          "happiness": 2,
+          "order": -4,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "coffee_hoarding_spun"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coffee_reserve_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "free_coffee_mornings"
+          ]
+        },
+        "result_text": "Luna airs 'Foam Pride.' Thermoses still block the sidewalk."
+      },
+      {
+        "id": "limit_cups",
+        "label": "One cup per citizen",
+        "effects": {
+          "order": 4,
+          "happiness": -5,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "luna_news": -1,
+          "clerk_zero": 1
+        },
+        "add_flags": [
+          "coffee_cup_ration"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coffee_reserve_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "free_coffee_mornings"
+          ]
+        },
+        "result_text": "Ration stamps smell like espresso. Queue math improves slightly."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "coffee_reserve"
+    ],
+    "visual_tags": [
+      "coffee_hoard_lines"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_coffee_reserve",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "thermos lines at dawn kiosks",
+      "writer_notes": "Explicit callback to free coffee mornings."
+    }
+  },
+  {
+    "id": "coffee_reserve_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "public_life",
+    "proposal": "Form C-7 asks whether the morning coffee policy becomes a National Coffee Reserve or a cancelled experiment. Attach thermos inventory.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "free_coffee_mornings",
+        "discount_coffee"
+      ]
+    },
+    "options": [
+      {
+        "id": "formalize_reserve",
+        "label": "Create the coffee reserve",
+        "effects": {
+          "treasury": -5,
+          "happiness": 4,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "coffee_reserve_vaulted",
+          "coffee_chain_complete"
+        ],
+        "result_text": "Beans enter Form C-7 vaults. Dawn still smells like paperwork."
+      },
+      {
+        "id": "end_coffee_policy",
+        "label": "End morning coffee policy",
+        "effects": {
+          "treasury": 4,
+          "happiness": -6,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": 1,
+          "auntie_olga": -2
+        },
+        "remove_laws": [
+          "national_coffee_reserve"
+        ],
+        "remove_flags": [
+          "free_coffee_mornings",
+          "discount_coffee"
+        ],
+        "add_flags": [
+          "coffee_chain_complete"
+        ],
+        "result_text": "Kiosks return to retail rates. A nation yawns on principle."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "coffee_reserve"
+    ],
+    "visual_tags": [
+      "coffee_reserve_vault"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_coffee_reserve",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "stamped coffee bean vault",
+      "writer_notes": "State-dependent: free or discount coffee flags."
+    }
+  },
+  {
+    "id": "privatized_benches_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Public benches underperform. Sell sitting as a subscription. Standing remains complimentary.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "full_subscription",
+        "label": "Sell sitting subscriptions",
+        "effects": {
+          "treasury": 9,
+          "happiness": -6,
+          "elite_loyalty": 4,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_laws": [
+          "bench_subscription_act"
+        ],
+        "add_flags": [
+          "bench_subscriptions_live"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "bench_privatization_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "bench_subscriptions_live"
+          ]
+        },
+        "result_text": "Paywalls appear on wood. Knees learn loyalty tiers."
+      },
+      {
+        "id": "elite_only",
+        "label": "Reserve elite lounge benches",
+        "effects": {
+          "treasury": 5,
+          "elite_loyalty": 5,
+          "happiness": -5
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "elite_bench_lounges"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bench_policy_resolution",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 50,
+          "required_flags": [
+            "elite_bench_lounges"
+          ]
+        },
+        "result_text": "Velvet benches for donors. Everyone else leans artistically."
+      },
+      {
+        "id": "keep_public",
+        "label": "Keep benches public",
+        "effects": {
+          "happiness": 4,
+          "elite_loyalty": -4,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "auntie_olga": 2
+        },
+        "result_text": "Sitting stays free. Profit invoices the absence of progress."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "business",
+      "bench_subscription"
+    ],
+    "visual_tags": [
+      "bench_paywalls"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "privatized_public_benches",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "paywalled park benches",
+      "writer_notes": "Subscription seating \u2014 not rainwater/pothole privatize clone."
+    }
+  },
+  {
+    "id": "bench_subscription_backlash",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "business_and_privatization",
+    "proposal": "Your bench subscriptions made grandmothers stand. They brought pillows and a petition with crumbs on it.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "bench_subscriptions_live"
+      ],
+      "all_laws": [
+        "bench_subscription_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "offer_senior_tier",
+        "label": "Add a senior sitting tier",
+        "effects": {
+          "treasury": -4,
+          "happiness": 5,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "sir_profit": -1
+        },
+        "add_flags": [
+          "senior_bench_tier"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bench_policy_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "bench_subscriptions_live"
+          ]
+        },
+        "result_text": "Grandmothers sit again. Profit recalculates pillow margins."
+      },
+      {
+        "id": "ignore_petition",
+        "label": "Ignore the pillow petition",
+        "effects": {
+          "happiness": -6,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": -2,
+          "sir_profit": 1
+        },
+        "add_flags": [
+          "bench_petition_ignored"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bench_policy_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "bench_subscriptions_live"
+          ]
+        },
+        "result_text": "Pillows become protest props. The square looks soft and angry."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "bench_subscription"
+    ],
+    "visual_tags": [
+      "bench_protest_pillows"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "privatized_public_benches",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "pillow petition at paywalled benches",
+      "writer_notes": "Callback to bench subscriptions."
+    }
+  },
+  {
+    "id": "bench_policy_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Bench revenue reports are in. Keep the sitting empire, or return wood to the commons before slogans grow legs.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "bench_subscriptions_live",
+        "elite_bench_lounges"
+      ]
+    },
+    "options": [
+      {
+        "id": "keep_privatization",
+        "label": "Keep privatized sitting",
+        "effects": {
+          "treasury": 5,
+          "happiness": -4,
+          "elite_loyalty": 4
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "corporate_benches_empire",
+          "corporate_branding_soft",
+          "bench_chain_complete"
+        ],
+        "result_text": "Sitting stays a product. Logos learn lumbar support."
+      },
+      {
+        "id": "renationalize_benches",
+        "label": "Renationalize the benches",
+        "effects": {
+          "happiness": 6,
+          "treasury": -6,
+          "elite_loyalty": -4
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "auntie_olga": 2
+        },
+        "remove_laws": [
+          "bench_subscription_act"
+        ],
+        "remove_flags": [
+          "bench_subscriptions_live",
+          "elite_bench_lounges"
+        ],
+        "add_flags": [
+          "bench_chain_complete"
+        ],
+        "result_text": "Benches reopen. Subscription apps weep into refund forms."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "bench_subscription",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "corporate_bench_logos"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "privatized_public_benches",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "logo-stamped park benches",
+      "writer_notes": "Sets corporate_benches_empire for corporate_ministan ending."
+    }
+  },
+  {
+    "id": "lottery_treasury_fund",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Fund the budget with a national lottery. Ticket sellers already printed hopeful numbers. Odds are a later problem.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_lottery",
+        "label": "Launch the lottery",
+        "effects": {
+          "treasury": 10,
+          "happiness": 3,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "chaotic": 1
+        },
+        "add_laws": [
+          "national_lottery_budget"
+        ],
+        "add_flags": [
+          "national_lottery_active"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "lottery_odds_collapse",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 58,
+          "required_flags": [
+            "national_lottery_active"
+          ]
+        },
+        "result_text": "Hope sells by the strip. The ledger briefly looks lucky."
+      },
+      {
+        "id": "ban_lottery",
+        "label": "Ban the lottery",
+        "effects": {
+          "order": 3,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": 1
+        },
+        "result_text": "Tickets become bookmarks. The budget looks for quieter miracles."
+      },
+      {
+        "id": "palace_only",
+        "label": "Palace staff lottery only",
+        "effects": {
+          "treasury": 3,
+          "elite_loyalty": 3,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "elite_lottery"
+        ],
+        "result_text": "Only golden names win. Citizens invent underground raffles."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "economy",
+      "lottery_budget"
+    ],
+    "visual_tags": [
+      "national_lottery"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "lottery_budget",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "lottery kiosks on every corner",
+      "writer_notes": "REWRITE from Pack A; speaker now Penny; soft to odds collapse."
+    }
+  },
+  {
+    "id": "lottery_odds_collapse",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Your national lottery odds collapsed. Winners are rare; queues are not. The budget still pretends the tickets are revenue.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 8,
+    "requirements": {
+      "all_flags": [
+        "national_lottery_active"
+      ],
+      "all_laws": [
+        "national_lottery_budget"
+      ]
+    },
+    "options": [
+      {
+        "id": "bailout_prizes",
+        "label": "Bail out the prizes",
+        "effects": {
+          "treasury": -12,
+          "happiness": 4,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "lottery_chain_complete"
+        ],
+        "result_text": "A few citizens win on purpose. The ledger looks intentionally bruised."
+      },
+      {
+        "id": "double_down",
+        "label": "Print more tickets",
+        "effects": {
+          "treasury": -28,
+          "happiness": -4,
+          "order": -5,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "chaotic": 2
+        },
+        "add_flags": [
+          "lottery_budget_fragile",
+          "hyperinflation_soft",
+          "lottery_chain_complete"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "bank_run",
+            "action": "start"
+          }
+        ],
+        "result_text": "Ticket printers overheat. Banks notice the panic first."
+      },
+      {
+        "id": "end_lottery",
+        "label": "Shut the lottery down",
+        "effects": {
+          "order": 4,
+          "happiness": -5,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "remove_laws": [
+          "national_lottery_budget"
+        ],
+        "remove_flags": [
+          "national_lottery_active"
+        ],
+        "add_flags": [
+          "lottery_chain_complete"
+        ],
+        "result_text": "Kiosks close. Hope returns to unpaid overtime."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "lottery_budget",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "lottery_tear_tickets"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "lottery_budget",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6A",
+      "localization_risk": "low",
+      "visual_hook": "torn lottery tickets in gutters",
+      "writer_notes": "Callback to lottery budget; double_down may start bank_run after treasury hit."
+    }
+  },
+  {
+    "id": "palace_gift_shop_opening",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Open a palace gift shop. Majesty becomes merch. Mugs outsell ministries.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 4,
+    "maximum_day": 18,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "open_shop",
+        "label": "Open the gift shop",
+        "effects": {
+          "treasury": 7,
+          "happiness": -2,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_laws": [
+          "palace_gift_shop_act"
+        ],
+        "add_flags": [
+          "palace_gift_shop_open"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "gift_shop_merch_scandal",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 52,
+          "required_flags": [
+            "palace_gift_shop_open"
+          ]
+        },
+        "result_text": "Souvenirs flank the throne. Tourists tip for photos of paperwork."
+      },
+      {
+        "id": "pop_up_only",
+        "label": "Weekend pop-up only",
+        "effects": {
+          "treasury": 3,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
+        "add_flags": [
+          "gift_shop_popup"
+        ],
+        "result_text": "Saturday merch appears. Monday dignity returns briefly."
+      },
+      {
+        "id": "no_shop",
+        "label": "Keep the palace unmerched",
+        "effects": {
+          "elite_loyalty": -3,
+          "happiness": 2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": -2
+        },
+        "result_text": "No mugs. Profit mourns untapped nostalgia."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "business",
+      "palace_gift"
+    ],
+    "visual_tags": [
+      "palace_gift_kiosk"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "palace_gift_shop",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "establishment",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "gift kiosk beside the throne",
+      "writer_notes": "Distinct from Pack C palace tours."
+    }
+  },
+  {
+    "id": "gift_shop_merch_scandal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Your palace gift shop sold 'Official Decree' towels that contradict actual decrees. Brand alignment is moist.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "palace_gift_shop_open"
+      ],
+      "all_laws": [
+        "palace_gift_shop_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "recall_towels",
+        "label": "Recall the decree towels",
+        "effects": {
+          "treasury": -5,
+          "order": 3,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": -1,
+          "clerk_zero": 1
+        },
+        "remove_flags": [],
+        "add_flags": [
+          "gift_shop_chain_complete"
+        ],
+        "result_text": "Towels return damp. Decrees regain exclusive authority."
+      },
+      {
+        "id": "double_merch",
+        "label": "Expand the merch line",
+        "effects": {
+          "treasury": 6,
+          "happiness": -4,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "corporate_branding_soft",
+          "gift_shop_chain_complete"
+        ],
+        "result_text": "Throne mugs multiply. Policy becomes a souvenir aisle."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "palace_gift"
+    ],
+    "visual_tags": [
+      "souvenir_throne_mugs"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "palace_gift_shop",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "throne-shaped souvenir mugs",
+      "writer_notes": "Explicit callback to gift shop opening."
+    }
+  },
+  {
+    "id": "elevator_wifi_mandate",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "infrastructure",
+    "proposal": "Pilot elevator Wi-Fi that predicts floor choice. Possibly. Side effects may include floating.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 6,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "pilot_wifi",
+        "label": "Pilot predictive elevators",
+        "effects": {
+          "treasury": -5,
+          "happiness": 4,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "elevator_wifi_pilot"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "elevator_wifi_trap"
+        },
+        "result_text": "Elevators guess destinations. Two never stop. Commuters adapt spiritually."
+      },
+      {
+        "id": "plain_buttons",
+        "label": "Keep plain buttons",
+        "effects": {
+          "order": 2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
+        "result_text": "Buttons stay mechanical. Doctor Maybe labels you Control Group B."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "elevator_wifi"
+    ],
+    "visual_tags": [
+      "elevator_wifi"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "elevator_wifi",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "Wi-Fi icons in elevators",
+      "writer_notes": "REWRITE from Pack A; hard follow-up on pilot."
+    }
+  },
+  {
+    "id": "elevator_wifi_trap",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "infrastructure",
+    "proposal": "Your predictive elevator Wi-Fi trapped two ministers between floors. They are liveblogging the latency.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "elevator_wifi_pilot"
+      ]
+    },
+    "options": [
+      {
+        "id": "reboot_system",
+        "label": "Reboot the elevators",
+        "effects": {
+          "treasury": -4,
+          "order": 4,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "luna_news": 1
+        },
+        "add_flags": [
+          "elevator_chain_complete"
+        ],
+        "result_text": "Doors open. Ministers emerge mid-sentence. Ratings spike."
+      },
+      {
+        "id": "leave_floating",
+        "label": "Call it a floating office",
+        "effects": {
+          "happiness": -5,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "chaotic": 1,
+          "propagandist": 1
+        },
+        "add_flags": [
+          "elevator_chain_complete"
+        ],
+        "result_text": "Luna airs 'Governance Between Floors.' Meetings never land."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "elevator_wifi"
+    ],
+    "visual_tags": [
+      "stuck_elevator_wifi"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "elevator_wifi",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "stuck elevator with Wi-Fi bars",
+      "writer_notes": "Hard callback to predictive elevator Wi-Fi."
+    }
+  },
+  {
+    "id": "sponsored_potholes",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "infrastructure",
+    "proposal": "Let brands sponsor potholes. Drivers see logos. Roads fund themselves.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 5,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "approve_sponsors",
+        "label": "Sell pothole sponsorships",
+        "effects": {
+          "treasury": 7,
+          "happiness": -4,
+          "order": -2,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_laws": [
+          "sponsored_potholes_act"
+        ],
+        "add_flags": [
+          "sponsored_roads"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "pothole_brand_war",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 54,
+          "required_flags": [
+            "sponsored_roads"
+          ]
+        },
+        "result_text": "Potholes wear logos. A cheese brand claims the worst bend."
+      },
+      {
+        "id": "repair_public",
+        "label": "Repair with public funds",
+        "effects": {
+          "treasury": -7,
+          "happiness": 5,
+          "order": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": -1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "roads_repaired_public"
+        ],
+        "result_text": "Asphalt returns without slogans. Billboards look lonely."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "pothole_naming"
+    ],
+    "visual_tags": [
+      "sponsored_potholes"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "pothole_naming_rights",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "logo-stamped potholes",
+      "writer_notes": "REWRITE from Pack A; soft to brand war. Distinct from square naming."
+    }
+  },
+  {
+    "id": "pothole_brand_war",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Your sponsored potholes sparked a brand war. Rival logos dug new holes for coverage. Traffic is a battlefield.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "sponsored_roads"
+      ],
+      "all_laws": [
+        "sponsored_potholes_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "military_mediate",
+        "label": "Deploy parade mediators",
+        "effects": {
+          "order": 5,
+          "treasury": -4,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "pothole_parade_mediation"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "pothole_naming_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 56,
+          "required_flags": [
+            "sponsored_roads"
+          ]
+        },
+        "result_text": "Tanks direct logo traffic. Cheese yields to biscuits at kilometer three."
+      },
+      {
+        "id": "auction_holes",
+        "label": "Auction exclusive bends",
+        "effects": {
+          "treasury": 5,
+          "order": -3,
+          "happiness": -3,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "general_boom": 1
+        },
+        "add_flags": [
+          "pothole_auction_live"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "pothole_naming_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 56,
+          "required_flags": [
+            "sponsored_roads"
+          ]
+        },
+        "result_text": "Worst bends sell high. Drivers learn brand loyalty the hard way."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "pothole_naming"
+    ],
+    "visual_tags": [
+      "pothole_brand_war"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "pothole_naming_rights",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "competing logos in road holes",
+      "writer_notes": "Callback to sponsored potholes; Boom speaker."
+    }
+  },
+  {
+    "id": "pothole_naming_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "infrastructure",
+    "proposal": "The pothole naming rights war needs a settlement. Civic plaques or permanent brand asphalt?",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "sponsored_roads"
+      ]
+    },
+    "options": [
+      {
+        "id": "civic_plaques",
+        "label": "Convert to civic plaques",
+        "effects": {
+          "happiness": 5,
+          "treasury": -4,
+          "elite_loyalty": -3,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": -1,
+          "auntie_olga": 1
+        },
+        "remove_laws": [
+          "sponsored_potholes_act"
+        ],
+        "remove_flags": [
+          "sponsored_roads"
+        ],
+        "add_flags": [
+          "pothole_chain_complete"
+        ],
+        "result_text": "Plaques name neighborhoods. Logos retire to billboards."
+      },
+      {
+        "id": "permanent_brands",
+        "label": "Make branding permanent",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 4,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "corporate_branding_soft",
+          "pothole_chain_complete"
+        ],
+        "result_text": "Roads become catalogs. Maps list snack brands as landmarks."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "pothole_naming"
+    ],
+    "visual_tags": [
+      "civic_pothole_plaques"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "pothole_naming_rights",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "civic plaques over former brand holes",
+      "writer_notes": "Resolution of pothole naming rights chain."
+    }
+  },
+  {
+    "id": "long_setup_grand_canal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "Build a cheap bridge to Nowhere Village. Budget covers the ribbon photo; geography is optimistic.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 18,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "dig",
+        "label": "Break ground now",
+        "effects": {
+          "treasury": -10,
+          "happiness": 5,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "chaotic": 1
+        },
+        "add_flags": [
+          "bridge_groundbroken"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bridge_budget_overrun",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "bridge_groundbroken"
+          ]
+        },
+        "result_text": "Piers rise. The far bank looks farther than the spreadsheet promised."
+      },
+      {
+        "id": "paper_canal",
+        "label": "Commission maps only",
+        "effects": {
+          "treasury": -3,
+          "elite_loyalty": 2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "bridge_on_paper"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bridge_to_nowhere_resolution",
+          "minimum_delay_days": 3,
+          "maximum_delay_days": 6,
+          "priority": 48,
+          "required_flags": [
+            "bridge_on_paper"
+          ]
+        },
+        "result_text": "Beautiful blueprints of a bridge. Tours of the planning office sell out."
+      },
+      {
+        "id": "postpone",
+        "label": "Postpone forever",
+        "effects": {
+          "treasury": 2,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": -1
+        },
+        "result_text": "Nowhere Village stays theoretical. Debates pave nothing."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "bridge_nowhere"
+    ],
+    "visual_tags": [
+      "bridge_to_nowhere_sign"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "bridge_to_nowhere",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "ribbon-cutting for unfinished bridge",
+      "writer_notes": "REWRITE canal placeholder as Bridge to Nowhere; keep ID for saves."
+    }
+  },
+  {
+    "id": "bridge_budget_overrun",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "infrastructure",
+    "proposal": "Form B-9 reports your Bridge to Nowhere overran the photo budget. The span stops midair. Attach receipts.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "bridge_groundbroken"
+      ]
+    },
+    "options": [
+      {
+        "id": "fund_completion",
+        "label": "Fund a finishing span",
+        "effects": {
+          "treasury": -8,
+          "happiness": 3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": -1
+        },
+        "add_flags": [
+          "bridge_extra_funding"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bridge_to_nowhere_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 57,
+          "required_flags": [
+            "bridge_groundbroken"
+          ]
+        },
+        "result_text": "More concrete arrives. Nowhere remains a destination with an asterisk."
+      },
+      {
+        "id": "declare_scenic",
+        "label": "Declare it a scenic overlook",
+        "effects": {
+          "treasury": 2,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "bridge_scenic_overlook"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "bridge_to_nowhere_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 57,
+          "required_flags": [
+            "bridge_groundbroken"
+          ]
+        },
+        "result_text": "Signs praise the view. The missing half becomes artistic."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "bridge_nowhere"
+    ],
+    "visual_tags": [
+      "bridge_budget_charts"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "bridge_to_nowhere",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "budget charts taped to unfinished bridge",
+      "writer_notes": "Callback to groundbroken bridge."
+    }
+  },
+  {
+    "id": "bridge_to_nowhere_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "Resolve the Bridge to Nowhere: finish toward the village, or capitalize the unfinished miracle as a landmark.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "bridge_groundbroken",
+        "bridge_on_paper"
+      ]
+    },
+    "options": [
+      {
+        "id": "finish_bridge",
+        "label": "Finish the crossing",
+        "effects": {
+          "treasury": -6,
+          "happiness": 6,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "bridge_chain_complete",
+          "bridge_actually_finished"
+        ],
+        "result_text": "Nowhere Village gains a road. The budget gains a scar."
+      },
+      {
+        "id": "monument_status",
+        "label": "Make it a national monument",
+        "effects": {
+          "treasury": 3,
+          "happiness": 2,
+          "elite_loyalty": 3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "bridge_chain_complete",
+          "bridge_monument"
+        ],
+        "result_text": "The incomplete span becomes heritage. Postcards omit the missing half."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "bridge_nowhere"
+    ],
+    "visual_tags": [
+      "incomplete_bridge_span"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "bridge_to_nowhere",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-6B",
+      "localization_risk": "low",
+      "visual_hook": "incomplete bridge span over empty air",
+      "writer_notes": "State-dependent: dig overrun path or paper-only path."
+    }
+  }
+]

@@ -137,5 +137,17 @@
     "conditions": {
       "all_flags": ["moon_replacement_pending"]
     }
+  },
+  {
+    "id": "corporate_ministan",
+    "type": "special",
+    "priority": 94,
+    "title": "Corporate Ministan, LLC",
+    "description": "Public benches became brand real estate. Historians list the country as a sitting subscription with a flag.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "®️",
+    "conditions": {
+      "all_flags": ["corporate_benches_empire", "corporate_branding_soft"]
+    }
   }
 ]

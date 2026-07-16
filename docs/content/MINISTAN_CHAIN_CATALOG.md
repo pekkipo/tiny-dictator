@@ -21,7 +21,7 @@
 ### chain_umbrella_tax
 
 - **Title:** Umbrella Tax
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** minister_penny
 - **Category:** economy
@@ -31,48 +31,56 @@
 - **Likely laws:** umbrella_tax
 - **Likely endings:** —
 - **Known risks:** Near-duplicate standalone tax cards
+- **Decision IDs:** umbrella_tax_proposal, umbrella_tax_enforcement
+- **Batch:** 2B-6A
 
 ### chain_national_coffee_reserve
 
 - **Title:** National Coffee Reserve
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** auntie_olga
 - **Category:** public_life
 - **Intended stage:** establishment
 - **Premise:** Free coffee morning creates hoarding and queue culture.
-- **Dependencies:** free_coffee_morning law optional end
-- **Likely laws:** free_coffee_morning
+- **Dependencies:** free_coffee_morning rewrite from Pack A
+- **Likely laws:** national_coffee_reserve
 - **Likely endings:** —
 - **Known risks:** Public-life tone vs Olga voice
+- **Decision IDs:** free_coffee_morning, coffee_hoarding_crisis, coffee_reserve_resolution
+- **Batch:** 2B-6A
 
 ### chain_privatized_public_benches
 
 - **Title:** Privatized Public Benches
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** sir_profit
 - **Category:** business_and_privatization
 - **Intended stage:** escalation
 - **Premise:** Sitting becomes subscription-based.
 - **Dependencies:** —
-- **Likely laws:** —
-- **Likely endings:** corporate_ministan (soft setup)
+- **Likely laws:** bench_subscription_act
+- **Likely endings:** corporate_ministan
 - **Known risks:** Happiness hit pacing
+- **Decision IDs:** privatized_benches_proposal, bench_subscription_backlash, bench_policy_resolution
+- **Batch:** 2B-6A
 
 ### chain_lottery_budget
 
 - **Title:** Lottery Budget
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** minister_penny
 - **Category:** economy
 - **Intended stage:** establishment
 - **Premise:** National lottery funds treasury until odds collapse morale.
-- **Dependencies:** Links arc_hyperinflation
+- **Dependencies:** Links bank_run crisis modifier; soft hyperinflation flag
 - **Likely laws:** national_lottery_budget
 - **Likely endings:** —
 - **Known risks:** Overlap with hyperinflation arc
+- **Decision IDs:** lottery_treasury_fund, lottery_odds_collapse
+- **Batch:** 2B-6A
 
 ### chain_coin_shortage
 
@@ -105,35 +113,39 @@
 ### chain_palace_gift_shop
 
 - **Title:** Palace Gift Shop
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** sir_profit
 - **Category:** business_and_privatization
 - **Intended stage:** establishment
 - **Premise:** Privatize palace garden expands into merch empire.
-- **Dependencies:** privatize_palace_garden affinity card partial seed
-- **Likely laws:** palace_subscription_plan
+- **Dependencies:** Distinct from Pack C working_palace_tours
+- **Likely laws:** palace_gift_shop_act
 - **Likely endings:** —
 - **Known risks:** Affinity card may merge into chain entry
+- **Decision IDs:** palace_gift_shop_opening, gift_shop_merch_scandal
+- **Batch:** 2B-6B
 
 ### chain_pothole_naming_rights
 
 - **Title:** Pothole Naming Rights
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** sir_profit
 - **Category:** infrastructure
 - **Intended stage:** escalation
 - **Premise:** Sponsored potholes become civic identity crisis.
 - **Dependencies:** —
-- **Likely laws:** sponsored_potholes
+- **Likely laws:** sponsored_potholes_act
 - **Likely endings:** —
 - **Known risks:** Visual tag reuse `sponsored_potholes`
+- **Decision IDs:** sponsored_potholes, pothole_brand_war, pothole_naming_resolution
+- **Batch:** 2B-6B
 
 ### chain_elevator_wifi
 
 - **Title:** Elevator Wi-Fi
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** doctor_maybe
 - **Category:** infrastructure
@@ -143,20 +155,24 @@
 - **Likely laws:** —
 - **Likely endings:** —
 - **Known risks:** youth_representative guest cameo opportunity
+- **Decision IDs:** elevator_wifi_mandate, elevator_wifi_trap
+- **Batch:** 2B-6B
 
 ### chain_bridge_to_nowhere
 
 - **Title:** Bridge to Nowhere
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** minister_penny
 - **Category:** infrastructure
 - **Intended stage:** establishment
 - **Premise:** Cheap bridge project overshoots budget and geography.
-- **Dependencies:** long_setup_grand_canal placeholder rewrite
+- **Dependencies:** long_setup_grand_canal ID preserved (rewrite)
 - **Likely laws:** —
 - **Likely endings:** —
 - **Known risks:** Infrastructure placeholder card overlap
+- **Decision IDs:** long_setup_grand_canal, bridge_budget_overrun, bridge_to_nowhere_resolution
+- **Batch:** 2B-6B
 
 ### chain_traffic_flags
 
@@ -469,3 +485,4 @@
 | Version | Date | Notes |
 |---|---|---|
 | 1.0 | 2026-07-15 | Milestone 2B-1 — 32 chain planning entries |
+| 1.1 | 2026-07-16 | Milestone 2B-6 — Pack A eight chains approved |
