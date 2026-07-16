@@ -188,6 +188,11 @@
     "proposal": "Citizens stage a Silent Frown Protest. They are not smiling, and they brought signs.",
     "one_time": true,
     "base_weight": 10,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
     "requirements": {
       "all_flags": ["eternal_smile_active"]
     },

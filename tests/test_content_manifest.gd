@@ -131,19 +131,23 @@ func _test_required_fields(manifest: Dictionary) -> void:
 
 
 func _test_expected_counts(manifest: Dictionary) -> void:
-	_check(manifest.get("decisions", []).size() == 76, "manifest has 76 decisions")
+	_check(manifest.get("decisions", []).size() == 94, "manifest has 94 decisions")
 	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 6, "manifest has 6 arcs")
 	_check(manifest.get("catalogs", {}).get("crises", []).size() == 7, "manifest has 7 crises")
-	_check(manifest.get("catalogs", {}).get("laws", []).size() == 12, "manifest has 12 laws")
+	_check(manifest.get("catalogs", {}).get("laws", []).size() == 18, "manifest has 18 laws")
 	_check(manifest.get("catalogs", {}).get("endings", []).size() == 11, "manifest has 11 endings")
 	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 8, "manifest has 8 advisors")
 	_check(manifest.get("catalogs", {}).get("ruler_identities", []).size() == 7, "manifest has 7 ruler identities")
 	_check(manifest.get("catalogs", {}).get("palace_upgrades", []).size() == 3, "manifest has 3 palace upgrades")
-	_check(manifest.get("catalogs", {}).get("chains", []).size() == 3, "manifest has 3 chains")
+	_check(manifest.get("catalogs", {}).get("chains", []).size() == 4, "manifest has 4 chains")
 
 	var approved: int = int(manifest.get("quota_report", {}).get("decisions", {}).get("approved_total", -1))
-	_check(approved == 10, "onboarding pack approved count (got %d)" % approved)
+	_check(approved == 34, "onboarding+standalone_A approved count (got %d)" % approved)
 	var onboarding_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("onboarding", {}).get("approved", -1)
 	)
 	_check(onboarding_approved == 10, "onboarding class has 10 approved (got %d)" % onboarding_approved)
+	var standalone_approved: int = int(
+		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("standalone", {}).get("approved", -1)
+	)
+	_check(standalone_approved == 24, "standalone class has 24 approved after 2B-3 (got %d)" % standalone_approved)

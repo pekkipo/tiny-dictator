@@ -271,34 +271,6 @@
     "visual_tags": ["window_tax"]
   },
   {
-    "id": "no_weekends_proposal",
-    "advisor_id": "minister_penny",
-    "category": "absurd_law",
-    "proposal": "Studies show citizens do no work on weekends. Abolishing weekends would raise productivity by two sevenths.",
-    "one_time": true,
-    "weight": 8,
-    "left": {
-      "label": "Weekends stay",
-      "effects": {
-        "happiness": 4,
-        "treasury": -2
-      },
-      "result_text": "Weekends survive. Citizens celebrate by doing absolutely nothing."
-    },
-    "right": {
-      "label": "Abolish weekends",
-      "effects": {
-        "treasury": 9,
-        "happiness": -12,
-        "order": -4,
-        "elite_loyalty": 3
-      },
-      "add_laws": ["no_weekends"],
-      "result_text": "Weekends are cancelled. Calendars nationwide enter a period of mourning."
-    },
-    "tags": ["economy", "absurd"]
-  },
-  {
     "id": "luna_good_news_only",
     "schema_version": 2,
     "country_id": "ministan",

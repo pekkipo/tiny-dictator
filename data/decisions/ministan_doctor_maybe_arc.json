@@ -10,6 +10,12 @@
     "proposal": "Phase two of the happiness experiment involves moon dust in the water supply. Results may glow.",
     "one_time": true,
     "base_weight": 10,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "escalation",
+      "step": 2,
+      "importance": "major"
+    },
     "requirements": {
       "active_arcs": ["doctor_maybe_arc"],
       "all_flags": ["science_experiment_funded"]

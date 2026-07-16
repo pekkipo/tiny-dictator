@@ -1,9 +1,9 @@
 {
-	"batch_id": "2B-2",
+	"batch_id": "2B-3B",
 	"catalogs": {
 		"advisors": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "General Boom",
 				"id": "general_boom",
@@ -11,7 +11,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Minister Penny",
 				"id": "minister_penny",
@@ -19,7 +19,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Luna News",
 				"id": "luna_news",
@@ -27,7 +27,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Auntie Olga",
 				"id": "auntie_olga",
@@ -35,7 +35,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Doctor Maybe",
 				"id": "doctor_maybe",
@@ -43,7 +43,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Sir Profit",
 				"id": "sir_profit",
@@ -51,7 +51,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Comrade Whiskers",
 				"id": "comrade_whiskers",
@@ -59,7 +59,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "advisor",
 				"display_name": "Clerk Zero",
 				"id": "clerk_zero",
@@ -70,7 +70,7 @@
 		"arcs": [
 			{
 				"arc_type": "national",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
 				"decision_count": 8,
 				"id": "cat_politics",
@@ -80,7 +80,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
 				"decision_count": 5,
 				"id": "traffic_military",
@@ -90,9 +90,9 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
-				"decision_count": 6,
+				"decision_count": 7,
 				"id": "mandatory_happiness",
 				"importance": "major",
 				"notes": "",
@@ -100,7 +100,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "general_boom_arc",
@@ -110,9 +110,9 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
-				"decision_count": 4,
+				"decision_count": 5,
 				"id": "doctor_maybe_arc",
 				"importance": "major",
 				"notes": "",
@@ -120,7 +120,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "arc",
 				"decision_count": 2,
 				"id": "robot_government",
@@ -131,7 +131,7 @@
 		],
 		"chains": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "chain",
 				"decision_ids": [
 					"free_pizza_friday",
@@ -145,7 +145,7 @@
 				"target_length": 4
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "chain",
 				"decision_ids": [
 					"switch_off_traffic_lights",
@@ -160,7 +160,7 @@
 				"target_length": 5
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "chain",
 				"decision_ids": [
 					"robot_cabinet_proposal",
@@ -170,11 +170,23 @@
 				"notes": "Manifest-invented chain_id; no runtime field yet.",
 				"status": "deferred",
 				"target_length": 2
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "chain",
+				"decision_ids": [
+					"cat_parliament",
+					"cat_fish_budget"
+				],
+				"id": "cat_politics_followups",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "integrated",
+				"target_length": 2
 			}
 		],
 		"crises": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "national_power_outage",
 				"id": "national_power_outage",
@@ -183,7 +195,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "budget_meltdown_crisis",
 				"id": "budget_meltdown",
@@ -192,7 +204,7 @@
 				"status": "deferred"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "cheese_shortage_crisis",
 				"id": "cheese_shortage_crisis",
@@ -201,7 +213,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "mass_protest",
 				"id": "mass_protest",
@@ -210,7 +222,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "bank_run",
 				"id": "bank_run",
@@ -219,7 +231,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "cat_parliament_occupation",
 				"id": "cat_parliament_occupation",
@@ -228,7 +240,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "crisis",
 				"entry_decision_id": "pantry_moth_crisis",
 				"id": "pantry_moth_crisis",
@@ -239,7 +251,7 @@
 		],
 		"endings": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "elite_coup",
@@ -247,7 +259,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "revolution",
@@ -255,7 +267,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "chaos_country",
@@ -263,7 +275,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "bankrupt_leader",
@@ -271,7 +283,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "nation_in_darkness",
@@ -279,7 +291,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "cat_republic",
@@ -287,7 +299,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "survival",
 				"id": "survived_the_prototype",
@@ -295,7 +307,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "fallback",
 				"id": "content_exhausted",
@@ -303,7 +315,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "eternal_smile_state",
@@ -311,7 +323,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "general_boom_coup",
@@ -319,7 +331,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "accidental_moon_replacement",
@@ -329,7 +341,7 @@
 		],
 		"laws": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "free_pizza_friday",
 				"notes": "",
@@ -340,7 +352,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "mandatory_smiling",
 				"notes": "",
@@ -351,7 +363,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "window_tax",
 				"notes": "",
@@ -362,7 +374,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "cat_voting_rights",
 				"notes": "",
@@ -373,7 +385,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "tank_traffic_control",
 				"notes": "",
@@ -384,7 +396,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "emergency_broadcast_priority",
 				"notes": "",
@@ -395,7 +407,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "no_weekends",
 				"notes": "",
@@ -406,7 +418,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "fake_smile_standard",
 				"notes": "",
@@ -417,7 +429,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "emergency_martial_law",
 				"notes": "",
@@ -428,7 +440,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "national_happiness_index",
 				"notes": "",
@@ -439,7 +451,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "scientific_experiment_permit",
 				"notes": "",
@@ -450,7 +462,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "law",
 				"id": "fish_emergency_reserve",
 				"notes": "",
@@ -459,25 +471,91 @@
 				"visual_tags": [
 					"cats_in_square"
 				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "luxury_chair_tax",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"taxed_chairs"
+				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "national_bedtime",
+				"notes": "",
+				"primary_category": "public_life",
+				"status": "integrated",
+				"visual_tags": [
+					"curtains_drawn"
+				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "national_clock_law",
+				"notes": "",
+				"primary_category": "infrastructure",
+				"status": "integrated",
+				"visual_tags": [
+					"synchronized_clocks"
+				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "queue_etiquette_law",
+				"notes": "",
+				"primary_category": "public_life",
+				"status": "integrated",
+				"visual_tags": [
+					"numbered_queues"
+				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "compliment_quota_law",
+				"notes": "",
+				"primary_category": "public_life",
+				"status": "integrated",
+				"visual_tags": [
+					"compliment_meters"
+				]
+			},
+			{
+				"batch_id": "2B-3B",
+				"content_type": "law",
+				"id": "flag_traffic_law",
+				"notes": "",
+				"primary_category": "infrastructure",
+				"status": "integrated",
+				"visual_tags": [
+					"flag_intersections"
+				]
 			}
 		],
 		"palace_upgrades": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "palace_upgrade",
 				"id": "gold_desk",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "palace_upgrade",
 				"id": "propaganda_studio",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "palace_upgrade",
 				"id": "emergency_bunker",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
@@ -486,7 +564,7 @@
 		],
 		"ruler_identities": [
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Smiling Tyrant",
 				"id": "the_smiling_tyrant",
@@ -494,7 +572,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Spreadsheet Emperor",
 				"id": "the_spreadsheet_emperor",
@@ -502,7 +580,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "Supreme Cat Servant",
 				"id": "supreme_cat_servant",
@@ -510,7 +588,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Chaotic Reformer",
 				"id": "the_chaotic_reformer",
@@ -518,7 +596,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Technocratic Accident",
 				"id": "the_technocratic_accident",
@@ -526,7 +604,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Golden Oligarch",
 				"id": "the_golden_oligarch",
@@ -534,7 +612,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-2",
+				"batch_id": "2B-3B",
 				"content_type": "ruler_identity",
 				"display_name": "The Accidental Ruler",
 				"id": "the_accidental_ruler",
@@ -546,9 +624,33 @@
 	"country_id": "ministan",
 	"decisions": [
 		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "absurd_civic_sweeping",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "instability",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"broom_brigades"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -570,7 +672,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -594,7 +696,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -618,7 +720,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -640,7 +742,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -655,14 +757,14 @@
 			"primary_speaker": "general_boom",
 			"runtime_source_file": "data/decisions/ministan_general_boom_arc.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -684,7 +786,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -708,7 +810,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "bridge_toll_concession",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "endgame",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"toll_booths"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -730,7 +856,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -754,17 +880,17 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
-			"chain_id": null,
+			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "cat_fish_budget",
 			"manual_test_status": "untested",
-			"notes": "",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking.",
 			"primary_category": "follow_up",
-			"primary_content_class": "standalone",
+			"primary_content_class": "short_chain",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "minister_penny",
 			"runtime_source_file": "data/decisions/ministan_cat_politics.json",
@@ -776,7 +902,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -798,17 +924,17 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
-			"chain_id": null,
+			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "cat_parliament",
 			"manual_test_status": "untested",
-			"notes": "",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking.",
 			"primary_category": "follow_up",
-			"primary_content_class": "standalone",
+			"primary_content_class": "short_chain",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "luna_news",
 			"runtime_source_file": "data/decisions/ministan_cat_politics.json",
@@ -820,7 +946,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -844,7 +970,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -866,7 +992,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -888,7 +1014,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -910,7 +1036,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -932,7 +1058,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -954,7 +1080,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -978,7 +1104,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -993,14 +1119,14 @@
 			"primary_speaker": "auntie_olga",
 			"runtime_source_file": "data/decisions/ministan_core.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1024,7 +1150,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1046,7 +1172,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -1068,7 +1194,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1090,7 +1216,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "commemorative_debt_sale",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"debt_certificates"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1105,14 +1255,38 @@
 			"primary_speaker": "clerk_zero",
 			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "elevator_wifi_mandate",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"elevator_wifi"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1134,7 +1308,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1156,7 +1330,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1178,7 +1352,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1193,14 +1367,14 @@
 			"primary_speaker": "general_boom",
 			"runtime_source_file": "data/decisions/ministan_stage_placeholders.json",
 			"schema_validation_status": "pass",
-			"status": "needs_rewrite",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1224,7 +1398,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "flag_traffic_system",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "general_boom",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"flag_intersections"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "free_coffee_morning",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"coffee_kiosks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -1246,7 +1468,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1268,7 +1490,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1290,7 +1512,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1310,19 +1532,19 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
-			"arc_id": null,
+			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "pass",
 			"id": "happiness_backlash",
-			"manual_test_status": "untested",
+			"manual_test_status": "partial",
 			"notes": "",
 			"primary_category": "follow_up",
-			"primary_content_class": "standalone",
+			"primary_content_class": "major_arc",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "auntie_olga",
 			"runtime_source_file": "data/decisions/ministan_mandatory_happiness.json",
@@ -1334,7 +1556,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1358,7 +1580,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1382,29 +1604,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
-			"graph_validation_status": "pass",
+			"graph_validation_status": "partial",
 			"id": "long_setup_grand_canal",
-			"manual_test_status": "untested",
-			"notes": "Phase 2A stage placeholder; requires rewrite for strong launch.",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
 			"primary_category": "infrastructure",
 			"primary_content_class": "standalone",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "minister_penny",
-			"runtime_source_file": "data/decisions/ministan_stage_placeholders.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "needs_rewrite",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"grand_canal_sign"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "lottery_treasury_fund",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"national_lottery"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1426,9 +1674,33 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "luxury_chair_tax",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"taxed_chairs"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1452,7 +1724,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1476,7 +1748,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1498,7 +1770,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1522,7 +1794,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1544,19 +1816,19 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
-			"arc_id": null,
+			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "pass",
 			"id": "maybe_moon_dust_trial",
-			"manual_test_status": "untested",
+			"manual_test_status": "partial",
 			"notes": "",
 			"primary_category": "science",
-			"primary_content_class": "standalone",
+			"primary_content_class": "major_arc",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "doctor_maybe",
 			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
@@ -1568,7 +1840,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1590,7 +1862,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1605,14 +1877,62 @@
 			"primary_speaker": "luna_news",
 			"runtime_source_file": "data/decisions/ministan_crises.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "national_bedtime_decree",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"curtains_drawn"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "national_clock_sync",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"synchronized_clocks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1634,51 +1954,79 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "neighborhood_noise_complaint",
-			"manual_test_status": "untested",
-			"notes": "",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
 			"primary_category": "public_life",
 			"primary_content_class": "standalone",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "auntie_olga",
-			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"accordion_alley"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
-			"graph_validation_status": "pass",
+			"graph_validation_status": "partial",
 			"id": "no_weekends_proposal",
-			"manual_test_status": "untested",
-			"notes": "",
-			"primary_category": "absurd_law",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
 			"primary_content_class": "standalone",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "minister_penny",
-			"runtime_source_file": "data/decisions/ministan_core.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"tired_citizens"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "official_queue_etiquette",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"numbered_queues"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1700,29 +2048,55 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
-			"card_type": "advisor",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "olga_loyal_council",
-			"manual_test_status": "untested",
-			"notes": "",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
 			"primary_category": "public_life",
 			"primary_content_class": "standalone",
-			"primary_run_stage": "establishment",
+			"primary_run_stage": "escalation",
 			"primary_speaker": "auntie_olga",
-			"runtime_source_file": "data/decisions/ministan_advisor_affinity.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"citizen_brigade"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "palace_bus_routes",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"palace_buses"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1746,7 +2120,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "palace_room_rental",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"palace_tour_rooms"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1770,7 +2168,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1792,7 +2190,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "perfumed_sewage_reform",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"perfumed_sewers"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -1814,7 +2236,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -1836,7 +2258,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1851,14 +2273,14 @@
 			"primary_speaker": "clerk_zero",
 			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1882,29 +2304,31 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "privatize_rainwater",
-			"manual_test_status": "untested",
-			"notes": "",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
 			"primary_category": "economy",
 			"primary_content_class": "standalone",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "sir_profit",
-			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"rain_bucket_protests"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1919,14 +2343,38 @@
 			"primary_speaker": "luna_news",
 			"runtime_source_file": "data/decisions/ministan_advisor_affinity.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "public_compliment_quota",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"compliment_meters"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1948,7 +2396,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1970,7 +2418,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1992,7 +2440,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2014,7 +2462,7 @@
 		{
 			"arc_id": "robot_government",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": "robot_government",
 			"content_type": "decision",
@@ -2036,7 +2484,7 @@
 		{
 			"arc_id": "robot_government",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": "robot_government",
 			"content_type": "decision",
@@ -2058,7 +2506,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2082,7 +2530,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2097,14 +2545,38 @@
 			"primary_speaker": "doctor_maybe",
 			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "deferred",
 			"visual_tags": [],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "sponsored_potholes",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"sponsored_potholes"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -2128,7 +2600,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -2150,7 +2622,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -2172,7 +2644,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -2196,7 +2668,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -2220,29 +2692,79 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "partial",
 			"id": "treasury_tip_jar",
-			"manual_test_status": "untested",
-			"notes": "",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
 			"primary_category": "economy",
 			"primary_content_class": "standalone",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "minister_penny",
-			"runtime_source_file": "data/decisions/ministan_generic_fill.json",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"treasury_tip_jar"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-2",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "universal_birthday_holiday",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "public_life",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"birthday_banners"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "wage_freeze_mandate",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"primary_category": "economy",
+			"primary_content_class": "standalone",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"frozen_payroll"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-3B",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2268,106 +2790,117 @@
 		"approved_only": {
 			"by_primary_category_canonical": {
 				"bureaucracy": 1,
-				"economy": 2,
-				"infrastructure": 1,
+				"economy": 10,
+				"infrastructure": 9,
 				"media_and_propaganda": 1,
 				"military_and_order": 1,
-				"public_life": 3,
+				"public_life": 11,
 				"science_and_technology": 1
 			},
 			"by_primary_run_stage": {
-				"establishment": 10
+				"endgame": 1,
+				"escalation": 9,
+				"establishment": 23,
+				"instability": 1
 			},
 			"by_primary_speaker": {
-				"auntie_olga": 2,
-				"clerk_zero": 1,
+				"auntie_olga": 7,
+				"clerk_zero": 3,
 				"comrade_whiskers": 1,
-				"doctor_maybe": 1,
-				"general_boom": 1,
-				"luna_news": 1,
-				"minister_penny": 2,
-				"sir_profit": 1
+				"doctor_maybe": 2,
+				"general_boom": 2,
+				"luna_news": 3,
+				"minister_penny": 9,
+				"sir_profit": 7
 			}
 		},
 		"by_primary_category": {
-			"absurd_law": 2,
+			"absurd_law": 1,
 			"administration": 3,
-			"economy": 10,
+			"economy": 16,
 			"follow_up": 9,
 			"government": 2,
-			"infrastructure": 6,
+			"infrastructure": 13,
 			"media": 8,
 			"military": 10,
 			"politics": 4,
-			"public_life": 16,
+			"public_life": 22,
 			"science": 6
 		},
 		"by_primary_category_canonical": {
 			"bureaucracy": 5,
-			"economy": 10,
-			"infrastructure": 6,
+			"economy": 16,
+			"infrastructure": 13,
 			"media_and_propaganda": 8,
 			"military_and_order": 10,
-			"public_life": 31,
+			"public_life": 36,
 			"science_and_technology": 6
 		},
 		"by_primary_content_class": {
 			"crisis": 6,
 			"endgame": 3,
-			"major_arc": 23,
+			"major_arc": 25,
 			"onboarding": 10,
 			"recovery": 4,
-			"short_chain": 11,
-			"standalone": 19
+			"short_chain": 13,
+			"standalone": 33
 		},
 		"by_primary_run_stage": {
-			"endgame": 2,
-			"escalation": 5,
-			"establishment": 68,
-			"instability": 1
+			"endgame": 3,
+			"escalation": 14,
+			"establishment": 75,
+			"instability": 2
 		},
 		"by_primary_speaker": {
-			"auntie_olga": 15,
-			"clerk_zero": 5,
+			"auntie_olga": 18,
+			"clerk_zero": 7,
 			"comrade_whiskers": 2,
-			"doctor_maybe": 5,
-			"general_boom": 15,
-			"luna_news": 15,
-			"minister_penny": 15,
-			"sir_profit": 4
+			"doctor_maybe": 6,
+			"general_boom": 16,
+			"luna_news": 17,
+			"minister_penny": 19,
+			"sir_profit": 9
 		},
 		"by_review_status": {
 			"balance_review_status": {
-				"partial": 76
+				"partial": 94
 			},
 			"graph_validation_status": {
-				"partial": 42,
-				"pass": 34
+				"partial": 62,
+				"pass": 32
 			},
 			"manual_test_status": {
-				"partial": 28,
-				"pass": 10,
-				"untested": 38
+				"partial": 30,
+				"pass": 34,
+				"untested": 30
 			},
 			"voice_review_status": {
-				"not_reviewed": 76
+				"not_reviewed": 94
 			}
 		},
 		"by_status": {
-			"approved": 10,
-			"deferred": 3,
-			"integrated": 54,
-			"needs_rewrite": 9
+			"approved": 34,
+			"deferred": 11,
+			"integrated": 42,
+			"needs_rewrite": 7
 		}
 	},
-	"generated_at": "2026-07-15T17:12:30",
+	"generated_at": "2026-07-15T18:27:13",
 	"manifest_version": 1,
-	"phase": "2b_2_onboarding",
+	"phase": "2b_3_standalone_pack_a",
 	"quality_findings": {
 		"deferred_ids": [
+			"boom_hostile_coup_rumor",
 			"budget_meltdown_crisis",
+			"cat_voting_proposal",
+			"daily_cabinet_briefing",
+			"escalation_only_rival_parade",
+			"national_anthem_remix",
+			"postal_pigeon_reform",
+			"propaganda_smile_campaign",
 			"robot_cabinet_proposal",
-			"robot_government_installed"
+			"robot_government_installed",
+			"science_grant_request"
 		],
 		"diagnostics_summary": {
 			"branches_no_continuation": 0,
@@ -2375,8 +2908,8 @@
 			"dominant_choice_options": 0,
 			"endings_impossible": 4,
 			"excessive_advisor_concentration": 4,
-			"excessive_tag_concentration": 0,
-			"unreachable_decisions": 42
+			"excessive_tag_concentration": 1,
+			"unreachable_decisions": 62
 		},
 		"duplicate_premise_groups": [
 			{
@@ -2411,7 +2944,6 @@
 			"bank_run",
 			"boom_emergency_powers_demand",
 			"boom_failed_coup",
-			"boom_hostile_coup_rumor",
 			"boom_loyal_protector",
 			"cat_fish_budget",
 			"cat_limited_council",
@@ -2422,12 +2954,10 @@
 			"cat_politics_fish_budget",
 			"cat_protest",
 			"cat_republic_declared",
-			"cat_voting_proposal",
 			"cat_voting_rights",
 			"cats_return_to_boxes",
 			"cheese_shortage",
 			"cheese_shortage_crisis",
-			"daily_cabinet_briefing",
 			"fake_smile_industry",
 			"free_pizza_friday",
 			"generic_minister_disagreement",
@@ -2443,26 +2973,18 @@
 			"maybe_lab_runaway",
 			"maybe_moon_dust_trial",
 			"military_parade",
-			"national_anthem_remix",
 			"national_power_outage",
-			"neighborhood_noise_complaint",
-			"no_weekends_proposal",
-			"olga_loyal_council",
 			"parade_budget_boost",
 			"pineapple_referendum",
 			"pizza_union_strike",
-			"postal_pigeon_reform",
-			"privatize_rainwater",
-			"propaganda_smile_campaign",
-			"science_grant_request",
 			"switch_off_traffic_lights",
 			"traffic_complaint",
 			"traffic_lights_restored",
 			"traffic_military_resolved",
-			"traffic_tank_solution",
-			"treasury_tip_jar"
+			"traffic_tank_solution"
 		],
 		"missing_review_status": [
+			"absurd_civic_sweeping",
 			"army_snack_budget",
 			"bank_run",
 			"boom_emergency_powers_demand",
@@ -2470,6 +2992,7 @@
 			"boom_hostile_coup_rumor",
 			"boom_loyal_protector",
 			"border_parade_dispute",
+			"bridge_toll_concession",
 			"budget_meltdown_crisis",
 			"bureaucracy_expansion",
 			"cat_fish_budget",
@@ -2487,12 +3010,16 @@
 			"cats_return_to_boxes",
 			"cheese_shortage",
 			"cheese_shortage_crisis",
+			"commemorative_debt_sale",
 			"daily_cabinet_briefing",
+			"elevator_wifi_mandate",
 			"endgame_final_audit",
 			"endgame_legacy_statue",
 			"endgame_succession_debate",
 			"escalation_only_rival_parade",
 			"fake_smile_industry",
+			"flag_traffic_system",
+			"free_coffee_morning",
 			"free_pizza_friday",
 			"generic_minister_disagreement",
 			"happiness_arc_quiet",
@@ -2501,7 +3028,9 @@
 			"happiness_bureau_crackdown",
 			"happiness_golden_decree",
 			"long_setup_grand_canal",
+			"lottery_treasury_fund",
 			"luna_good_news_only",
+			"luxury_chair_tax",
 			"mandatory_smiling_proposal",
 			"mass_protest",
 			"maybe_containment_protocol",
@@ -2510,20 +3039,27 @@
 			"maybe_moon_dust_trial",
 			"military_parade",
 			"national_anthem_remix",
+			"national_bedtime_decree",
+			"national_clock_sync",
 			"national_power_outage",
 			"neighborhood_noise_complaint",
 			"no_weekends_proposal",
+			"official_queue_etiquette",
 			"olga_bridge_repair",
 			"olga_loyal_council",
+			"palace_bus_routes",
 			"palace_roof_leak",
+			"palace_room_rental",
 			"pantry_moth_crisis",
 			"parade_budget_boost",
+			"perfumed_sewage_reform",
 			"pineapple_referendum",
 			"pizza_union_strike",
 			"postal_pigeon_reform",
 			"privatize_palace_garden",
 			"privatize_rainwater",
 			"propaganda_smile_campaign",
+			"public_compliment_quota",
 			"recovery_elite_dinner",
 			"recovery_international_bank",
 			"recovery_martial_law_pause",
@@ -2532,12 +3068,15 @@
 			"robot_government_installed",
 			"science_gamble",
 			"science_grant_request",
+			"sponsored_potholes",
 			"switch_off_traffic_lights",
 			"traffic_complaint",
 			"traffic_lights_restored",
 			"traffic_military_resolved",
 			"traffic_tank_solution",
 			"treasury_tip_jar",
+			"universal_birthday_holiday",
+			"wage_freeze_mandate",
 			"window_tax_proposal"
 		],
 		"missing_visual_hooks": [
@@ -2553,7 +3092,9 @@
 			"cats_return_to_boxes",
 			"happiness_arc_quiet",
 			"happiness_arc_reformed",
+			"happiness_backlash",
 			"maybe_containment_protocol",
+			"maybe_moon_dust_trial",
 			"military_parade",
 			"olga_bridge_repair",
 			"parade_budget_boost"
@@ -2586,21 +3127,16 @@
 			"happiness_arc_quiet",
 			"happiness_arc_reformed",
 			"happiness_backlash",
-			"long_setup_grand_canal",
 			"maybe_containment_protocol",
 			"maybe_moon_dust_trial",
 			"military_parade",
 			"national_anthem_remix",
 			"national_power_outage",
-			"neighborhood_noise_complaint",
-			"no_weekends_proposal",
 			"olga_bridge_repair",
-			"olga_loyal_council",
 			"parade_budget_boost",
 			"pineapple_referendum",
 			"pizza_union_strike",
 			"postal_pigeon_reform",
-			"privatize_rainwater",
 			"propaganda_smile_campaign",
 			"recovery_elite_dinner",
 			"recovery_international_bank",
@@ -2610,15 +3146,12 @@
 			"robot_government_installed",
 			"science_grant_request",
 			"traffic_complaint",
-			"traffic_lights_restored",
-			"treasury_tip_jar"
+			"traffic_lights_restored"
 		],
 		"needs_rewrite_ids": [
 			"endgame_final_audit",
 			"endgame_legacy_statue",
 			"endgame_succession_debate",
-			"escalation_only_rival_parade",
-			"long_setup_grand_canal",
 			"recovery_elite_dinner",
 			"recovery_international_bank",
 			"recovery_martial_law_pause",
@@ -2641,22 +3174,15 @@
 			"escalation_only_rival_parade",
 			"free_pizza_friday",
 			"generic_minister_disagreement",
-			"happiness_backlash",
-			"long_setup_grand_canal",
 			"luna_good_news_only",
-			"maybe_moon_dust_trial",
 			"national_anthem_remix",
-			"neighborhood_noise_complaint",
-			"no_weekends_proposal",
 			"olga_bridge_repair",
-			"olga_loyal_council",
 			"palace_roof_leak",
 			"pantry_moth_crisis",
 			"pineapple_referendum",
 			"pizza_union_strike",
 			"postal_pigeon_reform",
 			"privatize_palace_garden",
-			"privatize_rainwater",
 			"propaganda_smile_campaign",
 			"robot_cabinet_proposal",
 			"robot_government_installed",
@@ -2665,7 +3191,6 @@
 			"traffic_lights_restored",
 			"traffic_military_resolved",
 			"traffic_tank_solution",
-			"treasury_tip_jar",
 			"window_tax_proposal"
 		]
 	},
@@ -2683,14 +3208,14 @@
 			"target": 18
 		},
 		"decisions": {
-			"approved_total": 10,
+			"approved_total": 34,
 			"by_category": {
 				"bureaucracy": {
 					"approved": 1,
 					"cataloged": 5,
 					"draft": 0,
 					"gap_approved": 31,
-					"integrated": 3,
+					"integrated": 1,
 					"target": 32
 				},
 				"business_and_privatization": {
@@ -2710,19 +3235,19 @@
 					"target": 26
 				},
 				"economy": {
-					"approved": 2,
-					"cataloged": 10,
+					"approved": 10,
+					"cataloged": 16,
 					"draft": 0,
-					"gap_approved": 48,
-					"integrated": 7,
+					"gap_approved": 40,
+					"integrated": 13,
 					"target": 50
 				},
 				"infrastructure": {
-					"approved": 1,
-					"cataloged": 6,
+					"approved": 9,
+					"cataloged": 13,
 					"draft": 0,
-					"gap_approved": 29,
-					"integrated": 5,
+					"gap_approved": 21,
+					"integrated": 13,
 					"target": 30
 				},
 				"media_and_propaganda": {
@@ -2730,7 +3255,7 @@
 					"cataloged": 8,
 					"draft": 0,
 					"gap_approved": 33,
-					"integrated": 8,
+					"integrated": 6,
 					"target": 34
 				},
 				"military_and_order": {
@@ -2738,15 +3263,15 @@
 					"cataloged": 10,
 					"draft": 0,
 					"gap_approved": 37,
-					"integrated": 8,
+					"integrated": 7,
 					"target": 38
 				},
 				"public_life": {
-					"approved": 3,
-					"cataloged": 31,
+					"approved": 11,
+					"cataloged": 36,
 					"draft": 0,
-					"gap_approved": 45,
-					"integrated": 27,
+					"gap_approved": 37,
+					"integrated": 31,
 					"target": 48
 				},
 				"science_and_technology": {
@@ -2754,7 +3279,7 @@
 					"cataloged": 6,
 					"draft": 0,
 					"gap_approved": 39,
-					"integrated": 6,
+					"integrated": 5,
 					"target": 40
 				}
 			},
@@ -2779,9 +3304,9 @@
 					"approved": 0,
 					"draft": 0,
 					"gap_approved": 96,
-					"integrated": 23,
+					"integrated": 25,
 					"target": 96,
-					"total_cataloged": 23
+					"total_cataloged": 25
 				},
 				"onboarding": {
 					"approved": 10,
@@ -2803,33 +3328,33 @@
 					"approved": 0,
 					"draft": 0,
 					"gap_approved": 80,
-					"integrated": 9,
+					"integrated": 11,
 					"target": 80,
-					"total_cataloged": 11
+					"total_cataloged": 13
 				},
 				"standalone": {
-					"approved": 0,
+					"approved": 24,
 					"draft": 0,
-					"gap_approved": 72,
-					"integrated": 17,
+					"gap_approved": 48,
+					"integrated": 25,
 					"target": 72,
-					"total_cataloged": 19
+					"total_cataloged": 33
 				}
 			},
 			"by_speaker": {
 				"auntie_olga": {
-					"approved": 2,
-					"cataloged": 15,
+					"approved": 7,
+					"cataloged": 18,
 					"draft": 0,
-					"gap_approved": 40,
-					"integrated": 15,
+					"gap_approved": 35,
+					"integrated": 17,
 					"target": 42
 				},
 				"clerk_zero": {
-					"approved": 1,
-					"cataloged": 5,
+					"approved": 3,
+					"cataloged": 7,
 					"draft": 0,
-					"gap_approved": 35,
+					"gap_approved": 33,
 					"integrated": 4,
 					"target": 36
 				},
@@ -2842,18 +3367,18 @@
 					"target": 34
 				},
 				"doctor_maybe": {
-					"approved": 1,
-					"cataloged": 5,
+					"approved": 2,
+					"cataloged": 6,
 					"draft": 0,
-					"gap_approved": 37,
+					"gap_approved": 36,
 					"integrated": 5,
 					"target": 38
 				},
 				"general_boom": {
-					"approved": 1,
-					"cataloged": 15,
+					"approved": 2,
+					"cataloged": 16,
 					"draft": 0,
-					"gap_approved": 37,
+					"gap_approved": 36,
 					"integrated": 10,
 					"target": 38
 				},
@@ -2866,69 +3391,69 @@
 					"target": 28
 				},
 				"luna_news": {
-					"approved": 1,
-					"cataloged": 15,
+					"approved": 3,
+					"cataloged": 17,
 					"draft": 0,
-					"gap_approved": 37,
+					"gap_approved": 35,
 					"integrated": 14,
 					"target": 38
 				},
 				"minister_penny": {
-					"approved": 2,
-					"cataloged": 15,
+					"approved": 9,
+					"cataloged": 19,
 					"draft": 0,
-					"gap_approved": 38,
-					"integrated": 11,
+					"gap_approved": 31,
+					"integrated": 16,
 					"target": 40
 				},
 				"sir_profit": {
-					"approved": 1,
-					"cataloged": 4,
+					"approved": 7,
+					"cataloged": 9,
 					"draft": 0,
-					"gap_approved": 35,
-					"integrated": 3,
+					"gap_approved": 29,
+					"integrated": 8,
 					"target": 36
 				}
 			},
 			"by_stage": {
 				"endgame": {
-					"approved": 0,
-					"cataloged": 2,
+					"approved": 1,
+					"cataloged": 3,
 					"draft": 0,
-					"gap_approved": 59,
-					"integrated": 0,
+					"gap_approved": 58,
+					"integrated": 1,
 					"target": 59
 				},
 				"escalation": {
-					"approved": 0,
-					"cataloged": 5,
+					"approved": 9,
+					"cataloged": 14,
 					"draft": 0,
-					"gap_approved": 99,
-					"integrated": 4,
+					"gap_approved": 90,
+					"integrated": 13,
 					"target": 99
 				},
 				"establishment": {
-					"approved": 10,
-					"cataloged": 68,
+					"approved": 23,
+					"cataloged": 75,
 					"draft": 0,
-					"gap_approved": 73,
-					"integrated": 60,
+					"gap_approved": 60,
+					"integrated": 61,
 					"target": 83
 				},
 				"instability": {
-					"approved": 0,
-					"cataloged": 1,
+					"approved": 1,
+					"cataloged": 2,
 					"draft": 0,
-					"gap_approved": 89,
-					"integrated": 0,
+					"gap_approved": 88,
+					"integrated": 1,
 					"target": 89
 				}
 			},
 			"draft_total": 0,
-			"gap_approved": 320,
-			"integrated_total": 64,
+			"gap_approved": 296,
+			"integrated_total": 76,
 			"target_total": 330,
-			"total_cataloged": 76
+			"total_cataloged": 94
 		},
 		"endings": {
 			"approved": 0,
@@ -2945,7 +3470,7 @@
 		"laws": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 12,
+			"integrated": 18,
 			"target": 50
 		},
 		"major_arcs": {
@@ -2969,12 +3494,12 @@
 		"short_chains": {
 			"approved": 0,
 			"gap_approved": 32,
-			"integrated": 2,
+			"integrated": 3,
 			"target": 32
 		}
 	},
 	"simulation_snapshot": {
-		"average_run_length": 21.8,
+		"average_run_length": 23.5,
 		"content_exhaustion_count": 0,
 		"date": "2026-07-15",
 		"decisions_never_selected": [

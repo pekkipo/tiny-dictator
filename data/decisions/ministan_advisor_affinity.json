@@ -252,40 +252,6 @@
     ]
   },
   {
-    "id": "olga_loyal_council",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "advisor",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "Auntie Olga offers to organize a citizen repair brigade — but only if you trust her.",
-    "one_time": true,
-    "base_weight": 20,
-    "minimum_day": 5,
-    "maximum_day": 35,
-    "requirements": {
-      "minimum_advisor_affinity": { "auntie_olga": 3 }
-    },
-    "options": [
-      {
-        "id": "empower_brigade",
-        "label": "Empower the brigade",
-        "effects": { "happiness": 6, "order": 2, "elite_loyalty": -2 },
-        "advisor_affinity": { "auntie_olga": 1 },
-        "trait_changes": { "populist": 2 },
-        "result_text": "Broken sidewalks fixed in a week. Auntie Olga says you might not be hopeless."
-      },
-      {
-        "id": "supervise_brigade",
-        "label": "Supervise closely",
-        "effects": { "happiness": 3, "order": 1 },
-        "advisor_affinity": { "auntie_olga": -1 },
-        "trait_changes": { "authoritarian": 1 },
-        "result_text": "The brigade works, but Auntie Olga notices the inspectors."
-      }
-    ]
-  },
-  {
     "id": "boom_hostile_coup_rumor",
     "schema_version": 2,
     "country_id": "ministan",

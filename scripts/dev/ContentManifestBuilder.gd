@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_2_onboarding"
-const BATCH_ID: String = "2B-2"
-const DECISION_BATCH_ID: String = "2B-2"
+const PHASE: String = "2b_3_standalone_pack_a"
+const BATCH_ID: String = "2B-3B"
+const DECISION_BATCH_ID: String = "2B-3B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -99,6 +99,7 @@ const CHAIN_MEMBERS: Dictionary = {
 		"traffic_military_resolved", "traffic_lights_restored",
 	],
 	"robot_government": ["robot_cabinet_proposal", "robot_government_installed"],
+	"cat_politics_followups": ["cat_parliament", "cat_fish_budget"],
 }
 
 const ONBOARDING_IDS: Array[String] = [
@@ -108,8 +109,23 @@ const ONBOARDING_IDS: Array[String] = [
 	"pantry_moth_crisis",
 ]
 
+const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
+	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
+	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
+	"free_coffee_morning", "long_setup_grand_canal", "sponsored_potholes",
+	"perfumed_sewage_reform", "national_clock_sync",
+	"commemorative_debt_sale", "lottery_treasury_fund", "wage_freeze_mandate", "palace_room_rental",
+	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
+	"absurd_civic_sweeping", "flag_traffic_system", "elevator_wifi_mandate",
+	"palace_bus_routes", "bridge_toll_concession",
+]
+
 const DEFERRED_DECISION_IDS: Array[String] = [
 	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
+	"cat_voting_proposal",
+	"propaganda_smile_campaign", "boom_hostile_coup_rumor", "escalation_only_rival_parade",
+	"national_anthem_remix", "science_grant_request",
+	"daily_cabinet_briefing", "postal_pigeon_reform",
 ]
 
 const DEFERRED_ARC_IDS: Array[String] = ["robot_government"]
@@ -117,7 +133,7 @@ const DEFERRED_CRISIS_IDS: Array[String] = ["budget_meltdown"]
 
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
 	"recovery_international_bank", "recovery_national_smile_day", "endgame_legacy_statue",
-	"long_setup_grand_canal", "escalation_only_rival_parade", "recovery_martial_law_pause",
+	"escalation_only_rival_parade", "recovery_martial_law_pause",
 	"recovery_elite_dinner", "endgame_succession_debate", "endgame_final_audit",
 ]
 
@@ -125,6 +141,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"cat_voting_rights", "switch_off_traffic_lights", "mandatory_smiling_proposal",
 	"military_parade", "science_gamble", "national_power_outage", "cheese_shortage_crisis",
 	"mass_protest", "bank_run", "cat_parliament_occupation",
+	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
+	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
+	"free_coffee_morning", "long_setup_grand_canal", "sponsored_potholes",
+	"perfumed_sewage_reform", "national_clock_sync",
+	"commemorative_debt_sale", "lottery_treasury_fund", "wage_freeze_mandate", "palace_room_rental",
+	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
+	"absurd_civic_sweeping", "flag_traffic_system", "elevator_wifi_mandate",
+	"palace_bus_routes", "bridge_toll_concession",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -134,7 +158,7 @@ const SIMULATION_SNAPSHOT: Dictionary = {
 	"run_count": 1000,
 	"date": "2026-07-15",
 	"decisions_never_selected": ["boom_loyal_protector", "happiness_backlash"],
-	"average_run_length": 21.8,
+	"average_run_length": 23.5,
 	"content_exhaustion_count": 0,
 	"fallback_card_usage": 0,
 }
@@ -469,6 +493,9 @@ func _resolve_status(
 	if id in ONBOARDING_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in STANDALONE_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -533,6 +560,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Legacy v1 left/right card normalized at load; missing explicit proposal field.")
 	if primary_class == "onboarding":
 		notes.append("Milestone 2B-2 approved onboarding card.")
+	if id in STANDALONE_PACK_A_APPROVED_IDS:
+		notes.append("Milestone 2B-3 approved standalone policy card.")
 	return ", ".join(notes)
 
 
@@ -544,7 +573,6 @@ func _source_file_hint(id: String) -> String:
 		"cat_voting_proposal": "ministan_core.json",
 		"military_parade": "ministan_core.json",
 		"window_tax_proposal": "ministan_core.json",
-		"no_weekends_proposal": "ministan_core.json",
 		"luna_good_news_only": "ministan_core.json",
 		"army_snack_budget": "ministan_core.json",
 		"budget_meltdown_crisis": "ministan_core.json",
@@ -552,6 +580,30 @@ func _source_file_hint(id: String) -> String:
 		"palace_roof_leak": "ministan_onboarding.json",
 		"border_parade_dispute": "ministan_onboarding.json",
 		"pantry_moth_crisis": "ministan_onboarding.json",
+		"privatize_rainwater": "ministan_standalone_pack_a.json",
+		"treasury_tip_jar": "ministan_standalone_pack_a.json",
+		"no_weekends_proposal": "ministan_standalone_pack_a.json",
+		"luxury_chair_tax": "ministan_standalone_pack_a.json",
+		"neighborhood_noise_complaint": "ministan_standalone_pack_a.json",
+		"olga_loyal_council": "ministan_standalone_pack_a.json",
+		"national_bedtime_decree": "ministan_standalone_pack_a.json",
+		"free_coffee_morning": "ministan_standalone_pack_a.json",
+		"long_setup_grand_canal": "ministan_standalone_pack_a.json",
+		"sponsored_potholes": "ministan_standalone_pack_a.json",
+		"perfumed_sewage_reform": "ministan_standalone_pack_a.json",
+		"national_clock_sync": "ministan_standalone_pack_a.json",
+		"commemorative_debt_sale": "ministan_standalone_pack_a.json",
+		"lottery_treasury_fund": "ministan_standalone_pack_a.json",
+		"wage_freeze_mandate": "ministan_standalone_pack_a.json",
+		"palace_room_rental": "ministan_standalone_pack_a.json",
+		"official_queue_etiquette": "ministan_standalone_pack_a.json",
+		"universal_birthday_holiday": "ministan_standalone_pack_a.json",
+		"public_compliment_quota": "ministan_standalone_pack_a.json",
+		"absurd_civic_sweeping": "ministan_standalone_pack_a.json",
+		"flag_traffic_system": "ministan_standalone_pack_a.json",
+		"elevator_wifi_mandate": "ministan_standalone_pack_a.json",
+		"palace_bus_routes": "ministan_standalone_pack_a.json",
+		"bridge_toll_concession": "ministan_standalone_pack_a.json",
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]
@@ -569,13 +621,13 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_followups.json"
 	if id.begins_with("traffic_"):
 		return "data/decisions/ministan_traffic_military.json"
-	if id.begins_with("recovery_") or id.begins_with("endgame_") or id in ["long_setup_grand_canal", "escalation_only_rival_parade"]:
+	if id.begins_with("recovery_") or id.begins_with("endgame_") or id in ["escalation_only_rival_parade"]:
 		return "data/decisions/ministan_stage_placeholders.json"
 	if id in ["pizza_union_strike", "pineapple_referendum"]:
 		return "data/decisions/ministan_pizza_consequences.json"
 	if id in CHAIN_MEMBERS["free_pizza_consequences"] or id in ONBOARDING_IDS or id in [
 		"parade_budget_boost", "cat_treaty_offer", "bureaucracy_expansion", "science_gamble",
-		"privatize_palace_garden", "propaganda_smile_campaign", "olga_loyal_council",
+		"privatize_palace_garden", "propaganda_smile_campaign",
 		"boom_hostile_coup_rumor",
 	]:
 		if id in ["parade_budget_boost", "cat_treaty_offer", "bureaucracy_expansion", "science_gamble",

@@ -109,41 +109,6 @@
     "tags": ["resolution", "legacy", "placeholder"]
   },
   {
-    "id": "long_setup_grand_canal",
-    "schema_version": 2,
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "infrastructure",
-    "proposal": "Ministan could dig a Grand Canal linking every village. Completion is scheduled for roughly never, but the groundbreaking photos would be magnificent.",
-    "one_time": true,
-    "base_weight": 8,
-    "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
-    },
-    "options": [
-      {
-        "id": "dig",
-        "label": "Break ground",
-        "effects": {
-          "treasury": -10,
-          "happiness": 5,
-          "order": -3
-        },
-        "result_text": "Ceremonial shovels turn one inch of soil. A sign promises completion by the year 3000."
-      },
-      {
-        "id": "postpone",
-        "label": "Maybe later",
-        "effects": {
-          "elite_loyalty": -3,
-          "treasury": 2
-        },
-        "result_text": "The canal enters permanent planning. Engineers draw maps of maps."
-      }
-    ],
-    "tags": ["long_setup", "infrastructure", "placeholder"]
-  },
-  {
     "id": "escalation_only_rival_parade",
     "schema_version": 2,
     "card_type": "normal",

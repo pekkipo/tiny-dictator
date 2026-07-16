@@ -58,36 +58,6 @@
     "tags": ["media", "generic"]
   },
   {
-    "id": "privatize_rainwater",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "sir_profit",
-    "category": "economy",
-    "proposal": "Sir Profit suggests selling exclusive rights to rainwater. He calls it sky alignment.",
-    "one_time": false,
-    "base_weight": 6,
-    "minimum_day": 4,
-    "maximum_day": 35,
-    "options": [
-      {
-        "id": "sell",
-        "label": "Sell the rain",
-        "effects": { "treasury": 8, "happiness": -7, "elite_loyalty": 4 },
-        "trait_changes": { "capitalist": 2 },
-        "result_text": "Umbrellas require a subscription. Citizens invent bucket protests."
-      },
-      {
-        "id": "refuse",
-        "label": "Rain stays public",
-        "effects": { "happiness": 4, "treasury": -2, "elite_loyalty": -3 },
-        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
-        "result_text": "Citizens cheer free drizzle. Sir Profit drafts a regret memo."
-      }
-    ],
-    "tags": ["economy", "generic"]
-  },
-  {
     "id": "olga_bridge_repair",
     "schema_version": 2,
     "country_id": "ministan",
@@ -147,62 +117,6 @@
       }
     ],
     "tags": ["bureaucracy", "generic", "repeatable"]
-  },
-  {
-    "id": "neighborhood_noise_complaint",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "Residents complain about nighttime accordion practice near the ministry.",
-    "one_time": false,
-    "base_weight": 5,
-    "minimum_day": 4,
-    "maximum_day": 40,
-    "options": [
-      {
-        "id": "ban",
-        "label": "Ban accordions after 8pm",
-        "effects": { "order": 3, "happiness": -3 },
-        "result_text": "Silence returns. Folk musicians file a rhythmic protest."
-      },
-      {
-        "id": "sponsor",
-        "label": "Sponsor a concert",
-        "effects": { "happiness": 4, "treasury": -4, "order": -1 },
-        "result_text": "The concert is loud but officially patriotic."
-      }
-    ],
-    "tags": ["public", "generic", "repeatable"]
-  },
-  {
-    "id": "treasury_tip_jar",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "economy",
-    "proposal": "Minister Penny installed a tip jar in the treasury. She says it is a pilot program.",
-    "one_time": false,
-    "base_weight": 5,
-    "minimum_day": 3,
-    "maximum_day": 40,
-    "options": [
-      {
-        "id": "approve",
-        "label": "Approve the tip jar",
-        "effects": { "treasury": 3, "happiness": -2, "elite_loyalty": -1 },
-        "result_text": "Citizens tip reluctantly. Penny calls it micro-fiscal engagement."
-      },
-      {
-        "id": "remove",
-        "label": "Remove the jar",
-        "effects": { "happiness": 2, "elite_loyalty": 1, "treasury": -1 },
-        "result_text": "Dignity returns to public finance, briefly."
-      }
-    ],
-    "tags": ["economy", "generic", "repeatable"]
   },
   {
     "id": "science_grant_request",

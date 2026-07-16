@@ -28,7 +28,8 @@
     "res://data/decisions/ministan_general_boom_arc.json",
     "res://data/decisions/ministan_doctor_maybe_arc.json",
     "res://data/decisions/ministan_generic_fill.json",
-    "res://data/decisions/ministan_onboarding.json"
+    "res://data/decisions/ministan_onboarding.json",
+    "res://data/decisions/ministan_standalone_pack_a.json"
   ],
   "fallback_decision_id": "generic_minister_disagreement",
   "fallback_decision_limit": 2,

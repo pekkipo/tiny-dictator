@@ -37,13 +37,13 @@ func _check(condition: bool, message: String) -> void:
 
 func _test_legacy_normalization() -> void:
 	# Legacy card loaded from disk: normalized at load, original keys kept.
-	var legacy: Dictionary = _repo.get_decision("window_tax_proposal")
+	var legacy: Dictionary = _repo.get_decision("generic_minister_disagreement")
 	_check(int(legacy.get("schema_version", 0)) == 1, "legacy card reports schema_version 1")
 	_check(str(legacy.get("card_type", "")) == "normal", "legacy card defaults to card_type normal")
 	var options: Array = legacy.get("options", [])
 	_check(options.size() == 2, "legacy card normalized to 2 options")
 	_check(str(options[0].get("id", "")) == "left" and str(options[1].get("id", "")) == "right", "legacy options get ids left/right")
-	_check(str(options[0].get("label", "")) == "Leave windows alone", "left option content preserved")
+	_check(str(options[0].get("label", "")) == "Give it to neither", "left option content preserved")
 	_check(legacy.has("left") and legacy.has("right"), "legacy left/right keys preserved for compatibility")
 
 	# Normalization is idempotent.
@@ -79,11 +79,12 @@ func _test_resolution_by_option_id() -> void:
 
 	# Legacy card resolved by side id.
 	var state := RunState.new()
-	var legacy: Dictionary = _repo.get_decision("window_tax_proposal")
+	var legacy: Dictionary = _repo.get_decision("generic_minister_disagreement")
+	var start_elite: int = state.get_resource("elite_loyalty")
 	var result: DecisionResult = resolver.apply_option(legacy, "right", state, _repo)
 	_check(result.selected_option_id == "right", "legacy resolution carries option id")
 	_check(result.selected_side == "right", "legacy selected_side alias preserved")
-	_check(state.has_law("window_tax"), "legacy option effects applied")
+	_check(state.get_resource("elite_loyalty") == start_elite + 4, "legacy option effects applied")
 
 	# Three-option crisis resolved by authored option id.
 	state = RunState.new()

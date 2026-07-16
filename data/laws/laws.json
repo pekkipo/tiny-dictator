@@ -106,5 +106,59 @@
     "placeholder_icon": "🐟",
     "visual_tags": ["cats_in_square"],
     "category": "absurd_law"
+  },
+  {
+    "id": "luxury_chair_tax",
+    "display_name": "Luxury Chair Tax",
+    "short_name": "Chair Tax",
+    "description": "Chairs with armrests are taxed as luxury comfort. Stools thrive.",
+    "placeholder_icon": "🪑",
+    "visual_tags": ["taxed_chairs"],
+    "category": "economy"
+  },
+  {
+    "id": "national_bedtime",
+    "display_name": "National Bedtime",
+    "short_name": "Bedtime",
+    "description": "Lights out at ten. Whispering becomes a competitive sport.",
+    "placeholder_icon": "😴",
+    "visual_tags": ["curtains_drawn"],
+    "category": "public_life"
+  },
+  {
+    "id": "national_clock_law",
+    "display_name": "National Clock Synchronization",
+    "short_name": "Clock Sync",
+    "description": "All public clocks must agree. Excuses for lateness abolished.",
+    "placeholder_icon": "🕐",
+    "visual_tags": ["synchronized_clocks"],
+    "category": "infrastructure"
+  },
+  {
+    "id": "queue_etiquette_law",
+    "display_name": "Official Queue Etiquette",
+    "short_name": "Queue Law",
+    "description": "Numbered tickets, polite sighs, approved shoe shuffling.",
+    "placeholder_icon": "🎟️",
+    "visual_tags": ["numbered_queues"],
+    "category": "public_life"
+  },
+  {
+    "id": "compliment_quota_law",
+    "display_name": "Public Compliment Quota",
+    "short_name": "Compliments",
+    "description": "Three public compliments per citizen daily. Silence polls poorly.",
+    "placeholder_icon": "💬",
+    "visual_tags": ["compliment_meters"],
+    "category": "public_life"
+  },
+  {
+    "id": "flag_traffic_law",
+    "display_name": "Flag Traffic System",
+    "short_name": "Flag Traffic",
+    "description": "Ceremonial flags replace lights. Salute to turn.",
+    "placeholder_icon": "🚩",
+    "visual_tags": ["flag_intersections"],
+    "category": "infrastructure"
   }
 ]
