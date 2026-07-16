@@ -123,7 +123,31 @@
     "newspaper_masthead": "THE MINISTAN TIMES",
     "placeholder_icon": "🪖",
     "conditions": {
-      "all_flags": ["boom_emergency_powers"]
+      "all_flags": ["boom_coup_succeeded"]
+    }
+  },
+  {
+    "id": "general_becomes_mascot",
+    "type": "special",
+    "priority": 88,
+    "title": "The National Mascot General",
+    "description": "General Boom now rides a parade float shaped like himself. Authority remains ceremonial. The salute is mandatory.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🎖️",
+    "conditions": {
+      "all_flags": ["boom_mascot_mode"]
+    }
+  },
+  {
+    "id": "general_remains_loyal",
+    "type": "special",
+    "priority": 70,
+    "title": "The Loyal Protector",
+    "description": "General Boom never seized the palace. He only seized every parade schedule until the end of time.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🫡",
+    "conditions": {
+      "all_flags": ["general_remains_loyal", "boom_protector_title"]
     }
   },
   {
@@ -184,6 +208,66 @@
     "placeholder_icon": "🪖",
     "conditions": {
       "all_flags": ["tanks_direct_everything_soft", "tank_parking_chain_complete"]
+    }
+  },
+  {
+    "id": "traffic_system_achieves_peace",
+    "type": "special",
+    "priority": 89,
+    "title": "Traffic Achieves Peace",
+    "description": "Ministan solved gridlock with schedules, flowers, and one very polite roundabout. Historians call it the Quiet Commute Accords.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "☮️",
+    "conditions": {
+      "all_flags": ["traffic_system_achieves_peace", "traffic_mil_complete"]
+    }
+  },
+  {
+    "id": "penny_balances_final_budget",
+    "type": "special",
+    "priority": 87,
+    "title": "The Balanced Miracle",
+    "description": "Minister Penny balanced the final budget without deleting the citizens. Historians still check the footnotes twice.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📗",
+    "conditions": {
+      "all_flags": ["penny_miracle_sealed", "penny_austerity_complete"]
+    }
+  },
+  {
+    "id": "spreadsheet_state",
+    "type": "special",
+    "priority": 92,
+    "title": "The Spreadsheet State",
+    "description": "The ledger became a religion. Citizens prayed in columns. Happiness was a rounding error.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📊",
+    "conditions": {
+      "all_flags": ["spreadsheet_state", "penny_austerity_complete"]
+    }
+  },
+  {
+    "id": "austerity_without_citizens",
+    "type": "special",
+    "priority": 93,
+    "title": "Austerity Without Citizens",
+    "description": "The books were perfect. The streets were empty. Minister Penny filed a victory form.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏚️",
+    "conditions": {
+      "all_flags": ["austerity_without_citizens", "penny_austerity_complete"]
+    }
+  },
+  {
+    "id": "hyperinflation_millionaires",
+    "type": "special",
+    "priority": 86,
+    "title": "Everyone Is a Millionaire",
+    "description": "Ministan printed until every citizen was rich and broke. Wheelbarrows became wallets. Historians call it festive arithmetic.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💸",
+    "conditions": {
+      "all_flags": ["hyper_strange_success", "hyper_complete"]
     }
   },
   {

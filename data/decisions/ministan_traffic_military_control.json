@@ -1,0 +1,939 @@
+[
+  {
+    "id": "traffic_gridlock_brief",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Capital gridlock is practical, not ceremonial. Boom offers military route help. Penny has a civilian schedule. Someone suggests an absurdly perfect convoy clock.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 2,
+    "maximum_day": 14,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "advances_arc": false,
+      "resolves_arc": false,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "traffic_flag_corps_live",
+        "tank_parking_live",
+        "traffic_mil_complete",
+        "traffic_mil_live",
+        "traffic_lights_off",
+        "military_controls_traffic"
+      ],
+      "blocked_arcs": [
+        "traffic_military"
+      ],
+      "blocked_laws": [
+        "tank_traffic_control"
+      ]
+    },
+    "options": [
+      {
+        "id": "military_assist",
+        "label": "Authorize military route assist",
+        "effects": {
+          "order": 5,
+          "happiness": -3,
+          "elite_loyalty": 3,
+          "treasury": -4
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "minister_penny": -1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_laws": [
+          "military_route_priority_act"
+        ],
+        "add_flags": [
+          "traffic_mil_live",
+          "traffic_martial_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "martial_traffic"
+          }
+        ],
+        "result_text": "Soldiers claim the busiest lanes. Civilians invent new shortcuts through flower beds.",
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "traffic_military_convoy"
+        }
+      },
+      {
+        "id": "civilian_plan",
+        "label": "Approve Penny's civilian plan",
+        "effects": {
+          "treasury": -5,
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "traffic_mil_live",
+          "traffic_civilian_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "civilian_compromise"
+          }
+        ],
+        "force_next_decision": "traffic_military_convoy",
+        "result_text": "Schedules appear on lampposts. Boom calls it soft infrastructure. Penny calls it Tuesday."
+      },
+      {
+        "id": "absurd_convoy",
+        "label": "Trial the absurd convoy clock",
+        "effects": {
+          "treasury": -8,
+          "order": 6,
+          "happiness": -2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "military_route_priority_act"
+        ],
+        "add_flags": [
+          "traffic_mil_live",
+          "traffic_absurd_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "absurd_efficiency"
+          }
+        ],
+        "force_next_decision": "traffic_military_convoy",
+        "result_text": "Convoys synchronize to the second. The capital flows. The budget weeps quietly."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "military",
+      "arc_setup"
+    ],
+    "visual_tags": [
+      "convoy_crosswalk"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "military convoy waiting at a civilian crosswalk",
+      "writer_notes": "Distinct from Pack C flag corps and tank parking; blocked by those live flags and legacy lights-off."
+    }
+  },
+  {
+    "id": "traffic_military_convoy",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "infrastructure",
+    "proposal": "Military vehicles now share civilian routes. Crosswalks salute. Bus drivers file Form Lane-4. Choose how hard the convoy presses.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "traffic_military_control"
+      ],
+      "all_flags": [
+        "traffic_mil_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "expand_martial_routes",
+        "label": "Expand armored escorts citywide",
+        "effects": {
+          "order": 6,
+          "happiness": -5,
+          "elite_loyalty": 3,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "traffic_martial_path",
+          "convoy_citywide"
+        ],
+        "remove_flags": [
+          "traffic_civilian_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "martial_traffic"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_checkpoint_hour",
+        "result_text": "Armor owns the arterials. Pedestrians learn the national crawl."
+      },
+      {
+        "id": "protect_civilian_lanes",
+        "label": "Protect civilian lanes",
+        "effects": {
+          "happiness": 4,
+          "order": 1,
+          "treasury": -4,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "traffic_civilian_path",
+          "civilian_lanes_ringfenced"
+        ],
+        "remove_flags": [
+          "traffic_martial_path",
+          "traffic_absurd_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "civilian_compromise"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_control_climax",
+        "result_text": "Paint returns to the crosswalks. Convoys wait behind a very polite cone."
+      },
+      {
+        "id": "perfect_timed_ballet",
+        "label": "Run the timed convoy ballet",
+        "effects": {
+          "order": 7,
+          "treasury": -10,
+          "happiness": -1,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "traffic_absurd_path",
+          "convoy_ballet_live"
+        ],
+        "remove_flags": [
+          "traffic_civilian_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "absurd_efficiency"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_checkpoint_hour",
+        "result_text": "Every light blinks on cue. Tourists applaud. Accountants do not."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "military",
+      "arc_escalation",
+      "follow_up"
+    ],
+    "visual_tags": [
+      "convoy_crosswalk"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "convoy paused at a painted civilian crosswalk",
+      "writer_notes": "Option-level force_next: martial/absurd → checkpoint; civilian → climax."
+    }
+  },
+  {
+    "id": "traffic_checkpoint_hour",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Checkpoint Hour begins. Umbrellas bloom at barriers. Auntie Olga asks whether dignity requires a stamp, a smile, or a snack.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "traffic_military_control"
+      ],
+      "all_flags": [
+        "traffic_mil_live"
+      ],
+      "any_flags": [
+        "traffic_martial_path",
+        "traffic_absurd_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "harden_checkpoints",
+        "label": "Harden Checkpoint Hour",
+        "effects": {
+          "order": 7,
+          "happiness": -7,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_laws": [
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_checkpoint_hour",
+          "checkpoint_grievance",
+          "protest_pressure_traffic"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "traffic_control_climax",
+        "result_text": "Barriers multiply. Umbrellas become flags. A polite crowd practices louder opinions."
+      },
+      {
+        "id": "olga_tea_and_stamps",
+        "label": "Let Olga add tea and stamps",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": -4,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "general_boom": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "add_laws": [
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_checkpoint_hour",
+          "checkpoint_tea_service"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_control_climax",
+        "result_text": "Checkpoints serve tea. Forms dry beside biscuits. Boom calls it unauthorized hospitality."
+      },
+      {
+        "id": "narrow_window",
+        "label": "Narrow the window",
+        "effects": {
+          "order": 4,
+          "happiness": -3,
+          "treasury": -3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "minister_penny": 1,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_checkpoint_hour",
+          "checkpoint_narrow_window",
+          "protest_pressure_traffic"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "result_text": "One hour of umbrellas. Eleven hours of rumor. The city holds its breath on schedule.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_control_climax",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 68
+        }
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "military",
+      "arc_escalation",
+      "follow_up",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "checkpoint_umbrellas"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "umbrella line at a checkpoint",
+      "writer_notes": "Supporting beat for martial/absurd only; Olga tea reaction; protest-weight flags; harden can start mass_protest."
+    }
+  },
+  {
+    "id": "traffic_control_climax",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Ceremonial priority lanes are painted gold. Who owns the paint: civilians, martial order, or the absurd clock that somehow works?",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "traffic_military_control"
+      ],
+      "all_flags": [
+        "traffic_mil_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "lock_civilian_compromise",
+        "label": "Lock civilian compromise lanes",
+        "effects": {
+          "happiness": 5,
+          "order": 2,
+          "treasury": -5,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "populist": 1
+        },
+        "add_flags": [
+          "traffic_civilian_path",
+          "ceremonial_lanes_civilian"
+        ],
+        "remove_flags": [
+          "traffic_martial_path",
+          "traffic_absurd_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "civilian_compromise"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_civilian_peace",
+        "result_text": "Gold paint meets pedestrian zebra stripes. Boom salutes the cones and looks away."
+      },
+      {
+        "id": "lock_martial_priority",
+        "label": "Lock martial priority forever",
+        "effects": {
+          "order": 8,
+          "happiness": -6,
+          "elite_loyalty": 4,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
+        "add_flags": [
+          "traffic_martial_path",
+          "ceremonial_lanes_martial"
+        ],
+        "remove_flags": [
+          "traffic_civilian_path",
+          "traffic_absurd_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "martial_traffic"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_martial_resolution",
+        "result_text": "Priority lanes become policy. Civilians wait for the anthem to finish crossing."
+      },
+      {
+        "id": "lock_absurd_efficiency",
+        "label": "Lock the absurd efficient system",
+        "effects": {
+          "order": 6,
+          "treasury": -12,
+          "happiness": 1,
+          "elite_loyalty": -4
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": -3
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "traffic_absurd_path",
+          "ceremonial_lanes_absurd"
+        ],
+        "remove_flags": [
+          "traffic_civilian_path"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "traffic_military_control",
+            "action": "branch",
+            "branch_id": "absurd_efficiency"
+          },
+          {
+            "arc_id": "traffic_military_control",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "traffic_martial_resolution",
+        "result_text": "The gold lanes keep perfect time. The treasury hears a metronome and sobs."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "military",
+      "arc_climax"
+    ],
+    "visual_tags": [
+      "ceremonial_priority_lane"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "gold ceremonial priority lane through the capital",
+      "writer_notes": "Climax locks branch and routes to civilian vs martial/absurd resolution."
+    }
+  },
+  {
+    "id": "traffic_civilian_peace",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Roundabouts bloom with flowers instead of barriers. Olga offers peace, paperwork, or a quiet scrap of the military lanes.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "resolution",
+      "branch_id": "civilian_compromise",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "traffic_military_control"
+      ],
+      "any_flags": [
+        "traffic_civilian_path"
+      ],
+      "arc_branches": {
+        "traffic_military_control": "civilian_compromise"
+      }
+    },
+    "options": [
+      {
+        "id": "declare_traffic_peace",
+        "label": "Declare traffic system peace",
+        "effects": {
+          "happiness": 8,
+          "order": 4,
+          "treasury": -4,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "minister_penny": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "military_route_priority_act",
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_peace_declared",
+          "traffic_system_achieves_peace"
+        ],
+        "remove_flags": [
+          "traffic_mil_live",
+          "checkpoint_grievance",
+          "protest_pressure_traffic"
+        ],
+        "trigger_ending": "traffic_system_achieves_peace",
+        "result_text": "Historians file it under Impossible Commute Solved. Olga serves cake at the roundabout."
+      },
+      {
+        "id": "keep_soft_schedules",
+        "label": "Keep soft schedules",
+        "effects": {
+          "happiness": 5,
+          "order": 3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "remove_laws": [
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_soft_schedules"
+        ],
+        "remove_flags": [
+          "traffic_mil_live",
+          "checkpoint_grievance",
+          "protest_pressure_traffic"
+        ],
+        "result_text": "Buses keep a timetable. Convoys keep a calendar. Nobody salutes a cone."
+      },
+      {
+        "id": "scrap_military_lanes",
+        "label": "Scrap military lanes",
+        "effects": {
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -2,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "general_boom": -2
+        },
+        "remove_laws": [
+          "military_route_priority_act",
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_mil_scrapped"
+        ],
+        "remove_flags": [
+          "traffic_mil_live",
+          "traffic_civilian_path",
+          "checkpoint_grievance",
+          "protest_pressure_traffic"
+        ],
+        "result_text": "Paint fades. Boom files a complaint titled Dignity. The roundabout remains peaceful."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "arc_resolution",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "peaceful_roundabout"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "flowered peaceful roundabout",
+      "writer_notes": "Civilian resolution; peace ending on declare opt; scrap completes with traffic_mil_scrapped."
+    }
+  },
+  {
+    "id": "traffic_martial_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Martial lanes and absurd clocks demand a final ruling: lock them in, pay for perfection, or scrap the experiment.",
+    "one_time": true,
+    "base_weight": 1,
+    "narrative": {
+      "arc_id": "traffic_military_control",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "traffic_military_control"
+      ],
+      "any_flags": [
+        "traffic_martial_path",
+        "traffic_absurd_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "authoritarian_lock_in",
+        "label": "Lock in martial traffic",
+        "effects": {
+          "order": 10,
+          "happiness": -8,
+          "elite_loyalty": 5,
+          "treasury": -4
+        },
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_authoritarian_lock",
+          "protest_pressure_traffic"
+        ],
+        "remove_flags": [
+          "traffic_mil_live"
+        ],
+        "result_text": "Every lane salutes. Happiness files a formal objection and waits at the barrier."
+      },
+      {
+        "id": "absurd_costly_success",
+        "label": "Fund absurd perfect efficiency",
+        "effects": {
+          "order": 8,
+          "happiness": 3,
+          "treasury": -16,
+          "elite_loyalty": -5
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "minister_penny": -3
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_absurd_success",
+          "traffic_mil_tanks_soft"
+        ],
+        "remove_flags": [
+          "traffic_mil_live",
+          "checkpoint_grievance"
+        ],
+        "result_text": "The system works too well. Elites invoice the metronome. Penny hides under a ledger."
+      },
+      {
+        "id": "scrap_military_traffic",
+        "label": "Scrap military traffic control",
+        "effects": {
+          "happiness": 4,
+          "order": -4,
+          "elite_loyalty": -3,
+          "treasury": 3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -3,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "military_route_priority_act",
+          "traffic_checkpoint_act"
+        ],
+        "add_flags": [
+          "traffic_mil_complete",
+          "traffic_mil_scrapped"
+        ],
+        "remove_flags": [
+          "traffic_mil_live",
+          "traffic_martial_path",
+          "traffic_absurd_path",
+          "checkpoint_grievance",
+          "protest_pressure_traffic"
+        ],
+        "result_text": "Barriers fold. Convoys return to the garage. Boom practices saluting empty paint."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "traffic",
+      "military",
+      "arc_resolution"
+    ],
+    "visual_tags": [
+      "ceremonial_priority_lane",
+      "checkpoint_umbrellas"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "traffic_military_control",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10",
+      "localization_risk": "low",
+      "visual_hook": "locked ceremonial lane under checkpoint umbrellas",
+      "writer_notes": "Shared resolution for martial_traffic OR absurd_efficiency via any_flags; scrap completes with traffic_mil_scrapped."
+    }
+  }
+]

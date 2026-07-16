@@ -1,0 +1,856 @@
+[
+  {
+    "id": "penny_deficit_briefing",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Treasury shortfall: 4.2%. I have three ledgers and one smile. Shall we streamline, amputate, or postpone the arithmetic?",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 28,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_arcs": [
+        "hyperinflation_arc"
+      ],
+      "blocked_flags": [
+        "penny_austerity_live",
+        "penny_austerity_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "disciplined",
+        "label": "Disciplined ledger cuts",
+        "effects": {
+          "treasury": 6,
+          "happiness": -4,
+          "order": 1,
+          "elite_loyalty": 2
+        },
+        "add_laws": [
+          "emergency_austerity_act"
+        ],
+        "add_flags": [
+          "penny_austerity_live",
+          "penny_disciplined"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "branch",
+            "branch_id": "disciplined_ledger"
+          }
+        ],
+        "force_next_decision": "penny_service_trimming",
+        "result_text": "Penny highlights three columns in green. Clinics keep one stapler. The deficit flinches."
+      },
+      {
+        "id": "deep_cuts",
+        "label": "Cut until empty",
+        "effects": {
+          "treasury": 10,
+          "happiness": -8,
+          "order": -2,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "emergency_austerity_act"
+        ],
+        "add_flags": [
+          "penny_austerity_live",
+          "penny_cut_empty"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "sir_profit": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 3,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "branch",
+            "branch_id": "cut_until_empty"
+          }
+        ],
+        "force_next_decision": "penny_service_trimming",
+        "result_text": "Penny calls it aggressive optimization. Sir Profit applauds. The waiting room loses its chairs."
+      },
+      {
+        "id": "delay_spend",
+        "label": "Delay and spend a little",
+        "effects": {
+          "treasury": -4,
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "penny_austerity_recovery_available",
+          "penny_arc_abandoned_early"
+        ],
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "abandon",
+            "reason": "deficit_delayed"
+          }
+        ],
+        "result_text": "Stimulus arrives as polite envelopes. Penny invoices the future. The arc politely ends."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_setup",
+      "austerity"
+    ],
+    "visual_tags": [
+      "balanced_ledger_glow"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "cheerful_cuts",
+        "number_euphemism"
+      ],
+      "emotional_goal": "uneasy_thrift",
+      "visual_hook": "three color-coded ledgers on Penny's desk",
+      "localization_risk": "low",
+      "writer_notes": "NEW law emergency_austerity_act (not emergency_efficiency_act). Exclusive soft block vs hyperinflation_arc."
+    }
+  },
+  {
+    "id": "penny_service_trimming",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Public services remain... present. I propose surgical trims. Depth optional. Applause not budgeted.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "penny_austerity_arc"
+      ],
+      "all_flags": [
+        "penny_austerity_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "careful_trim",
+        "label": "Careful clinic hours",
+        "effects": {
+          "treasury": 5,
+          "happiness": -3,
+          "order": 1,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "penny_careful_trim"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_ledger_review",
+        "result_text": "Clinics open alternate Tuesdays. Penny logs a 1.8% morale variance. Acceptable."
+      },
+      {
+        "id": "deep_trim",
+        "label": "Trim clinics to rumor",
+        "effects": {
+          "treasury": 9,
+          "happiness": -7,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "penny_deep_trim"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 2,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "result_text": "Waiting rooms become suggestions. Profit calls it lean. Olga brings soup to the sidewalk.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "penny_service_sunset",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 70,
+          "required_flags": [
+            "penny_cut_empty"
+          ]
+        }
+      },
+      {
+        "id": "soft_trim",
+        "label": "Compromise half-cuts",
+        "effects": {
+          "treasury": 3,
+          "happiness": -2,
+          "order": 0,
+          "elite_loyalty": 0
+        },
+        "add_flags": [
+          "penny_compromise",
+          "penny_soft_trim"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "branch",
+            "branch_id": "compromise_cuts"
+          },
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_ledger_review",
+        "result_text": "Half the forms survive. Penny sighs at 2.1% inefficiency. Compromise still balances on paper."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_escalation",
+      "austerity"
+    ],
+    "visual_tags": [
+      "empty_clinic_queue"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "service_euphemism"
+      ],
+      "emotional_goal": "unease",
+      "visual_hook": "clinic queue with fewer chairs each week",
+      "localization_risk": "low",
+      "writer_notes": "Per-option force_next: careful/soft→ledger, deep→sunset. No soft follow_up (cannot coexist with force_next)."
+    }
+  },
+  {
+    "id": "penny_service_sunset",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Services that cost money may now officially sunset. The ledger looks healthier already. Citizens optional.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "escalation",
+      "branch_id": "cut_until_empty",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "penny_austerity_arc"
+      ],
+      "arc_branches": {
+        "penny_austerity_arc": "cut_until_empty"
+      },
+      "all_flags": [
+        "penny_cut_empty"
+      ]
+    },
+    "options": [
+      {
+        "id": "sunset_services",
+        "label": "Sunset public services",
+        "effects": {
+          "treasury": 8,
+          "happiness": -9,
+          "order": -4,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "public_service_sunset_act"
+        ],
+        "add_flags": [
+          "penny_services_sunset"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "minister_penny": 2,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_ledger_review",
+        "result_text": "Help desks become historical markers. Penny files the savings under 'civic maturity.'"
+      },
+      {
+        "id": "keep_one_window",
+        "label": "Keep one service window",
+        "effects": {
+          "treasury": 4,
+          "happiness": -5,
+          "order": -1,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "public_service_sunset_act"
+        ],
+        "add_flags": [
+          "penny_services_sunset",
+          "penny_one_window"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "minister_penny": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_ledger_review",
+        "result_text": "One window remains. Queue forms a pilgrimage. Profit calls it branding."
+      },
+      {
+        "id": "charge_for_help",
+        "label": "Charge admission for help",
+        "effects": {
+          "treasury": 11,
+          "happiness": -10,
+          "order": -5,
+          "elite_loyalty": 4
+        },
+        "add_laws": [
+          "public_service_sunset_act"
+        ],
+        "add_flags": [
+          "penny_services_sunset",
+          "penny_help_toll"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "minister_penny": 1,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_ledger_review",
+        "result_text": "Help costs a modest fee. Desperation becomes a revenue stream. The spreadsheet purrs."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_escalation",
+      "supporting",
+      "austerity"
+    ],
+    "visual_tags": [
+      "empty_clinic_queue"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "unlivable_efficiency"
+      ],
+      "emotional_goal": "grim_comedy",
+      "visual_hook": "closed clinic with a perfect budget plaque",
+      "localization_risk": "low",
+      "writer_notes": "Supporting beat for cut_until_empty only. NEW law public_service_sunset_act."
+    }
+  },
+  {
+    "id": "penny_ledger_review",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Quarterly review. The books balance. The country... interprets that freely. Declare miracle, worship the sheet, or celebrate emptiness?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "penny_austerity_arc"
+      ],
+      "all_flags": [
+        "penny_austerity_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "declare_miracle",
+        "label": "Declare an austerity miracle",
+        "effects": {
+          "treasury": 4,
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "penny_miracle_declared"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_miracle_balanced",
+        "result_text": "Penny rings a tiny bell. 'Miracle' enters the minutes. Luna prepares soft lighting."
+      },
+      {
+        "id": "worship_spreadsheet",
+        "label": "Make the spreadsheet sacred",
+        "effects": {
+          "treasury": 6,
+          "happiness": -4,
+          "order": 3,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "penny_spreadsheet_faith"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 3,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_austerity_resolution",
+        "result_text": "Cells become scripture. Citizens recite formulas. Profit funds a hymnal."
+      },
+      {
+        "id": "empty_success",
+        "label": "Celebrate empty-street success",
+        "effects": {
+          "treasury": 7,
+          "happiness": -6,
+          "order": -2,
+          "elite_loyalty": 4
+        },
+        "add_flags": [
+          "penny_empty_streets"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 3,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "penny_austerity_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "penny_austerity_resolution",
+        "result_text": "Streets quiet. Costs quieter. Penny stamps SUCCESS where a park used to be."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_climax",
+      "austerity"
+    ],
+    "visual_tags": [
+      "spreadsheet_temple",
+      "balanced_ledger_glow"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "ledger_ideology"
+      ],
+      "emotional_goal": "decision_pressure",
+      "visual_hook": "giant projected spreadsheet over the capital square",
+      "localization_risk": "low",
+      "writer_notes": "declare_miracle intended when penny_disciplined or penny_compromise; miracle card gated by those flags. Cut path should prefer empty_success or worship_spreadsheet."
+    }
+  },
+  {
+    "id": "penny_miracle_balanced",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Final budget: balanced. Services: mostly upright. I recommend a modest parade of calculators — optional ending, of course.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "penny_austerity_arc"
+      ],
+      "any_flags": [
+        "penny_disciplined",
+        "penny_compromise"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_miracle",
+        "label": "Seal the miracle budget",
+        "effects": {
+          "treasury": 5,
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "penny_austerity_complete",
+          "penny_austerity_recovery_available",
+          "penny_miracle_sealed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "result_text": "Ledgers glow faintly. Clinics reopen on schedule. Penny allows herself 0.4 smiles."
+      },
+      {
+        "id": "publish_miracle",
+        "label": "Publish the miracle budget",
+        "effects": {
+          "treasury": 3,
+          "happiness": 4,
+          "order": 1,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "penny_austerity_complete",
+          "penny_austerity_recovery_available",
+          "penny_miracle_sealed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "propagandist": 1
+        },
+        "trigger_ending": "penny_balances_final_budget",
+        "result_text": "The Final Budget prints on cream paper. Historians call it rare. Penny frames the receipt."
+      },
+      {
+        "id": "quiet_surplus",
+        "label": "Bank the surplus quietly",
+        "effects": {
+          "treasury": 8,
+          "happiness": 1,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "penny_austerity_complete",
+          "penny_austerity_recovery_available",
+          "penny_quiet_surplus"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "result_text": "No parade. A reserve appears. Penny locks the drawer and hums a fiscal lullaby."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_resolution",
+      "rare_positive",
+      "austerity"
+    ],
+    "visual_tags": [
+      "balanced_ledger_glow"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "rare_competence"
+      ],
+      "emotional_goal": "relief",
+      "visual_hook": "glowing balanced ledger over a still-open clinic",
+      "localization_risk": "low",
+      "writer_notes": "Rare positive. publish_miracle triggers NEW ending penny_balances_final_budget. Always sets recovery flag."
+    }
+  },
+  {
+    "id": "penny_austerity_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Austerity complete on paper. Choose the nation's accounting religion — or repeal before the footnotes win.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "penny_austerity_arc",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "penny_austerity_arc"
+      ],
+      "any_flags": [
+        "penny_spreadsheet_faith",
+        "penny_empty_streets",
+        "penny_services_sunset",
+        "penny_cut_empty"
+      ]
+    },
+    "options": [
+      {
+        "id": "spreadsheet_state",
+        "label": "Found the Spreadsheet State",
+        "effects": {
+          "treasury": 6,
+          "happiness": -5,
+          "order": 4,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "penny_austerity_complete",
+          "spreadsheet_state"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "clerk_zero": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "trigger_ending": "spreadsheet_state",
+        "result_text": "Every policy becomes a cell. Citizens genuflect at pivot tables. Amen, formatted."
+      },
+      {
+        "id": "austerity_without_citizens",
+        "label": "Perfect books, empty streets",
+        "effects": {
+          "treasury": 8,
+          "happiness": -8,
+          "order": -3,
+          "elite_loyalty": 4
+        },
+        "add_flags": [
+          "penny_austerity_complete",
+          "austerity_without_citizens"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 3,
+          "auntie_olga": -4
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "trigger_ending": "austerity_without_citizens",
+        "result_text": "Costs hit zero. So do pedestrians. Penny calls it peak efficiency."
+      },
+      {
+        "id": "repeal_soft",
+        "label": "Repeal and soft-recover",
+        "effects": {
+          "treasury": -5,
+          "happiness": 5,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "remove_laws": [
+          "emergency_austerity_act",
+          "public_service_sunset_act"
+        ],
+        "add_flags": [
+          "penny_austerity_complete",
+          "penny_austerity_recovery_available",
+          "penny_austerity_repealed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "auntie_olga": 3
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "result_text": "Cuts repeal mid-sentence. Soup returns. Penny sulks into a corrective spreadsheet."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_resolution",
+      "ending_setup",
+      "austerity"
+    ],
+    "visual_tags": [
+      "spreadsheet_temple",
+      "empty_clinic_queue"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "penny_austerity_arc",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "ledger_religion",
+        "empty_success"
+      ],
+      "emotional_goal": "dark_punchline",
+      "visual_hook": "spreadsheet temple beside empty boulevards",
+      "localization_risk": "low",
+      "writer_notes": "NEW endings spreadsheet_state, austerity_without_citizens. Repeal soft-completes arc via resolves_arc with recovery flag; no abandon (would double-finish)."
+    }
+  }
+]

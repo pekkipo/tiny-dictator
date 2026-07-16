@@ -12,11 +12,13 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 
 | Planning ID | Runtime ID (2A) | Status |
 |---|---|---|
-| `arc_general_boom_rise` | `general_boom_arc` | partial (6 cards) |
+| `arc_general_boom_rise` | `general_boom_arc` | 2B-10 Pack A (7 cards incl. supporting) |
+| `arc_penny_austerity` | `penny_austerity_arc` | 2B-10 Pack A (6 cards incl. supporting) |
+| `arc_traffic_military_control` | `traffic_military_control` (major); legacy `traffic_military` remains minor debug_only | 2B-10 Pack A (6 cards) |
+| `arc_hyperinflation` | `hyperinflation_arc` | 2B-10 Pack A (5 cards) |
 | `arc_maybe_experimental_republic` | `doctor_maybe_arc` | partial (4 cards) |
 | `arc_cat_politics` | `cat_politics` | partial (8 cards; trim to 6 at integration) |
 | `arc_mandatory_happiness` | `mandatory_happiness` | partial (6 cards; trim to 5) |
-| `arc_traffic_military_control` | `traffic_military` (minor) | partial — overlaps chains |
 | `arc_ai_government` | `robot_government` | deferred (2 cards) |
 
 ---
@@ -26,31 +28,34 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_general_boom_rise
 
 - **Title:** The General's Rise
-- **Status:** partial
-- **Target cards:** 6
+- **Status:** approved (2B-10)
+- **Target cards:** 7 (6 core + supporting `boom_ceremonial_mascot`)
 - **Primary speaker:** general_boom
 - **Category:** military_and_order
 - **Intended stage:** establishment → escalation
-- **Premise:** General Boom grows from parade requests toward emergency powers and coup tension.
+- **Premise:** General Boom grows from parade requests toward emergency powers, loyalty, coup tension, or ceremonial mascot diversion.
 - **Dependencies:** None for entry; affinity gates mid-arc
-- **Likely laws:** mandatory_marching, border_parade_act, emergency_salute_protocol
+- **Likely laws:** mandatory_marching, emergency_martial_law, emergency_salute_law
 - **Likely endings:** general_boom_coup, general_becomes_mascot, general_remains_loyal
-- **Known risks:** Overlap with standalone parade cards; coup ending reachability
+- **Known risks:** Overlap with standalone parade cards; loyal resolution reachability
 - **Runtime mapping:** `general_boom_arc`
+- **Brief:** [2B-10_major_arc_pack_a_briefs.md](drafts/2B-10_major_arc_pack_a_briefs.md)
 
 ### arc_penny_austerity
 
 - **Title:** The Austerity Miracle
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-10)
+- **Target cards:** 6 (5 core + supporting `penny_service_sunset`)
 - **Primary speaker:** minister_penny
 - **Category:** economy
 - **Intended stage:** establishment
-- **Premise:** Penny's cuts stack until citizens rebel or the ledger becomes a religion.
-- **Dependencies:** Optional window_tax or coupon laws
-- **Likely laws:** window_tax, coupon_salaries, coin_rounding_act
+- **Premise:** Penny's cuts stack until citizens rebel, the ledger becomes a religion, or a disciplined miracle balances the books.
+- **Dependencies:** Optional window_tax or coupon laws; exclusive with `hyperinflation_arc` while active
+- **Likely laws:** emergency_efficiency_act, public_service_sunset_act
 - **Likely endings:** spreadsheet_state, austerity_without_citizens, penny_balances_final_budget
-- **Known risks:** Voice overlap with standalone tax cards; happiness collapse pacing
+- **Known risks:** Voice overlap with standalone tax cards; stage stagger vs hyperinflation
+- **Runtime mapping:** `penny_austerity_arc`
+- **Brief:** [2B-10_major_arc_pack_a_briefs.md](drafts/2B-10_major_arc_pack_a_briefs.md)
 
 ### arc_luna_media_reality
 
@@ -174,17 +179,18 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_traffic_military_control
 
 - **Title:** Traffic and Military Control
-- **Status:** partial
-- **Target cards:** 5
-- **Primary speaker:** general_boom / minister_penny
+- **Status:** approved (2B-10)
+- **Target cards:** 6 (5 core + supporting `traffic_checkpoint_hour`)
+- **Primary speaker:** general_boom / minister_penny / auntie_olga
 - **Category:** infrastructure
 - **Intended stage:** establishment
-- **Premise:** Traffic chaos invites military solutions and tank traffic law.
-- **Dependencies:** Links to short chains traffic_flags, tank_parking_crisis
-- **Likely laws:** tank_traffic_control, emergency_martial_law
-- **Likely endings:** tanks_direct_everything, traffic_system_achieves_peace
-- **Known risks:** Minor arc `traffic_military` already consumes 5 chain-class cards
-- **Runtime mapping:** `traffic_military` (minor)
+- **Premise:** Practical gridlock invites military convoys, checkpoints, and ceremonial priority lanes — distinct from Pack C flag corps and tank parking.
+- **Dependencies:** Soft optional Boom affinity; blocked while Pack C traffic_flags / tank_parking live
+- **Likely laws:** military_route_priority_act, traffic_checkpoint_act
+- **Likely endings:** traffic_system_achieves_peace; rare distinct martial path (not tank-parking ending)
+- **Known risks:** Legacy minor `traffic_military` remains debug_only; must not double-count
+- **Runtime mapping:** `traffic_military_control` (major); legacy `traffic_military` (minor, debug_only)
+- **Brief:** [2B-10_major_arc_pack_a_briefs.md](drafts/2B-10_major_arc_pack_a_briefs.md)
 
 ### arc_ai_government
 
@@ -218,16 +224,18 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_hyperinflation
 
 - **Title:** Hyperinflation
-- **Status:** outlined
+- **Status:** approved (2B-10)
 - **Target cards:** 5
-- **Primary speaker:** minister_penny
+- **Primary speaker:** minister_penny / sir_profit / luna_news
 - **Category:** economy
 - **Intended stage:** instability
-- **Premise:** Coupons, lottery budgets, and cheese bonds destroy price meaning.
-- **Dependencies:** coupon or lottery laws
-- **Likely laws:** coupon_salaries, national_lottery_budget, emergency_cheese_bonds
+- **Premise:** Prices spiral; reform, barter, and printing fork into recovery, strange success, or collapse.
+- **Dependencies:** Optional coupon/lottery weight; exclusive with `penny_austerity_arc`; blocked vs fish currency / coin shortage live
+- **Likely laws:** emergency_price_board_act, barter_license_act
 - **Likely endings:** hyperinflation_millionaires, bankrupt_leader
-- **Known risks:** Economy arc overlap with penny austerity — stagger stages
+- **Known risks:** Distinct from coin_shortage and fish_currency_experiment; stagger vs penny austerity
+- **Runtime mapping:** `hyperinflation_arc`
+- **Brief:** [2B-10_major_arc_pack_a_briefs.md](drafts/2B-10_major_arc_pack_a_briefs.md)
 
 ### arc_national_festival_economy
 
@@ -292,3 +300,4 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 | Version | Date | Notes |
 |---|---|---|
 | 1.0 | 2026-07-15 | Milestone 2B-1 — 18 arc planning entries |
+| 1.1 | 2026-07-16 | Milestone 2B-10 Pack A — Boom/Penny/Traffic/Hyper briefs; target cards 7/6/6/5 |

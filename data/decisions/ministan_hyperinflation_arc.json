@@ -1,0 +1,761 @@
+[
+  {
+    "id": "hyperinflation_price_spiral",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Prices have begun sprinting. Bread costs a rumor more each hour. I propose a board, a barter license, or a printer with ambition.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 17,
+    "maximum_day": 40,
+    "narrative": {
+      "arc_id": "hyperinflation_arc",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "instability"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "fish_currency_live",
+        "coin_shortage_active",
+        "hyper_live",
+        "hyper_complete"
+      ],
+      "blocked_arcs": [
+        "penny_austerity_arc"
+      ]
+    },
+    "options": [
+      {
+        "id": "reform_board",
+        "label": "Install an emergency price board",
+        "effects": {
+          "treasury": -3,
+          "happiness": 1,
+          "order": 3,
+          "elite_loyalty": -2
+        },
+        "add_laws": [
+          "emergency_price_board_act"
+        ],
+        "add_flags": [
+          "hyper_live",
+          "hyper_reform"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "reform_stabilize"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "hyperinflation_public_adaptation",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 72,
+          "required_flags": [
+            "hyper_live"
+          ]
+        },
+        "result_text": "Maximum prices appear on chalk. Vendors invent chalk. Penny calls it temporary discipline."
+      },
+      {
+        "id": "open_barter",
+        "label": "License nationwide barter",
+        "effects": {
+          "treasury": -1,
+          "happiness": 2,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "barter_license_act"
+        ],
+        "add_flags": [
+          "hyper_live",
+          "hyper_barter"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "barter_black_market"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "hyperinflation_public_adaptation",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 72,
+          "required_flags": [
+            "hyper_live"
+          ]
+        },
+        "result_text": "Chickens become currency-adjacent. Profit opens a booth. No fish. No coins. Just trades."
+      },
+      {
+        "id": "print_more",
+        "label": "Print more, cheerfully",
+        "effects": {
+          "treasury": 8,
+          "happiness": 3,
+          "order": -4,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "hyper_live",
+          "hyper_printed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "sir_profit": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "chaotic": 3,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "print_deeper"
+          }
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "hyper_price_consequences",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 74,
+          "required_flags": [
+            "hyper_live"
+          ]
+        },
+        "result_text": "The presses warm. Wallets thicken. Prices thicken faster. Penny files a polite dissent."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_setup",
+      "hyperinflation"
+    ],
+    "visual_tags": [
+      "price_sticker_walls"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "hyperinflation_arc",
+      "primary_category": "economy",
+      "primary_stage": "instability",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "price_spiral",
+        "cheerful_printing"
+      ],
+      "emotional_goal": "comic_panic",
+      "visual_hook": "shop windows covered in overlapping price stickers",
+      "localization_risk": "low",
+      "writer_notes": "Distinct from fish currency and coin shortage. Soft delayed adaptation (no force_next on entry). NEW laws emergency_price_board_act, barter_license_act."
+    }
+  },
+  {
+    "id": "hyperinflation_public_adaptation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "luna_news",
+    "category": "economy",
+    "proposal": "BREAKING: Citizens push wages in wheelbarrows. Menus use stickers. Tonight's segment: 'Is this growth?'",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "hyperinflation_arc",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "hyperinflation_arc"
+      ],
+      "all_flags": [
+        "hyper_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "spin_adaptation",
+        "label": "Spin it as national creativity",
+        "effects": {
+          "happiness": 2,
+          "order": -2,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "hyper_public_adapted"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_policy_fork",
+        "result_text": "Luna smiles at a wheelbarrow. Ratings rise. Prices do not notice the segment."
+      },
+      {
+        "id": "file_adaptation",
+        "label": "Have Clerk Zero file the chaos",
+        "effects": {
+          "order": 2,
+          "happiness": -1,
+          "treasury": -1,
+          "elite_loyalty": 0
+        },
+        "add_flags": [
+          "hyper_public_adapted",
+          "hyper_forms_filed"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_policy_fork",
+        "result_text": "Form H-12 acknowledges wheelbarrows. Clerk Zero stamps gently. The stickers multiply."
+      },
+      {
+        "id": "admit_spiral",
+        "label": "Admit the spiral on air",
+        "effects": {
+          "happiness": -3,
+          "order": -1,
+          "elite_loyalty": -2,
+          "treasury": 0
+        },
+        "add_flags": [
+          "hyper_public_adapted",
+          "hyper_truth_aired"
+        ],
+        "advisor_affinity": {
+          "luna_news": -2,
+          "minister_penny": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_policy_fork",
+        "result_text": "Luna says 'spiral' once. The teleprompter weeps. Penny nods at the honesty surcharge."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_escalation",
+      "follow_up",
+      "hyperinflation"
+    ],
+    "visual_tags": [
+      "wheelbarrow_wages",
+      "price_sticker_walls"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "hyperinflation_arc",
+      "primary_category": "economy",
+      "primary_stage": "instability",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "media_reframe",
+        "wheelbarrow"
+      ],
+      "emotional_goal": "public_absurdity",
+      "visual_hook": "wheelbarrows of notes past sticker-covered cafes",
+      "localization_risk": "low",
+      "writer_notes": "Soft-delayed from entry. Luna primary; Clerk option for bureaucratic beat. Force to policy_fork."
+    }
+  },
+  {
+    "id": "hyperinflation_policy_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Profit wants markets. Penny wants pegs. The spiral wants attention. Double down on reform, barter, or print?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "hyperinflation_arc",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "hyperinflation_arc"
+      ],
+      "all_flags": [
+        "hyper_live",
+        "hyper_public_adapted"
+      ]
+    },
+    "options": [
+      {
+        "id": "double_reform",
+        "label": "Harden the price board",
+        "effects": {
+          "treasury": -4,
+          "happiness": -2,
+          "order": 4,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "hyper_policy_reform"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "sir_profit": -1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "reform_stabilize"
+          },
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_temp_success",
+        "result_text": "Boards get locks. Vendors get fines. For one bright afternoon, numbers sit still."
+      },
+      {
+        "id": "double_barter",
+        "label": "Expand barter into policy",
+        "effects": {
+          "treasury": 2,
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "hyper_policy_barter"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "minister_penny": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "barter_black_market"
+          },
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_temp_success",
+        "result_text": "Official barter stalls open. Cash becomes optional folklore. Profit sells booth franchises."
+      },
+      {
+        "id": "double_print",
+        "label": "Print through the ceiling",
+        "effects": {
+          "treasury": 12,
+          "happiness": 4,
+          "order": -5,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "hyper_policy_print"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": -2,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "chaotic": 3,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "branch",
+            "branch_id": "print_deeper"
+          },
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_temp_success",
+        "result_text": "Confetti of denominations. Everyone is briefly rich. Penny updates the panic column."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_climax",
+      "hyperinflation"
+    ],
+    "visual_tags": [
+      "barter_booth",
+      "price_sticker_walls"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "hyperinflation_arc",
+      "primary_category": "economy",
+      "primary_stage": "instability",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "policy_doubling"
+      ],
+      "emotional_goal": "false_confidence",
+      "visual_hook": "Profit and Penny flanking a shaking price board",
+      "localization_risk": "low",
+      "writer_notes": "Locks reform/barter/print branches then forces temporary success beat."
+    }
+  },
+  {
+    "id": "hyperinflation_temp_success",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Temporary success metrics: green. Sustainability metrics: clearing throat. Enjoy the calm. It has a timer.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "hyperinflation_arc",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "hyperinflation_arc"
+      ],
+      "all_flags": [
+        "hyper_live"
+      ],
+      "any_flags": [
+        "hyper_policy_reform",
+        "hyper_policy_barter",
+        "hyper_policy_print"
+      ]
+    },
+    "options": [
+      {
+        "id": "bank_the_calm",
+        "label": "Bank the calm quietly",
+        "effects": {
+          "treasury": 3,
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "hyper_temp_success"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "result_text": "Penny deposits one quiet week. Markets nap. The timer still ticks under the pillow.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "hyperinflation_resolution",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "hyper_temp_success"
+          ]
+        }
+      },
+      {
+        "id": "announce_victory",
+        "label": "Announce early victory",
+        "effects": {
+          "treasury": 1,
+          "happiness": 4,
+          "order": -1,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "hyper_temp_success",
+          "hyper_victory_announced"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "minister_penny": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_resolution",
+        "result_text": "Luna declares 'stabilization complete.' Stickers peel in applause. Math remains unimpressed."
+      },
+      {
+        "id": "spend_the_boom",
+        "label": "Spend the temporary boom",
+        "effects": {
+          "treasury": -6,
+          "happiness": 5,
+          "order": -2,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "hyper_temp_success",
+          "hyper_boom_spent"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "hyperinflation_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "hyperinflation_resolution",
+        "result_text": "Parades of receipts. Profit toasts liquidity. Penny schedules the hangover."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_mid",
+      "hyperinflation"
+    ],
+    "visual_tags": [
+      "millionaire_confetti"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "hyperinflation_arc",
+      "primary_category": "economy",
+      "primary_stage": "instability",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "false_dawn"
+      ],
+      "emotional_goal": "uneasy_relief",
+      "visual_hook": "briefly calm market under a countdown clock",
+      "localization_risk": "low",
+      "writer_notes": "Apparent win then hard force to resolution."
+    }
+  },
+  {
+    "id": "hyperinflation_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "The temporary success has expired its warranty. Strange triumph, soft recovery, or honest collapse?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "hyperinflation_arc",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "hyperinflation_arc"
+      ],
+      "all_flags": [
+        "hyper_temp_success"
+      ]
+    },
+    "options": [
+      {
+        "id": "strange_success",
+        "label": "Declare millionaire success",
+        "effects": {
+          "treasury": 5,
+          "happiness": 6,
+          "order": -4,
+          "elite_loyalty": 4
+        },
+        "add_flags": [
+          "hyper_complete",
+          "hyper_strange_success"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "chaotic": 2,
+          "capitalist": 2
+        },
+        "trigger_ending": "hyperinflation_millionaires",
+        "result_text": "Everyone is a millionaire in tiny notes. Confetti sticks to the stickers. History shrugs."
+      },
+      {
+        "id": "soft_recovery",
+        "label": "Steer into soft recovery",
+        "effects": {
+          "treasury": 2,
+          "happiness": 2,
+          "order": 3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "hyper_complete",
+          "hyper_recovered",
+          "recovery_treasury"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "auntie_olga": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "Prices sit. Wheelbarrows retire. Penny opens a recovery folder without an ending stamp."
+      },
+      {
+        "id": "honest_collapse",
+        "label": "Admit ledger collapse",
+        "effects": {
+          "treasury": -15,
+          "happiness": -6,
+          "order": -5,
+          "elite_loyalty": -4
+        },
+        "add_flags": [
+          "hyper_complete",
+          "hyper_collapsed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "sir_profit": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "chaotic": 1
+        },
+        "trigger_ending": "bankrupt_leader",
+        "result_text": "The final invoice arrives. The palace answers collect. Bankruptcy makes excellent headlines."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_resolution",
+      "ending_setup",
+      "hyperinflation"
+    ],
+    "visual_tags": [
+      "millionaire_confetti",
+      "barter_booth"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "hyperinflation_arc",
+      "primary_category": "economy",
+      "primary_stage": "instability",
+      "batch_id": "2B-10A",
+      "humor_tags": [
+        "millionaire_absurdity",
+        "soft_landing"
+      ],
+      "emotional_goal": "finale_choice",
+      "visual_hook": "confetti of worthless notes vs quiet recovery desk",
+      "localization_risk": "low",
+      "writer_notes": "strange_success → NEW ending hyperinflation_millionaires. recovery → flags only. collapse → existing bankrupt_leader."
+    }
+  }
+]

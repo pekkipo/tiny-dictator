@@ -131,18 +131,18 @@ func _test_required_fields(manifest: Dictionary) -> void:
 
 
 func _test_expected_counts(manifest: Dictionary) -> void:
-	_check(manifest.get("decisions", []).size() == 207, "manifest has 207 decisions")
-	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 6, "manifest has 6 arcs")
+	_check(manifest.get("decisions", []).size() == 225, "manifest has 225 decisions")
+	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 9, "manifest has 9 arcs")
 	_check(manifest.get("catalogs", {}).get("crises", []).size() == 7, "manifest has 7 crises")
-	_check(manifest.get("catalogs", {}).get("laws", []).size() == 67, "manifest has 67 laws")
-	_check(manifest.get("catalogs", {}).get("endings", []).size() == 16, "manifest has 16 endings")
+	_check(manifest.get("catalogs", {}).get("laws", []).size() == 74, "manifest has 74 laws")
+	_check(manifest.get("catalogs", {}).get("endings", []).size() == 23, "manifest has 23 endings")
 	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 8, "manifest has 8 advisors")
 	_check(manifest.get("catalogs", {}).get("ruler_identities", []).size() == 7, "manifest has 7 ruler identities")
 	_check(manifest.get("catalogs", {}).get("palace_upgrades", []).size() == 3, "manifest has 3 palace upgrades")
 	_check(manifest.get("catalogs", {}).get("chains", []).size() == 36, "manifest has 36 chains")
 
 	var approved: int = int(manifest.get("quota_report", {}).get("decisions", {}).get("approved_total", -1))
-	_check(approved == 153, "onboarding+standalone+short_chain approved count (got %d)" % approved)
+	_check(approved == 177, "onboarding+standalone+short_chain+major_arc_pack_a approved count (got %d)" % approved)
 	var onboarding_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("onboarding", {}).get("approved", -1)
 	)
@@ -154,6 +154,10 @@ func _test_expected_counts(manifest: Dictionary) -> void:
 	var short_chain_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("short_chain", {}).get("approved", -1)
 	)
-	_check(short_chain_approved == 80, "short_chain class has 80 approved after 2B-9 (got %d)" % short_chain_approved)
+	_check(short_chain_approved == 80, "short_chain class has 80 approved (got %d)" % short_chain_approved)
+	var major_arc_approved: int = int(
+		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("major_arc", {}).get("approved", -1)
+	)
+	_check(major_arc_approved == 24, "major_arc class has 24 approved Pack A (got %d)" % major_arc_approved)
 	var chains_approved: int = int(manifest.get("quota_report", {}).get("short_chains", {}).get("approved", -1))
 	_check(chains_approved == 32, "exactly 32 approved short chains after 2B-9 (got %d)" % chains_approved)

@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_9_short_chain_pack_d"
-const BATCH_ID: String = "2B-8B"
-const DECISION_BATCH_ID: String = "2B-8B"
+const PHASE: String = "2b_10_major_arc_pack_a"
+const BATCH_ID: String = "2B-10"
+const DECISION_BATCH_ID: String = "2B-10"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -89,9 +89,30 @@ const GUEST_SPEAKER_IDS: Array[String] = [
 
 const MAJOR_ARC_IDS: Array[String] = [
 	"cat_politics", "mandatory_happiness", "general_boom_arc", "doctor_maybe_arc",
+	"penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
+]
+
+const APPROVED_MAJOR_ARC_IDS: Array[String] = [
+	"general_boom_arc", "penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
 ]
 
 const MINOR_ARC_IDS: Array[String] = ["traffic_military", "robot_government"]
+
+const MAJOR_ARC_PACK_A_APPROVED_IDS: Array[String] = [
+	# Boom — The General's Rise (7)
+	"military_parade", "army_snack_budget", "parade_budget_boost",
+	"boom_emergency_powers_demand", "boom_loyal_protector", "boom_failed_coup",
+	"boom_ceremonial_mascot",
+	# Penny — The Austerity Miracle (6)
+	"penny_deficit_briefing", "penny_service_trimming", "penny_service_sunset",
+	"penny_ledger_review", "penny_miracle_balanced", "penny_austerity_resolution",
+	# Traffic and Military Control (6)
+	"traffic_gridlock_brief", "traffic_military_convoy", "traffic_checkpoint_hour",
+	"traffic_control_climax", "traffic_civilian_peace", "traffic_martial_resolution",
+	# Hyperinflation (5)
+	"hyperinflation_price_spiral", "hyperinflation_public_adaptation",
+	"hyperinflation_policy_fork", "hyperinflation_temp_success", "hyperinflation_resolution",
+]
 
 const CHAIN_MEMBERS: Dictionary = {
 	"free_pizza_consequences": [
@@ -336,9 +357,18 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"stamp_shortage_crisis", "stamp_shortage_workaround",
 	"antivacuum_referendum_proposal", "antivacuum_campaign", "antivacuum_referendum_result",
 	"national_nap_hour_proposal", "national_nap_productivity", "national_nap_resolution",
+	"military_parade", "army_snack_budget", "parade_budget_boost",
+	"boom_emergency_powers_demand", "boom_loyal_protector", "boom_failed_coup",
+	"boom_ceremonial_mascot",
+	"penny_deficit_briefing", "penny_service_trimming", "penny_service_sunset",
+	"penny_ledger_review", "penny_miracle_balanced", "penny_austerity_resolution",
+	"traffic_gridlock_brief", "traffic_military_convoy", "traffic_checkpoint_hour",
+	"traffic_control_climax", "traffic_civilian_peace", "traffic_martial_resolution",
+	"hyperinflation_price_spiral", "hyperinflation_public_adaptation",
+	"hyperinflation_policy_fork", "hyperinflation_temp_success", "hyperinflation_resolution",
 ]
 
-const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
+const SIM_NEVER_SELECTED: Array[String] = ["happiness_backlash"]
 
 const SIMULATION_SNAPSHOT: Dictionary = {
 	"seed": 20260715,
@@ -497,6 +527,8 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 		var status := "integrated"
 		if arc_id in DEFERRED_ARC_IDS:
 			status = "deferred"
+		elif arc_id in APPROVED_MAJOR_ARC_IDS:
+			status = "approved"
 		elif str(arc.get("importance", "")) == "major":
 			status = "integrated"
 		catalogs["arcs"].append({
@@ -698,6 +730,9 @@ func _resolve_status(
 	if id in SHORT_CHAIN_PACK_D_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in MAJOR_ARC_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -774,6 +809,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-8 approved short-chain card.")
 	if id in SHORT_CHAIN_PACK_D_APPROVED_IDS:
 		notes.append("Milestone 2B-9 approved short-chain card.")
+	if id in MAJOR_ARC_PACK_A_APPROVED_IDS:
+		notes.append("Milestone 2B-10 approved major-arc card.")
 	return ", ".join(notes)
 
 
@@ -945,6 +982,15 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_doctor_maybe_arc.json"
 	if id.begins_with("boom_"):
 		return "data/decisions/ministan_general_boom_arc.json"
+	if id.begins_with("penny_"):
+		return "data/decisions/ministan_penny_austerity_arc.json"
+	if id.begins_with("hyperinflation_"):
+		return "data/decisions/ministan_hyperinflation_arc.json"
+	if id in [
+		"traffic_gridlock_brief", "traffic_military_convoy", "traffic_checkpoint_hour",
+		"traffic_control_climax", "traffic_civilian_peace", "traffic_martial_resolution",
+	]:
+		return "data/decisions/ministan_traffic_military_control.json"
 	if id.begins_with("happiness_") or id == "fake_smile_industry":
 		return "data/decisions/ministan_mandatory_happiness.json" if id.begins_with("happiness_") else "data/decisions/ministan_followups.json"
 	if id in ["fake_smile_industry", "cheese_shortage", "cat_parliament", "cat_fish_budget"]:

@@ -6,48 +6,124 @@
     "card_type": "advisor",
     "advisor_id": "general_boom",
     "category": "military",
-    "proposal": "General Boom wants a bigger parade budget. Auntie Olga thinks the money should go to bread.",
+    "proposal": "Parade polish costs money. Bread also costs money. Boom wants brass. Olga wants flour.",
     "one_time": true,
-    "base_weight": 14,
-    "minimum_day": 2,
-    "maximum_day": 20,
+    "base_weight": 1,
+    "queue_only": true,
     "requirements": {
-      "active_arcs": ["general_boom_arc"]
+      "active_arcs": [
+        "general_boom_arc"
+      ],
+      "arc_branches": {
+        "general_boom_arc": "empower_boom"
+      }
     },
     "narrative": {
       "arc_id": "general_boom_arc",
       "beat_type": "escalation",
-      "step": 2,
+      "branch_id": "empower_boom",
       "importance": "major"
     },
     "options": [
       {
         "id": "fund_parade",
-        "label": "Fund the parade",
-        "effects": { "treasury": -4, "order": 3, "happiness": -2 },
-        "advisor_affinity": { "general_boom": 2, "auntie_olga": -1 },
-        "trait_changes": { "authoritarian": 2, "populist": -1 },
-        "counter_changes": { "military_favor_choices": 1 },
+        "label": "Fund brass and banners",
+        "effects": {
+          "treasury": -5,
+          "order": 4,
+          "happiness": -2,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "propagandist": 2
+        },
+        "counter_changes": {
+          "military_favor_choices": 1
+        },
+        "add_flags": [
+          "boom_parade_budget_boosted"
+        ],
         "arc_actions": [
-          { "arc_id": "general_boom_arc", "action": "advance" }
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
         ],
         "force_next_decision": "boom_emergency_powers_demand",
-        "result_text": "The parade was magnificent. Auntie Olga mutters about flour prices."
+        "result_text": "Banners gleam. Olga mutters about flour. Boom practices a longer salute."
       },
       {
         "id": "fund_bread",
         "label": "Fund bread instead",
-        "effects": { "treasury": -2, "happiness": 4, "order": -1 },
-        "advisor_affinity": { "general_boom": -2, "auntie_olga": 2 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "treasury": -3,
+          "happiness": 5,
+          "order": -2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "boom_bread_over_brass"
+        ],
         "arc_actions": [
-          { "arc_id": "general_boom_arc", "action": "advance" }
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
+        ],
+        "result_text": "Citizens cheer. Boom salutes a cardboard tank. Loyalty wobbles like jelly.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "boom_emergency_powers_demand",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 75
+        }
+      },
+      {
+        "id": "split_budget",
+        "label": "Split brass and bread",
+        "effects": {
+          "treasury": -4,
+          "order": 2,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "boom_budget_split"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
         ],
         "force_next_decision": "boom_emergency_powers_demand",
-        "result_text": "Citizens cheer. General Boom salutes a cardboard tank in protest."
+        "result_text": "Half brass, half bread. Both advisors call it incomplete. Both take the win."
       }
     ],
-    "tags": ["military", "arc_escalation"]
+    "tags": [
+      "military",
+      "arc_escalation"
+    ],
+    "visual_tags": [
+      "parade_columns"
+    ]
   },
   {
     "id": "cat_treaty_offer",
@@ -62,29 +138,59 @@
     "minimum_day": 3,
     "maximum_day": 14,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
-    "teaches_concepts": ["affinity_feedback", "ruler_traits", "advisors", "endings_replay"],
+    "teaches_concepts": [
+      "affinity_feedback",
+      "ruler_traits",
+      "advisors",
+      "endings_replay"
+    ],
     "options": [
       {
         "id": "reject_treaty",
         "label": "Reject the treaty",
-        "effects": { "happiness": -2, "order": 2 },
-        "advisor_affinity": { "comrade_whiskers": -2, "general_boom": 1 },
-        "trait_changes": { "authoritarian": 1 },
+        "effects": {
+          "happiness": -2,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
         "result_text": "Cats knock over a ministry sign. General Boom approves of your firmness."
       },
       {
         "id": "sign_treaty",
         "label": "Sign the Fish Treaty",
-        "effects": { "happiness": 5, "treasury": -3, "order": -2 },
-        "advisor_affinity": { "comrade_whiskers": 3, "general_boom": -1 },
-        "trait_changes": { "cat_friendly": 3, "populist": 1 },
+        "effects": {
+          "happiness": 5,
+          "treasury": -3,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 3,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "cat_friendly": 3,
+          "populist": 1
+        },
         "result_text": "Comrade Whiskers purrs on the treaty table. Luna News calls it historic diplomacy."
       }
     ],
-    "tags": ["onboarding", "cats"],
-    "visual_tags": ["fish_treaty"]
+    "tags": [
+      "onboarding",
+      "cats"
+    ],
+    "visual_tags": [
+      "fish_treaty"
+    ]
   },
   {
     "id": "bureaucracy_expansion",
@@ -99,29 +205,54 @@
     "minimum_day": 3,
     "maximum_day": 14,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
-    "teaches_concepts": ["ruler_traits", "advisors"],
+    "teaches_concepts": [
+      "ruler_traits",
+      "advisors"
+    ],
     "options": [
       {
         "id": "approve_ministry",
         "label": "Approve the ministry",
-        "effects": { "order": 4, "treasury": -3, "happiness": -2 },
-        "advisor_affinity": { "clerk_zero": 2 },
-        "trait_changes": { "bureaucratic": 3 },
+        "effects": {
+          "order": 4,
+          "treasury": -3,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
         "result_text": "Three new stamp categories appear overnight. Clerk Zero is pleased."
       },
       {
         "id": "reject_ministry",
         "label": "Reject the ministry",
-        "effects": { "happiness": 2, "order": -1 },
-        "advisor_affinity": { "clerk_zero": -1 },
-        "trait_changes": { "chaotic": 1 },
+        "effects": {
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "chaotic": 1
+        },
         "result_text": "Clerk Zero files your rejection in triplicate anyway."
       }
     ],
-    "tags": ["onboarding", "bureaucracy"],
-    "visual_tags": ["ministry_of_forms"]
+    "tags": [
+      "onboarding",
+      "bureaucracy"
+    ],
+    "visual_tags": [
+      "ministry_of_forms"
+    ]
   },
   {
     "id": "science_gamble",
@@ -135,7 +266,12 @@
     "base_weight": 13,
     "minimum_day": 3,
     "maximum_day": 14,
-    "teaches_concepts": ["delayed_followups", "ruler_traits", "affinity_feedback", "advisors"],
+    "teaches_concepts": [
+      "delayed_followups",
+      "ruler_traits",
+      "affinity_feedback",
+      "advisors"
+    ],
     "narrative": {
       "arc_id": "doctor_maybe_arc",
       "beat_type": "setup",
@@ -144,18 +280,36 @@
       "importance": "major"
     },
     "pacing": {
-      "allowed_stages": ["establishment", "escalation", "instability"]
+      "allowed_stages": [
+        "establishment",
+        "escalation",
+        "instability"
+      ]
     },
     "options": [
       {
         "id": "fund_experiment",
         "label": "Fund the experiment",
-        "effects": { "treasury": -4, "happiness": 3 },
-        "add_flags": ["science_experiment_funded"],
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 3, "chaotic": 1 },
+        "effects": {
+          "treasury": -4,
+          "happiness": 3
+        },
+        "add_flags": [
+          "science_experiment_funded"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 3,
+          "chaotic": 1
+        },
         "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "reckless_science" }
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "branch",
+            "branch_id": "reckless_science"
+          }
         ],
         "follow_up": {
           "type": "soft",
@@ -163,25 +317,44 @@
           "minimum_delay_days": 2,
           "maximum_delay_days": 5,
           "priority": 75,
-          "required_flags": ["science_experiment_funded"]
+          "required_flags": [
+            "science_experiment_funded"
+          ]
         },
         "result_text": "Results inconclusive but cheerful. Doctor Maybe already plans phase two."
       },
       {
         "id": "deny_experiment",
         "label": "Deny funding",
-        "effects": { "order": 1, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
-        "trait_changes": { "bureaucratic": 1 },
+        "effects": {
+          "order": 1,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
         "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" }
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "branch",
+            "branch_id": "cautious_oversight"
+          }
         ],
         "force_next_decision": "maybe_containment_protocol",
         "result_text": "Doctor Maybe labels you Control Group A."
       }
     ],
-    "tags": ["onboarding", "science", "arc_setup"],
-    "visual_tags": ["lab_sparks"]
+    "tags": [
+      "onboarding",
+      "science",
+      "arc_setup"
+    ],
+    "visual_tags": [
+      "lab_sparks"
+    ]
   },
   {
     "id": "privatize_palace_garden",
@@ -196,29 +369,59 @@
     "minimum_day": 3,
     "maximum_day": 14,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
-    "teaches_concepts": ["affinity_feedback", "ruler_traits", "advisors", "endings_replay"],
+    "teaches_concepts": [
+      "affinity_feedback",
+      "ruler_traits",
+      "advisors",
+      "endings_replay"
+    ],
     "options": [
       {
         "id": "privatize",
         "label": "Privatize the garden",
-        "effects": { "treasury": 5, "happiness": -4, "elite_loyalty": 2 },
-        "advisor_affinity": { "sir_profit": 2, "auntie_olga": -2 },
-        "trait_changes": { "capitalist": 3, "authoritarian": 1 },
+        "effects": {
+          "treasury": 5,
+          "happiness": -4,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 3,
+          "authoritarian": 1
+        },
         "result_text": "Sir Profit calls it alignment. Auntie Olga calls it a fence."
       },
       {
         "id": "keep_public",
         "label": "Keep it public",
-        "effects": { "happiness": 3, "treasury": -1 },
-        "advisor_affinity": { "sir_profit": -1, "auntie_olga": 1 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "happiness": 3,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "result_text": "Families picnic freely. Sir Profit drafts a regret memo."
       }
     ],
-    "tags": ["onboarding", "economy"],
-    "visual_tags": ["privatized_garden"]
+    "tags": [
+      "onboarding",
+      "economy"
+    ],
+    "visual_tags": [
+      "privatized_garden"
+    ]
   },
   {
     "id": "propaganda_smile_campaign",
@@ -236,17 +439,34 @@
       {
         "id": "mandate_smiles",
         "label": "Mandate smile hour",
-        "effects": { "happiness": 2, "order": 3, "elite_loyalty": -1 },
-        "advisor_affinity": { "luna_news": 2, "auntie_olga": -1 },
-        "trait_changes": { "propagandist": 3, "authoritarian": 2 },
+        "effects": {
+          "happiness": 2,
+          "order": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "propagandist": 3,
+          "authoritarian": 2
+        },
         "result_text": "The nation grins on camera. Luna News declares a mood miracle."
       },
       {
         "id": "optional_smiles",
         "label": "Make it optional",
-        "effects": { "happiness": 1, "order": -1 },
-        "advisor_affinity": { "luna_news": -1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "happiness": 1,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "result_text": "Ratings drop slightly. Luna News reframes it as authentic skepticism."
       }
     ]

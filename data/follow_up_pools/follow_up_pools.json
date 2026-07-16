@@ -54,5 +54,11 @@
     "decision_ids": [
       "antivacuum_campaign"
     ]
+  },
+  {
+    "id": "hyper_price_consequences",
+    "decision_ids": [
+      "hyperinflation_public_adaptation"
+    ]
   }
 ]

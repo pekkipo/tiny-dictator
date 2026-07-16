@@ -77,7 +77,16 @@
     "short_name": "Martial Law",
     "description": "Parades are now legally classified as emergency infrastructure.",
     "placeholder_icon": "🪖",
-    "visual_tags": ["traffic_tanks"],
+    "visual_tags": ["traffic_tanks", "emergency_powers_banner"],
+    "category": "military"
+  },
+  {
+    "id": "mandatory_marching",
+    "display_name": "Mandatory Marching Act",
+    "short_name": "Mandatory Marching",
+    "description": "Citizens practice synchronized steps on alternate Tuesdays. Left feet optional with Form 7.",
+    "placeholder_icon": "🥾",
+    "visual_tags": ["parade_columns"],
     "category": "military"
   },
   {
@@ -601,5 +610,59 @@
     "placeholder_icon": "😴",
     "visual_tags": ["nap_hour_banners"],
     "category": "public_life"
+  },
+  {
+    "id": "military_route_priority_act",
+    "display_name": "Military Route Priority Act",
+    "short_name": "Route Priority",
+    "description": "Military convoys may claim priority on civilian routes during gridlock emergencies.",
+    "placeholder_icon": "🚛",
+    "visual_tags": ["convoy_crosswalk", "ceremonial_priority_lane"],
+    "category": "military"
+  },
+  {
+    "id": "traffic_checkpoint_act",
+    "display_name": "Traffic Checkpoint Act",
+    "short_name": "Checkpoint Hour",
+    "description": "Timed civilian checkpoints may operate with umbrellas, stamps, and optional tea.",
+    "placeholder_icon": "🛂",
+    "visual_tags": ["checkpoint_umbrellas"],
+    "category": "military"
+  },
+  {
+    "id": "emergency_austerity_act",
+    "display_name": "Emergency Austerity Act",
+    "short_name": "Austerity Act",
+    "description": "Public spending freezes under cheerful spreadsheet supervision.",
+    "placeholder_icon": "📉",
+    "visual_tags": ["balanced_ledger_glow"],
+    "category": "economy"
+  },
+  {
+    "id": "public_service_sunset_act",
+    "display_name": "Public Service Sunset Act",
+    "short_name": "Service Sunset",
+    "description": "Clinics, buses, and kindness close at dusk for fiscal hygiene.",
+    "placeholder_icon": "🌇",
+    "visual_tags": ["empty_clinic_queue"],
+    "category": "economy"
+  },
+  {
+    "id": "emergency_price_board_act",
+    "display_name": "Emergency Price Board Act",
+    "short_name": "Price Board",
+    "description": "Maximum prices appear on chalk. Vendors invent chalk.",
+    "placeholder_icon": "📋",
+    "visual_tags": ["price_sticker_walls"],
+    "category": "economy"
+  },
+  {
+    "id": "barter_license_act",
+    "display_name": "Barter License Act",
+    "short_name": "Barter License",
+    "description": "Citizens may trade chickens for stamps with a permit and a smile.",
+    "placeholder_icon": "🔄",
+    "visual_tags": ["barter_booth"],
+    "category": "economy"
   }
 ]

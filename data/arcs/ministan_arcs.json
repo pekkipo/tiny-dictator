@@ -72,9 +72,10 @@
     "entry_decision_ids": ["military_parade"],
     "resolution_decision_ids": [
       "boom_loyal_protector",
-      "boom_failed_coup"
+      "boom_failed_coup",
+      "boom_ceremonial_mascot"
     ],
-    "branch_ids": ["empower_boom", "restrain_boom"],
+    "branch_ids": ["empower_boom", "restrain_boom", "mascot_path"],
     "tags": ["military", "general_boom", "order"]
   },
   {
@@ -111,5 +112,63 @@
     "resolution_decision_ids": ["robot_government_installed"],
     "branch_ids": ["support_robots"],
     "tags": ["robots", "government"]
+  },
+  {
+    "id": "traffic_military_control",
+    "display_name": "Traffic and Military Control",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 54,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": ["traffic_gridlock_brief"],
+    "resolution_decision_ids": [
+      "traffic_civilian_peace",
+      "traffic_martial_resolution"
+    ],
+    "branch_ids": [
+      "civilian_compromise",
+      "martial_traffic",
+      "absurd_efficiency"
+    ],
+    "tags": ["traffic", "military", "infrastructure"]
+  },
+  {
+    "id": "penny_austerity_arc",
+    "display_name": "The Austerity Miracle",
+    "country_id": "ministan",
+    "arc_type": "advisor",
+    "importance": "major",
+    "priority": 59,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": ["economy_collapse"],
+    "entry_decision_ids": ["penny_deficit_briefing"],
+    "resolution_decision_ids": [
+      "penny_miracle_balanced",
+      "penny_austerity_resolution"
+    ],
+    "branch_ids": ["disciplined_ledger", "cut_until_empty", "compromise_cuts"],
+    "tags": ["economy", "minister_penny", "austerity"]
+  },
+  {
+    "id": "hyperinflation_arc",
+    "display_name": "Hyperinflation",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 62,
+    "minimum_start_stage": "instability",
+    "maximum_start_stage": "endgame",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": ["economy_collapse"],
+    "entry_decision_ids": ["hyperinflation_price_spiral"],
+    "resolution_decision_ids": ["hyperinflation_resolution"],
+    "branch_ids": ["reform_stabilize", "barter_black_market", "print_deeper"],
+    "tags": ["economy", "hyperinflation", "instability"]
   }
 ]

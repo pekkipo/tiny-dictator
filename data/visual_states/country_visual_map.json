@@ -4,6 +4,10 @@
   "bricked_windows": "🪟",
   "cats_in_square": "🐱",
   "traffic_tanks": "🪖",
+  "parade_columns": "🎺",
+  "emergency_powers_banner": "🚩",
+  "loyal_salute_plaza": "🫡",
+  "mascot_boom_float": "🎈",
   "tired_citizens": "🥱",
   "protest_crowd": "✊",
   "bank_panic": "🏦",
@@ -160,5 +164,16 @@
   "quiet_hours_plaque": "🔕",
   "nap_hour_banners": "😴",
   "empty_desk_clocks": "🕰️",
-  "timed_nap_zones": "🛏️"
+  "timed_nap_zones": "🛏️",
+  "convoy_crosswalk": "🚸",
+  "checkpoint_umbrellas": "☂️",
+  "ceremonial_priority_lane": "🟨",
+  "peaceful_roundabout": "🌸",
+  "balanced_ledger_glow": "📗",
+  "empty_clinic_queue": "🏥",
+  "spreadsheet_temple": "📊",
+  "price_sticker_walls": "🏷️",
+  "wheelbarrow_wages": "🛒",
+  "barter_booth": "🔄",
+  "millionaire_confetti": "💸"
 }

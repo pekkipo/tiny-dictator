@@ -6,51 +6,132 @@
     "card_type": "normal",
     "advisor_id": "general_boom",
     "category": "military",
-    "proposal": "General Boom demands emergency parade powers. He has already printed the uniforms.",
+    "proposal": "Boom requests emergency parade powers. Uniforms printed. Loyalty optional. Ambition less optional.",
     "one_time": true,
     "base_weight": 1,
-    "minimum_day": 6,
-    "maximum_day": 30,
+    "queue_only": true,
     "narrative": {
       "arc_id": "general_boom_arc",
       "beat_type": "climax",
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["general_boom_arc"]
+      "active_arcs": [
+        "general_boom_arc"
+      ]
     },
     "options": [
       {
         "id": "grant_powers",
         "label": "Grant emergency powers",
-        "effects": { "order": 8, "elite_loyalty": 8, "happiness": -6, "treasury": -10 },
-        "add_laws": ["emergency_martial_law"],
-        "add_flags": ["boom_emergency_powers"],
-        "advisor_affinity": { "general_boom": 3, "auntie_olga": -2 },
-        "trait_changes": { "authoritarian": 3 },
+        "effects": {
+          "order": 8,
+          "elite_loyalty": 6,
+          "happiness": -6,
+          "treasury": -8
+        },
+        "add_laws": [
+          "emergency_martial_law"
+        ],
+        "add_flags": [
+          "boom_emergency_powers"
+        ],
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
         "arc_actions": [
-          { "arc_id": "general_boom_arc", "action": "branch", "branch_id": "empower_boom" },
-          { "arc_id": "general_boom_arc", "action": "advance" }
+          {
+            "arc_id": "general_boom_arc",
+            "action": "branch",
+            "branch_id": "empower_boom"
+          },
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
         ],
         "force_next_decision": "boom_loyal_protector",
-        "result_text": "General Boom salutes for eleven minutes. The nation feels very ordered."
+        "result_text": "Boom salutes for eleven minutes. The nation feels ordered. Ambition feels fed."
       },
       {
         "id": "deny_powers",
-        "label": "Deny the powers",
-        "effects": { "happiness": 4, "elite_loyalty": -5, "order": -4 },
-        "advisor_affinity": { "general_boom": -3 },
-        "trait_changes": { "populist": 2 },
+        "label": "Deny and restrain him",
+        "effects": {
+          "happiness": 4,
+          "elite_loyalty": -5,
+          "order": -4
+        },
+        "advisor_affinity": {
+          "general_boom": -3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "boom_restrained"
+        ],
         "arc_actions": [
-          { "arc_id": "general_boom_arc", "action": "branch", "branch_id": "restrain_boom" },
-          { "arc_id": "general_boom_arc", "action": "advance" }
+          {
+            "arc_id": "general_boom_arc",
+            "action": "branch",
+            "branch_id": "restrain_boom"
+          },
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
         ],
         "force_next_decision": "boom_failed_coup",
-        "result_text": "General Boom mutters about tanks in the garage. Luna News calls it restraint."
+        "result_text": "Boom mutters about garage tanks. Luna News calls it healthy civilian oversight."
+      },
+      {
+        "id": "divert_mascot",
+        "label": "Make him a parade mascot",
+        "effects": {
+          "happiness": 5,
+          "order": 1,
+          "elite_loyalty": -3,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "luna_news": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "populist": 1
+        },
+        "add_flags": [
+          "boom_mascot_diverted"
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "general_boom_arc",
+            "action": "branch",
+            "branch_id": "mascot_path"
+          },
+          {
+            "arc_id": "general_boom_arc",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "boom_ceremonial_mascot",
+        "result_text": "Boom is fitted for a foam medal. Ambition files a complaint. The crowd loves it."
       }
     ],
-    "tags": ["military", "arc_climax"],
-    "visual_tags": ["traffic_tanks"]
+    "tags": [
+      "military",
+      "arc_climax"
+    ],
+    "visual_tags": [
+      "emergency_powers_banner"
+    ]
   },
   {
     "id": "boom_loyal_protector",
@@ -59,38 +140,100 @@
     "card_type": "resolution",
     "advisor_id": "general_boom",
     "category": "military",
-    "proposal": "General Boom pledges eternal loyalty. He would like a larger office and a louder anthem.",
+    "proposal": "Boom pledges eternal loyalty. He wants a louder anthem and a slightly larger office.",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "general_boom_arc",
       "beat_type": "resolution",
-      "step": 4,
       "branch_id": "empower_boom",
       "resolves_arc": true,
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["general_boom_arc"],
-      "arc_branches": { "general_boom_arc": "empower_boom" }
+      "active_arcs": [
+        "general_boom_arc"
+      ],
+      "arc_branches": {
+        "general_boom_arc": "empower_boom"
+      }
     },
     "options": [
       {
         "id": "accept",
         "label": "Accept his loyalty",
-        "effects": { "order": 6, "elite_loyalty": 6, "happiness": -3 },
-        "advisor_affinity": { "general_boom": 2 },
-        "result_text": "Parades double in frequency. General Boom calls it security."
+        "effects": {
+          "order": 6,
+          "elite_loyalty": 6,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "propagandist": 1
+        },
+        "add_flags": [
+          "boom_loyal_sworn",
+          "general_remains_loyal"
+        ],
+        "add_laws": [
+          "emergency_salute_law"
+        ],
+        "result_text": "Parades double. Boom calls it security. The ruler sleeps behind a very loud anthem."
       },
       {
         "id": "limit",
-        "label": "Limit parade frequency",
-        "effects": { "happiness": 3, "elite_loyalty": -2, "order": 2 },
-        "advisor_affinity": { "general_boom": -1 },
-        "result_text": "General Boom agrees, but only on paper. The tanks still practice at dawn."
+        "label": "Cap parade frequency",
+        "effects": {
+          "happiness": 3,
+          "elite_loyalty": -1,
+          "order": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "boom_loyal_sworn",
+          "general_remains_loyal",
+          "boom_parade_capped"
+        ],
+        "result_text": "Boom agrees on paper. Dawn drills continue. Loyalty wears a quieter hat."
+      },
+      {
+        "id": "celebrate",
+        "label": "Make him Protector of Squares",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": 4,
+          "treasury": -4,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_flags": [
+          "boom_loyal_sworn",
+          "general_remains_loyal",
+          "boom_protector_title"
+        ],
+        "result_text": "Title awarded. Confetti falls on schedule. Boom remains loyal and extremely photogenic."
       }
     ],
-    "tags": ["military", "arc_resolution"]
+    "tags": [
+      "military",
+      "arc_resolution"
+    ],
+    "visual_tags": [
+      "loyal_salute_plaza"
+    ]
   },
   {
     "id": "boom_failed_coup",
@@ -99,38 +242,196 @@
     "card_type": "resolution",
     "advisor_id": "luna_news",
     "category": "military",
-    "proposal": "General Boom's parade coup stalls outside a bakery. He blames insufficient confetti.",
+    "proposal": "BREAKING: Boom's parade coup stalls outside a bakery. Confetti insufficient. Options remain.",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "general_boom_arc",
       "beat_type": "resolution",
-      "step": 4,
       "branch_id": "restrain_boom",
       "resolves_arc": true,
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["general_boom_arc"],
-      "arc_branches": { "general_boom_arc": "restrain_boom" }
+      "active_arcs": [
+        "general_boom_arc"
+      ],
+      "arc_branches": {
+        "general_boom_arc": "restrain_boom"
+      }
     },
     "options": [
       {
         "id": "forgive",
-        "label": "Forgive the general",
-        "effects": { "elite_loyalty": 2, "order": -3, "happiness": 2 },
-        "advisor_affinity": { "general_boom": 1 },
-        "result_text": "General Boom returns to polishing tanks. Luna News calls it national maturity."
+        "label": "Forgive and reassign",
+        "effects": {
+          "elite_loyalty": 2,
+          "order": -2,
+          "happiness": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "luna_news": 1
+        },
+        "add_flags": [
+          "boom_coup_forgiven",
+          "boom_arc_complete"
+        ],
+        "result_text": "Boom returns to polishing. Luna calls it national maturity with excellent footage."
       },
       {
-        "id": "retire",
-        "label": "Retire him to ceremonies",
-        "effects": { "order": 3, "elite_loyalty": -4, "happiness": 4 },
-        "advisor_affinity": { "general_boom": -2 },
+        "id": "let_coup",
+        "label": "Let the parade seize power",
+        "effects": {
+          "order": 5,
+          "elite_loyalty": 8,
+          "happiness": -8,
+          "treasury": -5
+        },
+        "advisor_affinity": {
+          "general_boom": 4,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
+        "add_flags": [
+          "boom_coup_succeeded"
+        ],
         "trigger_ending": "general_boom_coup",
-        "result_text": "General Boom becomes Chief Parade Consultant. He is not pleased."
+        "result_text": "Four synchronized minutes later, Ministan is a Parade Republic. Confetti wins."
+      },
+      {
+        "id": "humiliate_soft",
+        "label": "Demote him to ceremonies",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": -3,
+          "happiness": 4
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "boom_demoted_ceremony",
+          "boom_arc_complete"
+        ],
+        "result_text": "Boom becomes Chief Parade Consultant. He salutes. It is not a happy salute."
       }
     ],
-    "tags": ["military", "arc_resolution", "ending_setup"]
+    "tags": [
+      "military",
+      "arc_resolution",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "emergency_powers_banner"
+    ]
+  },
+  {
+    "id": "boom_ceremonial_mascot",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "luna_news",
+    "category": "military",
+    "proposal": "SPECIAL: General Boom unveils as National Parade Mascot. Foam medals. Mandatory waves. Ambition retired with honors.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "general_boom_arc",
+      "beat_type": "resolution",
+      "branch_id": "mascot_path",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "general_boom_arc"
+      ],
+      "arc_branches": {
+        "general_boom_arc": "mascot_path"
+      }
+    },
+    "options": [
+      {
+        "id": "embrace_mascot",
+        "label": "Embrace the mascot era",
+        "effects": {
+          "happiness": 6,
+          "order": 2,
+          "elite_loyalty": -2,
+          "treasury": -4
+        },
+        "advisor_affinity": {
+          "general_boom": -1,
+          "luna_news": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_flags": [
+          "boom_mascot_mode",
+          "boom_arc_complete"
+        ],
+        "trigger_ending": "general_becomes_mascot",
+        "result_text": "Boom rides a float shaped like Boom. Children cheer. The tanks look embarrassed."
+      },
+      {
+        "id": "quiet_mascot",
+        "label": "Keep him ceremonial only",
+        "effects": {
+          "happiness": 3,
+          "order": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "boom_mascot_mode",
+          "boom_arc_complete",
+          "boom_mascot_quiet"
+        ],
+        "result_text": "Boom waves on schedule. No ending stamp. Humiliation is soft and very photogenic."
+      },
+      {
+        "id": "restore_dignity",
+        "label": "Restore a quiet command role",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": 2,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "boom_arc_complete",
+          "boom_dignity_restored"
+        ],
+        "result_text": "Foam medals retired. Boom returns to perimeter duty with a smaller salute and a larger sigh."
+      }
+    ],
+    "tags": [
+      "military",
+      "arc_resolution",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "mascot_boom_float"
+    ]
   }
 ]
