@@ -1,0 +1,2558 @@
+[
+  {
+    "id": "coupon_salaries_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Pay civil servants in coupons instead of cash. Ledgers shrink. Merchants invent new complaints.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 4,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "coupon_salaries_live",
+        "coupon_salaries_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "store_credit_coupons",
+        "label": "Issue store-credit coupons",
+        "effects": {
+          "treasury": 6,
+          "happiness": -4,
+          "elite_loyalty": -2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "coupon_salaries"
+        ],
+        "add_flags": [
+          "coupon_salaries_live",
+          "coupon_store_credit"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coupon_salary_market",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "coupon_salaries_live"
+          ]
+        },
+        "result_text": "Pay stubs become shop tickets. Clerks debate which aisle counts as wages."
+      },
+      {
+        "id": "tradable_coupons",
+        "label": "Issue tradable coupons",
+        "effects": {
+          "treasury": 4,
+          "happiness": -2,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "capitalist": 1
+        },
+        "add_laws": [
+          "coupon_salaries"
+        ],
+        "add_flags": [
+          "coupon_salaries_live",
+          "coupon_tradable"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "coupon_salary_market",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "coupon_salaries_live"
+          ]
+        },
+        "result_text": "Coupons circulate. A secondary wage market opens before lunch."
+      },
+      {
+        "id": "refuse_coupons",
+        "label": "Keep paying in cash",
+        "effects": {
+          "treasury": -2,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "coupon_salaries_chain_complete"
+        ],
+        "result_text": "Cash remains boringly legal. Penny redraws the austerity chart."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "economy",
+      "coupon_salaries"
+    ],
+    "visual_tags": [
+      "coupon_pay_stubs"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "salaries_paid_in_coupons",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "pay stubs printed as store coupons",
+      "writer_notes": "Store-credit vs tradable branch flags for state-dependent market consequence."
+    }
+  },
+  {
+    "id": "coupon_salary_market",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Your coupon payroll changed how people spend. Store-credit staff barter groceries. Tradable coupons birthed a sidewalk exchange. Pick a fix before the ledger invents itself.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "coupon_salaries_live"
+      ],
+      "all_laws": [
+        "coupon_salaries"
+      ]
+    },
+    "options": [
+      {
+        "id": "clawback_coupons",
+        "label": "Claw back unused coupons",
+        "effects": {
+          "treasury": 5,
+          "happiness": -6,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "coupon_clawback",
+          "coupon_salaries_chain_complete"
+        ],
+        "remove_flags": [
+          "coupon_salaries_live"
+        ],
+        "result_text": "Expired coupons return to the vault. Morale files a late complaint."
+      },
+      {
+        "id": "convert_to_cash",
+        "label": "Convert coupons to cash",
+        "effects": {
+          "treasury": -10,
+          "happiness": 5,
+          "order": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": -2,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "coupon_salaries"
+        ],
+        "add_flags": [
+          "coupon_cashed_out",
+          "coupon_salaries_chain_complete"
+        ],
+        "remove_flags": [
+          "coupon_salaries_live",
+          "coupon_store_credit",
+          "coupon_tradable"
+        ],
+        "result_text": "Cash returns with interest in apologies. The sidewalk exchange closes."
+      },
+      {
+        "id": "formalize_coupon_economy",
+        "label": "Formalize the coupon economy",
+        "effects": {
+          "treasury": 2,
+          "happiness": -1,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "coupon_economy_formal",
+          "coupon_salaries_chain_complete"
+        ],
+        "remove_flags": [
+          "coupon_salaries_live"
+        ],
+        "result_text": "Coupons get serial numbers and a ministry desk. Profit smiles like a franchise."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "coupon_salaries"
+    ],
+    "visual_tags": [
+      "coupon_black_market"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "salaries_paid_in_coupons",
+      "primary_category": "economy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "sidewalk coupon exchange board",
+      "writer_notes": "Consequence cites store-credit vs tradable implementation from setup."
+    }
+  },
+  {
+    "id": "perfumed_sewage_pilot",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "infrastructure",
+    "proposal": "Mask failing sewers with a controlled scent pilot. Cheaper than pipes. Public health remains a hypothesis.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "perfumed_sewage_live",
+        "perfumed_sewage_chain_complete",
+        "pipes_actually_fixed"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_scent_pilot",
+        "label": "Launch the scent pilot",
+        "effects": {
+          "treasury": -5,
+          "happiness": 4,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_laws": [
+          "scent_mask_act"
+        ],
+        "add_flags": [
+          "perfumed_sewage_live",
+          "perfumed_sewers",
+          "scent_pilot_full"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "perfumed_sewage_fallout",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "perfumed_sewage_live"
+          ]
+        },
+        "result_text": "Manholes exhale approved fragrance. Maybe schedules a follow-up 'maybe'."
+      },
+      {
+        "id": "limited_pipe_and_scent",
+        "label": "Scent plus partial repairs",
+        "effects": {
+          "treasury": -9,
+          "happiness": 3,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "scent_mask_act"
+        ],
+        "add_flags": [
+          "perfumed_sewage_live",
+          "perfumed_sewers",
+          "scent_partial_repair"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "perfumed_sewage_fallout",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "perfumed_sewage_live"
+          ]
+        },
+        "result_text": "Some pipes improve. Scent covers the rest. Budgets look honest and tired."
+      },
+      {
+        "id": "refuse_scent_pilot",
+        "label": "Fund pipes, skip perfume",
+        "effects": {
+          "treasury": -12,
+          "happiness": 2,
+          "order": 4
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "doctor_maybe": -1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "pipes_actually_fixed",
+          "perfumed_sewage_chain_complete"
+        ],
+        "result_text": "Pipes stop improvising. Maybe files the scent protocol under 'unused'."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "perfumed_sewage"
+    ],
+    "visual_tags": [
+      "scent_manhole_covers"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "perfumed_sewage",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9A",
+      "localization_risk": "medium",
+      "visual_hook": "manhole covers with scent diffuser stickers",
+      "writer_notes": "Absorbs standalone perfumed_sewage_reform; fallout is health/budget not smell gag."
+    }
+  },
+  {
+    "id": "perfumed_sewage_fallout",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Your sewer scent program hid cracked pipes long enough for clinics to notice runoff. Neighbors want real infrastructure, not another fragrance invoice.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "perfumed_sewage_live"
+      ],
+      "all_laws": [
+        "scent_mask_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "fund_real_pipe_repairs",
+        "label": "Fund real pipe repairs",
+        "effects": {
+          "treasury": -11,
+          "happiness": 4,
+          "order": 4,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "doctor_maybe": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "scent_mask_act"
+        ],
+        "add_flags": [
+          "pipes_actually_fixed",
+          "perfumed_sewage_chain_complete"
+        ],
+        "remove_flags": [
+          "perfumed_sewage_live",
+          "perfumed_sewers",
+          "scent_pilot_full",
+          "scent_partial_repair"
+        ],
+        "result_text": "Crews open streets. Clinics quiet down. Olga keeps the receipt."
+      },
+      {
+        "id": "regulate_scent_dosage",
+        "label": "Regulate scent dosage",
+        "effects": {
+          "treasury": -4,
+          "happiness": 1,
+          "order": 3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "scent_dosage_regulated",
+          "perfumed_sewage_chain_complete"
+        ],
+        "remove_flags": [
+          "perfumed_sewage_live"
+        ],
+        "result_text": "Dosage charts appear on manholes. Runoff still exists, politely labeled."
+      },
+      {
+        "id": "scrap_scent_program",
+        "label": "Scrap the scent program",
+        "effects": {
+          "treasury": 2,
+          "happiness": -3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "doctor_maybe": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "scent_mask_act"
+        ],
+        "add_flags": [
+          "scent_program_scrapped",
+          "perfumed_sewage_chain_complete"
+        ],
+        "remove_flags": [
+          "perfumed_sewage_live",
+          "perfumed_sewers",
+          "scent_pilot_full",
+          "scent_partial_repair"
+        ],
+        "result_text": "Diffusers unplug. The capital smells honest again. Maybe shrugs."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "perfumed_sewage"
+    ],
+    "visual_tags": [
+      "pipe_repair_crews"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "perfumed_sewage",
+      "primary_category": "infrastructure",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9A",
+      "localization_risk": "medium",
+      "visual_hook": "street crews beside labeled sewer vents",
+      "writer_notes": "Public-health and budget consequence; references prior scent/repair choice."
+    }
+  },
+  {
+    "id": "form_request_forms_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Require Form F-0 to request any other form. Throughput becomes measurable. Citizens become stationery.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "form_request_live",
+        "form_request_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "enact_meta_form",
+        "label": "Enact Form F-0 nationwide",
+        "effects": {
+          "order": 4,
+          "happiness": -4,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "minister_penny": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "form_request_form_act"
+        ],
+        "add_flags": [
+          "form_request_live",
+          "form_request_full"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "form_request_forms_backlog"
+        },
+        "result_text": "Form F-0 prints itself. Windows learn a new silence."
+      },
+      {
+        "id": "pilot_meta_form_one_ministry",
+        "label": "Pilot in one ministry",
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "form_request_form_act"
+        ],
+        "add_flags": [
+          "form_request_live",
+          "form_request_pilot"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "form_request_forms_backlog"
+        },
+        "result_text": "One ministry drowns politely. Other ministries take notes."
+      },
+      {
+        "id": "refuse_meta_form",
+        "label": "Keep forms un-nested",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "form_request_chain_complete"
+        ],
+        "result_text": "Forms remain merely numerous. Clerk Zero files disappointment as Form D-1."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "bureaucracy",
+      "form_request_forms"
+    ],
+    "visual_tags": [
+      "meta_form_desk"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "form_to_request_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "desk stacked with Form F-0 pads",
+      "writer_notes": "Hard backlog follow-up; efficiency resolution seeds government_by_form."
+    }
+  },
+  {
+    "id": "form_request_forms_backlog",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Your Form F-0 policy created a backlog of requests to request forms. Processing time is now measured in hallways. Attach Form F-0-A.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "form_request_live"
+      ],
+      "all_laws": [
+        "form_request_form_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "hire_form_processors",
+        "label": "Hire form processors",
+        "effects": {
+          "treasury": -7,
+          "order": 3,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "form_processors_hired"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "form_request_forms_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "form_request_live"
+          ]
+        },
+        "result_text": "New desks appear. The backlog relocates one floor down."
+      },
+      {
+        "id": "add_form_to_request_f0",
+        "label": "Add Form F-0-A",
+        "effects": {
+          "order": -3,
+          "happiness": -4,
+          "elite_loyalty": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "form_nesting_deepened"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "form_request_forms_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "form_request_live"
+          ]
+        },
+        "result_text": "Nesting depth increases. Citizens bring camping chairs."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "form_request_forms"
+    ],
+    "visual_tags": [
+      "form_backlog_towers"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "form_to_request_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "towers of nested form requests",
+      "writer_notes": "Hard-forced escalation; soft to Penny resolution."
+    }
+  },
+  {
+    "id": "form_request_forms_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "bureaucracy",
+    "proposal": "Form policy costs more than it sorts. Deepen the nest, buy real efficiency, or repeal F-0 before the hallway becomes a ministry.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "form_processors_hired",
+        "form_nesting_deepened"
+      ]
+    },
+    "options": [
+      {
+        "id": "deepen_form_nest",
+        "label": "Deepen the form nest",
+        "effects": {
+          "order": -2,
+          "happiness": -5,
+          "elite_loyalty": 3,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "minister_penny": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "form_nest_permanent",
+          "form_request_chain_complete"
+        ],
+        "remove_flags": [
+          "form_request_live"
+        ],
+        "result_text": "F-0 becomes culture. Clerk Zero files a quiet victory."
+      },
+      {
+        "id": "buy_form_efficiency",
+        "label": "Buy real form efficiency",
+        "effects": {
+          "treasury": -14,
+          "order": 6,
+          "happiness": 3,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "clerk_zero": 1,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "form_efficiency_reform",
+          "government_by_form_soft",
+          "forms_run_government",
+          "form_request_chain_complete"
+        ],
+        "remove_flags": [
+          "form_request_live"
+        ],
+        "result_text": "One form does three jobs. Elites invoice the miracle. Government by form begins."
+      },
+      {
+        "id": "repeal_form_f0",
+        "label": "Repeal Form F-0",
+        "effects": {
+          "happiness": 4,
+          "order": -2,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": -2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "form_request_form_act"
+        ],
+        "add_flags": [
+          "form_f0_repealed",
+          "form_request_chain_complete"
+        ],
+        "remove_flags": [
+          "form_request_live",
+          "form_request_full",
+          "form_request_pilot"
+        ],
+        "result_text": "Nested forms unstack. Hallways rediscover walking."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "form_request_forms",
+      "rare_ending"
+    ],
+    "visual_tags": [
+      "efficiency_desk_plaque"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "form_to_request_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "efficiency plaque beside a thinner form stack",
+      "writer_notes": "Efficiency path seeds government_by_form ending; meaningful treasury/elite cost."
+    }
+  },
+  {
+    "id": "fish_currency_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "economy",
+    "proposal": "Back the currency with fish. Cats approve. Ledgers smell ambitious. This is not a market subsidy — it is monetary theory with scales.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 9,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "fish_currency_live",
+        "fish_currency_chain_complete"
+      ],
+      "blocked_laws": [
+        "fish_market_subsidy_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "full_fish_peg",
+        "label": "Peg cash to fish stocks",
+        "effects": {
+          "treasury": 5,
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "sir_profit": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_laws": [
+          "fish_currency_act"
+        ],
+        "add_flags": [
+          "fish_currency_live",
+          "fish_peg_full"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "fish_currency_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "fish_currency_live"
+          ]
+        },
+        "result_text": "Coins gain a faint marine confidence. Markets cheer, briefly."
+      },
+      {
+        "id": "pilot_fish_scrip",
+        "label": "Pilot fish scrip only",
+        "effects": {
+          "treasury": 2,
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_laws": [
+          "fish_currency_act"
+        ],
+        "add_flags": [
+          "fish_currency_live",
+          "fish_scrip_pilot"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "fish_currency_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "fish_currency_live"
+          ]
+        },
+        "result_text": "Scrip booths open near docks. Cats queue with professional dignity."
+      },
+      {
+        "id": "refuse_fish_currency",
+        "label": "Keep boring metal money",
+        "effects": {
+          "order": 2,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "minister_penny": 1
+        },
+        "add_flags": [
+          "fish_currency_chain_complete"
+        ],
+        "result_text": "Currency stays mineral. Whiskers drafts a dissenting meow."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "economy",
+      "fish_currency",
+      "cats"
+    ],
+    "visual_tags": [
+      "fish_scrip_booth"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "fish_currency_experiment",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "dockside fish-scrip exchange booth",
+      "writer_notes": "Blocked while fish_market_subsidy_act active; pool boom then resolution."
+    }
+  },
+  {
+    "id": "fish_currency_boom",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Your fish currency looked successful. Exchange boards glowed. Then the catch thinned and the peg wobbled. Unstable success needs a decision.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "fish_currency_live"
+      ],
+      "all_laws": [
+        "fish_currency_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "ride_the_fish_boom",
+        "label": "Ride the boom longer",
+        "effects": {
+          "treasury": 6,
+          "happiness": 2,
+          "order": -4,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "comrade_whiskers": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "fish_boom_extended",
+          "fish_currency_unstable"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "fish_currency_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 58,
+          "required_flags": [
+            "fish_currency_unstable"
+          ]
+        },
+        "result_text": "Boards stay green for a week. Penny starts a contingency hymn."
+      },
+      {
+        "id": "admit_fish_instability",
+        "label": "Admit the peg is unstable",
+        "effects": {
+          "treasury": -2,
+          "happiness": -1,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": -1,
+          "comrade_whiskers": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "fish_instability_admitted",
+          "fish_currency_unstable"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "fish_currency_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 58,
+          "required_flags": [
+            "fish_currency_unstable"
+          ]
+        },
+        "result_text": "Honesty cools the booth. Cats respect the briefing."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "fish_currency"
+    ],
+    "visual_tags": [
+      "fish_exchange_board"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "fish_currency_experiment",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "wobbly fish exchange board",
+      "writer_notes": "Initially successful unstable path via ride_the_fish_boom."
+    }
+  },
+  {
+    "id": "fish_currency_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "comrade_whiskers",
+    "category": "economy",
+    "proposal": "Stabilize the fish peg, raid the emergency reserve, or abandon fish money before wallets grow fins and panic.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "fish_currency_unstable"
+      ]
+    },
+    "options": [
+      {
+        "id": "stabilize_fish_peg",
+        "label": "Stabilize the fish peg",
+        "effects": {
+          "treasury": -8,
+          "order": 4,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "comrade_whiskers": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "fish_peg_stabilized",
+          "fish_currency_chain_complete"
+        ],
+        "remove_flags": [
+          "fish_currency_live",
+          "fish_currency_unstable"
+        ],
+        "result_text": "Peg holds with boring math. Whiskers accepts stability as a temporary revolution."
+      },
+      {
+        "id": "tap_fish_emergency_reserve",
+        "label": "Tap fish emergency reserve",
+        "effects": {
+          "treasury": 4,
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_flags": [
+          "fish_reserve_tapped",
+          "fish_currency_chain_complete"
+        ],
+        "remove_flags": [
+          "fish_currency_live",
+          "fish_currency_unstable"
+        ],
+        "result_text": "Reserve barrels open. Cats toast. The treasury looks thinner and prouder."
+      },
+      {
+        "id": "abandon_fish_currency",
+        "label": "Abandon fish currency",
+        "effects": {
+          "treasury": -12,
+          "happiness": -4,
+          "order": -5,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": -1,
+          "comrade_whiskers": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "fish_currency_act"
+        ],
+        "add_flags": [
+          "fish_currency_abandoned",
+          "fish_currency_chain_complete"
+        ],
+        "remove_flags": [
+          "fish_currency_live",
+          "fish_currency_unstable",
+          "fish_peg_full",
+          "fish_scrip_pilot",
+          "fish_boom_extended",
+          "fish_instability_admitted"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "bank_run",
+            "action": "start"
+          }
+        ],
+        "result_text": "Scrip booths close. A bank line forms with opinions and empty nets."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "fish_currency",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "fish_peg_stabilizer"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "fish_currency_experiment",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9A",
+      "localization_risk": "low",
+      "visual_hook": "stabilizer chart next to empty fish crates",
+      "writer_notes": "Abandon starts bank_run crisis; reserve path feeds cat_favor."
+    }
+  },
+  {
+    "id": "ministry_of_waiting_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Elevate queues to a Ministry of Waiting. Waiting becomes policy. Service windows gain cabinet rank.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "ministry_waiting_live",
+        "ministry_waiting_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "found_waiting_ministry",
+        "label": "Found the ministry",
+        "effects": {
+          "treasury": -6,
+          "order": 4,
+          "happiness": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "ministry_of_waiting"
+        ],
+        "add_flags": [
+          "ministry_waiting_live",
+          "waiting_ministry_full"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "ministry_of_waiting_service",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "ministry_waiting_live"
+          ]
+        },
+        "result_text": "A plaque appears above the longest line. Forms salute it."
+      },
+      {
+        "id": "pilot_waiting_office",
+        "label": "Pilot one waiting office",
+        "effects": {
+          "treasury": -3,
+          "order": 2,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "ministry_of_waiting"
+        ],
+        "add_flags": [
+          "ministry_waiting_live",
+          "waiting_ministry_pilot"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "ministry_of_waiting_service",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "ministry_waiting_live"
+          ]
+        },
+        "result_text": "One office perfects standing still. Other offices take notes."
+      },
+      {
+        "id": "refuse_waiting_ministry",
+        "label": "Keep waiting unofficial",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "ministry_waiting_chain_complete"
+        ],
+        "result_text": "Queues remain folk tradition. Clerk Zero files Form W-0 unused."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "bureaucracy",
+      "ministry_of_waiting"
+    ],
+    "visual_tags": [
+      "waiting_ministry_plaque"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "ministry_of_waiting",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "cabinet plaque above a public queue",
+      "writer_notes": "Soft service consequence affects Order/public services beyond Clerk affinity."
+    }
+  },
+  {
+    "id": "ministry_of_waiting_service",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "bureaucracy",
+    "proposal": "Your Ministry of Waiting rearranged service hours. Some desks open later so lines look intentional. Citizens want service, not a philosophy of standing.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "ministry_waiting_live"
+      ],
+      "all_laws": [
+        "ministry_of_waiting"
+      ]
+    },
+    "options": [
+      {
+        "id": "extend_service_windows",
+        "label": "Extend real service windows",
+        "effects": {
+          "treasury": -7,
+          "happiness": 4,
+          "order": 3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "waiting_service_extended",
+          "ministry_waiting_chain_complete"
+        ],
+        "remove_flags": [
+          "ministry_waiting_live"
+        ],
+        "result_text": "Windows stay open. Lines shrink. Olga keeps a polite scoreboard."
+      },
+      {
+        "id": "publish_waiting_etiquette",
+        "label": "Publish waiting etiquette",
+        "effects": {
+          "treasury": -2,
+          "happiness": -1,
+          "order": 5,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": 1,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "waiting_etiquette_posted",
+          "ministry_waiting_chain_complete"
+        ],
+        "remove_flags": [
+          "ministry_waiting_live"
+        ],
+        "result_text": "Posters teach heel angles. Order rises. Conversation falls."
+      },
+      {
+        "id": "dissolve_waiting_ministry",
+        "label": "Dissolve the ministry",
+        "effects": {
+          "treasury": 2,
+          "happiness": 2,
+          "order": -3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "clerk_zero": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "ministry_of_waiting"
+        ],
+        "add_flags": [
+          "waiting_ministry_dissolved",
+          "ministry_waiting_chain_complete"
+        ],
+        "remove_flags": [
+          "ministry_waiting_live",
+          "waiting_ministry_full",
+          "waiting_ministry_pilot"
+        ],
+        "result_text": "The plaque comes down. Waiting returns to improvisation."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "ministry_of_waiting"
+    ],
+    "visual_tags": [
+      "timed_service_windows"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "ministry_of_waiting",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "service window clocks and queue markers",
+      "writer_notes": "Public-service/Order outcomes; distinct from robot queue kiosks."
+    }
+  },
+  {
+    "id": "stamp_shortage_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Triple-stamp law meets an empty stamp drawer. Approvals freeze. Attach Form ST-1 if you can find ink.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 4,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "stamp_shortage_live",
+        "stamp_shortage_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "declare_stamp_emergency",
+        "label": "Declare stamp emergency",
+        "effects": {
+          "order": -4,
+          "happiness": -2,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "sir_profit": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "triple_stamp_requirement"
+        ],
+        "add_flags": [
+          "stamp_shortage_live",
+          "stamp_emergency_declared"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "stamp_shortage_workaround"
+        },
+        "result_text": "Drawers open to air. Every desk becomes a bottleneck."
+      },
+      {
+        "id": "ration_remaining_stamps",
+        "label": "Ration remaining stamps",
+        "effects": {
+          "order": -2,
+          "happiness": -3,
+          "elite_loyalty": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "triple_stamp_requirement"
+        ],
+        "add_flags": [
+          "stamp_shortage_live",
+          "stamp_ration_active"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "stamp_shortage_workaround"
+        },
+        "result_text": "One stamp per crisis. Forms wait in alphabetical despair."
+      },
+      {
+        "id": "suspend_triple_stamp",
+        "label": "Suspend triple-stamp rule",
+        "effects": {
+          "order": 2,
+          "happiness": 2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "stamp_shortage_chain_complete"
+        ],
+        "result_text": "One stamp returns to fashion. Clerk Zero underlines the temporary nature of relief."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "bureaucracy",
+      "stamp_shortage"
+    ],
+    "visual_tags": [
+      "empty_stamp_drawer"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "stamp_shortage",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "empty official stamp drawer",
+      "writer_notes": "Hard workaround; unconventional fix not meta-forms."
+    }
+  },
+  {
+    "id": "stamp_shortage_workaround",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "sir_profit",
+    "category": "bureaucracy",
+    "proposal": "Your stamp shortage froze approvals. Profit proposes unconventional seals: wax futures, reusable seals, or thumbprint notaries. Pick before the drawer invents a black market.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "stamp_shortage_live"
+      ],
+      "all_laws": [
+        "triple_stamp_requirement"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_wax_seal_futures",
+        "label": "Launch wax-seal futures",
+        "effects": {
+          "treasury": 4,
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "wax_seal_futures",
+          "stamp_shortage_chain_complete"
+        ],
+        "remove_flags": [
+          "stamp_shortage_live"
+        ],
+        "result_text": "Wax trades open. Approvals resume with a melting point."
+      },
+      {
+        "id": "authorize_thumbprint_seals",
+        "label": "Authorize thumbprint seals",
+        "effects": {
+          "treasury": -2,
+          "order": 4,
+          "happiness": 1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "add_flags": [
+          "thumbprint_seals",
+          "stamp_shortage_chain_complete"
+        ],
+        "remove_flags": [
+          "stamp_shortage_live"
+        ],
+        "result_text": "Ink pads return. Citizens leave unique marks. Forms look personal."
+      },
+      {
+        "id": "import_emergency_stamps",
+        "label": "Import emergency stamps",
+        "effects": {
+          "treasury": -9,
+          "order": 5,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "clerk_zero": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "stamps_imported",
+          "stamp_shortage_chain_complete"
+        ],
+        "remove_flags": [
+          "stamp_shortage_live"
+        ],
+        "result_text": "Foreign stamps arrive with tourist slogans. Bureaucracy resumes at full postage."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "stamp_shortage"
+    ],
+    "visual_tags": [
+      "wax_seal_futures"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "stamp_shortage",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "wax seal futures board beside empty stamp tray",
+      "writer_notes": "Unconventional administrative fixes; not Form F-0 nesting."
+    }
+  },
+  {
+    "id": "antivacuum_referendum_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "politics",
+    "proposal": "Hold a referendum on vacuum quiet hours. Cats call it dignity. Humans call it dust. Treat it as politics, not a punchline.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "antivacuum_live",
+        "antivacuum_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "schedule_full_referendum",
+        "label": "Schedule a full referendum",
+        "effects": {
+          "treasury": -4,
+          "happiness": 2,
+          "order": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "cat_friendly": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_laws": [
+          "antivacuum_act"
+        ],
+        "add_flags": [
+          "antivacuum_live",
+          "vacuum_referendum_full"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "antivacuum_campaign_pool",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "antivacuum_live"
+          ]
+        },
+        "result_text": "Ballots print with paw-optional boxes. Campaign season begins at low volume."
+      },
+      {
+        "id": "pilot_quiet_blocks",
+        "label": "Pilot quiet blocks first",
+        "effects": {
+          "treasury": -2,
+          "happiness": 1,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_laws": [
+          "antivacuum_act"
+        ],
+        "add_flags": [
+          "antivacuum_live",
+          "vacuum_quiet_pilot"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "antivacuum_campaign_pool",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "antivacuum_live"
+          ]
+        },
+        "result_text": "A few blocks go quiet at noon. Cats stretch like legislators."
+      },
+      {
+        "id": "refuse_vacuum_vote",
+        "label": "Refuse the vacuum vote",
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "general_boom": 1
+        },
+        "add_flags": [
+          "antivacuum_chain_complete"
+        ],
+        "result_text": "Vacuums remain legal. Whiskers schedules a quieter protest."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "cats",
+      "antivacuum_referendum"
+    ],
+    "visual_tags": [
+      "vacuum_ban_posters"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "antivacuum_referendum",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "quiet-hours posters with vacuum silhouettes",
+      "writer_notes": "Pool campaign then resolution; cat_favor for cat_republic."
+    }
+  },
+  {
+    "id": "antivacuum_campaign",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "politics",
+    "proposal": "Your anti-vacuum referendum turned into a species dispute. Cat blocs claim dignity. Cleaning clubs claim dust rights. Public opinion wants a ruling that is not a punchline.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "antivacuum_live"
+      ],
+      "all_laws": [
+        "antivacuum_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "amplify_cat_bloc",
+        "label": "Amplify the cat bloc",
+        "effects": {
+          "happiness": 2,
+          "order": -3,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": -1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1,
+          "populist": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_flags": [
+          "vacuum_campaign_cats",
+          "vacuum_campaign_ready"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "antivacuum_referendum_result",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "vacuum_campaign_cats"
+          ]
+        },
+        "result_text": "Paw posters dominate. Vacuum shops hire lawyers."
+      },
+      {
+        "id": "mediate_species_debate",
+        "label": "Mediate the species debate",
+        "effects": {
+          "happiness": 1,
+          "order": 2,
+          "elite_loyalty": 1,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "comrade_whiskers": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "vacuum_campaign_mediated",
+          "vacuum_campaign_ready"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "antivacuum_referendum_result",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "vacuum_campaign_mediated"
+          ]
+        },
+        "result_text": "Town halls use soft voices. Dust remains bipartisan."
+      },
+      {
+        "id": "spin_cleaning_freedom",
+        "label": "Spin cleaning as freedom",
+        "effects": {
+          "happiness": -1,
+          "order": 1,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "comrade_whiskers": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "vacuum_campaign_spun",
+          "vacuum_campaign_ready"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "antivacuum_referendum_result",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "vacuum_campaign_spun"
+          ]
+        },
+        "result_text": "Broadcasts call noise 'civic polish.' Cats remain unconvinced."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "antivacuum_referendum"
+    ],
+    "visual_tags": [
+      "species_referendum_booth"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "antivacuum_referendum",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "referendum booth with cat and broom signs",
+      "writer_notes": "State-dependent campaign flags for resolution callback."
+    }
+  },
+  {
+    "id": "antivacuum_referendum_result",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "comrade_whiskers",
+    "category": "politics",
+    "proposal": "Count the vacuum referendum. Full quiet-hours ban, timed compromise, or reject the cat platform before dust becomes dogma.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "vacuum_campaign_cats",
+        "vacuum_campaign_mediated",
+        "vacuum_campaign_spun"
+      ]
+    },
+    "options": [
+      {
+        "id": "enact_vacuum_quiet_ban",
+        "label": "Enact vacuum quiet hours",
+        "effects": {
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1,
+          "populist": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_flags": [
+          "vacuum_quiet_hours",
+          "antivacuum_chain_complete"
+        ],
+        "remove_flags": [
+          "antivacuum_live",
+          "vacuum_campaign_ready"
+        ],
+        "result_text": "Noon goes soft. Cats nap like legislators. Brooms wait their turn."
+      },
+      {
+        "id": "compromise_timed_vacuums",
+        "label": "Compromise timed vacuums",
+        "effects": {
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "comrade_whiskers": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "cat_friendly": 1
+        },
+        "add_flags": [
+          "vacuum_timed_compromise",
+          "antivacuum_chain_complete"
+        ],
+        "remove_flags": [
+          "antivacuum_live",
+          "vacuum_campaign_ready"
+        ],
+        "result_text": "Vacuums get office hours. Cats file a polite minority report."
+      },
+      {
+        "id": "reject_vacuum_platform",
+        "label": "Reject the vacuum platform",
+        "effects": {
+          "happiness": -3,
+          "order": -4,
+          "elite_loyalty": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "general_boom": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "remove_laws": [
+          "antivacuum_act"
+        ],
+        "add_flags": [
+          "vacuum_platform_rejected",
+          "antivacuum_chain_complete"
+        ],
+        "remove_flags": [
+          "antivacuum_live",
+          "vacuum_campaign_ready",
+          "vacuum_referendum_full",
+          "vacuum_quiet_pilot"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "result_text": "Vacuums roar again. A protest forms with both fur and dust masks."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "antivacuum_referendum",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "quiet_hours_plaque"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "antivacuum_referendum",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "quiet hours plaque beside a silent vacuum",
+      "writer_notes": "Reject path starts mass_protest; cat options feed cat_republic."
+    }
+  },
+  {
+    "id": "national_nap_hour_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "Declare National Nap Hour. Happiness rises with pillows. Productivity negotiates with gravity. Not a science cot grid — a civic pause.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "national_nap_live",
+        "national_nap_chain_complete",
+        "nap_grid_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "mandate_full_nap_hour",
+        "label": "Mandate a full nap hour",
+        "effects": {
+          "happiness": 5,
+          "order": -3,
+          "treasury": -3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "cat_friendly": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_laws": [
+          "national_nap_hour"
+        ],
+        "add_flags": [
+          "national_nap_live",
+          "nap_mandate_full"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "national_nap_productivity",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "national_nap_live"
+          ]
+        },
+        "result_text": "Sirens soften into lullabies. Desks acquire official pillows."
+      },
+      {
+        "id": "pilot_nap_zones",
+        "label": "Pilot official nap zones",
+        "effects": {
+          "happiness": 3,
+          "order": -1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1
+        },
+        "add_laws": [
+          "national_nap_hour"
+        ],
+        "add_flags": [
+          "national_nap_live",
+          "nap_zones_pilot"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "national_nap_productivity",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "national_nap_live"
+          ]
+        },
+        "result_text": "Parks become quiet republics. Offices keep one eye open."
+      },
+      {
+        "id": "refuse_nap_hour",
+        "label": "Refuse mandatory naps",
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "sir_profit": 1
+        },
+        "add_flags": [
+          "national_nap_chain_complete"
+        ],
+        "result_text": "Alarm clocks remain sovereign. Whiskers yawns in dissent."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "public_life",
+      "national_nap_hour"
+    ],
+    "visual_tags": [
+      "nap_hour_banners"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_nap_hour",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "civic nap hour banners over plazas",
+      "writer_notes": "Blocked while nap_grid_live; soft productivity then compromise resolution."
+    }
+  },
+  {
+    "id": "national_nap_productivity",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Your National Nap Hour improved moods and delayed deliveries. Happiness purrs. Order yawns. Productivity wants a schedule that still ships forms.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "national_nap_live"
+      ],
+      "all_laws": [
+        "national_nap_hour"
+      ]
+    },
+    "options": [
+      {
+        "id": "defend_social_benefits",
+        "label": "Defend the social benefits",
+        "effects": {
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": -1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "nap_social_defended"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "national_nap_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "nap_social_defended"
+          ]
+        },
+        "result_text": "Citizens nap proudly. Couriers invent quieter routes."
+      },
+      {
+        "id": "admit_productivity_hit",
+        "label": "Admit the productivity hit",
+        "effects": {
+          "happiness": -1,
+          "order": 2,
+          "elite_loyalty": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 1,
+          "comrade_whiskers": -1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "nap_productivity_admitted"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "national_nap_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "nap_productivity_admitted"
+          ]
+        },
+        "result_text": "Ledgers frown politely. Pillows remain under review."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "national_nap_hour"
+    ],
+    "visual_tags": [
+      "empty_desk_clocks"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_nap_hour",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "empty desks beside stopped clocks",
+      "writer_notes": "State-dependent flags for resolution; happiness vs Order trade."
+    }
+  },
+  {
+    "id": "national_nap_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "Settle Nap Hour: keep the full mandate, pass a timed compromise, or cancel. An emergency rest option can hand morale to recovery protocols if the country is exhausted.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "nap_social_defended",
+        "nap_productivity_admitted"
+      ]
+    },
+    "options": [
+      {
+        "id": "keep_full_nap_mandate",
+        "label": "Keep the full nap mandate",
+        "effects": {
+          "happiness": 4,
+          "order": -4,
+          "elite_loyalty": -2,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1,
+          "sir_profit": -2
+        },
+        "trait_changes": {
+          "populist": 1,
+          "cat_friendly": 1
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "add_flags": [
+          "nap_mandate_kept",
+          "national_nap_chain_complete"
+        ],
+        "remove_flags": [
+          "national_nap_live"
+        ],
+        "result_text": "The nation naps on schedule. History files it under soft power."
+      },
+      {
+        "id": "timed_nap_compromise",
+        "label": "Pass timed nap compromise",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": 1,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "comrade_whiskers": 1,
+          "clerk_zero": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "add_flags": [
+          "nap_timed_compromise",
+          "national_nap_chain_complete"
+        ],
+        "remove_flags": [
+          "national_nap_live"
+        ],
+        "result_text": "Twenty quiet minutes, stamped and loved. Desks reopen on time."
+      },
+      {
+        "id": "emergency_civic_rest",
+        "label": "Emergency civic rest link",
+        "effects": {
+          "happiness": 8,
+          "order": 2,
+          "treasury": -4,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "luna_news": 1,
+          "comrade_whiskers": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "nap_emergency_rest",
+          "national_nap_chain_complete",
+          "civic_rest_recovery"
+        ],
+        "remove_flags": [
+          "national_nap_live"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "recovery_national_smile_day",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 70,
+          "required_flags": [
+            "civic_rest_recovery"
+          ]
+        },
+        "result_text": "Morale protocols wake. Smile Day may follow if happiness stays low enough to need it."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "national_nap_hour",
+      "recovery_link"
+    ],
+    "visual_tags": [
+      "timed_nap_zones"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_nap_hour",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-9B",
+      "localization_risk": "low",
+      "visual_hook": "timed nap zones with compromise clocks",
+      "writer_notes": "Compromise resolution required; emergency option soft-links recovery_national_smile_day."
+    }
+  }
+]

@@ -42,5 +42,17 @@
     "decision_ids": [
       "border_diplomatic_reaction"
     ]
+  },
+  {
+    "id": "fish_currency_consequences",
+    "decision_ids": [
+      "fish_currency_boom"
+    ]
+  },
+  {
+    "id": "antivacuum_campaign_pool",
+    "decision_ids": [
+      "antivacuum_campaign"
+    ]
   }
 ]

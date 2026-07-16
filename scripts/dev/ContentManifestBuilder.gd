@@ -5,7 +5,7 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_8_short_chain_pack_c"
+const PHASE: String = "2b_9_short_chain_pack_d"
 const BATCH_ID: String = "2B-8B"
 const DECISION_BATCH_ID: String = "2B-8B"
 
@@ -151,6 +151,22 @@ const CHAIN_MEMBERS: Dictionary = {
 	"tank_parking_crisis": [
 		"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
 	],
+	"salaries_paid_in_coupons": ["coupon_salaries_proposal", "coupon_salary_market"],
+	"perfumed_sewage": ["perfumed_sewage_pilot", "perfumed_sewage_fallout"],
+	"form_to_request_forms": [
+		"form_request_forms_proposal", "form_request_forms_backlog", "form_request_forms_resolution",
+	],
+	"fish_currency_experiment": [
+		"fish_currency_proposal", "fish_currency_boom", "fish_currency_resolution",
+	],
+	"ministry_of_waiting": ["ministry_of_waiting_proposal", "ministry_of_waiting_service"],
+	"stamp_shortage": ["stamp_shortage_crisis", "stamp_shortage_workaround"],
+	"antivacuum_referendum": [
+		"antivacuum_referendum_proposal", "antivacuum_campaign", "antivacuum_referendum_result",
+	],
+	"national_nap_hour": [
+		"national_nap_hour_proposal", "national_nap_productivity", "national_nap_resolution",
+	],
 }
 
 const APPROVED_CHAIN_IDS: Array[String] = [
@@ -160,6 +176,8 @@ const APPROVED_CHAIN_IDS: Array[String] = [
 	"weather_censorship", "national_talent_show", "applause_quotas", "artificial_sun",
 	"antigravity_buses", "national_clone_day", "traffic_flags", "robot_queue_manager",
 	"pigeon_air_force", "camouflage_uniform_scandal", "border_parade", "tank_parking_crisis",
+	"salaries_paid_in_coupons", "perfumed_sewage", "form_to_request_forms", "fish_currency_experiment",
+	"ministry_of_waiting", "stamp_shortage", "antivacuum_referendum", "national_nap_hour",
 ]
 
 const ONBOARDING_IDS: Array[String] = [
@@ -172,7 +190,6 @@ const ONBOARDING_IDS: Array[String] = [
 const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
 	"privatize_rainwater", "treasury_tip_jar", "luxury_chair_tax",
 	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
-	"perfumed_sewage_reform",
 	"commemorative_debt_sale", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
 	"absurd_civic_sweeping",
@@ -234,6 +251,17 @@ const SHORT_CHAIN_PACK_C_APPROVED_IDS: Array[String] = [
 	"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
 ]
 
+const SHORT_CHAIN_PACK_D_APPROVED_IDS: Array[String] = [
+	"coupon_salaries_proposal", "coupon_salary_market",
+	"perfumed_sewage_pilot", "perfumed_sewage_fallout",
+	"form_request_forms_proposal", "form_request_forms_backlog", "form_request_forms_resolution",
+	"fish_currency_proposal", "fish_currency_boom", "fish_currency_resolution",
+	"ministry_of_waiting_proposal", "ministry_of_waiting_service",
+	"stamp_shortage_crisis", "stamp_shortage_workaround",
+	"antivacuum_referendum_proposal", "antivacuum_campaign", "antivacuum_referendum_result",
+	"national_nap_hour_proposal", "national_nap_productivity", "national_nap_resolution",
+]
+
 const DEFERRED_DECISION_IDS: Array[String] = [
 	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
 	"propaganda_smile_campaign",
@@ -256,7 +284,7 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
 	"neighborhood_noise_complaint", "olga_loyal_council", "national_bedtime_decree",
 	"free_coffee_morning", "long_setup_grand_canal", "sponsored_potholes",
-	"perfumed_sewage_reform", "national_clock_sync",
+	"national_clock_sync",
 	"commemorative_debt_sale", "lottery_treasury_fund", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
 	"absurd_civic_sweeping", "elevator_wifi_mandate",
@@ -300,6 +328,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"camouflage_uniform_rollout", "camouflage_scandal_fallout",
 	"border_parade_escalation", "border_diplomatic_reaction", "border_parade_resolution",
 	"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
+	"coupon_salaries_proposal", "coupon_salary_market",
+	"perfumed_sewage_pilot", "perfumed_sewage_fallout",
+	"form_request_forms_proposal", "form_request_forms_backlog", "form_request_forms_resolution",
+	"fish_currency_proposal", "fish_currency_boom", "fish_currency_resolution",
+	"ministry_of_waiting_proposal", "ministry_of_waiting_service",
+	"stamp_shortage_crisis", "stamp_shortage_workaround",
+	"antivacuum_referendum_proposal", "antivacuum_campaign", "antivacuum_referendum_result",
+	"national_nap_hour_proposal", "national_nap_productivity", "national_nap_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -659,6 +695,9 @@ func _resolve_status(
 	if id in SHORT_CHAIN_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in SHORT_CHAIN_PACK_D_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -733,6 +772,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-7 approved short-chain card.")
 	if id in SHORT_CHAIN_PACK_C_APPROVED_IDS:
 		notes.append("Milestone 2B-8 approved short-chain card.")
+	if id in SHORT_CHAIN_PACK_D_APPROVED_IDS:
+		notes.append("Milestone 2B-9 approved short-chain card.")
 	return ", ".join(notes)
 
 
@@ -757,7 +798,6 @@ func _source_file_hint(id: String) -> String:
 		"neighborhood_noise_complaint": "ministan_standalone_pack_a.json",
 		"olga_loyal_council": "ministan_standalone_pack_a.json",
 		"national_bedtime_decree": "ministan_standalone_pack_a.json",
-		"perfumed_sewage_reform": "ministan_standalone_pack_a.json",
 		"national_clock_sync": "ministan_short_chain_pack_b.json",
 		"commemorative_debt_sale": "ministan_standalone_pack_a.json",
 		"wage_freeze_mandate": "ministan_standalone_pack_a.json",
@@ -826,6 +866,26 @@ func _source_file_hint(id: String) -> String:
 		"tank_parking_mandate": "ministan_short_chain_pack_c.json",
 		"tank_parking_gridlock": "ministan_short_chain_pack_c.json",
 		"tank_parking_resolution": "ministan_short_chain_pack_c.json",
+		"coupon_salaries_proposal": "ministan_short_chain_pack_d.json",
+		"coupon_salary_market": "ministan_short_chain_pack_d.json",
+		"perfumed_sewage_pilot": "ministan_short_chain_pack_d.json",
+		"perfumed_sewage_fallout": "ministan_short_chain_pack_d.json",
+		"form_request_forms_proposal": "ministan_short_chain_pack_d.json",
+		"form_request_forms_backlog": "ministan_short_chain_pack_d.json",
+		"form_request_forms_resolution": "ministan_short_chain_pack_d.json",
+		"fish_currency_proposal": "ministan_short_chain_pack_d.json",
+		"fish_currency_boom": "ministan_short_chain_pack_d.json",
+		"fish_currency_resolution": "ministan_short_chain_pack_d.json",
+		"ministry_of_waiting_proposal": "ministan_short_chain_pack_d.json",
+		"ministry_of_waiting_service": "ministan_short_chain_pack_d.json",
+		"stamp_shortage_crisis": "ministan_short_chain_pack_d.json",
+		"stamp_shortage_workaround": "ministan_short_chain_pack_d.json",
+		"antivacuum_referendum_proposal": "ministan_short_chain_pack_d.json",
+		"antivacuum_campaign": "ministan_short_chain_pack_d.json",
+		"antivacuum_referendum_result": "ministan_short_chain_pack_d.json",
+		"national_nap_hour_proposal": "ministan_short_chain_pack_d.json",
+		"national_nap_productivity": "ministan_short_chain_pack_d.json",
+		"national_nap_resolution": "ministan_short_chain_pack_d.json",
 		"escalation_only_rival_parade": "ministan_standalone_pack_b.json",
 		"palace_curfew_drill": "ministan_standalone_pack_b.json",
 		"emergency_salute_protocol": "ministan_standalone_pack_b.json",

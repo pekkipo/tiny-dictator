@@ -1196,6 +1196,9 @@
     "pacing": {
       "allowed_stages": ["instability"]
     },
+    "requirements": {
+      "blocked_flags": ["nap_grid_live", "national_nap_live"]
+    },
     "options": [
       {
         "id": "full_grid",

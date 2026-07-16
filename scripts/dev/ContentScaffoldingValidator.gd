@@ -95,6 +95,7 @@ const CHAIN_IDS: Array[String] = [
 	"chain_border_parade",
 	"chain_camouflage_uniform_scandal",
 	"chain_tank_parking_crisis",
+	"chain_salaries_paid_in_coupons",
 	"chain_form_to_request_forms",
 	"chain_ministry_of_waiting",
 	"chain_stamp_shortage",
@@ -263,8 +264,8 @@ static func _validate_no_runtime_leakage(
 	warnings: Array[String],
 ) -> void:
 	var runtime_count := repository.get_all_decisions_for_country("ministan").size()
-	if runtime_count != 188:
-		errors.append("Expected 188 runtime decisions, got %d" % runtime_count)
+	if runtime_count != 207:
+		errors.append("Expected 207 runtime decisions, got %d" % runtime_count)
 
 	var voice_text := _read_text(VOICE_BIBLE_PATH)
 	if "EXAMPLE — NOT RUNTIME" not in voice_text:

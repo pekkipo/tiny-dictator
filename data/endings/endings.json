@@ -185,5 +185,18 @@
     "conditions": {
       "all_flags": ["tanks_direct_everything_soft", "tank_parking_chain_complete"]
     }
+  },
+  {
+    "id": "government_by_form",
+    "type": "special",
+    "priority": 90,
+    "title": "Government by Form",
+    "description": "Ministan ran on Form F-0 and a paid efficiency miracle. Historians list the country as a filing cabinet with a flag.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📋",
+    "conditions": {
+      "all_laws": ["form_request_form_act"],
+      "all_flags": ["government_by_form_soft", "forms_run_government"]
+    }
   }
 ]

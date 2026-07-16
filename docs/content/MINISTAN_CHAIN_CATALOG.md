@@ -196,16 +196,34 @@
 ### chain_perfumed_sewage
 
 - **Title:** Perfumed Sewage
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** doctor_maybe
 - **Category:** infrastructure
 - **Intended stage:** escalation
 - **Premise:** Scent experiment masks infrastructure failure briefly.
-- **Dependencies:** —
-- **Likely laws:** —
+- **Dependencies:** Absorbs standalone perfumed_sewage_reform
+- **Likely laws:** scent_mask_act
 - **Likely endings:** —
 - **Known risks:** Gross-out humor localization
+- **Decision IDs:** perfumed_sewage_pilot, perfumed_sewage_fallout
+- **Batch:** 2B-9A
+
+### chain_salaries_paid_in_coupons
+
+- **Title:** Salaries Paid in Coupons
+- **Status:** approved
+- **Target cards:** 2
+- **Primary speaker:** minister_penny
+- **Category:** economy
+- **Intended stage:** establishment
+- **Premise:** Civil servants paid in coupons; black market and morale follow the implementation.
+- **Dependencies:** —
+- **Likely laws:** coupon_salaries
+- **Likely endings:** —
+- **Known risks:** Distinct from rest/science coupon jokes
+- **Decision IDs:** coupon_salaries_proposal, coupon_salary_market
+- **Batch:** 2B-9A
 
 ### chain_national_clock_reform
 
@@ -418,7 +436,7 @@
 ### chain_form_to_request_forms
 
 - **Title:** Form to Request Forms
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** clerk_zero
 - **Category:** bureaucracy
@@ -428,76 +446,88 @@
 - **Likely laws:** form_request_form_act
 - **Likely endings:** government_by_form
 - **Known risks:** Pure paperwork fatigue
+- **Decision IDs:** form_request_forms_proposal, form_request_forms_backlog, form_request_forms_resolution
+- **Batch:** 2B-9A
 
 ### chain_ministry_of_waiting
 
 - **Title:** Ministry of Waiting
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** clerk_zero
 - **Category:** bureaucracy
 - **Intended stage:** establishment
 - **Premise:** Queues receive cabinet-level attention.
-- **Dependencies:** —
+- **Dependencies:** Distinct from robot_queue_manager
 - **Likely laws:** ministry_of_waiting
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** ministry_of_waiting_proposal, ministry_of_waiting_service
+- **Batch:** 2B-9B
 
 ### chain_stamp_shortage
 
 - **Title:** Stamp Shortage
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** clerk_zero
 - **Category:** bureaucracy
 - **Intended stage:** establishment
 - **Premise:** Triple-stamp law meets supply collapse.
-- **Dependencies:** —
+- **Dependencies:** Distinct from form_to_request_forms
 - **Likely laws:** triple_stamp_requirement
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** stamp_shortage_crisis, stamp_shortage_workaround
+- **Batch:** 2B-9B
 
 ### chain_antivacuum_referendum
 
 - **Title:** Anti-Vacuum Referendum
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** comrade_whiskers
 - **Category:** cats_and_animals
 - **Intended stage:** escalation
 - **Premise:** Cats ban vacuum hours; referendum divides species.
-- **Dependencies:** cat politics partial
+- **Dependencies:** cat politics partial; feeds cat_republic
 - **Likely laws:** antivacuum_act
 - **Likely endings:** cat_republic
 - **Known risks:** Cat arc overlap
+- **Decision IDs:** antivacuum_referendum_proposal, antivacuum_campaign, antivacuum_referendum_result
+- **Batch:** 2B-9B
 
 ### chain_fish_currency_experiment
 
 - **Title:** Fish Currency Experiment
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** comrade_whiskers
 - **Category:** cats_and_animals
 - **Intended stage:** escalation
 - **Premise:** Fish-backed currency roils treasury and cats alike.
-- **Dependencies:** cat_fish_budget partial seed
-- **Likely laws:** fish_subsidy
+- **Dependencies:** Distinct from fish_market_subsidy; mutual exclusion via blocked_laws
+- **Likely laws:** fish_currency_act
 - **Likely endings:** —
 - **Known risks:** Economy simulation balance
+- **Decision IDs:** fish_currency_proposal, fish_currency_boom, fish_currency_resolution
+- **Batch:** 2B-9A
 
 ### chain_national_nap_hour
 
 - **Title:** National Nap Hour
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** comrade_whiskers
 - **Category:** cats_and_animals
 - **Intended stage:** establishment
 - **Premise:** Mandatory nap synchronizes nation; productivity satire.
-- **Dependencies:** —
-- **Likely laws:** national_nap_hour, official_nap_zones
+- **Dependencies:** Mutual exclusion with national_nap_grid (`nap_grid_live`)
+- **Likely laws:** national_nap_hour
 - **Likely endings:** —
 - **Known risks:** Public-life overlap with three_day_weekend
+- **Decision IDs:** national_nap_hour_proposal, national_nap_productivity, national_nap_resolution
+- **Batch:** 2B-9B
 
 ---
 
@@ -519,3 +549,6 @@
 | 1.1 | 2026-07-16 | Milestone 2B-6 — Pack A eight chains approved |
 | 1.2 | 2026-07-16 | Milestone 2B-7 — Pack B eight chains approved |
 | 1.3 | 2026-07-16 | Milestone 2B-8 — Pack C eight chains approved |
+| 1.4 | 2026-07-16 | Milestone 2B-9A — Coupons, Sewage, Forms, Fish approved; salaries catalog entry added |
+| 1.5 | 2026-07-16 | Milestone 2B-9B — Waiting, Stamps, Anti-Vacuum, Nap Hour approved; Pack D complete (32/80) |
+| 1.5 | 2026-07-16 | Milestone 2B-9B — Waiting, Stamps, Anti-Vacuum, Nap Hour approved; Pack D complete (32/80) |

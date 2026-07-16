@@ -482,6 +482,106 @@
 				"notes": "Manifest-invented chain_id; no runtime field yet.",
 				"status": "approved",
 				"target_length": 3
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"coupon_salaries_proposal",
+					"coupon_salary_market"
+				],
+				"id": "salaries_paid_in_coupons",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"perfumed_sewage_pilot",
+					"perfumed_sewage_fallout"
+				],
+				"id": "perfumed_sewage",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"form_request_forms_proposal",
+					"form_request_forms_backlog",
+					"form_request_forms_resolution"
+				],
+				"id": "form_to_request_forms",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"fish_currency_proposal",
+					"fish_currency_boom",
+					"fish_currency_resolution"
+				],
+				"id": "fish_currency_experiment",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"ministry_of_waiting_proposal",
+					"ministry_of_waiting_service"
+				],
+				"id": "ministry_of_waiting",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"stamp_shortage_crisis",
+					"stamp_shortage_workaround"
+				],
+				"id": "stamp_shortage",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 2
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"antivacuum_referendum_proposal",
+					"antivacuum_campaign",
+					"antivacuum_referendum_result"
+				],
+				"id": "antivacuum_referendum",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "chain",
+				"decision_ids": [
+					"national_nap_hour_proposal",
+					"national_nap_productivity",
+					"national_nap_resolution"
+				],
+				"id": "national_nap_hour",
+				"notes": "Manifest-invented chain_id; no runtime field yet.",
+				"status": "approved",
+				"target_length": 3
 			}
 		],
 		"crises": [
@@ -667,6 +767,14 @@
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "tanks_direct_everything",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "government_by_form",
 				"notes": "",
 				"status": "integrated"
 			}
@@ -1320,6 +1428,94 @@
 				"visual_tags": [
 					"border_megaphone_parade"
 				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "coupon_salaries",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"coupon_pay_stubs"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "scent_mask_act",
+				"notes": "",
+				"primary_category": "infrastructure",
+				"status": "integrated",
+				"visual_tags": [
+					"scent_manhole_covers"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "form_request_form_act",
+				"notes": "",
+				"primary_category": "bureaucracy",
+				"status": "integrated",
+				"visual_tags": [
+					"meta_form_desk"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "fish_currency_act",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"fish_scrip_booth"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "ministry_of_waiting",
+				"notes": "",
+				"primary_category": "bureaucracy",
+				"status": "integrated",
+				"visual_tags": [
+					"waiting_ministry_plaque"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "triple_stamp_requirement",
+				"notes": "",
+				"primary_category": "bureaucracy",
+				"status": "integrated",
+				"visual_tags": [
+					"empty_stamp_drawer"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "antivacuum_act",
+				"notes": "",
+				"primary_category": "absurd_law",
+				"status": "integrated",
+				"visual_tags": [
+					"vacuum_ban_posters"
+				]
+			},
+			{
+				"batch_id": "2B-8B",
+				"content_type": "law",
+				"id": "national_nap_hour",
+				"notes": "",
+				"primary_category": "public_life",
+				"status": "integrated",
+				"visual_tags": [
+					"nap_hour_banners"
+				]
 			}
 		],
 		"palace_upgrades": [
@@ -1499,6 +1695,78 @@
 			"status": "approved",
 			"visual_tags": [
 				"floating_bus_lanes"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "antivacuum_referendum",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "antivacuum_campaign",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "politics",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"species_referendum_booth"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
+			"chain_id": "antivacuum_referendum",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "antivacuum_referendum_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "politics",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"vacuum_ban_posters"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "antivacuum_referendum",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "antivacuum_referendum_result",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "politics",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"quiet_hours_plaque"
 			],
 			"voice_review_status": "not_reviewed"
 		},
@@ -2845,6 +3113,54 @@
 			"balance_review_status": "partial",
 			"batch_id": "2B-8B",
 			"card_type": "normal",
+			"chain_id": "salaries_paid_in_coupons",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "coupon_salaries_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"coupon_pay_stubs"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "salaries_paid_in_coupons",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "coupon_salary_market",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"coupon_black_market"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
@@ -3198,6 +3514,78 @@
 			"arc_id": null,
 			"balance_review_status": "partial",
 			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "fish_currency_experiment",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "fish_currency_boom",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"fish_exchange_board"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
+			"chain_id": "fish_currency_experiment",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "fish_currency_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"fish_scrip_booth"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "fish_currency_experiment",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "fish_currency_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "economy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"fish_peg_stabilizer"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3215,6 +3603,78 @@
 			"status": "approved",
 			"visual_tags": [
 				"fish_subsidy_trucks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "form_to_request_forms",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "form_request_forms_backlog",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"form_backlog_towers"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
+			"chain_id": "form_to_request_forms",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "form_request_forms_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"meta_form_desk"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "form_to_request_forms",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "form_request_forms_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "minister_penny",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"efficiency_desk_plaque"
 			],
 			"voice_review_status": "not_reviewed"
 		},
@@ -3879,6 +4339,54 @@
 			"balance_review_status": "partial",
 			"batch_id": "2B-8B",
 			"card_type": "normal",
+			"chain_id": "ministry_of_waiting",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "ministry_of_waiting_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"waiting_ministry_plaque"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "ministry_of_waiting",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ministry_of_waiting_service",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"timed_service_windows"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
@@ -4039,6 +4547,78 @@
 			"status": "approved",
 			"visual_tags": [
 				"nap_grid_cots"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
+			"chain_id": "national_nap_hour",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "national_nap_hour_proposal",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"nap_hour_banners"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "national_nap_hour",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "national_nap_productivity",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"empty_desk_clocks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "national_nap_hour",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "national_nap_resolution",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "public_life",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "comrade_whiskers",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"timed_nap_zones"
 			],
 			"voice_review_status": "not_reviewed"
 		},
@@ -4472,23 +5052,47 @@
 			"arc_id": null,
 			"balance_review_status": "partial",
 			"batch_id": "2B-8B",
-			"card_type": "normal",
-			"chain_id": null,
+			"card_type": "consequence",
+			"chain_id": "perfumed_sewage",
 			"content_type": "decision",
 			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "perfumed_sewage_reform",
+			"graph_validation_status": "pass",
+			"id": "perfumed_sewage_fallout",
 			"manual_test_status": "pass",
-			"notes": "Milestone 2B-3 approved standalone policy card.",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
 			"primary_category": "infrastructure",
-			"primary_content_class": "standalone",
-			"primary_run_stage": "escalation",
-			"primary_speaker": "minister_penny",
-			"runtime_source_file": "data/decisions/ministan_standalone_pack_a.json",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "auntie_olga",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
 			"schema_validation_status": "pass",
 			"status": "approved",
 			"visual_tags": [
-				"perfumed_sewers"
+				"pipe_repair_crews"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
+			"chain_id": "perfumed_sewage",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "perfumed_sewage_pilot",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "infrastructure",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"scent_manhole_covers"
 			],
 			"voice_review_status": "not_reviewed"
 		},
@@ -5221,6 +5825,54 @@
 			"balance_review_status": "partial",
 			"batch_id": "2B-8B",
 			"card_type": "normal",
+			"chain_id": "stamp_shortage",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "stamp_shortage_crisis",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"empty_stamp_drawer"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "consequence",
+			"chain_id": "stamp_shortage",
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "stamp_shortage_workaround",
+			"manual_test_status": "pass",
+			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Milestone 2B-9 approved short-chain card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "short_chain",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_short_chain_pack_d.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"wax_seal_futures"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-8B",
+			"card_type": "normal",
 			"chain_id": "state_meme_department",
 			"content_type": "decision",
 			"crisis_id": null,
@@ -5840,57 +6492,57 @@
 	"distribution_report": {
 		"approved_only": {
 			"by_primary_category_canonical": {
-				"bureaucracy": 12,
+				"bureaucracy": 19,
 				"business_and_privatization": 13,
 				"cats_and_animals": 8,
-				"economy": 14,
-				"infrastructure": 19,
+				"economy": 19,
+				"infrastructure": 20,
 				"media_and_propaganda": 19,
 				"military_and_order": 16,
-				"public_life": 16,
+				"public_life": 22,
 				"science_and_technology": 17
 			},
 			"by_primary_run_stage": {
 				"endgame": 6,
-				"escalation": 37,
-				"establishment": 82,
+				"escalation": 39,
+				"establishment": 99,
 				"instability": 9
 			},
 			"by_primary_speaker": {
-				"auntie_olga": 17,
-				"clerk_zero": 17,
-				"comrade_whiskers": 7,
-				"doctor_maybe": 15,
+				"auntie_olga": 21,
+				"clerk_zero": 21,
+				"comrade_whiskers": 13,
+				"doctor_maybe": 16,
 				"general_boom": 18,
 				"luna_news": 21,
-				"minister_penny": 21,
-				"sir_profit": 18
+				"minister_penny": 22,
+				"sir_profit": 21
 			}
 		},
 		"by_primary_category": {
 			"administration": 1,
-			"bureaucracy": 12,
+			"bureaucracy": 19,
 			"business_and_privatization": 13,
 			"cats_and_animals": 8,
-			"economy": 20,
+			"economy": 25,
 			"follow_up": 9,
 			"government": 2,
-			"infrastructure": 23,
+			"infrastructure": 24,
 			"media": 25,
 			"military": 23,
-			"politics": 4,
-			"public_life": 27,
+			"politics": 7,
+			"public_life": 30,
 			"science": 21
 		},
 		"by_primary_category_canonical": {
-			"bureaucracy": 15,
+			"bureaucracy": 22,
 			"business_and_privatization": 13,
 			"cats_and_animals": 8,
-			"economy": 20,
-			"infrastructure": 23,
+			"economy": 25,
+			"infrastructure": 24,
 			"media_and_propaganda": 25,
 			"military_and_order": 23,
-			"public_life": 40,
+			"public_life": 46,
 			"science_and_technology": 21
 		},
 		"by_primary_content_class": {
@@ -5899,52 +6551,52 @@
 			"major_arc": 25,
 			"onboarding": 10,
 			"recovery": 4,
-			"short_chain": 73,
-			"standalone": 67
+			"short_chain": 93,
+			"standalone": 66
 		},
 		"by_primary_run_stage": {
 			"endgame": 8,
-			"escalation": 42,
-			"establishment": 128,
+			"escalation": 44,
+			"establishment": 145,
 			"instability": 10
 		},
 		"by_primary_speaker": {
-			"auntie_olga": 27,
-			"clerk_zero": 20,
-			"comrade_whiskers": 8,
-			"doctor_maybe": 18,
+			"auntie_olga": 31,
+			"clerk_zero": 24,
+			"comrade_whiskers": 14,
+			"doctor_maybe": 19,
 			"general_boom": 30,
 			"luna_news": 34,
-			"minister_penny": 31,
-			"sir_profit": 20
+			"minister_penny": 32,
+			"sir_profit": 23
 		},
 		"by_review_status": {
 			"balance_review_status": {
-				"partial": 188
+				"partial": 207
 			},
 			"graph_validation_status": {
-				"partial": 128,
-				"pass": 60
+				"partial": 135,
+				"pass": 72
 			},
 			"manual_test_status": {
 				"partial": 30,
-				"pass": 134,
+				"pass": 153,
 				"untested": 24
 			},
 			"voice_review_status": {
-				"not_reviewed": 188
+				"not_reviewed": 207
 			}
 		},
 		"by_status": {
-			"approved": 134,
+			"approved": 153,
 			"deferred": 4,
 			"integrated": 42,
 			"needs_rewrite": 8
 		}
 	},
-	"generated_at": "2026-07-16T14:10:32",
+	"generated_at": "2026-07-16T14:49:42",
 	"manifest_version": 1,
-	"phase": "2b_8_short_chain_pack_c",
+	"phase": "2b_9_short_chain_pack_d",
 	"quality_findings": {
 		"deferred_ids": [
 			"budget_meltdown_crisis",
@@ -5957,9 +6609,9 @@
 			"cards_no_meaningful_effects": 0,
 			"dominant_choice_options": 0,
 			"endings_impossible": 4,
-			"excessive_advisor_concentration": 3,
+			"excessive_advisor_concentration": 2,
 			"excessive_tag_concentration": 3,
-			"unreachable_decisions": 128
+			"unreachable_decisions": 135
 		},
 		"duplicate_premise_groups": [
 			{
@@ -6030,6 +6682,9 @@
 			"anthem_sponsor_reads",
 			"antigravity_buses_consequence",
 			"antigravity_buses_pilot",
+			"antivacuum_campaign",
+			"antivacuum_referendum_proposal",
+			"antivacuum_referendum_result",
 			"applause_enforcement_squad",
 			"applause_public_adaptation",
 			"applause_quotas_mandate",
@@ -6087,6 +6742,8 @@
 			"commemorative_debt_sale",
 			"complaint_permit_office",
 			"contradictory_signage_act",
+			"coupon_salaries_proposal",
+			"coupon_salary_market",
 			"crisis_reframing_desk",
 			"crosswalk_cat_priority",
 			"daily_cabinet_briefing",
@@ -6102,7 +6759,13 @@
 			"escalation_only_rival_parade",
 			"express_sidewalk_franchise",
 			"fake_smile_industry",
+			"fish_currency_boom",
+			"fish_currency_proposal",
+			"fish_currency_resolution",
 			"fish_market_subsidy",
+			"form_request_forms_backlog",
+			"form_request_forms_proposal",
+			"form_request_forms_resolution",
 			"free_coffee_morning",
 			"free_pizza_friday",
 			"generic_minister_disagreement",
@@ -6131,6 +6794,8 @@
 			"meme_virality_crisis",
 			"midnight_filing_amnesty",
 			"military_parade",
+			"ministry_of_waiting_proposal",
+			"ministry_of_waiting_service",
 			"mouse_protection_act",
 			"national_anthem_remix",
 			"national_bedtime_decree",
@@ -6138,6 +6803,9 @@
 			"national_clock_sync",
 			"national_clone_day",
 			"national_nap_grid",
+			"national_nap_hour_proposal",
+			"national_nap_productivity",
+			"national_nap_resolution",
 			"national_power_outage",
 			"national_talent_show",
 			"neighborhood_noise_complaint",
@@ -6156,7 +6824,8 @@
 			"palace_room_rental",
 			"pantry_moth_crisis",
 			"parade_budget_boost",
-			"perfumed_sewage_reform",
+			"perfumed_sewage_fallout",
+			"perfumed_sewage_pilot",
 			"pigeon_air_force_proposal",
 			"pigeon_air_force_report",
 			"pineapple_referendum",
@@ -6188,6 +6857,8 @@
 			"sovereign_cookie_futures",
 			"sponsored_potholes",
 			"squirrel_union_recognition",
+			"stamp_shortage_crisis",
+			"stamp_shortage_workaround",
 			"state_meme_department",
 			"switch_off_traffic_lights",
 			"talent_show_budget_scandal",
@@ -6333,14 +7004,14 @@
 			"target": 18
 		},
 		"decisions": {
-			"approved_total": 134,
+			"approved_total": 153,
 			"by_category": {
 				"bureaucracy": {
-					"approved": 12,
-					"cataloged": 15,
+					"approved": 19,
+					"cataloged": 22,
 					"draft": 0,
-					"gap_approved": 20,
-					"integrated": 12,
+					"gap_approved": 13,
+					"integrated": 19,
 					"target": 32
 				},
 				"business_and_privatization": {
@@ -6360,19 +7031,19 @@
 					"target": 26
 				},
 				"economy": {
-					"approved": 14,
-					"cataloged": 20,
+					"approved": 19,
+					"cataloged": 25,
 					"draft": 0,
-					"gap_approved": 36,
-					"integrated": 17,
+					"gap_approved": 31,
+					"integrated": 22,
 					"target": 50
 				},
 				"infrastructure": {
-					"approved": 19,
-					"cataloged": 23,
+					"approved": 20,
+					"cataloged": 24,
 					"draft": 0,
-					"gap_approved": 11,
-					"integrated": 23,
+					"gap_approved": 10,
+					"integrated": 24,
 					"target": 30
 				},
 				"media_and_propaganda": {
@@ -6392,11 +7063,11 @@
 					"target": 38
 				},
 				"public_life": {
-					"approved": 16,
-					"cataloged": 40,
+					"approved": 22,
+					"cataloged": 46,
 					"draft": 0,
-					"gap_approved": 32,
-					"integrated": 36,
+					"gap_approved": 26,
+					"integrated": 42,
 					"target": 48
 				},
 				"science_and_technology": {
@@ -6450,53 +7121,53 @@
 					"total_cataloged": 4
 				},
 				"short_chain": {
-					"approved": 60,
+					"approved": 80,
 					"draft": 0,
-					"gap_approved": 20,
-					"integrated": 71,
+					"gap_approved": 0,
+					"integrated": 91,
 					"target": 80,
-					"total_cataloged": 73
+					"total_cataloged": 93
 				},
 				"standalone": {
-					"approved": 64,
+					"approved": 63,
 					"draft": 0,
-					"gap_approved": 8,
-					"integrated": 65,
+					"gap_approved": 9,
+					"integrated": 64,
 					"target": 72,
-					"total_cataloged": 67
+					"total_cataloged": 66
 				}
 			},
 			"by_speaker": {
 				"auntie_olga": {
-					"approved": 17,
-					"cataloged": 27,
+					"approved": 21,
+					"cataloged": 31,
 					"draft": 0,
-					"gap_approved": 25,
-					"integrated": 27,
+					"gap_approved": 21,
+					"integrated": 31,
 					"target": 42
 				},
 				"clerk_zero": {
-					"approved": 17,
-					"cataloged": 20,
+					"approved": 21,
+					"cataloged": 24,
 					"draft": 0,
-					"gap_approved": 19,
-					"integrated": 18,
+					"gap_approved": 15,
+					"integrated": 22,
 					"target": 36
 				},
 				"comrade_whiskers": {
-					"approved": 7,
-					"cataloged": 8,
+					"approved": 13,
+					"cataloged": 14,
 					"draft": 0,
-					"gap_approved": 27,
-					"integrated": 8,
+					"gap_approved": 21,
+					"integrated": 14,
 					"target": 34
 				},
 				"doctor_maybe": {
-					"approved": 15,
-					"cataloged": 18,
+					"approved": 16,
+					"cataloged": 19,
 					"draft": 0,
-					"gap_approved": 23,
-					"integrated": 18,
+					"gap_approved": 22,
+					"integrated": 19,
 					"target": 38
 				},
 				"general_boom": {
@@ -6524,19 +7195,19 @@
 					"target": 38
 				},
 				"minister_penny": {
-					"approved": 21,
-					"cataloged": 31,
+					"approved": 22,
+					"cataloged": 32,
 					"draft": 0,
-					"gap_approved": 19,
-					"integrated": 28,
+					"gap_approved": 18,
+					"integrated": 29,
 					"target": 40
 				},
 				"sir_profit": {
-					"approved": 18,
-					"cataloged": 20,
+					"approved": 21,
+					"cataloged": 23,
 					"draft": 0,
-					"gap_approved": 18,
-					"integrated": 19,
+					"gap_approved": 15,
+					"integrated": 22,
 					"target": 36
 				}
 			},
@@ -6550,19 +7221,19 @@
 					"target": 59
 				},
 				"escalation": {
-					"approved": 37,
-					"cataloged": 42,
+					"approved": 39,
+					"cataloged": 44,
 					"draft": 0,
-					"gap_approved": 62,
-					"integrated": 41,
+					"gap_approved": 60,
+					"integrated": 43,
 					"target": 99
 				},
 				"establishment": {
-					"approved": 82,
-					"cataloged": 128,
+					"approved": 99,
+					"cataloged": 145,
 					"draft": 0,
-					"gap_approved": 1,
-					"integrated": 120,
+					"gap_approved": -16,
+					"integrated": 137,
 					"target": 83
 				},
 				"instability": {
@@ -6575,15 +7246,15 @@
 				}
 			},
 			"draft_total": 0,
-			"gap_approved": 196,
-			"integrated_total": 176,
+			"gap_approved": 177,
+			"integrated_total": 195,
 			"target_total": 330,
-			"total_cataloged": 188
+			"total_cataloged": 207
 		},
 		"endings": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 15,
+			"integrated": 16,
 			"target": 50
 		},
 		"guest_speakers": {
@@ -6595,7 +7266,7 @@
 		"laws": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 59,
+			"integrated": 67,
 			"target": 50
 		},
 		"major_arcs": {
@@ -6617,8 +7288,8 @@
 			"target": 12
 		},
 		"short_chains": {
-			"approved": 24,
-			"gap_approved": 8,
+			"approved": 32,
+			"gap_approved": 0,
 			"integrated": 3,
 			"target": 32
 		}

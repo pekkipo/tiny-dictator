@@ -529,5 +529,77 @@
     "placeholder_icon": "📢",
     "visual_tags": ["border_megaphone_parade"],
     "category": "military"
+  },
+  {
+    "id": "coupon_salaries",
+    "display_name": "Coupon Salaries Act",
+    "short_name": "Coupon Pay",
+    "description": "Civil servants may be paid in coupons. Cash is a nostalgic option.",
+    "placeholder_icon": "🎫",
+    "visual_tags": ["coupon_pay_stubs"],
+    "category": "economy"
+  },
+  {
+    "id": "scent_mask_act",
+    "display_name": "Scent Mask Infrastructure Act",
+    "short_name": "Scent Mask",
+    "description": "Approved fragrance may temporarily mask failing sewer infrastructure.",
+    "placeholder_icon": "🌸",
+    "visual_tags": ["scent_manhole_covers"],
+    "category": "infrastructure"
+  },
+  {
+    "id": "form_request_form_act",
+    "display_name": "Form to Request Forms Act",
+    "short_name": "Form F-0",
+    "description": "Citizens must file Form F-0 before requesting any other form.",
+    "placeholder_icon": "📋",
+    "visual_tags": ["meta_form_desk"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "fish_currency_act",
+    "display_name": "Fish Currency Act",
+    "short_name": "Fish Money",
+    "description": "Currency may be backed by fish stocks. Stability is seasonal.",
+    "placeholder_icon": "🐟",
+    "visual_tags": ["fish_scrip_booth"],
+    "category": "economy"
+  },
+  {
+    "id": "ministry_of_waiting",
+    "display_name": "Ministry of Waiting Act",
+    "short_name": "Waiting Ministry",
+    "description": "Public queues receive cabinet-level administration and timed service windows.",
+    "placeholder_icon": "🪑",
+    "visual_tags": ["waiting_ministry_plaque"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "triple_stamp_requirement",
+    "display_name": "Triple Stamp Requirement",
+    "short_name": "Triple Stamp",
+    "description": "Official approvals require three stamps. Stamp supply is a national security issue.",
+    "placeholder_icon": "📮",
+    "visual_tags": ["empty_stamp_drawer"],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "antivacuum_act",
+    "display_name": "Anti-Vacuum Act",
+    "short_name": "Vacuum Quiet Hours",
+    "description": "Vacuum use may be restricted by referendum and quiet-hours policy.",
+    "placeholder_icon": "🔇",
+    "visual_tags": ["vacuum_ban_posters"],
+    "category": "absurd_law"
+  },
+  {
+    "id": "national_nap_hour",
+    "display_name": "National Nap Hour Act",
+    "short_name": "Nap Hour",
+    "description": "A civic nap period is scheduled. Productivity is invited to wait.",
+    "placeholder_icon": "😴",
+    "visual_tags": ["nap_hour_banners"],
+    "category": "public_life"
   }
 ]
