@@ -160,5 +160,95 @@
     "placeholder_icon": "🚩",
     "visual_tags": ["flag_intersections"],
     "category": "infrastructure"
+  },
+  {
+    "id": "rival_parade_response_act",
+    "display_name": "Rival Parade Response Act",
+    "short_name": "Rival Parade",
+    "description": "Ceremonial responses to neighboring tank marches are mandatory and budgeted.",
+    "placeholder_icon": "🎖️",
+    "visual_tags": ["rival_parade_balloons"],
+    "category": "military"
+  },
+  {
+    "id": "palace_curfew_act",
+    "display_name": "Palace Curfew Act",
+    "short_name": "Palace Curfew",
+    "description": "Night curfew drills around the palace perimeter. Doors practice obedience.",
+    "placeholder_icon": "🚪",
+    "visual_tags": ["palace_curfew_gates"],
+    "category": "military"
+  },
+  {
+    "id": "emergency_salute_law",
+    "display_name": "Emergency Salute Protocol",
+    "short_name": "Noon Salute",
+    "description": "Citizens salute at noon. Wrists adapt. Forms available for sprains.",
+    "placeholder_icon": "🫡",
+    "visual_tags": ["noon_salute_wrists"],
+    "category": "military"
+  },
+  {
+    "id": "one_headline_policy",
+    "display_name": "One Headline Policy",
+    "short_name": "One Headline",
+    "description": "One approved national headline per day. Clarity is mandatory.",
+    "placeholder_icon": "📰",
+    "visual_tags": ["single_headline_boards"],
+    "category": "media"
+  },
+  {
+    "id": "public_rumor_license",
+    "display_name": "Public Rumor License",
+    "short_name": "Rumor License",
+    "description": "Gossip requires a permit. Official whispers only.",
+    "placeholder_icon": "🤫",
+    "visual_tags": ["rumor_license_kiosks"],
+    "category": "media"
+  },
+  {
+    "id": "predictive_toaster_act",
+    "display_name": "Predictive Toaster Administration",
+    "short_name": "Toaster Admin",
+    "description": "Authorized toasters may file forms before breakfast. Crumbs archived.",
+    "placeholder_icon": "🍞",
+    "visual_tags": ["toaster_filing_cabinets"],
+    "category": "science"
+  },
+  {
+    "id": "ceremonial_tank_florist_act",
+    "display_name": "Ceremonial Tank Florist Act",
+    "short_name": "Tank Florists",
+    "description": "Unused tanks may deliver flowers. Soft power with treads.",
+    "placeholder_icon": "🌷",
+    "visual_tags": ["tank_flower_beds"],
+    "category": "military"
+  },
+  {
+    "id": "weather_optimism_act",
+    "display_name": "Weather Optimism Act",
+    "short_name": "Sunny Bulletins",
+    "description": "Official weather copy must sound optimistic. Umbrellas remain unregulated.",
+    "placeholder_icon": "☀️",
+    "visual_tags": ["sunny_bulletin_boards"],
+    "category": "media"
+  },
+  {
+    "id": "catchphrase_registry_act",
+    "display_name": "Catchphrase Registry",
+    "short_name": "Catchphrases",
+    "description": "Official slogans must be registered. Improvised wit needs a stamp.",
+    "placeholder_icon": "💬",
+    "visual_tags": ["catchphrase_billboards"],
+    "category": "media"
+  },
+  {
+    "id": "labcoat_lighting_act",
+    "display_name": "Lab Coat Streetlight Pilot",
+    "short_name": "Coat Lights",
+    "description": "Experimental streetlights powered by lab coats. Sparks archived.",
+    "placeholder_icon": "🥼",
+    "visual_tags": ["labcoat_streetlights"],
+    "category": "science"
   }
 ]

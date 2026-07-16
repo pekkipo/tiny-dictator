@@ -109,43 +109,6 @@
     "tags": ["resolution", "legacy", "placeholder"]
   },
   {
-    "id": "escalation_only_rival_parade",
-    "schema_version": 2,
-    "card_type": "normal",
-    "advisor_id": "general_boom",
-    "category": "military",
-    "proposal": "Neighboring Tinyland is marching eight tanks through their capital. We must respond with nine tanks, or history will judge us harshly.",
-    "one_time": true,
-    "base_weight": 10,
-    "pacing": {
-      "allowed_stages": ["escalation"]
-    },
-    "options": [
-      {
-        "id": "counter_parade",
-        "label": "Nine tanks!",
-        "effects": {
-          "treasury": -9,
-          "order": 4,
-          "happiness": 3,
-          "elite_loyalty": 6
-        },
-        "result_text": "Nine tanks rumble proudly. One is borrowed and must be returned by Tuesday."
-      },
-      {
-        "id": "ignore",
-        "label": "Ignore Tinyland",
-        "effects": {
-          "elite_loyalty": -7,
-          "happiness": 2,
-          "order": -2
-        },
-        "result_text": "No parade. General Boom writes a strongly worded memo to history."
-      }
-    ],
-    "tags": ["placeholder", "politics"]
-  },
-  {
     "id": "recovery_martial_law_pause",
     "schema_version": 2,
     "card_type": "recovery",

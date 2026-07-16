@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_3_standalone_pack_a"
-const BATCH_ID: String = "2B-3B"
-const DECISION_BATCH_ID: String = "2B-3B"
+const PHASE: String = "2b_4_standalone_pack_b"
+const BATCH_ID: String = "2B-4B"
+const DECISION_BATCH_ID: String = "2B-4B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -120,11 +120,21 @@ const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
 	"palace_bus_routes", "bridge_toll_concession",
 ]
 
+const STANDALONE_PACK_B_APPROVED_IDS: Array[String] = [
+	"escalation_only_rival_parade", "palace_curfew_drill", "emergency_salute_protocol",
+	"civilian_marching_band", "national_anthem_remix", "one_headline_policy",
+	"licensed_rumor_bureau", "official_statistics_festival", "science_grant_request",
+	"predictive_toaster_admin", "cloud_relocation_trial", "prototype_scooter_fleet",
+	"boom_hostile_coup_rumor", "ceremonial_tank_florists", "honor_guard_crosswalk",
+	"volunteer_night_watch", "weather_optimism_bulletin", "loyalty_variety_hour",
+	"catchphrase_registry", "crisis_reframing_desk", "lab_coat_streetlights",
+	"national_nap_grid", "clinic_maybe_pilot", "cabinet_hypothesis_board",
+]
+
 const DEFERRED_DECISION_IDS: Array[String] = [
 	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
 	"cat_voting_proposal",
-	"propaganda_smile_campaign", "boom_hostile_coup_rumor", "escalation_only_rival_parade",
-	"national_anthem_remix", "science_grant_request",
+	"propaganda_smile_campaign",
 	"daily_cabinet_briefing", "postal_pigeon_reform",
 ]
 
@@ -133,7 +143,7 @@ const DEFERRED_CRISIS_IDS: Array[String] = ["budget_meltdown"]
 
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
 	"recovery_international_bank", "recovery_national_smile_day", "endgame_legacy_statue",
-	"escalation_only_rival_parade", "recovery_martial_law_pause",
+	"recovery_martial_law_pause",
 	"recovery_elite_dinner", "endgame_succession_debate", "endgame_final_audit",
 ]
 
@@ -149,6 +159,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
 	"absurd_civic_sweeping", "flag_traffic_system", "elevator_wifi_mandate",
 	"palace_bus_routes", "bridge_toll_concession",
+	"escalation_only_rival_parade", "palace_curfew_drill", "emergency_salute_protocol",
+	"civilian_marching_band", "national_anthem_remix", "one_headline_policy",
+	"licensed_rumor_bureau", "official_statistics_festival", "science_grant_request",
+	"predictive_toaster_admin", "cloud_relocation_trial", "prototype_scooter_fleet",
+	"boom_hostile_coup_rumor", "ceremonial_tank_florists", "honor_guard_crosswalk",
+	"volunteer_night_watch", "weather_optimism_bulletin", "loyalty_variety_hour",
+	"catchphrase_registry", "crisis_reframing_desk", "lab_coat_streetlights",
+	"national_nap_grid", "clinic_maybe_pilot", "cabinet_hypothesis_board",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -156,9 +174,9 @@ const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_ba
 const SIMULATION_SNAPSHOT: Dictionary = {
 	"seed": 20260715,
 	"run_count": 1000,
-	"date": "2026-07-15",
+	"date": "2026-07-16",
 	"decisions_never_selected": ["boom_loyal_protector", "happiness_backlash"],
-	"average_run_length": 23.5,
+	"average_run_length": 24.4,
 	"content_exhaustion_count": 0,
 	"fallback_card_usage": 0,
 }
@@ -496,6 +514,9 @@ func _resolve_status(
 	if id in STANDALONE_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in STANDALONE_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -562,6 +583,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-2 approved onboarding card.")
 	if id in STANDALONE_PACK_A_APPROVED_IDS:
 		notes.append("Milestone 2B-3 approved standalone policy card.")
+	if id in STANDALONE_PACK_B_APPROVED_IDS:
+		notes.append("Milestone 2B-4 approved standalone policy card.")
 	return ", ".join(notes)
 
 
@@ -604,6 +627,30 @@ func _source_file_hint(id: String) -> String:
 		"elevator_wifi_mandate": "ministan_standalone_pack_a.json",
 		"palace_bus_routes": "ministan_standalone_pack_a.json",
 		"bridge_toll_concession": "ministan_standalone_pack_a.json",
+		"escalation_only_rival_parade": "ministan_standalone_pack_b.json",
+		"palace_curfew_drill": "ministan_standalone_pack_b.json",
+		"emergency_salute_protocol": "ministan_standalone_pack_b.json",
+		"civilian_marching_band": "ministan_standalone_pack_b.json",
+		"national_anthem_remix": "ministan_standalone_pack_b.json",
+		"one_headline_policy": "ministan_standalone_pack_b.json",
+		"licensed_rumor_bureau": "ministan_standalone_pack_b.json",
+		"official_statistics_festival": "ministan_standalone_pack_b.json",
+		"science_grant_request": "ministan_standalone_pack_b.json",
+		"predictive_toaster_admin": "ministan_standalone_pack_b.json",
+		"cloud_relocation_trial": "ministan_standalone_pack_b.json",
+		"prototype_scooter_fleet": "ministan_standalone_pack_b.json",
+		"boom_hostile_coup_rumor": "ministan_standalone_pack_b.json",
+		"ceremonial_tank_florists": "ministan_standalone_pack_b.json",
+		"honor_guard_crosswalk": "ministan_standalone_pack_b.json",
+		"volunteer_night_watch": "ministan_standalone_pack_b.json",
+		"weather_optimism_bulletin": "ministan_standalone_pack_b.json",
+		"loyalty_variety_hour": "ministan_standalone_pack_b.json",
+		"catchphrase_registry": "ministan_standalone_pack_b.json",
+		"crisis_reframing_desk": "ministan_standalone_pack_b.json",
+		"lab_coat_streetlights": "ministan_standalone_pack_b.json",
+		"national_nap_grid": "ministan_standalone_pack_b.json",
+		"clinic_maybe_pilot": "ministan_standalone_pack_b.json",
+		"cabinet_hypothesis_board": "ministan_standalone_pack_b.json",
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]
@@ -621,18 +668,15 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_followups.json"
 	if id.begins_with("traffic_"):
 		return "data/decisions/ministan_traffic_military.json"
-	if id.begins_with("recovery_") or id.begins_with("endgame_") or id in ["escalation_only_rival_parade"]:
+	if id.begins_with("recovery_") or id.begins_with("endgame_"):
 		return "data/decisions/ministan_stage_placeholders.json"
 	if id in ["pizza_union_strike", "pineapple_referendum"]:
 		return "data/decisions/ministan_pizza_consequences.json"
-	if id in CHAIN_MEMBERS["free_pizza_consequences"] or id in ONBOARDING_IDS or id in [
-		"parade_budget_boost", "cat_treaty_offer", "bureaucracy_expansion", "science_gamble",
+	if id in ["parade_budget_boost", "cat_treaty_offer", "bureaucracy_expansion", "science_gamble",
 		"privatize_palace_garden", "propaganda_smile_campaign",
-		"boom_hostile_coup_rumor",
 	]:
 		if id in ["parade_budget_boost", "cat_treaty_offer", "bureaucracy_expansion", "science_gamble",
-			"privatize_palace_garden", "propaganda_smile_campaign", "olga_loyal_council",
-			"boom_hostile_coup_rumor"]:
+			"privatize_palace_garden", "propaganda_smile_campaign", "olga_loyal_council"]:
 			return "data/decisions/ministan_advisor_affinity.json"
 	return "data/decisions/ministan_generic_fill.json"
 

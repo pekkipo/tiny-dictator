@@ -29,35 +29,6 @@
     "tags": ["bureaucracy", "generic"]
   },
   {
-    "id": "national_anthem_remix",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "luna_news",
-    "category": "media",
-    "proposal": "Luna News wants a dance remix of the national anthem for younger citizens.",
-    "one_time": false,
-    "base_weight": 6,
-    "minimum_day": 3,
-    "maximum_day": 35,
-    "options": [
-      {
-        "id": "remix",
-        "label": "Release the remix",
-        "effects": { "happiness": 5, "order": -3, "elite_loyalty": -2 },
-        "trait_changes": { "populist": 1, "propagandist": 1 },
-        "result_text": "Youth dance at ceremonies. Elders demand volume controls."
-      },
-      {
-        "id": "traditional",
-        "label": "Keep the classic anthem",
-        "effects": { "order": 3, "happiness": -2, "elite_loyalty": 2 },
-        "result_text": "Tradition survives. Luna News adds subtle applause anyway."
-      }
-    ],
-    "tags": ["media", "generic"]
-  },
-  {
     "id": "olga_bridge_repair",
     "schema_version": 2,
     "country_id": "ministan",
@@ -117,34 +88,5 @@
       }
     ],
     "tags": ["bureaucracy", "generic", "repeatable"]
-  },
-  {
-    "id": "science_grant_request",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "doctor_maybe",
-    "category": "science",
-    "proposal": "A local inventor requests funding to teach clouds better shapes.",
-    "one_time": false,
-    "base_weight": 5,
-    "minimum_day": 6,
-    "maximum_day": 40,
-    "options": [
-      {
-        "id": "fund",
-        "label": "Fund the clouds",
-        "effects": { "treasury": -3, "happiness": 3, "order": -1 },
-        "trait_changes": { "scientific": 1, "chaotic": 1 },
-        "result_text": "Clouds remain uncooperative but optimistic."
-      },
-      {
-        "id": "deny",
-        "label": "Deny politely",
-        "effects": { "order": 1, "happiness": -1 },
-        "result_text": "The inventor sketches revenge-shaped cumulus."
-      }
-    ],
-    "tags": ["science", "generic", "repeatable"]
   }
 ]

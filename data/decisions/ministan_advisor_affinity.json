@@ -250,39 +250,5 @@
         "result_text": "Ratings drop slightly. Luna News reframes it as authentic skepticism."
       }
     ]
-  },
-  {
-    "id": "boom_hostile_coup_rumor",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "advisor",
-    "advisor_id": "general_boom",
-    "category": "military",
-    "proposal": "Rumors say General Boom is plotting something dramatic. He denies everything loudly.",
-    "one_time": true,
-    "base_weight": 18,
-    "minimum_day": 6,
-    "maximum_day": 35,
-    "requirements": {
-      "maximum_advisor_affinity": { "general_boom": -3 }
-    },
-    "options": [
-      {
-        "id": "public_reconciliation",
-        "label": "Public reconciliation ceremony",
-        "effects": { "elite_loyalty": 3, "happiness": 2, "treasury": -3 },
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "propagandist": 1 },
-        "result_text": "General Boom accepts medals and stops muttering about tanks."
-      },
-      {
-        "id": "strip_influence",
-        "label": "Strip his parade budget",
-        "effects": { "order": -4, "elite_loyalty": -3, "happiness": 1 },
-        "advisor_affinity": { "general_boom": -2 },
-        "trait_changes": { "authoritarian": 2 },
-        "result_text": "General Boom salutes with visible contempt. Luna News calls it fiscal discipline."
-      }
-    ]
   }
 ]
