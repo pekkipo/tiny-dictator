@@ -161,5 +161,29 @@
     "conditions": {
       "all_flags": ["artificial_sun_success", "scientific_golden_soft"]
     }
+  },
+  {
+    "id": "smallest_superpower",
+    "type": "special",
+    "priority": 92,
+    "title": "Smallest Superpower",
+    "description": "Ministan signed a volume treaty and called it soft power. Historians list the country as a tiny superpower of negotiated noise.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📢",
+    "conditions": {
+      "all_flags": ["border_volume_treaty", "smallest_superpower_soft"]
+    }
+  },
+  {
+    "id": "tanks_direct_everything",
+    "type": "special",
+    "priority": 91,
+    "title": "Tanks Direct Everything",
+    "description": "Parking, traffic, and policy answered to tread marks. Historians underline the civic square in armor.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🪖",
+    "conditions": {
+      "all_flags": ["tanks_direct_everything_soft", "tank_parking_chain_complete"]
+    }
   }
 ]

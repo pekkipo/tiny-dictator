@@ -466,5 +466,68 @@
     "placeholder_icon": "☀️",
     "visual_tags": ["pilot_sun_over_capital"],
     "category": "science"
+  },
+  {
+    "id": "antigravity_transit",
+    "display_name": "Anti-Gravity Transit Act",
+    "short_name": "Floating Buses",
+    "description": "Public buses may float. Gravity is a scheduled variable.",
+    "placeholder_icon": "🚌",
+    "visual_tags": ["floating_bus_lanes"],
+    "category": "science"
+  },
+  {
+    "id": "clone_holiday",
+    "display_name": "National Clone Day Act",
+    "short_name": "Clone Holiday",
+    "description": "Temporary duplicates are permitted for queues. Identity forms require footnotes.",
+    "placeholder_icon": "👯",
+    "visual_tags": ["clone_holiday_banners"],
+    "category": "science"
+  },
+  {
+    "id": "traffic_flag_corps_act",
+    "display_name": "Traffic Flag Corps Act",
+    "short_name": "Flag Corps",
+    "description": "Military flag signalers may replace civilian traffic lights.",
+    "placeholder_icon": "🚩",
+    "visual_tags": ["intersection_flag_corps"],
+    "category": "military"
+  },
+  {
+    "id": "robot_civil_service",
+    "display_name": "Robot Civil Service Act",
+    "short_name": "Robot Queues",
+    "description": "A robot may manage public queues and ticket numbers.",
+    "placeholder_icon": "🤖",
+    "visual_tags": ["robot_queue_kiosk"],
+    "category": "science"
+  },
+  {
+    "id": "pigeon_air_force",
+    "display_name": "Pigeon Air Force Act",
+    "short_name": "Pigeon AF",
+    "description": "Trained pigeons may conduct aerial reconnaissance for the state.",
+    "placeholder_icon": "🕊️",
+    "visual_tags": ["pigeon_flight_line"],
+    "category": "military"
+  },
+  {
+    "id": "camouflage_uniform_act",
+    "display_name": "Camouflage Uniform Act",
+    "short_name": "Camouflage",
+    "description": "Military uniforms may blend with wallpaper, hedges, and parade routes.",
+    "placeholder_icon": "🥷",
+    "visual_tags": ["invisible_patrol_gaps"],
+    "category": "military"
+  },
+  {
+    "id": "border_parade_act",
+    "display_name": "Border Parade Act",
+    "short_name": "Border Parade",
+    "description": "Border spectacles and volume contests are budgeted state policy.",
+    "placeholder_icon": "📢",
+    "visual_tags": ["border_megaphone_parade"],
+    "category": "military"
   }
 ]

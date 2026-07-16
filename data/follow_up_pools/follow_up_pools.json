@@ -30,5 +30,17 @@
     "decision_ids": [
       "artificial_sun_escalation"
     ]
+  },
+  {
+    "id": "robot_queue_consequences",
+    "decision_ids": [
+      "robot_queue_incident"
+    ]
+  },
+  {
+    "id": "border_parade_consequences",
+    "decision_ids": [
+      "border_diplomatic_reaction"
+    ]
   }
 ]

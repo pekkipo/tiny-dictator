@@ -11,6 +11,7 @@
     "base_weight": 12,
     "minimum_day": 1,
     "maximum_day": 14,
+    "debug_only": true,
     "narrative": {
       "arc_id": "traffic_military",
       "beat_type": "setup",

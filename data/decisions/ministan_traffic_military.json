@@ -9,6 +9,7 @@
     "proposal": "Traffic is chaos since the lights went dark. I can place tanks at every intersection. Tanks are very visible.",
     "one_time": true,
     "base_weight": 1,
+    "debug_only": true,
     "narrative": {
       "arc_id": "traffic_military",
       "beat_type": "escalation",
@@ -60,6 +61,7 @@
     "proposal": "Citizens report that crossing the street now requires courage, luck, and a written will. Something must be done.",
     "one_time": true,
     "base_weight": 1,
+    "debug_only": true,
     "narrative": {
       "arc_id": "traffic_military",
       "beat_type": "escalation",
@@ -108,6 +110,7 @@
     "proposal": "Traffic policy has become a military operation. General Boom requests a commemorative tank stamp.",
     "one_time": true,
     "base_weight": 1,
+    "debug_only": true,
     "narrative": {
       "arc_id": "traffic_military",
       "beat_type": "resolution",
@@ -145,6 +148,7 @@
     "proposal": "Traffic lights glow again. Auntie Olga says she told you so, loudly.",
     "one_time": true,
     "base_weight": 1,
+    "debug_only": true,
     "narrative": {
       "arc_id": "traffic_military",
       "beat_type": "resolution",

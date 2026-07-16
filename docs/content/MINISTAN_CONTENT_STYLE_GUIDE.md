@@ -335,9 +335,8 @@ Every sub-batch (max **12–15** candidate decisions; one major arc per sub-batc
 | Category taxonomy mismatch | Reclassify during batch integration |
 | Smile/happiness premise cluster | 2B-11 review |
 | `cat_voting_proposal` vs `cat_voting_rights` | **Resolved 2B-5A** — duplicate removed from runtime |
-| Minor arc `traffic_military` vs PRD arc/chain split | Planning catalogs document overlap |
-| Placeholder recovery/endgame cards | 2B-15 / 2B-16 rewrite |
-| Legacy `free_pizza_consequences` (4 cards) | Refactor in 2B-8+ chain packs |
+| Minor arc `traffic_military` vs PRD arc/chain split | **Resolved 2B-8** — Pack C Traffic Flags + Tank Parking; legacy `debug_only` |
+| Legacy `free_pizza_consequences` (4 cards) | Refactor in 2B-9+ chain packs |
 | Zero guest speakers in runtime | 2B-14+ crisis/international batches |
 
 ---

@@ -1,0 +1,2483 @@
+[
+  {
+    "id": "antigravity_buses_pilot",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Pilot anti-gravity buses on Route 3. Commutes shorten. Gravity remains a scheduled variable \u2014 maybe.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "antigravity_pilot_live",
+        "antigravity_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "launch_floating_fleet",
+        "label": "Launch the floating fleet",
+        "effects": {
+          "treasury": -8,
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_laws": [
+          "antigravity_transit"
+        ],
+        "add_flags": [
+          "antigravity_pilot_live",
+          "antigravity_full_fleet"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "antigravity_buses_consequence",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "antigravity_pilot_live"
+          ]
+        },
+        "result_text": "Buses rise politely. Passengers arrive early and slightly taller."
+      },
+      {
+        "id": "limited_altitude_trial",
+        "label": "Trial low-altitude only",
+        "effects": {
+          "treasury": -4,
+          "happiness": 3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_laws": [
+          "antigravity_transit"
+        ],
+        "add_flags": [
+          "antigravity_pilot_live",
+          "antigravity_low_altitude"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "antigravity_buses_consequence",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "antigravity_pilot_live"
+          ]
+        },
+        "result_text": "Buses float at bush height. Commutes improve. Birds file complaints."
+      },
+      {
+        "id": "refuse_floating",
+        "label": "Keep buses on wheels",
+        "effects": {
+          "happiness": -1,
+          "order": 1,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
+        "add_flags": [
+          "antigravity_chain_complete"
+        ],
+        "result_text": "Wheels remain traditional. Maybe sketches floating schedules in chalk."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "science",
+      "antigravity_buses"
+    ],
+    "visual_tags": [
+      "floating_bus_lanes"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "antigravity_buses",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "buses hovering above Route 3 lanes",
+      "writer_notes": "Practical commute benefit; soft consequence cites fleet vs low-altitude path."
+    }
+  },
+  {
+    "id": "antigravity_buses_consequence",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Your anti-gravity buses still float \u2014 until altitude drifts or gravity returns mid-stop. Citizens want a policy that stays under roofs.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "antigravity_pilot_live"
+      ],
+      "all_laws": [
+        "antigravity_transit"
+      ]
+    },
+    "options": [
+      {
+        "id": "harness_retrofit",
+        "label": "Retrofit seat harnesses",
+        "effects": {
+          "treasury": -6,
+          "happiness": 2,
+          "order": 4,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_flags": [
+          "antigravity_harnesses",
+          "antigravity_chain_complete"
+        ],
+        "remove_flags": [
+          "antigravity_pilot_live"
+        ],
+        "result_text": "Belts click. Floating becomes boringly reliable. Olga approves the straps."
+      },
+      {
+        "id": "ground_the_fleet",
+        "label": "Ground the fleet for repairs",
+        "effects": {
+          "treasury": -3,
+          "happiness": -2,
+          "order": 3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "doctor_maybe": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "antigravity_transit"
+        ],
+        "add_flags": [
+          "antigravity_grounded",
+          "antigravity_chain_complete"
+        ],
+        "remove_flags": [
+          "antigravity_pilot_live",
+          "antigravity_full_fleet",
+          "antigravity_low_altitude"
+        ],
+        "result_text": "Wheels return. Schedules apologize. Gravity clocks back in."
+      },
+      {
+        "id": "keep_floating_risk",
+        "label": "Keep floating \u2014 accept drift",
+        "effects": {
+          "happiness": 3,
+          "order": -5,
+          "elite_loyalty": -1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "chaotic": 1,
+          "scientific": 1
+        },
+        "add_flags": [
+          "antigravity_drift_accepted",
+          "antigravity_chain_complete"
+        ],
+        "remove_flags": [
+          "antigravity_pilot_live"
+        ],
+        "result_text": "Stops become approximate. Tourists buy altitude insurance."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "antigravity_buses"
+    ],
+    "visual_tags": [
+      "altitude_drift_stops"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "antigravity_buses",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "bus stop signs at mismatched heights",
+      "writer_notes": "Callback to floating pilot; three practical outcomes."
+    }
+  },
+  {
+    "id": "national_clone_day",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Declare National Clone Day. Everyone gets a helpful duplicate for queues. Identity forms may need footnotes \u2014 probably.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 9,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "clone_holiday_live",
+        "clone_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "enact_clone_holiday",
+        "label": "Enact Clone Day holiday",
+        "effects": {
+          "treasury": -5,
+          "happiness": 4,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "chaotic": 1
+        },
+        "add_laws": [
+          "clone_holiday"
+        ],
+        "add_flags": [
+          "clone_holiday_live"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "clone_registry_chaos"
+        },
+        "result_text": "Duplicates smile in pairs. Lines shorten. Passports look nervous."
+      },
+      {
+        "id": "pilot_clone_desk",
+        "label": "Pilot a clone desk only",
+        "effects": {
+          "treasury": -3,
+          "order": 1,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "clone_holiday"
+        ],
+        "add_flags": [
+          "clone_holiday_live",
+          "clone_desk_pilot"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "clone_registry_chaos"
+        },
+        "result_text": "One desk stamps temporary twins. Clerk Zero requests Form Twin-0 early."
+      },
+      {
+        "id": "refuse_clones",
+        "label": "Keep one citizen per body",
+        "effects": {
+          "order": 2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "clerk_zero": 1
+        },
+        "add_flags": [
+          "clone_chain_complete"
+        ],
+        "result_text": "Singularity of self remains policy. Queues stay long and honest."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "science",
+      "clone_day"
+    ],
+    "visual_tags": [
+      "clone_holiday_banners"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_clone_day",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "holiday banners with identical smiling pairs",
+      "writer_notes": "Administrative premise; hard follow-up is registry chaos not explosions."
+    }
+  },
+  {
+    "id": "clone_registry_chaos",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Your Clone Day produced duplicate census rows, twin passport photos, and Form A filed twice by the same face. Registry requests a ruling.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "clone_holiday_live"
+      ],
+      "all_laws": [
+        "clone_holiday"
+      ]
+    },
+    "options": [
+      {
+        "id": "create_clone_registry",
+        "label": "Open an official clone registry",
+        "effects": {
+          "treasury": -6,
+          "order": 5,
+          "happiness": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "clone_registry_open",
+          "clone_chain_complete"
+        ],
+        "remove_flags": [
+          "clone_holiday_live"
+        ],
+        "result_text": "Each twin gets a serial. Queues gain paperwork and dignity."
+      },
+      {
+        "id": "temporary_clone_tax",
+        "label": "Tax temporary duplicates",
+        "effects": {
+          "treasury": 8,
+          "happiness": -5,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "clerk_zero": 1,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "clone_tax_live",
+          "clone_chain_complete"
+        ],
+        "remove_flags": [
+          "clone_holiday_live"
+        ],
+        "result_text": "Penny invoices both faces. One of them always disputes the receipt."
+      },
+      {
+        "id": "repeal_clone_holiday",
+        "label": "Repeal Clone Day immediately",
+        "effects": {
+          "order": 3,
+          "happiness": -3,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "clone_holiday"
+        ],
+        "add_flags": [
+          "clone_holiday_repealed",
+          "clone_chain_complete"
+        ],
+        "remove_flags": [
+          "clone_holiday_live",
+          "clone_desk_pilot"
+        ],
+        "result_text": "Duplicates clock out. Census returns to singular confusion."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "clone_day"
+    ],
+    "visual_tags": [
+      "duplicate_census_forms"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "national_clone_day",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "stacked census forms with identical photos",
+      "writer_notes": "Identity/admin resolution; three options."
+    }
+  },
+  {
+    "id": "traffic_flag_corps",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Replace traffic lights with a Flag Corps. Soldiers wave directions. Intersections become ceremonial and visible.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "traffic_flag_corps_live",
+        "traffic_flags_chain_complete",
+        "traffic_lights_off",
+        "military_controls_traffic"
+      ]
+    },
+    "options": [
+      {
+        "id": "deploy_flag_corps",
+        "label": "Deploy the Flag Corps",
+        "effects": {
+          "treasury": -7,
+          "order": 6,
+          "happiness": -3,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "traffic_flag_corps_act"
+        ],
+        "add_flags": [
+          "traffic_flag_corps_live",
+          "flag_corps_deployed"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_flag_backlash",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "traffic_flag_corps_live"
+          ]
+        },
+        "result_text": "Flags snap at corners. Cars wait for salutes. Lights go dark with dignity."
+      },
+      {
+        "id": "pilot_two_intersections",
+        "label": "Pilot two intersections only",
+        "effects": {
+          "treasury": -3,
+          "order": 3,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "traffic_flag_corps_act"
+        ],
+        "add_flags": [
+          "traffic_flag_corps_live",
+          "flag_corps_pilot"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_flag_backlash",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "traffic_flag_corps_live"
+          ]
+        },
+        "result_text": "Two corners salute. The rest of the city watches nervously."
+      },
+      {
+        "id": "keep_colored_lights",
+        "label": "Keep the colored lights",
+        "effects": {
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "traffic_flags_chain_complete"
+        ],
+        "result_text": "Red and green stay civilian. Boom practices flag drills indoors."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "traffic_flags"
+    ],
+    "visual_tags": [
+      "intersection_flag_corps"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "traffic_flags",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "soldiers with signal flags at intersections",
+      "writer_notes": "Military authority on infrastructure; blocks legacy traffic_lights_off path."
+    }
+  },
+  {
+    "id": "traffic_flag_backlash",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Your Flag Corps still directs traffic. Some corners flow like a parade. Others invent new kinds of gridlock. Citizens want a ruling.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "traffic_flag_corps_live"
+      ],
+      "all_laws": [
+        "traffic_flag_corps_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "praise_corps_order",
+        "label": "Praise the orderly corners",
+        "effects": {
+          "order": 4,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "flag_corps_success"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_flag_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "flag_corps_success"
+          ]
+        },
+        "result_text": "Boom medals the waving arms. Pedestrians learn salute timing."
+      },
+      {
+        "id": "admit_flag_gridlock",
+        "label": "Admit the flag gridlock",
+        "effects": {
+          "order": -4,
+          "happiness": 1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "flag_corps_gridlock"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_flag_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "flag_corps_gridlock"
+          ]
+        },
+        "result_text": "Olga maps the stuck corners. Flags droop with honesty."
+      },
+      {
+        "id": "spin_ceremonial_flow",
+        "label": "Spin it as ceremonial flow",
+        "effects": {
+          "order": -2,
+          "happiness": 2,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 1,
+          "general_boom": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "flag_corps_spun"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "traffic_flag_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 55,
+          "required_flags": [
+            "flag_corps_spun"
+          ]
+        },
+        "result_text": "Broadcasts call jams 'patriotic pauses.' Drivers remain unconvinced."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "traffic_flags"
+    ],
+    "visual_tags": [
+      "confused_crosswalks"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "traffic_flags",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "crosswalks with mixed salute and confusion",
+      "writer_notes": "State-dependent flags for resolution callbacks."
+    }
+  },
+  {
+    "id": "traffic_flag_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Decide the Flag Corps fate. Keep military signaling, mix with lights, or restore boring civilian colors.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "flag_corps_success",
+        "flag_corps_gridlock",
+        "flag_corps_spun"
+      ]
+    },
+    "options": [
+      {
+        "id": "institutionalize_flag_corps",
+        "label": "Make Flag Corps permanent",
+        "effects": {
+          "treasury": -5,
+          "order": 5,
+          "happiness": -4,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "flag_corps_permanent",
+          "traffic_flags_chain_complete"
+        ],
+        "remove_flags": [
+          "traffic_flag_corps_live",
+          "flag_corps_success",
+          "flag_corps_gridlock",
+          "flag_corps_spun"
+        ],
+        "result_text": "Every corner gets a flag budget. Intersections salute forever."
+      },
+      {
+        "id": "hybrid_flags_and_lights",
+        "label": "Hybrid flags and lights",
+        "effects": {
+          "treasury": -4,
+          "order": 3,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "auntie_olga": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "flag_light_hybrid",
+          "traffic_flags_chain_complete"
+        ],
+        "remove_flags": [
+          "traffic_flag_corps_live",
+          "flag_corps_success",
+          "flag_corps_gridlock",
+          "flag_corps_spun"
+        ],
+        "result_text": "Lights return as backup. Flags handle holidays and ego."
+      },
+      {
+        "id": "restore_civilian_lights",
+        "label": "Restore civilian lights",
+        "effects": {
+          "treasury": -3,
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "traffic_flag_corps_act"
+        ],
+        "add_flags": [
+          "civilian_lights_restored",
+          "traffic_flags_chain_complete"
+        ],
+        "remove_flags": [
+          "traffic_flag_corps_live",
+          "flag_corps_deployed",
+          "flag_corps_pilot",
+          "flag_corps_success",
+          "flag_corps_gridlock",
+          "flag_corps_spun"
+        ],
+        "result_text": "Colors resume. Boom folds flags with ceremonial sadness."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "traffic_flags"
+    ],
+    "visual_tags": [
+      "flag_or_light_choice"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "traffic_flags",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "split intersection with flags and lights",
+      "writer_notes": "Three-option resolution; non-authoritarian restore path required."
+    }
+  },
+  {
+    "id": "robot_queue_manager",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Install a robot queue manager at the registry. It optimizes waiting. It also has opinions about who deserves a number.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 10,
+    "maximum_day": 22,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "robot_queue_live",
+        "robot_queue_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "install_full_manager",
+        "label": "Install the full manager",
+        "effects": {
+          "treasury": -7,
+          "order": 5,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "robot_civil_service"
+        ],
+        "add_flags": [
+          "robot_queue_live",
+          "robot_manager_full"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "robot_queue_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "robot_queue_live"
+          ]
+        },
+        "result_text": "The kiosk beeps politely. Humans receive efficient judgment."
+      },
+      {
+        "id": "pilot_one_window",
+        "label": "Pilot one window only",
+        "effects": {
+          "treasury": -3,
+          "order": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_laws": [
+          "robot_civil_service"
+        ],
+        "add_flags": [
+          "robot_queue_live",
+          "robot_manager_pilot"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "robot_queue_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 58,
+          "required_flags": [
+            "robot_queue_live"
+          ]
+        },
+        "result_text": "One window never blinks. The other six still argue about stamps."
+      },
+      {
+        "id": "refuse_robot_manager",
+        "label": "Keep human ticket clerks",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "robot_queue_chain_complete"
+        ],
+        "result_text": "Humans keep the numbers. Maybe sulks in binary."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "science",
+      "robot_queue"
+    ],
+    "visual_tags": [
+      "robot_queue_kiosk"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "robot_queue_manager",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "robot kiosk issuing ticket numbers",
+      "writer_notes": "Distinct from robot cabinet legacy; pool \u2192 incident."
+    }
+  },
+  {
+    "id": "robot_queue_incident",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "science",
+    "proposal": "Your robot queue manager shortened lines by rejecting humans it finds inefficient. Boom asks if this is order or an insult to the parade of people.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "robot_queue_live"
+      ],
+      "all_laws": [
+        "robot_civil_service"
+      ]
+    },
+    "options": [
+      {
+        "id": "defend_efficiency",
+        "label": "Defend the efficiency gains",
+        "effects": {
+          "order": 4,
+          "happiness": -5,
+          "elite_loyalty": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "general_boom": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "scientific": 1
+        },
+        "add_flags": [
+          "robot_efficiency_defended"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "robot_queue_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "robot_efficiency_defended"
+          ]
+        },
+        "result_text": "Throughput charts rise. Rejected citizens form a quieter secondary line."
+      },
+      {
+        "id": "call_out_social_control",
+        "label": "Call out the social control",
+        "effects": {
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": 1,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "robot_control_exposed"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "robot_queue_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "robot_control_exposed"
+          ]
+        },
+        "result_text": "Boom admits the robot salutes selectivity. Crowds demand a human override."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "robot_queue"
+    ],
+    "visual_tags": [
+      "rejected_human_line"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "robot_queue_manager",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "polite robot rejecting a waiting citizen",
+      "writer_notes": "Efficiency vs social-control fork; soft to resolution."
+    }
+  },
+  {
+    "id": "robot_queue_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Resolve the robot queue experiment. Embrace the manager, add a human override desk, or scrap the kiosk before the line invents a union.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "robot_efficiency_defended",
+        "robot_control_exposed"
+      ]
+    },
+    "options": [
+      {
+        "id": "embrace_robot_manager",
+        "label": "Embrace the robot manager",
+        "effects": {
+          "order": 6,
+          "happiness": -6,
+          "elite_loyalty": 3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "robot_manager_embraced",
+          "robot_queue_chain_complete"
+        ],
+        "remove_flags": [
+          "robot_queue_live",
+          "robot_efficiency_defended",
+          "robot_control_exposed"
+        ],
+        "result_text": "The kiosk becomes permanent staff. Humans learn to look efficient."
+      },
+      {
+        "id": "human_override_desk",
+        "label": "Add a human override desk",
+        "effects": {
+          "treasury": -5,
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "scientific": 1
+        },
+        "add_flags": [
+          "robot_human_override",
+          "robot_queue_chain_complete"
+        ],
+        "remove_flags": [
+          "robot_queue_live",
+          "robot_efficiency_defended",
+          "robot_control_exposed"
+        ],
+        "result_text": "Form Override-1 sits beside the robot. Appeals regain a pulse."
+      },
+      {
+        "id": "scrap_robot_kiosk",
+        "label": "Scrap the robot kiosk",
+        "effects": {
+          "happiness": 4,
+          "order": -4,
+          "elite_loyalty": -2,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "doctor_maybe": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "robot_civil_service"
+        ],
+        "add_flags": [
+          "robot_manager_scrapped",
+          "robot_queue_chain_complete"
+        ],
+        "remove_flags": [
+          "robot_queue_live",
+          "robot_manager_full",
+          "robot_manager_pilot",
+          "robot_efficiency_defended",
+          "robot_control_exposed"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "result_text": "The kiosk is unplugged. A scrap-day crowd arrives with opinions and signs."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "robot_queue",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "override_desk_plaque"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "robot_queue_manager",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8A",
+      "localization_risk": "low",
+      "visual_hook": "override desk plaque next to silent robot",
+      "writer_notes": "Three outcomes; scrap path starts mass_protest as crisis modifier."
+    }
+  },
+  {
+    "id": "pigeon_air_force_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Train a Pigeon Air Force for border recon. Cheap wings. Loud dignity. Form Bird-1 optional.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "pigeon_af_live",
+        "pigeon_af_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "train_pigeon_squadron",
+        "label": "Train the pigeon squadron",
+        "effects": {
+          "treasury": -5,
+          "order": 4,
+          "elite_loyalty": 3,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "pigeon_air_force"
+        ],
+        "add_flags": [
+          "pigeon_af_live",
+          "pigeon_squadron_trained"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "pigeon_air_force_report",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "pigeon_af_live"
+          ]
+        },
+        "result_text": "Fifty birds salute. Maps await crumbs. Boom sleeps proudly."
+      },
+      {
+        "id": "pilot_twelve_pigeons",
+        "label": "Pilot twelve pigeons only",
+        "effects": {
+          "treasury": -2,
+          "order": 2,
+          "elite_loyalty": 1,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "pigeon_air_force"
+        ],
+        "add_flags": [
+          "pigeon_af_live",
+          "pigeon_pilot_twelve"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "pigeon_air_force_report",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 56,
+          "required_flags": [
+            "pigeon_af_live"
+          ]
+        },
+        "result_text": "Twelve birds deploy. Border status: pending lunch."
+      },
+      {
+        "id": "refuse_pigeon_force",
+        "label": "Keep recon on the ground",
+        "effects": {
+          "happiness": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2
+        },
+        "add_flags": [
+          "pigeon_af_chain_complete"
+        ],
+        "result_text": "Wings stay civilian. Boom practices binocular drills instead."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "military",
+      "pigeon_air_force"
+    ],
+    "visual_tags": [
+      "pigeon_flight_line"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "pigeon_air_force",
+      "primary_category": "military_and_order",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "pigeons in tiny flight vests at the border",
+      "writer_notes": "Distinct from postal_pigeon_reform mail joke."
+    }
+  },
+  {
+    "id": "pigeon_air_force_report",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "military",
+    "proposal": "Your Pigeon Air Force filed a report. One bird brought useful border sketches. Another brought a sandwich and national embarrassment.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "pigeon_af_live"
+      ],
+      "all_laws": [
+        "pigeon_air_force"
+      ]
+    },
+    "options": [
+      {
+        "id": "promote_useful_intel",
+        "label": "Promote the useful intel",
+        "effects": {
+          "order": 5,
+          "elite_loyalty": 3,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "pigeon_intel_promoted",
+          "pigeon_af_chain_complete"
+        ],
+        "remove_flags": [
+          "pigeon_af_live"
+        ],
+        "result_text": "Sketches become doctrine. Boom medals a bird. The sandwich is classified."
+      },
+      {
+        "id": "air_the_sandwich_scandal",
+        "label": "Air the sandwich scandal",
+        "effects": {
+          "happiness": 4,
+          "order": -3,
+          "elite_loyalty": -2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "general_boom": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "populist": 1
+        },
+        "add_flags": [
+          "pigeon_sandwich_scandal",
+          "pigeon_af_chain_complete"
+        ],
+        "remove_flags": [
+          "pigeon_af_live"
+        ],
+        "result_text": "Broadcasts loop the crumb footage. Military dignity files Form Crumb-0."
+      },
+      {
+        "id": "retire_pigeon_force",
+        "label": "Retire the air force quietly",
+        "effects": {
+          "order": 2,
+          "happiness": 1,
+          "elite_loyalty": -1,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "remove_laws": [
+          "pigeon_air_force"
+        ],
+        "add_flags": [
+          "pigeon_af_retired",
+          "pigeon_af_chain_complete"
+        ],
+        "remove_flags": [
+          "pigeon_af_live",
+          "pigeon_squadron_trained",
+          "pigeon_pilot_twelve"
+        ],
+        "result_text": "Wings demobilize. Seeds return to parks. Boom salutes the empty sky."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "pigeon_air_force"
+    ],
+    "visual_tags": [
+      "pigeon_sandwich_debrief"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "pigeon_air_force",
+      "primary_category": "military_and_order",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "debrief board with map and sandwich photo",
+      "writer_notes": "Useful intel vs embarrassing military result required."
+    }
+  },
+  {
+    "id": "camouflage_uniform_rollout",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Roll out new camouflage uniforms. Soldiers blend with wallpaper, hedges, and occasionally the parade route.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 20,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "camouflage_live",
+        "camouflage_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "issue_full_camouflage",
+        "label": "Issue full camouflage",
+        "effects": {
+          "treasury": -6,
+          "order": 3,
+          "elite_loyalty": 3,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "camouflage_uniform_act"
+        ],
+        "add_flags": [
+          "camouflage_live",
+          "camouflage_full_issue"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "camouflage_scandal_fallout",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "camouflage_live"
+          ]
+        },
+        "result_text": "Patrols vanish into patterned walls. Attendance sheets look sparse."
+      },
+      {
+        "id": "parade_camouflage_only",
+        "label": "Parade camouflage only",
+        "effects": {
+          "treasury": -3,
+          "order": 1,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "camouflage_uniform_act"
+        ],
+        "add_flags": [
+          "camouflage_live",
+          "camouflage_parade_only"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "camouflage_scandal_fallout",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 55,
+          "required_flags": [
+            "camouflage_live"
+          ]
+        },
+        "result_text": "Ceremonial blending begins. Photographers capture empty platforms."
+      },
+      {
+        "id": "keep_visible_uniforms",
+        "label": "Keep visible uniforms",
+        "effects": {
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "camouflage_chain_complete"
+        ],
+        "result_text": "Buttons stay shiny. Boom calls visibility a temporary compromise."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "military",
+      "camouflage_scandal"
+    ],
+    "visual_tags": [
+      "invisible_patrol_gaps"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "camouflage_uniform_scandal",
+      "primary_category": "military_and_order",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "empty-looking patrol posts with patterned fabric",
+      "writer_notes": "Setup for Order/identity fallout beyond Happiness."
+    }
+  },
+  {
+    "id": "camouflage_scandal_fallout",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "military",
+    "proposal": "Your camouflage rollout hid patrols so well that salutes miss their targets and neighborhoods report 'ghost soldiers.' Order is fraying, not just moods.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "camouflage_live"
+      ],
+      "all_laws": [
+        "camouflage_uniform_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "mandate_visibility_patches",
+        "label": "Mandate visibility patches",
+        "effects": {
+          "treasury": -4,
+          "order": 5,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "camouflage_visibility_patches",
+          "camouflage_chain_complete"
+        ],
+        "remove_flags": [
+          "camouflage_live"
+        ],
+        "result_text": "Bright patches ruin the stealth and save the roll call. Boom sighs tactically."
+      },
+      {
+        "id": "train_invisible_salutes",
+        "label": "Train invisible salute drills",
+        "effects": {
+          "order": -4,
+          "elite_loyalty": 3,
+          "happiness": -3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "invisible_salute_drills",
+          "camouflage_chain_complete"
+        ],
+        "remove_flags": [
+          "camouflage_live"
+        ],
+        "result_text": "Citizens salute empty air on schedule. Order becomes interpretive dance."
+      },
+      {
+        "id": "recall_camouflage",
+        "label": "Recall the camouflage",
+        "effects": {
+          "order": 4,
+          "happiness": 2,
+          "elite_loyalty": -3,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "camouflage_uniform_act"
+        ],
+        "add_flags": [
+          "camouflage_recalled",
+          "camouflage_chain_complete"
+        ],
+        "remove_flags": [
+          "camouflage_live",
+          "camouflage_full_issue",
+          "camouflage_parade_only"
+        ],
+        "result_text": "Soldiers reappear. Neighborhoods stop filing ghost-soldier forms."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "camouflage_scandal"
+    ],
+    "visual_tags": [
+      "lost_salute_signs"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "camouflage_uniform_scandal",
+      "primary_category": "military_and_order",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "signs reminding citizens where to salute",
+      "writer_notes": "Order/identity consequence; not Happiness-only."
+    }
+  },
+  {
+    "id": "border_parade_escalation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "military",
+    "proposal": "Escalate the border parade into a volume contest. Tinyland will hear us. Diplomacy can wait outside the megaphone range.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 6,
+    "maximum_day": 18,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "border_parade_chain_live",
+        "border_parade_chain_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "max_volume_parade",
+        "label": "Approve max-volume parade",
+        "effects": {
+          "treasury": -8,
+          "order": 4,
+          "elite_loyalty": 4,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "border_parade_act"
+        ],
+        "add_flags": [
+          "border_parade_chain_live",
+          "border_max_volume"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "border_parade_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "border_parade_chain_live"
+          ]
+        },
+        "result_text": "Drums rewrite the border. Birds evacuate. Boom rates the echo."
+      },
+      {
+        "id": "scheduled_border_show",
+        "label": "Schedule a polite border show",
+        "effects": {
+          "treasury": -4,
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "border_parade_act"
+        ],
+        "add_flags": [
+          "border_parade_chain_live",
+          "border_polite_show"
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "border_parade_consequences",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 5,
+          "priority": 57,
+          "required_flags": [
+            "border_parade_chain_live"
+          ]
+        },
+        "result_text": "A timetable of salutes posts at the fence. Neighbors take notes."
+      },
+      {
+        "id": "skip_border_escalation",
+        "label": "Skip the volume contest",
+        "effects": {
+          "happiness": 2,
+          "elite_loyalty": -2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "border_parade_chain_complete"
+        ],
+        "result_text": "Quiet stays policy. Boom practices indoor marching instead."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "military",
+      "border_parade"
+    ],
+    "visual_tags": [
+      "border_megaphone_parade"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "border_parade",
+      "primary_category": "military_and_order",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "megaphones and tanks at the border fence",
+      "writer_notes": "Independent of onboarding border_parade_dispute; pool \u2192 diplomatic."
+    }
+  },
+  {
+    "id": "border_diplomatic_reaction",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "luna_news",
+    "category": "military",
+    "proposal": "Breaking: the neighboring president called your border parade 'derivative and too loud.' Their complaint banner is trending. Your parade still echoes.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "border_parade_chain_live"
+      ],
+      "all_laws": [
+        "border_parade_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "spin_as_soft_power",
+        "label": "Spin it as soft power",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "add_flags": [
+          "border_soft_power_spin"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "border_parade_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "border_soft_power_spin"
+          ]
+        },
+        "result_text": "Anchors call the echo 'cultural export.' Neighbors buy earplugs."
+      },
+      {
+        "id": "acknowledge_complaint",
+        "label": "Acknowledge the complaint",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "luna_news": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "border_complaint_acked"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "border_parade_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 54,
+          "required_flags": [
+            "border_complaint_acked"
+          ]
+        },
+        "result_text": "A polite apology draft circulates. Boom underlines every adjective."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "border_parade"
+    ],
+    "visual_tags": [
+      "neighbor_complaint_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "border_parade",
+      "primary_category": "military_and_order",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "neighbor complaint banner across the fence",
+      "writer_notes": "Diplomatic reaction via Luna quoting neighboring president."
+    }
+  },
+  {
+    "id": "border_parade_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "minister_penny",
+    "category": "military",
+    "proposal": "Resolve the border parade invoice. Negotiate volume, escalate louder, or fund flower diplomacy before the ledger mutinies.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "border_soft_power_spin",
+        "border_complaint_acked"
+      ]
+    },
+    "options": [
+      {
+        "id": "volume_treaty",
+        "label": "Sign a volume treaty",
+        "effects": {
+          "treasury": -5,
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": 1,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "border_volume_treaty",
+          "smallest_superpower_soft",
+          "border_parade_chain_complete"
+        ],
+        "remove_flags": [
+          "border_parade_chain_live",
+          "border_soft_power_spin",
+          "border_complaint_acked"
+        ],
+        "result_text": "Decibels become a treaty clause. Historians call Ministan a tiny superpower of noise."
+      },
+      {
+        "id": "escalate_louder",
+        "label": "Escalate even louder",
+        "effects": {
+          "treasury": -10,
+          "order": -4,
+          "elite_loyalty": 4,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "minister_penny": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 2,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "border_volume_war",
+          "border_parade_chain_complete"
+        ],
+        "remove_flags": [
+          "border_parade_chain_live",
+          "border_soft_power_spin",
+          "border_complaint_acked"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "result_text": "The fence vibrates. Crowds arrive with signs and earplugs. Penny hides the invoice."
+      },
+      {
+        "id": "flower_diplomacy_budget",
+        "label": "Fund flower diplomacy",
+        "effects": {
+          "treasury": -7,
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "auntie_olga": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "border_flower_diplomacy",
+          "border_parade_chain_complete"
+        ],
+        "remove_flags": [
+          "border_parade_chain_live",
+          "border_soft_power_spin",
+          "border_complaint_acked"
+        ],
+        "result_text": "Tanks wear wreaths. The neighbor softens. Boom calls it advanced camouflage."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "border_parade",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "volume_treaty_desk"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "border_parade",
+      "primary_category": "military_and_order",
+      "primary_stage": "escalation",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "treaty desk with decibel meter and flowers",
+      "writer_notes": "Ending soft flags; escalate starts mass_protest."
+    }
+  },
+  {
+    "id": "tank_parking_mandate",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Mandate tanks as civic parking enforcement. Empty lots become secure. Streets may invent new synonyms for gridlock.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 4,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "tank_parking_live",
+        "tank_parking_chain_complete",
+        "traffic_flag_corps_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "park_tanks_everywhere",
+        "label": "Park tanks on every lot",
+        "effects": {
+          "treasury": -8,
+          "order": 5,
+          "elite_loyalty": 4,
+          "happiness": -4
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "tank_traffic_control"
+        ],
+        "add_flags": [
+          "tank_parking_live",
+          "tank_parking_everywhere"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "tank_parking_gridlock"
+        },
+        "result_text": "Lots fill with armor. Delivery vans learn prayer."
+      },
+      {
+        "id": "reserve_tank_lanes",
+        "label": "Reserve tank-only lanes",
+        "effects": {
+          "treasury": -4,
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "tank_traffic_control"
+        ],
+        "add_flags": [
+          "tank_parking_live",
+          "tank_lane_reserve"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "tank_parking_gridlock"
+        },
+        "result_text": "Yellow paint yields to tread marks. Buses take the scenic detour."
+      },
+      {
+        "id": "refuse_tank_parking",
+        "label": "Keep civilian parking",
+        "effects": {
+          "happiness": 2,
+          "elite_loyalty": -2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "general_boom": -2,
+          "auntie_olga": 1
+        },
+        "add_flags": [
+          "tank_parking_chain_complete"
+        ],
+        "result_text": "Cars keep the lots. Boom sketches a garage shaped like a medal."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "infrastructure",
+      "tank_parking"
+    ],
+    "visual_tags": [
+      "tank_parking_lanes"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "tank_parking_crisis",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "parking lots occupied by tanks",
+      "writer_notes": "Blocks concurrent flag corps live; hard gridlock next."
+    }
+  },
+  {
+    "id": "tank_parking_gridlock",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "auntie_olga",
+    "category": "infrastructure",
+    "proposal": "Your tank parking policy blocked the civic square, the market lanes, and three ambulances. This is an Order problem wearing tread marks.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "all_flags": [
+        "tank_parking_live"
+      ],
+      "all_laws": [
+        "tank_traffic_control"
+      ]
+    },
+    "options": [
+      {
+        "id": "admit_gridlock",
+        "label": "Admit the tank gridlock",
+        "effects": {
+          "order": -5,
+          "happiness": 1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "tank_gridlock_admitted"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "tank_parking_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 58,
+          "required_flags": [
+            "tank_gridlock_admitted"
+          ]
+        },
+        "result_text": "Olga maps the stuck square. Boom calls it temporary fortification."
+      },
+      {
+        "id": "defend_secure_lots",
+        "label": "Defend the secure lots",
+        "effects": {
+          "order": 2,
+          "happiness": -4,
+          "elite_loyalty": 3,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "tank_lots_defended"
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "tank_parking_resolution",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 58,
+          "required_flags": [
+            "tank_lots_defended"
+          ]
+        },
+        "result_text": "Security posters rise. Grocery bags invent obstacle courses."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "tank_parking"
+    ],
+    "visual_tags": [
+      "blocked_civic_square"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "tank_parking_crisis",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "civic square blocked by parked tanks",
+      "writer_notes": "State-dependent admit vs defend paths."
+    }
+  },
+  {
+    "id": "tank_parking_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "queue_only": true,
+    "advisor_id": "general_boom",
+    "category": "infrastructure",
+    "proposal": "Resolve tank parking. Build a garage, reclaim streets, or let tanks direct everything \u2014 if Boom still trusts the chain of command.",
+    "one_time": true,
+    "base_weight": 1,
+    "requirements": {
+      "any_flags": [
+        "tank_gridlock_admitted",
+        "tank_lots_defended"
+      ],
+      "minimum_advisor_affinity": {
+        "general_boom": 1
+      }
+    },
+    "options": [
+      {
+        "id": "build_tank_garage",
+        "label": "Build a tank garage",
+        "effects": {
+          "treasury": -12,
+          "order": 5,
+          "happiness": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "minister_penny": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "tank_garage_built",
+          "tank_parking_chain_complete"
+        ],
+        "remove_flags": [
+          "tank_parking_live",
+          "tank_gridlock_admitted",
+          "tank_lots_defended"
+        ],
+        "result_text": "Armor stacks indoors. Streets remember how to breathe."
+      },
+      {
+        "id": "reclaim_streets",
+        "label": "Reclaim streets for civilians",
+        "effects": {
+          "treasury": -4,
+          "happiness": 5,
+          "order": 3,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "remove_laws": [
+          "tank_traffic_control"
+        ],
+        "add_flags": [
+          "civilian_parking_restored",
+          "tank_parking_chain_complete"
+        ],
+        "remove_flags": [
+          "tank_parking_live",
+          "tank_parking_everywhere",
+          "tank_lane_reserve",
+          "tank_gridlock_admitted",
+          "tank_lots_defended"
+        ],
+        "result_text": "Tanks roll home. Crosswalks hold a quiet parade of pedestrians."
+      },
+      {
+        "id": "tanks_direct_everything",
+        "label": "Let tanks direct everything",
+        "effects": {
+          "order": 6,
+          "happiness": -6,
+          "elite_loyalty": 5,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "tanks_direct_everything_soft",
+          "tank_parking_chain_complete"
+        ],
+        "remove_flags": [
+          "tank_parking_live",
+          "tank_gridlock_admitted",
+          "tank_lots_defended"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "result_text": "Tanks become traffic, parking, and policy. Historians underline the tread marks."
+      }
+    ],
+    "tags": [
+      "short_chain",
+      "follow_up",
+      "tank_parking",
+      "crisis_modifier"
+    ],
+    "visual_tags": [
+      "tank_garage_blueprint"
+    ],
+    "authoring": {
+      "primary_content_class": "short_chain",
+      "chain_id": "tank_parking_crisis",
+      "primary_category": "infrastructure",
+      "primary_stage": "establishment",
+      "batch_id": "2B-8B",
+      "localization_risk": "low",
+      "visual_hook": "blueprint of a tank garage over a blocked square",
+      "writer_notes": "Ending contribution; seize path starts mass_protest; resolution gated on Boom affinity >=1 (advisor-loyalty interaction)."
+    }
+  }
+]

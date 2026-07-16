@@ -1,7 +1,7 @@
 # Phase 2A Content Audit
 
 **Milestone:** 2B-1 — Voice Bible and Production Scaffolding
-**Generated:** 2026-07-16T13:47:48
+**Generated:** 2026-07-16T14:10:32
 **Country:** ministan
 **Manifest version:** 1
 
@@ -12,16 +12,16 @@
 
 | Metric | Current cataloged | Approved | 2B target | Gap |
 |---|---:|---:|---:|---:|
-| Decisions | 169 | 115 | 330 | 215 |
+| Decisions | 188 | 134 | 330 | 196 |
 | Major Arcs | 4 | 0 | 18 | 18 |
-| Short Chains | 19 | 16 | 32 | 16 |
+| Short Chains | 27 | 24 | 32 | 8 |
 | Crises | 6 | 0 | 18 | 18 |
-| Laws | 52 | 0 | 50 | 50 |
-| Endings | 13 | 0 | 50 | 50 |
+| Laws | 59 | 0 | 50 | 50 |
+| Endings | 15 | 0 | 50 | 50 |
 | Palace Upgrades | 0 | 0 | 24 | 24 |
 | Ruler Identities | 7 | 0 | 12 | 12 |
 
-**Approved decision count:** 115 (voice bible complete; approval requires rubric ≥16/20 per batch).
+**Approved decision count:** 134 (voice bible complete; approval requires rubric ≥16/20 per batch).
 **Draft decision count:** 0
 
 ## 2. Decision-class quota gaps (approved vs target)
@@ -29,8 +29,8 @@
 | Primary content class | Cataloged | Integrated | Approved | Target | Gap |
 |---|---:|---:|---:|---:|---:|
 | onboarding | 10 | 10 | 10 | 10 | 0 |
-| standalone | 68 | 66 | 65 | 72 | 7 |
-| short_chain | 53 | 51 | 40 | 80 | 40 |
+| standalone | 67 | 65 | 64 | 72 | 8 |
+| short_chain | 73 | 71 | 60 | 80 | 20 |
 | major_arc | 25 | 25 | 0 | 96 | 96 |
 | crisis | 6 | 5 | 0 | 28 | 28 |
 | recovery | 4 | 0 | 0 | 24 | 24 |
@@ -40,15 +40,15 @@
 
 ### by_status
 
-- **approved:** 115
+- **approved:** 134
 - **integrated:** 42
 - **deferred:** 4
 - **needs_rewrite:** 8
 
 ### by_primary_content_class
 
-- **standalone:** 68
-- **short_chain:** 53
+- **standalone:** 67
+- **short_chain:** 73
 - **major_arc:** 25
 - **crisis:** 6
 - **onboarding:** 10
@@ -59,15 +59,15 @@
 
 - **public_life:** 27
 - **business_and_privatization:** 13
+- **infrastructure:** 23
+- **science:** 21
 - **media:** 25
-- **military:** 16
-- **science:** 16
+- **military:** 23
 - **economy:** 20
-- **infrastructure:** 17
 - **administration:** 1
 - **follow_up:** 9
 - **politics:** 4
-- **bureaucracy:** 11
+- **bureaucracy:** 12
 - **cats_and_animals:** 8
 - **government:** 2
 
@@ -75,31 +75,31 @@
 
 - **public_life:** 40
 - **business_and_privatization:** 13
+- **infrastructure:** 23
+- **science_and_technology:** 21
 - **media_and_propaganda:** 25
-- **military_and_order:** 16
-- **science_and_technology:** 16
+- **military_and_order:** 23
 - **economy:** 20
-- **infrastructure:** 17
-- **bureaucracy:** 14
+- **bureaucracy:** 15
 - **cats_and_animals:** 8
 
 ### by_primary_speaker
 
-- **auntie_olga:** 23
+- **auntie_olga:** 27
 - **sir_profit:** 20
-- **general_boom:** 23
-- **luna_news:** 32
-- **doctor_maybe:** 14
-- **clerk_zero:** 19
-- **minister_penny:** 30
+- **doctor_maybe:** 18
+- **general_boom:** 30
+- **luna_news:** 34
+- **clerk_zero:** 20
+- **minister_penny:** 31
 - **comrade_whiskers:** 8
 
 ### by_primary_run_stage
 
 - **instability:** 10
 - **endgame:** 8
-- **establishment:** 112
-- **escalation:** 39
+- **establishment:** 128
+- **escalation:** 42
 
 ## 3b. Category quota (canonical)
 
@@ -107,40 +107,40 @@
 |---|---:|---:|---:|---:|---:|
 | economy | 20 | 14 | 0 | 50 | 36 |
 | public_life | 40 | 16 | 0 | 48 | 32 |
-| military_and_order | 16 | 9 | 0 | 38 | 29 |
+| military_and_order | 23 | 16 | 0 | 38 | 22 |
 | media_and_propaganda | 25 | 19 | 0 | 34 | 15 |
-| science_and_technology | 16 | 12 | 0 | 40 | 28 |
+| science_and_technology | 21 | 17 | 0 | 40 | 23 |
 | business_and_privatization | 13 | 13 | 0 | 32 | 19 |
-| bureaucracy | 14 | 11 | 0 | 32 | 21 |
+| bureaucracy | 15 | 12 | 0 | 32 | 20 |
 | cats_and_animals | 8 | 8 | 0 | 26 | 18 |
-| infrastructure | 17 | 13 | 0 | 30 | 17 |
+| infrastructure | 23 | 19 | 0 | 30 | 11 |
 
 ## 3c. Speaker quota
 
 | Dimension | Cataloged | Approved | Draft | Target | Gap |
 |---|---:|---:|---:|---:|---:|
-| general_boom | 23 | 11 | 0 | 38 | 27 |
-| minister_penny | 30 | 20 | 0 | 40 | 20 |
-| luna_news | 32 | 19 | 0 | 38 | 19 |
-| auntie_olga | 23 | 13 | 0 | 42 | 29 |
-| doctor_maybe | 14 | 11 | 0 | 38 | 27 |
+| general_boom | 30 | 18 | 0 | 38 | 20 |
+| minister_penny | 31 | 21 | 0 | 40 | 19 |
+| luna_news | 34 | 21 | 0 | 38 | 17 |
+| auntie_olga | 27 | 17 | 0 | 42 | 25 |
+| doctor_maybe | 18 | 15 | 0 | 38 | 23 |
 | sir_profit | 20 | 18 | 0 | 36 | 18 |
 | comrade_whiskers | 8 | 7 | 0 | 34 | 27 |
-| clerk_zero | 19 | 16 | 0 | 36 | 20 |
+| clerk_zero | 20 | 17 | 0 | 36 | 19 |
 | guest_and_system | 0 | 0 | 0 | 28 | 28 |
 
 ## 3d. Stage quota
 
 | Dimension | Cataloged | Approved | Draft | Target | Gap |
 |---|---:|---:|---:|---:|---:|
-| establishment | 112 | 66 | 0 | 83 | 17 |
-| escalation | 39 | 34 | 0 | 99 | 65 |
+| establishment | 128 | 82 | 0 | 83 | 1 |
+| escalation | 42 | 37 | 0 | 99 | 62 |
 | instability | 10 | 9 | 0 | 89 | 80 |
 | endgame | 8 | 6 | 0 | 59 | 53 |
 
 ## 4. Decision IDs by primary content class
 
-### standalone (68)
+### standalone (67)
 
 - `absurd_civic_sweeping`
 - `anthem_sponsor_reads`
@@ -168,7 +168,6 @@
 - `escalation_only_rival_parade`
 - `express_sidewalk_franchise`
 - `fish_market_subsidy`
-- `flag_traffic_system`
 - `generic_minister_disagreement`
 - `honor_guard_crosswalk`
 - `lab_coat_streetlights`
@@ -211,8 +210,10 @@
 - `weather_optimism_bulletin`
 - `working_palace_tours`
 
-### short_chain (53)
+### short_chain (73)
 
+- `antigravity_buses_consequence`
+- `antigravity_buses_pilot`
 - `applause_enforcement_squad`
 - `applause_public_adaptation`
 - `applause_quotas_mandate`
@@ -221,12 +222,18 @@
 - `artificial_sun_resolution`
 - `bench_policy_resolution`
 - `bench_subscription_backlash`
+- `border_diplomatic_reaction`
+- `border_parade_escalation`
+- `border_parade_resolution`
 - `bridge_budget_overrun`
 - `bridge_to_nowhere_resolution`
+- `camouflage_scandal_fallout`
+- `camouflage_uniform_rollout`
 - `cat_fish_budget`
 - `cat_parliament`
 - `cheese_shortage`
 - `clock_appointment_chaos`
+- `clone_registry_chaos`
 - `coffee_hoarding_crisis`
 - `coffee_reserve_resolution`
 - `coin_shortage_crisis`
@@ -242,9 +249,12 @@
 - `meme_department_resolution`
 - `meme_virality_crisis`
 - `national_clock_sync`
+- `national_clone_day`
 - `national_talent_show`
 - `no_weekends_proposal`
 - `palace_gift_shop_opening`
+- `pigeon_air_force_proposal`
+- `pigeon_air_force_report`
 - `pineapple_referendum`
 - `pizza_union_strike`
 - `pothole_brand_war`
@@ -252,11 +262,20 @@
 - `privatized_benches_proposal`
 - `robot_cabinet_proposal`
 - `robot_government_installed`
+- `robot_queue_incident`
+- `robot_queue_manager`
+- `robot_queue_resolution`
 - `sponsored_potholes`
 - `state_meme_department`
 - `switch_off_traffic_lights`
 - `talent_show_budget_scandal`
+- `tank_parking_gridlock`
+- `tank_parking_mandate`
+- `tank_parking_resolution`
 - `traffic_complaint`
+- `traffic_flag_backlash`
+- `traffic_flag_corps`
+- `traffic_flag_resolution`
 - `traffic_lights_restored`
 - `traffic_military_resolved`
 - `traffic_tank_solution`
@@ -341,7 +360,7 @@
 - `doctor_maybe_arc` — status: integrated
 - `robot_government` — status: deferred
 
-### chains (20)
+### chains (28)
 
 - `free_pizza_consequences` — status: integrated
 - `traffic_military` — status: integrated
@@ -363,6 +382,14 @@
 - `national_talent_show` — status: approved
 - `applause_quotas` — status: approved
 - `artificial_sun` — status: approved
+- `antigravity_buses` — status: approved
+- `national_clone_day` — status: approved
+- `traffic_flags` — status: approved
+- `robot_queue_manager` — status: approved
+- `pigeon_air_force` — status: approved
+- `camouflage_uniform_scandal` — status: approved
+- `border_parade` — status: approved
+- `tank_parking_crisis` — status: approved
 
 ### crises (7)
 
@@ -374,7 +401,7 @@
 - `cat_parliament_occupation` — status: integrated
 - `pantry_moth_crisis` — status: integrated
 
-### laws (52)
+### laws (59)
 
 - `free_pizza_friday` — status: integrated
 - `mandatory_smiling` — status: integrated
@@ -428,8 +455,15 @@
 - `national_reality_show` — status: integrated
 - `mandatory_applause` — status: integrated
 - `artificial_sun_program` — status: integrated
+- `antigravity_transit` — status: integrated
+- `clone_holiday` — status: integrated
+- `traffic_flag_corps_act` — status: integrated
+- `robot_civil_service` — status: integrated
+- `pigeon_air_force` — status: integrated
+- `camouflage_uniform_act` — status: integrated
+- `border_parade_act` — status: integrated
 
-### endings (13)
+### endings (15)
 
 - `elite_coup` — status: integrated
 - `revolution` — status: integrated
@@ -444,6 +478,8 @@
 - `accidental_moon_replacement` — status: integrated
 - `corporate_ministan` — status: integrated
 - `scientific_golden_age` — status: integrated
+- `smallest_superpower` — status: integrated
+- `tanks_direct_everything` — status: integrated
 
 ### advisors (8)
 
@@ -476,11 +512,11 @@
 
 ### Static diagnostics summary
 
-- **unreachable_decisions:** 116
+- **unreachable_decisions:** 128
 - **dominant_choice_options:** 0
 - **cards_no_meaningful_effects:** 0
 - **endings_impossible:** 4
-- **excessive_advisor_concentration:** 2
+- **excessive_advisor_concentration:** 3
 - **excessive_tag_concentration:** 3
 - **branches_no_continuation:** 0
 
@@ -590,6 +626,8 @@
 
 - `absurd_civic_sweeping`
 - `anthem_sponsor_reads`
+- `antigravity_buses_consequence`
+- `antigravity_buses_pilot`
 - `applause_enforcement_squad`
 - `applause_public_adaptation`
 - `applause_quotas_mandate`
@@ -604,14 +642,19 @@
 - `boom_failed_coup`
 - `boom_hostile_coup_rumor`
 - `boom_loyal_protector`
+- `border_diplomatic_reaction`
 - `border_lane_concession`
 - `border_parade_dispute`
+- `border_parade_escalation`
+- `border_parade_resolution`
 - `bridge_budget_overrun`
 - `bridge_to_nowhere_resolution`
 - `bridge_toll_concession`
 - `budget_meltdown_crisis`
 - `bureaucracy_expansion`
 - `cabinet_hypothesis_board`
+- `camouflage_scandal_fallout`
+- `camouflage_uniform_rollout`
 - `capital_square_naming_rights`
 - `cat_fish_budget`
 - `cat_limited_council`
@@ -633,6 +676,7 @@
 - `civilian_marching_band`
 - `clinic_maybe_pilot`
 - `clock_appointment_chaos`
+- `clone_registry_chaos`
 - `cloud_relocation_trial`
 - `coffee_hoarding_crisis`
 - `coffee_reserve_resolution`
@@ -657,7 +701,6 @@
 - `express_sidewalk_franchise`
 - `fake_smile_industry`
 - `fish_market_subsidy`
-- `flag_traffic_system`
 - `free_coffee_morning`
 - `free_pizza_friday`
 - `generic_minister_disagreement`
@@ -691,6 +734,7 @@
 - `national_bedtime_decree`
 - `national_biscuit_ipo`
 - `national_clock_sync`
+- `national_clone_day`
 - `national_nap_grid`
 - `national_power_outage`
 - `national_talent_show`
@@ -711,6 +755,8 @@
 - `pantry_moth_crisis`
 - `parade_budget_boost`
 - `perfumed_sewage_reform`
+- `pigeon_air_force_proposal`
+- `pigeon_air_force_report`
 - `pineapple_referendum`
 - `pizza_union_strike`
 - `postal_pigeon_reform`
@@ -731,6 +777,9 @@
 - `recovery_national_smile_day`
 - `robot_cabinet_proposal`
 - `robot_government_installed`
+- `robot_queue_incident`
+- `robot_queue_manager`
+- `robot_queue_resolution`
 - `routine_form_inventory`
 - `science_gamble`
 - `science_grant_request`
@@ -740,7 +789,13 @@
 - `state_meme_department`
 - `switch_off_traffic_lights`
 - `talent_show_budget_scandal`
+- `tank_parking_gridlock`
+- `tank_parking_mandate`
+- `tank_parking_resolution`
 - `traffic_complaint`
+- `traffic_flag_backlash`
+- `traffic_flag_corps`
+- `traffic_flag_resolution`
 - `traffic_lights_restored`
 - `traffic_military_resolved`
 - `traffic_tank_solution`
@@ -762,22 +817,22 @@
 
 #### voice_review_status
 
-- **not_reviewed:** 169
+- **not_reviewed:** 188
 
 #### balance_review_status
 
-- **partial:** 169
+- **partial:** 188
 
 #### manual_test_status
 
-- **pass:** 115
+- **pass:** 134
 - **partial:** 30
 - **untested:** 24
 
 #### graph_validation_status
 
-- **partial:** 116
-- **pass:** 53
+- **partial:** 128
+- **pass:** 60
 
 ## 7. Rewrite, defer, and reclassify recommendations
 

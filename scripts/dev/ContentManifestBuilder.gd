@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_7_short_chain_pack_b"
-const BATCH_ID: String = "2B-7B"
-const DECISION_BATCH_ID: String = "2B-7B"
+const PHASE: String = "2b_8_short_chain_pack_c"
+const BATCH_ID: String = "2B-8B"
+const DECISION_BATCH_ID: String = "2B-8B"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -135,6 +135,22 @@ const CHAIN_MEMBERS: Dictionary = {
 	"artificial_sun": [
 		"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
 	],
+	"antigravity_buses": ["antigravity_buses_pilot", "antigravity_buses_consequence"],
+	"national_clone_day": ["national_clone_day", "clone_registry_chaos"],
+	"traffic_flags": [
+		"traffic_flag_corps", "traffic_flag_backlash", "traffic_flag_resolution",
+	],
+	"robot_queue_manager": [
+		"robot_queue_manager", "robot_queue_incident", "robot_queue_resolution",
+	],
+	"pigeon_air_force": ["pigeon_air_force_proposal", "pigeon_air_force_report"],
+	"camouflage_uniform_scandal": ["camouflage_uniform_rollout", "camouflage_scandal_fallout"],
+	"border_parade": [
+		"border_parade_escalation", "border_diplomatic_reaction", "border_parade_resolution",
+	],
+	"tank_parking_crisis": [
+		"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
+	],
 }
 
 const APPROVED_CHAIN_IDS: Array[String] = [
@@ -142,6 +158,8 @@ const APPROVED_CHAIN_IDS: Array[String] = [
 	"palace_gift_shop", "elevator_wifi", "pothole_naming_rights", "bridge_to_nowhere",
 	"coin_shortage", "national_clock_reform", "weekend_abolition", "state_meme_department",
 	"weather_censorship", "national_talent_show", "applause_quotas", "artificial_sun",
+	"antigravity_buses", "national_clone_day", "traffic_flags", "robot_queue_manager",
+	"pigeon_air_force", "camouflage_uniform_scandal", "border_parade", "tank_parking_crisis",
 ]
 
 const ONBOARDING_IDS: Array[String] = [
@@ -157,7 +175,7 @@ const STANDALONE_PACK_A_APPROVED_IDS: Array[String] = [
 	"perfumed_sewage_reform",
 	"commemorative_debt_sale", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
-	"absurd_civic_sweeping", "flag_traffic_system",
+	"absurd_civic_sweeping",
 	"palace_bus_routes", "bridge_toll_concession",
 ]
 
@@ -205,6 +223,17 @@ const SHORT_CHAIN_PACK_B_APPROVED_IDS: Array[String] = [
 	"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
 ]
 
+const SHORT_CHAIN_PACK_C_APPROVED_IDS: Array[String] = [
+	"antigravity_buses_pilot", "antigravity_buses_consequence",
+	"national_clone_day", "clone_registry_chaos",
+	"traffic_flag_corps", "traffic_flag_backlash", "traffic_flag_resolution",
+	"robot_queue_manager", "robot_queue_incident", "robot_queue_resolution",
+	"pigeon_air_force_proposal", "pigeon_air_force_report",
+	"camouflage_uniform_rollout", "camouflage_scandal_fallout",
+	"border_parade_escalation", "border_diplomatic_reaction", "border_parade_resolution",
+	"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
+]
+
 const DEFERRED_DECISION_IDS: Array[String] = [
 	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
 	"propaganda_smile_campaign",
@@ -230,7 +259,7 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"perfumed_sewage_reform", "national_clock_sync",
 	"commemorative_debt_sale", "lottery_treasury_fund", "wage_freeze_mandate", "palace_room_rental",
 	"official_queue_etiquette", "universal_birthday_holiday", "public_compliment_quota",
-	"absurd_civic_sweeping", "flag_traffic_system", "elevator_wifi_mandate",
+	"absurd_civic_sweeping", "elevator_wifi_mandate",
 	"palace_bus_routes", "bridge_toll_concession",
 	"escalation_only_rival_parade", "palace_curfew_drill", "emergency_salute_protocol",
 	"civilian_marching_band", "national_anthem_remix", "one_headline_policy",
@@ -263,6 +292,14 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"national_talent_show", "talent_show_budget_scandal",
 	"applause_quotas_mandate", "applause_enforcement_squad", "applause_public_adaptation",
 	"artificial_sun_pilot", "artificial_sun_escalation", "artificial_sun_resolution",
+	"antigravity_buses_pilot", "antigravity_buses_consequence",
+	"national_clone_day", "clone_registry_chaos",
+	"traffic_flag_corps", "traffic_flag_backlash", "traffic_flag_resolution",
+	"robot_queue_manager", "robot_queue_incident", "robot_queue_resolution",
+	"pigeon_air_force_proposal", "pigeon_air_force_report",
+	"camouflage_uniform_rollout", "camouflage_scandal_fallout",
+	"border_parade_escalation", "border_diplomatic_reaction", "border_parade_resolution",
+	"tank_parking_mandate", "tank_parking_gridlock", "tank_parking_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = ["boom_loyal_protector", "happiness_backlash"]
@@ -619,6 +656,9 @@ func _resolve_status(
 	if id in SHORT_CHAIN_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in SHORT_CHAIN_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -691,6 +731,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-6 approved short-chain card.")
 	if id in SHORT_CHAIN_PACK_B_APPROVED_IDS:
 		notes.append("Milestone 2B-7 approved short-chain card.")
+	if id in SHORT_CHAIN_PACK_C_APPROVED_IDS:
+		notes.append("Milestone 2B-8 approved short-chain card.")
 	return ", ".join(notes)
 
 
@@ -724,7 +766,6 @@ func _source_file_hint(id: String) -> String:
 		"universal_birthday_holiday": "ministan_standalone_pack_a.json",
 		"public_compliment_quota": "ministan_standalone_pack_a.json",
 		"absurd_civic_sweeping": "ministan_standalone_pack_a.json",
-		"flag_traffic_system": "ministan_standalone_pack_a.json",
 		"palace_bus_routes": "ministan_standalone_pack_a.json",
 		"bridge_toll_concession": "ministan_standalone_pack_a.json",
 		"umbrella_tax_proposal": "ministan_short_chain_pack_a.json",
@@ -765,6 +806,26 @@ func _source_file_hint(id: String) -> String:
 		"artificial_sun_pilot": "ministan_short_chain_pack_b.json",
 		"artificial_sun_escalation": "ministan_short_chain_pack_b.json",
 		"artificial_sun_resolution": "ministan_short_chain_pack_b.json",
+		"antigravity_buses_pilot": "ministan_short_chain_pack_c.json",
+		"antigravity_buses_consequence": "ministan_short_chain_pack_c.json",
+		"national_clone_day": "ministan_short_chain_pack_c.json",
+		"clone_registry_chaos": "ministan_short_chain_pack_c.json",
+		"traffic_flag_corps": "ministan_short_chain_pack_c.json",
+		"traffic_flag_backlash": "ministan_short_chain_pack_c.json",
+		"traffic_flag_resolution": "ministan_short_chain_pack_c.json",
+		"robot_queue_manager": "ministan_short_chain_pack_c.json",
+		"robot_queue_incident": "ministan_short_chain_pack_c.json",
+		"robot_queue_resolution": "ministan_short_chain_pack_c.json",
+		"pigeon_air_force_proposal": "ministan_short_chain_pack_c.json",
+		"pigeon_air_force_report": "ministan_short_chain_pack_c.json",
+		"camouflage_uniform_rollout": "ministan_short_chain_pack_c.json",
+		"camouflage_scandal_fallout": "ministan_short_chain_pack_c.json",
+		"border_parade_escalation": "ministan_short_chain_pack_c.json",
+		"border_diplomatic_reaction": "ministan_short_chain_pack_c.json",
+		"border_parade_resolution": "ministan_short_chain_pack_c.json",
+		"tank_parking_mandate": "ministan_short_chain_pack_c.json",
+		"tank_parking_gridlock": "ministan_short_chain_pack_c.json",
+		"tank_parking_resolution": "ministan_short_chain_pack_c.json",
 		"escalation_only_rival_parade": "ministan_standalone_pack_b.json",
 		"palace_curfew_drill": "ministan_standalone_pack_b.json",
 		"emergency_salute_protocol": "ministan_standalone_pack_b.json",

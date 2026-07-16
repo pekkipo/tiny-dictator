@@ -11,7 +11,7 @@
 | Planning ID | Runtime chain_id | Cards | Status |
 |---|---|---:|---|
 | `chain_free_pizza_legacy` | `free_pizza_consequences` | 4 | partial — rewrite to PRD chains in 2B-6+ |
-| `chain_traffic_military_legacy` | `traffic_military` | 5 | partial — overlaps chains 11–12 below |
+| `chain_traffic_military_legacy` | `traffic_military` | 5 | superseded by Pack C Traffic Flags + Tank Parking — `debug_only` |
 | `chain_robot_government_legacy` | `robot_government` | 2 | deferred |
 
 ---
@@ -180,16 +180,18 @@
 ### chain_traffic_flags
 
 - **Title:** Traffic Flags
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** general_boom
 - **Category:** infrastructure
 - **Intended stage:** establishment
 - **Premise:** Replace traffic lights with flag corps.
-- **Dependencies:** Partial overlap traffic_military legacy
-- **Likely laws:** tank_traffic_control
-- **Likely endings:** traffic_system_achieves_peace
-- **Known risks:** Merge with legacy traffic chain carefully
+- **Dependencies:** Supersedes traffic_military legacy (debug_only)
+- **Likely laws:** traffic_flag_corps_act
+- **Likely endings:** —
+- **Known risks:** Distinct from Tank Parking / tank_traffic_control
+- **Decision IDs:** traffic_flag_corps, traffic_flag_backlash, traffic_flag_resolution
+- **Batch:** 2B-8A
 
 ### chain_perfumed_sewage
 
@@ -304,21 +306,23 @@
 ### chain_robot_queue_manager
 
 - **Title:** Robot Queue Manager
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** doctor_maybe
 - **Category:** science_and_technology
 - **Intended stage:** escalation
 - **Premise:** Robot optimizes queues by rejecting humans.
-- **Dependencies:** robot_government legacy deferred
+- **Dependencies:** robot_government legacy deferred (distinct joke)
 - **Likely laws:** robot_civil_service
 - **Likely endings:** —
 - **Known risks:** AI arc overlap
+- **Decision IDs:** robot_queue_manager, robot_queue_incident, robot_queue_resolution
+- **Batch:** 2B-8A
 
 ### chain_antigravity_buses
 
 - **Title:** Anti-Gravity Buses
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** doctor_maybe
 - **Category:** science_and_technology
@@ -328,11 +332,13 @@
 - **Likely laws:** antigravity_transit
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** antigravity_buses_pilot, antigravity_buses_consequence
+- **Batch:** 2B-8A
 
 ### chain_national_clone_day
 
 - **Title:** National Clone Day
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** doctor_maybe
 - **Category:** science_and_technology
@@ -342,62 +348,72 @@
 - **Likely laws:** clone_holiday
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** national_clone_day, clone_registry_chaos
+- **Batch:** 2B-8A
 
 ### chain_pigeon_air_force
 
 - **Title:** Pigeon Air Force
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** general_boom
 - **Category:** military_and_order
 - **Intended stage:** establishment
 - **Premise:** Cheap aerial defense via trained pigeons.
-- **Dependencies:** postal_pigeon_reform standalone adjacent
+- **Dependencies:** postal_pigeon_reform standalone adjacent (kept distinct)
 - **Likely laws:** pigeon_air_force
 - **Likely endings:** —
 - **Known risks:** Military comedy repetition
+- **Decision IDs:** pigeon_air_force_proposal, pigeon_air_force_report
+- **Batch:** 2B-8B
 
 ### chain_border_parade
 
 - **Title:** Border Parade
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** general_boom
 - **Category:** military_and_order
 - **Intended stage:** escalation
-- **Premise:** Border parade provokes neighboring_president guest arc.
-- **Dependencies:** border_parade_dispute standalone seed
+- **Premise:** Border parade provokes neighboring president (via Luna diplomatic card).
+- **Dependencies:** border_parade_dispute onboarding seed kept separate
 - **Likely laws:** border_parade_act
-- **Likely endings:** smallest_superpower (soft)
-- **Known risks:** Guest speaker introduction timing
+- **Likely endings:** smallest_superpower
+- **Known risks:** Guest speaker deferred; Luna frames neighbor complaint
+- **Decision IDs:** border_parade_escalation, border_diplomatic_reaction, border_parade_resolution
+- **Batch:** 2B-8B
 
 ### chain_camouflage_uniform_scandal
 
 - **Title:** Camouflage Uniform Scandal
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 2
 - **Primary speaker:** general_boom
 - **Category:** military_and_order
 - **Intended stage:** escalation
 - **Premise:** New uniforms invisible in wrong places.
 - **Dependencies:** —
-- **Likely laws:** mandatory_marching
+- **Likely laws:** camouflage_uniform_act
 - **Likely endings:** —
 - **Known risks:** —
+- **Decision IDs:** camouflage_uniform_rollout, camouflage_scandal_fallout
+- **Batch:** 2B-8B
 
 ### chain_tank_parking_crisis
 
 - **Title:** Tank Parking Crisis
-- **Status:** outlined
+- **Status:** approved
 - **Target cards:** 3
 - **Primary speaker:** general_boom
 - **Category:** military_and_order
 - **Intended stage:** establishment
 - **Premise:** Tanks as traffic control overflow into parking politics.
-- **Dependencies:** traffic_military legacy overlap
+- **Dependencies:** traffic_military legacy superseded (debug_only)
 - **Likely laws:** tank_traffic_control
 - **Likely endings:** tanks_direct_everything
 - **Known risks:** Legacy chain merge
+- **Decision IDs:** tank_parking_mandate, tank_parking_gridlock, tank_parking_resolution
+- **Batch:** 2B-8B
 
 ### chain_form_to_request_forms
 
@@ -501,3 +517,5 @@
 |---|---|---|
 | 1.0 | 2026-07-15 | Milestone 2B-1 — 32 chain planning entries |
 | 1.1 | 2026-07-16 | Milestone 2B-6 — Pack A eight chains approved |
+| 1.2 | 2026-07-16 | Milestone 2B-7 — Pack B eight chains approved |
+| 1.3 | 2026-07-16 | Milestone 2B-8 — Pack C eight chains approved |
