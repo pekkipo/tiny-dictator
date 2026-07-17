@@ -50,7 +50,7 @@ func _test_affinity_initialization() -> void:
 	var state := _fresh_state()
 	var advisor_manager := AdvisorRelationshipManager.new()
 	advisor_manager.initialize_for_run(state, _repo)
-	_check(_repo.get_raw_advisors().size() == 8, "catalog has 8 advisors")
+	_check(_repo.get_raw_advisors().size() == 9, "catalog has 9 advisors")
 	for advisor in _repo.get_raw_advisors():
 		var advisor_id: String = str(advisor.get("id", ""))
 		_check(state.get_advisor_affinity(advisor_id) == 0, "affinity starts at 0 for %s" % advisor_id)

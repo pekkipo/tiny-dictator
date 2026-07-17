@@ -131,18 +131,18 @@ func _test_required_fields(manifest: Dictionary) -> void:
 
 
 func _test_expected_counts(manifest: Dictionary) -> void:
-	_check(manifest.get("decisions", []).size() == 225, "manifest has 225 decisions")
-	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 9, "manifest has 9 arcs")
+	_check(manifest.get("decisions", []).size() == 242, "manifest has 242 decisions")
+	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 12, "manifest has 12 arcs")
 	_check(manifest.get("catalogs", {}).get("crises", []).size() == 7, "manifest has 7 crises")
-	_check(manifest.get("catalogs", {}).get("laws", []).size() == 74, "manifest has 74 laws")
-	_check(manifest.get("catalogs", {}).get("endings", []).size() == 23, "manifest has 23 endings")
-	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 8, "manifest has 8 advisors")
+	_check(manifest.get("catalogs", {}).get("laws", []).size() == 75, "manifest has 75 laws")
+	_check(manifest.get("catalogs", {}).get("endings", []).size() == 31, "manifest has 31 endings")
+	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 9, "manifest has 9 advisors")
 	_check(manifest.get("catalogs", {}).get("ruler_identities", []).size() == 7, "manifest has 7 ruler identities")
 	_check(manifest.get("catalogs", {}).get("palace_upgrades", []).size() == 3, "manifest has 3 palace upgrades")
 	_check(manifest.get("catalogs", {}).get("chains", []).size() == 36, "manifest has 36 chains")
 
 	var approved: int = int(manifest.get("quota_report", {}).get("decisions", {}).get("approved_total", -1))
-	_check(approved == 177, "onboarding+standalone+short_chain+major_arc_pack_a approved count (got %d)" % approved)
+	_check(approved == 201, "onboarding+standalone+short_chain+major_arc_pack_a+b approved count (got %d)" % approved)
 	var onboarding_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("onboarding", {}).get("approved", -1)
 	)
@@ -158,6 +158,6 @@ func _test_expected_counts(manifest: Dictionary) -> void:
 	var major_arc_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("major_arc", {}).get("approved", -1)
 	)
-	_check(major_arc_approved == 24, "major_arc class has 24 approved Pack A (got %d)" % major_arc_approved)
+	_check(major_arc_approved == 48, "major_arc class has 48 approved Pack A+B (got %d)" % major_arc_approved)
 	var chains_approved: int = int(manifest.get("quota_report", {}).get("short_chains", {}).get("approved", -1))
 	_check(chains_approved == 32, "exactly 32 approved short chains after 2B-9 (got %d)" % chains_approved)

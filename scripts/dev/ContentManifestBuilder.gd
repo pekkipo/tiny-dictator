@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_10_major_arc_pack_a"
-const BATCH_ID: String = "2B-10"
-const DECISION_BATCH_ID: String = "2B-10"
+const PHASE: String = "2b_11_major_arc_pack_b"
+const BATCH_ID: String = "2B-11"
+const DECISION_BATCH_ID: String = "2B-11"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -57,7 +57,7 @@ const TARGETS: Dictionary = {
 	"endings": 50,
 	"palace_upgrades": 24,
 	"ruler_identities": 12,
-	"advisors": 8,
+	"advisors": 9,
 	"guest_speakers": 6,
 }
 
@@ -90,10 +90,12 @@ const GUEST_SPEAKER_IDS: Array[String] = [
 const MAJOR_ARC_IDS: Array[String] = [
 	"cat_politics", "mandatory_happiness", "general_boom_arc", "doctor_maybe_arc",
 	"penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
+	"luna_media_reality", "olga_citizen_movement", "fake_election_accident",
 ]
 
 const APPROVED_MAJOR_ARC_IDS: Array[String] = [
 	"general_boom_arc", "penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
+	"luna_media_reality", "olga_citizen_movement", "mandatory_happiness", "fake_election_accident",
 ]
 
 const MINOR_ARC_IDS: Array[String] = ["traffic_military", "robot_government"]
@@ -112,6 +114,21 @@ const MAJOR_ARC_PACK_A_APPROVED_IDS: Array[String] = [
 	# Hyperinflation (5)
 	"hyperinflation_price_spiral", "hyperinflation_public_adaptation",
 	"hyperinflation_policy_fork", "hyperinflation_temp_success", "hyperinflation_resolution",
+]
+
+const MAJOR_ARC_PACK_B_APPROVED_IDS: Array[String] = [
+	# Luna — The Media Becomes Reality (6)
+	"luna_narrative_brief", "luna_ratings_spike", "luna_reality_segments",
+	"luna_media_fork", "luna_credibility_test", "luna_media_resolution",
+	# Olga — The Citizen Movement (6)
+	"olga_everyday_complaint", "olga_practical_campaign", "olga_movement_forms",
+	"olga_government_response", "olga_loyalty_test", "olga_movement_resolution",
+	# Mandatory Happiness rewrite (6)
+	"mandatory_smiling_proposal", "happiness_measurement_bureau", "happiness_policy_fork",
+	"happiness_branch_consequence", "happiness_backlash", "happiness_arc_resolution",
+	# Fake Election Accident (6)
+	"election_filing_proposal", "election_ballot_setup", "election_campaign_noise",
+	"election_unexpected_result", "election_government_response", "election_arc_resolution",
 ]
 
 const CHAIN_MEMBERS: Dictionary = {
@@ -368,13 +385,13 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"hyperinflation_policy_fork", "hyperinflation_temp_success", "hyperinflation_resolution",
 ]
 
-const SIM_NEVER_SELECTED: Array[String] = ["happiness_backlash"]
+const SIM_NEVER_SELECTED: Array[String] = []
 
 const SIMULATION_SNAPSHOT: Dictionary = {
 	"seed": 20260715,
 	"run_count": 1000,
 	"date": "2026-07-16",
-	"decisions_never_selected": ["boom_loyal_protector", "happiness_backlash"],
+	"decisions_never_selected": [],
 	"average_run_length": 25.9,
 	"content_exhaustion_count": 0,
 	"fallback_card_usage": 0,
@@ -383,8 +400,8 @@ const SIMULATION_SNAPSHOT: Dictionary = {
 const DUPLICATE_PREMISE_GROUPS: Array[Dictionary] = [
 	{
 		"group_id": "smile_happiness_cluster",
-		"ids": ["mandatory_smiling_proposal", "propaganda_smile_campaign", "fake_smile_industry"],
-		"reason": "Multiple mandatory-smile premises across standalone, affinity, and arc paths.",
+		"ids": ["mandatory_smiling_proposal", "propaganda_smile_campaign"],
+		"reason": "Smile cluster resolved in 2B-11 Happiness rewrite; propaganda_smile_campaign remains deferred/rejected standalone.",
 	},
 	{
 		"group_id": "traffic_cluster",
@@ -733,6 +750,9 @@ func _resolve_status(
 	if id in MAJOR_ARC_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in MAJOR_ARC_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -811,6 +831,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-9 approved short-chain card.")
 	if id in MAJOR_ARC_PACK_A_APPROVED_IDS:
 		notes.append("Milestone 2B-10 approved major-arc card.")
+	if id in MAJOR_ARC_PACK_B_APPROVED_IDS:
+		notes.append("Milestone 2B-11 approved major-arc card.")
 	return ", ".join(notes)
 
 
@@ -818,7 +840,6 @@ func _source_file_hint(id: String) -> String:
 	const FILE_HINTS: Dictionary = {
 		"switch_off_traffic_lights": "ministan_core.json",
 		"free_pizza_friday": "ministan_core.json",
-		"mandatory_smiling_proposal": "ministan_core.json",
 		"military_parade": "ministan_core.json",
 		"window_tax_proposal": "ministan_core.json",
 		"luna_good_news_only": "ministan_core.json",
@@ -986,14 +1007,20 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_penny_austerity_arc.json"
 	if id.begins_with("hyperinflation_"):
 		return "data/decisions/ministan_hyperinflation_arc.json"
+	if id.begins_with("luna_"):
+		return "data/decisions/ministan_luna_media_reality_arc.json"
+	if id.begins_with("olga_everyday") or id.begins_with("olga_practical") or id.begins_with("olga_movement") or id.begins_with("olga_government") or id.begins_with("olga_loyalty"):
+		return "data/decisions/ministan_olga_citizen_movement_arc.json"
+	if id.begins_with("election_"):
+		return "data/decisions/ministan_fake_election_accident_arc.json"
 	if id in [
 		"traffic_gridlock_brief", "traffic_military_convoy", "traffic_checkpoint_hour",
 		"traffic_control_climax", "traffic_civilian_peace", "traffic_martial_resolution",
 	]:
 		return "data/decisions/ministan_traffic_military_control.json"
-	if id.begins_with("happiness_") or id == "fake_smile_industry":
-		return "data/decisions/ministan_mandatory_happiness.json" if id.begins_with("happiness_") else "data/decisions/ministan_followups.json"
-	if id in ["fake_smile_industry", "cheese_shortage", "cat_parliament", "cat_fish_budget"]:
+	if id.begins_with("happiness_") or id == "mandatory_smiling_proposal":
+		return "data/decisions/ministan_mandatory_happiness_arc.json"
+	if id in ["cheese_shortage", "cat_parliament", "cat_fish_budget"]:
 		return "data/decisions/ministan_followups.json"
 	if id.begins_with("traffic_"):
 		return "data/decisions/ministan_traffic_military.json"

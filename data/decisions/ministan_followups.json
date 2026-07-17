@@ -1,57 +1,5 @@
 [
   {
-    "id": "fake_smile_industry",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "luna_news",
-    "category": "follow_up",
-    "proposal": "Since smiling became mandatory, citizens have perfected identical fake smiles. My cameras cannot tell anyone apart.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
-      "arc_id": "mandatory_happiness",
-      "beat_type": "escalation",
-      "step": 2,
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["mandatory_happiness"],
-      "all_flags": ["mandatory_smiling_active"]
-    },
-    "options": [
-      {
-        "id": "repeal",
-        "label": "Repeal the law",
-        "effects": { "happiness": 5, "order": -3, "elite_loyalty": -2 },
-        "remove_laws": ["mandatory_smiling"],
-        "remove_flags": ["mandatory_smiling_active"],
-        "arc_actions": [
-          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "reform_path" },
-          { "arc_id": "mandatory_happiness", "action": "advance" }
-        ],
-        "force_next_decision": "happiness_arc_reformed",
-        "result_text": "Frowning is legal again. The nation exhales and relaxes its cheeks."
-      },
-      {
-        "id": "propaganda",
-        "label": "Report 100% happiness",
-        "effects": { "happiness": -8, "order": 2, "elite_loyalty": 4 },
-        "visible_effects": ["order", "elite_loyalty"],
-        "add_flags": ["media_declares_total_happiness"],
-        "trait_changes": { "propagandist": 2 },
-        "arc_actions": [
-          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "propaganda_path" },
-          { "arc_id": "mandatory_happiness", "action": "advance" }
-        ],
-        "force_next_decision": "happiness_bureau_crackdown",
-        "result_text": "Official happiness reaches 100%. Actual happiness declines to file a protest."
-      }
-    ],
-    "tags": ["smiling", "follow_up", "arc_escalation"],
-    "visual_tags": ["smiling_citizens"]
-  },
-  {
     "id": "cheese_shortage",
     "schema_version": 2,
     "card_type": "consequence",

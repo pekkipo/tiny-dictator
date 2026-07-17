@@ -1,0 +1,884 @@
+[
+  {
+    "id": "election_filing_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "National Filing Week requires Form 44-C Civic Preference. The form uses boxes, names, and a stamp line. It resembles a ballot. Proceed, keep it ceremonial, or delay the week.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 12,
+    "maximum_day": 36,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "election_arc_live",
+        "election_arc_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "proceed_filing_week",
+        "label": "Approve Form 44-C",
+        "effects": {
+          "order": 3,
+          "treasury": -2,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "national_filing_week"
+        ],
+        "add_flags": [
+          "election_arc_live",
+          "election_full_process"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "managed_election"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "election_ballot_setup",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 72,
+          "required_flags": [
+            "election_arc_live"
+          ]
+        },
+        "result_text": "Form 44-C enters circulation. Boxes are labeled. Citizens ask whether ink counts as preference. Clerk Zero files the question as pending."
+      },
+      {
+        "id": "ceremonial_only",
+        "label": "Keep it ceremonial",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": -1,
+          "treasury": -1
+        },
+        "add_laws": [
+          "national_filing_week"
+        ],
+        "add_flags": [
+          "election_arc_live",
+          "election_ceremonial_only"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "authoritarian": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "managed_election"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "election_ballot_setup",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 71,
+          "required_flags": [
+            "election_arc_live"
+          ]
+        },
+        "result_text": "Preference boxes are pre-checked for pageantry. The stamp says 'civic practice.' The public still forms a queue."
+      },
+      {
+        "id": "delay_filing_week",
+        "label": "Delay Filing Week",
+        "effects": {
+          "order": -1,
+          "elite_loyalty": 1,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2
+        },
+        "trait_changes": {
+          "bureaucratic": -1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "abandon",
+            "reason": "delayed_filing_week"
+          }
+        ],
+        "result_text": "Form 44-C returns to the drawer. National Filing Week is rescheduled to an unspecified Tuesday."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_setup",
+      "election"
+    ],
+    "visual_tags": [
+      "filing_week_ballot_boxes"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "ballot_shaped_form"
+      ],
+      "emotional_goal": "quiet_unease",
+      "visual_hook": "identical filing boxes lined like a polling station",
+      "localization_risk": "low",
+      "writer_notes": "Clerk Zero flat voice; form numbers; no exclamation marks. Believable admin setup for accidental democracy. Soft mutex via blocked_flags election_arc_live/complete."
+    }
+  },
+  {
+    "id": "election_ballot_setup",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "chief_judge",
+    "category": "bureaucracy",
+    "proposal": "Under Article 3 of the Civic Preference Charter, the court must certify the boxes before ink is wet. The bench awaits instruction on names, blanks, and solemnity.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "fake_election_accident"
+      ],
+      "all_flags": [
+        "election_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "certify_palace_slate",
+        "label": "Certify palace slate",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 3,
+          "happiness": -1
+        },
+        "add_flags": [
+          "election_ballots_printed",
+          "election_palace_slate"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "election_campaign_noise",
+        "result_text": "The court stamps three names and one decorative blank. Solemnity is achieved. Surprises are discouraged."
+      },
+      {
+        "id": "allow_write_ins",
+        "label": "Allow write-ins",
+        "effects": {
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "add_flags": [
+          "election_ballots_printed",
+          "election_write_ins_allowed"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "accidental_democracy"
+          }
+        ],
+        "force_next_decision": "election_campaign_noise",
+        "result_text": "Article 3 permits blank ink. Neighbors practice spelling. The judge notes this for the record."
+      },
+      {
+        "id": "print_blank_ceremonial",
+        "label": "Print blank ballots",
+        "effects": {
+          "order": 1,
+          "elite_loyalty": 1,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "election_ballots_printed",
+          "election_blank_ceremonial"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "advance"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "election_campaign_noise",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 73,
+          "required_flags": [
+            "election_arc_live"
+          ]
+        },
+        "result_text": "Boxes arrive empty and official. Citizens must invent meaning. Filing Week continues on schedule."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "election",
+      "guest"
+    ],
+    "visual_tags": [
+      "solemn_judge_desk"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "solemn_ballot_certification"
+      ],
+      "emotional_goal": "ritual_gravity",
+      "visual_hook": "chief judge desk with gavel and Form 44-C stacks",
+      "localization_risk": "low",
+      "writer_notes": "Guest chief_judge; solemn Article citations only. force_next on slate/write-in; soft on blank ceremonial. Sets election_ballots_printed."
+    }
+  },
+  {
+    "id": "election_campaign_noise",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "bureaucracy",
+    "proposal": "Filing Week has acquired campaign music. Luna wants a spin segment, Auntie Olga wants fair counters, and General Boom wants security monitors beside every box.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "fake_election_accident"
+      ],
+      "all_flags": [
+        "election_arc_live",
+        "election_ballots_printed"
+      ]
+    },
+    "options": [
+      {
+        "id": "luna_preference_spin",
+        "label": "Let Luna spin narrative",
+        "effects": {
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "election_luna_spin"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "authoritarian": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "advance"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "election_unexpected_result",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 74,
+          "required_flags": [
+            "election_arc_live"
+          ]
+        },
+        "result_text": "Evening brief calls Form 44-C 'participation theater.' Ratings rise. Counters still exist off-camera."
+      },
+      {
+        "id": "olga_fair_count",
+        "label": "Olga fair counting",
+        "effects": {
+          "happiness": 4,
+          "order": -1,
+          "elite_loyalty": -3,
+          "treasury": -3
+        },
+        "add_flags": [
+          "election_olga_fair_count"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "clerk_zero": 1,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "accidental_democracy"
+          }
+        ],
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "election_noise_pool",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 73,
+          "required_flags": [
+            "election_arc_live"
+          ]
+        },
+        "result_text": "Neighborhood tables get tea and tally sheets. Olga bans celebratory confetti until the numbers sit still."
+      },
+      {
+        "id": "boom_security_monitors",
+        "label": "Deploy Boom monitors",
+        "effects": {
+          "order": 4,
+          "happiness": -3,
+          "elite_loyalty": 2,
+          "treasury": -4
+        },
+        "add_flags": [
+          "election_boom_monitors"
+        ],
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "election_unexpected_result",
+        "result_text": "Helmets flank the filing boxes. Boom calls it civic safety. Citizens file faster and quieter."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "election",
+      "multi_advisor"
+    ],
+    "visual_tags": [
+      "filing_week_ballot_boxes"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "campaign_noise"
+      ],
+      "emotional_goal": "competing_pressures",
+      "visual_hook": "TV vans, tea tables, and helmets around filing boxes",
+      "localization_risk": "low",
+      "writer_notes": "Multi-influence: Luna soft, Olga pool election_noise_pool, Boom force_next. Affinity swings required for pack quota."
+    }
+  },
+  {
+    "id": "election_unexpected_result",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Form 44-C tallies disagree with the palace forecast. Three interpretations fit the same stack: managed outcome, accidental public win, or filing error. Select one classification.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "fake_election_accident"
+      ],
+      "all_flags": [
+        "election_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "classify_managed",
+        "label": "Classify managed win",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 3,
+          "happiness": -2
+        },
+        "add_flags": [
+          "election_managed"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "luna_news": 1,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "managed_election"
+          }
+        ],
+        "force_next_decision": "election_government_response",
+        "result_text": "The forecast is stamped 'as intended.' Odd numbers are filed under decorative variance. Elites relax."
+      },
+      {
+        "id": "classify_accidental",
+        "label": "Admit accidental tally",
+        "effects": {
+          "happiness": 4,
+          "order": -3,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "election_accidental"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "clerk_zero": -1,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "populist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "accidental_democracy"
+          }
+        ],
+        "force_next_decision": "election_government_response",
+        "result_text": "The board shows a name nobody rehearsed. Citizens cheer. Clerk Zero requests a larger eraser and is denied."
+      },
+      {
+        "id": "classify_filing_error",
+        "label": "Blame filing error",
+        "effects": {
+          "order": 1,
+          "happiness": -1,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "election_filing_error"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "cancel_filing_error"
+          }
+        ],
+        "force_next_decision": "election_government_response",
+        "result_text": "Misaligned carbon paper is cited. The tally is neither win nor loss. It is a clerical incident pending stamp."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_climax",
+      "election"
+    ],
+    "visual_tags": [
+      "accidental_tally_board"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "instability",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "unexpected_tally"
+      ],
+      "emotional_goal": "classification_panic",
+      "visual_hook": "tally board with three competing totals and one sticky note",
+      "localization_risk": "low",
+      "writer_notes": "State-dependent flavor via option text/branches only \u2014 no option-level requirements. Flags election_managed / election_accidental / election_filing_error. Hard force to response."
+    }
+  },
+  {
+    "id": "election_government_response",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Form 44-C still needs a government response. Accept the classified result, void it as administrative error, or cancel Filing Week under martial ceremony.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "fake_election_accident"
+      ],
+      "all_flags": [
+        "election_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "accept_classified_result",
+        "label": "Accept the result",
+        "effects": {
+          "order": 1,
+          "happiness": 2,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "election_result_accepted"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "advance"
+          }
+        ],
+        "force_next_decision": "election_arc_resolution",
+        "result_text": "The stamp says 'accepted pending interpretation.' Crowds wait for what that means. So does the palace."
+      },
+      {
+        "id": "void_admin_error",
+        "label": "Void by admin error",
+        "effects": {
+          "order": 2,
+          "happiness": -3,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "election_cancelled",
+          "election_voided_admin"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "authoritarian": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "cancel_filing_error"
+          }
+        ],
+        "force_next_decision": "election_arc_resolution",
+        "result_text": "A void stamp covers the tally board. Democracy is postponed due to paperwork. Citizens read the fine print aloud."
+      },
+      {
+        "id": "martial_cancel",
+        "label": "Martial cancel week",
+        "effects": {
+          "order": -6,
+          "happiness": -4,
+          "elite_loyalty": 3,
+          "treasury": -3
+        },
+        "add_flags": [
+          "election_cancelled",
+          "election_martial_cancel"
+        ],
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": -3,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "arc_actions": [
+          {
+            "arc_id": "fake_election_accident",
+            "action": "branch",
+            "branch_id": "election_institutional_crisis"
+          }
+        ],
+        "force_next_decision": "election_arc_resolution",
+        "result_text": "Boom salutes the voided boxes. Order frays in the square. Sandwich vendors arrive before the press does."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_crisis",
+      "election"
+    ],
+    "visual_tags": [
+      "void_stamp_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "instability",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "void_stamp",
+        "martial_filing"
+      ],
+      "emotional_goal": "fragile_control",
+      "visual_hook": "giant VOID banner draped over ballot boxes",
+      "localization_risk": "low",
+      "writer_notes": "Martial path: Boom affinity+, mass_protest start, Order risk. All paths force_next to resolution."
+    }
+  },
+  {
+    "id": "election_arc_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Form 44-C requires a final disposition. File peaceful accidental democracy, democracy by administrative error, or a quiet managed close with no ending stamp.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "fake_election_accident",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "fake_election_accident"
+      ],
+      "all_flags": [
+        "election_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "peaceful_accidental_close",
+        "label": "File peaceful democracy",
+        "effects": {
+          "happiness": 6,
+          "order": -2,
+          "elite_loyalty": -4,
+          "treasury": -2
+        },
+        "add_flags": [
+          "election_arc_complete",
+          "peaceful_accidental_democracy"
+        ],
+        "remove_flags": [
+          "election_arc_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "clerk_zero": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 3,
+          "bureaucratic": 1
+        },
+        "trigger_ending": "peaceful_accidental_democracy",
+        "result_text": "The nation shrugs into self-rule by accident. Clerk Zero archives Form 44-C under 'successful mishap.'"
+      },
+      {
+        "id": "admin_error_democracy",
+        "label": "Stamp admin-error democracy",
+        "effects": {
+          "order": 2,
+          "happiness": 3,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "add_flags": [
+          "election_arc_complete",
+          "democracy_by_administrative_error"
+        ],
+        "remove_flags": [
+          "election_arc_live"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 3,
+          "populist": 1
+        },
+        "trigger_ending": "democracy_by_administrative_error",
+        "result_text": "A misfiled stamp creates a republic. Historians will cite carbon paper. The palace becomes a waiting room."
+      },
+      {
+        "id": "managed_quiet_close",
+        "label": "Close week quietly",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 3,
+          "happiness": 1
+        },
+        "add_flags": [
+          "election_arc_complete",
+          "election_managed_close"
+        ],
+        "remove_flags": [
+          "election_arc_live"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "general_boom": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 2
+        },
+        "result_text": "Boxes return to storage. No ending stamp. Luna calls it 'civic practice complete.' The nation mostly agrees to forget."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_resolution",
+      "election",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "void_stamp_banner",
+      "accidental_tally_board"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "fake_election_accident",
+      "primary_category": "bureaucracy",
+      "primary_stage": "instability",
+      "batch_id": "2B-11D",
+      "humor_tags": [
+        "accidental_republic",
+        "quiet_close"
+      ],
+      "emotional_goal": "closure_or_accident",
+      "visual_hook": "final stamp choices on a closed tally board",
+      "localization_risk": "low",
+      "writer_notes": "resolves_arc; remove election_arc_live on all paths. Endings: peaceful_accidental_democracy, democracy_by_administrative_error. Managed close flags only. No option-level requirements."
+    }
+  }
+]

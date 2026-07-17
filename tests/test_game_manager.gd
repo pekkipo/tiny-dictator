@@ -80,16 +80,16 @@ func _initialize() -> void:
 	_check(not game_manager.get_current_decision().is_empty(), "next decision presented")
 	_check(state.current_decision_id != first_decision_id, "next decision differs from resolved one")
 
-	# Forced follow-up through the full loop: mandatory smiling approve forces fake smile industry.
+	# Forced follow-up through the full loop: wellbeing launch forces measurement bureau.
 	game_manager.start_new_run()
 	state = game_manager.get_current_state()
 	game_manager.force_decision("mandatory_smiling_proposal")
 	game_manager.resolve_choice("left")
 	game_manager.continue_after_result()
 	_check(state.current_decision_id == "mandatory_smiling_proposal", "forced decision presented next")
-	game_manager.resolve_choice("approve")
+	game_manager.resolve_choice("launch_week")
 	game_manager.continue_after_result()
-	_check(state.current_decision_id == "fake_smile_industry", "forced follow-up chain works end to end")
+	_check(state.current_decision_id == "happiness_measurement_bureau", "forced follow-up chain works end to end")
 
 	# --- Milestone 7: endings and restart flow ---
 	var run_ended_count: Array[int] = [0]

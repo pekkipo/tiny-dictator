@@ -664,5 +664,14 @@
     "placeholder_icon": "🔄",
     "visual_tags": ["barter_booth"],
     "category": "economy"
+  },
+  {
+    "id": "national_filing_week",
+    "display_name": "National Filing Week",
+    "short_name": "Filing Week",
+    "description": "One week for civic preference forms that look suspiciously like ballots.",
+    "placeholder_icon": "🗳️",
+    "visual_tags": ["filing_week_ballot_boxes"],
+    "category": "bureaucracy"
   }
 ]

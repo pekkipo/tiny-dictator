@@ -62,5 +62,14 @@
     "short_description": "Emotionless. Literal. Procedural.",
     "placeholder_icon": "📋",
     "accent_key": "bureaucracy"
+  },
+  {
+    "id": "chief_judge",
+    "display_name": "Chief Judge",
+    "role": "Guest Jurist",
+    "short_description": "Treats silly statutes as sacred text. No affinity meter. Only solemn articles.",
+    "placeholder_icon": "⚖️",
+    "accent_key": "bureaucracy",
+    "guest": true
   }
 ]

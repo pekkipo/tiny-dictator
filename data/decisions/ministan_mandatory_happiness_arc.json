@@ -1,0 +1,446 @@
+[
+  {
+    "id": "mandatory_smiling_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "National Wellbeing Week looks harmless: optional cheerful workplaces, free tea, and a tiny happiness index pilot. Shall we launch it?",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 2,
+    "maximum_day": 16,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "setup",
+      "step": 1,
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": ["establishment", "escalation"]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "happiness_arc_live",
+        "happiness_arc_complete",
+        "luna_reality_path",
+        "luna_media_live"
+      ],
+      "blocked_arcs": ["luna_media_reality"]
+    },
+    "options": [
+      {
+        "id": "launch_week",
+        "label": "Launch Wellbeing Week",
+        "effects": { "happiness": 3, "order": 1, "treasury": -3, "elite_loyalty": 1 },
+        "add_flags": ["happiness_arc_live", "happiness_week_live"],
+        "advisor_affinity": { "luna_news": 2, "auntie_olga": 1 },
+        "trait_changes": { "populist": 1, "propagandist": 1 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "voluntary_wellbeing" }
+        ],
+        "force_next_decision": "happiness_measurement_bureau",
+        "result_text": "Banners go up. Tea is free. Luna News calls it a growth moment for faces."
+      },
+      {
+        "id": "mandate_smiles",
+        "label": "Skip ahead to mandatory smiles",
+        "effects": { "happiness": -4, "order": 4, "elite_loyalty": 3 },
+        "add_laws": ["mandatory_smiling"],
+        "add_flags": ["happiness_arc_live", "mandatory_smiling_active", "happiness_enforce_seed"],
+        "advisor_affinity": { "luna_news": 3, "auntie_olga": -2 },
+        "trait_changes": { "propagandist": 2, "authoritarian": 2 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "enforce_happiness" }
+        ],
+        "force_next_decision": "happiness_measurement_bureau",
+        "result_text": "Smiles become policy early. Dentists and inspectors both rejoice."
+      },
+      {
+        "id": "reject_week",
+        "label": "Reject the wellbeing pitch",
+        "effects": { "happiness": 2, "elite_loyalty": -2 },
+        "advisor_affinity": { "luna_news": -2, "auntie_olga": 1 },
+        "trait_changes": { "populist": 1 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "abandon", "reason": "rejected_wellbeing" }
+        ],
+        "result_text": "Luna reframes your frown as bold authenticity. The week never ships."
+      }
+    ],
+    "tags": ["media", "happiness", "arc_setup"],
+    "visual_tags": ["wellbeing_week_banners"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "establishment",
+      "batch_id": "2B-11C",
+      "humor_tags": ["harmless_initiative"],
+      "emotional_goal": "false_innocence",
+      "visual_hook": "cheerful wellbeing week banners over ordinary queues",
+      "localization_risk": "low",
+      "writer_notes": "Rewritten from smile-only premise. Soft mutex with Luna media reality."
+    }
+  },
+  {
+    "id": "happiness_measurement_bureau",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "media",
+    "proposal": "Form H-100 proposes a National Happiness Index. Measured wellbeing may diverge from actual wellbeing. Stamp for charts.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["mandatory_happiness"],
+      "all_flags": ["happiness_arc_live"]
+    },
+    "options": [
+      {
+        "id": "fund_index",
+        "label": "Fund the Happiness Index",
+        "effects": { "treasury": -5, "order": 3, "happiness": 1, "elite_loyalty": 2 },
+        "add_laws": ["national_happiness_index"],
+        "add_flags": ["happiness_index_live"],
+        "advisor_affinity": { "clerk_zero": 3, "luna_news": 1, "minister_penny": 1 },
+        "trait_changes": { "bureaucratic": 3 },
+        "force_next_decision": "happiness_policy_fork",
+        "result_text": "Billboards show a green number. Citizens below the number receive polite notices."
+      },
+      {
+        "id": "voluntary_surveys",
+        "label": "Use voluntary surveys only",
+        "effects": { "treasury": -2, "happiness": 2, "order": 1 },
+        "add_flags": ["happiness_surveys_only"],
+        "advisor_affinity": { "auntie_olga": 2, "clerk_zero": 1 },
+        "trait_changes": { "populist": 1, "bureaucratic": 1 },
+        "force_next_decision": "happiness_policy_fork",
+        "result_text": "Clipboards visit kitchens. Auntie Olga rates the tea higher than the policy."
+      },
+      {
+        "id": "fake_perfect",
+        "label": "Pre-fill perfect scores",
+        "effects": { "happiness": -3, "order": 2, "elite_loyalty": 4 },
+        "add_laws": ["national_happiness_index", "fake_smile_standard"],
+        "add_flags": ["happiness_index_live", "media_declares_total_happiness"],
+        "advisor_affinity": { "luna_news": 3, "clerk_zero": -1, "auntie_olga": -2 },
+        "trait_changes": { "propagandist": 3, "bureaucratic": 1 },
+        "force_next_decision": "happiness_policy_fork",
+        "result_text": "The index hits 100% before lunch. Actual faces file a minority report."
+      }
+    ],
+    "tags": ["happiness", "arc_escalation", "measurement"],
+    "visual_tags": ["happiness_index_billboard"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11C",
+      "humor_tags": ["measured_vs_real"],
+      "emotional_goal": "bureaucratic_dread",
+      "visual_hook": "giant happiness percentage billboard",
+      "localization_risk": "low",
+      "writer_notes": "Replaces fake_smile_industry premise with measurement comedy."
+    }
+  },
+  {
+    "id": "happiness_policy_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "The index exists. Do we keep wellbeing voluntary, enforce cheerful compliance, or worship the measurement?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["mandatory_happiness"],
+      "all_flags": ["happiness_arc_live"]
+    },
+    "options": [
+      {
+        "id": "voluntary_path",
+        "label": "Keep wellbeing voluntary",
+        "effects": { "happiness": 4, "order": -1, "elite_loyalty": -2, "treasury": -2 },
+        "add_flags": ["happiness_voluntary"],
+        "advisor_affinity": { "auntie_olga": 3, "luna_news": -1 },
+        "trait_changes": { "populist": 2 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "voluntary_wellbeing" }
+        ],
+        "force_next_decision": "happiness_branch_consequence",
+        "result_text": "Tea stays free. Smiles stay optional. Luna misses the drama."
+      },
+      {
+        "id": "enforce_path",
+        "label": "Enforce cheerful compliance",
+        "effects": { "order": 5, "happiness": -5, "elite_loyalty": 3, "treasury": -4 },
+        "add_laws": ["mandatory_smiling", "fake_smile_standard"],
+        "add_flags": ["happiness_enforce", "mandatory_smiling_active"],
+        "advisor_affinity": { "luna_news": 3, "auntie_olga": -3, "general_boom": 1 },
+        "trait_changes": { "authoritarian": 3, "propagandist": 2 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "enforce_happiness" }
+        ],
+        "force_next_decision": "happiness_branch_consequence",
+        "result_text": "Smile inspectors deploy. Absorbed premise: national smile hour, now with clipboards."
+      },
+      {
+        "id": "measure_path",
+        "label": "Worship the measurement",
+        "effects": { "order": 3, "happiness": -2, "elite_loyalty": 2, "treasury": -3 },
+        "add_laws": ["national_happiness_index"],
+        "add_flags": ["happiness_measure", "happiness_index_live"],
+        "advisor_affinity": { "clerk_zero": 3, "luna_news": 2, "minister_penny": 1 },
+        "trait_changes": { "bureaucratic": 3, "propagandist": 1 },
+        "arc_actions": [
+          { "arc_id": "mandatory_happiness", "action": "branch", "branch_id": "measure_everything" }
+        ],
+        "force_next_decision": "happiness_branch_consequence",
+        "result_text": "The number becomes sacred. Frowns are rounding errors."
+      }
+    ],
+    "tags": ["happiness", "arc_climax"],
+    "visual_tags": ["happiness_index_billboard"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11C",
+      "humor_tags": ["three_path_fork", "smile_campaign_absorbed"],
+      "emotional_goal": "policy_choice",
+      "visual_hook": "three doors labeled Voluntary, Enforce, Measure",
+      "localization_risk": "low",
+      "writer_notes": "Absorbs propaganda_smile_campaign premise into enforce path."
+    }
+  },
+  {
+    "id": "happiness_branch_consequence",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Consequences arrive on schedule. The index, the inspectors, or the tea kettles demand a follow-up.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["mandatory_happiness"],
+      "all_flags": ["happiness_arc_live"]
+    },
+    "options": [
+      {
+        "id": "double_down",
+        "label": "Double down on the policy",
+        "effects": { "order": 3, "happiness": -3, "elite_loyalty": 2 },
+        "add_flags": ["happiness_backlash_ready", "eternal_smile_active"],
+        "counter_changes": { "propaganda_choices": 1 },
+        "advisor_affinity": { "luna_news": 2 },
+        "trait_changes": { "propagandist": 2, "authoritarian": 1 },
+        "force_next_decision": "happiness_backlash",
+        "result_text": "Luna films a victory montage. The street practices quieter faces."
+      },
+      {
+        "id": "soften_policy",
+        "label": "Soften before backlash",
+        "effects": { "happiness": 3, "order": -1, "elite_loyalty": -1 },
+        "add_flags": ["happiness_backlash_ready", "happiness_softened"],
+        "advisor_affinity": { "auntie_olga": 2, "luna_news": -1 },
+        "trait_changes": { "populist": 1 },
+        "force_next_decision": "happiness_backlash",
+        "result_text": "Private frowns are tolerated. Public charts remain optimistic."
+      },
+      {
+        "id": "publish_100",
+        "label": "Publish 100% happiness now",
+        "effects": { "happiness": -4, "order": 2, "elite_loyalty": 3 },
+        "add_flags": ["happiness_backlash_ready", "media_declares_total_happiness", "happiness_paper_100"],
+        "counter_changes": { "propaganda_choices": 2 },
+        "advisor_affinity": { "luna_news": 3, "clerk_zero": 1 },
+        "trait_changes": { "propagandist": 3, "bureaucratic": 1 },
+        "force_next_decision": "happiness_backlash",
+        "result_text": "The board shows perfection. Auntie Olga brings a silent frown protest flyer."
+      }
+    ],
+    "tags": ["happiness", "arc_consequence"],
+    "visual_tags": ["frown_fine_booth"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11C",
+      "humor_tags": ["visible_consequences"],
+      "emotional_goal": "tension_before_snap",
+      "visual_hook": "frown fine booth beside a tea stand",
+      "localization_risk": "low",
+      "writer_notes": "Hard force_next to happiness_backlash — fixes never-selected reachability."
+    }
+  },
+  {
+    "id": "happiness_backlash",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "auntie_olga",
+    "category": "media",
+    "proposal": "Citizens stage a Silent Frown Protest by the index billboard. They brought signs, thermos flasks, and legally complicated faces.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["mandatory_happiness"],
+      "all_flags": ["happiness_backlash_ready"]
+    },
+    "options": [
+      {
+        "id": "negotiate_frowns",
+        "label": "Negotiate with frowners",
+        "effects": { "happiness": 5, "order": -3, "elite_loyalty": -2 },
+        "remove_flags": ["eternal_smile_active"],
+        "add_flags": ["happiness_negotiated"],
+        "advisor_affinity": { "auntie_olga": 3, "luna_news": -1 },
+        "trait_changes": { "populist": 2 },
+        "force_next_decision": "happiness_arc_resolution",
+        "result_text": "A limited frown amnesty passes. The thermos flasks are shared."
+      },
+      {
+        "id": "film_smiles",
+        "label": "Film them smiling anyway",
+        "effects": { "happiness": -6, "order": 4, "elite_loyalty": 2 },
+        "add_flags": ["happiness_filmed_over"],
+        "advisor_affinity": { "luna_news": 2, "auntie_olga": -3 },
+        "trait_changes": { "propagandist": 2, "authoritarian": 1 },
+        "crisis_actions": [
+          { "crisis_id": "mass_protest", "action": "start" }
+        ],
+        "force_next_decision": "happiness_arc_resolution",
+        "result_text": "Digital smiles in post. Trust evaporates. Sandwiches appear."
+      },
+      {
+        "id": "index_amnesty",
+        "label": "Grant index amnesty",
+        "effects": { "order": 2, "happiness": 2, "treasury": -2 },
+        "add_flags": ["happiness_index_amnesty"],
+        "advisor_affinity": { "clerk_zero": 2, "auntie_olga": 1 },
+        "trait_changes": { "bureaucratic": 2 },
+        "force_next_decision": "happiness_arc_resolution",
+        "result_text": "Forms forgive temporary sadness. The billboard blinks uncertainly."
+      }
+    ],
+    "tags": ["happiness", "arc_backlash"],
+    "visual_tags": ["frown_fine_booth"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11C",
+      "humor_tags": ["silent_frown_protest"],
+      "emotional_goal": "civic_pushback",
+      "visual_hook": "silent frown line with handmade signs",
+      "localization_risk": "low",
+      "writer_notes": "Reachability fixed via force_next from consequence + happiness_backlash_ready flag."
+    }
+  },
+  {
+    "id": "happiness_arc_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Final call on national happiness: reform for real, seal the eternal smile, or declare measured perfection.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "mandatory_happiness",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": ["mandatory_happiness"],
+      "all_flags": ["happiness_arc_live"]
+    },
+    "options": [
+      {
+        "id": "reform_real",
+        "label": "Reform for real wellbeing",
+        "effects": { "happiness": 6, "order": -2, "elite_loyalty": -3, "treasury": -3 },
+        "remove_laws": ["mandatory_smiling", "fake_smile_standard"],
+        "remove_flags": ["happiness_arc_live", "mandatory_smiling_active", "eternal_smile_active"],
+        "add_flags": ["happiness_arc_complete", "happiness_reformed"],
+        "advisor_affinity": { "auntie_olga": 3, "luna_news": -1 },
+        "trait_changes": { "populist": 2 },
+        "result_text": "Frowns are legal. Tea remains. Luna calls it brave transparency."
+      },
+      {
+        "id": "eternal_smile",
+        "label": "Seal the eternal smile",
+        "effects": { "order": 6, "happiness": -5, "elite_loyalty": 4 },
+        "add_flags": ["happiness_arc_complete", "eternal_smile_active"],
+        "remove_flags": ["happiness_arc_live"],
+        "counter_changes": { "propaganda_choices": 2 },
+        "advisor_affinity": { "luna_news": 3 },
+        "trait_changes": { "propagandist": 3, "authoritarian": 2 },
+        "trigger_ending": "eternal_smile_state",
+        "result_text": "The nation grins forever. Jaw surgeons become national heroes."
+      },
+      {
+        "id": "paper_perfect",
+        "label": "Declare measured 100%",
+        "effects": { "order": 4, "happiness": -3, "elite_loyalty": 3, "treasury": -1 },
+        "add_flags": ["happiness_arc_complete", "happiness_reaches_100_percent"],
+        "remove_flags": ["happiness_arc_live"],
+        "advisor_affinity": { "clerk_zero": 2, "luna_news": 2, "minister_penny": 1 },
+        "trait_changes": { "bureaucratic": 2, "propagandist": 2 },
+        "trigger_ending": "happiness_reaches_100_percent",
+        "result_text": "The scoreboard freezes at perfection. Streets remain complicated."
+      }
+    ],
+    "tags": ["happiness", "arc_resolution", "ending_setup"],
+    "visual_tags": ["perfect_100_scoreboard"],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "mandatory_happiness",
+      "primary_category": "media_and_propaganda",
+      "primary_stage": "escalation",
+      "batch_id": "2B-11C",
+      "humor_tags": ["three_resolutions"],
+      "emotional_goal": "closure",
+      "visual_hook": "perfect 100% scoreboard over frowning crowd",
+      "localization_risk": "low"
+    }
+  }
+]

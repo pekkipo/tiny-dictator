@@ -282,5 +282,101 @@
       "all_laws": ["form_request_form_act"],
       "all_flags": ["government_by_form_soft", "forms_run_government"]
     }
+  },
+  {
+    "id": "nation_becomes_broadcast",
+    "type": "special",
+    "priority": 91,
+    "title": "The Broadcast State",
+    "description": "Ministan became a continuous special report. Citizens lived between commercial breaks. Historians still wait for the credits.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📺",
+    "conditions": {
+      "all_flags": ["nation_becomes_broadcast", "luna_media_complete"]
+    }
+  },
+  {
+    "id": "day_everyone_stopped_believing",
+    "type": "special",
+    "priority": 90,
+    "title": "The Day Everyone Stopped Believing",
+    "description": "Official information became optional. Screens went politely blank. The nation shrugged in stereo.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📡",
+    "conditions": {
+      "all_flags": ["day_everyone_stopped_believing", "luna_media_complete"]
+    }
+  },
+  {
+    "id": "olga_peoples_cabinet",
+    "type": "special",
+    "priority": 89,
+    "title": "Olga's People's Cabinet",
+    "description": "Kitchen-table petitions became ministries. Auntie Olga brought thermos flasks to cabinet. The palace learned queue etiquette.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🫖",
+    "conditions": {
+      "all_flags": ["olga_peoples_cabinet", "olga_movement_complete"]
+    }
+  },
+  {
+    "id": "palace_hears_the_street",
+    "type": "special",
+    "priority": 88,
+    "title": "The Palace Hears the Street",
+    "description": "The ruler listened. The street answered with sandwiches and schedules. Reform arrived wearing sensible shoes.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏛️",
+    "conditions": {
+      "all_flags": ["palace_hears_the_street", "olga_movement_complete"]
+    }
+  },
+  {
+    "id": "olga_sends_you_home",
+    "type": "special",
+    "priority": 87,
+    "title": "Olga Sends You Home",
+    "description": "Auntie Olga refused the crown and suggested you try living like a neighbor. The movement stayed civic. The palace felt suddenly quiet.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏠",
+    "conditions": {
+      "all_flags": ["olga_sends_you_home", "olga_movement_complete"]
+    }
+  },
+  {
+    "id": "happiness_reaches_100_percent",
+    "type": "special",
+    "priority": 93,
+    "title": "Happiness Reaches 100%",
+    "description": "The National Happiness Index froze at perfection. Streets remained complicated. Historians filed it under measured triumph.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💯",
+    "conditions": {
+      "all_flags": ["happiness_reaches_100_percent", "happiness_arc_complete"]
+    }
+  },
+  {
+    "id": "peaceful_accidental_democracy",
+    "type": "special",
+    "priority": 85,
+    "title": "Peaceful Accidental Democracy",
+    "description": "A ceremonial form accidentally counted real preferences. Ministan celebrated with orderly queues and surprising ballots.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🗳️",
+    "conditions": {
+      "all_flags": ["peaceful_accidental_democracy", "election_arc_complete"]
+    }
+  },
+  {
+    "id": "democracy_by_administrative_error",
+    "type": "special",
+    "priority": 84,
+    "title": "Democracy by Administrative Error",
+    "description": "A void stamp arrived one day late. By then the tallies had become government. Clerk Zero filed it under unintended consequences.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📋",
+    "conditions": {
+      "all_flags": ["democracy_by_administrative_error", "election_arc_complete"]
+    }
   }
 ]

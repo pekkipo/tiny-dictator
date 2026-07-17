@@ -18,7 +18,10 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 | `arc_hyperinflation` | `hyperinflation_arc` | 2B-10 Pack A (5 cards) |
 | `arc_maybe_experimental_republic` | `doctor_maybe_arc` | partial (4 cards) |
 | `arc_cat_politics` | `cat_politics` | partial (8 cards; trim to 6 at integration) |
-| `arc_mandatory_happiness` | `mandatory_happiness` | partial (6 cards; trim to 5) |
+| `arc_mandatory_happiness` | `mandatory_happiness` | **2B-11 Pack B approved (6 cards)** |
+| `arc_luna_media_reality` | `luna_media_reality` | **2B-11 Pack B approved (6 cards)** |
+| `arc_olga_citizen_movement` | `olga_citizen_movement` | **2B-11 Pack B approved (6 cards)** |
+| `arc_fake_election_accident` | `fake_election_accident` | **2B-11 Pack B approved (6 cards)** |
 | `arc_ai_government` | `robot_government` | deferred (2 cards) |
 
 ---
@@ -60,30 +63,34 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_luna_media_reality
 
 - **Title:** The Media Becomes Reality
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-11)
+- **Target cards:** 6
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
-- **Intended stage:** escalation
-- **Premise:** Propaganda so effective that fiction replaces facts nationwide.
-- **Dependencies:** Distinct from mandatory_happiness smile cluster
-- **Likely laws:** one_headline_policy, ministry_of_memes, national_reality_show
-- **Likely endings:** nation_becomes_broadcast, day_everyone_stopped_believing, luna_makes_you_immortal
-- **Known risks:** Premise overlap with `arc_mandatory_happiness`; defer merge in 2B-11
+- **Intended stage:** establishment → escalation
+- **Premise:** Luna News becomes so powerful that announcements, entertainment, and reality merge.
+- **Dependencies:** Soft mutex with `mandatory_happiness` via exclusive_groups `media_narrative`
+- **Likely laws:** one_headline_policy, ministry_of_memes, national_reality_show, emergency_broadcast_priority
+- **Likely endings:** nation_becomes_broadcast, day_everyone_stopped_believing
+- **Known risks:** Distinct from smile cluster and short-chain media jokes
+- **Runtime mapping:** `luna_media_reality`
+- **Brief:** [2B-11_major_arc_pack_b_briefs.md](drafts/2B-11_major_arc_pack_b_briefs.md)
 
 ### arc_olga_citizen_movement
 
 - **Title:** The Citizen Movement
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-11)
+- **Target cards:** 6
 - **Primary speaker:** auntie_olga
 - **Category:** public_life
-- **Intended stage:** escalation → instability
-- **Premise:** Olga organizes practical citizens into a movement the palace cannot ignore.
-- **Dependencies:** Low happiness or failed infrastructure choices
-- **Likely laws:** official_queue_etiquette, public_compliment_quota (ironic repeal path)
+- **Intended stage:** establishment → early instability
+- **Premise:** Practical complaints become a citizen movement that can reform or refuse power.
+- **Dependencies:** Soft avoid concurrent traffic martial climax
+- **Likely laws:** queue_etiquette_law, compliment_quota_law, complaint_permit_act
 - **Likely endings:** olga_peoples_cabinet, palace_hears_the_street, olga_sends_you_home
-- **Known risks:** Protest overlap with mass_protest crisis
+- **Known risks:** Protest soft-link only; not irrational mob framing
+- **Runtime mapping:** `olga_citizen_movement`
+- **Brief:** [2B-11_major_arc_pack_b_briefs.md](drafts/2B-11_major_arc_pack_b_briefs.md)
 
 ### arc_maybe_experimental_republic
 
@@ -164,17 +171,18 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_mandatory_happiness
 
 - **Title:** Mandatory Happiness
-- **Status:** partial
-- **Target cards:** 5
+- **Status:** approved (2B-11)
+- **Target cards:** 6
 - **Primary speaker:** luna_news
 - **Category:** media_and_propaganda
 - **Intended stage:** establishment → escalation
-- **Premise:** Forced optimism industry grows until citizens snap or reform.
-- **Dependencies:** mandatory_smiling law chain
+- **Premise:** Wellbeing laws, measurement, and enforcement diverge from real happiness.
+- **Dependencies:** Soft mutex with `luna_media_reality`; absorbs deferred smile-campaign premise
 - **Likely laws:** mandatory_smiling, fake_smile_standard, national_happiness_index
 - **Likely endings:** eternal_smile_state, happiness_reaches_100_percent
-- **Known risks:** Smile cluster with standalones; trim one resolution card
+- **Known risks:** Smile cluster resolved; `happiness_backlash` reachability fixed via force_next
 - **Runtime mapping:** `mandatory_happiness`
+- **Brief:** [2B-11_major_arc_pack_b_briefs.md](drafts/2B-11_major_arc_pack_b_briefs.md)
 
 ### arc_traffic_military_control
 
@@ -254,16 +262,18 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_fake_election_accident
 
 - **Title:** Fake Election Accident
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-11)
+- **Target cards:** 6
 - **Primary speaker:** clerk_zero / chief_judge (guest)
 - **Category:** bureaucracy
-- **Intended stage:** instability
-- **Premise:** Administrative error creates accidental democracy scare.
-- **Dependencies:** chief_judge guest appearances
-- **Likely laws:** permit_for_complaints, national_filing_week
+- **Intended stage:** escalation → instability
+- **Premise:** National Filing Week preference forms accidentally become real politics.
+- **Dependencies:** Guest chief_judge; fictional only
+- **Likely laws:** national_filing_week, complaint_permit_act
 - **Likely endings:** democracy_by_administrative_error, peaceful_accidental_democracy
-- **Known risks:** Legal tone vs comedy; keep chief_judge voice solemn
+- **Known risks:** Mid-card narrative.step fields break force_next — Pack B ships without mid steps
+- **Runtime mapping:** `fake_election_accident`
+- **Brief:** [2B-11_major_arc_pack_b_briefs.md](drafts/2B-11_major_arc_pack_b_briefs.md)
 
 ### arc_international_cheese_crisis
 

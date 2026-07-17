@@ -75,7 +75,7 @@ func _test_influence_facts() -> void:
 	_check(info["repealable"], "pizza law is repealable")
 	_check(not info["ending_related"], "pizza law is not ending-related")
 
-	# mandatory_smiling can be repealed by fake_smile_industry.
+	# mandatory_smiling can be repealed by happiness_arc_resolution reform path.
 	info = LawImpactResolver.describe("mandatory_smiling", state, _repo)
 	_check(info["repealable"], "smiling law is repealable")
 
