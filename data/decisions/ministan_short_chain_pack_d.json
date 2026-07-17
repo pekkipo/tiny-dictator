@@ -2522,17 +2522,7 @@
         "remove_flags": [
           "national_nap_live"
         ],
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "recovery_national_smile_day",
-          "minimum_delay_days": 1,
-          "maximum_delay_days": 3,
-          "priority": 70,
-          "required_flags": [
-            "civic_rest_recovery"
-          ]
-        },
-        "result_text": "Morale protocols wake. Smile Day may follow if happiness stays low enough to need it."
+        "result_text": "Morale protocols wake. Smile Day recovery may appear later if happiness stays low enough to need it."
       }
     ],
     "tags": [

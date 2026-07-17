@@ -1012,5 +1012,159 @@
       "public_tour_rope"
     ],
     "category": "public_life"
+  },
+  {
+    "id": "bank_handshake_clause",
+    "display_name": "Bank Handshake Clause",
+    "short_name": "Handshake Clause",
+    "description": "International rescue loans require a notarized handshake and a decorative palace corner.",
+    "placeholder_icon": "\ud83e\udd1d",
+    "visual_tags": [
+      "bank_corner_plaque"
+    ],
+    "category": "economy"
+  },
+  {
+    "id": "emergency_stamp_tax",
+    "display_name": "Emergency Stamp Tax",
+    "short_name": "Stamp Tax",
+    "description": "Every form requires an emergency stamp. Ink is a strategic reserve.",
+    "placeholder_icon": "\ud83d\udd16",
+    "visual_tags": [
+      "stamp_tax_booth"
+    ],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "national_smile_day_act",
+    "display_name": "National Smile Day Act",
+    "short_name": "Smile Day",
+    "description": "One government-approved grin day with picnic logistics.",
+    "placeholder_icon": "\ud83d\ude0a",
+    "visual_tags": [
+      "smile_day_balloons"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "soup_line_permit",
+    "display_name": "Neighborhood Soup Line Permit",
+    "short_name": "Soup Permit",
+    "description": "Volunteer kitchens may operate under Auntie Olga's ladle charter.",
+    "placeholder_icon": "\ud83c\udf72",
+    "visual_tags": [
+      "soup_line_tables"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "temporary_parade_pause",
+    "display_name": "Temporary Parade Pause",
+    "short_name": "Parade Pause",
+    "description": "Spontaneous parades paused until streets remember how to be streets.",
+    "placeholder_icon": "\ud83d\udeab",
+    "visual_tags": [
+      "empty_parade_route"
+    ],
+    "category": "military"
+  },
+  {
+    "id": "block_captain_charter",
+    "display_name": "Block Captain Charter",
+    "short_name": "Block Captains",
+    "description": "Neighborhood captains coordinate queues, lost cats, and polite yelling.",
+    "placeholder_icon": "\ud83d\udc6b",
+    "visual_tags": [
+      "block_captain_vests"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "emergency_queue_charter",
+    "display_name": "Emergency Queue Charter",
+    "short_name": "Queue Charter",
+    "description": "Queues gain numbered tickets, shade rules, and a complaint form about the complaint form.",
+    "placeholder_icon": "\ud83d\udccb",
+    "visual_tags": [
+      "numbered_queue_tickets"
+    ],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "elite_seating_protocol",
+    "display_name": "Elite Seating Protocol",
+    "short_name": "Seating Protocol",
+    "description": "Palace dinners assign chairs by loyalty, alphabet, and suspiciously aligned forks.",
+    "placeholder_icon": "\ud83c\udf7d\ufe0f",
+    "visual_tags": [
+      "aligned_dinner_table"
+    ],
+    "category": "business"
+  },
+  {
+    "id": "cabinet_nameplate_act",
+    "display_name": "Cabinet Nameplate Act",
+    "short_name": "Nameplates",
+    "description": "Temporary titles come with engraved nameplates and shared blame footnotes.",
+    "placeholder_icon": "\ud83d\uddbc\ufe0f",
+    "visual_tags": [
+      "cabinet_nameplates"
+    ],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "controlled_audit_broadcast",
+    "display_name": "Controlled Audit Broadcast",
+    "short_name": "Audit Show",
+    "description": "Anti-corruption theater airs on a delay, with carefully uninteresting binders.",
+    "placeholder_icon": "\ud83d\udcfa",
+    "visual_tags": [
+      "audit_broadcast_set"
+    ],
+    "category": "media"
+  },
+  {
+    "id": "civic_half_day_act",
+    "display_name": "Civic Half-Day Act",
+    "short_name": "Half Day",
+    "description": "One afternoon off for errands, naps, and not inventing new crises.",
+    "placeholder_icon": "\u23f0",
+    "visual_tags": [
+      "half_day_clock"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "quiet_hours_charter",
+    "display_name": "Quiet Hours Charter",
+    "short_name": "Quiet Hours",
+    "description": "Endgame silence windows for streets, tanks, and ambitious brass bands.",
+    "placeholder_icon": "\ud83d\udd07",
+    "visual_tags": [
+      "quiet_hours_signs"
+    ],
+    "category": "bureaucracy"
+  },
+  {
+    "id": "prestige_fountain_act",
+    "display_name": "Prestige Fountain Act",
+    "short_name": "Prestige Fountain",
+    "description": "A fountain that sprays compliments toward the donor balcony.",
+    "placeholder_icon": "\ud83d\udca7",
+    "visual_tags": [
+      "prestige_fountain"
+    ],
+    "category": "business"
+  },
+  {
+    "id": "title_lottery_edict",
+    "display_name": "Courtesy Title Lottery",
+    "short_name": "Title Lottery",
+    "description": "Elites may win temporary titles. Soup spoons not included.",
+    "placeholder_icon": "\ud83c\udfc6",
+    "visual_tags": [
+      "title_lottery_drum"
+    ],
+    "category": "business"
   }
 ]

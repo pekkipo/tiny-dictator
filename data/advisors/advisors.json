@@ -89,5 +89,14 @@
     "placeholder_icon": "\ud83c\udf73",
     "accent_key": "public_life",
     "guest": true
+  },
+  {
+    "id": "workers_union_leader",
+    "display_name": "Workers Union Leader",
+    "role": "Guest Labor Delegate",
+    "short_description": "Speaks for shifts, breaks, and the dignity of practical fixes. No affinity meter.",
+    "placeholder_icon": "\ud83d\udcaa",
+    "accent_key": "public",
+    "guest": true
   }
 ]

@@ -185,6 +185,10 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 		# Crisis cards (especially resolution siblings) may miss a 1k sample.
 		if str(decision.get("card_type", "")) == "crisis":
 			allowed_never.append(id)
+		# Recovery cards are resource-gated; a 1k sample can miss rare targets.
+		# Reachability is enforced by Milestone 2B-15 5k sims instead.
+		if str(decision.get("card_type", "")) == "recovery":
+			allowed_never.append(id)
 	var unexpected_never: Array[String] = []
 	for id in never_selected:
 		if id not in allowed_never:

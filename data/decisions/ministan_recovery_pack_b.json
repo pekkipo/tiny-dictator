@@ -1,0 +1,1158 @@
+[
+	{
+		"id": "recovery_foreign_picnic_grant",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "foreign_ambassador",
+		"category": "economy",
+		"proposal": "Tinyria offers a picnic grant: blankets, baskets, and a treaty clause in the napkin fold. The money is real. The strings are polite.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 8,
+		"maximum_day": 27,
+		"pacing": {
+			"allowed_stages": ["escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"treasury": 35
+			}
+		},
+		"options": [
+			{
+				"id": "accept_grant",
+				"label": "Accept the picnic grant",
+				"effects": {
+					"treasury": 15,
+					"elite_loyalty": -4,
+					"happiness": 2,
+					"order": -2
+				},
+				"advisor_affinity": {
+					"minister_penny": 1,
+					"sir_profit": -1
+				},
+				"trait_changes": {
+					"populist": 1
+				},
+				"add_flags": ["recovery_picnic_grant", "ending_nudge_foreign_strings"],
+				"follow_up": {
+					"type": "soft",
+					"decision_id": "recovery_grant_strings",
+					"minimum_delay_days": 3,
+					"maximum_delay_days": 6,
+					"priority": 70
+				},
+				"result_text": "Baskets arrive. The napkin unfolds into a mild obligation."
+			},
+			{
+				"id": "partial_baskets",
+				"label": "Take baskets, skip treaty",
+				"effects": {
+					"treasury": 8,
+					"happiness": 1,
+					"elite_loyalty": -2
+				},
+				"add_flags": ["recovery_picnic_partial"],
+				"result_text": "Fruit arrives without footnotes. Diplomats look underfed of leverage."
+			},
+			{
+				"id": "refuse_grant",
+				"label": "Refuse politely",
+				"effects": {
+					"elite_loyalty": 3,
+					"treasury": -2,
+					"happiness": -1
+				},
+				"trait_changes": {
+					"authoritarian": 1
+				},
+				"add_flags": ["recovery_picnic_refused"],
+				"result_text": "Sovereignty remains snack-free. Tinyria packs the mustard."
+			}
+		],
+		"tags": ["recovery", "economy", "treasury_recovery", "guest"],
+		"visual_tags": ["picnic_grant_baskets", "napkin_treaty"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "treasury",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_grant_strings",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "consequence",
+		"queue_only": true,
+		"advisor_id": "foreign_ambassador",
+		"category": "economy",
+		"proposal": "The picnic grant's napkin clause is due: a cultural exchange day, or a polite refund with interest in fruit.",
+		"one_time": true,
+		"base_weight": 1,
+		"requirements": {
+			"all_flags": ["recovery_picnic_grant"]
+		},
+		"options": [
+			{
+				"id": "host_exchange",
+				"label": "Host the exchange day",
+				"effects": {
+					"treasury": -6,
+					"happiness": 2,
+					"order": -2
+				},
+				"add_flags": ["recovery_grant_honored"],
+				"remove_flags": ["recovery_picnic_grant"],
+				"result_text": "Tinyria dances in the square. The ledger winces on schedule."
+			},
+			{
+				"id": "refund_fruit",
+				"label": "Refund in fruit interest",
+				"effects": {
+					"treasury": -9,
+					"elite_loyalty": -2,
+					"happiness": -1
+				},
+				"add_flags": ["recovery_grant_refunded"],
+				"remove_flags": ["recovery_picnic_grant"],
+				"result_text": "Oranges leave the vault. Diplomacy tastes citrusy and expensive."
+			}
+		],
+		"tags": ["consequence", "recovery_delay", "economy"],
+		"visual_tags": ["napkin_clause_due"]
+	},
+	{
+		"id": "recovery_austerity_clipboards",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "minister_penny",
+		"category": "economy",
+		"proposal": "Penny unveils clipboard austerity: freeze decorative spending, count paperclips, and reclaim three mystery budgets hiding behind plants.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 6,
+		"maximum_day": 27,
+		"pacing": {
+			"allowed_stages": ["escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"treasury": 35
+			},
+			"minimum_advisor_affinity": {
+				"minister_penny": 0
+			}
+		},
+		"options": [
+			{
+				"id": "full_clipboard_cuts",
+				"label": "Full clipboard cuts",
+				"effects": {
+					"treasury": 14,
+					"happiness": -6,
+					"elite_loyalty": -3
+				},
+				"advisor_affinity": {
+					"minister_penny": 2,
+					"auntie_olga": -1
+				},
+				"trait_changes": {
+					"bureaucratic": 1
+				},
+				"add_laws": ["emergency_efficiency_act"],
+				"add_flags": ["recovery_clipboard_austerity", "penny_austerity_recovery_available"],
+				"result_text": "Mystery budgets surface. Citizens miss the decorative plants."
+			},
+			{
+				"id": "soft_paperclip_audit",
+				"label": "Paperclip audit only",
+				"effects": {
+					"treasury": 8,
+					"happiness": -2,
+					"order": 1
+				},
+				"advisor_affinity": {
+					"minister_penny": 1,
+					"clerk_zero": 1
+				},
+				"add_flags": ["recovery_paperclip_audit"],
+				"result_text": "Paperclips are counted twice. The Treasury nods once."
+			},
+			{
+				"id": "reject_cuts",
+				"label": "Keep the plants",
+				"effects": {
+					"happiness": 3,
+					"treasury": -3,
+					"elite_loyalty": 1
+				},
+				"advisor_affinity": {
+					"minister_penny": -2
+				},
+				"result_text": "Plants remain. Clipboards sulk in a drawer labeled Later."
+			}
+		],
+		"tags": ["recovery", "economy", "treasury_recovery", "arc_link"],
+		"visual_tags": ["austerity_clipboards", "mystery_budget_plants"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "treasury",
+			"batch_id": "2B-15B",
+			"quality_score": 16
+		}
+	},
+	{
+		"id": "recovery_maybe_miracle_bond",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "doctor_maybe",
+		"category": "science_and_technology",
+		"proposal": "Endgame cash is thin. Maybe proposes a Miracle Bond: investors fund experiments that might print money, or polite smoke.",
+		"one_time": true,
+		"base_weight": 11,
+		"minimum_day": 17,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"treasury": 40
+			}
+		},
+		"options": [
+			{
+				"id": "issue_miracle_bond",
+				"label": "Issue Miracle Bonds",
+				"effects": {
+					"treasury": 16,
+					"order": -4,
+					"elite_loyalty": 2,
+					"happiness": -2
+				},
+				"advisor_affinity": {
+					"doctor_maybe": 2,
+					"minister_penny": -1
+				},
+				"trait_changes": {
+					"scientific": 2,
+					"chaotic": 1
+				},
+				"add_flags": ["recovery_miracle_bond", "science_recovery_soft", "ending_nudge_experiment"],
+				"result_text": "Bonds sell. The lab hums. Accounting files a hopeful shrug."
+			},
+			{
+				"id": "pilot_bond",
+				"label": "Pilot a tiny bond",
+				"effects": {
+					"treasury": 9,
+					"order": -2,
+					"happiness": -1
+				},
+				"advisor_affinity": {
+					"doctor_maybe": 1
+				},
+				"add_flags": ["recovery_miracle_pilot"],
+				"result_text": "A small bond. A small hum. A medium-sized maybe."
+			},
+			{
+				"id": "refuse_bond",
+				"label": "No miracle finance",
+				"effects": {
+					"order": 2,
+					"treasury": -2,
+					"elite_loyalty": -2
+				},
+				"advisor_affinity": {
+					"doctor_maybe": -2,
+					"minister_penny": 1
+				},
+				"result_text": "Finance stays boring. Maybe sketches miracles in the margins."
+			}
+		],
+		"tags": ["recovery", "science", "treasury_recovery", "endgame"],
+		"visual_tags": ["miracle_bond_ticker", "hopeful_lab_hum"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "treasury",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_workers_shift_relief",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "workers_union_leader",
+		"category": "public_life",
+		"proposal": "The Workers Union Leader demands shift relief: real breaks, shorter lines at clocks, and tea that is not a rumor.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 8,
+		"maximum_day": 27,
+		"pacing": {
+			"allowed_stages": ["escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"happiness": 35
+			}
+		},
+		"options": [
+			{
+				"id": "fund_breaks",
+				"label": "Fund real breaks",
+				"effects": {
+					"happiness": 14,
+					"treasury": -8,
+					"elite_loyalty": -3,
+					"order": 1
+				},
+				"advisor_affinity": {
+					"auntie_olga": 2,
+					"sir_profit": -2
+				},
+				"trait_changes": {
+					"populist": 2
+				},
+				"add_flags": ["recovery_shift_relief", "ending_nudge_labor"],
+				"result_text": "Clocks soften. Tea appears. Productivity becomes controversially human."
+			},
+			{
+				"id": "stagger_shifts",
+				"label": "Stagger shifts only",
+				"effects": {
+					"happiness": 9,
+					"treasury": -3,
+					"order": 2
+				},
+				"advisor_affinity": {
+					"auntie_olga": 1,
+					"clerk_zero": 1
+				},
+				"add_flags": ["recovery_staggered_shifts"],
+				"result_text": "Shifts weave. Crowding thins. The union calls it a start."
+			},
+			{
+				"id": "refuse_relief",
+				"label": "Keep the rumor tea",
+				"effects": {
+					"elite_loyalty": 3,
+					"happiness": -4,
+					"order": -2
+				},
+				"advisor_affinity": {
+					"sir_profit": 1
+				},
+				"result_text": "Breaks remain theoretical. Morale files a practical complaint."
+			}
+		],
+		"tags": ["recovery", "public_life", "happiness_recovery", "guest"],
+		"visual_tags": ["shift_break_tea", "softer_clocks"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "happiness",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_civic_half_day",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "clerk_zero",
+		"category": "bureaucracy",
+		"proposal": "Clerk Zero proposes a Civic Half-Day Act: one afternoon for errands, naps, and not inventing new forms. Morale math is attached.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 5,
+		"maximum_day": 27,
+		"pacing": {
+			"allowed_stages": ["establishment", "escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"happiness": 35
+			},
+			"minimum_advisor_affinity": {
+				"clerk_zero": -2
+			}
+		},
+		"options": [
+			{
+				"id": "enact_half_day",
+				"label": "Enact half-day",
+				"effects": {
+					"happiness": 13,
+					"treasury": -5,
+					"order": -3,
+					"elite_loyalty": -2
+				},
+				"advisor_affinity": {
+					"clerk_zero": 2,
+					"auntie_olga": 1,
+					"sir_profit": -1
+				},
+				"trait_changes": {
+					"bureaucratic": 1,
+					"populist": 1
+				},
+				"add_laws": ["civic_half_day_act"],
+				"add_flags": ["recovery_half_day"],
+				"result_text": "Afternoon becomes civic. Forms wait until tomorrow without collapsing."
+			},
+			{
+				"id": "half_day_once",
+				"label": "One-time half day",
+				"effects": {
+					"happiness": 8,
+					"treasury": -2,
+					"order": -1
+				},
+				"advisor_affinity": {
+					"clerk_zero": 1
+				},
+				"add_flags": ["recovery_half_day_once"],
+				"result_text": "One afternoon of mercy. Expectations remain cautiously low."
+			},
+			{
+				"id": "no_half_day",
+				"label": "Full days forever",
+				"effects": {
+					"order": 2,
+					"happiness": -3,
+					"elite_loyalty": 2
+				},
+				"advisor_affinity": {
+					"clerk_zero": -1
+				},
+				"result_text": "Clocks stay stern. Morale invents unofficial half-days anyway."
+			}
+		],
+		"tags": ["recovery", "bureaucracy", "happiness_recovery"],
+		"visual_tags": ["half_day_clock", "errand_afternoon"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "happiness",
+			"batch_id": "2B-15B",
+			"quality_score": 16
+		}
+	},
+	{
+		"id": "recovery_endgame_hope_reel",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "luna_news",
+		"category": "media_and_propaganda",
+		"proposal": "Endgame morale wobbles. Luna has a Hope Reel: soft lighting, brave montages, and a voiceover that almost believes itself.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 17,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"happiness": 40
+			}
+		},
+		"options": [
+			{
+				"id": "broadcast_hope",
+				"label": "Broadcast the Hope Reel",
+				"effects": {
+					"happiness": 15,
+					"treasury": -6,
+					"order": -2
+				},
+				"advisor_affinity": {
+					"luna_news": 2,
+					"minister_penny": -1
+				},
+				"trait_changes": {
+					"propagandist": 2
+				},
+				"add_flags": ["recovery_hope_reel", "ending_nudge_media_trust"],
+				"follow_up": {
+					"type": "soft",
+					"decision_id": "recovery_hope_hangover",
+					"minimum_delay_days": 2,
+					"maximum_delay_days": 4,
+					"priority": 72
+				},
+				"result_text": "The nation sniffles on cue. Hope trends for forty-eight carefully lit hours."
+			},
+			{
+				"id": "quiet_montage",
+				"label": "Quiet local montage",
+				"effects": {
+					"happiness": 9,
+					"treasury": -3
+				},
+				"advisor_affinity": {
+					"luna_news": 1,
+					"auntie_olga": 1
+				},
+				"add_flags": ["recovery_quiet_montage"],
+				"result_text": "Neighborhood clips air. No orchestra. Still oddly moving."
+			},
+			{
+				"id": "skip_reel",
+				"label": "Skip the reel",
+				"effects": {
+					"order": 2,
+					"happiness": -2,
+					"elite_loyalty": 1
+				},
+				"advisor_affinity": {
+					"luna_news": -2
+				},
+				"result_text": "No montage. Reality remains unedited and slightly rude."
+			}
+		],
+		"tags": ["recovery", "media", "happiness_recovery", "endgame"],
+		"visual_tags": ["hope_reel_broadcast", "soft_lighting_plaza"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "happiness",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_hope_hangover",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "consequence",
+		"queue_only": true,
+		"advisor_id": "luna_news",
+		"category": "media_and_propaganda",
+		"proposal": "Hope Reel hangover: citizens want a sequel. Luna has B-roll and a budget request shaped like a tear.",
+		"one_time": true,
+		"base_weight": 1,
+		"requirements": {
+			"all_flags": ["recovery_hope_reel"]
+		},
+		"options": [
+			{
+				"id": "sequel_budget",
+				"label": "Fund a sequel",
+				"effects": {
+					"happiness": 2,
+					"treasury": -8,
+					"order": -2
+				},
+				"advisor_affinity": {
+					"luna_news": 1
+				},
+				"add_flags": ["recovery_hope_sequel"],
+				"remove_flags": ["recovery_hope_reel"],
+				"result_text": "Sequel greenlit. Expectations enroll in advanced classes."
+			},
+			{
+				"id": "end_on_a_high",
+				"label": "End on a high note",
+				"effects": {
+					"happiness": -5,
+					"order": 2,
+					"treasury": 1
+				},
+				"advisor_affinity": {
+					"luna_news": -1,
+					"auntie_olga": 1
+				},
+				"trait_changes": {
+					"populist": 1
+				},
+				"add_flags": ["recovery_hope_ended"],
+				"remove_flags": ["recovery_hope_reel"],
+				"result_text": "The credits roll. Sniffles become ordinary again."
+			}
+		],
+		"tags": ["consequence", "recovery_delay", "media"],
+		"visual_tags": ["hope_sequel_pitch"]
+	},
+	{
+		"id": "recovery_whiskers_alley_truce",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "comrade_whiskers",
+		"category": "cats_and_animals",
+		"proposal": "Whiskers offers an alley truce: fish shares, warm ledges, and fewer midnight standoffs. Order without tanks. Mostly.",
+		"one_time": true,
+		"base_weight": 16,
+		"minimum_day": 4,
+		"maximum_day": 32,
+		"pacing": {
+			"allowed_stages": ["establishment", "escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"order": 45
+			}
+		},
+		"options": [
+			{
+				"id": "sign_alley_truce",
+				"label": "Sign the alley truce",
+				"effects": {
+					"order": 13,
+					"treasury": -5,
+					"happiness": 3,
+					"elite_loyalty": -3
+				},
+				"advisor_affinity": {
+					"comrade_whiskers": 2,
+					"general_boom": -1
+				},
+				"trait_changes": {
+					"cat_friendly": 2
+				},
+				"add_laws": ["fish_emergency_reserve"],
+				"add_flags": ["recovery_alley_truce", "ending_nudge_cat_republic"],
+				"result_text": "Alleys quiet. Fish circulate. Tanks look unemployed and thoughtful."
+			},
+			{
+				"id": "ledge_pilot",
+				"label": "Warm ledges pilot",
+				"effects": {
+					"order": 8,
+					"treasury": -2,
+					"happiness": 1
+				},
+				"advisor_affinity": {
+					"comrade_whiskers": 1
+				},
+				"trait_changes": {
+					"cat_friendly": 1
+				},
+				"add_flags": ["recovery_ledge_pilot"],
+				"result_text": "Three ledges warm. Night noise drops one decibel of dignity."
+			},
+			{
+				"id": "refuse_truce",
+				"label": "No fish diplomacy",
+				"effects": {
+					"elite_loyalty": 2,
+					"order": -4,
+					"happiness": -2
+				},
+				"advisor_affinity": {
+					"comrade_whiskers": -2,
+					"general_boom": 1
+				},
+				"result_text": "Alleys remain loud. Whiskers files a courteous hiss."
+			}
+		],
+		"tags": ["recovery", "cats", "order_recovery"],
+		"visual_tags": ["alley_truce_fish", "warm_ledges"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "order",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_boom_cone_grid",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "general_boom",
+		"category": "military_and_order",
+		"proposal": "Boom proposes a national cone grid: temporary lanes, water trucks, and soldiers directing traffic like extremely serious crossing guards.",
+		"one_time": true,
+		"base_weight": 16,
+		"minimum_day": 4,
+		"maximum_day": 30,
+		"pacing": {
+			"allowed_stages": ["establishment", "escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"order": 45
+			}
+		},
+		"options": [
+			{
+				"id": "deploy_cone_grid",
+				"label": "Deploy the cone grid",
+				"effects": {
+					"order": 14,
+					"treasury": -7,
+					"happiness": -2,
+					"elite_loyalty": 1
+				},
+				"advisor_affinity": {
+					"general_boom": 2,
+					"auntie_olga": 1
+				},
+				"trait_changes": {
+					"authoritarian": 1
+				},
+				"add_flags": ["recovery_cone_grid"],
+				"follow_up": {
+					"type": "soft",
+					"decision_id": "recovery_cone_gridlock",
+					"minimum_delay_days": 2,
+					"maximum_delay_days": 5,
+					"priority": 68
+				},
+				"result_text": "Cones bloom. Traffic obeys. Boom salutes a hydrant with dignity."
+			},
+			{
+				"id": "cones_downtown_only",
+				"label": "Downtown cones only",
+				"effects": {
+					"order": 9,
+					"treasury": -3,
+					"happiness": 1
+				},
+				"advisor_affinity": {
+					"general_boom": 1
+				},
+				"add_flags": ["recovery_cones_downtown"],
+				"result_text": "Downtown breathes. Suburbs invent their own cones from laundry baskets."
+			},
+			{
+				"id": "no_cones",
+				"label": "No cone theater",
+				"effects": {
+					"happiness": 2,
+					"order": -3,
+					"elite_loyalty": -1
+				},
+				"advisor_affinity": {
+					"general_boom": -1
+				},
+				"result_text": "Cones stay stacked. Chaos keeps its commute."
+			}
+		],
+		"tags": ["recovery", "order", "order_recovery", "infrastructure"],
+		"visual_tags": ["national_cone_grid", "serious_crossing_guards"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "order",
+			"batch_id": "2B-15B",
+			"quality_score": 16
+		}
+	},
+	{
+		"id": "recovery_cone_gridlock",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "consequence",
+		"queue_only": true,
+		"advisor_id": "general_boom",
+		"category": "military_and_order",
+		"proposal": "The cone grid worked too well. Now cones outnumber destinations. Boom wants a drawdown or a cone parade.",
+		"one_time": true,
+		"base_weight": 1,
+		"requirements": {
+			"all_flags": ["recovery_cone_grid"]
+		},
+		"options": [
+			{
+				"id": "drawdown_cones",
+				"label": "Draw down cones",
+				"effects": {
+					"order": -3,
+					"happiness": 2,
+					"treasury": 2
+				},
+				"advisor_affinity": {
+					"general_boom": 1,
+					"auntie_olga": 1
+				},
+				"add_flags": ["recovery_cones_drawn_down"],
+				"remove_flags": ["recovery_cone_grid"],
+				"result_text": "Cones retreat. Streets remember freestyle again."
+			},
+			{
+				"id": "cone_parade",
+				"label": "Authorize cone parade",
+				"effects": {
+					"order": 2,
+					"happiness": -3,
+					"elite_loyalty": 2,
+					"treasury": -3
+				},
+				"advisor_affinity": {
+					"general_boom": 2
+				},
+				"trait_changes": {
+					"authoritarian": 1
+				},
+				"add_flags": ["recovery_cone_parade"],
+				"remove_flags": ["recovery_cone_grid"],
+				"result_text": "Cones march. History refuses to explain this clearly."
+			}
+		],
+		"tags": ["consequence", "recovery_delay", "order"],
+		"visual_tags": ["cone_drawdown"]
+	},
+	{
+		"id": "recovery_endgame_quiet_hours",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "chief_judge",
+		"category": "bureaucracy",
+		"proposal": "The Chief Judge proposes Quiet Hours: endgame silence windows for streets, tanks, and ambitious brass. Freedom files a polite dissent.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 17,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"order": 40
+			}
+		},
+		"options": [
+			{
+				"id": "enact_quiet_hours",
+				"label": "Enact Quiet Hours",
+				"effects": {
+					"order": 15,
+					"happiness": -6,
+					"elite_loyalty": -2,
+					"treasury": -2
+				},
+				"advisor_affinity": {
+					"general_boom": 1,
+					"auntie_olga": -1
+				},
+				"trait_changes": {
+					"bureaucratic": 1,
+					"authoritarian": 1
+				},
+				"add_laws": ["quiet_hours_charter"],
+				"add_flags": ["recovery_quiet_hours", "ending_nudge_authoritarian"],
+				"result_text": "Silence windows open. Brass bands consult the statute. Freedom mutters."
+			},
+			{
+				"id": "soft_quiet_blocks",
+				"label": "Soft quiet blocks only",
+				"effects": {
+					"order": 9,
+					"happiness": -2,
+					"treasury": -1
+				},
+				"add_flags": ["recovery_soft_quiet"],
+				"result_text": "A few blocks hush. The rest whisper at a legal volume."
+			},
+			{
+				"id": "reject_quiet",
+				"label": "Reject quiet hours",
+				"effects": {
+					"happiness": 3,
+					"order": -4,
+					"elite_loyalty": 1
+				},
+				"trait_changes": {
+					"populist": 1
+				},
+				"add_flags": ["recovery_quiet_rejected"],
+				"result_text": "Noise remains a civic right. Order remains a civic problem."
+			}
+		],
+		"tags": ["recovery", "bureaucracy", "order_recovery", "endgame", "guest"],
+		"visual_tags": ["quiet_hours_signs", "silent_brass"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "order",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_prestige_fountain",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "sir_profit",
+		"category": "business_and_privatization",
+		"proposal": "Sir Profit pitches a Prestige Fountain that sprays compliments toward the donor balcony. Elites soften when damp with praise.",
+		"one_time": true,
+		"base_weight": 15,
+		"minimum_day": 4,
+		"maximum_day": 30,
+		"pacing": {
+			"allowed_stages": ["establishment", "escalation", "instability"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"elite_loyalty": 45
+			}
+		},
+		"options": [
+			{
+				"id": "build_fountain",
+				"label": "Build the fountain",
+				"effects": {
+					"elite_loyalty": 14,
+					"treasury": -10,
+					"happiness": -4
+				},
+				"advisor_affinity": {
+					"sir_profit": 2,
+					"auntie_olga": -2
+				},
+				"trait_changes": {
+					"capitalist": 2
+				},
+				"add_laws": ["prestige_fountain_act"],
+				"add_flags": ["recovery_prestige_fountain", "ending_nudge_palace_empty"],
+				"result_text": "Compliments arc through sunlight. Citizens invent umbrellas of skepticism."
+			},
+			{
+				"id": "rental_fountain",
+				"label": "Rent a temporary fountain",
+				"effects": {
+					"elite_loyalty": 9,
+					"treasury": -5,
+					"happiness": -2
+				},
+				"advisor_affinity": {
+					"sir_profit": 1
+				},
+				"add_flags": ["recovery_rental_fountain"],
+				"result_text": "A rented plume. Loyalty improves on a lease."
+			},
+			{
+				"id": "no_fountain",
+				"label": "No fountain",
+				"effects": {
+					"happiness": 2,
+					"elite_loyalty": -4
+				},
+				"advisor_affinity": {
+					"sir_profit": -2
+				},
+				"result_text": "The square stays dry. Elites stay thirsty for spectacle."
+			}
+		],
+		"tags": ["recovery", "business", "elite_recovery"],
+		"visual_tags": ["prestige_fountain", "donor_balcony"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "elite_loyalty",
+			"batch_id": "2B-15B",
+			"quality_score": 16
+		}
+	},
+	{
+		"id": "recovery_shared_blame_board",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "luna_news",
+		"category": "media_and_propaganda",
+		"proposal": "Luna proposes a Shared Blame Board: elites get airtime to apologize collectively for everything, including weather.",
+		"one_time": true,
+		"base_weight": 16,
+		"minimum_day": 6,
+		"maximum_day": 30,
+		"pacing": {
+			"allowed_stages": ["escalation", "instability", "endgame"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"elite_loyalty": 45
+			}
+		},
+		"options": [
+			{
+				"id": "launch_blame_board",
+				"label": "Launch Blame Board",
+				"effects": {
+					"elite_loyalty": 12,
+					"happiness": 2,
+					"order": -3,
+					"treasury": -4
+				},
+				"advisor_affinity": {
+					"luna_news": 2,
+					"sir_profit": 1
+				},
+				"trait_changes": {
+					"propagandist": 1
+				},
+				"add_flags": ["recovery_blame_board", "ending_nudge_media_trust", "panic_open_briefing"],
+				"result_text": "Elites apologize in harmony. The weather remains unmoved but flattered."
+			},
+			{
+				"id": "private_blame_circle",
+				"label": "Private blame circle",
+				"effects": {
+					"elite_loyalty": 8,
+					"treasury": -2,
+					"happiness": -1
+				},
+				"advisor_affinity": {
+					"luna_news": 1,
+					"sir_profit": 1
+				},
+				"add_flags": ["recovery_private_blame"],
+				"result_text": "No cameras. Many sighs. Loyalty recovers in a soundproof room."
+			},
+			{
+				"id": "skip_blame",
+				"label": "Skip shared blame",
+				"effects": {
+					"happiness": 1,
+					"elite_loyalty": -4,
+					"order": 1
+				},
+				"advisor_affinity": {
+					"luna_news": -1
+				},
+				"result_text": "Blame stays unshared. Elites practice solo responsibility poorly."
+			}
+		],
+		"tags": ["recovery", "media", "elite_recovery", "crisis_link"],
+		"visual_tags": ["shared_blame_board", "collective_apology"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "elite_loyalty",
+			"batch_id": "2B-15B",
+			"quality_score": 16
+		}
+	},
+	{
+		"id": "recovery_endgame_title_lottery",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "recovery",
+		"advisor_id": "palace_chef",
+		"category": "public_life",
+		"proposal": "The Palace Chef proposes an endgame Title Lottery dinner: temporary titles drawn from a soup drum, served with dignity and dessert politics.",
+		"one_time": true,
+		"base_weight": 11,
+		"minimum_day": 17,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"maximum_resources": {
+				"elite_loyalty": 40
+			}
+		},
+		"options": [
+			{
+				"id": "run_title_lottery",
+				"label": "Run the title lottery",
+				"effects": {
+					"elite_loyalty": 14,
+					"treasury": -8,
+					"happiness": -3,
+					"order": -1
+				},
+				"advisor_affinity": {
+					"sir_profit": 1,
+					"auntie_olga": -1
+				},
+				"trait_changes": {
+					"chaotic": 1,
+					"capitalist": 1
+				},
+				"add_laws": ["title_lottery_edict"],
+				"add_flags": ["recovery_title_lottery", "ending_nudge_elite_spectacle"],
+				"follow_up": {
+					"type": "soft",
+					"decision_id": "recovery_title_grudge",
+					"minimum_delay_days": 2,
+					"maximum_delay_days": 4,
+					"priority": 70
+				},
+				"result_text": "Titles splash from the drum. Dessert becomes a ranking system."
+			},
+			{
+				"id": "kitchen_honors_only",
+				"label": "Kitchen honors only",
+				"effects": {
+					"elite_loyalty": 8,
+					"treasury": -3,
+					"happiness": 1
+				},
+				"add_flags": ["recovery_kitchen_honors"],
+				"result_text": "Aprons become medals. Elites accept with surprising solemnity."
+			},
+			{
+				"id": "cancel_lottery",
+				"label": "Cancel the lottery",
+				"effects": {
+					"happiness": 2,
+					"elite_loyalty": -5
+				},
+				"result_text": "The drum stays shut. Ambition goes hungry in formal wear."
+			}
+		],
+		"tags": ["recovery", "elite", "elite_recovery", "endgame", "guest"],
+		"visual_tags": ["title_lottery_drum", "dessert_politics"],
+		"authoring": {
+			"primary_content_class": "recovery",
+			"primary_recovery_target": "elite_loyalty",
+			"batch_id": "2B-15B",
+			"quality_score": 17
+		}
+	},
+	{
+		"id": "recovery_title_grudge",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "consequence",
+		"queue_only": true,
+		"advisor_id": "palace_chef",
+		"category": "public_life",
+		"proposal": "Title Lottery fallout: losers demand recounts, winners demand second desserts, and the drum is now politically radioactive.",
+		"one_time": true,
+		"base_weight": 1,
+		"requirements": {
+			"all_flags": ["recovery_title_lottery"]
+		},
+		"options": [
+			{
+				"id": "second_drawing",
+				"label": "Hold a consolation drawing",
+				"effects": {
+					"elite_loyalty": 2,
+					"treasury": -5,
+					"happiness": -2
+				},
+				"add_flags": ["recovery_title_consolation"],
+				"remove_flags": ["recovery_title_lottery"],
+				"result_text": "Consolation titles appear. The drum sighs."
+			},
+			{
+				"id": "retire_drum",
+				"label": "Retire the drum",
+				"effects": {
+					"elite_loyalty": -4,
+					"happiness": 2,
+					"order": 2
+				},
+				"remove_laws": ["title_lottery_edict"],
+				"add_flags": ["recovery_title_retired"],
+				"remove_flags": ["recovery_title_lottery"],
+				"result_text": "The drum enters a museum. Ambition sulks without soup spoons."
+			}
+		],
+		"tags": ["consequence", "recovery_delay", "elite"],
+		"visual_tags": ["radioactive_soup_drum"]
+	}
+]

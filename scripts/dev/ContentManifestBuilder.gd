@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_14_crisis_content_pack"
-const BATCH_ID: String = "2B-14"
-const DECISION_BATCH_ID: String = "2B-14"
+const PHASE: String = "2b_15_recovery_content_pack"
+const BATCH_ID: String = "2B-15"
+const DECISION_BATCH_ID: String = "2B-15"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -379,10 +379,20 @@ const APPROVED_CRISIS_DEFINITION_IDS: Array[String] = [
 	"national_festival_stampede",
 ]
 
+const APPROVED_RECOVERY_DECISION_IDS: Array[String] = [
+	"recovery_international_bank", "recovery_sell_palace_wing", "recovery_emergency_stamp_tax",
+	"recovery_national_smile_day", "recovery_olga_soup_line", "recovery_maybe_mood_pilot",
+	"recovery_martial_law_pause", "recovery_olga_block_captains", "recovery_zero_queue_charter",
+	"recovery_elite_dinner", "recovery_cabinet_nameplates", "recovery_controlled_audit_show",
+	"recovery_foreign_picnic_grant", "recovery_austerity_clipboards", "recovery_maybe_miracle_bond",
+	"recovery_workers_shift_relief", "recovery_civic_half_day", "recovery_endgame_hope_reel",
+	"recovery_whiskers_alley_truce", "recovery_boom_cone_grid", "recovery_endgame_quiet_hours",
+	"recovery_prestige_fountain", "recovery_shared_blame_board", "recovery_endgame_title_lottery",
+]
+
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
-	"recovery_international_bank", "recovery_national_smile_day", "endgame_legacy_statue",
-	"recovery_martial_law_pause",
-	"recovery_elite_dinner", "endgame_succession_debate", "endgame_final_audit",
+	"endgame_legacy_statue",
+	"endgame_succession_debate", "endgame_final_audit",
 	"routine_form_inventory",
 ]
 
@@ -849,6 +859,9 @@ func _resolve_status(
 	if id in APPROVED_CRISIS_DECISION_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in APPROVED_RECOVERY_DECISION_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -885,6 +898,8 @@ func _manual_test_status(id: String, primary_class: String, arc_id: Variant) -> 
 	if id in MANUAL_TEST_DECISION_IDS:
 		return "pass"
 	if id in APPROVED_CRISIS_DECISION_IDS:
+		return "pass"
+	if id in APPROVED_RECOVERY_DECISION_IDS:
 		return "pass"
 	if str(arc_id) in MAJOR_ARC_IDS:
 		return "partial"
@@ -937,6 +952,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-13 approved major-arc card.")
 	if id in APPROVED_CRISIS_DECISION_IDS:
 		notes.append("Milestone 2B-14 approved crisis card.")
+	if id in APPROVED_RECOVERY_DECISION_IDS:
+		notes.append("Milestone 2B-15 approved recovery card.")
 	return ", ".join(notes)
 
 
@@ -1123,6 +1140,16 @@ func _source_file_hint(id: String) -> String:
 		]:
 			return "data/decisions/ministan_crisis_pack_b.json"
 		return "data/decisions/ministan_crisis_pack_a.json"
+	if id in APPROVED_RECOVERY_DECISION_IDS or id.begins_with("recovery_"):
+		if id in [
+			"recovery_foreign_picnic_grant", "recovery_austerity_clipboards", "recovery_maybe_miracle_bond",
+			"recovery_workers_shift_relief", "recovery_civic_half_day", "recovery_endgame_hope_reel",
+			"recovery_whiskers_alley_truce", "recovery_boom_cone_grid", "recovery_endgame_quiet_hours",
+			"recovery_prestige_fountain", "recovery_shared_blame_board", "recovery_endgame_title_lottery",
+			"recovery_grant_strings", "recovery_hope_hangover", "recovery_cone_gridlock", "recovery_title_grudge",
+		]:
+			return "data/decisions/ministan_recovery_pack_b.json"
+		return "data/decisions/ministan_recovery_pack_a.json"
 	if id.begins_with("maybe_"):
 		return "data/decisions/ministan_doctor_maybe_arc.json"
 	if id.begins_with("profit_"):
@@ -1154,7 +1181,7 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_followups.json"
 	if id.begins_with("traffic_"):
 		return "data/decisions/ministan_traffic_military.json"
-	if id.begins_with("recovery_") or id.begins_with("endgame_"):
+	if id.begins_with("endgame_"):
 		return "data/decisions/ministan_stage_placeholders.json"
 	if id in ["pizza_union_strike", "pineapple_referendum"]:
 		return "data/decisions/ministan_pizza_consequences.json"
