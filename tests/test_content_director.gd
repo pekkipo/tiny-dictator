@@ -257,13 +257,14 @@ func _test_legacy_compatibility() -> void:
 func _test_restart_and_persistence() -> void:
 	var game_manager: Node = root.get_node("GameManager")
 
+	game_manager.debug_set_fixed_seed(424242)
 	game_manager.start_new_run()
 	var state: RunState = game_manager.get_current_state()
 	_check(game_manager.get_current_stage_id() == "establishment", "new run starts in establishment")
 
+	# Advance calendar without resolving arc force_next chains that can end the run early.
 	for i in range(9):
-		game_manager.resolve_choice("left")
-		game_manager.continue_after_result()
+		game_manager.debug_advance_day()
 	_check(state.day == 10, "advanced to day 10 through normal flow")
 	_check(game_manager.get_current_stage_id() == "escalation", "stage advances with day")
 

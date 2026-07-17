@@ -31,6 +31,7 @@ const KNOWN_REQUIREMENT_KEYS: Array[String] = [
 	"active_arcs", "blocked_arcs", "completed_arcs", "failed_arcs", "arc_branches",
 	"active_crisis", "blocked_crisis", "completed_crisis", "failed_crisis",
 	"minimum_advisor_affinity", "maximum_advisor_affinity",
+	"minimum_traits", "maximum_traits",
 ]
 
 const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
@@ -765,6 +766,14 @@ func _validate_requirements(decision_id: String, requirements: Dictionary, repos
 					errors.append("Decision '%s' requirement %s threshold %d for '%s' out of range %d to %d" % [
 						decision_id, key, threshold, advisor_id,
 						AdvisorRelationshipManager.AFFINITY_MIN, AdvisorRelationshipManager.AFFINITY_MAX,
+					])
+	for key in ["minimum_traits", "maximum_traits"]:
+		var traits: Variant = requirements.get(key, {})
+		if traits is Dictionary:
+			for trait_id in traits:
+				if str(trait_id) not in RulerTraitManager.VALID_TRAIT_IDS:
+					errors.append("Decision '%s' requirement %s references unknown trait '%s'" % [
+						decision_id, key, trait_id,
 					])
 	return errors
 

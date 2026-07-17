@@ -5,7 +5,7 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_15_recovery_content_pack"
+const PHASE: String = "2b_16_endgame_rare_resolution_pack"
 const BATCH_ID: String = "2B-15"
 const DECISION_BATCH_ID: String = "2B-15"
 
@@ -390,9 +390,19 @@ const APPROVED_RECOVERY_DECISION_IDS: Array[String] = [
 	"recovery_prestige_fountain", "recovery_shared_blame_board", "recovery_endgame_title_lottery",
 ]
 
+const APPROVED_ENDGAME_DECISION_IDS: Array[String] = [
+	"endgame_media_forms_convergence", "endgame_boom_olga_ceasefire", "endgame_civic_stack_verdict",
+	"endgame_legacy_statue", "endgame_beloved_retirement", "endgame_country_somehow_works",
+	"endgame_climax_smiling_tyrant", "endgame_climax_spreadsheet_emperor",
+	"endgame_secret_toaster_election", "endgame_secret_wrong_map",
+	"endgame_succession_debate", "endgame_final_audit", "endgame_profit_zero_ownership",
+	"endgame_cabinet_loyalty_ledger", "endgame_peaceful_democracy_seal",
+	"endgame_scientific_golden_age", "endgame_climax_cat_servant",
+	"endgame_climax_technocratic_accident", "endgame_secret_palace_micronation",
+	"endgame_secret_forms_awaken",
+]
+
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
-	"endgame_legacy_statue",
-	"endgame_succession_debate", "endgame_final_audit",
 	"routine_form_inventory",
 ]
 
@@ -862,6 +872,9 @@ func _resolve_status(
 	if id in APPROVED_RECOVERY_DECISION_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in APPROVED_ENDGAME_DECISION_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -900,6 +913,8 @@ func _manual_test_status(id: String, primary_class: String, arc_id: Variant) -> 
 	if id in APPROVED_CRISIS_DECISION_IDS:
 		return "pass"
 	if id in APPROVED_RECOVERY_DECISION_IDS:
+		return "pass"
+	if id in APPROVED_ENDGAME_DECISION_IDS:
 		return "pass"
 	if str(arc_id) in MAJOR_ARC_IDS:
 		return "partial"
@@ -954,6 +969,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-14 approved crisis card.")
 	if id in APPROVED_RECOVERY_DECISION_IDS:
 		notes.append("Milestone 2B-15 approved recovery card.")
+	if id in APPROVED_ENDGAME_DECISION_IDS:
+		notes.append("Milestone 2B-16 approved endgame card.")
 	return ", ".join(notes)
 
 
@@ -1182,6 +1199,21 @@ func _source_file_hint(id: String) -> String:
 	if id.begins_with("traffic_"):
 		return "data/decisions/ministan_traffic_military.json"
 	if id.begins_with("endgame_"):
+		if id in [
+			"endgame_media_forms_convergence", "endgame_boom_olga_ceasefire", "endgame_civic_stack_verdict",
+			"endgame_legacy_statue", "endgame_beloved_retirement", "endgame_country_somehow_works",
+			"endgame_climax_smiling_tyrant", "endgame_climax_spreadsheet_emperor",
+			"endgame_secret_toaster_election", "endgame_secret_wrong_map",
+		]:
+			return "data/decisions/ministan_endgame_pack_a.json"
+		if id in [
+			"endgame_succession_debate", "endgame_final_audit", "endgame_profit_zero_ownership",
+			"endgame_cabinet_loyalty_ledger", "endgame_peaceful_democracy_seal",
+			"endgame_scientific_golden_age", "endgame_climax_cat_servant",
+			"endgame_climax_technocratic_accident", "endgame_secret_palace_micronation",
+			"endgame_secret_forms_awaken",
+		]:
+			return "data/decisions/ministan_endgame_pack_b.json"
 		return "data/decisions/ministan_stage_placeholders.json"
 	if id in ["pizza_union_strike", "pineapple_referendum"]:
 		return "data/decisions/ministan_pizza_consequences.json"

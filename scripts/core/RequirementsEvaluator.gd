@@ -126,4 +126,14 @@ static func matches(requirements: Dictionary, state: RunState) -> bool:
 		if state.get_advisor_affinity(str(advisor_id)) > int(maximum_advisor_affinity[advisor_id]):
 			return false
 
+	var minimum_traits: Dictionary = requirements.get("minimum_traits", {})
+	for trait_id in minimum_traits:
+		if state.get_ruler_trait(str(trait_id)) < int(minimum_traits[trait_id]):
+			return false
+
+	var maximum_traits: Dictionary = requirements.get("maximum_traits", {})
+	for trait_id in maximum_traits:
+		if state.get_ruler_trait(str(trait_id)) > int(maximum_traits[trait_id]):
+			return false
+
 	return true

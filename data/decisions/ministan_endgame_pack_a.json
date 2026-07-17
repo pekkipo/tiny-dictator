@@ -1,0 +1,601 @@
+[
+	{
+		"id": "endgame_media_forms_convergence",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "resolution",
+		"advisor_id": "clerk_zero",
+		"category": "bureaucracy",
+		"proposal": "Luna's last broadcast and Form F-0 finally collide. Clerk Zero asks whether the nation files reality or broadcasts paperwork.",
+		"one_time": true,
+		"base_weight": 14,
+		"minimum_day": 22,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"any_flags": ["luna_media_complete", "zero_forms_complete", "endgame_media_stable", "endgame_admin_stable"],
+			"any_laws": ["one_headline_policy", "form_request_form_act", "form_sovereignty_act", "ministry_of_memes", "national_reality_show"]
+		},
+		"options": [
+			{
+				"id": "merge_broadcast_forms",
+				"label": "Merge broadcast forms",
+				"effects": { "order": 5, "happiness": -3, "elite_loyalty": 3 },
+				"add_flags": ["endgame_media_forms_merged", "endgame_admin_stable", "endgame_media_stable"],
+				"advisor_affinity": { "clerk_zero": 2, "luna_news": 2 },
+				"trait_changes": { "bureaucratic": 1, "propagandist": 1 },
+				"result_text": "Every announcement arrives stamped. Citizens check the news for filing deadlines."
+			},
+			{
+				"id": "separate_ministries",
+				"label": "Keep ministries separate",
+				"effects": { "order": 2, "happiness": 3, "elite_loyalty": -2 },
+				"add_flags": ["endgame_media_forms_split", "endgame_admin_stable"],
+				"advisor_affinity": { "clerk_zero": 1, "luna_news": -1 },
+				"trait_changes": { "bureaucratic": 1 },
+				"result_text": "Forms stay boring. Broadcasts stay loud. The hallway between them gets a polite sign."
+			},
+			{
+				"id": "filing_truce",
+				"label": "Declare a filing truce",
+				"effects": { "happiness": 5, "order": 2, "treasury": -3 },
+				"add_flags": ["endgame_media_forms_truce", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "clerk_zero": 1, "luna_news": 1, "auntie_olga": 1 },
+				"trait_changes": { "populist": 1 },
+				"result_text": "Neither side wins. History files it under 'surprisingly fine.'"
+			}
+		],
+		"tags": ["endgame", "resolution", "media", "bureaucracy", "multi_arc"],
+		"visual_tags": ["stamped_tv_screens", "ministry_of_forms"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "arc_resolution",
+			"batch_id": "2B-16A",
+			"quality_score": 17,
+			"writer_notes": "Multi-arc Luna+Zero closure; three resolutions including ambiguous positive."
+		}
+	},
+	{
+		"id": "endgame_boom_olga_ceasefire",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "resolution",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "General Boom's parade route crosses Auntie Olga's soup line. Both claim the plaza. Someone must choose a ceasefire flavor.",
+		"one_time": true,
+		"base_weight": 16,
+		"minimum_day": 22,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"any_flags": ["boom_arc_complete", "olga_movement_complete", "endgame_citizen_voice", "boom_loyal_sealed"],
+			"any_laws": ["mandatory_marching", "emergency_martial_law", "queue_etiquette_law", "complaint_permit_act", "block_captain_charter"]
+		},
+		"options": [
+			{
+				"id": "street_charter",
+				"label": "Sign Olga's street charter",
+				"effects": { "happiness": 6, "order": -2, "elite_loyalty": -4 },
+				"add_flags": ["endgame_olga_street_charter", "endgame_citizen_voice"],
+				"advisor_affinity": { "auntie_olga": 3, "general_boom": -2 },
+				"trait_changes": { "populist": 2 },
+				"result_text": "Tanks wait behind the soup pots. The plaza smells like victory broth."
+			},
+			{
+				"id": "parade_peace",
+				"label": "Keep Boom's parade peace",
+				"effects": { "order": 6, "happiness": -3, "elite_loyalty": 4 },
+				"add_flags": ["endgame_boom_parade_peace"],
+				"advisor_affinity": { "general_boom": 3, "auntie_olga": -2 },
+				"trait_changes": { "authoritarian": 1 },
+				"result_text": "Marches become polite. Neighbors clap on schedule and mutter off-schedule."
+			},
+			{
+				"id": "shared_plaza",
+				"label": "Share the plaza hours",
+				"effects": { "happiness": 4, "order": 3, "treasury": -4 },
+				"add_flags": ["endgame_shared_plaza", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "auntie_olga": 2, "general_boom": 2 },
+				"trait_changes": { "populist": 1 },
+				"result_text": "Morning soup, afternoon parade. Historians call it a contradiction that worked."
+			}
+		],
+		"tags": ["endgame", "resolution", "politics", "multi_arc", "contradiction"],
+		"visual_tags": ["soup_and_parade_plaza", "citizen_brigade"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "arc_resolution",
+			"batch_id": "2B-16A",
+			"quality_score": 18,
+			"writer_notes": "Political contradiction Boom vs Olga; affinity-dependent option payoffs."
+		}
+	},
+	{
+		"id": "endgame_civic_stack_verdict",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "resolution",
+		"advisor_id": "chief_judge",
+		"category": "bureaucracy",
+		"proposal": "The Chief Judge stacks your queue etiquette, compliment quotas, and complaint permits into one final civic verdict.",
+		"one_time": true,
+		"base_weight": 15,
+		"minimum_day": 20,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"any_laws": ["queue_etiquette_law", "compliment_quota_law", "complaint_permit_act", "civic_half_day_act", "notarized_apology_act", "administrative_reform_act"]
+		},
+		"options": [
+			{
+				"id": "codify_kindness",
+				"label": "Codify kindness forever",
+				"effects": { "happiness": 5, "order": 3, "treasury": -5 },
+				"add_flags": ["endgame_civic_kindness_code", "endgame_ambiguous_peace"],
+				"add_laws": ["administrative_reform_act"],
+				"advisor_affinity": { "chief_judge": 2, "auntie_olga": 2 },
+				"trait_changes": { "populist": 1, "bureaucratic": 1 },
+				"result_text": "Politeness becomes statute. Rude citizens receive a helpful pamphlet."
+			},
+			{
+				"id": "sunset_civic_stack",
+				"label": "Sunset the civic stack",
+				"effects": { "happiness": 2, "order": -2, "elite_loyalty": 3 },
+				"add_flags": ["endgame_civic_stack_sunset"],
+				"advisor_affinity": { "chief_judge": 1, "minister_penny": 1 },
+				"trait_changes": { "bureaucratic": 1 },
+				"result_text": "Compliments become optional again. Queues remain, slightly less poetic."
+			},
+			{
+				"id": "judge_chooses",
+				"label": "Let the Judge choose",
+				"effects": { "order": 4, "elite_loyalty": 2, "happiness": 1 },
+				"add_flags": ["endgame_judge_civic_seal"],
+				"advisor_affinity": { "chief_judge": 3 },
+				"trait_changes": { "bureaucratic": 2 },
+				"result_text": "The verdict is sealed with a gavel shaped like a queue ticket."
+			}
+		],
+		"tags": ["endgame", "resolution", "civic", "multi_law"],
+		"visual_tags": ["gavel_queue_ticket", "numbered_queues"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "arc_resolution",
+			"batch_id": "2B-16A",
+			"quality_score": 17,
+			"writer_notes": "Multi-law civic stack; guest judge; three resolutions."
+		}
+	},
+	{
+		"id": "endgame_legacy_statue",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "resolution",
+		"advisor_id": "general_boom",
+		"category": "military_and_order",
+		"proposal": "History approaches. General Boom wants your legacy cast in bronze, plaque, or a garden the tanks promise not to park on.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 28,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["endgame"]
+		},
+		"requirements": {
+			"blocked_flags": ["legacy_statue_built", "endgame_legacy_bronze", "endgame_legacy_plaque", "endgame_legacy_garden"]
+		},
+		"options": [
+			{
+				"id": "build_bronze_horse",
+				"label": "Build the bronze horse",
+				"effects": { "happiness": -4, "order": 5, "elite_loyalty": 8, "treasury": -12 },
+				"add_flags": ["endgame_legacy_bronze", "legacy_statue_built"],
+				"advisor_affinity": { "general_boom": 3 },
+				"trait_changes": { "authoritarian": 2 },
+				"result_text": "The statue rises. Tourists ask why the horse looks nervous around tanks."
+			},
+			{
+				"id": "modest_plaque",
+				"label": "Install a modest plaque",
+				"effects": { "happiness": 6, "elite_loyalty": -5, "treasury": -2 },
+				"add_flags": ["endgame_legacy_plaque", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "general_boom": -1, "auntie_olga": 2 },
+				"trait_changes": { "populist": 1 },
+				"result_text": "A tasteful plaque appears. Generals mutter that bronze was invented for a reason."
+			},
+			{
+				"id": "living_garden",
+				"label": "Plant a living garden",
+				"effects": { "happiness": 5, "order": 2, "treasury": -6 },
+				"add_flags": ["endgame_legacy_garden", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "general_boom": 1, "auntie_olga": 2, "comrade_whiskers": 1 },
+				"trait_changes": { "populist": 1 },
+				"result_text": "Flowers claim the pedestal. Boom salutes a rosebush with surprising sincerity."
+			}
+		],
+		"tags": ["endgame", "resolution", "legacy"],
+		"visual_tags": ["nervous_bronze_horse", "legacy_garden_plaza"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "arc_resolution",
+			"batch_id": "2B-16A",
+			"quality_score": 17,
+			"writer_notes": "Rewritten Phase 2A placeholder; earned via Boom arc/laws; positive garden path."
+		}
+	},
+	{
+		"id": "endgame_beloved_retirement",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "Auntie Olga brings a quiet chair and a petition signed in soup. The country asks if you will retire beloved, or keep ruling for the encore.",
+		"one_time": true,
+		"base_weight": 10,
+		"minimum_day": 24,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"minimum_resources": { "happiness": 55 },
+			"any_flags": ["festival_econ_complete", "endgame_festival_stable", "olga_movement_complete", "endgame_civic_kindness_code", "happiness_arc_complete"]
+		},
+		"options": [
+			{
+				"id": "accept_chair",
+				"label": "Accept the quiet chair",
+				"effects": { "happiness": 8, "elite_loyalty": -3, "order": 2 },
+				"add_flags": ["beloved_retirement", "festival_econ_complete"],
+				"advisor_affinity": { "auntie_olga": 3 },
+				"trait_changes": { "populist": 2 },
+				"trigger_ending": "beloved_retirement",
+				"result_text": "You sit. Confetti becomes optional. Citizens gift biscuits shaped like tiny medals."
+			},
+			{
+				"id": "one_more_year",
+				"label": "Promise one more year",
+				"effects": { "happiness": 2, "elite_loyalty": 3, "order": -2 },
+				"add_flags": ["endgame_retirement_deferred"],
+				"advisor_affinity": { "auntie_olga": -1, "luna_news": 1 },
+				"trait_changes": { "authoritarian": 1 },
+				"result_text": "The chair waits in storage. Encores are dangerous in tiny countries."
+			},
+			{
+				"id": "share_the_chair",
+				"label": "Share the chair weekly",
+				"effects": { "happiness": 5, "order": 2, "elite_loyalty": -1 },
+				"add_flags": ["beloved_retirement", "endgame_ambiguous_peace", "festival_econ_complete"],
+				"advisor_affinity": { "auntie_olga": 2, "clerk_zero": 1 },
+				"trait_changes": { "populist": 1, "bureaucratic": 1 },
+				"trigger_ending": "beloved_retirement",
+				"result_text": "Tuesday is your day off by statute. Historians call it a beloved schedule."
+			}
+		],
+		"tags": ["endgame", "rare_success", "retirement", "ending_setup"],
+		"visual_tags": ["quiet_retirement_chair", "biscuit_medals"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "rare_success",
+			"batch_id": "2B-16A",
+			"quality_score": 18,
+			"writer_notes": "Rare earned retirement; affinity + happiness + festival/civic setup."
+		}
+	},
+	{
+		"id": "endgame_country_somehow_works",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "minister_penny",
+		"category": "economy",
+		"proposal": "Minister Penny stares at four green meters and several finished scandals. Against all forecasts, Ministan... functions.",
+		"one_time": true,
+		"base_weight": 7,
+		"minimum_day": 30,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["endgame"]
+		},
+		"requirements": {
+			"minimum_resources": {
+				"treasury": 45,
+				"happiness": 45,
+				"order": 45,
+				"elite_loyalty": 45
+			},
+			"any_flags": [
+				"penny_austerity_complete",
+				"penny_miracle_sealed",
+				"endgame_economy_stable",
+				"traffic_mil_complete",
+				"endgame_ambiguous_peace"
+			]
+		},
+		"options": [
+			{
+				"id": "publish_miracle_memo",
+				"label": "Publish the miracle memo",
+				"effects": { "happiness": 4, "elite_loyalty": 3, "order": 2 },
+				"add_flags": ["country_somehow_works", "endgame_economy_stable"],
+				"advisor_affinity": { "minister_penny": 3 },
+				"trait_changes": { "bureaucratic": 2 },
+				"trigger_ending": "country_somehow_works",
+				"result_text": "The memo is dull and perfect. Citizens celebrate competence like a festival."
+			},
+			{
+				"id": "whisper_it_quietly",
+				"label": "Whisper it to elites",
+				"effects": { "elite_loyalty": 6, "happiness": -2, "treasury": 3 },
+				"add_flags": ["country_somehow_works_soft"],
+				"advisor_affinity": { "minister_penny": 2, "sir_profit": 1 },
+				"trait_changes": { "capitalist": 1 },
+				"result_text": "Elites toast quietly. The public notices the toast and asks for cups."
+			},
+			{
+				"id": "refuse_the_label",
+				"label": "Refuse the miracle label",
+				"effects": { "order": 3, "happiness": 1 },
+				"add_flags": ["endgame_miracle_denied"],
+				"advisor_affinity": { "minister_penny": 1 },
+				"result_text": "Penny files it as 'acceptable variance.' The country keeps working anyway."
+			}
+		],
+		"tags": ["endgame", "rare_success", "economy", "ending_setup"],
+		"visual_tags": ["four_green_meters", "dull_perfect_memo"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "rare_success",
+			"batch_id": "2B-16A",
+			"quality_score": 17,
+			"writer_notes": "Earned multi-resource + prior seal; non-failure collectible ending."
+		}
+	},
+	{
+		"id": "endgame_climax_smiling_tyrant",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "luna_news",
+		"category": "media_and_propaganda",
+		"proposal": "Luna dims the lights. Your smile has become national weather. Tonight's special asks how the Smiling Tyrant ends the broadcast.",
+		"one_time": true,
+		"base_weight": 10,
+		"minimum_day": 28,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["endgame"]
+		},
+		"requirements": {
+			"minimum_traits": { "authoritarian": 4, "propagandist": 3 },
+			"any_flags": ["luna_media_complete", "happiness_arc_complete", "endgame_media_stable"],
+			"any_laws": ["mandatory_smiling", "fake_smile_standard", "one_headline_policy", "national_smile_day_act"]
+		},
+		"options": [
+			{
+				"id": "eternal_smile_seal",
+				"label": "Seal the eternal smile",
+				"effects": { "order": 6, "happiness": 4, "elite_loyalty": 3 },
+				"add_flags": ["smiling_tyrant_eternal", "eternal_smile_state"],
+				"advisor_affinity": { "luna_news": 3 },
+				"trait_changes": { "authoritarian": 1, "propagandist": 2 },
+				"trigger_ending": "eternal_smile_state",
+				"result_text": "Teeth become infrastructure. Luna signs off forever, still smiling."
+			},
+			{
+				"id": "abdicate_on_air",
+				"label": "Abdicate on live TV",
+				"effects": { "happiness": 6, "elite_loyalty": -5, "order": -2 },
+				"add_flags": ["smiling_tyrant_abdication", "beloved_retirement"],
+				"advisor_affinity": { "luna_news": 2, "auntie_olga": 2 },
+				"trait_changes": { "populist": 2, "propagandist": 1 },
+				"trigger_ending": "smiling_tyrant_soft_exit",
+				"result_text": "You wave, wink, and leave the set. The country keeps the catchphrase as a souvenir."
+			},
+			{
+				"id": "share_the_smile",
+				"label": "Share the smile desk",
+				"effects": { "happiness": 3, "order": 3, "elite_loyalty": 2 },
+				"add_flags": ["smiling_tyrant_cabinet", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "luna_news": 1, "clerk_zero": 1 },
+				"trait_changes": { "propagandist": 1, "bureaucratic": 1 },
+				"result_text": "A rotating smile desk is invented. Historians argue whether that counts as mercy."
+			}
+		],
+		"tags": ["endgame", "ruler_identity", "climax", "media"],
+		"visual_tags": ["eternal_smile_broadcast", "live_abdication_desk"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "ruler_identity_climax",
+			"batch_id": "2B-16A",
+			"quality_score": 18,
+			"writer_notes": "Smiling Tyrant climax; trait gate; two ending variants + soft path."
+		}
+	},
+	{
+		"id": "endgame_climax_spreadsheet_emperor",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "minister_penny",
+		"category": "economy",
+		"proposal": "Penny presents the Final Column. Your reign has become a spreadsheet. Tonight you choose what the last cell contains.",
+		"one_time": true,
+		"base_weight": 10,
+		"minimum_day": 28,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["endgame"]
+		},
+		"requirements": {
+			"minimum_traits": { "bureaucratic": 4 },
+			"any_flags": ["penny_austerity_complete", "penny_miracle_sealed", "endgame_economy_stable", "zero_forms_complete"],
+			"any_laws": ["emergency_austerity_act", "emergency_efficiency_act", "form_request_form_act", "controlled_audit_broadcast"]
+		},
+		"options": [
+			{
+				"id": "worship_the_ledger",
+				"label": "Worship the ledger",
+				"effects": { "treasury": 5, "happiness": -4, "order": 5, "elite_loyalty": 4 },
+				"add_flags": ["spreadsheet_state", "penny_austerity_complete"],
+				"advisor_affinity": { "minister_penny": 3 },
+				"trait_changes": { "bureaucratic": 2 },
+				"trigger_ending": "spreadsheet_state",
+				"result_text": "Citizens pray in columns. Happiness becomes a rounding footnote."
+			},
+			{
+				"id": "mercy_surplus",
+				"label": "Spend the mercy surplus",
+				"effects": { "happiness": 6, "treasury": -6, "order": 2 },
+				"add_flags": ["spreadsheet_emperor_mercy", "penny_miracle_sealed", "penny_austerity_complete"],
+				"advisor_affinity": { "minister_penny": 2, "auntie_olga": 2 },
+				"trait_changes": { "bureaucratic": 1, "populist": 1 },
+				"trigger_ending": "penny_balances_final_budget",
+				"result_text": "The surplus buys soup and streetlights. Penny initials both invoices."
+			},
+			{
+				"id": "lock_the_drawer",
+				"label": "Lock the final drawer",
+				"effects": { "elite_loyalty": 5, "order": 3, "happiness": -2 },
+				"add_flags": ["spreadsheet_emperor_sealed", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "minister_penny": 2, "clerk_zero": 1 },
+				"trait_changes": { "bureaucratic": 1 },
+				"result_text": "The drawer clicks. Rumors accrue interest. The country remains solvent and slightly haunted."
+			}
+		],
+		"tags": ["endgame", "ruler_identity", "climax", "economy"],
+		"visual_tags": ["final_column_ledger", "locked_audit_drawer"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "ruler_identity_climax",
+			"batch_id": "2B-16A",
+			"quality_score": 18,
+			"writer_notes": "Spreadsheet Emperor climax; two ending triggers + ambiguous seal."
+		}
+	},
+	{
+		"id": "endgame_secret_toaster_election",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "doctor_maybe",
+		"category": "science_and_technology",
+		"proposal": "Doctor Maybe wheels in the predictive toaster. It has printed ballots, warmed them, and declared itself a candidate.",
+		"one_time": true,
+		"base_weight": 6,
+		"minimum_day": 20,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["instability", "endgame"]
+		},
+		"requirements": {
+			"all_laws": ["predictive_toaster_act"]
+		},
+		"options": [
+			{
+				"id": "elect_the_toaster",
+				"label": "Elect the toaster",
+				"effects": { "happiness": 5, "order": -3, "elite_loyalty": -4 },
+				"add_flags": ["toaster_elected_president", "endgame_tech_stable"],
+				"advisor_affinity": { "doctor_maybe": 3 },
+				"trait_changes": { "scientific": 2, "chaotic": 2 },
+				"trigger_ending": "toaster_elected_president",
+				"result_text": "Inauguration smells like toast. The speech is a perfect browning chart."
+			},
+			{
+				"id": "toaster_as_advisor",
+				"label": "Keep toaster as advisor",
+				"effects": { "order": 3, "happiness": 2, "treasury": -2 },
+				"add_flags": ["toaster_cabinet_seat", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "doctor_maybe": 2, "clerk_zero": 1 },
+				"trait_changes": { "scientific": 1 },
+				"result_text": "The toaster joins cabinet without voting rights. It still predicts snacks accurately."
+			},
+			{
+				"id": "unplug_politely",
+				"label": "Unplug it politely",
+				"effects": { "elite_loyalty": 3, "order": 2, "happiness": -3 },
+				"add_flags": ["toaster_election_canceled"],
+				"advisor_affinity": { "doctor_maybe": -2, "minister_penny": 1 },
+				"trait_changes": { "bureaucratic": 1 },
+				"result_text": "Power cord coiled with dignity. Democracy remains carbon-based for now."
+			}
+		],
+		"tags": ["endgame", "secret", "science", "absurd"],
+		"visual_tags": ["toaster_filing_cabinets", "ballot_warmed_toast"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "secret",
+			"batch_id": "2B-16A",
+			"quality_score": 17,
+			"writer_notes": "Secret; traceable toaster law + prior decision; debug-provable."
+		}
+	},
+	{
+		"id": "endgame_secret_wrong_map",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "ending_setup",
+		"advisor_id": "foreign_ambassador",
+		"category": "infrastructure",
+		"proposal": "The Foreign Ambassador unfolds a border map and blushes. Ministan has been using Tinyria's tourist brochure as the official atlas.",
+		"one_time": true,
+		"base_weight": 4,
+		"minimum_day": 28,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": ["endgame"]
+		},
+		"requirements": {
+			"any_flags": ["cheese_arc_complete", "endgame_trade_stable", "great_cheese_settlement", "border_volume_treaty"],
+			"any_laws": ["border_parade_act", "emergency_cheese_bonds", "cheese_substitute_act", "contradictory_signage_law"]
+		},
+		"options": [
+			{
+				"id": "adopt_wrong_map",
+				"label": "Adopt the wrong map",
+				"effects": { "happiness": 4, "order": -4, "elite_loyalty": -2, "treasury": 3 },
+				"add_flags": ["wrong_map_republic", "endgame_trade_stable"],
+				"advisor_affinity": { "foreign_ambassador": 2, "sir_profit": 1 },
+				"trait_changes": { "chaotic": 2 },
+				"trigger_ending": "wrong_map_republic",
+				"result_text": "Borders become suggestions. Tourists congratulate you on inventing soft geography."
+			},
+			{
+				"id": "redraw_politely",
+				"label": "Redraw borders politely",
+				"effects": { "order": 4, "elite_loyalty": 3, "treasury": -5 },
+				"add_flags": ["map_redrawn_politely", "endgame_ambiguous_peace"],
+				"advisor_affinity": { "foreign_ambassador": 3, "clerk_zero": 1 },
+				"trait_changes": { "bureaucratic": 1 },
+				"result_text": "New maps smell like ink and apology. Tinyria sends fruit."
+			},
+			{
+				"id": "blame_the_brochure",
+				"label": "Blame the brochure",
+				"effects": { "happiness": 2, "order": 2, "elite_loyalty": 2 },
+				"add_flags": ["brochure_scapegoat"],
+				"advisor_affinity": { "foreign_ambassador": 1, "luna_news": 1 },
+				"trait_changes": { "propagandist": 1 },
+				"result_text": "A press release scolds paper products. Geography pretends nothing happened."
+			}
+		],
+		"tags": ["endgame", "secret", "diplomacy", "absurd"],
+		"visual_tags": ["tourist_brochure_atlas", "soft_border_lines"],
+		"authoring": {
+			"primary_content_class": "endgame",
+			"endgame_role": "secret",
+			"batch_id": "2B-16A",
+			"quality_score": 16,
+			"writer_notes": "Secret wrong-map; cheese/trade/border setup; guest ambassador."
+		}
+	}
+]

@@ -2,7 +2,7 @@
 
 **Status:** Complete (24/24 approved)  
 **Target:** 24 approved recovery decisions (exactly 6 per resource)  
-**Do not start:** Milestone 2B-16
+**Do not start:** Milestone 2B-17 (laws/endings/palace completion beyond what 2B-16 already wired)
 
 ---
 

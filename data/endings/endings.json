@@ -670,5 +670,110 @@
         "palace_reno_complete"
       ]
     }
+  },
+  {
+    "id": "country_somehow_works",
+    "type": "special",
+    "priority": 72,
+    "title": "The Country Somehow Works",
+    "description": "All four meters stayed green long enough to embarrass the cynics. Historians filed Ministan under 'accidental competence.'",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\u2705",
+    "illustration_key": "ending_country_somehow_works",
+    "conditions": {
+      "all_flags": [
+        "country_somehow_works"
+      ]
+    }
+  },
+  {
+    "id": "smiling_tyrant_soft_exit",
+    "type": "special",
+    "priority": 78,
+    "title": "The Soft Exit Smile",
+    "description": "You abdicated on live television with a wink. The catchphrase outlived the throne.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83d\ude0a",
+    "illustration_key": "ending_smiling_tyrant_soft_exit",
+    "conditions": {
+      "all_flags": [
+        "smiling_tyrant_abdication"
+      ]
+    }
+  },
+  {
+    "id": "toaster_elected_president",
+    "type": "special",
+    "priority": 96,
+    "title": "Toaster Elected President",
+    "description": "The predictive toaster won on a platform of even browning. Historians call it the Warm Mandate.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83c\udf5e",
+    "illustration_key": "ending_toaster_elected",
+    "conditions": {
+      "all_flags": [
+        "toaster_elected_president"
+      ]
+    }
+  },
+  {
+    "id": "wrong_map_republic",
+    "type": "special",
+    "priority": 95,
+    "title": "The Wrong Map Republic",
+    "description": "Ministan adopted a tourist brochure as its atlas. Borders became suggestions with excellent photography.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83d\uddfa\ufe0f",
+    "illustration_key": "ending_wrong_map",
+    "conditions": {
+      "all_flags": [
+        "wrong_map_republic"
+      ]
+    }
+  },
+  {
+    "id": "competent_successor",
+    "type": "special",
+    "priority": 76,
+    "title": "The Competent Successor",
+    "description": "A quiet deputy inherited the desk without fireworks. Historians call it suspiciously functional governance.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83d\udcbc",
+    "illustration_key": "ending_competent_successor",
+    "conditions": {
+      "all_flags": [
+        "competent_successor_named"
+      ]
+    }
+  },
+  {
+    "id": "palace_micronation",
+    "type": "special",
+    "priority": 94,
+    "title": "Palace Micronation",
+    "description": "The palace seceded from Ministan and kept the gift shop. Postage became a souvenir sport.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83c\udff4",
+    "illustration_key": "ending_palace_micronation",
+    "conditions": {
+      "all_flags": [
+        "palace_micronation"
+      ]
+    }
+  },
+  {
+    "id": "forms_become_citizens",
+    "type": "special",
+    "priority": 97,
+    "title": "Forms Become Citizens",
+    "description": "National forms gained self-awareness and voting rights. Staplers formed a union. Clerk Zero wept proudly.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "\ud83d\udccb",
+    "illustration_key": "ending_forms_citizens",
+    "conditions": {
+      "all_flags": [
+        "forms_awaken_recognized"
+      ]
+    }
   }
 ]

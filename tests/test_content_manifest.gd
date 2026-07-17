@@ -131,18 +131,18 @@ func _test_required_fields(manifest: Dictionary) -> void:
 
 
 func _test_expected_counts(manifest: Dictionary) -> void:
-	_check(manifest.get("decisions", []).size() == 326, "manifest has 326 decisions")
+	_check(manifest.get("decisions", []).size() == 343, "manifest has 343 decisions")
 	_check(manifest.get("catalogs", {}).get("arcs", []).size() == 19, "manifest has 19 arcs")
 	_check(manifest.get("catalogs", {}).get("crises", []).size() == 19, "manifest has 19 crises")
 	_check(manifest.get("catalogs", {}).get("laws", []).size() == 106, "manifest has 106 laws")
-	_check(manifest.get("catalogs", {}).get("endings", []).size() == 46, "manifest has 46 endings")
+	_check(manifest.get("catalogs", {}).get("endings", []).size() == 53, "manifest has 53 endings")
 	_check(manifest.get("catalogs", {}).get("advisors", []).size() == 12, "manifest has 12 advisors")
 	_check(manifest.get("catalogs", {}).get("ruler_identities", []).size() == 7, "manifest has 7 ruler identities")
 	_check(manifest.get("catalogs", {}).get("palace_upgrades", []).size() == 3, "manifest has 3 palace upgrades")
 	_check(manifest.get("catalogs", {}).get("chains", []).size() == 35, "manifest has 35 chains")
 
 	var approved: int = int(manifest.get("quota_report", {}).get("decisions", {}).get("approved_total", -1))
-	_check(approved == 301, "onboarding+standalone+short_chain+major_arc+crisis+recovery approved count (got %d)" % approved)
+	_check(approved == 321, "onboarding+standalone+short_chain+major_arc+crisis+recovery+endgame approved count (got %d)" % approved)
 	var onboarding_approved: int = int(
 		manifest.get("quota_report", {}).get("decisions", {}).get("by_class", {}).get("onboarding", {}).get("approved", -1)
 	)
