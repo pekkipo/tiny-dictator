@@ -1,7 +1,7 @@
 [
   {
     "id": "cat_politics",
-    "display_name": "The Cat Political Movement",
+    "display_name": "Cat Politics",
     "country_id": "ministan",
     "arc_type": "national",
     "importance": "major",
@@ -9,15 +9,26 @@
     "minimum_start_stage": "establishment",
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["government_replacement_arc"],
-    "entry_decision_ids": ["cat_voting_rights"],
-    "resolution_decision_ids": [
-      "cat_republic_declared",
-      "cat_party_banned",
-      "cats_return_to_boxes"
+    "exclusive_groups": [
+      "government_replacement_arc",
+      "cat_governance_arc"
     ],
-    "branch_ids": ["support_cats", "oppose_cats", "negotiate_cats"],
-    "tags": ["cats", "politics", "absurd"]
+    "entry_decision_ids": [
+      "cat_faction_proposal"
+    ],
+    "resolution_decision_ids": [
+      "cat_politics_resolution"
+    ],
+    "branch_ids": [
+      "rights_path",
+      "cynical_path",
+      "backlash_path"
+    ],
+    "tags": [
+      "cats",
+      "politics",
+      "factions"
+    ]
   },
   {
     "id": "traffic_military",
@@ -30,13 +41,22 @@
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["switch_off_traffic_lights"],
+    "entry_decision_ids": [
+      "switch_off_traffic_lights"
+    ],
     "resolution_decision_ids": [
       "traffic_military_resolved",
       "traffic_lights_restored"
     ],
-    "branch_ids": ["tank_response", "restore_lights"],
-    "tags": ["traffic", "military", "infrastructure"]
+    "branch_ids": [
+      "tank_response",
+      "restore_lights"
+    ],
+    "tags": [
+      "traffic",
+      "military",
+      "infrastructure"
+    ]
   },
   {
     "id": "mandatory_happiness",
@@ -48,11 +68,25 @@
     "minimum_start_stage": "establishment",
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["media_narrative"],
-    "entry_decision_ids": ["mandatory_smiling_proposal"],
-    "resolution_decision_ids": ["happiness_arc_resolution"],
-    "branch_ids": ["voluntary_wellbeing", "enforce_happiness", "measure_everything"],
-    "tags": ["happiness", "media", "propaganda"]
+    "exclusive_groups": [
+      "media_narrative"
+    ],
+    "entry_decision_ids": [
+      "mandatory_smiling_proposal"
+    ],
+    "resolution_decision_ids": [
+      "happiness_arc_resolution"
+    ],
+    "branch_ids": [
+      "voluntary_wellbeing",
+      "enforce_happiness",
+      "measure_everything"
+    ],
+    "tags": [
+      "happiness",
+      "media",
+      "propaganda"
+    ]
   },
   {
     "id": "luna_media_reality",
@@ -64,11 +98,25 @@
     "minimum_start_stage": "establishment",
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["media_narrative"],
-    "entry_decision_ids": ["luna_narrative_brief"],
-    "resolution_decision_ids": ["luna_media_resolution"],
-    "branch_ids": ["loyal_comms", "reality_control", "credibility_collapse"],
-    "tags": ["media", "luna_news", "propaganda"]
+    "exclusive_groups": [
+      "media_narrative"
+    ],
+    "entry_decision_ids": [
+      "luna_narrative_brief"
+    ],
+    "resolution_decision_ids": [
+      "luna_media_resolution"
+    ],
+    "branch_ids": [
+      "loyal_comms",
+      "reality_control",
+      "credibility_collapse"
+    ],
+    "tags": [
+      "media",
+      "luna_news",
+      "propaganda"
+    ]
   },
   {
     "id": "olga_citizen_movement",
@@ -81,10 +129,23 @@
     "maximum_start_stage": "instability",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["olga_everyday_complaint"],
-    "resolution_decision_ids": ["olga_movement_resolution"],
-    "branch_ids": ["citizen_pressure", "reform", "hostile", "reject_power"],
-    "tags": ["public_life", "auntie_olga", "populist"]
+    "entry_decision_ids": [
+      "olga_everyday_complaint"
+    ],
+    "resolution_decision_ids": [
+      "olga_movement_resolution"
+    ],
+    "branch_ids": [
+      "citizen_pressure",
+      "reform",
+      "hostile",
+      "reject_power"
+    ],
+    "tags": [
+      "public_life",
+      "auntie_olga",
+      "populist"
+    ]
   },
   {
     "id": "fake_election_accident",
@@ -97,10 +158,23 @@
     "maximum_start_stage": "instability",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["election_filing_proposal"],
-    "resolution_decision_ids": ["election_arc_resolution"],
-    "branch_ids": ["managed_election", "accidental_democracy", "cancel_filing_error", "election_institutional_crisis"],
-    "tags": ["bureaucracy", "clerk_zero", "election"]
+    "entry_decision_ids": [
+      "election_filing_proposal"
+    ],
+    "resolution_decision_ids": [
+      "election_arc_resolution"
+    ],
+    "branch_ids": [
+      "managed_election",
+      "accidental_democracy",
+      "cancel_filing_error",
+      "election_institutional_crisis"
+    ],
+    "tags": [
+      "bureaucracy",
+      "clerk_zero",
+      "election"
+    ]
   },
   {
     "id": "general_boom_arc",
@@ -113,14 +187,24 @@
     "maximum_start_stage": "instability",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["military_parade"],
+    "entry_decision_ids": [
+      "military_parade"
+    ],
     "resolution_decision_ids": [
       "boom_loyal_protector",
       "boom_failed_coup",
       "boom_ceremonial_mascot"
     ],
-    "branch_ids": ["empower_boom", "restrain_boom", "mascot_path"],
-    "tags": ["military", "general_boom", "order"]
+    "branch_ids": [
+      "empower_boom",
+      "restrain_boom",
+      "mascot_path"
+    ],
+    "tags": [
+      "military",
+      "general_boom",
+      "order"
+    ]
   },
   {
     "id": "doctor_maybe_arc",
@@ -133,10 +217,22 @@
     "maximum_start_stage": "instability",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["science_gamble"],
-    "resolution_decision_ids": ["maybe_experimental_resolution"],
-    "branch_ids": ["controlled_progress", "reckless_republic", "ethical_limits"],
-    "tags": ["science", "doctor_maybe", "experiments"]
+    "entry_decision_ids": [
+      "science_gamble"
+    ],
+    "resolution_decision_ids": [
+      "maybe_experimental_resolution"
+    ],
+    "branch_ids": [
+      "controlled_progress",
+      "reckless_republic",
+      "ethical_limits"
+    ],
+    "tags": [
+      "science",
+      "doctor_maybe",
+      "experiments"
+    ]
   },
   {
     "id": "robot_government",
@@ -148,11 +244,26 @@
     "minimum_start_stage": "escalation",
     "maximum_start_stage": "endgame",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["government_replacement_arc"],
-    "entry_decision_ids": ["ai_admin_pilot"],
-    "resolution_decision_ids": ["ai_government_resolution"],
-    "branch_ids": ["supervised_efficiency", "ai_control", "shutdown_reject"],
-    "tags": ["ai", "robots", "government", "science"]
+    "exclusive_groups": [
+      "government_replacement_arc"
+    ],
+    "entry_decision_ids": [
+      "ai_admin_pilot"
+    ],
+    "resolution_decision_ids": [
+      "ai_government_resolution"
+    ],
+    "branch_ids": [
+      "supervised_efficiency",
+      "ai_control",
+      "shutdown_reject"
+    ],
+    "tags": [
+      "ai",
+      "robots",
+      "government",
+      "science"
+    ]
   },
   {
     "id": "profit_corporate_state",
@@ -165,10 +276,22 @@
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["profit_partnership_brief"],
-    "resolution_decision_ids": ["profit_corporate_resolution"],
-    "branch_ids": ["controlled_ppp", "corporate_state", "nationalize_reject"],
-    "tags": ["business", "sir_profit", "privatization"]
+    "entry_decision_ids": [
+      "profit_partnership_brief"
+    ],
+    "resolution_decision_ids": [
+      "profit_corporate_resolution"
+    ],
+    "branch_ids": [
+      "controlled_ppp",
+      "corporate_state",
+      "nationalize_reject"
+    ],
+    "tags": [
+      "business",
+      "sir_profit",
+      "privatization"
+    ]
   },
   {
     "id": "sell_the_moon",
@@ -181,10 +304,22 @@
     "maximum_start_stage": "instability",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["moon_budget_proposal"],
-    "resolution_decision_ids": ["moon_arc_resolution"],
-    "branch_ids": ["commercial_sale", "science_public", "diplomatic_claim"],
-    "tags": ["moon", "business", "diplomacy"]
+    "entry_decision_ids": [
+      "moon_budget_proposal"
+    ],
+    "resolution_decision_ids": [
+      "moon_arc_resolution"
+    ],
+    "branch_ids": [
+      "commercial_sale",
+      "science_public",
+      "diplomatic_claim"
+    ],
+    "tags": [
+      "moon",
+      "business",
+      "diplomacy"
+    ]
   },
   {
     "id": "traffic_military_control",
@@ -197,7 +332,9 @@
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
     "exclusive_groups": [],
-    "entry_decision_ids": ["traffic_gridlock_brief"],
+    "entry_decision_ids": [
+      "traffic_gridlock_brief"
+    ],
     "resolution_decision_ids": [
       "traffic_civilian_peace",
       "traffic_martial_resolution"
@@ -207,7 +344,11 @@
       "martial_traffic",
       "absurd_efficiency"
     ],
-    "tags": ["traffic", "military", "infrastructure"]
+    "tags": [
+      "traffic",
+      "military",
+      "infrastructure"
+    ]
   },
   {
     "id": "penny_austerity_arc",
@@ -219,14 +360,26 @@
     "minimum_start_stage": "establishment",
     "maximum_start_stage": "escalation",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["economy_collapse"],
-    "entry_decision_ids": ["penny_deficit_briefing"],
+    "exclusive_groups": [
+      "economy_collapse"
+    ],
+    "entry_decision_ids": [
+      "penny_deficit_briefing"
+    ],
     "resolution_decision_ids": [
       "penny_miracle_balanced",
       "penny_austerity_resolution"
     ],
-    "branch_ids": ["disciplined_ledger", "cut_until_empty", "compromise_cuts"],
-    "tags": ["economy", "minister_penny", "austerity"]
+    "branch_ids": [
+      "disciplined_ledger",
+      "cut_until_empty",
+      "compromise_cuts"
+    ],
+    "tags": [
+      "economy",
+      "minister_penny",
+      "austerity"
+    ]
   },
   {
     "id": "hyperinflation_arc",
@@ -238,10 +391,166 @@
     "minimum_start_stage": "instability",
     "maximum_start_stage": "endgame",
     "maximum_concurrent_runs": 1,
-    "exclusive_groups": ["economy_collapse"],
-    "entry_decision_ids": ["hyperinflation_price_spiral"],
-    "resolution_decision_ids": ["hyperinflation_resolution"],
-    "branch_ids": ["reform_stabilize", "barter_black_market", "print_deeper"],
-    "tags": ["economy", "hyperinflation", "instability"]
+    "exclusive_groups": [
+      "economy_collapse"
+    ],
+    "entry_decision_ids": [
+      "hyperinflation_price_spiral"
+    ],
+    "resolution_decision_ids": [
+      "hyperinflation_resolution"
+    ],
+    "branch_ids": [
+      "reform_stabilize",
+      "barter_black_market",
+      "print_deeper"
+    ],
+    "tags": [
+      "economy",
+      "hyperinflation",
+      "instability"
+    ]
+  },
+  {
+    "id": "whiskers_cat_revolution",
+    "display_name": "The Cat Revolution",
+    "country_id": "ministan",
+    "arc_type": "advisor",
+    "importance": "major",
+    "priority": 58,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [
+      "cat_governance_arc"
+    ],
+    "entry_decision_ids": [
+      "whiskers_political_demand"
+    ],
+    "resolution_decision_ids": [
+      "whiskers_revolution_resolution"
+    ],
+    "branch_ids": [
+      "constitutional_path",
+      "dominance_path",
+      "compromise_path"
+    ],
+    "tags": [
+      "cats",
+      "revolution",
+      "whiskers"
+    ]
+  },
+  {
+    "id": "zero_government_of_forms",
+    "display_name": "The Government of Forms",
+    "country_id": "ministan",
+    "arc_type": "advisor",
+    "importance": "major",
+    "priority": 52,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "endgame",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": [
+      "zero_admin_reform"
+    ],
+    "resolution_decision_ids": [
+      "zero_forms_resolution"
+    ],
+    "branch_ids": [
+      "efficiency_path",
+      "form_sovereignty",
+      "simplify_rebel"
+    ],
+    "tags": [
+      "bureaucracy",
+      "forms",
+      "clerk_zero"
+    ]
+  },
+  {
+    "id": "national_festival_economy",
+    "display_name": "National Festival Economy",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 50,
+    "minimum_start_stage": "establishment",
+    "maximum_start_stage": "escalation",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": [
+      "festival_stimulus_proposal"
+    ],
+    "resolution_decision_ids": [
+      "festival_economy_resolution"
+    ],
+    "branch_ids": [
+      "tourism_success",
+      "permanent_festival",
+      "cancel_reform"
+    ],
+    "tags": [
+      "festival",
+      "economy",
+      "public_life"
+    ]
+  },
+  {
+    "id": "international_cheese_crisis",
+    "display_name": "International Cheese Crisis",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 51,
+    "minimum_start_stage": "escalation",
+    "maximum_start_stage": "instability",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": [
+      "cheese_diplomatic_incident"
+    ],
+    "resolution_decision_ids": [
+      "cheese_crisis_resolution"
+    ],
+    "branch_ids": [
+      "diplomatic_path",
+      "substitute_path",
+      "pride_path"
+    ],
+    "tags": [
+      "cheese",
+      "diplomacy",
+      "economy"
+    ]
+  },
+  {
+    "id": "palace_renovation_scandal",
+    "display_name": "Palace Renovation Scandal",
+    "country_id": "ministan",
+    "arc_type": "national",
+    "importance": "major",
+    "priority": 48,
+    "minimum_start_stage": "escalation",
+    "maximum_start_stage": "endgame",
+    "maximum_concurrent_runs": 1,
+    "exclusive_groups": [],
+    "entry_decision_ids": [
+      "palace_renovation_proposal"
+    ],
+    "resolution_decision_ids": [
+      "palace_renovation_resolution"
+    ],
+    "branch_ids": [
+      "modest_path",
+      "luxury_path",
+      "transparency_path"
+    ],
+    "tags": [
+      "palace",
+      "scandal",
+      "renovation"
+    ]
   }
 ]

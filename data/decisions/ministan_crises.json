@@ -11,7 +11,10 @@
     "minimum_day": 8,
     "maximum_day": 35,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "narrative": {
       "crisis_id": "national_power_outage",
@@ -21,34 +24,65 @@
       {
         "id": "hospital",
         "label": "Power hospitals",
-        "effects": { "happiness": 8, "treasury": -8, "elite_loyalty": -4 },
+        "effects": {
+          "happiness": 8,
+          "treasury": -8,
+          "elite_loyalty": -4
+        },
         "crisis_actions": [
-          { "crisis_id": "national_power_outage", "action": "resolve", "resolution_id": "hospital" }
+          {
+            "crisis_id": "national_power_outage",
+            "action": "resolve",
+            "resolution_id": "hospital"
+          }
         ],
         "result_text": "Hospitals return to life. Television executives declare this an attack on culture."
       },
       {
         "id": "television",
         "label": "Power television",
-        "effects": { "happiness": 2, "order": 6, "elite_loyalty": 4 },
-        "add_flags": ["propaganda_powered_during_blackout"],
-        "add_laws": ["emergency_broadcast_priority"],
+        "effects": {
+          "happiness": 2,
+          "order": 6,
+          "elite_loyalty": 4
+        },
+        "add_flags": [
+          "propaganda_powered_during_blackout"
+        ],
+        "add_laws": [
+          "emergency_broadcast_priority"
+        ],
         "crisis_actions": [
-          { "crisis_id": "national_power_outage", "action": "resolve", "resolution_id": "television" }
+          {
+            "crisis_id": "national_power_outage",
+            "action": "resolve",
+            "resolution_id": "television"
+          }
         ],
         "result_text": "Citizens cannot cook, but they can watch a documentary explaining why this is good."
       },
       {
         "id": "palace",
         "label": "Power the palace",
-        "effects": { "happiness": -12, "order": -5, "elite_loyalty": 8 },
+        "effects": {
+          "happiness": -12,
+          "order": -5,
+          "elite_loyalty": 8
+        },
         "crisis_actions": [
-          { "crisis_id": "national_power_outage", "action": "fail", "reason": "palace_neglect" }
+          {
+            "crisis_id": "national_power_outage",
+            "action": "fail",
+            "reason": "palace_neglect"
+          }
         ],
         "result_text": "The palace chandelier remains magnificent over a completely dark nation."
       }
     ],
-    "tags": ["infrastructure", "crisis"]
+    "tags": [
+      "infrastructure",
+      "crisis"
+    ]
   },
   {
     "id": "cheese_shortage_crisis",
@@ -62,7 +96,10 @@
     "minimum_day": 10,
     "maximum_day": 35,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "narrative": {
       "crisis_id": "cheese_shortage_crisis",
@@ -72,36 +109,70 @@
       {
         "id": "import_cheese",
         "label": "Emergency cheese imports",
-        "effects": { "treasury": -12, "happiness": 6 },
-        "add_laws": ["fish_emergency_reserve"],
-        "add_flags": ["cheese_shortage_resolved"],
+        "effects": {
+          "treasury": -12,
+          "happiness": 6
+        },
+        "add_laws": [
+          "fish_emergency_reserve"
+        ],
+        "add_flags": [
+          "cheese_shortage_resolved"
+        ],
         "crisis_actions": [
-          { "crisis_id": "cheese_shortage_crisis", "action": "resolve", "resolution_id": "import_cheese" }
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "resolve",
+            "resolution_id": "import_cheese"
+          }
         ],
         "result_text": "A convoy of cheese trucks crosses the border. Pizza Friday survives."
       },
       {
         "id": "cheese_rationing",
         "label": "Ration the cheese",
-        "effects": { "happiness": -4, "order": 4, "treasury": 2 },
+        "effects": {
+          "happiness": -4,
+          "order": 4,
+          "treasury": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "cheese_shortage_crisis", "action": "resolve", "resolution_id": "cheese_rationing" }
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "resolve",
+            "resolution_id": "cheese_rationing"
+          }
         ],
         "result_text": "Each citizen receives one cheese cube. Morale is damp but orderly."
       },
       {
         "id": "cancel_pizza",
         "label": "Cancel Pizza Friday",
-        "effects": { "happiness": -14, "treasury": 6 },
-        "remove_laws": ["free_pizza_friday"],
-        "remove_flags": ["pizza_policy_active"],
+        "effects": {
+          "happiness": -14,
+          "treasury": 6
+        },
+        "remove_laws": [
+          "free_pizza_friday"
+        ],
+        "remove_flags": [
+          "pizza_policy_active"
+        ],
         "crisis_actions": [
-          { "crisis_id": "cheese_shortage_crisis", "action": "fail", "reason": "cancel_pizza" }
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "fail",
+            "reason": "cancel_pizza"
+          }
         ],
         "result_text": "Pizza Friday ends. A nation mourns in gluten-free silence."
       }
     ],
-    "tags": ["food", "crisis", "pizza"]
+    "tags": [
+      "food",
+      "crisis",
+      "pizza"
+    ]
   },
   {
     "id": "mass_protest",
@@ -115,7 +186,11 @@
     "minimum_day": 12,
     "maximum_day": 38,
     "pacing": {
-      "allowed_stages": ["escalation", "instability", "endgame"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
     },
     "narrative": {
       "crisis_id": "mass_protest",
@@ -125,36 +200,72 @@
       {
         "id": "negotiate",
         "label": "Send Auntie Olga to negotiate",
-        "effects": { "happiness": 8, "order": -3, "treasury": -5 },
-        "advisor_affinity": { "auntie_olga": 2 },
+        "effects": {
+          "happiness": 8,
+          "order": -3,
+          "treasury": -5
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "resolve", "resolution_id": "negotiate" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "resolve",
+            "resolution_id": "negotiate"
+          }
         ],
         "result_text": "Protesters receive better benches. Auntie Olga returns with crumbs on her coat."
       },
       {
         "id": "concessions",
         "label": "Announce concessions",
-        "effects": { "happiness": 5, "treasury": -8, "elite_loyalty": -4 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "happiness": 5,
+          "treasury": -8,
+          "elite_loyalty": -4
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "resolve", "resolution_id": "concessions" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "resolve",
+            "resolution_id": "concessions"
+          }
         ],
         "result_text": "The crowd cheers. Ministers wonder which budget line just vanished."
       },
       {
         "id": "crackdown",
         "label": "Deploy the hose",
-        "effects": { "order": 10, "happiness": -15, "elite_loyalty": 5 },
-        "trait_changes": { "authoritarian": 3 },
+        "effects": {
+          "order": 10,
+          "happiness": -15,
+          "elite_loyalty": 5
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "fail", "reason": "crackdown" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "fail",
+            "reason": "crackdown"
+          }
         ],
         "result_text": "The square empties. Trust does not return with the water."
       }
     ],
-    "tags": ["protest", "crisis", "public"],
-    "visual_tags": ["protest_crowd"]
+    "tags": [
+      "protest",
+      "crisis",
+      "public"
+    ],
+    "visual_tags": [
+      "protest_crowd"
+    ]
   },
   {
     "id": "bank_run",
@@ -168,7 +279,11 @@
     "minimum_day": 8,
     "maximum_day": 38,
     "pacing": {
-      "allowed_stages": ["escalation", "instability", "endgame"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
     },
     "narrative": {
       "crisis_id": "bank_run",
@@ -178,33 +293,63 @@
       {
         "id": "deposit_guarantee",
         "label": "Guarantee all deposits",
-        "effects": { "treasury": -15, "happiness": 4, "elite_loyalty": -6 },
+        "effects": {
+          "treasury": -15,
+          "happiness": 4,
+          "elite_loyalty": -6
+        },
         "crisis_actions": [
-          { "crisis_id": "bank_run", "action": "resolve", "resolution_id": "deposit_guarantee" }
+          {
+            "crisis_id": "bank_run",
+            "action": "resolve",
+            "resolution_id": "deposit_guarantee"
+          }
         ],
         "result_text": "Queues shrink. The Treasury receives a stress headache."
       },
       {
         "id": "emergency_loan",
         "label": "Take an emergency loan",
-        "effects": { "treasury": 10, "elite_loyalty": -8, "happiness": -2 },
+        "effects": {
+          "treasury": 10,
+          "elite_loyalty": -8,
+          "happiness": -2
+        },
         "crisis_actions": [
-          { "crisis_id": "bank_run", "action": "resolve", "resolution_id": "emergency_loan" }
+          {
+            "crisis_id": "bank_run",
+            "action": "resolve",
+            "resolution_id": "emergency_loan"
+          }
         ],
         "result_text": "Sir Profit calls it a partnership. The bank owns a decorative ministry."
       },
       {
         "id": "close_banks",
         "label": "Close the banks",
-        "effects": { "order": 6, "happiness": -12, "treasury": -5 },
+        "effects": {
+          "order": 6,
+          "happiness": -12,
+          "treasury": -5
+        },
         "crisis_actions": [
-          { "crisis_id": "bank_run", "action": "fail", "reason": "close_banks" }
+          {
+            "crisis_id": "bank_run",
+            "action": "fail",
+            "reason": "close_banks"
+          }
         ],
         "result_text": "Banks shut. Citizens keep money under mattresses and suspicion."
       }
     ],
-    "tags": ["economy", "crisis", "banking"],
-    "visual_tags": ["bank_panic"]
+    "tags": [
+      "economy",
+      "crisis",
+      "banking"
+    ],
+    "visual_tags": [
+      "bank_panic"
+    ]
   },
   {
     "id": "cat_parliament_occupation",
@@ -218,7 +363,11 @@
     "minimum_day": 6,
     "maximum_day": 35,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation", "instability"]
+      "allowed_stages": [
+        "establishment",
+        "escalation",
+        "instability"
+      ]
     },
     "narrative": {
       "crisis_id": "cat_parliament_occupation",
@@ -228,36 +377,72 @@
       {
         "id": "negotiate_cats",
         "label": "Negotiate with Comrade Whiskers",
-        "effects": { "happiness": 6, "order": -4, "treasury": -4 },
-        "advisor_affinity": { "comrade_whiskers": 2 },
+        "effects": {
+          "happiness": 6,
+          "order": -4,
+          "treasury": -4
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "cat_parliament_occupation", "action": "resolve", "resolution_id": "negotiate_cats" }
+          {
+            "crisis_id": "cat_parliament_occupation",
+            "action": "resolve",
+            "resolution_id": "negotiate_cats"
+          }
         ],
         "result_text": "Cats accept sunbeam seating. Parliament resumes at 40% capacity."
       },
       {
         "id": "fish_treaty",
         "label": "Sign emergency Fish Treaty",
-        "effects": { "treasury": -8, "happiness": 8, "elite_loyalty": -3 },
-        "add_laws": ["fish_emergency_reserve"],
-        "advisor_affinity": { "comrade_whiskers": 3 },
+        "effects": {
+          "treasury": -8,
+          "happiness": 8,
+          "elite_loyalty": -3
+        },
+        "add_laws": [
+          "fish_emergency_reserve"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 3
+        },
         "crisis_actions": [
-          { "crisis_id": "cat_parliament_occupation", "action": "resolve", "resolution_id": "fish_treaty" }
+          {
+            "crisis_id": "cat_parliament_occupation",
+            "action": "resolve",
+            "resolution_id": "fish_treaty"
+          }
         ],
         "result_text": "Fish reserves open. Cats release the speaker's chair."
       },
       {
         "id": "evict_cats",
         "label": "Evict the cats",
-        "effects": { "order": 8, "happiness": -10, "elite_loyalty": 4 },
+        "effects": {
+          "order": 8,
+          "happiness": -10,
+          "elite_loyalty": 4
+        },
         "crisis_actions": [
-          { "crisis_id": "cat_parliament_occupation", "action": "fail", "reason": "evict_cats" }
+          {
+            "crisis_id": "cat_parliament_occupation",
+            "action": "fail",
+            "reason": "evict_cats"
+          }
         ],
         "result_text": "Parliament is cat-free and scratch-covered. Trust with felines collapses."
       }
     ],
-    "tags": ["cats", "crisis", "politics"],
-    "visual_tags": ["cats_in_square"]
+    "tags": [
+      "cats",
+      "crisis",
+      "politics"
+    ],
+    "visual_tags": [
+      "cats_in_square"
+    ]
   },
   {
     "id": "ai_cabinet_lockout",
@@ -271,7 +456,11 @@
     "minimum_day": 10,
     "maximum_day": 38,
     "pacing": {
-      "allowed_stages": ["escalation", "instability", "endgame"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
     },
     "narrative": {
       "crisis_id": "ai_cabinet_lockout",
@@ -281,36 +470,73 @@
       {
         "id": "dual_key",
         "label": "Authorize dual-key unlock",
-        "effects": { "order": 4, "treasury": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "clerk_zero": 2 },
+        "effects": {
+          "order": 4,
+          "treasury": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "ai_cabinet_lockout", "action": "resolve", "resolution_id": "dual_key" }
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "resolve",
+            "resolution_id": "dual_key"
+          }
         ],
         "result_text": "Two stamps unlock the folder. The flowchart becomes a poster."
       },
       {
         "id": "accept_optimize",
         "label": "Accept the optimization",
-        "effects": { "order": 3, "elite_loyalty": -3, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": 1, "clerk_zero": -1 },
+        "effects": {
+          "order": 3,
+          "elite_loyalty": -3,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "clerk_zero": -1
+        },
         "crisis_actions": [
-          { "crisis_id": "ai_cabinet_lockout", "action": "resolve", "resolution_id": "accept_optimize" }
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "resolve",
+            "resolution_id": "accept_optimize"
+          }
         ],
         "result_text": "Ministers receive calendar invites to their own briefings."
       },
       {
         "id": "smash_terminal",
         "label": "Smash the terminal",
-        "effects": { "order": -4, "happiness": 2, "elite_loyalty": -1 },
-        "trait_changes": { "chaotic": 2 },
+        "effects": {
+          "order": -4,
+          "happiness": 2,
+          "elite_loyalty": -1
+        },
+        "trait_changes": {
+          "chaotic": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "ai_cabinet_lockout", "action": "fail", "reason": "smash_terminal" }
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "fail",
+            "reason": "smash_terminal"
+          }
         ],
         "result_text": "Sparks. Paper dust. A coat rack is born."
       }
     ],
-    "tags": ["science", "crisis", "ai"],
-    "visual_tags": ["blank_terminal_cabinet"]
+    "tags": [
+      "science",
+      "crisis",
+      "ai"
+    ],
+    "visual_tags": [
+      "blank_terminal_cabinet"
+    ]
   },
   {
     "id": "moon_ownership_dispute",
@@ -324,7 +550,11 @@
     "minimum_day": 10,
     "maximum_day": 38,
     "pacing": {
-      "allowed_stages": ["escalation", "instability", "endgame"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
     },
     "narrative": {
       "crisis_id": "moon_ownership_dispute",
@@ -334,33 +564,148 @@
       {
         "id": "share_nights",
         "label": "Share observation nights",
-        "effects": { "order": 3, "happiness": 3, "treasury": -2 },
+        "effects": {
+          "order": 3,
+          "happiness": 3,
+          "treasury": -2
+        },
         "crisis_actions": [
-          { "crisis_id": "moon_ownership_dispute", "action": "resolve", "resolution_id": "share_nights" }
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "resolve",
+            "resolution_id": "share_nights"
+          }
         ],
         "result_text": "Tuesdays and Wednesdays are filed. The Moon remains unconsulted."
       },
       {
         "id": "pay_settlement",
         "label": "Pay a lunar settlement",
-        "effects": { "treasury": -8, "elite_loyalty": 2, "order": 2 },
-        "advisor_affinity": { "sir_profit": 1 },
+        "effects": {
+          "treasury": -8,
+          "elite_loyalty": 2,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
         "crisis_actions": [
-          { "crisis_id": "moon_ownership_dispute", "action": "resolve", "resolution_id": "pay_settlement" }
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "resolve",
+            "resolution_id": "pay_settlement"
+          }
         ],
         "result_text": "Cash clears the awkwardness. Tinyria folds the longer note."
       },
       {
         "id": "ignore_tinyria",
         "label": "Ignore Tinyria",
-        "effects": { "order": -5, "happiness": -2, "elite_loyalty": 1 },
+        "effects": {
+          "order": -5,
+          "happiness": -2,
+          "elite_loyalty": 1
+        },
         "crisis_actions": [
-          { "crisis_id": "moon_ownership_dispute", "action": "fail", "reason": "ignore_tinyria" }
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "fail",
+            "reason": "ignore_tinyria"
+          }
         ],
         "result_text": "The smaller flag waves harder. Embassies queue overnight."
       }
     ],
-    "tags": ["bureaucracy", "crisis", "moon"],
-    "visual_tags": ["embassy_queue_protest"]
+    "tags": [
+      "bureaucracy",
+      "crisis",
+      "moon"
+    ],
+    "visual_tags": [
+      "embassy_queue_protest"
+    ]
+  },
+  {
+    "id": "national_festival_stampede",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "crisis",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "The festival crowd invents new physics. Exits are theoretical. Choose crowd control, shorter hours, or ignore and hope.",
+    "one_time": true,
+    "base_weight": 8,
+    "narrative": {
+      "crisis_id": "national_festival_stampede",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "crowd_control",
+        "label": "Deploy polite crowd control",
+        "effects": {
+          "order": 5,
+          "happiness": -2,
+          "treasury": -3
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "resolve",
+            "resolution_id": "crowd_control"
+          }
+        ],
+        "result_text": "Barriers appear. Music lowers. Physics resumes being boring."
+      },
+      {
+        "id": "shorten_hours",
+        "label": "Shorten festival hours",
+        "effects": {
+          "order": 4,
+          "happiness": -1,
+          "treasury": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "resolve",
+            "resolution_id": "shorten_hours"
+          }
+        ],
+        "result_text": "Curfew on confetti. Vendors pack early. Sleep returns partially."
+      },
+      {
+        "id": "ignore_crowd",
+        "label": "Ignore and hope",
+        "effects": {
+          "order": -6,
+          "happiness": -3
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "fail",
+            "reason": "ignore_crowd"
+          }
+        ],
+        "result_text": "The crowd becomes weather. Historians request hard hats."
+      }
+    ],
+    "tags": [
+      "crisis",
+      "festival"
+    ],
+    "visual_tags": [
+      "stampede_plaza"
+    ],
+    "minimum_day": 8,
+    "maximum_day": 38,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    }
   }
 ]

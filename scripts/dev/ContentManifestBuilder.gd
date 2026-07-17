@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_12_major_arc_pack_c"
-const BATCH_ID: String = "2B-12"
-const DECISION_BATCH_ID: String = "2B-12"
+const PHASE: String = "2b_13_major_arc_pack_d"
+const BATCH_ID: String = "2B-13"
+const DECISION_BATCH_ID: String = "2B-13"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -92,12 +92,16 @@ const MAJOR_ARC_IDS: Array[String] = [
 	"penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
 	"luna_media_reality", "olga_citizen_movement", "fake_election_accident",
 	"profit_corporate_state", "robot_government", "sell_the_moon",
+	"whiskers_cat_revolution", "zero_government_of_forms", "national_festival_economy",
+	"international_cheese_crisis", "palace_renovation_scandal",
 ]
 
 const APPROVED_MAJOR_ARC_IDS: Array[String] = [
 	"general_boom_arc", "penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
 	"luna_media_reality", "olga_citizen_movement", "mandatory_happiness", "fake_election_accident",
 	"doctor_maybe_arc", "profit_corporate_state", "robot_government", "sell_the_moon",
+	"whiskers_cat_revolution", "zero_government_of_forms", "cat_politics",
+	"national_festival_economy", "international_cheese_crisis", "palace_renovation_scandal",
 ]
 
 const MINOR_ARC_IDS: Array[String] = ["traffic_military"]
@@ -148,6 +152,27 @@ const MAJOR_ARC_PACK_C_APPROVED_IDS: Array[String] = [
 	"moon_international_reaction", "moon_crisis_opportunity", "moon_arc_resolution",
 ]
 
+const MAJOR_ARC_PACK_D_APPROVED_IDS: Array[String] = [
+	# Whiskers — The Cat Revolution (4)
+	"whiskers_political_demand", "whiskers_movement_escalation",
+	"whiskers_path_fork", "whiskers_revolution_resolution",
+	# Clerk Zero — The Government of Forms (4)
+	"zero_admin_reform", "zero_bureaucracy_expand",
+	"zero_control_fork", "zero_forms_resolution",
+	# Cat Politics rewrite (4)
+	"cat_faction_proposal", "cat_faction_escalation",
+	"cat_political_fork", "cat_politics_resolution",
+	# National Festival Economy (4)
+	"festival_stimulus_proposal", "festival_economy_boom",
+	"festival_sustainability_fork", "festival_economy_resolution",
+	# International Cheese Crisis (4)
+	"cheese_diplomatic_incident", "cheese_national_response",
+	"cheese_path_fork", "cheese_crisis_resolution",
+	# Palace Renovation Scandal (4)
+	"palace_renovation_proposal", "palace_cost_escalation",
+	"palace_scandal_fork", "palace_renovation_resolution",
+]
+
 const CHAIN_MEMBERS: Dictionary = {
 	"free_pizza_consequences": [
 		"free_pizza_friday", "cheese_shortage", "pizza_union_strike", "pineapple_referendum",
@@ -156,7 +181,7 @@ const CHAIN_MEMBERS: Dictionary = {
 		"switch_off_traffic_lights", "traffic_tank_solution", "traffic_complaint",
 		"traffic_military_resolved", "traffic_lights_restored",
 	],
-	"cat_politics_followups": ["cat_parliament", "cat_fish_budget"],
+	"cat_politics_followups": ["cat_faction_escalation"],
 	"umbrella_tax": ["umbrella_tax_proposal", "umbrella_tax_enforcement"],
 	"national_coffee_reserve": [
 		"free_coffee_morning", "coffee_hoarding_crisis", "coffee_reserve_resolution",
@@ -332,7 +357,7 @@ const PLACEHOLDER_DECISION_IDS: Array[String] = [
 ]
 
 const MANUAL_TEST_DECISION_IDS: Array[String] = [
-	"cat_voting_rights", "switch_off_traffic_lights", "mandatory_smiling_proposal",
+	"cat_faction_proposal", "switch_off_traffic_lights", "mandatory_smiling_proposal",
 	"military_parade", "science_gamble", "national_power_outage", "cheese_shortage_crisis",
 	"mass_protest", "bank_run", "cat_parliament_occupation",
 	"privatize_rainwater", "treasury_tip_jar", "no_weekends_proposal", "luxury_chair_tax",
@@ -403,6 +428,12 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"profit_partnership_brief", "profit_ownership_fork", "profit_corporate_resolution",
 	"ai_admin_pilot", "ai_human_system_fork", "ai_government_resolution",
 	"moon_budget_proposal", "moon_path_fork", "moon_arc_resolution",
+	"whiskers_political_demand", "whiskers_path_fork", "whiskers_revolution_resolution",
+	"zero_admin_reform", "zero_control_fork", "zero_forms_resolution",
+	"cat_faction_proposal", "cat_political_fork", "cat_politics_resolution",
+	"festival_stimulus_proposal", "festival_sustainability_fork", "festival_economy_resolution",
+	"cheese_diplomatic_incident", "cheese_path_fork", "cheese_crisis_resolution",
+	"palace_renovation_proposal", "palace_scandal_fork", "palace_renovation_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = []
@@ -774,6 +805,9 @@ func _resolve_status(
 	if id in MAJOR_ARC_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in MAJOR_ARC_PACK_D_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -856,6 +890,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-11 approved major-arc card.")
 	if id in MAJOR_ARC_PACK_C_APPROVED_IDS:
 		notes.append("Milestone 2B-12 approved major-arc card.")
+	if id in MAJOR_ARC_PACK_D_APPROVED_IDS:
+		notes.append("Milestone 2B-13 approved major-arc card.")
 	return ", ".join(notes)
 
 
@@ -1018,9 +1054,19 @@ func _source_file_hint(id: String) -> String:
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]
-	if id.begins_with("cat_") or id == "cats_return_to_boxes":
+	if id.begins_with("cat_faction") or id.begins_with("cat_political") or id == "cat_politics_resolution":
 		return "data/decisions/ministan_cat_politics.json"
-	if id.begins_with("national_") or id.begins_with("cheese_shortage_crisis") or id.begins_with("mass_") or id.begins_with("bank_") or id.begins_with("cat_parliament_occupation") or id in ["ai_cabinet_lockout", "moon_ownership_dispute"]:
+	if id.begins_with("whiskers_"):
+		return "data/decisions/ministan_whiskers_cat_revolution_arc.json"
+	if id.begins_with("zero_"):
+		return "data/decisions/ministan_zero_government_of_forms_arc.json"
+	if id.begins_with("festival_"):
+		return "data/decisions/ministan_national_festival_economy_arc.json"
+	if id in ["cheese_diplomatic_incident", "cheese_national_response", "cheese_path_fork", "cheese_crisis_resolution"]:
+		return "data/decisions/ministan_international_cheese_crisis_arc.json"
+	if id.begins_with("palace_renovation") or id.begins_with("palace_cost") or id.begins_with("palace_scandal"):
+		return "data/decisions/ministan_palace_renovation_scandal_arc.json"
+	if id.begins_with("national_") or id.begins_with("cheese_shortage_crisis") or id.begins_with("mass_") or id.begins_with("bank_") or id.begins_with("cat_parliament_occupation") or id in ["ai_cabinet_lockout", "moon_ownership_dispute", "national_festival_stampede"]:
 		return "data/decisions/ministan_crises.json"
 	if id.begins_with("maybe_"):
 		return "data/decisions/ministan_doctor_maybe_arc.json"

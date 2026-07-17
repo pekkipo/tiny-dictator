@@ -264,8 +264,8 @@ static func _validate_no_runtime_leakage(
 	warnings: Array[String],
 ) -> void:
 	var runtime_count := repository.get_all_decisions_for_country("ministan").size()
-	if runtime_count != 225:
-		errors.append("Expected 225 runtime decisions, got %d" % runtime_count)
+	if runtime_count != 279:
+		errors.append("Expected 279 runtime decisions, got %d" % runtime_count)
 
 	var voice_text := _read_text(VOICE_BIBLE_PATH)
 	if "EXAMPLE — NOT RUNTIME" not in voice_text:

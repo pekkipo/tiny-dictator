@@ -4,7 +4,7 @@
     "display_name": "General Boom",
     "role": "Military Advisor",
     "short_description": "Believes every problem can be solved with a parade.",
-    "placeholder_icon": "🪖",
+    "placeholder_icon": "\ud83e\ude96",
     "accent_key": "military"
   },
   {
@@ -12,7 +12,7 @@
     "display_name": "Minister Penny",
     "role": "Treasury Advisor",
     "short_description": "Has never met a tax she didn't like.",
-    "placeholder_icon": "💰",
+    "placeholder_icon": "\ud83d\udcb0",
     "accent_key": "economy"
   },
   {
@@ -20,7 +20,7 @@
     "display_name": "Luna News",
     "role": "Media Advisor",
     "short_description": "Turns every disaster into a triumph by lunchtime.",
-    "placeholder_icon": "📺",
+    "placeholder_icon": "\ud83d\udcfa",
     "accent_key": "media"
   },
   {
@@ -28,7 +28,7 @@
     "display_name": "Auntie Olga",
     "role": "Citizen Representative",
     "short_description": "Deeply suspicious of government nonsense.",
-    "placeholder_icon": "🧹",
+    "placeholder_icon": "\ud83e\uddf9",
     "accent_key": "public"
   },
   {
@@ -36,7 +36,7 @@
     "display_name": "Doctor Maybe",
     "role": "Science Advisor",
     "short_description": "Excited by side effects. Uncertain about causes.",
-    "placeholder_icon": "🧪",
+    "placeholder_icon": "\ud83e\uddea",
     "accent_key": "science"
   },
   {
@@ -44,7 +44,7 @@
     "display_name": "Sir Profit",
     "role": "Business Advisor",
     "short_description": "Calls corruption alignment and privatization progress.",
-    "placeholder_icon": "🏦",
+    "placeholder_icon": "\ud83c\udfe6",
     "accent_key": "business"
   },
   {
@@ -52,7 +52,7 @@
     "display_name": "Comrade Whiskers",
     "role": "Cat Union Representative",
     "short_description": "Demands fish, warm furniture, and political recognition.",
-    "placeholder_icon": "🐱",
+    "placeholder_icon": "\ud83d\udc31",
     "accent_key": "cats"
   },
   {
@@ -60,7 +60,7 @@
     "display_name": "Clerk Zero",
     "role": "Bureaucracy Advisor",
     "short_description": "Emotionless. Literal. Procedural.",
-    "placeholder_icon": "📋",
+    "placeholder_icon": "\ud83d\udccb",
     "accent_key": "bureaucracy"
   },
   {
@@ -68,7 +68,7 @@
     "display_name": "Chief Judge",
     "role": "Guest Jurist",
     "short_description": "Treats silly statutes as sacred text. No affinity meter. Only solemn articles.",
-    "placeholder_icon": "⚖️",
+    "placeholder_icon": "\u2696\ufe0f",
     "accent_key": "bureaucracy",
     "guest": true
   },
@@ -77,8 +77,17 @@
     "display_name": "Foreign Ambassador",
     "role": "Guest Diplomat",
     "short_description": "Delivers awkward notes from neighboring Tinyria. No affinity meter. Only polite objections.",
-    "placeholder_icon": "🕊️",
+    "placeholder_icon": "\ud83d\udd4a\ufe0f",
     "accent_key": "bureaucracy",
+    "guest": true
+  },
+  {
+    "id": "palace_chef",
+    "display_name": "Palace Chef",
+    "role": "Guest Culinary Officer",
+    "short_description": "Exhausted artisan of state dinners. No affinity meter. Only kitchen dignity.",
+    "placeholder_icon": "\ud83c\udf73",
+    "accent_key": "public_life",
     "guest": true
   }
 ]

@@ -1,346 +1,595 @@
 [
   {
-    "id": "cat_voting_rights",
+    "id": "cat_faction_proposal",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "normal",
     "advisor_id": "minister_penny",
     "category": "public_life",
-    "proposal": "Cats pay taxes in fur and emotional support. They demand voting rights.",
+    "proposal": "Cats contribute fur taxes and emotional support. A rights lobby wants seats. Profit wants mascots. Olga wants quieter stairs. Pick a ledger.",
     "one_time": true,
-    "base_weight": 14,
+    "base_weight": 13,
     "minimum_day": 2,
-    "maximum_day": 14,
+    "maximum_day": 12,
     "narrative": {
       "arc_id": "cat_politics",
       "beat_type": "setup",
-      "step": 1,
       "starts_arc": true,
-      "advances_arc": false,
-      "resolves_arc": false,
       "importance": "major"
     },
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "requirements": {
-      "blocked_flags": ["cats_enfranchised"],
-      "blocked_arcs": ["robot_government"]
+      "blocked_flags": [
+        "cat_pol_live",
+        "cat_pol_complete",
+        "cats_enfranchised"
+      ],
+      "blocked_arcs": [
+        "robot_government",
+        "whiskers_cat_revolution"
+      ]
     },
     "options": [
       {
-        "id": "reject",
-        "label": "Cats cannot vote",
-        "effects": { "happiness": -3, "order": 2, "elite_loyalty": 1 },
-        "counter_changes": { "anti_cat_choices": 1 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "branch", "branch_id": "oppose_cats" }
+        "id": "open_representation",
+        "label": "Open a representation hearing",
+        "effects": {
+          "happiness": 3,
+          "order": -2,
+          "elite_loyalty": -1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "cat_pol_live",
+          "cat_hearing_open"
         ],
-        "force_next_decision": "cat_protest",
-        "result_text": "Cats respond by knocking every government document onto the floor."
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "auntie_olga": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "branch",
+            "branch_id": "rights_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "cat_faction_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 82,
+          "required_flags": [
+            "cat_pol_live"
+          ]
+        },
+        "result_text": "Hearing scheduled. Cats bring cushions. Penny brings a spreadsheet."
       },
       {
-        "id": "approve",
-        "label": "One cat, one vote",
-        "effects": { "happiness": 7, "order": -3, "elite_loyalty": -2 },
-        "add_laws": ["cat_voting_rights"],
-        "add_flags": ["cats_enfranchised"],
-        "counter_changes": { "cat_favor_choices": 1 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "branch", "branch_id": "support_cats" }
+        "id": "commission_study",
+        "label": "Commission a cost study first",
+        "effects": {
+          "order": 2,
+          "treasury": -3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "cat_pol_live",
+          "cat_study_first"
         ],
-        "force_next_decision": "cat_party_enters_parliament",
-        "result_text": "The first cat voter immediately sleeps through election day."
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "sir_profit": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "branch",
+            "branch_id": "cynical_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "cat_faction_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "cat_pol_live"
+          ]
+        },
+        "result_text": "Study funded. Cats nap on the binder. Profit circles 'brand opportunity.'"
+      },
+      {
+        "id": "table_indefinitely",
+        "label": "Table indefinitely",
+        "effects": {
+          "order": 1,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "general_boom": 1,
+          "auntie_olga": -1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "abandon",
+            "reason": "tabled"
+          }
+        ],
+        "result_text": "Item tabled under 'pending fur.' Stairs remain contested."
       }
     ],
-    "tags": ["cats", "politics", "arc_setup"],
-    "visual_tags": ["cats_in_square"]
-  },
-  {
-    "id": "cat_protest",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "Enraged cats occupy the ministry steps. They want answers or cardboard boxes.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
+    "tags": [
+      "cats",
+      "arc_setup",
+      "politics"
+    ],
+    "visual_tags": [
+      "cats_in_square"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
       "arc_id": "cat_politics",
-      "beat_type": "escalation",
-      "step": 2,
-      "branch_id": "oppose_cats",
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "oppose_cats" }
-    },
-    "options": [
-      {
-        "id": "suppress",
-        "label": "Deploy the hose",
-        "effects": { "happiness": -8, "order": 5, "elite_loyalty": 2 },
-        "force_next_decision": "cats_return_to_boxes",
-        "result_text": "The cats retreat in dignified silence. Nobody trusts you with pets anymore."
-      },
-      {
-        "id": "negotiate",
-        "label": "Offer a cat council",
-        "effects": { "happiness": 3, "order": -2, "treasury": -3 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "branch", "branch_id": "negotiate_cats" },
-          { "arc_id": "cat_politics", "action": "advance" }
-        ],
-        "force_next_decision": "cat_limited_council",
-        "result_text": "Three senior cats accept seats. They immediately demand better cushions."
-      }
-    ],
-    "tags": ["cats", "politics", "arc_escalation"]
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-13C",
+      "humor_tags": [
+        "fur_taxes",
+        "ledger"
+      ],
+      "emotional_goal": "factional_setup",
+      "visual_hook": "hearing table with cushions and spreadsheet",
+      "localization_risk": "low",
+      "writer_notes": "Rewrite entry. Not Whiskers-led. Mutex vs whiskers + AI."
+    }
   },
   {
-    "id": "cat_limited_council",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "public_life",
-    "proposal": "The cat council legislates mandatory nap breaks for all citizens.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
-      "arc_id": "cat_politics",
-      "beat_type": "escalation",
-      "step": 3,
-      "branch_id": "negotiate_cats",
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "negotiate_cats" }
-    },
-    "options": [
-      {
-        "id": "accept",
-        "label": "Sign the nap decree",
-        "effects": { "happiness": 4, "order": -4, "elite_loyalty": -3 },
-        "force_next_decision": "cats_return_to_boxes",
-        "result_text": "Productivity collapses. The cats declare victory and return to their boxes."
-      },
-      {
-        "id": "veto",
-        "label": "Veto the naps",
-        "effects": { "happiness": -5, "order": 3 },
-        "force_next_decision": "cats_return_to_boxes",
-        "result_text": "The council hisses in unison. Order is restored, dignity is not."
-      }
-    ],
-    "tags": ["cats", "politics", "arc_escalation"]
-  },
-  {
-    "id": "cat_party_enters_parliament",
+    "id": "cat_faction_escalation",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "normal",
     "advisor_id": "luna_news",
     "category": "public_life",
-    "proposal": "The Cat Party wins twelve seats. Their first bill: mandatory fish subsidies.",
+    "proposal": "Three factions on air: Rights Lobby wants votes, Profit Lobby wants branded naps, Olga's neighbors want cardboard peace. Ratings excellent. Stairs worse.",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "cat_politics",
       "beat_type": "escalation",
-      "step": 2,
-      "branch_id": "support_cats",
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "support_cats" }
+      "active_arcs": [
+        "cat_politics"
+      ],
+      "all_flags": [
+        "cat_pol_live"
+      ]
     },
     "options": [
       {
-        "id": "fund_fish",
-        "label": "Fund the fish budget",
-        "effects": { "treasury": -10, "happiness": 5, "elite_loyalty": -2 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "advance" }
+        "id": "platform_rights",
+        "label": "Platform the rights lobby",
+        "effects": {
+          "happiness": 4,
+          "order": -3,
+          "elite_loyalty": -2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "cat_factions_hot",
+          "cat_rights_spotlight"
         ],
-        "force_next_decision": "cat_politics_fish_budget",
-        "result_text": "Treasury officials weep. The Cat Party purrs on live television."
+        "advisor_affinity": {
+          "luna_news": 2,
+          "auntie_olga": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "force_next_decision": "cat_political_fork",
+        "result_text": "Segment ends with a fish graph. Rights lobby purrs on cue."
       },
       {
-        "id": "ban_party",
-        "label": "Ban the Cat Party",
-        "effects": { "happiness": -6, "order": 6, "elite_loyalty": 4 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "advance" }
+        "id": "platform_profit",
+        "label": "Platform the Profit lobby",
+        "effects": {
+          "treasury": 3,
+          "elite_loyalty": 3,
+          "happiness": -1,
+          "order": -1
+        },
+        "add_flags": [
+          "cat_factions_hot",
+          "cat_cynical_spotlight"
         ],
-        "force_next_decision": "cat_party_banned",
-        "result_text": "Parliament scratches your portrait. The palace sofa will never recover."
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "force_next_decision": "cat_political_fork",
+        "result_text": "Cats wear tiny sponsor scarves. Olga mutes the television."
+      },
+      {
+        "id": "platform_neighbors",
+        "label": "Platform neighborhood backlash",
+        "effects": {
+          "order": 2,
+          "happiness": 1,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "cat_factions_hot",
+          "cat_backlash_spotlight"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "general_boom": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "force_next_decision": "cat_political_fork",
+        "result_text": "Neighbors bring lint rollers and tea. The debate gains furniture."
       }
     ],
-    "tags": ["cats", "politics", "arc_escalation"]
+    "tags": [
+      "cats",
+      "arc_escalation",
+      "politics"
+    ],
+    "visual_tags": [
+      "lobby_cushion_booth",
+      "cats_in_square"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "cat_politics",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-13C",
+      "humor_tags": [
+        "three_factions",
+        "sponsor_scarves"
+      ],
+      "emotional_goal": "faction_pressure",
+      "visual_hook": "TV debate with cushions",
+      "localization_risk": "low"
+    }
   },
   {
-    "id": "cat_politics_fish_budget",
+    "id": "cat_political_fork",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "normal",
     "advisor_id": "minister_penny",
     "category": "economy",
-    "proposal": "The national fish reserve is empty. The Cat Party demands emergency imports.",
+    "proposal": "Budget fork: fund rights and fish seats, register cats as lobby assets, or ban the circus and restore stairs?",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "cat_politics",
       "beat_type": "climax",
-      "step": 3,
-      "branch_id": "support_cats",
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "support_cats" }
+      "active_arcs": [
+        "cat_politics"
+      ],
+      "all_flags": [
+        "cat_pol_live",
+        "cat_factions_hot"
+      ]
     },
     "options": [
       {
-        "id": "approve",
-        "label": "Import the fish",
-        "effects": { "treasury": -12, "happiness": 8 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "advance" }
+        "id": "rights_path",
+        "label": "Pass voting rights and fish rese",
+        "effects": {
+          "treasury": -10,
+          "happiness": 6,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "add_laws": [
+          "cat_voting_rights",
+          "fish_emergency_reserve"
         ],
-        "force_next_decision": "cat_republic_declared",
-        "result_text": "A fleet of sardine trucks crosses the border. History trembles."
+        "add_flags": [
+          "cat_rights_path",
+          "cat_fork_done",
+          "cats_enfranchised"
+        ],
+        "counter_changes": {
+          "cat_favor_choices": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": -1,
+          "auntie_olga": 2,
+          "luna_news": 2,
+          "sir_profit": -2
+        },
+        "trait_changes": {
+          "populist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "branch",
+            "branch_id": "rights_path"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "cat_parliament_occupation",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "cat_politics_resolution",
+        "result_text": "Votes counted. Fish trucked. Penny weeps into the ledger. History purrs."
       },
       {
-        "id": "refuse",
-        "label": "No more fish",
-        "effects": { "happiness": -10, "order": 4 },
-        "force_next_decision": "cats_return_to_boxes",
-        "result_text": "The Cat Party walks out. Citizens mourn the lost dream of free tuna."
+        "id": "cynical_path",
+        "label": "Register a cat lobby only",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 4,
+          "happiness": -2,
+          "order": 1
+        },
+        "add_laws": [
+          "cat_lobby_registry"
+        ],
+        "add_flags": [
+          "cat_cynical_path",
+          "cat_fork_done"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 4,
+          "luna_news": 2,
+          "auntie_olga": -2,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "capitalist": 3,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "branch",
+            "branch_id": "cynical_path"
+          }
+        ],
+        "force_next_decision": "cat_politics_resolution",
+        "result_text": "Lobby badges issued. Cats influence without governing. Stairs remain mostly human."
+      },
+      {
+        "id": "backlash_path",
+        "label": "Ban the political circus",
+        "effects": {
+          "order": 6,
+          "happiness": -5,
+          "elite_loyalty": 4,
+          "treasury": -2
+        },
+        "add_flags": [
+          "cat_backlash_path",
+          "cat_fork_done"
+        ],
+        "counter_changes": {
+          "anti_cat_choices": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 3,
+          "auntie_olga": 1,
+          "sir_profit": -1,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "cat_politics",
+            "action": "branch",
+            "branch_id": "backlash_path"
+          }
+        ],
+        "force_next_decision": "cat_politics_resolution",
+        "result_text": "Lint rollers become policy. Party posters vanish. Scratch marks remain as art."
       }
     ],
-    "tags": ["cats", "politics", "arc_climax"]
-  },
-  {
-    "id": "cat_republic_declared",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "resolution",
-    "advisor_id": "luna_news",
-    "category": "public_life",
-    "proposal": "The Cat Republic is declared. You are demoted to Chief Litter Officer.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
+    "tags": [
+      "cats",
+      "arc_climax",
+      "politics"
+    ],
+    "visual_tags": [
+      "fish_treaty",
+      "lint_roller_squad"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
       "arc_id": "cat_politics",
-      "beat_type": "resolution",
-      "step": 4,
-      "branch_id": "support_cats",
-      "resolves_arc": true,
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "support_cats" }
-    },
-    "options": [
-      {
-        "id": "accept",
-        "label": "Serve the cats",
-        "effects": { "happiness": 10, "elite_loyalty": -8, "order": -5 },
-        "result_text": "Ministan becomes a proud cat democracy. Your portrait is replaced by a scratching post."
-      },
-      {
-        "id": "flee",
-        "label": "Flee to the dog embassy",
-        "effects": { "happiness": -4, "order": -6 },
-        "trigger_ending": "cat_republic",
-        "result_text": "You escape through a pet door. The cats do not pursue. They are napping."
-      }
-    ],
-    "tags": ["cats", "politics", "arc_resolution"]
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13C",
+      "humor_tags": [
+        "fish_budget",
+        "lobby_badges"
+      ],
+      "emotional_goal": "hard_choice",
+      "visual_hook": "fish trucks or lint rollers",
+      "localization_risk": "low"
+    }
   },
   {
-    "id": "cat_party_banned",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "resolution",
-    "advisor_id": "general_boom",
-    "category": "public_life",
-    "proposal": "The Cat Party is outlawed. Scratch marks cover every palace door.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
-      "arc_id": "cat_politics",
-      "beat_type": "resolution",
-      "step": 3,
-      "branch_id": "support_cats",
-      "resolves_arc": true,
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["cat_politics"],
-      "arc_branches": { "cat_politics": "support_cats" }
-    },
-    "options": [
-      {
-        "id": "restore_order",
-        "label": "Deploy lint rollers",
-        "effects": { "order": 8, "happiness": -5, "elite_loyalty": 5 },
-        "result_text": "Order returns. Cats remain enfranchised but politically homeless."
-      },
-      {
-        "id": "ignore",
-        "label": "Live with the scratches",
-        "effects": { "order": -3, "happiness": 2 },
-        "result_text": "The palace becomes a monument to poor upholstery choices."
-      }
-    ],
-    "tags": ["cats", "politics", "arc_resolution"]
-  },
-  {
-    "id": "cats_return_to_boxes",
+    "id": "cat_politics_resolution",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "resolution",
     "advisor_id": "auntie_olga",
     "category": "public_life",
-    "proposal": "The cat movement collapses. Cardboard boxes appear on every corner.",
+    "proposal": "Final vote: cat republic, lobby-only seal, or boxes and quiet stairs?",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "cat_politics",
       "beat_type": "resolution",
-      "resolves_arc": false,
+      "resolves_arc": true,
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["cat_politics"]
+      "active_arcs": [
+        "cat_politics"
+      ],
+      "all_flags": [
+        "cat_pol_live",
+        "cat_fork_done"
+      ]
     },
     "options": [
       {
-        "id": "shrug",
-        "label": "Declare victory anyway",
-        "effects": { "happiness": 2, "elite_loyalty": 1 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "fail" }
+        "id": "declare_republic",
+        "label": "Accept the Cat Republic",
+        "effects": {
+          "happiness": 8,
+          "order": -5,
+          "elite_loyalty": -7
+        },
+        "add_flags": [
+          "cat_pol_complete",
+          "cats_control_parliament"
         ],
-        "result_text": "The cats vanish into boxes. Politics returns to normal absurdity."
+        "remove_flags": [
+          "cat_pol_live"
+        ],
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 3,
+          "auntie_olga": 1,
+          "general_boom": -3
+        },
+        "trait_changes": {
+          "populist": 2,
+          "chaotic": 2
+        },
+        "trigger_ending": "cat_republic",
+        "result_text": "Scratching post replaces your portrait. You are Chief Litter Officer. Naps ensue."
       },
       {
-        "id": "mourn",
-        "label": "Hold a state nap",
-        "effects": { "happiness": 4, "order": -2 },
-        "arc_actions": [
-          { "arc_id": "cat_politics", "action": "abandon" }
+        "id": "seal_lobby",
+        "label": "Seal lobby-only politics",
+        "effects": {
+          "treasury": 3,
+          "elite_loyalty": 3,
+          "happiness": 1,
+          "order": 2
+        },
+        "add_flags": [
+          "cat_pol_complete",
+          "cat_lobby_sealed",
+          "endgame_cat_lobby"
         ],
-        "result_text": "The nation sleeps through the crisis. Everyone wakes up confused."
+        "remove_flags": [
+          "cat_pol_live",
+          "cats_control_parliament"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "minister_penny": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "bureaucratic": 1
+        },
+        "result_text": "Cats lobby. Humans govern. Everyone pretends this is normal."
+      },
+      {
+        "id": "boxes_and_ban",
+        "label": "Boxes and quiet stairs",
+        "effects": {
+          "order": 5,
+          "happiness": -2,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "cat_pol_complete",
+          "cat_ban_seal"
+        ],
+        "remove_flags": [
+          "cat_pol_live",
+          "cats_enfranchised",
+          "cats_control_parliament"
+        ],
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": 3,
+          "comrade_whiskers": -2
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "populist": 1
+        },
+        "result_text": "Boxes on corners. Politics returns to human nonsense. Stairs are walkable again."
       }
     ],
-    "tags": ["cats", "politics", "arc_resolution"]
+    "tags": [
+      "cats",
+      "arc_resolution",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "cats_in_square",
+      "lint_roller_squad"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "cat_politics",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13C",
+      "humor_tags": [
+        "litter_officer",
+        "quiet_stairs"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "republic, lobby badge, or boxes",
+      "localization_risk": "low"
+    }
   }
 ]

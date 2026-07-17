@@ -1,0 +1,580 @@
+[
+  {
+    "id": "zero_admin_reform",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Backlog: 4,812 unanswered civic requests. Proposal: Administrative Reform Act. Shorter queues. Numbered windows. No new Form-to-Request-Forms. Hypothesis: useful.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 4,
+    "maximum_day": 16,
+    "narrative": {
+      "arc_id": "zero_government_of_forms",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "zero_forms_live",
+        "zero_forms_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "approve_reform",
+        "label": "Approve administrative reform",
+        "effects": {
+          "order": 4,
+          "treasury": -5,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "administrative_reform_act"
+        ],
+        "add_flags": [
+          "zero_forms_live",
+          "zero_reform_seed"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "minister_penny": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "branch",
+            "branch_id": "efficiency_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "zero_bureaucracy_expand",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "zero_forms_live"
+          ]
+        },
+        "result_text": "Windows get numbers. Queues shorten. Clerk Zero rates latency 'acceptable.'"
+      },
+      {
+        "id": "pilot_one_ministry",
+        "label": "Pilot one ministry only",
+        "effects": {
+          "order": 3,
+          "treasury": -3,
+          "happiness": 1
+        },
+        "add_laws": [
+          "administrative_reform_act"
+        ],
+        "add_flags": [
+          "zero_forms_live",
+          "zero_pilot_only"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "branch",
+            "branch_id": "efficiency_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "zero_bureaucracy_expand",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 78,
+          "required_flags": [
+            "zero_forms_live"
+          ]
+        },
+        "result_text": "One ministry breathes. Others watch with clipboard envy."
+      },
+      {
+        "id": "refuse_reform",
+        "label": "Refuse reform",
+        "effects": {
+          "order": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -2,
+          "auntie_olga": -1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "abandon",
+            "reason": "refused_reform"
+          }
+        ],
+        "result_text": "Backlog remains. Clerk Zero stamps DECLINED without looking up."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_setup",
+      "clerk_zero"
+    ],
+    "visual_tags": [
+      "numbered_queues",
+      "ministry_of_forms"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "zero_government_of_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "establishment",
+      "batch_id": "2B-13B",
+      "humor_tags": [
+        "backlog",
+        "numbered_windows"
+      ],
+      "emotional_goal": "useful_reform",
+      "visual_hook": "numbered windows shortening a queue",
+      "localization_risk": "low",
+      "writer_notes": "Not Form-to-Request-Forms retread."
+    }
+  },
+  {
+    "id": "zero_bureaucracy_expand",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Reform metrics: wait times down 37%. Ministries request expansion. Public services improved. Stamps increased. Observation: success invites more forms.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "zero_government_of_forms",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "zero_government_of_forms"
+      ],
+      "all_flags": [
+        "zero_forms_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "expand_carefully",
+        "label": "Expand with oversight",
+        "effects": {
+          "order": 3,
+          "treasury": -4,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "zero_expanded"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "minister_penny": 1,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "zero_control_fork",
+        "result_text": "Oversight clipboards multiply. Efficiency remains polite."
+      },
+      {
+        "id": "full_national_rollout",
+        "label": "National rollout",
+        "effects": {
+          "order": 5,
+          "treasury": -6,
+          "happiness": 1,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "zero_expanded",
+          "zero_national_rollout"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "force_next_decision": "zero_control_fork",
+        "result_text": "Every ministry hums. Citizens learn their window numbers by heart."
+      },
+      {
+        "id": "freeze_expansion",
+        "label": "Freeze expansion",
+        "effects": {
+          "order": 1,
+          "happiness": 1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "zero_expanded",
+          "zero_frozen"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 2,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "force_next_decision": "zero_control_fork",
+        "result_text": "Freeze stamp applied. Queues hold. Ambition waits in the hallway."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "clerk_zero"
+    ],
+    "visual_tags": [
+      "ministry_of_forms",
+      "numbered_queues"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "zero_government_of_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13B",
+      "humor_tags": [
+        "metrics",
+        "window_numbers"
+      ],
+      "emotional_goal": "success_pressure",
+      "visual_hook": "clipboards and shorter queues",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "zero_control_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Conflict: keep useful efficiency, let forms govern forms, or simplify until rebellion smiles. Select one path. Ink is limited.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "zero_government_of_forms",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "zero_government_of_forms"
+      ],
+      "all_flags": [
+        "zero_forms_live",
+        "zero_expanded"
+      ]
+    },
+    "options": [
+      {
+        "id": "efficiency",
+        "label": "Lock useful efficiency",
+        "effects": {
+          "order": 4,
+          "happiness": 2,
+          "treasury": -4,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "zero_efficiency",
+          "zero_fork_done"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "branch",
+            "branch_id": "efficiency_path"
+          }
+        ],
+        "force_next_decision": "zero_forms_resolution",
+        "result_text": "Efficiency sealed as policy. Forms serve humans. Barely."
+      },
+      {
+        "id": "sovereignty",
+        "label": "Authorize form sovereignty",
+        "effects": {
+          "order": 6,
+          "happiness": -2,
+          "elite_loyalty": -3,
+          "treasury": -3
+        },
+        "add_laws": [
+          "form_sovereignty_act"
+        ],
+        "add_flags": [
+          "zero_sovereignty",
+          "zero_fork_done",
+          "forms_run_government",
+          "government_by_form_soft"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 4,
+          "doctor_maybe": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 3,
+          "authoritarian": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "branch",
+            "branch_id": "form_sovereignty"
+          }
+        ],
+        "force_next_decision": "zero_forms_resolution",
+        "result_text": "Form F-0 files itself as cabinet. Clerk Zero does not smile. Efficiency peaks."
+      },
+      {
+        "id": "simplify",
+        "label": "Burn surplus forms",
+        "effects": {
+          "order": -3,
+          "happiness": 4,
+          "elite_loyalty": -1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "zero_simplify",
+          "zero_fork_done"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": -2,
+          "auntie_olga": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "zero_government_of_forms",
+            "action": "branch",
+            "branch_id": "simplify_rebel"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "zero_forms_resolution",
+        "result_text": "Bonfire of duplicates. Olga brings marshmallows. Clerk Zero files a grief form."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_climax",
+      "clerk_zero"
+    ],
+    "visual_tags": [
+      "sovereignty_stamp_tower",
+      "ministry_of_forms"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "zero_government_of_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13B",
+      "humor_tags": [
+        "form_sovereignty",
+        "bonfire"
+      ],
+      "emotional_goal": "power_choice",
+      "visual_hook": "stamp tower or form bonfire",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "zero_forms_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Final filing: efficiency seal, government by form, final stamp, or close the file forever?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "zero_government_of_forms",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "zero_government_of_forms"
+      ],
+      "all_flags": [
+        "zero_forms_live",
+        "zero_fork_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_efficiency",
+        "label": "Seal useful efficiency",
+        "effects": {
+          "order": 5,
+          "happiness": 3,
+          "treasury": -5,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "zero_forms_complete",
+          "zero_efficiency_sealed",
+          "endgame_admin_stable"
+        ],
+        "remove_flags": [
+          "zero_forms_live"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "minister_penny": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "Queues remain short. Forms remain servants. Costly. Functional. Approved."
+      },
+      {
+        "id": "form_rule",
+        "label": "Confirm government by form",
+        "effects": {
+          "order": 7,
+          "happiness": -3,
+          "elite_loyalty": -4
+        },
+        "add_flags": [
+          "zero_forms_complete",
+          "government_by_form_soft",
+          "forms_run_government",
+          "final_stamp"
+        ],
+        "remove_flags": [
+          "zero_forms_live"
+        ],
+        "add_laws": [
+          "form_request_form_act"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 4,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 3,
+          "authoritarian": 2
+        },
+        "trigger_ending": "final_stamp",
+        "result_text": "The country becomes a filing cabinet with a flag. Final stamp descends."
+      },
+      {
+        "id": "close_file",
+        "label": "Close the file forever",
+        "effects": {
+          "order": 2,
+          "happiness": 2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "zero_forms_complete",
+          "clerk_zero_closes_file"
+        ],
+        "remove_flags": [
+          "zero_forms_live",
+          "forms_run_government"
+        ],
+        "remove_laws": [
+          "form_sovereignty_act"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": -1,
+          "auntie_olga": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "trigger_ending": "clerk_zero_closes_file",
+        "result_text": "Clerk Zero closes the folder. Dust settles. A single blank form remains as a souvenir."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_resolution",
+      "ending_setup",
+      "clerk_zero"
+    ],
+    "visual_tags": [
+      "empty_filing_room",
+      "human_stamp_override"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "zero_government_of_forms",
+      "primary_category": "bureaucracy",
+      "primary_stage": "endgame",
+      "batch_id": "2B-13B",
+      "humor_tags": [
+        "final_stamp",
+        "close_file"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "empty filing room or stamp tower",
+      "localization_risk": "low"
+    }
+  }
+]

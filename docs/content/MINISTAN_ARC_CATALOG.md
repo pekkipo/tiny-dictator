@@ -17,7 +17,12 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 | `arc_traffic_military_control` | `traffic_military_control` (major); legacy `traffic_military` remains minor debug_only | 2B-10 Pack A (6 cards) |
 | `arc_hyperinflation` | `hyperinflation_arc` | 2B-10 Pack A (5 cards) |
 | `arc_maybe_experimental_republic` | `doctor_maybe_arc` | **2B-12 Pack C approved (6 cards)** |
-| `arc_cat_politics` | `cat_politics` | partial (8 cards; trim to 6 at integration) |
+| `arc_cat_politics` | `cat_politics` | **2B-13 Pack D (4 cards; rewritten from 8)** |
+| `arc_whiskers_cat_revolution` | `whiskers_cat_revolution` | **2B-13 Pack D (4 cards)** |
+| `arc_zero_government_of_forms` | `zero_government_of_forms` | **2B-13 Pack D (4 cards)** |
+| `arc_national_festival_economy` | `national_festival_economy` | **2B-13 Pack D (4 cards)** |
+| `arc_international_cheese_crisis` | `international_cheese_crisis` | **2B-13 Pack D (4 cards)** |
+| `arc_palace_renovation_scandal` | `palace_renovation_scandal` | **2B-13 Pack D (4 cards)** |
 | `arc_mandatory_happiness` | `mandatory_happiness` | **2B-11 Pack B approved (6 cards)** |
 | `arc_luna_media_reality` | `luna_media_reality` | **2B-11 Pack B approved (6 cards)** |
 | `arc_olga_citizen_movement` | `olga_citizen_movement` | **2B-11 Pack B approved (6 cards)** |
@@ -129,49 +134,57 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_whiskers_cat_revolution
 
 - **Title:** The Cat Revolution
-- **Status:** outlined
-- **Target cards:** 6
+- **Status:** approved (2B-13) — outlined→approved; quota reconciled to 4 cards
+- **Target cards:** 4
 - **Primary speaker:** comrade_whiskers
 - **Category:** cats_and_animals
 - **Intended stage:** establishment → escalation
-- **Premise:** Cat political demands escalate from fish to parliament occupation.
-- **Dependencies:** Partial overlap with national cat_politics — mutual exclusivity pair
-- **Likely laws:** cat_voting_rights, cat_parliament_seats, fish_subsidy
-- **Likely endings:** purrfect_transfer, cats_return_to_boxes, supreme_cat_servant
-- **Known risks:** Duplicate cat voting premise with legacy `cat_voting_proposal`
+- **Premise:** Whiskers turns a reasonable cat-policy demand into a serious political movement with constitutional, dominance, or compromise paths.
+- **Dependencies:** Hard mutex with `cat_politics` via `cat_governance_arc`; distinct from factional Cat Politics
+- **Likely laws:** cat_cushion_charter, fish_emergency_reserve (interact), antivacuum_act (interact)
+- **Likely endings:** purrfect_transfer, whiskers_boxes_truce (+ supreme_cat_servant trait path)
+- **Known risks:** Four-card branching via options/variants; avoid voting-only retread
+- **Runtime mapping:** `whiskers_cat_revolution`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** demand → escalation → constitutional/revolutionary fork → resolution
 
 ### arc_zero_government_of_forms
 
 - **Title:** The Government of Forms
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-13) — outlined→approved; quota reconciled to 4 cards
+- **Target cards:** 4
 - **Primary speaker:** clerk_zero
 - **Category:** bureaucracy
 - **Intended stage:** establishment → endgame
-- **Premise:** Bureaucracy expands until forms govern forms.
-- **Dependencies:** bureaucracy counters from standalones
-- **Likely laws:** form_request_form_act, ministry_of_waiting, triple_stamp_requirement
+- **Premise:** Administrative reform makes bureaucracy efficient, then independent — efficiency, control, or simplification paths.
+- **Dependencies:** Interacts with form/stamp laws; distinct from short chains and Fake Election
+- **Likely laws:** administrative_reform_act, form_sovereignty_act; interact form_request_form_act
 - **Likely endings:** government_by_form, final_stamp, clerk_zero_closes_file
-- **Known risks:** Player fatigue with pure paperwork humor; pair with visual gags
+- **Known risks:** Do not retell Form-to-Request-Forms; pair with visual gags
+- **Runtime mapping:** `zero_government_of_forms`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** reform → expansion → control/simplification fork → resolution
 
 ---
 
-## National arcs (53 cards)
+## National arcs (53 cards → Pack D quota: 4 each for remaining; advisor+national major = 96)
 
 ### arc_cat_politics
 
 - **Title:** Cat Politics
-- **Status:** partial
-- **Target cards:** 6
-- **Primary speaker:** minister_penny (entry); multi-speaker
+- **Status:** approved (2B-13) — rewritten 8→4
+- **Target cards:** 4
+- **Primary speaker:** minister_penny (entry); Auntie Olga / Sir Profit
 - **Category:** cats_and_animals
 - **Intended stage:** establishment
-- **Premise:** Cats enter formal politics; fish budgets and parliament seats divide the nation.
-- **Dependencies:** Mutually exclusive with full cat revolution path
-- **Likely laws:** cat_voting_rights, fish_emergency_reserve
-- **Likely endings:** cat_republic, cats_return_to_boxes
-- **Known risks:** 8 existing cards — consolidate to 6; duplicate voting premise
+- **Premise:** Human and cat factions compete over representation, rights, cynical political use, and backlash — not Whiskers-led revolution.
+- **Dependencies:** Mutex with Whiskers via `cat_governance_arc`; mutex with AI via `government_replacement_arc`
+- **Likely laws:** cat_voting_rights, fish_emergency_reserve, cat_lobby_registry
+- **Likely endings:** cat_republic, cat_party_ban_seal / compromise boxes seal
+- **Known risks:** Retired 8-card graph; keep ending law `cat_voting_rights`
 - **Runtime mapping:** `cat_politics`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** representation → factional escalation → political fork → resolution
 
 ### arc_mandatory_happiness
 
@@ -256,16 +269,19 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_national_festival_economy
 
 - **Title:** National Festival Economy
-- **Status:** outlined
-- **Target cards:** 5
-- **Primary speaker:** auntie_olga / luna_news
+- **Status:** approved (2B-13) — outlined→approved; quota reconciled to 4 cards
+- **Target cards:** 4
+- **Primary speaker:** luna_news / sir_profit / auntie_olga
 - **Category:** public_life
 - **Intended stage:** escalation
-- **Premise:** Permanent festival drains treasury but boosts happiness until stampede.
-- **Dependencies:** Links to crisis_national_festival_stampede
-- **Likely laws:** three_day_weekend, universal_birthday
+- **Premise:** Economic stimulus via festivals becomes tourism success, permanent spectacle, or citizen-led reform — with stampede risk.
+- **Dependencies:** Crisis `national_festival_stampede`; distinct from dog/stats festival standalones
+- **Likely laws:** festival_stimulus_act, permanent_festival_act, three_day_weekend
 - **Likely endings:** eternal_national_festival, beloved_retirement
-- **Known risks:** Free pizza legacy chain thematically adjacent
+- **Known risks:** Four-card sustainability fork must feel substantial
+- **Runtime mapping:** `national_festival_economy`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** proposal → boom → sustainability fork → resolution
 
 ### arc_fake_election_accident
 
@@ -286,30 +302,42 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_international_cheese_crisis
 
 - **Title:** International Cheese Crisis
-- **Status:** outlined
-- **Target cards:** 5
-- **Primary speaker:** foreign_ambassador / minister_penny
+- **Status:** approved (2B-13) — outlined→approved; quota reconciled to 4 cards
+- **Target cards:** 4
+- **Primary speaker:** foreign_ambassador / minister_penny / palace_chef / sir_profit
 - **Category:** economy
 - **Intended stage:** escalation
-- **Premise:** Cheese diplomacy ties to pizza chain fallout and trade embargoes.
-- **Dependencies:** cheese_shortage chain/crisis partial integration
-- **Likely laws:** emergency_cheese_bonds, free_pizza_friday
-- **Likely endings:** great_cheese_settlement, nation_in_darkness (power+cheese combo rare)
-- **Known risks:** cheese_shortage_crisis already integrated — align IDs in 2B-14
+- **Premise:** Trade/ceremonial cheese incident becomes diplomacy, domestic substitute, or national-pride escalation.
+- **Dependencies:** May start/modify `cheese_shortage_crisis`; interact `free_pizza_friday`; distinct from lone cheese_shortage follow-up
+- **Likely laws:** emergency_cheese_bonds, cheese_substitute_act
+- **Likely endings:** great_cheese_settlement, cheese_pride_embargo_seal
+- **Known risks:** Avoid pun-only humor; do not invent full 2B-14 crisis pack
+- **Runtime mapping:** `international_cheese_crisis`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** incident → response → trade/science/pride fork → resolution
 
 ### arc_palace_renovation_scandal
 
 - **Title:** Palace Renovation Scandal
-- **Status:** outlined
-- **Target cards:** 6
-- **Primary speaker:** sir_profit / palace_chef (guest)
+- **Status:** approved (2B-13) — outlined→approved; quota reconciled to 4 cards
+- **Target cards:** 4
+- **Primary speaker:** sir_profit / minister_penny / auntie_olga / clerk_zero / palace_chef
 - **Category:** public_life
-- **Intended stage:** endgame
-- **Premise:** Renovation budget reveals hollow palace truths.
-- **Dependencies:** palace upgrades meta; low elite loyalty optional
-- **Likely laws:** palace_subscription_plan
+- **Intended stage:** escalation → endgame
+- **Premise:** Legitimate renovation grows into modest upgrade, luxury scandal, or public-transparency path with delayed discovery.
+- **Dependencies:** Palace visual tags; soft meta hooks (gift shop / upgrades adjacency)
+- **Likely laws:** palace_subscription_plan, palace_public_tour_act
 - **Likely endings:** palace_beautiful_empty, renovation_reveals_truth
-- **Known risks:** Endgame pacing; tie to placeholder endgame cards rewrite
+- **Known risks:** Expensive ≠ automatically wrong; delayed invoice discovery required
+- **Runtime mapping:** `palace_renovation_scandal`
+- **Brief:** [2B-13_major_arc_pack_d_briefs.md](drafts/2B-13_major_arc_pack_d_briefs.md)
+- **Four-card structure:** proposal → cost escalation → scandal/transparency/luxury fork → resolution
+
+---
+
+## Quota reconciliation note (2B-13)
+
+Older planning targets for Pack D summed to 33 cards. Milestone 2B-13 locks **6 × 4 = 24** so global approved major-arc decisions finish at **96**. Pre-Pack-D approved count was exactly **72**.
 
 ---
 
@@ -319,3 +347,4 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 |---|---|---|
 | 1.0 | 2026-07-15 | Milestone 2B-1 — 18 arc planning entries |
 | 1.1 | 2026-07-16 | Milestone 2B-10 Pack A — Boom/Penny/Traffic/Hyper briefs; target cards 7/6/6/5 |
+| 1.4 | 2026-07-17 | Milestone 2B-13 Pack D — six arcs at 4 cards each; Cat Politics rewrite 8→4; global 96/96 |

@@ -84,5 +84,35 @@
     "decision_ids": [
       "moon_international_reaction"
     ]
+  },
+  {
+    "id": "festival_side_effects",
+    "decision_ids": [
+      "festival_sustainability_fork"
+    ]
+  },
+  {
+    "id": "forms_side_effects",
+    "decision_ids": [
+      "zero_control_fork"
+    ]
+  },
+  {
+    "id": "cheese_diplomacy_noise",
+    "decision_ids": [
+      "cheese_path_fork"
+    ]
+  },
+  {
+    "id": "cat_politics_noise",
+    "decision_ids": [
+      "cat_political_fork"
+    ]
+  },
+  {
+    "id": "palace_reno_noise",
+    "decision_ids": [
+      "palace_scandal_fork"
+    ]
   }
 ]

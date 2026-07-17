@@ -65,9 +65,9 @@ func _make_engine(seed_value: int = 7777) -> DecisionEngine:
 func _test_start_arc() -> void:
 	var state := _fresh_state()
 	var arcs := _make_arc_manager()
-	_check(arcs.start_arc(state, "cat_politics", "support_cats"), "start_arc succeeds")
+	_check(arcs.start_arc(state, "cat_politics", "rights_path"), "start_arc succeeds")
 	_check(state.is_arc_active("cat_politics"), "arc is active")
-	_check(state.get_arc_branch("cat_politics") == "support_cats", "branch stored")
+	_check(state.get_arc_branch("cat_politics") == "rights_path", "branch stored")
 	var runtime: Dictionary = state.get_arc_runtime("cat_politics")
 	_check(int(runtime.get("current_step", 0)) == 1, "starts at step 1")
 	_check(int(runtime.get("started_day", 0)) == 4, "started_day recorded")
@@ -84,8 +84,8 @@ func _test_branch_selection() -> void:
 	var state := _fresh_state()
 	var arcs := _make_arc_manager()
 	arcs.start_arc(state, "cat_politics")
-	_check(arcs.select_branch(state, "cat_politics", "oppose_cats"), "select_branch succeeds")
-	_check(state.get_arc_branch("cat_politics") == "oppose_cats", "branch updated")
+	_check(arcs.select_branch(state, "cat_politics", "cynical_path"), "select_branch succeeds")
+	_check(state.get_arc_branch("cat_politics") == "cynical_path", "branch updated")
 
 
 func _test_branch_specific_eligibility() -> void:
@@ -93,29 +93,29 @@ func _test_branch_specific_eligibility() -> void:
 	var engine := _make_engine()
 	var arcs := _make_arc_manager()
 	engine.set_arc_manager(arcs)
-	arcs.start_arc(state, "cat_politics", "support_cats")
+	arcs.start_arc(state, "cat_politics", "rights_path")
+	state.add_flag("cat_pol_live")
 
-	var support_card: Dictionary = _repo.get_decision("cat_party_enters_parliament")
-	var oppose_card: Dictionary = _repo.get_decision("cat_protest")
-	_check(engine.is_decision_valid(support_card, state), "support branch card eligible")
-	_check(not engine.is_decision_valid(oppose_card, state), "oppose branch card blocked")
+	var entry_card: Dictionary = _repo.get_decision("cat_faction_proposal")
+	_check(not engine.is_decision_valid(entry_card, state), "entry blocked while cat_pol_live")
+	_check(arcs.can_start_arc("whiskers_cat_revolution", state) == false, "whiskers blocked while cat active")
 
 
 func _test_advance_active_arc() -> void:
 	var state := _fresh_state()
 	var arcs := _make_arc_manager()
 	arcs.start_arc(state, "cat_politics")
-	_check(arcs.advance_arc(state, "cat_politics", "cat_voting_rights", "support_cats"), "advance succeeds")
+	_check(arcs.advance_arc(state, "cat_politics", "cat_faction_proposal", "rights_path"), "advance succeeds")
 	var runtime: Dictionary = state.get_arc_runtime("cat_politics")
 	_check(int(runtime.get("current_step", 0)) == 2, "step incremented")
-	_check("cat_voting_rights" in runtime.get("history", []), "history records decision")
+	_check("cat_faction_proposal" in runtime.get("history", []), "history records decision")
 
 
 func _test_complete_arc() -> void:
 	var state := _fresh_state()
 	var arcs := _make_arc_manager()
 	arcs.start_arc(state, "cat_politics")
-	arcs.complete_arc(state, "cat_politics", "cat_republic_declared")
+	arcs.complete_arc(state, "cat_politics", "cat_politics_resolution")
 	_check(state.is_arc_completed("cat_politics"), "arc completed")
 	_check(not state.is_arc_active("cat_politics"), "removed from active")
 
@@ -135,25 +135,36 @@ func _test_completed_arc_cannot_restart() -> void:
 	var engine := _make_engine()
 	engine.set_arc_manager(arcs)
 	arcs.start_arc(state, "cat_politics")
-	arcs.complete_arc(state, "cat_politics", "cat_republic_declared")
+	arcs.complete_arc(state, "cat_politics", "cat_politics_resolution")
 	_check(not arcs.can_start_arc("cat_politics", state), "cannot restart completed arc")
-	var entry: Dictionary = _repo.get_decision("cat_voting_rights")
+	var entry: Dictionary = _repo.get_decision("cat_faction_proposal")
 	_check(not engine.is_decision_valid(entry, state), "entry decision invalid after completion")
 
 
 func _test_exclusive_arcs() -> void:
 	var state := _fresh_state()
+	state.day = 10
+	state.current_stage_id = "escalation"
 	var arcs := _make_arc_manager()
 	_check(arcs.start_arc(state, "robot_government"), "robot arc starts")
 	_check(not arcs.can_start_arc("cat_politics", state), "cat arc blocked by exclusive group")
 	_check(not arcs.start_arc(state, "cat_politics"), "cat arc start fails while robot active")
+	_check(arcs.can_start_arc("whiskers_cat_revolution", state), "whiskers not blocked by AI group alone")
+	state.reset()
+	for resource_id in RunState.RESOURCE_IDS:
+		state.set_resource(resource_id, 55)
+	state.country_id = "ministan"
+	state.day = 4
+	state.current_stage_id = "establishment"
+	_check(arcs.start_arc(state, "whiskers_cat_revolution"), "whiskers starts")
+	_check(not arcs.can_start_arc("cat_politics", state), "cat blocked by cat_governance_arc mutex")
 
 
 func _test_restart_clears_arc_state() -> void:
 	var state := _fresh_state()
 	var arcs := _make_arc_manager()
 	arcs.start_arc(state, "cat_politics")
-	arcs.complete_arc(state, "cat_politics", "cat_republic_declared")
+	arcs.complete_arc(state, "cat_politics", "cat_politics_resolution")
 	state.reset()
 	_check(state.active_arcs.is_empty(), "reset clears active arcs")
 	_check(state.completed_arc_ids.is_empty(), "reset clears completed arcs")
@@ -185,9 +196,11 @@ func _test_arc_actions_via_effect_resolver() -> void:
 	var state := _fresh_state()
 	var resolver := EffectResolver.new()
 	var arcs := _make_arc_manager()
-	var decision: Dictionary = _repo.get_decision("cat_voting_rights").duplicate(true)
-	var result: DecisionResult = resolver.apply_option(decision, "approve", state, _repo, arcs)
+	var decision: Dictionary = _repo.get_decision("cat_faction_proposal").duplicate(true)
+	var result: DecisionResult = resolver.apply_option(decision, "open_representation", state, _repo, arcs)
 	_check(state.is_arc_active("cat_politics"), "entry choice starts arc via narrative")
-	_check(state.get_arc_branch("cat_politics") == "support_cats", "branch action applied")
+	_check(state.get_arc_branch("cat_politics") == "rights_path", "branch action applied")
 	_check(not result.arc_changes.is_empty(), "arc changes recorded on result")
-	_check(result.forced_next_decision_id == "cat_party_enters_parliament", "forced follow-up preserved")
+	_check(state.has_flag("cat_pol_live"), "live flag set")
+	_check(not result.queued_follow_ups.is_empty() or not result.forced_next_decision_id.is_empty(),
+		"follow-up queued or forced")

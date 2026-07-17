@@ -4,8 +4,10 @@
     "display_name": "Free Pizza Friday",
     "short_name": "Free Pizza",
     "description": "Citizens receive free pizza every Friday. Nobody knows who pays.",
-    "placeholder_icon": "🍕",
-    "visual_tags": ["pizza_stalls"],
+    "placeholder_icon": "\ud83c\udf55",
+    "visual_tags": [
+      "pizza_stalls"
+    ],
     "category": "public_life"
   },
   {
@@ -13,8 +15,10 @@
     "display_name": "Mandatory Smiling",
     "short_name": "Smiling",
     "description": "Frowning in public is now a misdemeanor.",
-    "placeholder_icon": "😁",
-    "visual_tags": ["smiling_citizens"],
+    "placeholder_icon": "\ud83d\ude01",
+    "visual_tags": [
+      "smiling_citizens"
+    ],
     "category": "absurd_law"
   },
   {
@@ -22,8 +26,10 @@
     "display_name": "Window Tax",
     "short_name": "Window Tax",
     "description": "Every window is taxed. Bricks are suddenly fashionable.",
-    "placeholder_icon": "🪟",
-    "visual_tags": ["bricked_windows"],
+    "placeholder_icon": "\ud83e\ude9f",
+    "visual_tags": [
+      "bricked_windows"
+    ],
     "category": "economy"
   },
   {
@@ -31,8 +37,10 @@
     "display_name": "Cat Voting Rights",
     "short_name": "Cat Voting",
     "description": "Cats may now vote. Turnout depends on napping schedules.",
-    "placeholder_icon": "🐱",
-    "visual_tags": ["cats_in_square"],
+    "placeholder_icon": "\ud83d\udc31",
+    "visual_tags": [
+      "cats_in_square"
+    ],
     "category": "absurd_law"
   },
   {
@@ -40,8 +48,10 @@
     "display_name": "Tank-Based Traffic Control",
     "short_name": "Tank Traffic",
     "description": "Tanks direct traffic at every major intersection.",
-    "placeholder_icon": "🪖",
-    "visual_tags": ["traffic_tanks"],
+    "placeholder_icon": "\ud83e\ude96",
+    "visual_tags": [
+      "traffic_tanks"
+    ],
     "category": "military"
   },
   {
@@ -49,8 +59,10 @@
     "display_name": "Emergency Broadcast Priority",
     "short_name": "Broadcast Priority",
     "description": "National television receives generator priority during emergencies. Cooking is optional.",
-    "placeholder_icon": "📺",
-    "visual_tags": ["smiling_citizens"],
+    "placeholder_icon": "\ud83d\udcfa",
+    "visual_tags": [
+      "smiling_citizens"
+    ],
     "category": "public_life"
   },
   {
@@ -58,8 +70,10 @@
     "display_name": "No Weekends",
     "short_name": "No Weekends",
     "description": "Weekends abolished for productivity. Calendars in mourning.",
-    "placeholder_icon": "📅",
-    "visual_tags": ["tired_citizens"],
+    "placeholder_icon": "\ud83d\udcc5",
+    "visual_tags": [
+      "tired_citizens"
+    ],
     "category": "absurd_law"
   },
   {
@@ -67,8 +81,10 @@
     "display_name": "Verified Smile Standard",
     "short_name": "Smile Standard",
     "description": "All public smiles must meet government curvature specifications.",
-    "placeholder_icon": "📏",
-    "visual_tags": ["smiling_citizens"],
+    "placeholder_icon": "\ud83d\udccf",
+    "visual_tags": [
+      "smiling_citizens"
+    ],
     "category": "absurd_law"
   },
   {
@@ -76,8 +92,11 @@
     "display_name": "Emergency Martial Law",
     "short_name": "Martial Law",
     "description": "Parades are now legally classified as emergency infrastructure.",
-    "placeholder_icon": "🪖",
-    "visual_tags": ["traffic_tanks", "emergency_powers_banner"],
+    "placeholder_icon": "\ud83e\ude96",
+    "visual_tags": [
+      "traffic_tanks",
+      "emergency_powers_banner"
+    ],
     "category": "military"
   },
   {
@@ -85,8 +104,10 @@
     "display_name": "Mandatory Marching Act",
     "short_name": "Mandatory Marching",
     "description": "Citizens practice synchronized steps on alternate Tuesdays. Left feet optional with Form 7.",
-    "placeholder_icon": "🥾",
-    "visual_tags": ["parade_columns"],
+    "placeholder_icon": "\ud83e\udd7e",
+    "visual_tags": [
+      "parade_columns"
+    ],
     "category": "military"
   },
   {
@@ -94,8 +115,10 @@
     "display_name": "National Happiness Index",
     "short_name": "Happiness Index",
     "description": "Happiness is measured, broadcast, and suspiciously round.",
-    "placeholder_icon": "📊",
-    "visual_tags": ["smiling_citizens"],
+    "placeholder_icon": "\ud83d\udcca",
+    "visual_tags": [
+      "smiling_citizens"
+    ],
     "category": "media"
   },
   {
@@ -103,8 +126,10 @@
     "display_name": "Scientific Experiment Permit",
     "short_name": "Science Permit",
     "description": "All experiments are legal if someone signed Form 9C first.",
-    "placeholder_icon": "🧪",
-    "visual_tags": ["lab_sparks"],
+    "placeholder_icon": "\ud83e\uddea",
+    "visual_tags": [
+      "lab_sparks"
+    ],
     "category": "science"
   },
   {
@@ -112,8 +137,10 @@
     "display_name": "Emergency Fish Reserve",
     "short_name": "Fish Reserve",
     "description": "Strategic fish stockpiles for diplomatic and feline emergencies.",
-    "placeholder_icon": "🐟",
-    "visual_tags": ["cats_in_square"],
+    "placeholder_icon": "\ud83d\udc1f",
+    "visual_tags": [
+      "cats_in_square"
+    ],
     "category": "absurd_law"
   },
   {
@@ -121,8 +148,10 @@
     "display_name": "Luxury Chair Tax",
     "short_name": "Chair Tax",
     "description": "Chairs with armrests are taxed as luxury comfort. Stools thrive.",
-    "placeholder_icon": "🪑",
-    "visual_tags": ["taxed_chairs"],
+    "placeholder_icon": "\ud83e\ude91",
+    "visual_tags": [
+      "taxed_chairs"
+    ],
     "category": "economy"
   },
   {
@@ -130,8 +159,10 @@
     "display_name": "National Bedtime",
     "short_name": "Bedtime",
     "description": "Lights out at ten. Whispering becomes a competitive sport.",
-    "placeholder_icon": "😴",
-    "visual_tags": ["curtains_drawn"],
+    "placeholder_icon": "\ud83d\ude34",
+    "visual_tags": [
+      "curtains_drawn"
+    ],
     "category": "public_life"
   },
   {
@@ -139,8 +170,10 @@
     "display_name": "National Clock Synchronization",
     "short_name": "Clock Sync",
     "description": "All public clocks must agree. Excuses for lateness abolished.",
-    "placeholder_icon": "🕐",
-    "visual_tags": ["synchronized_clocks"],
+    "placeholder_icon": "\ud83d\udd50",
+    "visual_tags": [
+      "synchronized_clocks"
+    ],
     "category": "infrastructure"
   },
   {
@@ -148,8 +181,10 @@
     "display_name": "Official Queue Etiquette",
     "short_name": "Queue Law",
     "description": "Numbered tickets, polite sighs, approved shoe shuffling.",
-    "placeholder_icon": "🎟️",
-    "visual_tags": ["numbered_queues"],
+    "placeholder_icon": "\ud83c\udf9f\ufe0f",
+    "visual_tags": [
+      "numbered_queues"
+    ],
     "category": "public_life"
   },
   {
@@ -157,8 +192,10 @@
     "display_name": "Public Compliment Quota",
     "short_name": "Compliments",
     "description": "Three public compliments per citizen daily. Silence polls poorly.",
-    "placeholder_icon": "💬",
-    "visual_tags": ["compliment_meters"],
+    "placeholder_icon": "\ud83d\udcac",
+    "visual_tags": [
+      "compliment_meters"
+    ],
     "category": "public_life"
   },
   {
@@ -166,8 +203,10 @@
     "display_name": "Flag Traffic System",
     "short_name": "Flag Traffic",
     "description": "Ceremonial flags replace lights. Salute to turn.",
-    "placeholder_icon": "🚩",
-    "visual_tags": ["flag_intersections"],
+    "placeholder_icon": "\ud83d\udea9",
+    "visual_tags": [
+      "flag_intersections"
+    ],
     "category": "infrastructure"
   },
   {
@@ -175,8 +214,10 @@
     "display_name": "Rival Parade Response Act",
     "short_name": "Rival Parade",
     "description": "Ceremonial responses to neighboring tank marches are mandatory and budgeted.",
-    "placeholder_icon": "🎖️",
-    "visual_tags": ["rival_parade_balloons"],
+    "placeholder_icon": "\ud83c\udf96\ufe0f",
+    "visual_tags": [
+      "rival_parade_balloons"
+    ],
     "category": "military"
   },
   {
@@ -184,8 +225,10 @@
     "display_name": "Palace Curfew Act",
     "short_name": "Palace Curfew",
     "description": "Night curfew drills around the palace perimeter. Doors practice obedience.",
-    "placeholder_icon": "🚪",
-    "visual_tags": ["palace_curfew_gates"],
+    "placeholder_icon": "\ud83d\udeaa",
+    "visual_tags": [
+      "palace_curfew_gates"
+    ],
     "category": "military"
   },
   {
@@ -193,8 +236,10 @@
     "display_name": "Emergency Salute Protocol",
     "short_name": "Noon Salute",
     "description": "Citizens salute at noon. Wrists adapt. Forms available for sprains.",
-    "placeholder_icon": "🫡",
-    "visual_tags": ["noon_salute_wrists"],
+    "placeholder_icon": "\ud83e\udee1",
+    "visual_tags": [
+      "noon_salute_wrists"
+    ],
     "category": "military"
   },
   {
@@ -202,8 +247,10 @@
     "display_name": "One Headline Policy",
     "short_name": "One Headline",
     "description": "One approved national headline per day. Clarity is mandatory.",
-    "placeholder_icon": "📰",
-    "visual_tags": ["single_headline_boards"],
+    "placeholder_icon": "\ud83d\udcf0",
+    "visual_tags": [
+      "single_headline_boards"
+    ],
     "category": "media"
   },
   {
@@ -211,8 +258,10 @@
     "display_name": "Public Rumor License",
     "short_name": "Rumor License",
     "description": "Gossip requires a permit. Official whispers only.",
-    "placeholder_icon": "🤫",
-    "visual_tags": ["rumor_license_kiosks"],
+    "placeholder_icon": "\ud83e\udd2b",
+    "visual_tags": [
+      "rumor_license_kiosks"
+    ],
     "category": "media"
   },
   {
@@ -220,8 +269,10 @@
     "display_name": "Predictive Toaster Administration",
     "short_name": "Toaster Admin",
     "description": "Authorized toasters may file forms before breakfast. Crumbs archived.",
-    "placeholder_icon": "🍞",
-    "visual_tags": ["toaster_filing_cabinets"],
+    "placeholder_icon": "\ud83c\udf5e",
+    "visual_tags": [
+      "toaster_filing_cabinets"
+    ],
     "category": "science"
   },
   {
@@ -229,8 +280,10 @@
     "display_name": "Ceremonial Tank Florist Act",
     "short_name": "Tank Florists",
     "description": "Unused tanks may deliver flowers. Soft power with treads.",
-    "placeholder_icon": "🌷",
-    "visual_tags": ["tank_flower_beds"],
+    "placeholder_icon": "\ud83c\udf37",
+    "visual_tags": [
+      "tank_flower_beds"
+    ],
     "category": "military"
   },
   {
@@ -238,8 +291,10 @@
     "display_name": "Weather Optimism Act",
     "short_name": "Sunny Bulletins",
     "description": "Official weather copy must sound optimistic. Umbrellas remain unregulated.",
-    "placeholder_icon": "☀️",
-    "visual_tags": ["sunny_bulletin_boards"],
+    "placeholder_icon": "\u2600\ufe0f",
+    "visual_tags": [
+      "sunny_bulletin_boards"
+    ],
     "category": "media"
   },
   {
@@ -247,8 +302,10 @@
     "display_name": "Catchphrase Registry",
     "short_name": "Catchphrases",
     "description": "Official slogans must be registered. Improvised wit needs a stamp.",
-    "placeholder_icon": "💬",
-    "visual_tags": ["catchphrase_billboards"],
+    "placeholder_icon": "\ud83d\udcac",
+    "visual_tags": [
+      "catchphrase_billboards"
+    ],
     "category": "media"
   },
   {
@@ -256,8 +313,10 @@
     "display_name": "Lab Coat Streetlight Pilot",
     "short_name": "Coat Lights",
     "description": "Experimental streetlights powered by lab coats. Sparks archived.",
-    "placeholder_icon": "🥼",
-    "visual_tags": ["labcoat_streetlights"],
+    "placeholder_icon": "\ud83e\udd7c",
+    "visual_tags": [
+      "labcoat_streetlights"
+    ],
     "category": "science"
   },
   {
@@ -265,8 +324,10 @@
     "display_name": "Capital Square Naming Rights",
     "short_name": "Square Naming",
     "description": "Central Square may carry a corporate name. Maps update for a fee.",
-    "placeholder_icon": "🍪",
-    "visual_tags": ["sponsored_square_signs"],
+    "placeholder_icon": "\ud83c\udf6a",
+    "visual_tags": [
+      "sponsored_square_signs"
+    ],
     "category": "business"
   },
   {
@@ -274,8 +335,10 @@
     "display_name": "Citizen Service Subscription",
     "short_name": "Service Tiers",
     "description": "Public services offered in Bronze, Silver, and Platinum tiers.",
-    "placeholder_icon": "💳",
-    "visual_tags": ["service_tier_kiosks"],
+    "placeholder_icon": "\ud83d\udcb3",
+    "visual_tags": [
+      "service_tier_kiosks"
+    ],
     "category": "business"
   },
   {
@@ -283,8 +346,10 @@
     "display_name": "Cabinet Briefing Protocol",
     "short_name": "Briefing Protocol",
     "description": "Urgencies require attendance or Form 0. Staplers are inventoried.",
-    "placeholder_icon": "📎",
-    "visual_tags": ["cabinet_briefing_stack"],
+    "placeholder_icon": "\ud83d\udcce",
+    "visual_tags": [
+      "cabinet_briefing_stack"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -292,8 +357,10 @@
     "display_name": "Complaint Permit Act",
     "short_name": "Complaint Permits",
     "description": "Form C-1 required before a grievance may be spoken aloud.",
-    "placeholder_icon": "🗣️",
-    "visual_tags": ["complaint_permit_desk"],
+    "placeholder_icon": "\ud83d\udde3\ufe0f",
+    "visual_tags": [
+      "complaint_permit_desk"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -301,8 +368,10 @@
     "display_name": "Contradictory Signage Law",
     "short_name": "Sign Clarity",
     "description": "Each pole may display only one instruction after audit.",
-    "placeholder_icon": "🚧",
-    "visual_tags": ["crossed_out_signs"],
+    "placeholder_icon": "\ud83d\udea7",
+    "visual_tags": [
+      "crossed_out_signs"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -310,8 +379,10 @@
     "display_name": "Mouse Protection Act",
     "short_name": "Mouse Permits",
     "description": "Cats that hunt must apply. Mice may file. Cheese is evidence.",
-    "placeholder_icon": "🐭",
-    "visual_tags": ["mouse_permit_booths"],
+    "placeholder_icon": "\ud83d\udc2d",
+    "visual_tags": [
+      "mouse_permit_booths"
+    ],
     "category": "animals"
   },
   {
@@ -319,8 +390,10 @@
     "display_name": "Fish Market Subsidy",
     "short_name": "Fish Subsidy",
     "description": "Market fish prices supported for registered paws. Treasury smells optimistic.",
-    "placeholder_icon": "🐟",
-    "visual_tags": ["fish_subsidy_trucks"],
+    "placeholder_icon": "\ud83d\udc1f",
+    "visual_tags": [
+      "fish_subsidy_trucks"
+    ],
     "category": "animals"
   },
   {
@@ -328,8 +401,10 @@
     "display_name": "Working Palace Tours",
     "short_name": "Palace Tours",
     "description": "Premium tours during working meetings. Velvet ropes optional. Whispering mandatory.",
-    "placeholder_icon": "🎟️",
-    "visual_tags": ["palace_tour_velvet"],
+    "placeholder_icon": "\ud83c\udf9f\ufe0f",
+    "visual_tags": [
+      "palace_tour_velvet"
+    ],
     "category": "business"
   },
   {
@@ -337,8 +412,10 @@
     "display_name": "Anthem Sponsor Reads",
     "short_name": "Anthem Ads",
     "description": "Brief brand reads may follow the national anthem. Patriotism with crunch.",
-    "placeholder_icon": "📣",
-    "visual_tags": ["anthem_sponsor_banners"],
+    "placeholder_icon": "\ud83d\udce3",
+    "visual_tags": [
+      "anthem_sponsor_banners"
+    ],
     "category": "business"
   },
   {
@@ -346,8 +423,10 @@
     "display_name": "Emergency Efficiency Week",
     "short_name": "Efficiency Week",
     "description": "Backlog clearance week. Stamp faster. Sleep optional.",
-    "placeholder_icon": "⏱️",
-    "visual_tags": ["efficiency_week_timers"],
+    "placeholder_icon": "\u23f1\ufe0f",
+    "visual_tags": [
+      "efficiency_week_timers"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -355,8 +434,10 @@
     "display_name": "Notarized Apology Requirement",
     "short_name": "Notary Sorry",
     "description": "Forgiveness requires a stamped apology. Wax recommended.",
-    "placeholder_icon": "🔏",
-    "visual_tags": ["notarized_apology_desk"],
+    "placeholder_icon": "\ud83d\udd0f",
+    "visual_tags": [
+      "notarized_apology_desk"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -364,8 +445,10 @@
     "display_name": "Official Palace Pet",
     "short_name": "Palace Pet",
     "description": "An official palace pet with cushion budget and sitting rights.",
-    "placeholder_icon": "🐈",
-    "visual_tags": ["palace_pet_cushion"],
+    "placeholder_icon": "\ud83d\udc08",
+    "visual_tags": [
+      "palace_pet_cushion"
+    ],
     "category": "animals"
   },
   {
@@ -373,8 +456,10 @@
     "display_name": "Umbrella Tax",
     "short_name": "Umbrella Tax",
     "description": "Rain gear requires a stamp. Buckets are under review.",
-    "placeholder_icon": "☂️",
-    "visual_tags": ["umbrella_tax_booths"],
+    "placeholder_icon": "\u2602\ufe0f",
+    "visual_tags": [
+      "umbrella_tax_booths"
+    ],
     "category": "economy"
   },
   {
@@ -382,8 +467,10 @@
     "display_name": "National Coffee Reserve",
     "short_name": "Coffee Reserve",
     "description": "Morning coffee is a strategic civic resource. Thermoses may be audited.",
-    "placeholder_icon": "☕",
-    "visual_tags": ["coffee_reserve_vault"],
+    "placeholder_icon": "\u2615",
+    "visual_tags": [
+      "coffee_reserve_vault"
+    ],
     "category": "public_life"
   },
   {
@@ -391,8 +478,10 @@
     "display_name": "Bench Subscription Act",
     "short_name": "Bench Subs",
     "description": "Sitting requires a plan. Standing remains complimentary.",
-    "placeholder_icon": "🪑",
-    "visual_tags": ["bench_paywalls"],
+    "placeholder_icon": "\ud83e\ude91",
+    "visual_tags": [
+      "bench_paywalls"
+    ],
     "category": "business"
   },
   {
@@ -400,8 +489,10 @@
     "display_name": "National Lottery Budget",
     "short_name": "Lottery Budget",
     "description": "Hope funds the ledger. Odds are a quarterly surprise.",
-    "placeholder_icon": "🎟️",
-    "visual_tags": ["national_lottery"],
+    "placeholder_icon": "\ud83c\udf9f\ufe0f",
+    "visual_tags": [
+      "national_lottery"
+    ],
     "category": "economy"
   },
   {
@@ -409,8 +500,10 @@
     "display_name": "Palace Gift Shop Act",
     "short_name": "Gift Shop",
     "description": "Official merch may be sold beside the throne. Decrees not included.",
-    "placeholder_icon": "🛍️",
-    "visual_tags": ["palace_gift_kiosk"],
+    "placeholder_icon": "\ud83d\udecd\ufe0f",
+    "visual_tags": [
+      "palace_gift_kiosk"
+    ],
     "category": "business"
   },
   {
@@ -418,8 +511,10 @@
     "display_name": "Sponsored Potholes Act",
     "short_name": "Pothole Ads",
     "description": "Road hazards may carry brand logos. Drivers receive sponsorship.",
-    "placeholder_icon": "🕳️",
-    "visual_tags": ["sponsored_potholes"],
+    "placeholder_icon": "\ud83d\udd73\ufe0f",
+    "visual_tags": [
+      "sponsored_potholes"
+    ],
     "category": "infrastructure"
   },
   {
@@ -427,8 +522,10 @@
     "display_name": "Coin Rounding Act",
     "short_name": "Round Up",
     "description": "Prices round up when coins are scarce. Exact change becomes nostalgia.",
-    "placeholder_icon": "🪙",
-    "visual_tags": ["rounding_booths"],
+    "placeholder_icon": "\ud83e\ude99",
+    "visual_tags": [
+      "rounding_booths"
+    ],
     "category": "economy"
   },
   {
@@ -436,8 +533,10 @@
     "display_name": "Ministry of Memes",
     "short_name": "Meme Ministry",
     "description": "Official templates may govern captions. Stamps required for virality.",
-    "placeholder_icon": "🖼️",
-    "visual_tags": ["meme_ministry_desk"],
+    "placeholder_icon": "\ud83d\uddbc\ufe0f",
+    "visual_tags": [
+      "meme_ministry_desk"
+    ],
     "category": "media"
   },
   {
@@ -445,8 +544,10 @@
     "display_name": "Weather Censorship Act",
     "short_name": "Storm Censor",
     "description": "Storm maps may be withheld. Rain remains unofficial.",
-    "placeholder_icon": "🌧️",
-    "visual_tags": ["censored_storm_maps"],
+    "placeholder_icon": "\ud83c\udf27\ufe0f",
+    "visual_tags": [
+      "censored_storm_maps"
+    ],
     "category": "media"
   },
   {
@@ -454,8 +555,10 @@
     "display_name": "National Reality Show Act",
     "short_name": "Talent Show",
     "description": "A state talent program with live judging and budget consequences.",
-    "placeholder_icon": "🎤",
-    "visual_tags": ["state_talent_stage"],
+    "placeholder_icon": "\ud83c\udfa4",
+    "visual_tags": [
+      "state_talent_stage"
+    ],
     "category": "media"
   },
   {
@@ -463,8 +566,10 @@
     "display_name": "Mandatory Applause Quotas",
     "short_name": "Applause Quotas",
     "description": "Public applause must meet meter quotas. Silence is a citation.",
-    "placeholder_icon": "👏",
-    "visual_tags": ["applause_meters"],
+    "placeholder_icon": "\ud83d\udc4f",
+    "visual_tags": [
+      "applause_meters"
+    ],
     "category": "media"
   },
   {
@@ -472,8 +577,10 @@
     "display_name": "Artificial Sun Program",
     "short_name": "Pilot Sun",
     "description": "A provisional sun over the capital. Nights are under review.",
-    "placeholder_icon": "☀️",
-    "visual_tags": ["pilot_sun_over_capital"],
+    "placeholder_icon": "\u2600\ufe0f",
+    "visual_tags": [
+      "pilot_sun_over_capital"
+    ],
     "category": "science"
   },
   {
@@ -481,8 +588,10 @@
     "display_name": "Anti-Gravity Transit Act",
     "short_name": "Floating Buses",
     "description": "Public buses may float. Gravity is a scheduled variable.",
-    "placeholder_icon": "🚌",
-    "visual_tags": ["floating_bus_lanes"],
+    "placeholder_icon": "\ud83d\ude8c",
+    "visual_tags": [
+      "floating_bus_lanes"
+    ],
     "category": "science"
   },
   {
@@ -490,8 +599,10 @@
     "display_name": "National Clone Day Act",
     "short_name": "Clone Holiday",
     "description": "Temporary duplicates are permitted for queues. Identity forms require footnotes.",
-    "placeholder_icon": "👯",
-    "visual_tags": ["clone_holiday_banners"],
+    "placeholder_icon": "\ud83d\udc6f",
+    "visual_tags": [
+      "clone_holiday_banners"
+    ],
     "category": "science"
   },
   {
@@ -499,8 +610,10 @@
     "display_name": "Traffic Flag Corps Act",
     "short_name": "Flag Corps",
     "description": "Military flag signalers may replace civilian traffic lights.",
-    "placeholder_icon": "🚩",
-    "visual_tags": ["intersection_flag_corps"],
+    "placeholder_icon": "\ud83d\udea9",
+    "visual_tags": [
+      "intersection_flag_corps"
+    ],
     "category": "military"
   },
   {
@@ -508,8 +621,10 @@
     "display_name": "Robot Civil Service Act",
     "short_name": "Robot Queues",
     "description": "A robot may manage public queues and ticket numbers.",
-    "placeholder_icon": "🤖",
-    "visual_tags": ["robot_queue_kiosk"],
+    "placeholder_icon": "\ud83e\udd16",
+    "visual_tags": [
+      "robot_queue_kiosk"
+    ],
     "category": "science"
   },
   {
@@ -517,8 +632,10 @@
     "display_name": "Pigeon Air Force Act",
     "short_name": "Pigeon AF",
     "description": "Trained pigeons may conduct aerial reconnaissance for the state.",
-    "placeholder_icon": "🕊️",
-    "visual_tags": ["pigeon_flight_line"],
+    "placeholder_icon": "\ud83d\udd4a\ufe0f",
+    "visual_tags": [
+      "pigeon_flight_line"
+    ],
     "category": "military"
   },
   {
@@ -526,8 +643,10 @@
     "display_name": "Camouflage Uniform Act",
     "short_name": "Camouflage",
     "description": "Military uniforms may blend with wallpaper, hedges, and parade routes.",
-    "placeholder_icon": "🥷",
-    "visual_tags": ["invisible_patrol_gaps"],
+    "placeholder_icon": "\ud83e\udd77",
+    "visual_tags": [
+      "invisible_patrol_gaps"
+    ],
     "category": "military"
   },
   {
@@ -535,8 +654,10 @@
     "display_name": "Border Parade Act",
     "short_name": "Border Parade",
     "description": "Border spectacles and volume contests are budgeted state policy.",
-    "placeholder_icon": "📢",
-    "visual_tags": ["border_megaphone_parade"],
+    "placeholder_icon": "\ud83d\udce2",
+    "visual_tags": [
+      "border_megaphone_parade"
+    ],
     "category": "military"
   },
   {
@@ -544,8 +665,10 @@
     "display_name": "Coupon Salaries Act",
     "short_name": "Coupon Pay",
     "description": "Civil servants may be paid in coupons. Cash is a nostalgic option.",
-    "placeholder_icon": "🎫",
-    "visual_tags": ["coupon_pay_stubs"],
+    "placeholder_icon": "\ud83c\udfab",
+    "visual_tags": [
+      "coupon_pay_stubs"
+    ],
     "category": "economy"
   },
   {
@@ -553,8 +676,10 @@
     "display_name": "Scent Mask Infrastructure Act",
     "short_name": "Scent Mask",
     "description": "Approved fragrance may temporarily mask failing sewer infrastructure.",
-    "placeholder_icon": "🌸",
-    "visual_tags": ["scent_manhole_covers"],
+    "placeholder_icon": "\ud83c\udf38",
+    "visual_tags": [
+      "scent_manhole_covers"
+    ],
     "category": "infrastructure"
   },
   {
@@ -562,8 +687,10 @@
     "display_name": "Form to Request Forms Act",
     "short_name": "Form F-0",
     "description": "Citizens must file Form F-0 before requesting any other form.",
-    "placeholder_icon": "📋",
-    "visual_tags": ["meta_form_desk"],
+    "placeholder_icon": "\ud83d\udccb",
+    "visual_tags": [
+      "meta_form_desk"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -571,8 +698,10 @@
     "display_name": "Fish Currency Act",
     "short_name": "Fish Money",
     "description": "Currency may be backed by fish stocks. Stability is seasonal.",
-    "placeholder_icon": "🐟",
-    "visual_tags": ["fish_scrip_booth"],
+    "placeholder_icon": "\ud83d\udc1f",
+    "visual_tags": [
+      "fish_scrip_booth"
+    ],
     "category": "economy"
   },
   {
@@ -580,8 +709,10 @@
     "display_name": "Ministry of Waiting Act",
     "short_name": "Waiting Ministry",
     "description": "Public queues receive cabinet-level administration and timed service windows.",
-    "placeholder_icon": "🪑",
-    "visual_tags": ["waiting_ministry_plaque"],
+    "placeholder_icon": "\ud83e\ude91",
+    "visual_tags": [
+      "waiting_ministry_plaque"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -589,8 +720,10 @@
     "display_name": "Triple Stamp Requirement",
     "short_name": "Triple Stamp",
     "description": "Official approvals require three stamps. Stamp supply is a national security issue.",
-    "placeholder_icon": "📮",
-    "visual_tags": ["empty_stamp_drawer"],
+    "placeholder_icon": "\ud83d\udcee",
+    "visual_tags": [
+      "empty_stamp_drawer"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -598,8 +731,10 @@
     "display_name": "Anti-Vacuum Act",
     "short_name": "Vacuum Quiet Hours",
     "description": "Vacuum use may be restricted by referendum and quiet-hours policy.",
-    "placeholder_icon": "🔇",
-    "visual_tags": ["vacuum_ban_posters"],
+    "placeholder_icon": "\ud83d\udd07",
+    "visual_tags": [
+      "vacuum_ban_posters"
+    ],
     "category": "absurd_law"
   },
   {
@@ -607,8 +742,10 @@
     "display_name": "National Nap Hour Act",
     "short_name": "Nap Hour",
     "description": "A civic nap period is scheduled. Productivity is invited to wait.",
-    "placeholder_icon": "😴",
-    "visual_tags": ["nap_hour_banners"],
+    "placeholder_icon": "\ud83d\ude34",
+    "visual_tags": [
+      "nap_hour_banners"
+    ],
     "category": "public_life"
   },
   {
@@ -616,8 +753,11 @@
     "display_name": "Military Route Priority Act",
     "short_name": "Route Priority",
     "description": "Military convoys may claim priority on civilian routes during gridlock emergencies.",
-    "placeholder_icon": "🚛",
-    "visual_tags": ["convoy_crosswalk", "ceremonial_priority_lane"],
+    "placeholder_icon": "\ud83d\ude9b",
+    "visual_tags": [
+      "convoy_crosswalk",
+      "ceremonial_priority_lane"
+    ],
     "category": "military"
   },
   {
@@ -625,8 +765,10 @@
     "display_name": "Traffic Checkpoint Act",
     "short_name": "Checkpoint Hour",
     "description": "Timed civilian checkpoints may operate with umbrellas, stamps, and optional tea.",
-    "placeholder_icon": "🛂",
-    "visual_tags": ["checkpoint_umbrellas"],
+    "placeholder_icon": "\ud83d\udec2",
+    "visual_tags": [
+      "checkpoint_umbrellas"
+    ],
     "category": "military"
   },
   {
@@ -634,8 +776,10 @@
     "display_name": "Emergency Austerity Act",
     "short_name": "Austerity Act",
     "description": "Public spending freezes under cheerful spreadsheet supervision.",
-    "placeholder_icon": "📉",
-    "visual_tags": ["balanced_ledger_glow"],
+    "placeholder_icon": "\ud83d\udcc9",
+    "visual_tags": [
+      "balanced_ledger_glow"
+    ],
     "category": "economy"
   },
   {
@@ -643,8 +787,10 @@
     "display_name": "Public Service Sunset Act",
     "short_name": "Service Sunset",
     "description": "Clinics, buses, and kindness close at dusk for fiscal hygiene.",
-    "placeholder_icon": "🌇",
-    "visual_tags": ["empty_clinic_queue"],
+    "placeholder_icon": "\ud83c\udf07",
+    "visual_tags": [
+      "empty_clinic_queue"
+    ],
     "category": "economy"
   },
   {
@@ -652,8 +798,10 @@
     "display_name": "Emergency Price Board Act",
     "short_name": "Price Board",
     "description": "Maximum prices appear on chalk. Vendors invent chalk.",
-    "placeholder_icon": "📋",
-    "visual_tags": ["price_sticker_walls"],
+    "placeholder_icon": "\ud83d\udccb",
+    "visual_tags": [
+      "price_sticker_walls"
+    ],
     "category": "economy"
   },
   {
@@ -661,8 +809,10 @@
     "display_name": "Barter License Act",
     "short_name": "Barter License",
     "description": "Citizens may trade chickens for stamps with a permit and a smile.",
-    "placeholder_icon": "🔄",
-    "visual_tags": ["barter_booth"],
+    "placeholder_icon": "\ud83d\udd04",
+    "visual_tags": [
+      "barter_booth"
+    ],
     "category": "economy"
   },
   {
@@ -670,8 +820,10 @@
     "display_name": "National Filing Week",
     "short_name": "Filing Week",
     "description": "One week for civic preference forms that look suspiciously like ballots.",
-    "placeholder_icon": "🗳️",
-    "visual_tags": ["filing_week_ballot_boxes"],
+    "placeholder_icon": "\ud83d\uddf3\ufe0f",
+    "visual_tags": [
+      "filing_week_ballot_boxes"
+    ],
     "category": "bureaucracy"
   },
   {
@@ -679,8 +831,10 @@
     "display_name": "National Trial Oversight Act",
     "short_name": "Trial Oversight",
     "description": "Every national experiment needs a stamp, a clipboard, and a polite safety footnote.",
-    "placeholder_icon": "🧪",
-    "visual_tags": ["oversight_clipboard_plaza"],
+    "placeholder_icon": "\ud83e\uddea",
+    "visual_tags": [
+      "oversight_clipboard_plaza"
+    ],
     "category": "science"
   },
   {
@@ -688,8 +842,10 @@
     "display_name": "Privatize Air Zones",
     "short_name": "Air Zones",
     "description": "Breathable premium tiers may be leased to aligned stakeholders.",
-    "placeholder_icon": "💨",
-    "visual_tags": ["branded_ministry_awning"],
+    "placeholder_icon": "\ud83d\udca8",
+    "visual_tags": [
+      "branded_ministry_awning"
+    ],
     "category": "economy"
   },
   {
@@ -697,8 +853,10 @@
     "display_name": "Rent-a-Ministry Act",
     "short_name": "Rent Ministry",
     "description": "Public ministries may be leased by the hour with optional branding.",
-    "placeholder_icon": "🏢",
-    "visual_tags": ["lease_stamp_plaza"],
+    "placeholder_icon": "\ud83c\udfe2",
+    "visual_tags": [
+      "lease_stamp_plaza"
+    ],
     "category": "economy"
   },
   {
@@ -706,8 +864,10 @@
     "display_name": "Corporate Capital Naming Act",
     "short_name": "Capital Naming",
     "description": "The capital square may carry a tasteful sponsor subtitle.",
-    "placeholder_icon": "®️",
-    "visual_tags": ["subsidiary_flag_swap"],
+    "placeholder_icon": "\u00ae\ufe0f",
+    "visual_tags": [
+      "subsidiary_flag_swap"
+    ],
     "category": "economy"
   },
   {
@@ -715,8 +875,10 @@
     "display_name": "AI Cabinet Pilot Act",
     "short_name": "AI Pilot",
     "description": "A limited admin AI may triage forms and schedule briefings under human override.",
-    "placeholder_icon": "🤖",
-    "visual_tags": ["toaster_filing_cabinets"],
+    "placeholder_icon": "\ud83e\udd16",
+    "visual_tags": [
+      "toaster_filing_cabinets"
+    ],
     "category": "science"
   },
   {
@@ -724,8 +886,131 @@
     "display_name": "Moon Replacement Research Act",
     "short_name": "Moon Research",
     "description": "Public funding for studying whether a brighter lunar model would be more efficient.",
-    "placeholder_icon": "🌙",
-    "visual_tags": ["fake_telescope_plaza"],
+    "placeholder_icon": "\ud83c\udf19",
+    "visual_tags": [
+      "fake_telescope_plaza"
+    ],
     "category": "science"
+  },
+  {
+    "id": "cat_cushion_charter",
+    "display_name": "Cushion Charter",
+    "short_name": "Cushions",
+    "description": "Official nap cushions are recognized as civic infrastructure.",
+    "placeholder_icon": "\ud83d\udecb\ufe0f",
+    "visual_tags": [
+      "cushion_charter_plaza"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "administrative_reform_act",
+    "display_name": "Administrative Reform Act",
+    "short_name": "Admin Reform",
+    "description": "Numbered windows and shorter queues for civic requests.",
+    "placeholder_icon": "\ud83d\udd22",
+    "visual_tags": [
+      "numbered_queues"
+    ],
+    "category": "administration"
+  },
+  {
+    "id": "form_sovereignty_act",
+    "display_name": "Form Sovereignty Act",
+    "short_name": "Form Rule",
+    "description": "Forms may govern other forms when efficiency peaks.",
+    "placeholder_icon": "\ud83d\udccb",
+    "visual_tags": [
+      "sovereignty_stamp_tower"
+    ],
+    "category": "administration"
+  },
+  {
+    "id": "cat_lobby_registry",
+    "display_name": "Cat Lobby Registry",
+    "short_name": "Cat Lobby",
+    "description": "Cats may register as lobbyists without voting seats.",
+    "placeholder_icon": "\ud83d\udc08",
+    "visual_tags": [
+      "lobby_cushion_booth"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "festival_stimulus_act",
+    "display_name": "Festival Stimulus Act",
+    "short_name": "Festival Stimulus",
+    "description": "Weekend festivals subsidized as economic stimulus.",
+    "placeholder_icon": "\ud83c\udf89",
+    "visual_tags": [
+      "festival_vendor_row"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "permanent_festival_act",
+    "display_name": "Permanent Festival Act",
+    "short_name": "Permanent Fest",
+    "description": "Every day is declared a national festival.",
+    "placeholder_icon": "\ud83c\udf8a",
+    "visual_tags": [
+      "stampede_plaza"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "three_day_weekend",
+    "display_name": "Three-Day Weekend Act",
+    "short_name": "Long Weekend",
+    "description": "Weekends expand to three days for festival economies.",
+    "placeholder_icon": "\ud83d\udcc5",
+    "visual_tags": [
+      "quiet_calendar_reform"
+    ],
+    "category": "public_life"
+  },
+  {
+    "id": "emergency_cheese_bonds",
+    "display_name": "Emergency Cheese Bonds",
+    "short_name": "Cheese Bonds",
+    "description": "Emergency financing for ceremonial and trade cheese.",
+    "placeholder_icon": "\ud83e\uddc0",
+    "visual_tags": [
+      "cheese_bond_banner"
+    ],
+    "category": "economy"
+  },
+  {
+    "id": "cheese_substitute_act",
+    "display_name": "Cheese Substitute Act",
+    "short_name": "Cheese Sub",
+    "description": "Domestic science may invent wheel-shaped substitutes.",
+    "placeholder_icon": "\ud83e\uddea",
+    "visual_tags": [
+      "lab_cheese_tray"
+    ],
+    "category": "economy"
+  },
+  {
+    "id": "palace_subscription_plan",
+    "display_name": "Palace Subscription Plan",
+    "short_name": "Palace Sub",
+    "description": "Palace wings may be financed via elite subscription tiers.",
+    "placeholder_icon": "\ud83d\udc51",
+    "visual_tags": [
+      "gold_scaffolding"
+    ],
+    "category": "economy"
+  },
+  {
+    "id": "palace_public_tour_act",
+    "display_name": "Palace Public Tour Act",
+    "short_name": "Palace Tours",
+    "description": "Citizens may tour renovation ledgers and wings.",
+    "placeholder_icon": "\ud83c\udfab",
+    "visual_tags": [
+      "public_tour_rope"
+    ],
+    "category": "public_life"
   }
 ]

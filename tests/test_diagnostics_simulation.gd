@@ -137,6 +137,8 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 		"cat_politics", "mandatory_happiness",
 		"general_boom_arc", "doctor_maybe_arc",
 		"profit_corporate_state", "robot_government", "sell_the_moon",
+		"whiskers_cat_revolution", "zero_government_of_forms",
+		"national_festival_economy", "international_cheese_crisis", "palace_renovation_scandal",
 	]
 	var arc_starts: Dictionary = sim.get("arc_start_rates", {})
 	var arc_completions: Dictionary = sim.get("arc_completion_rates", {})
@@ -178,6 +180,14 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 		if str(decision.get("card_type", "")) == "resolution":
 			var requirements: Dictionary = decision.get("requirements", {})
 			if requirements.has("arc_branches"):
+				allowed_never.append(id)
+		# Path-gated crisis entries may miss a 1k sample; required crises are asserted above.
+		if str(decision.get("card_type", "")) == "crisis":
+			var narrative: Dictionary = decision.get("narrative", {})
+			if str(narrative.get("crisis_id", "")) not in [
+				"national_power_outage", "cheese_shortage_crisis", "mass_protest",
+				"bank_run", "cat_parliament_occupation",
+			]:
 				allowed_never.append(id)
 	var unexpected_never: Array[String] = []
 	for id in never_selected:

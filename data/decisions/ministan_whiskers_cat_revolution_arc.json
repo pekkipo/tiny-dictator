@@ -1,0 +1,577 @@
+[
+  {
+    "id": "whiskers_political_demand",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "Comrades of the cabinet: cushions in ministries are concrete. Fish reserves are empty. We demand a Cushion Charter \u2014 not toys. Dignity.",
+    "one_time": true,
+    "base_weight": 12,
+    "minimum_day": 3,
+    "maximum_day": 14,
+    "narrative": {
+      "arc_id": "whiskers_cat_revolution",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "whiskers_rev_live",
+        "whiskers_rev_complete"
+      ],
+      "blocked_arcs": [
+        "cat_politics"
+      ]
+    },
+    "options": [
+      {
+        "id": "grant_charter",
+        "label": "Grant the Cushion Charter",
+        "effects": {
+          "happiness": 4,
+          "order": -2,
+          "treasury": -4,
+          "elite_loyalty": -1
+        },
+        "add_laws": [
+          "cat_cushion_charter"
+        ],
+        "add_flags": [
+          "whiskers_rev_live",
+          "whiskers_charter_seed"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "branch",
+            "branch_id": "constitutional_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "whiskers_movement_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 80,
+          "required_flags": [
+            "whiskers_rev_live"
+          ]
+        },
+        "result_text": "Charter stamped. Whiskers nods once. Ministries receive official nap cushions."
+      },
+      {
+        "id": "negotiate_partial",
+        "label": "Negotiate a partial clause",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "treasury": -3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "whiskers_rev_live",
+          "whiskers_partial_seed"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 1,
+          "minister_penny": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "branch",
+            "branch_id": "constitutional_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "whiskers_movement_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 78,
+          "required_flags": [
+            "whiskers_rev_live"
+          ]
+        },
+        "result_text": "Partial clause accepted. Whiskers files a minority report under 'provisional dignity.'"
+      },
+      {
+        "id": "refuse_demand",
+        "label": "Refuse the demand",
+        "effects": {
+          "happiness": -3,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -3,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "abandon",
+            "reason": "refused_charter"
+          }
+        ],
+        "result_text": "Whiskers leaves a formal hiss on the minutes. The sofa remains unprotected."
+      }
+    ],
+    "tags": [
+      "cats",
+      "arc_setup",
+      "whiskers"
+    ],
+    "visual_tags": [
+      "cushion_charter_plaza"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "whiskers_cat_revolution",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-13A",
+      "humor_tags": [
+        "cushion_charter",
+        "dignity"
+      ],
+      "emotional_goal": "serious_absurd_demand",
+      "visual_hook": "official cushions stacked beside a treaty",
+      "localization_risk": "low",
+      "writer_notes": "Not voting rights. Mutex vs cat_politics."
+    }
+  },
+  {
+    "id": "whiskers_movement_escalation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "River Street naps through lunch. Cats occupy the bakery queue with pamphlets. Whiskers calls it mobilization. I call it Tuesday with better posters.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "whiskers_cat_revolution",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "whiskers_cat_revolution"
+      ],
+      "all_flags": [
+        "whiskers_rev_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "tolerate_rallies",
+        "label": "Tolerate the rallies",
+        "effects": {
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "whiskers_rallies_ok"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "comrade_whiskers": 2
+        },
+        "trait_changes": {
+          "populist": 2,
+          "chaotic": 1
+        },
+        "force_next_decision": "whiskers_path_fork",
+        "result_text": "Pamphlets multiply. Olga hands out tea. Order files a mild complaint."
+      },
+      {
+        "id": "regulate_naps",
+        "label": "Regulate nap hours",
+        "effects": {
+          "order": 3,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "whiskers_regulated"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "comrade_whiskers": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "whiskers_path_fork",
+        "result_text": "Nap permits appear. Whiskers stamps them with solemn fur."
+      },
+      {
+        "id": "crack_down_early",
+        "label": "Clear the bakery queue",
+        "effects": {
+          "order": 4,
+          "happiness": -4,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "whiskers_crackdown_seed"
+        ],
+        "advisor_affinity": {
+          "general_boom": 2,
+          "comrade_whiskers": -2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "force_next_decision": "whiskers_path_fork",
+        "result_text": "Lint rollers deploy. Pamphlets become confetti. Whiskers schedules a congress."
+      }
+    ],
+    "tags": [
+      "cats",
+      "arc_escalation",
+      "whiskers"
+    ],
+    "visual_tags": [
+      "cats_in_square",
+      "revolutionary_nap_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "whiskers_cat_revolution",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "batch_id": "2B-13A",
+      "humor_tags": [
+        "bakery_queue",
+        "nap_permits"
+      ],
+      "emotional_goal": "movement_grows",
+      "visual_hook": "cats with pamphlets in bakery line",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "whiskers_path_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "The movement asks: constitution with cushions, transfer of symbolic power, or a boxes truce? History waits beside the scratching post.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "whiskers_cat_revolution",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "whiskers_cat_revolution"
+      ],
+      "all_flags": [
+        "whiskers_rev_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "constitutional",
+        "label": "Write a constitutional cat claus",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": -5,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "whiskers_constitutional",
+          "whiskers_fork_done"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 3,
+          "clerk_zero": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "branch",
+            "branch_id": "constitutional_path"
+          }
+        ],
+        "force_next_decision": "whiskers_revolution_resolution",
+        "result_text": "Clause filed. Dignity gains a paragraph. Nobody is overthrown \u2014 yet."
+      },
+      {
+        "id": "dominance",
+        "label": "Accept cat dominance",
+        "effects": {
+          "happiness": 5,
+          "order": -5,
+          "elite_loyalty": -4,
+          "treasury": -3
+        },
+        "add_flags": [
+          "whiskers_dominance",
+          "whiskers_fork_done",
+          "cats_control_parliament"
+        ],
+        "counter_changes": {
+          "cat_favor_choices": 2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 4,
+          "luna_news": 2,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "chaotic": 3,
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "branch",
+            "branch_id": "dominance_path"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "cat_parliament_occupation",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "whiskers_revolution_resolution",
+        "result_text": "Parliament cushions become thrones. Whiskers calls it historical materialism with whiskers."
+      },
+      {
+        "id": "compromise",
+        "label": "Offer a boxes truce",
+        "effects": {
+          "happiness": 1,
+          "order": 3,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "whiskers_compromise",
+          "whiskers_fork_done"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": -1,
+          "auntie_olga": 3,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "whiskers_cat_revolution",
+            "action": "branch",
+            "branch_id": "compromise_path"
+          }
+        ],
+        "force_next_decision": "whiskers_revolution_resolution",
+        "result_text": "Boxes appear on every corner. Whiskers signs under protest. Olga brings blankets."
+      }
+    ],
+    "tags": [
+      "cats",
+      "arc_climax",
+      "whiskers"
+    ],
+    "visual_tags": [
+      "fish_treaty",
+      "cats_in_square"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "whiskers_cat_revolution",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13A",
+      "humor_tags": [
+        "three_way_fork",
+        "scratching_post"
+      ],
+      "emotional_goal": "real_choice",
+      "visual_hook": "charter, throne-cushion, or boxes",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "whiskers_revolution_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "comrade_whiskers",
+    "category": "public_life",
+    "proposal": "Final congress: seal the charter, complete the purrfect transfer, or close the boxes truce?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "whiskers_cat_revolution",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "whiskers_cat_revolution"
+      ],
+      "all_flags": [
+        "whiskers_rev_live",
+        "whiskers_fork_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_charter",
+        "label": "Seal the cushion charter",
+        "effects": {
+          "happiness": 4,
+          "order": 3,
+          "treasury": -4,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "whiskers_rev_complete",
+          "whiskers_charter_sealed",
+          "endgame_cat_stable"
+        ],
+        "remove_flags": [
+          "whiskers_rev_live"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "clerk_zero": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
+        "result_text": "Charter hangs in the lobby. Cats nap legally. History rates it 'surprisingly stable.'"
+      },
+      {
+        "id": "purrfect_transfer",
+        "label": "Complete the purrfect transfer",
+        "effects": {
+          "happiness": 6,
+          "order": -4,
+          "elite_loyalty": -6
+        },
+        "add_flags": [
+          "whiskers_rev_complete",
+          "purrfect_transfer",
+          "cats_control_parliament"
+        ],
+        "remove_flags": [
+          "whiskers_rev_live"
+        ],
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 4,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "chaotic": 2,
+          "populist": 2
+        },
+        "trigger_ending": "purrfect_transfer",
+        "result_text": "You are demoted to Chief Litter Officer. Whiskers declares a national nap."
+      },
+      {
+        "id": "boxes_truce",
+        "label": "Close the boxes truce",
+        "effects": {
+          "happiness": 2,
+          "order": 4,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "whiskers_rev_complete",
+          "whiskers_boxes_truce"
+        ],
+        "remove_flags": [
+          "whiskers_rev_live",
+          "cats_control_parliament"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "auntie_olga": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "trigger_ending": "whiskers_boxes_truce",
+        "result_text": "Boxes win. Politics returns to human absurdity. Whiskers files an unfinished revolution."
+      }
+    ],
+    "tags": [
+      "cats",
+      "arc_resolution",
+      "ending_setup",
+      "whiskers"
+    ],
+    "visual_tags": [
+      "fish_treaty",
+      "cushion_charter_plaza"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "whiskers_cat_revolution",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13A",
+      "humor_tags": [
+        "litter_officer",
+        "boxes_truce"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "charter seal or nap transfer",
+      "localization_risk": "low"
+    }
+  }
+]

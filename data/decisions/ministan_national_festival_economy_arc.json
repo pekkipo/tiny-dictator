@@ -1,0 +1,592 @@
+[
+  {
+    "id": "festival_stimulus_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "luna_news",
+    "category": "public_life",
+    "proposal": "Empty plazas. Quiet vendors. I propose Festival Stimulus Weekends \u2014 music, stalls, cameras. Tourism as economic CPR. Not an eternal parade. Yet.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 6,
+    "maximum_day": 18,
+    "narrative": {
+      "arc_id": "national_festival_economy",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "festival_econ_live",
+        "festival_econ_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "approve_stimulus",
+        "label": "Approve festival weekends",
+        "effects": {
+          "treasury": -6,
+          "happiness": 4,
+          "order": -1,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "festival_stimulus_act"
+        ],
+        "add_flags": [
+          "festival_econ_live",
+          "festival_pilot"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "sir_profit": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "branch",
+            "branch_id": "tourism_success"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "festival_economy_boom",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "festival_econ_live"
+          ]
+        },
+        "result_text": "Banners go up. Vendors smile for cameras. Penny pretends not to watch."
+      },
+      {
+        "id": "private_sponsors",
+        "label": "Let Profit sponsor weekends",
+        "effects": {
+          "treasury": 2,
+          "happiness": 3,
+          "order": -1,
+          "elite_loyalty": 3
+        },
+        "add_laws": [
+          "festival_stimulus_act"
+        ],
+        "add_flags": [
+          "festival_econ_live",
+          "festival_sponsored"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "minister_penny": 1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "branch",
+            "branch_id": "tourism_success"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "festival_economy_boom",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 78,
+          "required_flags": [
+            "festival_econ_live"
+          ]
+        },
+        "result_text": "Sponsored confetti. Tasteful logos. Olga mutters about sleep."
+      },
+      {
+        "id": "refuse_festival",
+        "label": "Refuse the stimulus",
+        "effects": {
+          "happiness": -2,
+          "elite_loyalty": 1,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2,
+          "sir_profit": -1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "abandon",
+            "reason": "refused_festival"
+          }
+        ],
+        "result_text": "Plazas stay empty. Luna files 'untelevised opportunity.'"
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_setup",
+      "festival"
+    ],
+    "visual_tags": [
+      "festival_vendor_row",
+      "birthday_banners"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "national_festival_economy",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13D",
+      "humor_tags": [
+        "stimulus_weekends",
+        "CPR"
+      ],
+      "emotional_goal": "hopeful_spectacle",
+      "visual_hook": "vendor stalls and cameras",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "festival_economy_boom",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Tourism up. Vendor receipts up. Hotels invent 'festival rates.' I propose we never stop. Olga proposes naps. Choose a growth trajectory.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "national_festival_economy",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "national_festival_economy"
+      ],
+      "all_flags": [
+        "festival_econ_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "bank_tourism",
+        "label": "Bank the tourism gains",
+        "effects": {
+          "treasury": 5,
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "festival_boomed",
+          "festival_tourism"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "bureaucratic": 1
+        },
+        "force_next_decision": "festival_sustainability_fork",
+        "result_text": "Gains deposited. Confetti swept. The calendar still has Mondays."
+      },
+      {
+        "id": "extend_season",
+        "label": "Extend the festival season",
+        "effects": {
+          "treasury": 2,
+          "happiness": 5,
+          "order": -3,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "three_day_weekend"
+        ],
+        "add_flags": [
+          "festival_boomed",
+          "festival_extended"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "sir_profit": 2,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "chaotic": 1
+        },
+        "force_next_decision": "festival_sustainability_fork",
+        "result_text": "Weekends stretch. Sleep shrinks. Cameras never blink."
+      },
+      {
+        "id": "olga_curfew",
+        "label": "Add Olga's quiet hours",
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "treasury": 1
+        },
+        "add_flags": [
+          "festival_boomed",
+          "festival_quiet_hours"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "minister_penny": 1,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "force_next_decision": "festival_sustainability_fork",
+        "result_text": "Music stops at ten. Vendors pack gently. Ratings dip politely."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_escalation",
+      "festival"
+    ],
+    "visual_tags": [
+      "festival_vendor_row"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "national_festival_economy",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13D",
+      "humor_tags": [
+        "festival_rates",
+        "quiet_hours"
+      ],
+      "emotional_goal": "success_temptation",
+      "visual_hook": "busy stalls and tired neighbors",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "festival_sustainability_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "Crowds are thicker than sense. Keep sustainable tourism, declare permanent festival, or cancel and let citizens remake the calendar?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "national_festival_economy",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "national_festival_economy"
+      ],
+      "all_flags": [
+        "festival_econ_live",
+        "festival_boomed"
+      ]
+    },
+    "options": [
+      {
+        "id": "tourism_path",
+        "label": "Keep sustainable tourism weekend",
+        "effects": {
+          "treasury": 3,
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "festival_tourism",
+          "festival_fork_done"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "branch",
+            "branch_id": "tourism_success"
+          }
+        ],
+        "force_next_decision": "festival_economy_resolution",
+        "result_text": "Weekends remain special. Mondays remain Mondays. Olga sleeps."
+      },
+      {
+        "id": "permanent_path",
+        "label": "Declare permanent national festi",
+        "effects": {
+          "happiness": 7,
+          "treasury": -8,
+          "order": -6,
+          "elite_loyalty": -2
+        },
+        "add_laws": [
+          "permanent_festival_act"
+        ],
+        "add_flags": [
+          "festival_permanent",
+          "festival_fork_done"
+        ],
+        "advisor_affinity": {
+          "luna_news": 4,
+          "sir_profit": 3,
+          "auntie_olga": -3,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "chaotic": 3,
+          "propagandist": 2,
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "branch",
+            "branch_id": "permanent_festival"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "festival_economy_resolution",
+        "result_text": "Every day is opening day. Crowds invent new physics. Stampede risk: confirmed."
+      },
+      {
+        "id": "reform_path",
+        "label": "Citizen-led calendar reform",
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "treasury": -3,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "festival_reform",
+          "festival_fork_done"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 4,
+          "minister_penny": 2,
+          "luna_news": -2,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "national_festival_economy",
+            "action": "branch",
+            "branch_id": "cancel_reform"
+          }
+        ],
+        "force_next_decision": "festival_economy_resolution",
+        "result_text": "Citizens vote on holidays with chalk. Cameras sulk. Sleep returns."
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_climax",
+      "festival"
+    ],
+    "visual_tags": [
+      "stampede_plaza",
+      "quiet_calendar_reform"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "national_festival_economy",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13D",
+      "humor_tags": [
+        "permanent_opening_day",
+        "chalk_calendar"
+      ],
+      "emotional_goal": "sustainability_conflict",
+      "visual_hook": "stampede risk vs quiet calendar",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "festival_economy_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "luna_news",
+    "category": "public_life",
+    "proposal": "Final broadcast: seal tourism economy, eternal festival, or beloved quiet retirement from spectacle?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "national_festival_economy",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "national_festival_economy"
+      ],
+      "all_flags": [
+        "festival_econ_live",
+        "festival_fork_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_tourism",
+        "label": "Seal the tourism festival econom",
+        "effects": {
+          "treasury": 4,
+          "happiness": 4,
+          "order": 3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "festival_econ_complete",
+          "festival_tourism_sealed",
+          "endgame_festival_stable"
+        ],
+        "remove_flags": [
+          "festival_econ_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 2,
+          "auntie_olga": 2,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "populist": 1,
+          "capitalist": 1
+        },
+        "result_text": "Festivals stay scheduled. Economy breathes. Luna calls it 'sustainable sparkle.'"
+      },
+      {
+        "id": "eternal",
+        "label": "Broadcast eternal national festi",
+        "effects": {
+          "happiness": 8,
+          "treasury": -6,
+          "order": -5
+        },
+        "add_flags": [
+          "festival_econ_complete",
+          "eternal_national_festival"
+        ],
+        "remove_flags": [
+          "festival_econ_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 4,
+          "sir_profit": 2,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "chaotic": 2,
+          "propagandist": 3
+        },
+        "trigger_ending": "eternal_national_festival",
+        "result_text": "The credits never roll. Confetti becomes weather. Historians request earplugs."
+      },
+      {
+        "id": "beloved_quiet",
+        "label": "Retire from spectacle",
+        "effects": {
+          "happiness": 5,
+          "order": 4,
+          "treasury": -2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "festival_econ_complete",
+          "beloved_retirement"
+        ],
+        "remove_flags": [
+          "festival_econ_live",
+          "festival_permanent"
+        ],
+        "remove_laws": [
+          "permanent_festival_act"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 4,
+          "luna_news": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "trigger_ending": "beloved_retirement",
+        "result_text": "You cancel the eternal parade. Citizens gift you a quiet chair. It is enough."
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_resolution",
+      "ending_setup",
+      "festival"
+    ],
+    "visual_tags": [
+      "quiet_calendar_reform",
+      "festival_vendor_row"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "national_festival_economy",
+      "primary_category": "public_life",
+      "primary_stage": "endgame",
+      "batch_id": "2B-13D",
+      "humor_tags": [
+        "credits_never_roll",
+        "quiet_chair"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "eternal confetti or quiet chair",
+      "localization_risk": "low"
+    }
+  }
+]

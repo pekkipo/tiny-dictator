@@ -1,0 +1,567 @@
+[
+  {
+    "id": "cheese_diplomatic_incident",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "foreign_ambassador",
+    "category": "economy",
+    "proposal": "Tinyria sends an awkward note: ceremonial cheese for the border toast is short. Trade lanes quarrel. Compliments enclosed. Urgency implied.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 7,
+    "maximum_day": 20,
+    "narrative": {
+      "arc_id": "international_cheese_crisis",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "cheese_arc_live",
+        "cheese_arc_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "open_talks",
+        "label": "Open polite cheese talks",
+        "effects": {
+          "elite_loyalty": 2,
+          "order": 1,
+          "treasury": -2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "cheese_arc_live",
+          "cheese_talks_open"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "branch",
+            "branch_id": "diplomatic_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "cheese_national_response",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 82,
+          "required_flags": [
+            "cheese_arc_live"
+          ]
+        },
+        "result_text": "Talks scheduled. Tinyria compliments your stationery. Urgency remains."
+      },
+      {
+        "id": "buy_emergency",
+        "label": "Buy emergency cheese bonds",
+        "effects": {
+          "treasury": -6,
+          "elite_loyalty": 2,
+          "happiness": 2,
+          "order": 1
+        },
+        "add_laws": [
+          "emergency_cheese_bonds"
+        ],
+        "add_flags": [
+          "cheese_arc_live",
+          "cheese_bonds_bought"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "branch",
+            "branch_id": "diplomatic_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "cheese_national_response",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "cheese_arc_live"
+          ]
+        },
+        "result_text": "Bonds print. Cellars fill halfway. Tinyria softens the adjectives."
+      },
+      {
+        "id": "ignore_note",
+        "label": "Ignore the awkward note",
+        "effects": {
+          "elite_loyalty": -2,
+          "happiness": -1,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": -1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "abandon",
+            "reason": "ignored_note"
+          }
+        ],
+        "result_text": "The note returns with a larger stamp. Toast diplomacy cools."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_setup",
+      "cheese",
+      "diplomacy"
+    ],
+    "visual_tags": [
+      "embassy_queue_protest",
+      "cheese_bond_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "international_cheese_crisis",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13E",
+      "humor_tags": [
+        "awkward_note",
+        "ceremonial_toast"
+      ],
+      "emotional_goal": "comprehensible_crisis",
+      "visual_hook": "embassy note beside cheese bonds",
+      "localization_risk": "low",
+      "writer_notes": "Guest ambassador. No pun-only humor."
+    }
+  },
+  {
+    "id": "cheese_national_response",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "palace_chef",
+    "category": "economy",
+    "proposal": "Kitchen report: ceremonial wheels missing. I can plate dignity with substitutes, beg imports, or invent pride soup. Elites have opinions. My ovens do not.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "international_cheese_crisis",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "international_cheese_crisis"
+      ],
+      "all_flags": [
+        "cheese_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "import_quietly",
+        "label": "Import quietly for the toast",
+        "effects": {
+          "treasury": -5,
+          "elite_loyalty": 3,
+          "happiness": 1,
+          "order": 1
+        },
+        "add_flags": [
+          "cheese_response_done",
+          "cheese_imported"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "force_next_decision": "cheese_path_fork",
+        "result_text": "Wheels arrive unmarked. Chef plates dignity. Tinyria notices anyway."
+      },
+      {
+        "id": "kitchen_substitute",
+        "label": "Authorize kitchen substitutes",
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "elite_loyalty": -1,
+          "order": 2
+        },
+        "add_flags": [
+          "cheese_response_done",
+          "cheese_sub_seed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "force_next_decision": "cheese_path_fork",
+        "result_text": "Substitute wheels pass a blind taste. Almost. Chef calls it 'courageous.'"
+      },
+      {
+        "id": "public_pride",
+        "label": "Frame it as national pride",
+        "effects": {
+          "happiness": 3,
+          "elite_loyalty": 2,
+          "order": -2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "cheese_response_done",
+          "cheese_pride_seed"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "force_next_decision": "cheese_path_fork",
+        "result_text": "Luna airs 'Cheese of the People.' Tinyria watches with binoculars."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_escalation",
+      "cheese"
+    ],
+    "visual_tags": [
+      "lab_cheese_tray"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "international_cheese_crisis",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13E",
+      "humor_tags": [
+        "courageous_substitute",
+        "pride_broadcast"
+      ],
+      "emotional_goal": "kitchen_stakes",
+      "visual_hook": "chef plating dignity",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "cheese_path_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "Ledger fork: settle with Tinyria, fund domestic substitute science, or escalate pride into embargo theater?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "international_cheese_crisis",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "international_cheese_crisis"
+      ],
+      "all_flags": [
+        "cheese_arc_live",
+        "cheese_response_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "diplomacy",
+        "label": "Sign a diplomatic settlement",
+        "effects": {
+          "treasury": -6,
+          "elite_loyalty": 3,
+          "happiness": 2,
+          "order": 3
+        },
+        "add_laws": [
+          "emergency_cheese_bonds"
+        ],
+        "add_flags": [
+          "cheese_diplomacy",
+          "cheese_fork_done"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "branch",
+            "branch_id": "diplomatic_path"
+          }
+        ],
+        "force_next_decision": "cheese_crisis_resolution",
+        "result_text": "Settlement signed. Toast restored. Adjectives soften permanently."
+      },
+      {
+        "id": "substitute",
+        "label": "Fund cheese substitute",
+        "effects": {
+          "treasury": -8,
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "add_laws": [
+          "cheese_substitute_act"
+        ],
+        "add_flags": [
+          "cheese_substitute",
+          "cheese_fork_done"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 3,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "branch",
+            "branch_id": "substitute_path"
+          }
+        ],
+        "force_next_decision": "cheese_crisis_resolution",
+        "result_text": "Labs invent wheel-shaped courage. Taste panels argue productively."
+      },
+      {
+        "id": "pride",
+        "label": "Escalate pride embargo",
+        "effects": {
+          "elite_loyalty": 4,
+          "happiness": 2,
+          "order": -4,
+          "treasury": -4
+        },
+        "add_flags": [
+          "cheese_pride",
+          "cheese_fork_done"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "sir_profit": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "propagandist": 3,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "international_cheese_crisis",
+            "action": "branch",
+            "branch_id": "pride_path"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "cheese_crisis_resolution",
+        "result_text": "Embargo stamps bloom. Cellars empty with dignity. Tinyria returns a colder note."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_climax",
+      "cheese"
+    ],
+    "visual_tags": [
+      "embargo_stamp",
+      "cheese_bond_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "international_cheese_crisis",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13E",
+      "humor_tags": [
+        "wheel_courage",
+        "embargo_dignity"
+      ],
+      "emotional_goal": "trade_choice",
+      "visual_hook": "settlement, lab tray, or embargo stamp",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "cheese_crisis_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "foreign_ambassador",
+    "category": "economy",
+    "proposal": "Final toast: great settlement, substitute seal, or pride embargo as policy?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "international_cheese_crisis",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "international_cheese_crisis"
+      ],
+      "all_flags": [
+        "cheese_arc_live",
+        "cheese_fork_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "great_settlement",
+        "label": "Announce the Great Cheese Settle",
+        "effects": {
+          "treasury": -4,
+          "happiness": 4,
+          "elite_loyalty": 4,
+          "order": 3
+        },
+        "add_flags": [
+          "cheese_arc_complete",
+          "great_cheese_settlement",
+          "endgame_trade_stable"
+        ],
+        "remove_flags": [
+          "cheese_arc_live"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "trigger_ending": "great_cheese_settlement",
+        "result_text": "Border toast resumes. Tinyria compliments your maturity. Historians file under dairy diplomacy."
+      },
+      {
+        "id": "seal_substitute",
+        "label": "Seal substitute success",
+        "effects": {
+          "treasury": -3,
+          "happiness": 3,
+          "order": 3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "cheese_arc_complete",
+          "cheese_substitute_sealed"
+        ],
+        "remove_flags": [
+          "cheese_arc_live"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "result_text": "Substitute wheels become tradition. Chef nods. Imports become optional."
+      },
+      {
+        "id": "seal_pride",
+        "label": "Seal the pride embargo",
+        "effects": {
+          "elite_loyalty": 3,
+          "happiness": -2,
+          "order": -2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "cheese_arc_complete",
+          "cheese_pride_embargo"
+        ],
+        "remove_flags": [
+          "cheese_arc_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 1,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "result_text": "Pride remains policy. Cellars remain complicated. The toast becomes metaphorical."
+      }
+    ],
+    "tags": [
+      "economy",
+      "arc_resolution",
+      "ending_setup",
+      "cheese"
+    ],
+    "visual_tags": [
+      "cheese_bond_banner",
+      "embassy_queue_protest"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "international_cheese_crisis",
+      "primary_category": "economy",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13E",
+      "humor_tags": [
+        "dairy_diplomacy",
+        "metaphorical_toast"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "settlement toast or empty cellar",
+      "localization_risk": "low"
+    }
+  }
+]

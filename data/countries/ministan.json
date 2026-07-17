@@ -10,10 +10,26 @@
   },
   "max_day": 40,
   "run_stages": [
-    { "id": "establishment", "minimum_day": 1,  "maximum_day": 7 },
-    { "id": "escalation",    "minimum_day": 8,  "maximum_day": 16 },
-    { "id": "instability",   "minimum_day": 17, "maximum_day": 27 },
-    { "id": "endgame",       "minimum_day": 28, "maximum_day": 40 }
+    {
+      "id": "establishment",
+      "minimum_day": 1,
+      "maximum_day": 7
+    },
+    {
+      "id": "escalation",
+      "minimum_day": 8,
+      "maximum_day": 16
+    },
+    {
+      "id": "instability",
+      "minimum_day": 17,
+      "maximum_day": 27
+    },
+    {
+      "id": "endgame",
+      "minimum_day": 28,
+      "maximum_day": 40
+    }
   ],
   "decision_files": [
     "res://data/decisions/ministan_core.json",
@@ -34,6 +50,11 @@
     "res://data/decisions/ministan_profit_corporate_state_arc.json",
     "res://data/decisions/ministan_ai_government_arc.json",
     "res://data/decisions/ministan_sell_the_moon_arc.json",
+    "res://data/decisions/ministan_palace_renovation_scandal_arc.json",
+    "res://data/decisions/ministan_international_cheese_crisis_arc.json",
+    "res://data/decisions/ministan_national_festival_economy_arc.json",
+    "res://data/decisions/ministan_zero_government_of_forms_arc.json",
+    "res://data/decisions/ministan_whiskers_cat_revolution_arc.json",
     "res://data/decisions/ministan_penny_austerity_arc.json",
     "res://data/decisions/ministan_hyperinflation_arc.json",
     "res://data/decisions/ministan_generic_fill.json",

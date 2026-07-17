@@ -9,12 +9,21 @@
     "priority": 90,
     "start_requirements": {
       "minimum_day": 8,
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "entry_decision_id": "national_power_outage",
     "resolution_paths": [
-      { "resolution_id": "hospital", "option_id": "hospital" },
-      { "resolution_id": "television", "option_id": "television" }
+      {
+        "resolution_id": "hospital",
+        "option_id": "hospital"
+      },
+      {
+        "resolution_id": "television",
+        "option_id": "television"
+      }
     ],
     "failure_paths": [
       {
@@ -30,7 +39,10 @@
         "order": -6
       }
     },
-    "tags": ["infrastructure", "crisis"]
+    "tags": [
+      "infrastructure",
+      "crisis"
+    ]
   },
   {
     "id": "budget_meltdown",
@@ -42,13 +54,24 @@
     "priority": 85,
     "start_requirements": {
       "minimum_day": 3,
-      "allowed_stages": ["establishment", "escalation"],
-      "maximum_resources": { "treasury": 45 }
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ],
+      "maximum_resources": {
+        "treasury": 45
+      }
     },
     "entry_decision_id": "budget_meltdown_crisis",
     "resolution_paths": [
-      { "resolution_id": "raise_taxes", "option_id": "raise_taxes" },
-      { "resolution_id": "sell_furniture", "option_id": "sell_furniture" }
+      {
+        "resolution_id": "raise_taxes",
+        "option_id": "raise_taxes"
+      },
+      {
+        "resolution_id": "sell_furniture",
+        "option_id": "sell_furniture"
+      }
     ],
     "failure_paths": [
       {
@@ -64,7 +87,10 @@
         "happiness": -5
       }
     },
-    "tags": ["economy", "crisis"]
+    "tags": [
+      "economy",
+      "crisis"
+    ]
   },
   {
     "id": "cheese_shortage_crisis",
@@ -76,13 +102,26 @@
     "priority": 75,
     "start_requirements": {
       "minimum_day": 10,
-      "allowed_stages": ["escalation", "instability"],
-      "any_flags": ["pizza_policy_active"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ],
+      "any_flags": [
+        "pizza_policy_active",
+        "cheese_pride",
+        "cheese_arc_live"
+      ]
     },
     "entry_decision_id": "cheese_shortage_crisis",
     "resolution_paths": [
-      { "resolution_id": "import_cheese", "option_id": "import_cheese" },
-      { "resolution_id": "cheese_rationing", "option_id": "cheese_rationing" }
+      {
+        "resolution_id": "import_cheese",
+        "option_id": "import_cheese"
+      },
+      {
+        "resolution_id": "cheese_rationing",
+        "option_id": "cheese_rationing"
+      }
     ],
     "failure_paths": [
       {
@@ -97,7 +136,11 @@
         "treasury": -5
       }
     },
-    "tags": ["food", "crisis", "pizza"]
+    "tags": [
+      "food",
+      "crisis",
+      "pizza"
+    ]
   },
   {
     "id": "mass_protest",
@@ -109,13 +152,25 @@
     "priority": 88,
     "start_requirements": {
       "minimum_day": 12,
-      "allowed_stages": ["escalation", "instability", "endgame"],
-      "maximum_resources": { "happiness": 45 }
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ],
+      "maximum_resources": {
+        "happiness": 45
+      }
     },
     "entry_decision_id": "mass_protest",
     "resolution_paths": [
-      { "resolution_id": "negotiate", "option_id": "negotiate" },
-      { "resolution_id": "concessions", "option_id": "concessions" }
+      {
+        "resolution_id": "negotiate",
+        "option_id": "negotiate"
+      },
+      {
+        "resolution_id": "concessions",
+        "option_id": "concessions"
+      }
     ],
     "failure_paths": [
       {
@@ -131,7 +186,11 @@
         "happiness": -8
       }
     },
-    "tags": ["protest", "crisis", "public"]
+    "tags": [
+      "protest",
+      "crisis",
+      "public"
+    ]
   },
   {
     "id": "bank_run",
@@ -143,13 +202,25 @@
     "priority": 92,
     "start_requirements": {
       "minimum_day": 8,
-      "allowed_stages": ["escalation", "instability", "endgame"],
-      "maximum_resources": { "treasury": 30 }
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ],
+      "maximum_resources": {
+        "treasury": 30
+      }
     },
     "entry_decision_id": "bank_run",
     "resolution_paths": [
-      { "resolution_id": "deposit_guarantee", "option_id": "deposit_guarantee" },
-      { "resolution_id": "emergency_loan", "option_id": "emergency_loan" }
+      {
+        "resolution_id": "deposit_guarantee",
+        "option_id": "deposit_guarantee"
+      },
+      {
+        "resolution_id": "emergency_loan",
+        "option_id": "emergency_loan"
+      }
     ],
     "failure_paths": [
       {
@@ -165,7 +236,11 @@
         "elite_loyalty": -10
       }
     },
-    "tags": ["economy", "crisis", "banking"]
+    "tags": [
+      "economy",
+      "crisis",
+      "banking"
+    ]
   },
   {
     "id": "cat_parliament_occupation",
@@ -177,13 +252,26 @@
     "priority": 80,
     "start_requirements": {
       "minimum_day": 6,
-      "allowed_stages": ["establishment", "escalation", "instability"],
-      "any_flags": ["cats_enfranchised", "cats_control_parliament"]
+      "allowed_stages": [
+        "establishment",
+        "escalation",
+        "instability"
+      ],
+      "any_flags": [
+        "cats_enfranchised",
+        "cats_control_parliament"
+      ]
     },
     "entry_decision_id": "cat_parliament_occupation",
     "resolution_paths": [
-      { "resolution_id": "negotiate_cats", "option_id": "negotiate_cats" },
-      { "resolution_id": "fish_treaty", "option_id": "fish_treaty" }
+      {
+        "resolution_id": "negotiate_cats",
+        "option_id": "negotiate_cats"
+      },
+      {
+        "resolution_id": "fish_treaty",
+        "option_id": "fish_treaty"
+      }
     ],
     "failure_paths": [
       {
@@ -198,7 +286,11 @@
         "happiness": 4
       }
     },
-    "tags": ["cats", "crisis", "politics"]
+    "tags": [
+      "cats",
+      "crisis",
+      "politics"
+    ]
   },
   {
     "id": "pantry_moth_crisis",
@@ -210,12 +302,21 @@
     "priority": 70,
     "start_requirements": {
       "minimum_day": 4,
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "entry_decision_id": "pantry_moth_crisis",
     "resolution_paths": [
-      { "resolution_id": "fumigate", "option_id": "fumigate" },
-      { "resolution_id": "citizen_sweep", "option_id": "citizen_sweep" }
+      {
+        "resolution_id": "fumigate",
+        "option_id": "fumigate"
+      },
+      {
+        "resolution_id": "citizen_sweep",
+        "option_id": "citizen_sweep"
+      }
     ],
     "failure_paths": [
       {
@@ -230,7 +331,11 @@
         "treasury": -4
       }
     },
-    "tags": ["food", "crisis", "onboarding"]
+    "tags": [
+      "food",
+      "crisis",
+      "onboarding"
+    ]
   },
   {
     "id": "ai_cabinet_lockout",
@@ -242,13 +347,26 @@
     "priority": 84,
     "start_requirements": {
       "minimum_day": 10,
-      "allowed_stages": ["escalation", "instability", "endgame"],
-      "any_flags": ["ai_control_path", "ai_folder_managed"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ],
+      "any_flags": [
+        "ai_control_path",
+        "ai_folder_managed"
+      ]
     },
     "entry_decision_id": "ai_cabinet_lockout",
     "resolution_paths": [
-      { "resolution_id": "dual_key", "option_id": "dual_key" },
-      { "resolution_id": "accept_optimize", "option_id": "accept_optimize" }
+      {
+        "resolution_id": "dual_key",
+        "option_id": "dual_key"
+      },
+      {
+        "resolution_id": "accept_optimize",
+        "option_id": "accept_optimize"
+      }
     ],
     "failure_paths": [
       {
@@ -263,7 +381,11 @@
         "elite_loyalty": -4
       }
     },
-    "tags": ["science", "crisis", "ai"]
+    "tags": [
+      "science",
+      "crisis",
+      "ai"
+    ]
   },
   {
     "id": "moon_ownership_dispute",
@@ -275,13 +397,27 @@
     "priority": 82,
     "start_requirements": {
       "minimum_day": 10,
-      "allowed_stages": ["escalation", "instability", "endgame"],
-      "any_flags": ["moon_arc_live", "moon_hard_claim", "moon_new_owner_soft"]
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ],
+      "any_flags": [
+        "moon_arc_live",
+        "moon_hard_claim",
+        "moon_new_owner_soft"
+      ]
     },
     "entry_decision_id": "moon_ownership_dispute",
     "resolution_paths": [
-      { "resolution_id": "share_nights", "option_id": "share_nights" },
-      { "resolution_id": "pay_settlement", "option_id": "pay_settlement" }
+      {
+        "resolution_id": "share_nights",
+        "option_id": "share_nights"
+      },
+      {
+        "resolution_id": "pay_settlement",
+        "option_id": "pay_settlement"
+      }
     ],
     "failure_paths": [
       {
@@ -296,6 +432,60 @@
         "happiness": -3
       }
     },
-    "tags": ["diplomacy", "crisis", "moon"]
+    "tags": [
+      "diplomacy",
+      "crisis",
+      "moon"
+    ]
+  },
+  {
+    "id": "national_festival_stampede",
+    "display_name": "National Festival Stampede",
+    "country_id": "ministan",
+    "severity": 2,
+    "maximum_duration_days": 2,
+    "resolution_required": true,
+    "priority": 84,
+    "start_requirements": {
+      "minimum_day": 8,
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ],
+      "any_flags": [
+        "festival_permanent",
+        "festival_econ_live"
+      ]
+    },
+    "entry_decision_id": "national_festival_stampede",
+    "resolution_paths": [
+      {
+        "resolution_id": "crowd_control",
+        "option_id": "crowd_control"
+      },
+      {
+        "resolution_id": "shorten_hours",
+        "option_id": "shorten_hours"
+      }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "ignore_crowd",
+        "option_id": "ignore_crowd",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "order": -8,
+        "happiness": -4
+      }
+    },
+    "tags": [
+      "festival",
+      "crisis",
+      "public_safety"
+    ]
   }
 ]

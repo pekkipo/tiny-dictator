@@ -1,0 +1,614 @@
+[
+  {
+    "id": "palace_renovation_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "public_life",
+    "proposal": "The east wing leaks into the good carpets. Renovation is legitimate. I can bid modest, luxurious, or public-tour transparent. Expensive is not automatically wrong.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 10,
+    "maximum_day": 28,
+    "narrative": {
+      "arc_id": "palace_renovation_scandal",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "palace_reno_live",
+        "palace_reno_complete"
+      ]
+    },
+    "options": [
+      {
+        "id": "modest_bid",
+        "label": "Approve a modest bid",
+        "effects": {
+          "treasury": -6,
+          "order": 2,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "palace_reno_live",
+          "palace_modest_seed"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "minister_penny": 3,
+          "clerk_zero": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "branch",
+            "branch_id": "modest_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "palace_cost_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "palace_reno_live"
+          ]
+        },
+        "result_text": "Scaffolding appears without gold leaf. Leaks pause. Carpets sigh."
+      },
+      {
+        "id": "luxury_bid",
+        "label": "Approve a luxury redesign",
+        "effects": {
+          "treasury": -10,
+          "elite_loyalty": 4,
+          "happiness": -1,
+          "order": 1
+        },
+        "add_laws": [
+          "palace_subscription_plan"
+        ],
+        "add_flags": [
+          "palace_reno_live",
+          "palace_luxury_seed",
+          "palace_gift_shop_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 4,
+          "luna_news": 2,
+          "auntie_olga": -2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "branch",
+            "branch_id": "luxury_path"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "palace_cost_escalation",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 82,
+          "required_flags": [
+            "palace_reno_live"
+          ]
+        },
+        "result_text": "Gold scaffolding rises. Elites applaud. Olga counts buckets."
+      },
+      {
+        "id": "refuse_reno",
+        "label": "Refuse renovation for now",
+        "effects": {
+          "happiness": -2,
+          "elite_loyalty": -1,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": -2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "abandon",
+            "reason": "refused_reno"
+          }
+        ],
+        "result_text": "Leak continues. Chef moves saucepans. Profit files 'deferred grandeur.'"
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_setup",
+      "palace"
+    ],
+    "visual_tags": [
+      "palace_leaks",
+      "gold_scaffolding"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "palace_renovation_scandal",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13F",
+      "humor_tags": [
+        "legitimate_leak",
+        "not_automatically_wrong"
+      ],
+      "emotional_goal": "practical_need",
+      "visual_hook": "leak beside bid documents",
+      "localization_risk": "low",
+      "writer_notes": "Not gift-shop retread. Meta soft flags ok."
+    }
+  },
+  {
+    "id": "palace_cost_escalation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "administration",
+    "proposal": "Invoice delay: costs rose. Kitchen closed two days. A discovery packet arrives late. Observation: renovation attracts amendments.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "palace_renovation_scandal",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "palace_renovation_scandal"
+      ],
+      "all_flags": [
+        "palace_reno_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "audit_now",
+        "label": "Force an immediate audit",
+        "effects": {
+          "order": 3,
+          "treasury": -2,
+          "elite_loyalty": -2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "palace_escalated",
+          "palace_invoice_found"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "minister_penny": 2,
+          "sir_profit": -1,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "palace_scandal_fork",
+          "minimum_delay_days": 2,
+          "maximum_delay_days": 4,
+          "priority": 85,
+          "required_flags": [
+            "palace_reno_live"
+          ]
+        },
+        "result_text": "Invoice found behind a radiator. Numbers blush. Profit adjusts smile."
+      },
+      {
+        "id": "pay_overrun",
+        "label": "Pay the overrun quietly",
+        "effects": {
+          "treasury": -8,
+          "elite_loyalty": 3,
+          "order": 1,
+          "happiness": -1
+        },
+        "add_flags": [
+          "palace_escalated",
+          "palace_overrun_paid",
+          "gold_desk_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "minister_penny": -2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "palace_scandal_fork",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "palace_reno_live"
+          ]
+        },
+        "result_text": "Overrun paid. Scaffolding gleams. Discovery packet waits in a drawer."
+      },
+      {
+        "id": "pause_kitchen_first",
+        "label": "Pause work; reopen kitchen",
+        "effects": {
+          "happiness": 2,
+          "elite_loyalty": -1,
+          "treasury": -3,
+          "order": 2
+        },
+        "add_flags": [
+          "palace_escalated",
+          "palace_kitchen_priority",
+          "palace_invoice_found"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "clerk_zero": 1,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
+        "force_next_decision": "palace_scandal_fork",
+        "result_text": "Ovens return. Chef forgives partially. Invoice still exists."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "palace"
+    ],
+    "visual_tags": [
+      "palace_leaks",
+      "gold_scaffolding"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "palace_renovation_scandal",
+      "primary_category": "public_life",
+      "primary_stage": "escalation",
+      "batch_id": "2B-13F",
+      "humor_tags": [
+        "invoice_radiator",
+        "ovens"
+      ],
+      "emotional_goal": "delayed_discovery",
+      "visual_hook": "invoice behind radiator",
+      "localization_risk": "low",
+      "writer_notes": "Delayed discovery via invoice_found flag / soft delay."
+    }
+  },
+  {
+    "id": "palace_scandal_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "auntie_olga",
+    "category": "public_life",
+    "proposal": "The numbers are out. Finish modest and honest, finish hollow and gold, or open public tours and show the truth?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "palace_renovation_scandal",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "palace_renovation_scandal"
+      ],
+      "all_flags": [
+        "palace_reno_live",
+        "palace_escalated"
+      ]
+    },
+    "options": [
+      {
+        "id": "modest",
+        "label": "Finish modest and practical",
+        "effects": {
+          "treasury": -5,
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "palace_modest",
+          "palace_fork_done"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "auntie_olga": 2,
+          "clerk_zero": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "branch",
+            "branch_id": "modest_path"
+          }
+        ],
+        "force_next_decision": "palace_renovation_resolution",
+        "result_text": "Wings dry. No gold leaf. Carpets survive. Expensive enough to work."
+      },
+      {
+        "id": "luxury",
+        "label": "Finish the luxurious hollow pala",
+        "effects": {
+          "treasury": -12,
+          "elite_loyalty": 5,
+          "happiness": -3,
+          "order": -1
+        },
+        "add_laws": [
+          "palace_subscription_plan"
+        ],
+        "add_flags": [
+          "palace_luxury",
+          "palace_fork_done",
+          "palace_gift_shop_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 4,
+          "luna_news": 2,
+          "auntie_olga": -3,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "capitalist": 3,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "branch",
+            "branch_id": "luxury_path"
+          }
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "palace_renovation_resolution",
+        "result_text": "Ballroom gleams. Rooms echo. Beauty without people. Profit sells tours of emptiness."
+      },
+      {
+        "id": "transparency",
+        "label": "Open public tours",
+        "effects": {
+          "happiness": 4,
+          "order": 2,
+          "treasury": -4,
+          "elite_loyalty": -3
+        },
+        "add_laws": [
+          "palace_public_tour_act"
+        ],
+        "add_flags": [
+          "palace_transparent",
+          "palace_fork_done",
+          "palace_invoice_found"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 4,
+          "clerk_zero": 2,
+          "sir_profit": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 3,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "palace_renovation_scandal",
+            "action": "branch",
+            "branch_id": "transparency_path"
+          }
+        ],
+        "force_next_decision": "palace_renovation_resolution",
+        "result_text": "Ropes and ledgers. Citizens tour the leak history. Truth becomes an exhibit."
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_climax",
+      "palace"
+    ],
+    "visual_tags": [
+      "hollow_ballroom",
+      "public_tour_rope"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "palace_renovation_scandal",
+      "primary_category": "public_life",
+      "primary_stage": "endgame",
+      "batch_id": "2B-13F",
+      "humor_tags": [
+        "hollow_beauty",
+        "truth_exhibit"
+      ],
+      "emotional_goal": "scandal_choice",
+      "visual_hook": "gold empty rooms or tour ropes",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "palace_renovation_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "public_life",
+    "proposal": "Final inspection: seal a working palace, accept beautiful emptiness, or let renovation reveal the truth?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "palace_renovation_scandal",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "palace_renovation_scandal"
+      ],
+      "all_flags": [
+        "palace_reno_live",
+        "palace_fork_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_working",
+        "label": "Seal the working palace",
+        "effects": {
+          "treasury": -3,
+          "order": 4,
+          "happiness": 3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "palace_reno_complete",
+          "palace_modest_sealed",
+          "endgame_palace_stable",
+          "gold_desk_soft"
+        ],
+        "remove_flags": [
+          "palace_reno_live"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "clerk_zero": 2,
+          "auntie_olga": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "Leaks gone. Budget scar remains. The palace works. That is allowed to be enough."
+      },
+      {
+        "id": "beautiful_empty",
+        "label": "Accept the beautiful empty palac",
+        "effects": {
+          "elite_loyalty": 4,
+          "happiness": -4,
+          "order": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "palace_reno_complete",
+          "palace_beautiful_empty"
+        ],
+        "remove_flags": [
+          "palace_reno_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "trigger_ending": "palace_beautiful_empty",
+        "result_text": "Echoes win awards. Nobody lives here fully. Beauty files for divorce from use."
+      },
+      {
+        "id": "reveal_truth",
+        "label": "Reveal renovation truth",
+        "effects": {
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": -4,
+          "treasury": -3
+        },
+        "add_flags": [
+          "palace_reno_complete",
+          "renovation_reveals_truth"
+        ],
+        "remove_flags": [
+          "palace_reno_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 4,
+          "clerk_zero": 2,
+          "luna_news": 2,
+          "sir_profit": -3
+        },
+        "trait_changes": {
+          "populist": 3
+        },
+        "trigger_ending": "renovation_reveals_truth",
+        "result_text": "Ledgers on display. Scaffolding as museum. The country learns what gold cost."
+      }
+    ],
+    "tags": [
+      "public_life",
+      "arc_resolution",
+      "ending_setup",
+      "palace"
+    ],
+    "visual_tags": [
+      "hollow_ballroom",
+      "public_tour_rope",
+      "palace_leaks"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "palace_renovation_scandal",
+      "primary_category": "public_life",
+      "primary_stage": "endgame",
+      "batch_id": "2B-13F",
+      "humor_tags": [
+        "beauty_divorce",
+        "scaffold_museum"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "working wing, empty gold, or ledger exhibit",
+      "localization_risk": "low"
+    }
+  }
+]
