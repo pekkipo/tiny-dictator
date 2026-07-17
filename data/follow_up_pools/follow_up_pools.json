@@ -61,7 +61,7 @@
       "hyperinflation_public_adaptation"
     ]
   },
-	{
+  {
     "id": "luna_media_side_effects",
     "decision_ids": [
       "luna_reality_segments"
@@ -71,6 +71,18 @@
     "id": "election_noise_pool",
     "decision_ids": [
       "election_unexpected_result"
+    ]
+  },
+  {
+    "id": "corporate_side_effects",
+    "decision_ids": [
+      "profit_institution_lease"
+    ]
+  },
+  {
+    "id": "moon_noise_pool",
+    "decision_ids": [
+      "moon_international_reaction"
     ]
   }
 ]

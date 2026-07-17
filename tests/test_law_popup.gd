@@ -125,9 +125,11 @@ func _test_laws_bar_interaction() -> void:
 	var all_laws: Array[String] = []
 	for law in _repo.get_raw_laws():
 		all_laws.append(str(law.get("id", "")))
-	_check(all_laws.size() == 6, "content ships six laws")
+	_check(all_laws.size() >= 6, "content ships at least six laws")
 
-	bar.update_laws(all_laws, _repo)
+	# Use a fixed six-law sample to test overflow UI (full catalog is much larger).
+	var sample_laws: Array[String] = all_laws.slice(0, 6)
+	bar.update_laws(sample_laws, _repo)
 	await process_frame
 	var flow: HFlowContainer = bar.get_node("%LawsFlow")
 	var chips: Array[Button] = []
@@ -151,7 +153,7 @@ func _test_laws_bar_interaction() -> void:
 	var selected: Array[String] = []
 	bar.law_selected.connect(func(law_id: String) -> void: selected.append(law_id))
 	chips[0].pressed.emit()
-	_check(selected.size() == 1 and selected[0] == "free_pizza_friday", "law chip emits law_selected")
+	_check(selected.size() == 1 and selected[0] == sample_laws[0], "law chip emits law_selected")
 
 	bar.queue_free()
 	await process_frame

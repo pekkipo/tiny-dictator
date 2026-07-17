@@ -1,0 +1,846 @@
+[
+  {
+    "id": "profit_partnership_brief",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "A public-private partnership for the Ministry of Waiting Rooms. Short-term cash, shared branding, zero couches sold—yet. Shall we align stakeholders?",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 6,
+    "maximum_day": 20,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "profit_corp_live",
+        "profit_corp_complete"
+      ],
+      "blocked_arcs": [
+        "hyperinflation_arc",
+        "penny_austerity_arc"
+      ]
+    },
+    "options": [
+      {
+        "id": "sign_partnership",
+        "label": "Sign the partnership",
+        "effects": {
+          "treasury": 8,
+          "elite_loyalty": 3,
+          "happiness": -1,
+          "order": 1
+        },
+        "add_flags": [
+          "profit_corp_live",
+          "profit_deal_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "branch",
+            "branch_id": "controlled_ppp"
+          }
+        ],
+        "force_next_decision": "profit_commercial_success",
+        "result_text": "Cash arrives. Waiting rooms gain tasteful logos. Citizens notice the cushions first."
+      },
+      {
+        "id": "pilot_one_ministry",
+        "label": "Pilot one ministry only",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 2,
+          "order": 2
+        },
+        "add_flags": [
+          "profit_corp_live",
+          "profit_deal_live",
+          "profit_pilot_only"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "minister_penny": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "branch",
+            "branch_id": "controlled_ppp"
+          }
+        ],
+        "force_next_decision": "profit_commercial_success",
+        "result_text": "One ministry leases its lobby. Penny calls it disciplined. Profit calls it a beachhead."
+      },
+      {
+        "id": "reject_deal",
+        "label": "Reject the deal",
+        "effects": {
+          "elite_loyalty": -3,
+          "happiness": 2
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "abandon",
+            "reason": "rejected_partnership"
+          }
+        ],
+        "result_text": "Profit files a polite invoice for wasted alignment. Olga nods at empty walls."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_setup",
+      "sir_profit"
+    ],
+    "visual_tags": [
+      "branded_ministry_awning"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "attractive_deal",
+        "waiting_room"
+      ],
+      "emotional_goal": "tempting_cash",
+      "visual_hook": "ministry awning with tasteful sponsor logo",
+      "localization_risk": "low",
+      "writer_notes": "Real short-term Treasury/Elite benefits. Soft mutex with economy collapse arcs."
+    }
+  },
+  {
+    "id": "profit_commercial_success",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Quarterly results: the partnership made money and the queues look sponsored. Expansion is 'merely logical.'",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "profit_corporate_state"
+      ],
+      "all_flags": [
+        "profit_corp_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "reinvest_surplus",
+        "label": "Reinvest the surplus",
+        "effects": {
+          "treasury": 5,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "profit_success_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "profit_institution_lease",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 78,
+          "required_flags": [
+            "profit_corp_live"
+          ]
+        },
+        "result_text": "Surplus becomes more logos. Citizens call it 'weirdly comfortable.'"
+      },
+      {
+        "id": "share_dividends",
+        "label": "Share a public dividend",
+        "effects": {
+          "treasury": -2,
+          "happiness": 4,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "profit_success_live",
+          "profit_public_dividend"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "auntie_olga": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "populist": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "profit_institution_lease",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 78,
+          "required_flags": [
+            "profit_corp_live"
+          ]
+        },
+        "result_text": "Small checks arrive. Olga cashes hers and still distrusts the cushions."
+      },
+      {
+        "id": "freeze_expansion",
+        "label": "Freeze expansion now",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": -2,
+          "treasury": 1
+        },
+        "add_flags": [
+          "profit_success_live",
+          "profit_frozen_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "corporate_side_effects",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 40
+        },
+        "result_text": "Profit smiles with teeth. The freeze is temporary, he assures everyone."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_escalation",
+      "sir_profit"
+    ],
+    "visual_tags": [
+      "branded_ministry_awning"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "real_benefits",
+        "sponsored_queues"
+      ],
+      "emotional_goal": "success_tempts_more",
+      "visual_hook": "sponsored waiting room looking oddly nicer",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "profit_institution_lease",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Next lease: public institutions. Naming rights for the capital square, optional air sponsorship, and a ministry you can rent by the hour.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "profit_corporate_state"
+      ],
+      "all_flags": [
+        "profit_corp_live",
+        "profit_success_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "lease_naming",
+        "label": "Sell capital naming rights",
+        "effects": {
+          "treasury": 10,
+          "elite_loyalty": 3,
+          "happiness": -3
+        },
+        "add_laws": [
+          "corporate_capital_naming"
+        ],
+        "add_flags": [
+          "profit_institutions_live",
+          "corporate_branding_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "force_next_decision": "profit_ownership_fork",
+        "result_text": "The square gains a longer name. Luna loves the font. Olga practices the old one."
+      },
+      {
+        "id": "rent_ministry",
+        "label": "Rent a ministry by the hour",
+        "effects": {
+          "treasury": 7,
+          "elite_loyalty": 2,
+          "order": -2,
+          "happiness": -2
+        },
+        "add_laws": [
+          "rent_a_ministry"
+        ],
+        "add_flags": [
+          "profit_institutions_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "clerk_zero": -1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "bureaucratic": 1
+        },
+        "force_next_decision": "profit_ownership_fork",
+        "result_text": "Conference rooms invoice themselves. Clerk Zero requests a receipt form for receipts."
+      },
+      {
+        "id": "privatize_air_soft",
+        "label": "Pilot privatized air zones",
+        "effects": {
+          "treasury": 6,
+          "happiness": -4,
+          "elite_loyalty": 2
+        },
+        "add_laws": [
+          "privatize_air"
+        ],
+        "add_flags": [
+          "profit_institutions_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "auntie_olga": -3
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "result_text": "Breathable premium tiers appear. Jokes write themselves. So do invoices.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "profit_ownership_fork",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 85,
+          "required_flags": [
+            "profit_corp_live"
+          ]
+        }
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_escalation",
+      "sir_profit"
+    ],
+    "visual_tags": [
+      "lease_stamp_plaza"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "naming_rights",
+        "rent_ministry",
+        "air_tiers"
+      ],
+      "emotional_goal": "institutions_for_sale",
+      "visual_hook": "plaza stamp desk leasing public things",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "profit_ownership_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Ownership conflict: keep a capped partnership, convert Ministan into a subsidiary, or nationalize and reclaim the brand?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "profit_corporate_state"
+      ],
+      "all_flags": [
+        "profit_corp_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "controlled_ppp",
+        "label": "Keep a controlled partnership",
+        "effects": {
+          "treasury": 3,
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "profit_ppp_path"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "minister_penny": 3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "branch",
+            "branch_id": "controlled_ppp"
+          }
+        ],
+        "force_next_decision": "profit_identity_crisis",
+        "result_text": "Contracts cap ownership. Profit sighs. Penny underlines the caps twice."
+      },
+      {
+        "id": "full_subsidiary",
+        "label": "Convert to corporate subsidiary",
+        "effects": {
+          "treasury": 12,
+          "elite_loyalty": 5,
+          "happiness": -6,
+          "order": -2
+        },
+        "add_flags": [
+          "profit_full_path",
+          "corporate_branding_soft",
+          "corporate_benches_empire"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 4,
+          "auntie_olga": -3,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "capitalist": 4
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "branch",
+            "branch_id": "corporate_state"
+          }
+        ],
+        "force_next_decision": "profit_identity_crisis",
+        "result_text": "The flag gains a trademark. Luna films a rebrand montage."
+      },
+      {
+        "id": "nationalize_reject",
+        "label": "Nationalize and reclaim assets",
+        "effects": {
+          "happiness": 4,
+          "elite_loyalty": -5,
+          "treasury": -8,
+          "order": -3
+        },
+        "add_flags": [
+          "profit_nationalize_path",
+          "profit_recovery_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": -4,
+          "auntie_olga": 3,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "populist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "profit_corporate_state",
+            "action": "branch",
+            "branch_id": "nationalize_reject"
+          }
+        ],
+        "force_next_decision": "profit_identity_crisis",
+        "result_text": "Signs come down. Profit invoices for emotional damages. Olga brings a ladder."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_climax",
+      "sir_profit"
+    ],
+    "visual_tags": [
+      "subsidiary_flag_swap"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "ownership_fork",
+        "trademark_flag"
+      ],
+      "emotional_goal": "who_owns_the_country",
+      "visual_hook": "flag being swapped for a logo or reclaimed",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "profit_identity_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "luna_news",
+    "category": "economy",
+    "proposal": "National identity segment: are we a country, a brand, or a reclaim campaign? Viewers demand a clear logo policy.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "profit_corporate_state"
+      ],
+      "all_flags": [
+        "profit_corp_live"
+      ],
+      "any_flags": [
+        "profit_ppp_path",
+        "profit_full_path",
+        "profit_nationalize_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "spin_partnership",
+        "label": "Spin partnership as civic pride",
+        "effects": {
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "profit_crisis_done",
+          "palace_gift_shop_soft"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "profit_corporate_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 90,
+          "required_flags": [
+            "profit_corp_live"
+          ]
+        },
+        "result_text": "Luna calls cushions 'heritage seating.' Gift-shop soft opens in the foyer."
+      },
+      {
+        "id": "embrace_subsidiary",
+        "label": "Embrace the subsidiary story",
+        "effects": {
+          "elite_loyalty": 4,
+          "happiness": -4,
+          "order": 1
+        },
+        "add_flags": [
+          "profit_crisis_done",
+          "country_acquired_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "force_next_decision": "profit_corporate_resolution",
+        "result_text": "The anthem gains a jingle bridge. Historians request headphones."
+      },
+      {
+        "id": "cover_reclaim",
+        "label": "Cover the public reclaim",
+        "effects": {
+          "happiness": 3,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "profit_crisis_done"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "luna_news": 1,
+          "sir_profit": -2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "profit_corporate_resolution",
+        "result_text": "Cameras love ladders. Elite loyalty files a complaint. Sandwiches appear."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_consequence",
+      "media"
+    ],
+    "visual_tags": [
+      "reclaimed_signage"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "identity_segment",
+        "jingle_anthem"
+      ],
+      "emotional_goal": "public_reaction",
+      "visual_hook": "signage being swapped or reclaimed on camera",
+      "localization_risk": "low",
+      "writer_notes": "Pool corporate_side_effects; mass_protest on reclaim path. Palace gift-shop meta hook."
+    }
+  },
+  {
+    "id": "profit_corporate_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Closing statement: seal the partnership, finalize the acquisition, or accept a golden exit after nationalization?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "profit_corporate_state",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "profit_corporate_state"
+      ],
+      "all_flags": [
+        "profit_corp_live",
+        "profit_crisis_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_ppp",
+        "label": "Seal the controlled partnership",
+        "effects": {
+          "treasury": 4,
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": 2
+        },
+        "add_flags": [
+          "profit_corp_complete",
+          "profit_ppp_sealed",
+          "endgame_economy_stable"
+        ],
+        "remove_flags": [
+          "profit_corp_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "result_text": "Caps hold. Cash helps. The country remains mostly a country."
+      },
+      {
+        "id": "finalize_acquisition",
+        "label": "Finalize Corporate Ministan",
+        "effects": {
+          "treasury": 8,
+          "elite_loyalty": 5,
+          "happiness": -5,
+          "order": 2
+        },
+        "add_flags": [
+          "profit_corp_complete",
+          "corporate_ministan_done",
+          "country_is_acquired"
+        ],
+        "remove_flags": [
+          "profit_corp_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "trigger_ending": "country_is_acquired",
+        "result_text": "Letterhead changes. Historians list Ministan as a subsidiary with a flag."
+      },
+      {
+        "id": "golden_exit",
+        "label": "Buy Profit a golden retirement",
+        "effects": {
+          "treasury": -12,
+          "happiness": 3,
+          "elite_loyalty": -2,
+          "order": 2
+        },
+        "add_flags": [
+          "profit_corp_complete",
+          "profit_buys_retirement",
+          "profit_recovery_soft"
+        ],
+        "remove_flags": [
+          "profit_corp_live"
+        ],
+        "remove_laws": [
+          "privatize_air",
+          "rent_a_ministry"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "capitalist": 1
+        },
+        "trigger_ending": "profit_buys_retirement",
+        "result_text": "Profit retires on a yacht named Alignment. Public signs return. Costly, oddly peaceful."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_resolution",
+      "ending_setup",
+      "sir_profit"
+    ],
+    "visual_tags": [
+      "subsidiary_flag_swap"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "profit_corporate_state",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12B",
+      "humor_tags": [
+        "three_resolutions",
+        "yacht_alignment"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "three closing contracts on a mahogany desk",
+      "localization_risk": "low",
+      "writer_notes": "Also strengthens corporate_ministan via corporate_benches_empire + branding on full path."
+    }
+  }
+]

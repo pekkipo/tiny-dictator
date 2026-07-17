@@ -231,5 +231,71 @@
       }
     },
     "tags": ["food", "crisis", "onboarding"]
+  },
+  {
+    "id": "ai_cabinet_lockout",
+    "display_name": "AI Cabinet Lockout",
+    "country_id": "ministan",
+    "severity": 1,
+    "maximum_duration_days": 2,
+    "resolution_required": true,
+    "priority": 84,
+    "start_requirements": {
+      "minimum_day": 10,
+      "allowed_stages": ["escalation", "instability", "endgame"],
+      "any_flags": ["ai_control_path", "ai_folder_managed"]
+    },
+    "entry_decision_id": "ai_cabinet_lockout",
+    "resolution_paths": [
+      { "resolution_id": "dual_key", "option_id": "dual_key" },
+      { "resolution_id": "accept_optimize", "option_id": "accept_optimize" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "smash_terminal",
+        "option_id": "smash_terminal",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "order": -6,
+        "elite_loyalty": -4
+      }
+    },
+    "tags": ["science", "crisis", "ai"]
+  },
+  {
+    "id": "moon_ownership_dispute",
+    "display_name": "Moon Ownership Dispute",
+    "country_id": "ministan",
+    "severity": 1,
+    "maximum_duration_days": 2,
+    "resolution_required": true,
+    "priority": 82,
+    "start_requirements": {
+      "minimum_day": 10,
+      "allowed_stages": ["escalation", "instability", "endgame"],
+      "any_flags": ["moon_arc_live", "moon_hard_claim", "moon_new_owner_soft"]
+    },
+    "entry_decision_id": "moon_ownership_dispute",
+    "resolution_paths": [
+      { "resolution_id": "share_nights", "option_id": "share_nights" },
+      { "resolution_id": "pay_settlement", "option_id": "pay_settlement" }
+    ],
+    "failure_paths": [
+      {
+        "failure_id": "ignore_tinyria",
+        "option_id": "ignore_tinyria",
+        "trigger_ending_id": ""
+      }
+    ],
+    "timeout": {
+      "effects": {
+        "order": -5,
+        "happiness": -3
+      }
+    },
+    "tags": ["diplomacy", "crisis", "moon"]
   }
 ]

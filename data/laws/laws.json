@@ -673,5 +673,59 @@
     "placeholder_icon": "🗳️",
     "visual_tags": ["filing_week_ballot_boxes"],
     "category": "bureaucracy"
+  },
+  {
+    "id": "national_trial_oversight_act",
+    "display_name": "National Trial Oversight Act",
+    "short_name": "Trial Oversight",
+    "description": "Every national experiment needs a stamp, a clipboard, and a polite safety footnote.",
+    "placeholder_icon": "🧪",
+    "visual_tags": ["oversight_clipboard_plaza"],
+    "category": "science"
+  },
+  {
+    "id": "privatize_air",
+    "display_name": "Privatize Air Zones",
+    "short_name": "Air Zones",
+    "description": "Breathable premium tiers may be leased to aligned stakeholders.",
+    "placeholder_icon": "💨",
+    "visual_tags": ["branded_ministry_awning"],
+    "category": "economy"
+  },
+  {
+    "id": "rent_a_ministry",
+    "display_name": "Rent-a-Ministry Act",
+    "short_name": "Rent Ministry",
+    "description": "Public ministries may be leased by the hour with optional branding.",
+    "placeholder_icon": "🏢",
+    "visual_tags": ["lease_stamp_plaza"],
+    "category": "economy"
+  },
+  {
+    "id": "corporate_capital_naming",
+    "display_name": "Corporate Capital Naming Act",
+    "short_name": "Capital Naming",
+    "description": "The capital square may carry a tasteful sponsor subtitle.",
+    "placeholder_icon": "®️",
+    "visual_tags": ["subsidiary_flag_swap"],
+    "category": "economy"
+  },
+  {
+    "id": "ai_cabinet_pilot",
+    "display_name": "AI Cabinet Pilot Act",
+    "short_name": "AI Pilot",
+    "description": "A limited admin AI may triage forms and schedule briefings under human override.",
+    "placeholder_icon": "🤖",
+    "visual_tags": ["toaster_filing_cabinets"],
+    "category": "science"
+  },
+  {
+    "id": "moon_replacement_research",
+    "display_name": "Moon Replacement Research Act",
+    "short_name": "Moon Research",
+    "description": "Public funding for studying whether a brighter lunar model would be more efficient.",
+    "placeholder_icon": "🌙",
+    "visual_tags": ["fake_telescope_plaza"],
+    "category": "science"
   }
 ]

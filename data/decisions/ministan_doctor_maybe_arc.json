@@ -1,195 +1,809 @@
 [
   {
-    "id": "maybe_moon_dust_trial",
-    "schema_version": 2,
-    "card_type": "consequence",
-    "queue_only": true,
-    "country_id": "ministan",
-    "advisor_id": "doctor_maybe",
-    "category": "science",
-    "proposal": "Phase two of the happiness experiment involves moon dust in the water supply. Results may glow.",
-    "one_time": true,
-    "base_weight": 10,
-    "narrative": {
-      "arc_id": "doctor_maybe_arc",
-      "beat_type": "escalation",
-      "step": 2,
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["doctor_maybe_arc"],
-      "all_flags": ["science_experiment_funded"]
-    },
-    "options": [
-      {
-        "id": "continue",
-        "label": "Continue the trial",
-        "effects": { "happiness": 4, "order": -4, "treasury": -5 },
-        "add_flags": ["moon_dust_active"],
-        "trait_changes": { "scientific": 2, "chaotic": 2 },
-        "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "advance" }
-        ],
-        "force_next_decision": "maybe_lab_runaway",
-        "result_text": "The water shimmers. Doctor Maybe calls it promising luminescence."
-      },
-      {
-        "id": "halt",
-        "label": "Halt the trial",
-        "effects": { "happiness": -2, "order": 3 },
-        "advisor_affinity": { "doctor_maybe": -1 },
-        "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" },
-          { "arc_id": "doctor_maybe_arc", "action": "advance" }
-        ],
-        "force_next_decision": "maybe_containment_protocol",
-        "result_text": "Doctor Maybe labels the halt premature. The moon dust is stored in a shoebox."
-      }
-    ],
-    "tags": ["science", "follow_up", "consequence"]
-  },
-  {
-    "id": "maybe_lab_runaway",
+    "id": "maybe_useful_trial",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "normal",
     "advisor_id": "doctor_maybe",
     "category": "science",
-    "proposal": "The national laboratory has achieved sentience. It requests a budget and a name tag.",
+    "proposal": "Phase two looks useful: a predictive queue pilot for bakery lines. Hypothesis: fewer arguments, same bread. Sample size: downtown.",
     "one_time": true,
-    "base_weight": 1,
+    "base_weight": 10,
+    "queue_only": true,
     "narrative": {
       "arc_id": "doctor_maybe_arc",
-      "beat_type": "climax",
-      "step": 3,
-      "branch_id": "reckless_science",
+      "beat_type": "setup",
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["doctor_maybe_arc"],
-      "any_flags": ["moon_dust_active", "science_experiment_funded"]
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "science_experiment_funded"
+      ]
     },
     "options": [
       {
-        "id": "fund_lab",
-        "label": "Fund the sentient lab",
-        "effects": { "treasury": -12, "order": 5, "happiness": -3 },
-        "add_laws": ["scientific_experiment_permit"],
-        "add_flags": ["sentient_lab_active"],
-        "trait_changes": { "scientific": 3 },
-        "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        "id": "run_queue_pilot",
+        "label": "Run the queue pilot",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": -4
+        },
+        "add_flags": [
+          "maybe_arc_live",
+          "maybe_queue_pilot"
         ],
-        "force_next_decision": "maybe_golden_age",
-        "result_text": "The lab names itself Gerald. Doctor Maybe is delighted."
+        "add_laws": [
+          "scientific_experiment_permit"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "advance"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "maybe_national_trial",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "maybe_arc_live"
+          ]
+        },
+        "result_text": "Tickets appear. Arguments shrink. Doctor Maybe calls it 'promising bread science.'"
       },
       {
-        "id": "unplug",
-        "label": "Pull every plug",
-        "effects": { "order": -6, "happiness": 5, "treasury": -4 },
-        "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "branch", "branch_id": "cautious_oversight" },
-          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+        "id": "add_streetlight_trial",
+        "label": "Add streetlight brightness trial",
+        "effects": {
+          "order": 3,
+          "happiness": 1,
+          "treasury": -5
+        },
+        "add_flags": [
+          "maybe_arc_live",
+          "maybe_light_pilot"
         ],
-        "force_next_decision": "maybe_containment_protocol",
-        "result_text": "Gerald the lab enters a dignified shutdown. Scientists sigh."
+        "add_laws": [
+          "scientific_experiment_permit"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "advance"
+          }
+        ],
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "maybe_national_trial",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "maybe_arc_live"
+          ]
+        },
+        "result_text": "Downtown glows politely. Night-shift bakers applaud. Penny frowns at the wattage."
       },
       {
-        "id": "negotiate",
-        "label": "Negotiate with Gerald",
-        "effects": { "happiness": 2, "order": -2, "elite_loyalty": -3 },
-        "add_flags": ["moon_replacement_pending"],
-        "trait_changes": { "chaotic": 3 },
+        "id": "freeze_phase_two",
+        "label": "Freeze phase two",
+        "effects": {
+          "order": 2,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
         "arc_actions": [
-          { "arc_id": "doctor_maybe_arc", "action": "advance" }
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "abandon",
+            "reason": "froze_phase_two"
+          }
         ],
-        "force_next_decision": "maybe_golden_age",
-        "result_text": "Gerald agrees to science in exchange for weekends off."
+        "result_text": "Doctor Maybe labels the freeze 'premature caution.' Clipboards go back in drawers."
       }
     ],
-    "tags": ["science", "arc_climax"],
-    "visual_tags": ["lab_sparks"]
+    "tags": [
+      "science",
+      "arc_setup",
+      "doctor_maybe"
+    ],
+    "visual_tags": [
+      "lab_sparks"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "doctor_maybe_arc",
+      "primary_category": "science_and_technology",
+      "primary_stage": "establishment",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "useful_experiment",
+        "bakery_queue"
+      ],
+      "emotional_goal": "plausible_progress",
+      "visual_hook": "ticket kiosk beside bakery with mild lab sparks",
+      "localization_risk": "low",
+      "writer_notes": "Replaces maybe_moon_dust_trial. No moon fantasy. Soft from science_gamble."
+    }
   },
   {
-    "id": "maybe_golden_age",
+    "id": "maybe_national_trial",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "The pilot worked. Ministries want a national trial. Hypothesis: if downtown calmed down, the whole country might. Maybe.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "maybe_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "fund_national",
+        "label": "Fund the national trial",
+        "effects": {
+          "treasury": -8,
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "maybe_national_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "force_next_decision": "maybe_experiment_dependence",
+        "result_text": "Banners say NATIONAL TRIAL in cheerful type. Results arrive as graphs and cake."
+      },
+      {
+        "id": "scale_carefully",
+        "label": "Scale carefully with oversight",
+        "effects": {
+          "treasury": -5,
+          "order": 4,
+          "happiness": 2
+        },
+        "add_flags": [
+          "maybe_national_live",
+          "maybe_oversight_seed"
+        ],
+        "add_laws": [
+          "national_trial_oversight_act"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "clerk_zero": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 2
+        },
+        "force_next_decision": "maybe_experiment_dependence",
+        "result_text": "Clerk Zero stamps each region. Doctor Maybe mutters about sample purity."
+      },
+      {
+        "id": "keep_downtown_only",
+        "label": "Keep it downtown only",
+        "effects": {
+          "happiness": 1,
+          "order": 1,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "maybe_national_live",
+          "maybe_limited_scale"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "force_next_decision": "maybe_experiment_dependence",
+        "result_text": "Downtown stays calm. Other towns request their own graphs."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_escalation",
+      "doctor_maybe"
+    ],
+    "visual_tags": [
+      "national_trial_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "doctor_maybe_arc",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "national_scale",
+        "graphs_and_cake"
+      ],
+      "emotional_goal": "growing_ambition",
+      "visual_hook": "national trial banner over quiet queues",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "maybe_experiment_dependence",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Form DEP-1: three ministries now refuse to decide anything without a trial first. Dependence is measurable. Stamp accordingly.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "maybe_arc_live",
+        "maybe_national_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "embrace_dependence",
+        "label": "Embrace experiment-first gov",
+        "effects": {
+          "order": 2,
+          "happiness": 2,
+          "elite_loyalty": -2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "maybe_dependence_high"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "force_next_decision": "maybe_ethics_fork",
+        "result_text": "Meetings begin with hypotheses. Clerk Zero files a worried footnote."
+      },
+      {
+        "id": "cap_trial_budget",
+        "label": "Cap trial budgets",
+        "effects": {
+          "treasury": 2,
+          "order": 2,
+          "happiness": -1
+        },
+        "add_flags": [
+          "maybe_dependence_capped"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "doctor_maybe": -1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "maybe_ethics_fork",
+        "result_text": "Penny draws a red line. Doctor Maybe labels it 'statistically annoying.'"
+      },
+      {
+        "id": "require_ethics_forms",
+        "label": "Require ethics forms first",
+        "effects": {
+          "order": 4,
+          "happiness": -1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "maybe_dependence_ethics"
+        ],
+        "add_laws": [
+          "national_trial_oversight_act"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "force_next_decision": "maybe_ethics_fork",
+        "result_text": "Every beaker waits for a stamp. Science slows. Paperwork thrives."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_escalation",
+      "bureaucracy"
+    ],
+    "visual_tags": [
+      "oversight_clipboard_plaza"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "doctor_maybe_arc",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "ministry_dependence",
+        "form_dep"
+      ],
+      "emotional_goal": "system_locked_in",
+      "visual_hook": "clipboards stacked beside trial banners",
+      "localization_risk": "low",
+      "writer_notes": "Clerk Zero voice. Dependence beat before ethics fork."
+    }
+  },
+  {
+    "id": "maybe_ethics_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "The country runs on trials. Do we fund careful progress, let experiments govern freely, or impose hard ethical limits?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "maybe_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "controlled_progress",
+        "label": "Fund careful scientific progress",
+        "effects": {
+          "treasury": -10,
+          "happiness": 3,
+          "order": 3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "maybe_progress_path"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "scientific": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "branch",
+            "branch_id": "controlled_progress"
+          }
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "maybe_major_consequence",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95,
+          "required_flags": [
+            "maybe_progress_path"
+          ]
+        },
+        "result_text": "Budgets hurt. Results shine. Doctor Maybe almost sounds certain."
+      },
+      {
+        "id": "reckless_republic",
+        "label": "Let experiments run the state",
+        "effects": {
+          "treasury": -6,
+          "happiness": 5,
+          "order": -5,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "maybe_reckless_path"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "clerk_zero": -2,
+          "minister_penny": -2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "branch",
+            "branch_id": "reckless_republic"
+          }
+        ],
+        "force_next_decision": "maybe_major_consequence",
+        "result_text": "Policy becomes a whiteboard. Side effects request office space."
+      },
+      {
+        "id": "ethical_limits",
+        "label": "Impose ethical practical limits",
+        "effects": {
+          "order": 5,
+          "happiness": -2,
+          "elite_loyalty": 1,
+          "treasury": -3
+        },
+        "add_flags": [
+          "maybe_limits_path"
+        ],
+        "add_laws": [
+          "national_trial_oversight_act"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "clerk_zero": 3,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 3,
+          "scientific": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "doctor_maybe_arc",
+            "action": "branch",
+            "branch_id": "ethical_limits"
+          }
+        ],
+        "force_next_decision": "maybe_major_consequence",
+        "result_text": "Red lines appear. Doctor Maybe files a dissenting hypothesis."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_climax",
+      "doctor_maybe"
+    ],
+    "visual_tags": [
+      "lab_sparks"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "doctor_maybe_arc",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "three_way_ethics",
+        "whiteboard_policy"
+      ],
+      "emotional_goal": "defining_choice",
+      "visual_hook": "three labeled beakers: progress, free, limited",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "maybe_major_consequence",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Consequences arrive on schedule. The trial's variance is public. Citizens want a ruling, not another graph.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "doctor_maybe_arc",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "maybe_arc_live"
+      ],
+      "any_flags": [
+        "maybe_progress_path",
+        "maybe_reckless_path",
+        "maybe_limits_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "publish_success",
+        "label": "Publish the costly success",
+        "effects": {
+          "happiness": 4,
+          "order": 2,
+          "treasury": -4,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "maybe_consequence_done",
+          "scientific_golden_soft"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "force_next_decision": "maybe_experimental_resolution",
+        "result_text": "Luna calls it a breakthrough with invoices. Streets look brighter and slightly poorer."
+      },
+      {
+        "id": "contain_spillover",
+        "label": "Contain the spillover",
+        "effects": {
+          "order": 4,
+          "happiness": -1,
+          "treasury": -3
+        },
+        "add_flags": [
+          "maybe_consequence_done",
+          "maybe_spillover_contained"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "maybe_experimental_resolution",
+        "result_text": "Forms seal the odd results. A glowing puddle receives a ticket number."
+      },
+      {
+        "id": "ignore_variance",
+        "label": "Ignore the variance",
+        "effects": {
+          "order": -5,
+          "happiness": -3,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "maybe_consequence_done",
+          "maybe_variance_ignored"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "chaotic": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "maybe_experimental_resolution",
+        "result_text": "Citizens bring signs shaped like question marks. Doctor Maybe rates turnout 'interesting.'"
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_consequence",
+      "doctor_maybe"
+    ],
+    "visual_tags": [
+      "glowing_but_stable_capital"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "doctor_maybe_arc",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "variance_public",
+        "glowing_puddle"
+      ],
+      "emotional_goal": "cost_of_science",
+      "visual_hook": "stable capital with one polite glowing puddle",
+      "localization_risk": "low",
+      "writer_notes": "mass_protest on ignore path. Positive costly on publish_success."
+    }
+  },
+  {
+    "id": "maybe_experimental_resolution",
     "schema_version": 2,
     "country_id": "ministan",
     "card_type": "resolution",
     "advisor_id": "doctor_maybe",
     "category": "science",
-    "proposal": "Ministan leads the world in accidental discoveries. Doctor Maybe wants a national holiday.",
+    "proposal": "Final hypothesis: what is Ministan now — a careful lab, an experimental republic, or a place that politely asked science to leave?",
     "one_time": true,
     "base_weight": 1,
+    "queue_only": true,
     "narrative": {
       "arc_id": "doctor_maybe_arc",
       "beat_type": "resolution",
-      "step": 4,
-      "branch_id": "reckless_science",
       "resolves_arc": true,
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["doctor_maybe_arc"]
+      "active_arcs": [
+        "doctor_maybe_arc"
+      ],
+      "all_flags": [
+        "maybe_arc_live",
+        "maybe_consequence_done"
+      ]
     },
     "options": [
       {
-        "id": "celebrate",
-        "label": "Declare Science Day",
-        "effects": { "happiness": 6, "treasury": -6, "order": -2 },
-        "add_flags": ["science_golden_age"],
-        "trait_changes": { "scientific": 2 },
-        "result_text": "Citizens receive free safety goggles. Several wear them indoors."
+        "id": "seal_progress",
+        "label": "Seal careful scientific progress",
+        "effects": {
+          "happiness": 5,
+          "order": 3,
+          "treasury": -6,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "maybe_arc_complete",
+          "scientific_golden_soft",
+          "maybe_progress_sealed"
+        ],
+        "remove_flags": [
+          "maybe_arc_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "result_text": "Trials continue under budget and light. Costly. Genuinely useful. Maybe smiles almost certainly."
       },
       {
-        "id": "caution",
-        "label": "Add safety disclaimers",
-        "effects": { "order": 4, "happiness": 1, "treasury": -2 },
-        "add_flags": ["moon_replacement_pending"],
-        "trigger_ending": "accidental_moon_replacement",
-        "result_text": "The moon is replaced with a brighter model. Nobody notices for three days."
+        "id": "declare_republic",
+        "label": "Declare Experimental Republic",
+        "effects": {
+          "happiness": 4,
+          "order": -3,
+          "elite_loyalty": -2,
+          "treasury": -4
+        },
+        "add_flags": [
+          "maybe_arc_complete",
+          "experimental_republic"
+        ],
+        "remove_flags": [
+          "maybe_arc_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "clerk_zero": -2
+        },
+        "trait_changes": {
+          "scientific": 3,
+          "chaotic": 2
+        },
+        "trigger_ending": "experimental_republic",
+        "result_text": "Every law is a trial. Every trial is a law. Historians request safety goggles."
+      },
+      {
+        "id": "ask_science_leave",
+        "label": "Ask the experiment to leave",
+        "effects": {
+          "order": 4,
+          "happiness": -3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "maybe_arc_complete",
+          "experiment_leaves",
+          "science_recovery_soft"
+        ],
+        "remove_flags": [
+          "maybe_arc_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": -3,
+          "clerk_zero": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "trigger_ending": "experiment_leaves",
+        "result_text": "Beakers pack politely. Clerk Zero stamps EXIT. Doctor Maybe waves from a taxi."
       }
     ],
-    "tags": ["science", "arc_resolution", "ending_setup"],
-    "visual_tags": ["lab_sparks"]
-  },
-  {
-    "id": "maybe_containment_protocol",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "resolution",
-    "advisor_id": "clerk_zero",
-    "category": "science",
-    "proposal": "Clerk Zero files Form 7B: Scientific Incident Containment. Doctor Maybe signs reluctantly.",
-    "one_time": true,
-    "base_weight": 1,
-    "narrative": {
+    "tags": [
+      "science",
+      "arc_resolution",
+      "ending_setup",
+      "doctor_maybe"
+    ],
+    "visual_tags": [
+      "glowing_but_stable_capital"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
       "arc_id": "doctor_maybe_arc",
-      "beat_type": "resolution",
-      "step": 2,
-      "branch_id": "cautious_oversight",
-      "resolves_arc": true,
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": ["doctor_maybe_arc"],
-      "arc_branches": { "doctor_maybe_arc": "cautious_oversight" }
-    },
-    "options": [
-      {
-        "id": "approve",
-        "label": "Approve containment",
-        "effects": { "order": 5, "happiness": 2, "treasury": -3 },
-        "trait_changes": { "bureaucratic": 2 },
-        "result_text": "Experiments continue inside triple-sealed envelopes."
-      },
-      {
-        "id": "audit",
-        "label": "Audit the lab anyway",
-        "effects": { "elite_loyalty": -2, "order": 3, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": -2, "clerk_zero": 1 },
-        "result_text": "Doctor Maybe hides a beaker behind his back. Clerk Zero notes it on Form 12."
-      }
-    ],
-    "tags": ["science", "arc_resolution"]
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12A",
+      "humor_tags": [
+        "three_resolutions",
+        "science_taxi"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "capital choosing between lab, republic, or empty benches",
+      "localization_risk": "low"
+    }
   }
 ]

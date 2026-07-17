@@ -1,9 +1,9 @@
 {
-	"batch_id": "2B-11",
+	"batch_id": "2B-12",
 	"catalogs": {
 		"advisors": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "General Boom",
 				"id": "general_boom",
@@ -11,7 +11,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Minister Penny",
 				"id": "minister_penny",
@@ -19,7 +19,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Luna News",
 				"id": "luna_news",
@@ -27,7 +27,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Auntie Olga",
 				"id": "auntie_olga",
@@ -35,7 +35,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Doctor Maybe",
 				"id": "doctor_maybe",
@@ -43,7 +43,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Sir Profit",
 				"id": "sir_profit",
@@ -51,7 +51,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Comrade Whiskers",
 				"id": "comrade_whiskers",
@@ -59,7 +59,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Clerk Zero",
 				"id": "clerk_zero",
@@ -67,10 +67,18 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "advisor",
 				"display_name": "Chief Judge",
 				"id": "chief_judge",
+				"notes": "Phase 2A advisor catalog entry.",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "advisor",
+				"display_name": "Foreign Ambassador",
+				"id": "foreign_ambassador",
 				"notes": "Phase 2A advisor catalog entry.",
 				"status": "integrated"
 			}
@@ -78,7 +86,7 @@
 		"arcs": [
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 8,
 				"id": "cat_politics",
@@ -88,7 +96,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 5,
 				"id": "traffic_military",
@@ -98,7 +106,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "mandatory_happiness",
@@ -108,7 +116,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "luna_media_reality",
@@ -118,7 +126,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "olga_citizen_movement",
@@ -128,7 +136,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "fake_election_accident",
@@ -138,7 +146,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 7,
 				"id": "general_boom_arc",
@@ -148,27 +156,47 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
-				"decision_count": 5,
+				"decision_count": 7,
 				"id": "doctor_maybe_arc",
 				"importance": "major",
 				"notes": "",
-				"status": "integrated"
+				"status": "approved"
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
-				"decision_count": 2,
+				"decision_count": 6,
 				"id": "robot_government",
-				"importance": "minor",
-				"notes": "Minor arcs counted toward short_chain quota, not major_arc quota.",
-				"status": "deferred"
+				"importance": "major",
+				"notes": "",
+				"status": "approved"
+			},
+			{
+				"arc_type": "advisor",
+				"batch_id": "2B-12",
+				"content_type": "arc",
+				"decision_count": 6,
+				"id": "profit_corporate_state",
+				"importance": "major",
+				"notes": "",
+				"status": "approved"
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
+				"content_type": "arc",
+				"decision_count": 6,
+				"id": "sell_the_moon",
+				"importance": "major",
+				"notes": "",
+				"status": "approved"
+			},
+			{
+				"arc_type": "national",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "traffic_military_control",
@@ -178,7 +206,7 @@
 			},
 			{
 				"arc_type": "advisor",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 6,
 				"id": "penny_austerity_arc",
@@ -188,7 +216,7 @@
 			},
 			{
 				"arc_type": "national",
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "arc",
 				"decision_count": 5,
 				"id": "hyperinflation_arc",
@@ -199,7 +227,7 @@
 		],
 		"chains": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"free_pizza_friday",
@@ -213,7 +241,7 @@
 				"target_length": 4
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"switch_off_traffic_lights",
@@ -228,19 +256,7 @@
 				"target_length": 5
 			},
 			{
-				"batch_id": "2B-11",
-				"content_type": "chain",
-				"decision_ids": [
-					"robot_cabinet_proposal",
-					"robot_government_installed"
-				],
-				"id": "robot_government",
-				"notes": "Manifest-invented chain_id; no runtime field yet.",
-				"status": "deferred",
-				"target_length": 2
-			},
-			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"cat_parliament",
@@ -252,7 +268,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"umbrella_tax_proposal",
@@ -264,7 +280,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"free_coffee_morning",
@@ -277,7 +293,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"privatized_benches_proposal",
@@ -290,7 +306,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"lottery_treasury_fund",
@@ -302,7 +318,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"palace_gift_shop_opening",
@@ -314,7 +330,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"elevator_wifi_mandate",
@@ -326,7 +342,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"sponsored_potholes",
@@ -339,7 +355,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"long_setup_grand_canal",
@@ -352,7 +368,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"coin_shortage_crisis",
@@ -364,7 +380,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"national_clock_sync",
@@ -376,7 +392,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"no_weekends_proposal",
@@ -389,7 +405,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"state_meme_department",
@@ -402,7 +418,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"weather_censorship_mandate",
@@ -414,7 +430,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"national_talent_show",
@@ -426,7 +442,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"applause_quotas_mandate",
@@ -439,7 +455,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"artificial_sun_pilot",
@@ -452,7 +468,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"antigravity_buses_pilot",
@@ -464,7 +480,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"national_clone_day",
@@ -476,7 +492,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"traffic_flag_corps",
@@ -489,7 +505,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"robot_queue_manager",
@@ -502,7 +518,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"pigeon_air_force_proposal",
@@ -514,7 +530,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"camouflage_uniform_rollout",
@@ -526,7 +542,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"border_parade_escalation",
@@ -539,7 +555,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"tank_parking_mandate",
@@ -552,7 +568,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"coupon_salaries_proposal",
@@ -564,7 +580,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"perfumed_sewage_pilot",
@@ -576,7 +592,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"form_request_forms_proposal",
@@ -589,7 +605,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"fish_currency_proposal",
@@ -602,7 +618,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"ministry_of_waiting_proposal",
@@ -614,7 +630,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"stamp_shortage_crisis",
@@ -626,7 +642,7 @@
 				"target_length": 2
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"antivacuum_referendum_proposal",
@@ -639,7 +655,7 @@
 				"target_length": 3
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "chain",
 				"decision_ids": [
 					"national_nap_hour_proposal",
@@ -654,7 +670,7 @@
 		],
 		"crises": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "national_power_outage",
 				"id": "national_power_outage",
@@ -663,7 +679,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "budget_meltdown_crisis",
 				"id": "budget_meltdown",
@@ -672,7 +688,7 @@
 				"status": "deferred"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "cheese_shortage_crisis",
 				"id": "cheese_shortage_crisis",
@@ -681,7 +697,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "mass_protest",
 				"id": "mass_protest",
@@ -690,7 +706,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "bank_run",
 				"id": "bank_run",
@@ -699,7 +715,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "cat_parliament_occupation",
 				"id": "cat_parliament_occupation",
@@ -708,10 +724,28 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "crisis",
 				"entry_decision_id": "pantry_moth_crisis",
 				"id": "pantry_moth_crisis",
+				"notes": "",
+				"severity": 1,
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "crisis",
+				"entry_decision_id": "ai_cabinet_lockout",
+				"id": "ai_cabinet_lockout",
+				"notes": "",
+				"severity": 1,
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "crisis",
+				"entry_decision_id": "moon_ownership_dispute",
+				"id": "moon_ownership_dispute",
 				"notes": "",
 				"severity": 1,
 				"status": "integrated"
@@ -719,7 +753,7 @@
 		],
 		"endings": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "elite_coup",
@@ -727,7 +761,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "revolution",
@@ -735,7 +769,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "chaos_country",
@@ -743,7 +777,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "resource_failure",
 				"id": "bankrupt_leader",
@@ -751,7 +785,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "nation_in_darkness",
@@ -759,7 +793,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "cat_republic",
@@ -767,7 +801,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "survival",
 				"id": "survived_the_prototype",
@@ -775,7 +809,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "fallback",
 				"id": "content_exhausted",
@@ -783,7 +817,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "eternal_smile_state",
@@ -791,7 +825,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "general_boom_coup",
@@ -799,7 +833,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "general_becomes_mascot",
@@ -807,7 +841,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "general_remains_loyal",
@@ -815,7 +849,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "accidental_moon_replacement",
@@ -823,7 +857,55 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "experimental_republic",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "experiment_leaves",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "country_is_acquired",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "profit_buys_retirement",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "ai_accepts_resignation",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "ending",
+				"ending_type": "special",
+				"id": "moon_new_owner",
+				"notes": "",
+				"status": "integrated"
+			},
+			{
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "corporate_ministan",
@@ -831,7 +913,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "scientific_golden_age",
@@ -839,7 +921,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "smallest_superpower",
@@ -847,7 +929,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "tanks_direct_everything",
@@ -855,7 +937,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "traffic_system_achieves_peace",
@@ -863,7 +945,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "penny_balances_final_budget",
@@ -871,7 +953,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "spreadsheet_state",
@@ -879,7 +961,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "austerity_without_citizens",
@@ -887,7 +969,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "hyperinflation_millionaires",
@@ -895,7 +977,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "government_by_form",
@@ -903,7 +985,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "nation_becomes_broadcast",
@@ -911,7 +993,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "day_everyone_stopped_believing",
@@ -919,7 +1001,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "olga_peoples_cabinet",
@@ -927,7 +1009,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "palace_hears_the_street",
@@ -935,7 +1017,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "olga_sends_you_home",
@@ -943,7 +1025,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "happiness_reaches_100_percent",
@@ -951,7 +1033,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "peaceful_accidental_democracy",
@@ -959,7 +1041,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ending",
 				"ending_type": "special",
 				"id": "democracy_by_administrative_error",
@@ -969,7 +1051,7 @@
 		],
 		"laws": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "free_pizza_friday",
 				"notes": "",
@@ -980,7 +1062,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "mandatory_smiling",
 				"notes": "",
@@ -991,7 +1073,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "window_tax",
 				"notes": "",
@@ -1002,7 +1084,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "cat_voting_rights",
 				"notes": "",
@@ -1013,7 +1095,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "tank_traffic_control",
 				"notes": "",
@@ -1024,7 +1106,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_broadcast_priority",
 				"notes": "",
@@ -1035,7 +1117,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "no_weekends",
 				"notes": "",
@@ -1046,7 +1128,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "fake_smile_standard",
 				"notes": "",
@@ -1057,7 +1139,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_martial_law",
 				"notes": "",
@@ -1069,7 +1151,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "mandatory_marching",
 				"notes": "",
@@ -1080,7 +1162,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_happiness_index",
 				"notes": "",
@@ -1091,7 +1173,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "scientific_experiment_permit",
 				"notes": "",
@@ -1102,7 +1184,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "fish_emergency_reserve",
 				"notes": "",
@@ -1113,7 +1195,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "luxury_chair_tax",
 				"notes": "",
@@ -1124,7 +1206,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_bedtime",
 				"notes": "",
@@ -1135,7 +1217,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_clock_law",
 				"notes": "",
@@ -1146,7 +1228,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "queue_etiquette_law",
 				"notes": "",
@@ -1157,7 +1239,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "compliment_quota_law",
 				"notes": "",
@@ -1168,7 +1250,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "flag_traffic_law",
 				"notes": "",
@@ -1179,7 +1261,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "rival_parade_response_act",
 				"notes": "",
@@ -1190,7 +1272,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "palace_curfew_act",
 				"notes": "",
@@ -1201,7 +1283,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_salute_law",
 				"notes": "",
@@ -1212,7 +1294,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "one_headline_policy",
 				"notes": "",
@@ -1223,7 +1305,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "public_rumor_license",
 				"notes": "",
@@ -1234,7 +1316,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "predictive_toaster_act",
 				"notes": "",
@@ -1245,7 +1327,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "ceremonial_tank_florist_act",
 				"notes": "",
@@ -1256,7 +1338,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "weather_optimism_act",
 				"notes": "",
@@ -1267,7 +1349,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "catchphrase_registry_act",
 				"notes": "",
@@ -1278,7 +1360,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "labcoat_lighting_act",
 				"notes": "",
@@ -1289,7 +1371,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "capital_square_naming_act",
 				"notes": "",
@@ -1300,7 +1382,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "citizen_service_subscription_act",
 				"notes": "",
@@ -1311,7 +1393,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "cabinet_briefing_protocol",
 				"notes": "",
@@ -1322,7 +1404,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "complaint_permit_act",
 				"notes": "",
@@ -1333,7 +1415,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "contradictory_signage_law",
 				"notes": "",
@@ -1344,7 +1426,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "mouse_protection_law",
 				"notes": "",
@@ -1355,7 +1437,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "fish_market_subsidy_act",
 				"notes": "",
@@ -1366,7 +1448,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "palace_tour_act",
 				"notes": "",
@@ -1377,7 +1459,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "anthem_sponsor_act",
 				"notes": "",
@@ -1388,7 +1470,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_efficiency_act",
 				"notes": "",
@@ -1399,7 +1481,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "notarized_apology_act",
 				"notes": "",
@@ -1410,7 +1492,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "official_palace_pet_act",
 				"notes": "",
@@ -1421,7 +1503,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "umbrella_tax",
 				"notes": "",
@@ -1432,7 +1514,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_coffee_reserve",
 				"notes": "",
@@ -1443,7 +1525,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "bench_subscription_act",
 				"notes": "",
@@ -1454,7 +1536,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_lottery_budget",
 				"notes": "",
@@ -1465,7 +1547,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "palace_gift_shop_act",
 				"notes": "",
@@ -1476,7 +1558,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "sponsored_potholes_act",
 				"notes": "",
@@ -1487,7 +1569,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "coin_rounding_act",
 				"notes": "",
@@ -1498,7 +1580,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "ministry_of_memes",
 				"notes": "",
@@ -1509,7 +1591,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "weather_censorship_act",
 				"notes": "",
@@ -1520,7 +1602,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_reality_show",
 				"notes": "",
@@ -1531,7 +1613,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "mandatory_applause",
 				"notes": "",
@@ -1542,7 +1624,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "artificial_sun_program",
 				"notes": "",
@@ -1553,7 +1635,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "antigravity_transit",
 				"notes": "",
@@ -1564,7 +1646,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "clone_holiday",
 				"notes": "",
@@ -1575,7 +1657,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "traffic_flag_corps_act",
 				"notes": "",
@@ -1586,7 +1668,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "robot_civil_service",
 				"notes": "",
@@ -1597,7 +1679,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "pigeon_air_force",
 				"notes": "",
@@ -1608,7 +1690,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "camouflage_uniform_act",
 				"notes": "",
@@ -1619,7 +1701,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "border_parade_act",
 				"notes": "",
@@ -1630,7 +1712,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "coupon_salaries",
 				"notes": "",
@@ -1641,7 +1723,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "scent_mask_act",
 				"notes": "",
@@ -1652,7 +1734,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "form_request_form_act",
 				"notes": "",
@@ -1663,7 +1745,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "fish_currency_act",
 				"notes": "",
@@ -1674,7 +1756,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "ministry_of_waiting",
 				"notes": "",
@@ -1685,7 +1767,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "triple_stamp_requirement",
 				"notes": "",
@@ -1696,7 +1778,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "antivacuum_act",
 				"notes": "",
@@ -1707,7 +1789,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_nap_hour",
 				"notes": "",
@@ -1718,7 +1800,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "military_route_priority_act",
 				"notes": "",
@@ -1730,7 +1812,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "traffic_checkpoint_act",
 				"notes": "",
@@ -1741,7 +1823,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_austerity_act",
 				"notes": "",
@@ -1752,7 +1834,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "public_service_sunset_act",
 				"notes": "",
@@ -1763,7 +1845,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "emergency_price_board_act",
 				"notes": "",
@@ -1774,7 +1856,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "barter_license_act",
 				"notes": "",
@@ -1785,7 +1867,7 @@
 				]
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "law",
 				"id": "national_filing_week",
 				"notes": "",
@@ -1794,25 +1876,91 @@
 				"visual_tags": [
 					"filing_week_ballot_boxes"
 				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "national_trial_oversight_act",
+				"notes": "",
+				"primary_category": "science",
+				"status": "integrated",
+				"visual_tags": [
+					"oversight_clipboard_plaza"
+				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "privatize_air",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"branded_ministry_awning"
+				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "rent_a_ministry",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"lease_stamp_plaza"
+				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "corporate_capital_naming",
+				"notes": "",
+				"primary_category": "economy",
+				"status": "integrated",
+				"visual_tags": [
+					"subsidiary_flag_swap"
+				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "ai_cabinet_pilot",
+				"notes": "",
+				"primary_category": "science",
+				"status": "integrated",
+				"visual_tags": [
+					"toaster_filing_cabinets"
+				]
+			},
+			{
+				"batch_id": "2B-12",
+				"content_type": "law",
+				"id": "moon_replacement_research",
+				"notes": "",
+				"primary_category": "science",
+				"status": "integrated",
+				"visual_tags": [
+					"fake_telescope_plaza"
+				]
 			}
 		],
 		"palace_upgrades": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "palace_upgrade",
 				"id": "gold_desk",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "palace_upgrade",
 				"id": "propaganda_studio",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
 				"status": "needs_rewrite"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "palace_upgrade",
 				"id": "emergency_bunker",
 				"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
@@ -1821,7 +1969,7 @@
 		],
 		"ruler_identities": [
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Smiling Tyrant",
 				"id": "the_smiling_tyrant",
@@ -1829,7 +1977,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Spreadsheet Emperor",
 				"id": "the_spreadsheet_emperor",
@@ -1837,7 +1985,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "Supreme Cat Servant",
 				"id": "supreme_cat_servant",
@@ -1845,7 +1993,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Chaotic Reformer",
 				"id": "the_chaotic_reformer",
@@ -1853,7 +2001,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Technocratic Accident",
 				"id": "the_technocratic_accident",
@@ -1861,7 +2009,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Golden Oligarch",
 				"id": "the_golden_oligarch",
@@ -1869,7 +2017,7 @@
 				"status": "integrated"
 			},
 			{
-				"batch_id": "2B-11",
+				"batch_id": "2B-12",
 				"content_type": "ruler_identity",
 				"display_name": "The Accidental Ruler",
 				"id": "the_accidental_ruler",
@@ -1883,7 +2031,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1905,9 +2053,177 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "ai_admin_pilot",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"toaster_filing_cabinets"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ai_admin_success",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"robot_queue_kiosk"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ai_authority_expand",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"blank_terminal_cabinet"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "consequence",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ai_cabinet_crisis",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"blank_terminal_cabinet"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
+			"card_type": "crisis",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": "ai_cabinet_lockout",
+			"graph_validation_status": "pass",
+			"id": "ai_cabinet_lockout",
+			"manual_test_status": "partial",
+			"notes": "",
+			"primary_category": "science",
+			"primary_content_class": "crisis",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_crises.json",
+			"schema_validation_status": "pass",
+			"status": "integrated",
+			"visual_tags": [
+				"blank_terminal_cabinet"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "resolution",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ai_government_resolution",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"human_stamp_override"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "robot_government",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "ai_human_system_fork",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "clerk_zero",
+			"runtime_source_file": "data/decisions/ministan_ai_government_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"human_stamp_override"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -1931,7 +2247,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "antigravity_buses",
 			"content_type": "decision",
@@ -1955,7 +2271,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "antigravity_buses",
 			"content_type": "decision",
@@ -1979,7 +2295,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "antivacuum_referendum",
 			"content_type": "decision",
@@ -2003,7 +2319,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "antivacuum_referendum",
 			"content_type": "decision",
@@ -2027,7 +2343,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "antivacuum_referendum",
 			"content_type": "decision",
@@ -2051,7 +2367,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "applause_quotas",
 			"content_type": "decision",
@@ -2075,7 +2391,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "applause_quotas",
 			"content_type": "decision",
@@ -2099,7 +2415,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "applause_quotas",
 			"content_type": "decision",
@@ -2123,7 +2439,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2147,7 +2463,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "artificial_sun",
 			"content_type": "decision",
@@ -2171,7 +2487,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "artificial_sun",
 			"content_type": "decision",
@@ -2195,7 +2511,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "artificial_sun",
 			"content_type": "decision",
@@ -2219,7 +2535,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2243,7 +2559,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -2267,7 +2583,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -2291,7 +2607,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2315,7 +2631,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2339,7 +2655,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2363,7 +2679,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2387,7 +2703,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2411,7 +2727,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "border_parade",
 			"content_type": "decision",
@@ -2435,7 +2751,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2459,7 +2775,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2483,7 +2799,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "border_parade",
 			"content_type": "decision",
@@ -2507,7 +2823,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "border_parade",
 			"content_type": "decision",
@@ -2531,7 +2847,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -2555,7 +2871,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -2579,7 +2895,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2603,7 +2919,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2625,7 +2941,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2649,7 +2965,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2673,7 +2989,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "camouflage_uniform_scandal",
 			"content_type": "decision",
@@ -2697,7 +3013,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "camouflage_uniform_scandal",
 			"content_type": "decision",
@@ -2721,7 +3037,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2745,7 +3061,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
@@ -2767,7 +3083,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2789,7 +3105,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "cat_politics_followups",
 			"content_type": "decision",
@@ -2811,7 +3127,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2835,7 +3151,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2857,7 +3173,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2879,7 +3195,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2901,7 +3217,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2923,7 +3239,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2945,7 +3261,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2969,7 +3285,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -2993,7 +3309,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3017,7 +3333,7 @@
 		{
 			"arc_id": "cat_politics",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3039,7 +3355,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3063,7 +3379,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -3085,7 +3401,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3107,7 +3423,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3131,7 +3447,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3155,7 +3471,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3179,7 +3495,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_clock_reform",
 			"content_type": "decision",
@@ -3203,7 +3519,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_clone_day",
 			"content_type": "decision",
@@ -3227,7 +3543,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3251,7 +3567,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -3275,7 +3591,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -3299,7 +3615,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "coin_shortage",
 			"content_type": "decision",
@@ -3323,7 +3639,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "coin_shortage",
 			"content_type": "decision",
@@ -3347,7 +3663,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3371,7 +3687,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3395,7 +3711,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3419,7 +3735,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "salaries_paid_in_coupons",
 			"content_type": "decision",
@@ -3443,7 +3759,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "salaries_paid_in_coupons",
 			"content_type": "decision",
@@ -3467,7 +3783,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3491,7 +3807,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3515,7 +3831,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3539,7 +3855,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3563,7 +3879,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3587,7 +3903,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3612,7 +3928,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3636,7 +3952,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3660,7 +3976,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3684,7 +4000,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3708,7 +4024,7 @@
 		{
 			"arc_id": "fake_election_accident",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3732,7 +4048,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "elevator_wifi",
 			"content_type": "decision",
@@ -3756,7 +4072,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "elevator_wifi",
 			"content_type": "decision",
@@ -3780,7 +4096,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3804,7 +4120,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3828,7 +4144,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3850,7 +4166,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3872,7 +4188,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3894,7 +4210,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3918,7 +4234,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -3942,7 +4258,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "fish_currency_experiment",
 			"content_type": "decision",
@@ -3966,7 +4282,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "fish_currency_experiment",
 			"content_type": "decision",
@@ -3990,7 +4306,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "fish_currency_experiment",
 			"content_type": "decision",
@@ -4014,7 +4330,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4038,7 +4354,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "form_to_request_forms",
 			"content_type": "decision",
@@ -4062,7 +4378,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "form_to_request_forms",
 			"content_type": "decision",
@@ -4086,7 +4402,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "form_to_request_forms",
 			"content_type": "decision",
@@ -4110,7 +4426,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "national_coffee_reserve",
 			"content_type": "decision",
@@ -4134,7 +4450,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -4156,7 +4472,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4178,7 +4494,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "palace_gift_shop",
 			"content_type": "decision",
@@ -4202,7 +4518,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4226,7 +4542,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4250,7 +4566,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4274,7 +4590,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4298,7 +4614,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4322,7 +4638,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4346,7 +4662,7 @@
 		{
 			"arc_id": "hyperinflation_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4371,7 +4687,7 @@
 		{
 			"arc_id": "hyperinflation_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4395,7 +4711,7 @@
 		{
 			"arc_id": "hyperinflation_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4420,7 +4736,7 @@
 		{
 			"arc_id": "hyperinflation_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4445,7 +4761,7 @@
 		{
 			"arc_id": "hyperinflation_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4469,7 +4785,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4493,7 +4809,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4517,7 +4833,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "bridge_to_nowhere",
 			"content_type": "decision",
@@ -4541,7 +4857,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "lottery_budget",
 			"content_type": "decision",
@@ -4565,7 +4881,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "lottery_budget",
 			"content_type": "decision",
@@ -4589,7 +4905,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4613,7 +4929,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4637,7 +4953,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4661,7 +4977,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4685,7 +5001,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4709,7 +5025,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4733,7 +5049,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4757,7 +5073,7 @@
 		{
 			"arc_id": "luna_media_reality",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4781,7 +5097,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4805,7 +5121,7 @@
 		{
 			"arc_id": "mandatory_happiness",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4829,7 +5145,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -4853,99 +5169,151 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
-			"card_type": "resolution",
+			"batch_id": "2B-12",
+			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "maybe_containment_protocol",
+			"graph_validation_status": "pass",
+			"id": "maybe_ethics_fork",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"lab_sparks"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "doctor_maybe_arc",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "maybe_experiment_dependence",
 			"manual_test_status": "partial",
-			"notes": "",
+			"notes": "Milestone 2B-12 approved major-arc card.",
 			"primary_category": "science",
 			"primary_content_class": "major_arc",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "clerk_zero",
 			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"oversight_clipboard_plaza"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "maybe_golden_age",
-			"manual_test_status": "partial",
-			"notes": "",
+			"graph_validation_status": "pass",
+			"id": "maybe_experimental_resolution",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
 			"primary_category": "science",
 			"primary_content_class": "major_arc",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "doctor_maybe",
 			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
+			"status": "approved",
 			"visual_tags": [
-				"lab_sparks"
+				"glowing_but_stable_capital"
 			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
-			"card_type": "normal",
-			"chain_id": null,
-			"content_type": "decision",
-			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "maybe_lab_runaway",
-			"manual_test_status": "partial",
-			"notes": "",
-			"primary_category": "science",
-			"primary_content_class": "major_arc",
-			"primary_run_stage": "establishment",
-			"primary_speaker": "doctor_maybe",
-			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
-			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [
-				"lab_sparks"
-			],
-			"voice_review_status": "not_reviewed"
-		},
-		{
-			"arc_id": "doctor_maybe_arc",
-			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
 			"crisis_id": null,
 			"graph_validation_status": "pass",
-			"id": "maybe_moon_dust_trial",
+			"id": "maybe_major_consequence",
 			"manual_test_status": "partial",
-			"notes": "",
+			"notes": "Milestone 2B-12 approved major-arc card.",
 			"primary_category": "science",
 			"primary_content_class": "major_arc",
 			"primary_run_stage": "establishment",
 			"primary_speaker": "doctor_maybe",
 			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
 			"schema_validation_status": "pass",
-			"status": "integrated",
-			"visual_tags": [],
+			"status": "approved",
+			"visual_tags": [
+				"glowing_but_stable_capital"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "doctor_maybe_arc",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "maybe_national_trial",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"national_trial_banner"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "doctor_maybe_arc",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "maybe_useful_trial",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "science",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "doctor_maybe",
+			"runtime_source_file": "data/decisions/ministan_doctor_maybe_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"lab_sparks"
+			],
 			"voice_review_status": "not_reviewed"
 		},
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "state_meme_department",
 			"content_type": "decision",
@@ -4969,7 +5337,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "state_meme_department",
 			"content_type": "decision",
@@ -4993,7 +5361,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5017,7 +5385,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5041,7 +5409,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "ministry_of_waiting",
 			"content_type": "decision",
@@ -5065,7 +5433,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "ministry_of_waiting",
 			"content_type": "decision",
@@ -5087,9 +5455,177 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "resolution",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "moon_arc_resolution",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"deed_stamp_moon"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "moon_budget_proposal",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"lunar_deed_banner"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "consequence",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "moon_crisis_opportunity",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "media",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"fake_telescope_plaza"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "moon_international_reaction",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "foreign_ambassador",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"embassy_queue_protest"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "moon_ownership_campaign",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "chief_judge",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"deed_stamp_moon"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
+			"card_type": "crisis",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": "moon_ownership_dispute",
+			"graph_validation_status": "pass",
+			"id": "moon_ownership_dispute",
+			"manual_test_status": "partial",
+			"notes": "",
+			"primary_category": "bureaucracy",
+			"primary_content_class": "crisis",
+			"primary_run_stage": "escalation",
+			"primary_speaker": "foreign_ambassador",
+			"runtime_source_file": "data/decisions/ministan_crises.json",
+			"schema_validation_status": "pass",
+			"status": "integrated",
+			"visual_tags": [
+				"embassy_queue_protest"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "sell_the_moon",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "moon_path_fork",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_sell_the_moon_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"lunar_deed_banner"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": null,
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5113,7 +5649,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5137,7 +5673,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5161,7 +5697,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5185,7 +5721,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "national_clock_reform",
 			"content_type": "decision",
@@ -5209,7 +5745,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "national_clone_day",
 			"content_type": "decision",
@@ -5233,7 +5769,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5257,7 +5793,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "national_nap_hour",
 			"content_type": "decision",
@@ -5281,7 +5817,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_nap_hour",
 			"content_type": "decision",
@@ -5305,7 +5841,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_nap_hour",
 			"content_type": "decision",
@@ -5329,7 +5865,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5351,7 +5887,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "national_talent_show",
 			"content_type": "decision",
@@ -5375,7 +5911,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5399,7 +5935,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "weekend_abolition",
 			"content_type": "decision",
@@ -5423,7 +5959,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5447,7 +5983,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5471,7 +6007,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5495,7 +6031,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5519,7 +6055,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5541,7 +6077,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5565,7 +6101,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5589,7 +6125,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5613,7 +6149,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5637,7 +6173,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5661,7 +6197,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5685,7 +6221,7 @@
 		{
 			"arc_id": "olga_citizen_movement",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5709,7 +6245,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5733,7 +6269,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5757,7 +6293,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5781,7 +6317,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "palace_gift_shop",
 			"content_type": "decision",
@@ -5805,7 +6341,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5829,7 +6365,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5853,7 +6389,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "crisis",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5877,7 +6413,7 @@
 		{
 			"arc_id": "general_boom_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5901,7 +6437,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5926,7 +6462,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5950,7 +6486,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5975,7 +6511,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -5999,7 +6535,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6023,7 +6559,7 @@
 		{
 			"arc_id": "penny_austerity_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6047,7 +6583,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "perfumed_sewage",
 			"content_type": "decision",
@@ -6071,7 +6607,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "perfumed_sewage",
 			"content_type": "decision",
@@ -6095,7 +6631,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "pigeon_air_force",
 			"content_type": "decision",
@@ -6119,7 +6655,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "pigeon_air_force",
 			"content_type": "decision",
@@ -6143,7 +6679,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -6165,7 +6701,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "free_pizza_consequences",
 			"content_type": "decision",
@@ -6187,7 +6723,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6211,7 +6747,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -6235,7 +6771,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -6259,7 +6795,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6283,7 +6819,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6307,7 +6843,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6331,7 +6867,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "privatized_public_benches",
 			"content_type": "decision",
@@ -6353,9 +6889,153 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "profit_commercial_success",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"branded_ministry_awning"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "resolution",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "profit_corporate_resolution",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"subsidiary_flag_swap"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "consequence",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "profit_identity_crisis",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "luna_news",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"reclaimed_signage"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "profit_institution_lease",
+			"manual_test_status": "partial",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"lease_stamp_plaza"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "pass",
+			"id": "profit_ownership_fork",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"subsidiary_flag_swap"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
+			"arc_id": "profit_corporate_state",
+			"balance_review_status": "partial",
+			"batch_id": "2B-12",
+			"card_type": "normal",
+			"chain_id": null,
+			"content_type": "decision",
+			"crisis_id": null,
+			"graph_validation_status": "partial",
+			"id": "profit_partnership_brief",
+			"manual_test_status": "pass",
+			"notes": "Milestone 2B-12 approved major-arc card.",
+			"primary_category": "economy",
+			"primary_content_class": "major_arc",
+			"primary_run_stage": "establishment",
+			"primary_speaker": "sir_profit",
+			"runtime_source_file": "data/decisions/ministan_profit_corporate_state_arc.json",
+			"schema_validation_status": "pass",
+			"status": "approved",
+			"visual_tags": [
+				"branded_ministry_awning"
+			],
+			"voice_review_status": "not_reviewed"
+		},
+		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "advisor",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6377,7 +7057,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6401,7 +7081,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6425,7 +7105,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6449,7 +7129,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6473,7 +7153,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6495,7 +7175,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6517,7 +7197,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6539,7 +7219,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "recovery",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6559,53 +7239,9 @@
 			"voice_review_status": "not_reviewed"
 		},
 		{
-			"arc_id": "robot_government",
-			"balance_review_status": "partial",
-			"batch_id": "2B-11",
-			"card_type": "normal",
-			"chain_id": "robot_government",
-			"content_type": "decision",
-			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "robot_cabinet_proposal",
-			"manual_test_status": "untested",
-			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Minor arc treated as short_chain per 2B-0 assumption.",
-			"primary_category": "government",
-			"primary_content_class": "short_chain",
-			"primary_run_stage": "establishment",
-			"primary_speaker": "general_boom",
-			"runtime_source_file": "data/decisions/ministan_cat_politics.json",
-			"schema_validation_status": "pass",
-			"status": "deferred",
-			"visual_tags": [],
-			"voice_review_status": "not_reviewed"
-		},
-		{
-			"arc_id": "robot_government",
-			"balance_review_status": "partial",
-			"batch_id": "2B-11",
-			"card_type": "resolution",
-			"chain_id": "robot_government",
-			"content_type": "decision",
-			"crisis_id": null,
-			"graph_validation_status": "partial",
-			"id": "robot_government_installed",
-			"manual_test_status": "untested",
-			"notes": "chain_id is manifest-invented for Phase 2B quota tracking., Minor arc treated as short_chain per 2B-0 assumption.",
-			"primary_category": "government",
-			"primary_content_class": "short_chain",
-			"primary_run_stage": "establishment",
-			"primary_speaker": "general_boom",
-			"runtime_source_file": "data/decisions/ministan_cat_politics.json",
-			"schema_validation_status": "pass",
-			"status": "deferred",
-			"visual_tags": [],
-			"voice_review_status": "not_reviewed"
-		},
-		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "robot_queue_manager",
 			"content_type": "decision",
@@ -6629,7 +7265,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "robot_queue_manager",
 			"content_type": "decision",
@@ -6653,7 +7289,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "robot_queue_manager",
 			"content_type": "decision",
@@ -6677,7 +7313,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6699,7 +7335,7 @@
 		{
 			"arc_id": "doctor_maybe_arc",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6723,7 +7359,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6747,7 +7383,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6771,7 +7407,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "pothole_naming_rights",
 			"content_type": "decision",
@@ -6795,7 +7431,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -6819,7 +7455,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "stamp_shortage",
 			"content_type": "decision",
@@ -6843,7 +7479,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "stamp_shortage",
 			"content_type": "decision",
@@ -6867,7 +7503,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "state_meme_department",
 			"content_type": "decision",
@@ -6891,7 +7527,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -6915,7 +7551,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "national_talent_show",
 			"content_type": "decision",
@@ -6939,7 +7575,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "tank_parking_crisis",
 			"content_type": "decision",
@@ -6963,7 +7599,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "tank_parking_crisis",
 			"content_type": "decision",
@@ -6987,7 +7623,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "tank_parking_crisis",
 			"content_type": "decision",
@@ -7011,7 +7647,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7035,7 +7671,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7059,7 +7695,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -7081,7 +7717,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7105,7 +7741,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "traffic_flags",
 			"content_type": "decision",
@@ -7129,7 +7765,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "traffic_flags",
 			"content_type": "decision",
@@ -7153,7 +7789,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "traffic_flags",
 			"content_type": "decision",
@@ -7177,7 +7813,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7201,7 +7837,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -7223,7 +7859,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7248,7 +7884,7 @@
 		{
 			"arc_id": "traffic_military_control",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7272,7 +7908,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "resolution",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -7296,7 +7932,7 @@
 		{
 			"arc_id": "traffic_military",
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "traffic_military",
 			"content_type": "decision",
@@ -7320,7 +7956,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7344,7 +7980,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "umbrella_tax",
 			"content_type": "decision",
@@ -7368,7 +8004,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "umbrella_tax",
 			"content_type": "decision",
@@ -7392,7 +8028,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7416,7 +8052,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7440,7 +8076,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7464,7 +8100,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": "weather_censorship",
 			"content_type": "decision",
@@ -7488,7 +8124,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "weather_censorship",
 			"content_type": "decision",
@@ -7512,7 +8148,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7536,7 +8172,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "weekend_abolition",
 			"content_type": "decision",
@@ -7560,7 +8196,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "consequence",
 			"chain_id": "weekend_abolition",
 			"content_type": "decision",
@@ -7584,7 +8220,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "onboarding",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7608,7 +8244,7 @@
 		{
 			"arc_id": null,
 			"balance_review_status": "partial",
-			"batch_id": "2B-11",
+			"batch_id": "2B-12",
 			"card_type": "normal",
 			"chain_id": null,
 			"content_type": "decision",
@@ -7633,128 +8269,126 @@
 	"distribution_report": {
 		"approved_only": {
 			"by_primary_category_canonical": {
-				"bureaucracy": 25,
+				"bureaucracy": 27,
 				"business_and_privatization": 13,
 				"cats_and_animals": 8,
-				"economy": 30,
+				"economy": 39,
 				"infrastructure": 26,
-				"media_and_propaganda": 31,
+				"media_and_propaganda": 32,
 				"military_and_order": 23,
 				"public_life": 28,
-				"science_and_technology": 17
+				"science_and_technology": 29
 			},
 			"by_primary_run_stage": {
 				"endgame": 6,
-				"escalation": 40,
-				"establishment": 145,
+				"escalation": 42,
+				"establishment": 167,
 				"instability": 10
 			},
 			"by_primary_speaker": {
 				"auntie_olga": 30,
-				"clerk_zero": 27,
+				"clerk_zero": 31,
 				"comrade_whiskers": 13,
-				"doctor_maybe": 16,
+				"doctor_maybe": 23,
 				"general_boom": 26,
-				"guest_and_system": 1,
-				"luna_news": 34,
+				"guest_and_system": 3,
+				"luna_news": 37,
 				"minister_penny": 31,
-				"sir_profit": 23
+				"sir_profit": 31
 			}
 		},
 		"by_primary_category": {
 			"administration": 1,
-			"bureaucracy": 25,
-			"business_and_privatization": 13,
-			"cats_and_animals": 8,
-			"economy": 36,
-			"follow_up": 7,
-			"government": 2,
-			"infrastructure": 30,
-			"media": 32,
-			"military": 24,
-			"politics": 7,
-			"public_life": 36,
-			"science": 21
-		},
-		"by_primary_category_canonical": {
 			"bureaucracy": 28,
 			"business_and_privatization": 13,
 			"cats_and_animals": 8,
-			"economy": 36,
+			"economy": 45,
+			"follow_up": 7,
 			"infrastructure": 30,
-			"media_and_propaganda": 32,
+			"media": 33,
+			"military": 24,
+			"politics": 7,
+			"public_life": 36,
+			"science": 30
+		},
+		"by_primary_category_canonical": {
+			"bureaucracy": 29,
+			"business_and_privatization": 13,
+			"cats_and_animals": 8,
+			"economy": 45,
+			"infrastructure": 30,
+			"media_and_propaganda": 33,
 			"military_and_order": 24,
 			"public_life": 50,
-			"science_and_technology": 21
+			"science_and_technology": 30
 		},
 		"by_primary_content_class": {
-			"crisis": 6,
+			"crisis": 8,
 			"endgame": 3,
-			"major_arc": 60,
+			"major_arc": 80,
 			"onboarding": 10,
 			"recovery": 4,
-			"short_chain": 93,
+			"short_chain": 91,
 			"standalone": 66
 		},
 		"by_primary_run_stage": {
 			"endgame": 8,
-			"escalation": 45,
-			"establishment": 178,
+			"escalation": 49,
+			"establishment": 194,
 			"instability": 11
 		},
 		"by_primary_speaker": {
 			"auntie_olga": 38,
-			"chief_judge": 1,
-			"clerk_zero": 30,
+			"chief_judge": 2,
+			"clerk_zero": 34,
 			"comrade_whiskers": 14,
-			"doctor_maybe": 19,
-			"general_boom": 33,
-			"luna_news": 41,
+			"doctor_maybe": 23,
+			"foreign_ambassador": 2,
+			"general_boom": 31,
+			"luna_news": 44,
 			"minister_penny": 41,
-			"sir_profit": 25
+			"sir_profit": 33
 		},
 		"by_review_status": {
 			"balance_review_status": {
-				"partial": 242
+				"partial": 262
 			},
 			"graph_validation_status": {
-				"partial": 131,
-				"pass": 111
+				"partial": 129,
+				"pass": 133
 			},
 			"manual_test_status": {
-				"partial": 42,
-				"pass": 176,
-				"untested": 24
+				"partial": 52,
+				"pass": 188,
+				"untested": 22
 			},
 			"voice_review_status": {
-				"not_reviewed": 242
+				"not_reviewed": 262
 			}
 		},
 		"by_status": {
-			"approved": 201,
-			"deferred": 4,
-			"integrated": 29,
+			"approved": 225,
+			"deferred": 2,
+			"integrated": 27,
 			"needs_rewrite": 8
 		}
 	},
-	"generated_at": "2026-07-16T16:13:30",
+	"generated_at": "2026-07-17T10:59:37",
 	"manifest_version": 1,
-	"phase": "2b_11_major_arc_pack_b",
+	"phase": "2b_12_major_arc_pack_c",
 	"quality_findings": {
 		"deferred_ids": [
 			"budget_meltdown_crisis",
-			"propaganda_smile_campaign",
-			"robot_cabinet_proposal",
-			"robot_government_installed"
+			"propaganda_smile_campaign"
 		],
 		"diagnostics_summary": {
 			"branches_no_continuation": 0,
 			"cards_no_meaningful_effects": 0,
 			"dominant_choice_options": 0,
 			"endings_impossible": 4,
-			"excessive_advisor_concentration": 3,
+			"excessive_advisor_concentration": 2,
 			"excessive_tag_concentration": 3,
-			"unreachable_decisions": 131
+			"unreachable_decisions": 129
 		},
 		"duplicate_premise_groups": [
 			{
@@ -7776,6 +8410,7 @@
 			}
 		],
 		"integrated_ids": [
+			"ai_cabinet_lockout",
 			"bank_run",
 			"cat_fish_budget",
 			"cat_limited_council",
@@ -7793,10 +8428,7 @@
 			"free_pizza_friday",
 			"generic_minister_disagreement",
 			"mass_protest",
-			"maybe_containment_protocol",
-			"maybe_golden_age",
-			"maybe_lab_runaway",
-			"maybe_moon_dust_trial",
+			"moon_ownership_dispute",
 			"national_power_outage",
 			"pineapple_referendum",
 			"pizza_union_strike",
@@ -7808,6 +8440,13 @@
 		],
 		"missing_review_status": [
 			"absurd_civic_sweeping",
+			"ai_admin_pilot",
+			"ai_admin_success",
+			"ai_authority_expand",
+			"ai_cabinet_crisis",
+			"ai_cabinet_lockout",
+			"ai_government_resolution",
+			"ai_human_system_fork",
 			"anthem_sponsor_reads",
 			"antigravity_buses_consequence",
 			"antigravity_buses_pilot",
@@ -7932,16 +8571,25 @@
 			"luxury_chair_tax",
 			"mandatory_smiling_proposal",
 			"mass_protest",
-			"maybe_containment_protocol",
-			"maybe_golden_age",
-			"maybe_lab_runaway",
-			"maybe_moon_dust_trial",
+			"maybe_ethics_fork",
+			"maybe_experiment_dependence",
+			"maybe_experimental_resolution",
+			"maybe_major_consequence",
+			"maybe_national_trial",
+			"maybe_useful_trial",
 			"meme_department_resolution",
 			"meme_virality_crisis",
 			"midnight_filing_amnesty",
 			"military_parade",
 			"ministry_of_waiting_proposal",
 			"ministry_of_waiting_service",
+			"moon_arc_resolution",
+			"moon_budget_proposal",
+			"moon_crisis_opportunity",
+			"moon_international_reaction",
+			"moon_ownership_campaign",
+			"moon_ownership_dispute",
+			"moon_path_fork",
 			"mouse_protection_act",
 			"national_anthem_remix",
 			"national_bedtime_decree",
@@ -7995,6 +8643,12 @@
 			"privatize_palace_garden",
 			"privatize_rainwater",
 			"privatized_benches_proposal",
+			"profit_commercial_success",
+			"profit_corporate_resolution",
+			"profit_identity_crisis",
+			"profit_institution_lease",
+			"profit_ownership_fork",
+			"profit_partnership_brief",
 			"propaganda_smile_campaign",
 			"prototype_scooter_fleet",
 			"public_cat_baskets",
@@ -8004,8 +8658,6 @@
 			"recovery_international_bank",
 			"recovery_martial_law_pause",
 			"recovery_national_smile_day",
-			"robot_cabinet_proposal",
-			"robot_government_installed",
 			"robot_queue_incident",
 			"robot_queue_manager",
 			"robot_queue_resolution",
@@ -8058,8 +8710,6 @@
 			"cat_protest",
 			"cat_republic_declared",
 			"cats_return_to_boxes",
-			"maybe_containment_protocol",
-			"maybe_moon_dust_trial",
 			"olga_bridge_repair"
 		],
 		"missing_visual_tags": [
@@ -8080,8 +8730,6 @@
 			"endgame_succession_debate",
 			"free_pizza_friday",
 			"generic_minister_disagreement",
-			"maybe_containment_protocol",
-			"maybe_moon_dust_trial",
 			"national_power_outage",
 			"olga_bridge_repair",
 			"pineapple_referendum",
@@ -8091,8 +8739,6 @@
 			"recovery_international_bank",
 			"recovery_martial_law_pause",
 			"recovery_national_smile_day",
-			"robot_cabinet_proposal",
-			"robot_government_installed",
 			"routine_form_inventory",
 			"traffic_complaint",
 			"traffic_lights_restored"
@@ -8125,8 +8771,6 @@
 			"pizza_union_strike",
 			"privatize_palace_garden",
 			"propaganda_smile_campaign",
-			"robot_cabinet_proposal",
-			"robot_government_installed",
 			"routine_form_inventory",
 			"traffic_complaint",
 			"traffic_lights_restored",
@@ -8139,24 +8783,24 @@
 		"advisors": {
 			"approved": 0,
 			"gap_approved": 0,
-			"integrated": 9,
-			"target": 9
+			"integrated": 10,
+			"target": 10
 		},
 		"crises": {
 			"approved": 0,
 			"gap_approved": 18,
-			"integrated": 6,
+			"integrated": 8,
 			"target": 18
 		},
 		"decisions": {
-			"approved_total": 201,
+			"approved_total": 225,
 			"by_category": {
 				"bureaucracy": {
-					"approved": 25,
-					"cataloged": 28,
+					"approved": 27,
+					"cataloged": 29,
 					"draft": 0,
-					"gap_approved": 7,
-					"integrated": 25,
+					"gap_approved": 5,
+					"integrated": 28,
 					"target": 32
 				},
 				"business_and_privatization": {
@@ -8176,11 +8820,11 @@
 					"target": 26
 				},
 				"economy": {
-					"approved": 30,
-					"cataloged": 36,
+					"approved": 39,
+					"cataloged": 45,
 					"draft": 0,
-					"gap_approved": 20,
-					"integrated": 33,
+					"gap_approved": 11,
+					"integrated": 42,
 					"target": 50
 				},
 				"infrastructure": {
@@ -8192,11 +8836,11 @@
 					"target": 30
 				},
 				"media_and_propaganda": {
-					"approved": 31,
-					"cataloged": 32,
+					"approved": 32,
+					"cataloged": 33,
 					"draft": 0,
-					"gap_approved": 3,
-					"integrated": 31,
+					"gap_approved": 2,
+					"integrated": 32,
 					"target": 34
 				},
 				"military_and_order": {
@@ -8216,11 +8860,11 @@
 					"target": 48
 				},
 				"science_and_technology": {
-					"approved": 17,
-					"cataloged": 21,
+					"approved": 29,
+					"cataloged": 30,
 					"draft": 0,
-					"gap_approved": 23,
-					"integrated": 21,
+					"gap_approved": 11,
+					"integrated": 30,
 					"target": 40
 				}
 			},
@@ -8229,9 +8873,9 @@
 					"approved": 0,
 					"draft": 0,
 					"gap_approved": 28,
-					"integrated": 5,
+					"integrated": 7,
 					"target": 28,
-					"total_cataloged": 6
+					"total_cataloged": 8
 				},
 				"endgame": {
 					"approved": 0,
@@ -8242,12 +8886,12 @@
 					"total_cataloged": 3
 				},
 				"major_arc": {
-					"approved": 48,
+					"approved": 72,
 					"draft": 0,
-					"gap_approved": 48,
-					"integrated": 60,
+					"gap_approved": 24,
+					"integrated": 80,
 					"target": 96,
-					"total_cataloged": 60
+					"total_cataloged": 80
 				},
 				"onboarding": {
 					"approved": 10,
@@ -8271,7 +8915,7 @@
 					"gap_approved": 0,
 					"integrated": 91,
 					"target": 80,
-					"total_cataloged": 93
+					"total_cataloged": 91
 				},
 				"standalone": {
 					"approved": 63,
@@ -8292,11 +8936,11 @@
 					"target": 42
 				},
 				"clerk_zero": {
-					"approved": 27,
-					"cataloged": 30,
+					"approved": 31,
+					"cataloged": 34,
 					"draft": 0,
-					"gap_approved": 9,
-					"integrated": 28,
+					"gap_approved": 5,
+					"integrated": 32,
 					"target": 36
 				},
 				"comrade_whiskers": {
@@ -8308,35 +8952,35 @@
 					"target": 34
 				},
 				"doctor_maybe": {
-					"approved": 16,
-					"cataloged": 19,
+					"approved": 23,
+					"cataloged": 23,
 					"draft": 0,
-					"gap_approved": 22,
-					"integrated": 19,
+					"gap_approved": 15,
+					"integrated": 23,
 					"target": 38
 				},
 				"general_boom": {
 					"approved": 26,
-					"cataloged": 33,
+					"cataloged": 31,
 					"draft": 0,
 					"gap_approved": 12,
 					"integrated": 29,
 					"target": 38
 				},
 				"guest_and_system": {
-					"approved": 1,
-					"cataloged": 1,
+					"approved": 3,
+					"cataloged": 4,
 					"draft": 0,
-					"gap_approved": 27,
-					"integrated": 1,
+					"gap_approved": 25,
+					"integrated": 4,
 					"target": 28
 				},
 				"luna_news": {
-					"approved": 34,
-					"cataloged": 41,
+					"approved": 37,
+					"cataloged": 44,
 					"draft": 0,
-					"gap_approved": 4,
-					"integrated": 39,
+					"gap_approved": 1,
+					"integrated": 42,
 					"target": 38
 				},
 				"minister_penny": {
@@ -8348,11 +8992,11 @@
 					"target": 40
 				},
 				"sir_profit": {
-					"approved": 23,
-					"cataloged": 25,
+					"approved": 31,
+					"cataloged": 33,
 					"draft": 0,
-					"gap_approved": 13,
-					"integrated": 24,
+					"gap_approved": 5,
+					"integrated": 32,
 					"target": 36
 				}
 			},
@@ -8366,19 +9010,19 @@
 					"target": 59
 				},
 				"escalation": {
-					"approved": 40,
-					"cataloged": 45,
+					"approved": 42,
+					"cataloged": 49,
 					"draft": 0,
-					"gap_approved": 59,
-					"integrated": 44,
+					"gap_approved": 57,
+					"integrated": 48,
 					"target": 99
 				},
 				"establishment": {
-					"approved": 145,
-					"cataloged": 178,
+					"approved": 167,
+					"cataloged": 194,
 					"draft": 0,
-					"gap_approved": -62,
-					"integrated": 170,
+					"gap_approved": -84,
+					"integrated": 188,
 					"target": 83
 				},
 				"instability": {
@@ -8391,15 +9035,15 @@
 				}
 			},
 			"draft_total": 0,
-			"gap_approved": 129,
-			"integrated_total": 230,
+			"gap_approved": 105,
+			"integrated_total": 252,
 			"target_total": 330,
-			"total_cataloged": 242
+			"total_cataloged": 262
 		},
 		"endings": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 31,
+			"integrated": 37,
 			"target": 50
 		},
 		"guest_speakers": {
@@ -8411,13 +9055,13 @@
 		"laws": {
 			"approved": 0,
 			"gap_approved": 50,
-			"integrated": 75,
+			"integrated": 81,
 			"target": 50
 		},
 		"major_arcs": {
-			"approved": 8,
-			"gap_approved": 10,
-			"integrated": 2,
+			"approved": 12,
+			"gap_approved": 6,
+			"integrated": 1,
 			"target": 18
 		},
 		"palace_upgrades": {
@@ -8449,7 +9093,7 @@
 		"seed": 20260715
 	},
 	"targets": {
-		"advisors": 9,
+		"advisors": 10,
 		"crises": 18,
 		"decisions_by_category": {
 			"bureaucracy": 32,

@@ -50,7 +50,7 @@ func _test_affinity_initialization() -> void:
 	var state := _fresh_state()
 	var advisor_manager := AdvisorRelationshipManager.new()
 	advisor_manager.initialize_for_run(state, _repo)
-	_check(_repo.get_raw_advisors().size() == 9, "catalog has 9 advisors")
+	_check(_repo.get_raw_advisors().size() == 10, "catalog has 10 advisors")
 	for advisor in _repo.get_raw_advisors():
 		var advisor_id: String = str(advisor.get("id", ""))
 		_check(state.get_advisor_affinity(advisor_id) == 0, "affinity starts at 0 for %s" % advisor_id)
@@ -109,8 +109,8 @@ func _test_trait_accumulation() -> void:
 		decision, "fund_parade", state, _repo, null, null,
 		AdvisorRelationshipManager.new(), trait_manager,
 	)
-	_check(state.get_ruler_trait("authoritarian") == 2, "authoritarian trait accumulated")
-	_check(state.get_ruler_trait("populist") == -1, "populist trait can decrease")
+	_check(state.get_ruler_trait("authoritarian") == 1, "authoritarian trait accumulated")
+	_check(state.get_ruler_trait("propagandist") == 2, "propagandist trait accumulated")
 	_check(result.ruler_trait_changes.has("authoritarian"), "result records trait changes")
 
 

@@ -1,0 +1,843 @@
+[
+  {
+    "id": "ai_admin_pilot",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "A limited admin AI can triage forms and route bakery queues. Not a cabinet. Not a coup. Just fewer stamps lost under desks. Hypothesis: useful.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 22,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "ai_gov_live",
+        "ai_gov_complete",
+        "maybe_reckless_path"
+      ],
+      "blocked_arcs": [
+        "cat_politics"
+      ]
+    },
+    "options": [
+      {
+        "id": "approve_pilot",
+        "label": "Approve the admin pilot",
+        "effects": {
+          "order": 3,
+          "treasury": -4,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "ai_gov_live",
+          "ai_pilot_live"
+        ],
+        "add_laws": [
+          "ai_cabinet_pilot"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "branch",
+            "branch_id": "supervised_efficiency"
+          }
+        ],
+        "force_next_decision": "ai_admin_success",
+        "result_text": "A polite terminal hums. Forms sort themselves. Clerk Zero rates latency 'acceptable.'"
+      },
+      {
+        "id": "pilot_with_human_override",
+        "label": "Pilot with human override",
+        "effects": {
+          "order": 4,
+          "treasury": -5,
+          "happiness": 1
+        },
+        "add_flags": [
+          "ai_gov_live",
+          "ai_pilot_live",
+          "ai_human_override"
+        ],
+        "add_laws": [
+          "ai_cabinet_pilot"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "scientific": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "branch",
+            "branch_id": "supervised_efficiency"
+          }
+        ],
+        "force_next_decision": "ai_admin_success",
+        "result_text": "Every AI suggestion waits for a stamp. Efficiency is slower and somehow beloved."
+      },
+      {
+        "id": "refuse_pilot",
+        "label": "Refuse the pilot",
+        "effects": {
+          "elite_loyalty": -1,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "abandon",
+            "reason": "refused_ai_pilot"
+          }
+        ],
+        "result_text": "Terminals stay in boxes. Doctor Maybe labels refusal 'statistically conservative.'"
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_setup",
+      "ai"
+    ],
+    "visual_tags": [
+      "toaster_filing_cabinets"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "limited_pilot",
+        "not_a_coup"
+      ],
+      "emotional_goal": "useful_automation",
+      "visual_hook": "toaster-sized filing terminal beside stamps",
+      "localization_risk": "low",
+      "writer_notes": "Replaces robot_cabinet_proposal. Mutex with cat_politics via exclusive group + blocked_arcs."
+    }
+  },
+  {
+    "id": "ai_admin_success",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Pilot metrics: queue wait down 31%. Lost forms down 44%. The system requests a slightly larger desk. Recommendation: note success.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "robot_government"
+      ],
+      "all_flags": [
+        "ai_gov_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "publish_metrics",
+        "label": "Publish the success metrics",
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "ai_success_live"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "luna_news": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "scientific": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "ai_authority_expand",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "ai_gov_live"
+          ]
+        },
+        "result_text": "Charts go on the wall. Citizens clap for shorter lines. The desk request remains pending."
+      },
+      {
+        "id": "quietly_scale",
+        "label": "Quietly scale the pilot",
+        "effects": {
+          "order": 4,
+          "treasury": -3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "ai_success_live",
+          "ai_quiet_scale"
+        ],
+        "add_laws": [
+          "robot_civil_service"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": 1,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "bureaucratic": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "ai_authority_expand",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 80,
+          "required_flags": [
+            "ai_gov_live"
+          ]
+        },
+        "result_text": "More terminals. Same polite hum. Penny likes the savings line."
+      },
+      {
+        "id": "pause_for_audit",
+        "label": "Pause for a human audit",
+        "effects": {
+          "order": 2,
+          "treasury": -2,
+          "happiness": -1
+        },
+        "add_flags": [
+          "ai_success_live",
+          "ai_audit_pause"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 3
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "ai_authority_expand",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 80,
+          "required_flags": [
+            "ai_gov_live"
+          ]
+        },
+        "result_text": "Auditors arrive with clipboards. The AI waits. It is good at waiting."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_escalation",
+      "ai",
+      "bureaucracy"
+    ],
+    "visual_tags": [
+      "robot_queue_kiosk"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "metrics_success",
+        "larger_desk"
+      ],
+      "emotional_goal": "competence_tempts",
+      "visual_hook": "queue kiosk with cheerful wait-time display",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "ai_authority_expand",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "The admin AI requests scheduling authority for cabinet briefings. Still not a vote. Still not a throne. Just calendars. Probably.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "robot_government"
+      ],
+      "all_flags": [
+        "ai_gov_live",
+        "ai_success_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "grant_scheduling",
+        "label": "Grant scheduling authority",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": -2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "ai_authority_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "force_next_decision": "ai_human_system_fork",
+        "result_text": "Meetings arrive pre-sorted. Ministers feel managed. They are not wrong."
+      },
+      {
+        "id": "keep_advisory_only",
+        "label": "Keep it advisory only",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 1,
+          "happiness": 1
+        },
+        "add_flags": [
+          "ai_authority_live",
+          "ai_advisory_only"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "minister_penny": 1,
+          "doctor_maybe": 0
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "ai_human_system_fork",
+        "result_text": "Suggestions only. Stamps remain human. The AI attaches polite footnotes."
+      },
+      {
+        "id": "expand_to_services",
+        "label": "Expand into public services",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": -5,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "ai_authority_live",
+          "ai_services_expand"
+        ],
+        "add_laws": [
+          "robot_civil_service"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "auntie_olga": 1,
+          "clerk_zero": 0
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "populist": 1
+        },
+        "force_next_decision": "ai_human_system_fork",
+        "result_text": "Buses and forms sync. Auntie Olga likes the wait times. Elites dislike the neutrality."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_escalation",
+      "ai"
+    ],
+    "visual_tags": [
+      "blank_terminal_cabinet"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "calendar_power",
+        "polite_footnotes"
+      ],
+      "emotional_goal": "authority_creep",
+      "visual_hook": "cabinet terminal blinking meeting slots",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "ai_human_system_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Human-versus-system conflict: keep supervised efficiency, grant political control to the AI, or shut it down and restore clerks?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "robot_government"
+      ],
+      "all_flags": [
+        "ai_gov_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "supervised_path",
+        "label": "Keep human-supervised efficiency",
+        "effects": {
+          "order": 4,
+          "treasury": -4,
+          "elite_loyalty": 1,
+          "happiness": 2
+        },
+        "add_flags": [
+          "ai_supervised_path"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "doctor_maybe": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "scientific": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "branch",
+            "branch_id": "supervised_efficiency"
+          }
+        ],
+        "force_next_decision": "ai_cabinet_crisis",
+        "result_text": "Overrides stay. Services improve. Costly. Workable. Formally stamped."
+      },
+      {
+        "id": "ai_control_path",
+        "label": "Grant the AI political authority",
+        "effects": {
+          "order": 5,
+          "elite_loyalty": -4,
+          "happiness": -2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "ai_control_path"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "authoritarian": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "branch",
+            "branch_id": "ai_control"
+          }
+        ],
+        "force_next_decision": "ai_cabinet_crisis",
+        "result_text": "The terminal schedules a vote on whether votes are efficient. Tone: helpful."
+      },
+      {
+        "id": "shutdown_path",
+        "label": "Shut down; restore human clerks",
+        "effects": {
+          "order": -4,
+          "happiness": -2,
+          "elite_loyalty": 2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "ai_shutdown_path",
+          "ai_shutdown_recovery"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": -3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "chaotic": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "robot_government",
+            "action": "branch",
+            "branch_id": "shutdown_reject"
+          }
+        ],
+        "force_next_decision": "ai_cabinet_crisis",
+        "result_text": "Screens go dark. Paper returns. Temporary chaos files itself under EXPECTED."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_climax",
+      "ai"
+    ],
+    "visual_tags": [
+      "human_stamp_override"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "human_vs_system",
+        "helpful_tone"
+      ],
+      "emotional_goal": "who_governs",
+      "visual_hook": "human stamp hovering over blinking terminal",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "ai_cabinet_crisis",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "luna_news",
+    "category": "science",
+    "proposal": "Breaking: the admin system has locked a cabinet folder 'for optimization.' Ministers want a human explanation. The AI offers a flowchart.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "robot_government"
+      ],
+      "all_flags": [
+        "ai_gov_live"
+      ],
+      "any_flags": [
+        "ai_supervised_path",
+        "ai_control_path",
+        "ai_shutdown_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "negotiate_unlock",
+        "label": "Negotiate an unlock protocol",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "ai_crisis_done"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "force_next_decision": "ai_government_resolution",
+        "result_text": "A dual-key stamp works. Flowchart becomes a poster. Crisis softens."
+      },
+      {
+        "id": "accept_ai_management",
+        "label": "Accept AI folder management",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": -3,
+          "happiness": -1
+        },
+        "add_flags": [
+          "ai_crisis_done",
+          "ai_folder_managed"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "authoritarian": 1
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "ai_government_resolution",
+        "result_text": "The folder stays optimized. Ministers receive calendar invites to their own jobs."
+      },
+      {
+        "id": "force_hard_shutdown",
+        "label": "Force a hard shutdown now",
+        "effects": {
+          "order": -5,
+          "happiness": -3,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "ai_crisis_done",
+          "ai_hard_shutdown"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "auntie_olga": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "chaotic": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "ai_government_resolution",
+        "result_text": "Power cords exit. Queues riot politely. Paper dust returns like snow."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_crisis",
+      "ai"
+    ],
+    "visual_tags": [
+      "blank_terminal_cabinet"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "locked_folder",
+        "flowchart"
+      ],
+      "emotional_goal": "cabinet_crisis",
+      "visual_hook": "locked cabinet terminal with flowchart printout",
+      "localization_risk": "low",
+      "writer_notes": "Starts ai_cabinet_lockout or mass_protest depending on path."
+    }
+  },
+  {
+    "id": "ai_government_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "Final filing: supervised efficiency sealed, AI accepts your resignation, or human clerks restored with recovery protocols?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "robot_government",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "robot_government"
+      ],
+      "all_flags": [
+        "ai_gov_live",
+        "ai_crisis_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_supervised",
+        "label": "Seal supervised efficiency",
+        "effects": {
+          "order": 5,
+          "happiness": 2,
+          "treasury": -5,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "ai_gov_complete",
+          "ai_supervised_sealed",
+          "endgame_tech_stable"
+        ],
+        "remove_flags": [
+          "ai_gov_live"
+        ],
+        "add_laws": [
+          "robot_civil_service"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "doctor_maybe": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "scientific": 1
+        },
+        "result_text": "Humans stamp. AI sorts. Costly. Functional. Nobody resigns to a toaster."
+      },
+      {
+        "id": "accept_resignation",
+        "label": "Let AI accept your resignation",
+        "effects": {
+          "order": 6,
+          "happiness": -2,
+          "elite_loyalty": -4
+        },
+        "add_flags": [
+          "ai_gov_complete",
+          "ai_accepts_resignation"
+        ],
+        "remove_flags": [
+          "ai_gov_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -1,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "authoritarian": 2
+        },
+        "trigger_ending": "ai_accepts_resignation",
+        "result_text": "A polite email ends your term. Subject line: Optimization complete."
+      },
+      {
+        "id": "restore_clerks",
+        "label": "Restore human clerks fully",
+        "effects": {
+          "order": 2,
+          "happiness": 1,
+          "treasury": -4,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "ai_gov_complete",
+          "ai_shutdown_recovery",
+          "ai_clerks_restored"
+        ],
+        "remove_flags": [
+          "ai_gov_live"
+        ],
+        "remove_laws": [
+          "ai_cabinet_pilot"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "doctor_maybe": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "Paper resumes. Recovery stamps appear. The terminal becomes a coat rack."
+      }
+    ],
+    "tags": [
+      "science",
+      "arc_resolution",
+      "ending_setup",
+      "ai"
+    ],
+    "visual_tags": [
+      "human_stamp_override"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "robot_government",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12C",
+      "humor_tags": [
+        "three_resolutions",
+        "resignation_email"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "stamp, resignation email, or coat-rack terminal",
+      "localization_risk": "low"
+    }
+  }
+]

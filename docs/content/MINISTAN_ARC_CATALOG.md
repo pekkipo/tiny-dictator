@@ -16,13 +16,15 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 | `arc_penny_austerity` | `penny_austerity_arc` | 2B-10 Pack A (6 cards incl. supporting) |
 | `arc_traffic_military_control` | `traffic_military_control` (major); legacy `traffic_military` remains minor debug_only | 2B-10 Pack A (6 cards) |
 | `arc_hyperinflation` | `hyperinflation_arc` | 2B-10 Pack A (5 cards) |
-| `arc_maybe_experimental_republic` | `doctor_maybe_arc` | partial (4 cards) |
+| `arc_maybe_experimental_republic` | `doctor_maybe_arc` | **2B-12 Pack C approved (6 cards)** |
 | `arc_cat_politics` | `cat_politics` | partial (8 cards; trim to 6 at integration) |
 | `arc_mandatory_happiness` | `mandatory_happiness` | **2B-11 Pack B approved (6 cards)** |
 | `arc_luna_media_reality` | `luna_media_reality` | **2B-11 Pack B approved (6 cards)** |
 | `arc_olga_citizen_movement` | `olga_citizen_movement` | **2B-11 Pack B approved (6 cards)** |
 | `arc_fake_election_accident` | `fake_election_accident` | **2B-11 Pack B approved (6 cards)** |
-| `arc_ai_government` | `robot_government` | deferred (2 cards) |
+| `arc_ai_government` | `robot_government` | **2B-12 Pack C approved (6 cards)** |
+| `arc_profit_corporate_state` | `profit_corporate_state` | **2B-12 Pack C approved (6 cards)** |
+| `arc_sell_the_moon` | `sell_the_moon` | **2B-12 Pack C approved (6 cards)** |
 
 ---
 
@@ -95,31 +97,34 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_maybe_experimental_republic
 
 - **Title:** The Experimental Republic
-- **Status:** partial
+- **Status:** approved (2B-12)
 - **Target cards:** 6
 - **Primary speaker:** doctor_maybe
 - **Category:** science_and_technology
-- **Intended stage:** escalation
-- **Premise:** Maybe's trials escalate from lab sparks to nation-scale experiments.
-- **Dependencies:** scientific_experiment_permit law optional
-- **Likely laws:** artificial_sun_program, clone_holiday, ai_cabinet_pilot
-- **Likely endings:** experimental_republic, experiment_leaves, scientific_golden_age
-- **Known risks:** Variance balance; containment card tone (Clerk Zero co-speaker on one card OK)
+- **Intended stage:** establishment → escalation
+- **Premise:** Maybe's useful trials escalate into national dependence, progress, recklessness, or ethical limits.
+- **Dependencies:** soft entry via onboarding `science_gamble`
+- **Likely laws:** scientific_experiment_permit, national_trial_oversight_act
+- **Likely endings:** experimental_republic, experiment_leaves (soft scientific_golden_age flags)
+- **Known risks:** Moon ownership moved to Sell the Moon; avoid explosion-default comedy
 - **Runtime mapping:** `doctor_maybe_arc`
+- **Brief:** [2B-12_major_arc_pack_c_briefs.md](drafts/2B-12_major_arc_pack_c_briefs.md)
 
 ### arc_profit_corporate_state
 
 - **Title:** The Corporate State
-- **Status:** outlined
-- **Target cards:** 5
+- **Status:** approved (2B-12)
+- **Target cards:** 6
 - **Primary speaker:** sir_profit
 - **Category:** business_and_privatization
-- **Intended stage:** escalation → endgame
-- **Premise:** Sir Profit privatizes ministries until the country is a subsidiary.
-- **Dependencies:** Low treasury or prior privatization standalones
+- **Intended stage:** escalation
+- **Premise:** Attractive partnerships expand into institutions until PPP, acquisition, or nationalization forks.
+- **Dependencies:** soft blocked vs live penny/hyperinflation arcs on entry card
 - **Likely laws:** privatize_air, rent_a_ministry, corporate_capital_naming
 - **Likely endings:** corporate_ministan, country_is_acquired, profit_buys_retirement
-- **Known risks:** Treasury-positive dominant options
+- **Known risks:** Distinct from bench privatization standalones
+- **Runtime mapping:** `profit_corporate_state`
+- **Brief:** [2B-12_major_arc_pack_c_briefs.md](drafts/2B-12_major_arc_pack_c_briefs.md)
 
 ### arc_whiskers_cat_revolution
 
@@ -203,31 +208,34 @@ Planning arcs use `arc_` IDs. Runtime Phase 2A arcs may use different IDs — se
 ### arc_ai_government
 
 - **Title:** AI Government
-- **Status:** deferred
+- **Status:** approved (2B-12)
 - **Target cards:** 6
 - **Primary speaker:** doctor_maybe / clerk_zero
 - **Category:** science_and_technology
 - **Intended stage:** escalation → endgame
-- **Premise:** Robot cabinet pilot becomes actual governance.
-- **Dependencies:** robot_cabinet_proposal chain deferred
+- **Premise:** Limited admin AI pilot expands into supervised efficiency, political control, or shutdown.
+- **Dependencies:** exclusive with cat_politics via government_replacement_arc; soft blocked vs maybe_reckless_path
 - **Likely laws:** ai_cabinet_pilot, robot_civil_service
-- **Likely endings:** ai_accepts_resignation, technocratic_accident
-- **Known risks:** Overlap with doctor_maybe arc; defer until robot chain approved
+- **Likely endings:** ai_accepts_resignation
+- **Known risks:** Distinct from robot_queue short chain and Maybe lab fantasy
 - **Runtime mapping:** `robot_government`
+- **Brief:** [2B-12_major_arc_pack_c_briefs.md](drafts/2B-12_major_arc_pack_c_briefs.md)
 
 ### arc_sell_the_moon
 
 - **Title:** Sell the Moon
-- **Status:** outlined
-- **Target cards:** 5
-- **Primary speaker:** sir_profit / doctor_maybe
+- **Status:** approved (2B-12)
+- **Target cards:** 6
+- **Primary speaker:** sir_profit / doctor_maybe / foreign_ambassador / chief_judge
 - **Category:** business_and_privatization
 - **Intended stage:** escalation
-- **Premise:** Moon ownership becomes a budget line item with diplomatic fallout.
-- **Dependencies:** maybe_moon_dust_trial standalone as soft entry
+- **Premise:** Moon ownership becomes a budget/prestige line with sale, research, or diplomacy forks.
+- **Dependencies:** owns accidental_moon_replacement; soft blocked vs maybe_reckless_path
 - **Likely laws:** moon_replacement_research
 - **Likely endings:** moon_new_owner, accidental_moon_replacement
-- **Known risks:** Existing ending `accidental_moon_replacement` must align conditions
+- **Known risks:** No realistic rocketry; absurd Article 12-Moon legal beat
+- **Runtime mapping:** `sell_the_moon`
+- **Brief:** [2B-12_major_arc_pack_c_briefs.md](drafts/2B-12_major_arc_pack_c_briefs.md)
 
 ### arc_hyperinflation
 

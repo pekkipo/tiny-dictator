@@ -134,8 +134,9 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 		"2A-9: zero content exhaustion runs (got %d)" % int(sim.get("content_exhaustion_count", -1)))
 
 	var required_arcs: Array[String] = [
-		"cat_politics", "traffic_military", "mandatory_happiness",
+		"cat_politics", "mandatory_happiness",
 		"general_boom_arc", "doctor_maybe_arc",
+		"profit_corporate_state", "robot_government", "sell_the_moon",
 	]
 	var arc_starts: Dictionary = sim.get("arc_start_rates", {})
 	var arc_completions: Dictionary = sim.get("arc_completion_rates", {})

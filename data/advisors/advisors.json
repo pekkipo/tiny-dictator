@@ -71,5 +71,14 @@
     "placeholder_icon": "⚖️",
     "accent_key": "bureaucracy",
     "guest": true
+  },
+  {
+    "id": "foreign_ambassador",
+    "display_name": "Foreign Ambassador",
+    "role": "Guest Diplomat",
+    "short_description": "Delivers awkward notes from neighboring Tinyria. No affinity meter. Only polite objections.",
+    "placeholder_icon": "🕊️",
+    "accent_key": "bureaucracy",
+    "guest": true
   }
 ]

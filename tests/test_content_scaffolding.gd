@@ -55,7 +55,7 @@ func _test_manifest_reporting(repo: ContentRepository) -> void:
 	var quota_text := ContentManifestBuilder.format_quota_text(manifest)
 	_check(quota_text.find("draft") >= 0, "format_quota_text mentions draft counts")
 	_check(quota_text.find("By category") >= 0, "format_quota_text includes category quota")
-	_check(manifest.get("phase", "") == "2b_10_major_arc_pack_a", "manifest phase is 2b_10_major_arc_pack_a")
+	_check(manifest.get("phase", "") == "2b_12_major_arc_pack_c", "manifest phase is 2b_12_major_arc_pack_c")
 
 
 func _test_runtime_decision_file_count() -> void:

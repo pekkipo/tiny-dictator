@@ -258,5 +258,109 @@
     ],
     "tags": ["cats", "crisis", "politics"],
     "visual_tags": ["cats_in_square"]
+  },
+  {
+    "id": "ai_cabinet_lockout",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "CRISIS: The admin AI has locked a cabinet folder for optimization. Dual-key protocol is available. Smash protocol is also available.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 38,
+    "pacing": {
+      "allowed_stages": ["escalation", "instability", "endgame"]
+    },
+    "narrative": {
+      "crisis_id": "ai_cabinet_lockout",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "dual_key",
+        "label": "Authorize dual-key unlock",
+        "effects": { "order": 4, "treasury": -3, "elite_loyalty": 2 },
+        "advisor_affinity": { "clerk_zero": 2 },
+        "crisis_actions": [
+          { "crisis_id": "ai_cabinet_lockout", "action": "resolve", "resolution_id": "dual_key" }
+        ],
+        "result_text": "Two stamps unlock the folder. The flowchart becomes a poster."
+      },
+      {
+        "id": "accept_optimize",
+        "label": "Accept the optimization",
+        "effects": { "order": 3, "elite_loyalty": -3, "happiness": -1 },
+        "advisor_affinity": { "doctor_maybe": 1, "clerk_zero": -1 },
+        "crisis_actions": [
+          { "crisis_id": "ai_cabinet_lockout", "action": "resolve", "resolution_id": "accept_optimize" }
+        ],
+        "result_text": "Ministers receive calendar invites to their own briefings."
+      },
+      {
+        "id": "smash_terminal",
+        "label": "Smash the terminal",
+        "effects": { "order": -4, "happiness": 2, "elite_loyalty": -1 },
+        "trait_changes": { "chaotic": 2 },
+        "crisis_actions": [
+          { "crisis_id": "ai_cabinet_lockout", "action": "fail", "reason": "smash_terminal" }
+        ],
+        "result_text": "Sparks. Paper dust. A coat rack is born."
+      }
+    ],
+    "tags": ["science", "crisis", "ai"],
+    "visual_tags": ["blank_terminal_cabinet"]
+  },
+  {
+    "id": "moon_ownership_dispute",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "foreign_ambassador",
+    "category": "bureaucracy",
+    "proposal": "CRISIS: Tinyria escalates the Moon Ownership Dispute. They brought a longer note and a smaller flag.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 38,
+    "pacing": {
+      "allowed_stages": ["escalation", "instability", "endgame"]
+    },
+    "narrative": {
+      "crisis_id": "moon_ownership_dispute",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "share_nights",
+        "label": "Share observation nights",
+        "effects": { "order": 3, "happiness": 3, "treasury": -2 },
+        "crisis_actions": [
+          { "crisis_id": "moon_ownership_dispute", "action": "resolve", "resolution_id": "share_nights" }
+        ],
+        "result_text": "Tuesdays and Wednesdays are filed. The Moon remains unconsulted."
+      },
+      {
+        "id": "pay_settlement",
+        "label": "Pay a lunar settlement",
+        "effects": { "treasury": -8, "elite_loyalty": 2, "order": 2 },
+        "advisor_affinity": { "sir_profit": 1 },
+        "crisis_actions": [
+          { "crisis_id": "moon_ownership_dispute", "action": "resolve", "resolution_id": "pay_settlement" }
+        ],
+        "result_text": "Cash clears the awkwardness. Tinyria folds the longer note."
+      },
+      {
+        "id": "ignore_tinyria",
+        "label": "Ignore Tinyria",
+        "effects": { "order": -5, "happiness": -2, "elite_loyalty": 1 },
+        "crisis_actions": [
+          { "crisis_id": "moon_ownership_dispute", "action": "fail", "reason": "ignore_tinyria" }
+        ],
+        "result_text": "The smaller flag waves harder. Embassies queue overnight."
+      }
+    ],
+    "tags": ["bureaucracy", "crisis", "moon"],
+    "visual_tags": ["embassy_queue_protest"]
   }
 ]

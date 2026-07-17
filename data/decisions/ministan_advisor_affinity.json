@@ -295,7 +295,8 @@
           "happiness": 3
         },
         "add_flags": [
-          "science_experiment_funded"
+          "science_experiment_funded",
+          "maybe_arc_soft_entry"
         ],
         "advisor_affinity": {
           "doctor_maybe": 2
@@ -304,16 +305,9 @@
           "scientific": 3,
           "chaotic": 1
         },
-        "arc_actions": [
-          {
-            "arc_id": "doctor_maybe_arc",
-            "action": "branch",
-            "branch_id": "reckless_science"
-          }
-        ],
         "follow_up": {
           "type": "soft",
-          "decision_id": "maybe_moon_dust_trial",
+          "decision_id": "maybe_useful_trial",
           "minimum_delay_days": 2,
           "maximum_delay_days": 5,
           "priority": 75,
@@ -339,11 +333,10 @@
         "arc_actions": [
           {
             "arc_id": "doctor_maybe_arc",
-            "action": "branch",
-            "branch_id": "cautious_oversight"
+            "action": "abandon",
+            "reason": "denied_funding"
           }
         ],
-        "force_next_decision": "maybe_containment_protocol",
         "result_text": "Doctor Maybe labels you Control Group A."
       }
     ],

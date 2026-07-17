@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_11_major_arc_pack_b"
-const BATCH_ID: String = "2B-11"
-const DECISION_BATCH_ID: String = "2B-11"
+const PHASE: String = "2b_12_major_arc_pack_c"
+const BATCH_ID: String = "2B-12"
+const DECISION_BATCH_ID: String = "2B-12"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -57,7 +57,7 @@ const TARGETS: Dictionary = {
 	"endings": 50,
 	"palace_upgrades": 24,
 	"ruler_identities": 12,
-	"advisors": 9,
+	"advisors": 10,
 	"guest_speakers": 6,
 }
 
@@ -91,14 +91,16 @@ const MAJOR_ARC_IDS: Array[String] = [
 	"cat_politics", "mandatory_happiness", "general_boom_arc", "doctor_maybe_arc",
 	"penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
 	"luna_media_reality", "olga_citizen_movement", "fake_election_accident",
+	"profit_corporate_state", "robot_government", "sell_the_moon",
 ]
 
 const APPROVED_MAJOR_ARC_IDS: Array[String] = [
 	"general_boom_arc", "penny_austerity_arc", "traffic_military_control", "hyperinflation_arc",
 	"luna_media_reality", "olga_citizen_movement", "mandatory_happiness", "fake_election_accident",
+	"doctor_maybe_arc", "profit_corporate_state", "robot_government", "sell_the_moon",
 ]
 
-const MINOR_ARC_IDS: Array[String] = ["traffic_military", "robot_government"]
+const MINOR_ARC_IDS: Array[String] = ["traffic_military"]
 
 const MAJOR_ARC_PACK_A_APPROVED_IDS: Array[String] = [
 	# Boom — The General's Rise (7)
@@ -131,6 +133,21 @@ const MAJOR_ARC_PACK_B_APPROVED_IDS: Array[String] = [
 	"election_unexpected_result", "election_government_response", "election_arc_resolution",
 ]
 
+const MAJOR_ARC_PACK_C_APPROVED_IDS: Array[String] = [
+	# Doctor Maybe — The Experimental Republic (6)
+	"maybe_useful_trial", "maybe_national_trial", "maybe_experiment_dependence",
+	"maybe_ethics_fork", "maybe_major_consequence", "maybe_experimental_resolution",
+	# Sir Profit — The Corporate State (6)
+	"profit_partnership_brief", "profit_commercial_success", "profit_institution_lease",
+	"profit_ownership_fork", "profit_identity_crisis", "profit_corporate_resolution",
+	# AI Government (6)
+	"ai_admin_pilot", "ai_admin_success", "ai_authority_expand",
+	"ai_human_system_fork", "ai_cabinet_crisis", "ai_government_resolution",
+	# Sell the Moon (6)
+	"moon_budget_proposal", "moon_ownership_campaign", "moon_path_fork",
+	"moon_international_reaction", "moon_crisis_opportunity", "moon_arc_resolution",
+]
+
 const CHAIN_MEMBERS: Dictionary = {
 	"free_pizza_consequences": [
 		"free_pizza_friday", "cheese_shortage", "pizza_union_strike", "pineapple_referendum",
@@ -139,7 +156,6 @@ const CHAIN_MEMBERS: Dictionary = {
 		"switch_off_traffic_lights", "traffic_tank_solution", "traffic_complaint",
 		"traffic_military_resolved", "traffic_lights_restored",
 	],
-	"robot_government": ["robot_cabinet_proposal", "robot_government_installed"],
 	"cat_politics_followups": ["cat_parliament", "cat_fish_budget"],
 	"umbrella_tax": ["umbrella_tax_proposal", "umbrella_tax_enforcement"],
 	"national_coffee_reserve": [
@@ -301,11 +317,11 @@ const SHORT_CHAIN_PACK_D_APPROVED_IDS: Array[String] = [
 ]
 
 const DEFERRED_DECISION_IDS: Array[String] = [
-	"robot_cabinet_proposal", "robot_government_installed", "budget_meltdown_crisis",
+	"budget_meltdown_crisis",
 	"propaganda_smile_campaign",
 ]
 
-const DEFERRED_ARC_IDS: Array[String] = ["robot_government"]
+const DEFERRED_ARC_IDS: Array[String] = []
 const DEFERRED_CRISIS_IDS: Array[String] = ["budget_meltdown"]
 
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
@@ -383,6 +399,10 @@ const MANUAL_TEST_DECISION_IDS: Array[String] = [
 	"traffic_control_climax", "traffic_civilian_peace", "traffic_martial_resolution",
 	"hyperinflation_price_spiral", "hyperinflation_public_adaptation",
 	"hyperinflation_policy_fork", "hyperinflation_temp_success", "hyperinflation_resolution",
+	"maybe_useful_trial", "maybe_ethics_fork", "maybe_experimental_resolution",
+	"profit_partnership_brief", "profit_ownership_fork", "profit_corporate_resolution",
+	"ai_admin_pilot", "ai_human_system_fork", "ai_government_resolution",
+	"moon_budget_proposal", "moon_path_fork", "moon_arc_resolution",
 ]
 
 const SIM_NEVER_SELECTED: Array[String] = []
@@ -562,9 +582,7 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 	for chain_id in CHAIN_MEMBERS:
 		var member_ids: Array = CHAIN_MEMBERS[chain_id]
 		var chain_status := "integrated"
-		if chain_id == "robot_government":
-			chain_status = "deferred"
-		elif chain_id in APPROVED_CHAIN_IDS:
+		if chain_id in APPROVED_CHAIN_IDS:
 			chain_status = "approved"
 		catalogs["chains"].append({
 			"id": chain_id,
@@ -753,6 +771,9 @@ func _resolve_status(
 	if id in MAJOR_ARC_PACK_B_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in MAJOR_ARC_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -833,6 +854,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-10 approved major-arc card.")
 	if id in MAJOR_ARC_PACK_B_APPROVED_IDS:
 		notes.append("Milestone 2B-11 approved major-arc card.")
+	if id in MAJOR_ARC_PACK_C_APPROVED_IDS:
+		notes.append("Milestone 2B-12 approved major-arc card.")
 	return ", ".join(notes)
 
 
@@ -995,12 +1018,18 @@ func _source_file_hint(id: String) -> String:
 	}
 	if FILE_HINTS.has(id):
 		return "data/decisions/%s" % FILE_HINTS[id]
-	if id.begins_with("cat_") or id.begins_with("robot_") or id == "cats_return_to_boxes":
+	if id.begins_with("cat_") or id == "cats_return_to_boxes":
 		return "data/decisions/ministan_cat_politics.json"
-	if id.begins_with("national_") or id.begins_with("cheese_shortage_crisis") or id.begins_with("mass_") or id.begins_with("bank_") or id.begins_with("cat_parliament_occupation"):
+	if id.begins_with("national_") or id.begins_with("cheese_shortage_crisis") or id.begins_with("mass_") or id.begins_with("bank_") or id.begins_with("cat_parliament_occupation") or id in ["ai_cabinet_lockout", "moon_ownership_dispute"]:
 		return "data/decisions/ministan_crises.json"
 	if id.begins_with("maybe_"):
 		return "data/decisions/ministan_doctor_maybe_arc.json"
+	if id.begins_with("profit_"):
+		return "data/decisions/ministan_profit_corporate_state_arc.json"
+	if id.begins_with("ai_"):
+		return "data/decisions/ministan_ai_government_arc.json"
+	if id.begins_with("moon_"):
+		return "data/decisions/ministan_sell_the_moon_arc.json"
 	if id.begins_with("boom_"):
 		return "data/decisions/ministan_general_boom_arc.json"
 	if id.begins_with("penny_"):

@@ -1,0 +1,822 @@
+[
+  {
+    "id": "moon_budget_proposal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Treasury gap meets prestige opportunity: list the Moon as a lunar reserve asset. No rockets required—only deeds, headlines, and optimism.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 9,
+    "maximum_day": 24,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "setup",
+      "starts_arc": true,
+      "importance": "major"
+    },
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "moon_arc_live",
+        "moon_arc_complete",
+        "maybe_reckless_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "list_lunar_asset",
+        "label": "List the Moon as a reserve asset",
+        "effects": {
+          "treasury": 6,
+          "elite_loyalty": 3,
+          "happiness": 1
+        },
+        "add_flags": [
+          "moon_arc_live",
+          "moon_deed_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "commercial_sale"
+          }
+        ],
+        "force_next_decision": "moon_ownership_campaign",
+        "result_text": "A ledger line appears: LUNAR RESERVE. Bankers clap. Astronomers blink."
+      },
+      {
+        "id": "prestige_naming",
+        "label": "Sell lunar naming rights only",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 2,
+          "happiness": 2
+        },
+        "add_flags": [
+          "moon_arc_live",
+          "moon_naming_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "luna_news": 2,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "propagandist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "commercial_sale"
+          }
+        ],
+        "force_next_decision": "moon_ownership_campaign",
+        "result_text": "Craters gain tasteful sponsor plaques in theory. Luna News loves the font."
+      },
+      {
+        "id": "drop_moon_pitch",
+        "label": "Drop the Moon pitch",
+        "effects": {
+          "elite_loyalty": -2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "abandon",
+            "reason": "dropped_moon_pitch"
+          }
+        ],
+        "result_text": "The Moon remains unmonetized. Profit calls it a missed synergy."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_setup",
+      "moon"
+    ],
+    "visual_tags": [
+      "lunar_deed_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "budget_prestige",
+        "no_rockets"
+      ],
+      "emotional_goal": "believable_greed",
+      "visual_hook": "banner reading LUNAR RESERVE over the treasury",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "moon_ownership_campaign",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "chief_judge",
+    "category": "bureaucracy",
+    "proposal": "Legal finding: Article 12-Moon. Whoever first files a solemn deed under a clear night sky may claim symbolic ownership. The sky was clear. The stamp is ready.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "sell_the_moon"
+      ],
+      "all_flags": [
+        "moon_arc_live"
+      ]
+    },
+    "options": [
+      {
+        "id": "stamp_deed",
+        "label": "Stamp the lunar deed",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "moon_deed_stamped",
+          "palace_lunar_deed_meta"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "capitalist": 1
+        },
+        "force_next_decision": "moon_path_fork",
+        "result_text": "Deed stamped under moonlight. Internally logical. Externally ridiculous. Binding in Ministan."
+      },
+      {
+        "id": "luna_broadcast_claim",
+        "label": "Let Luna broadcast the claim",
+        "effects": {
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": 1,
+          "treasury": -3
+        },
+        "add_flags": [
+          "moon_deed_stamped",
+          "moon_media_claim"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 3
+        },
+        "force_next_decision": "moon_path_fork",
+        "result_text": "Special report: Ministan Owns Nightlight. Ratings orbit the palace."
+      },
+      {
+        "id": "maybe_survey_first",
+        "label": "Have Maybe survey first",
+        "effects": {
+          "treasury": -4,
+          "happiness": 1,
+          "order": 2
+        },
+        "add_flags": [
+          "moon_deed_stamped",
+          "moon_survey_first"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "sir_profit": 0
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "force_next_decision": "moon_path_fork",
+        "result_text": "A cardboard telescope is filed as equipment. Results: the Moon is still up there. Maybe."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "moon",
+      "legal"
+    ],
+    "visual_tags": [
+      "deed_stamp_moon"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "article_12_moon",
+        "solemn_deed"
+      ],
+      "emotional_goal": "absurd_legality",
+      "visual_hook": "chief judge stamping a moon deed at night",
+      "localization_risk": "low",
+      "writer_notes": "Absurd but internally logical legal argument. Guest chief_judge. Palace lunar deed meta hook."
+    }
+  },
+  {
+    "id": "moon_path_fork",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Deed exists. Branch: sell ownership, fund public lunar research, or push a diplomatic claim?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "climax",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "sell_the_moon"
+      ],
+      "all_flags": [
+        "moon_arc_live",
+        "moon_deed_stamped"
+      ]
+    },
+    "options": [
+      {
+        "id": "sell_ownership",
+        "label": "Sell lunar ownership",
+        "effects": {
+          "treasury": 15,
+          "elite_loyalty": 4,
+          "happiness": -3
+        },
+        "add_flags": [
+          "moon_sale_path"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "doctor_maybe": -1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "commercial_sale"
+          }
+        ],
+        "force_next_decision": "moon_international_reaction",
+        "result_text": "A buyer signs. Cash lands. The Moon acquires a new letterhead."
+      },
+      {
+        "id": "public_research",
+        "label": "Fund public lunar research",
+        "effects": {
+          "treasury": -8,
+          "happiness": 4,
+          "order": 1,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "moon_science_path"
+        ],
+        "add_laws": [
+          "moon_replacement_research"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "sir_profit": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "scientific": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "science_public"
+          }
+        ],
+        "result_text": "Research begins with charts and no rockets. Doctor Maybe hums.",
+        "follow_up": {
+          "type": "pool",
+          "pool_id": "moon_noise_pool",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 2,
+          "priority": 40
+        }
+      },
+      {
+        "id": "diplomatic_claim",
+        "label": "Push an international claim",
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 2,
+          "happiness": 1,
+          "treasury": -3
+        },
+        "add_flags": [
+          "moon_diplomacy_path"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "capitalist": 1
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "diplomatic_claim"
+          }
+        ],
+        "force_next_decision": "moon_international_reaction",
+        "result_text": "Embassies receive polite moonlight letters. Tone: firm and lunar."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_climax",
+      "moon"
+    ],
+    "visual_tags": [
+      "lunar_deed_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "sale_research_diplomacy"
+      ],
+      "emotional_goal": "path_choice",
+      "visual_hook": "three folders: SALE, SCIENCE, EMBASSY",
+      "localization_risk": "low"
+    }
+  },
+  {
+    "id": "moon_international_reaction",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "foreign_ambassador",
+    "category": "bureaucracy",
+    "proposal": "Neighboring Tinyria objects. Softly. With a note. They claim the Moon on Tuesdays. We appear to have claimed it on a Wednesday. This is awkward.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "escalation",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "sell_the_moon"
+      ],
+      "all_flags": [
+        "moon_arc_live"
+      ],
+      "any_flags": [
+        "moon_sale_path",
+        "moon_science_path",
+        "moon_diplomacy_path"
+      ]
+    },
+    "options": [
+      {
+        "id": "negotiate_schedule",
+        "label": "Share a moonlight schedule",
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "treasury": -2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "moon_intl_done",
+          "moon_shared_observation"
+        ],
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "moon_crisis_opportunity",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 82,
+          "required_flags": [
+            "moon_arc_live"
+          ]
+        },
+        "result_text": "Tinyria gets Tuesdays. We keep Wednesdays. The Moon remains unaware."
+      },
+      {
+        "id": "double_down_claim",
+        "label": "Double down on the claim",
+        "effects": {
+          "elite_loyalty": 3,
+          "order": -2,
+          "happiness": -2
+        },
+        "add_flags": [
+          "moon_intl_done",
+          "moon_hard_claim"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "capitalist": 1
+        },
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "moon_crisis_opportunity",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 82,
+          "required_flags": [
+            "moon_arc_live"
+          ]
+        },
+        "result_text": "The note is returned with a larger stamp. Embassies form a queue."
+      },
+      {
+        "id": "offer_research_share",
+        "label": "Offer shared research access",
+        "effects": {
+          "happiness": 3,
+          "treasury": -4,
+          "order": 2
+        },
+        "add_flags": [
+          "moon_intl_done",
+          "moon_research_share"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "result_text": "Telescopes are shared. Arguments shrink. Charts multiply.",
+        "follow_up": {
+          "type": "soft",
+          "decision_id": "moon_crisis_opportunity",
+          "minimum_delay_days": 1,
+          "maximum_delay_days": 3,
+          "priority": 82,
+          "required_flags": [
+            "moon_arc_live"
+          ]
+        }
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "arc_escalation",
+      "moon"
+    ],
+    "visual_tags": [
+      "embassy_queue_protest"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "tinyria_tuesdays",
+        "awkward_note"
+      ],
+      "emotional_goal": "diplomatic_comedy",
+      "visual_hook": "embassy queue with moon-shaped protest signs",
+      "localization_risk": "low",
+      "writer_notes": "Guest foreign_ambassador. Soft/pool delays into crisis beat."
+    }
+  },
+  {
+    "id": "moon_crisis_opportunity",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "consequence",
+    "advisor_id": "luna_news",
+    "category": "media",
+    "proposal": "Crisis or opportunity: the Moon Ownership Dispute is trending. Tinyria wants talks. Profit wants closing. Maybe wants a brighter model. Live in five.",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "consequence",
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "sell_the_moon"
+      ],
+      "all_flags": [
+        "moon_arc_live",
+        "moon_intl_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "close_the_sale",
+        "label": "Close the sale on air",
+        "effects": {
+          "treasury": 5,
+          "elite_loyalty": 3,
+          "happiness": -2
+        },
+        "add_flags": [
+          "moon_crisis_done",
+          "moon_new_owner_soft"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "propagandist": 1
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "moon_arc_resolution",
+        "result_text": "Handshake filmed. Dispute filed. Cash clears."
+      },
+      {
+        "id": "overreach_research",
+        "label": "Overreach moon replacement study",
+        "effects": {
+          "happiness": 2,
+          "order": -3,
+          "treasury": -6
+        },
+        "add_flags": [
+          "moon_crisis_done",
+          "moon_replacement_pending"
+        ],
+        "add_laws": [
+          "moon_replacement_research"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "sir_profit": -1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "start"
+          }
+        ],
+        "force_next_decision": "moon_arc_resolution",
+        "result_text": "A brighter model is sketched. Tides file a preliminary complaint."
+      },
+      {
+        "id": "settle_quietly",
+        "label": "Settle the dispute quietly",
+        "effects": {
+          "order": 4,
+          "happiness": 2,
+          "treasury": -3,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "moon_crisis_done",
+          "moon_shared_observation"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "force_next_decision": "moon_arc_resolution",
+        "result_text": "Cameras leave. Shared observation nights begin. The Moon keeps its job."
+      }
+    ],
+    "tags": [
+      "media",
+      "arc_crisis",
+      "moon"
+    ],
+    "visual_tags": [
+      "fake_telescope_plaza"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "trending_dispute",
+        "brighter_model"
+      ],
+      "emotional_goal": "crisis_choice",
+      "visual_hook": "plaza telescope pointed at a very ordinary moon",
+      "localization_risk": "low",
+      "writer_notes": "Owns accidental_moon_replacement via moon_replacement_pending. Starts moon_ownership_dispute."
+    }
+  },
+  {
+    "id": "moon_arc_resolution",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "sir_profit",
+    "category": "economy",
+    "proposal": "Final lunar filing: declare a new owner, accept the brighter-model accident, or seal a diplomatic shared night?",
+    "one_time": true,
+    "base_weight": 1,
+    "queue_only": true,
+    "narrative": {
+      "arc_id": "sell_the_moon",
+      "beat_type": "resolution",
+      "resolves_arc": true,
+      "importance": "major"
+    },
+    "requirements": {
+      "active_arcs": [
+        "sell_the_moon"
+      ],
+      "all_flags": [
+        "moon_arc_live",
+        "moon_crisis_done"
+      ]
+    },
+    "options": [
+      {
+        "id": "declare_new_owner",
+        "label": "Declare the Moon has a new owner",
+        "effects": {
+          "treasury": 6,
+          "elite_loyalty": 4,
+          "happiness": -2
+        },
+        "add_flags": [
+          "moon_arc_complete",
+          "moon_new_owner"
+        ],
+        "remove_flags": [
+          "moon_arc_live"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "trigger_ending": "moon_new_owner",
+        "result_text": "Title transfers. Night remains free to look at. Ownership is another matter."
+      },
+      {
+        "id": "brighter_model",
+        "label": "Accept the brighter moon decree",
+        "effects": {
+          "happiness": 3,
+          "order": -2,
+          "treasury": -4
+        },
+        "add_flags": [
+          "moon_arc_complete",
+          "moon_replacement_pending"
+        ],
+        "remove_flags": [
+          "moon_arc_live"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3,
+          "sir_profit": 0
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 2
+        },
+        "trigger_ending": "accidental_moon_replacement",
+        "result_text": "The Moon is replaced with a more efficient model. Tides file formally."
+      },
+      {
+        "id": "shared_night_seal",
+        "label": "Seal shared lunar observation",
+        "effects": {
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "moon_arc_complete",
+          "moon_shared_observation",
+          "moon_recovery_soft"
+        ],
+        "remove_flags": [
+          "moon_arc_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "scientific": 1
+        },
+        "result_text": "Nights are shared. Deeds sleep in a drawer. Recovery soft: looking up is free again."
+      }
+    ],
+    "tags": [
+      "business",
+      "arc_resolution",
+      "ending_setup",
+      "moon"
+    ],
+    "visual_tags": [
+      "deed_stamp_moon"
+    ],
+    "authoring": {
+      "primary_content_class": "major_arc",
+      "arc_id": "sell_the_moon",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "batch_id": "2B-12D",
+      "humor_tags": [
+        "three_resolutions",
+        "tides_complaint"
+      ],
+      "emotional_goal": "closure",
+      "visual_hook": "deed, brighter moon sketch, or empty drawer",
+      "localization_risk": "low"
+    }
+  }
+]
