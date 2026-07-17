@@ -9,8 +9,12 @@ const REQUIRED_ARCS: Array[String] = [
 	"general_boom_arc", "doctor_maybe_arc",
 ]
 const REQUIRED_CRISES: Array[String] = [
-	"national_power_outage", "cheese_shortage_crisis", "mass_protest",
-	"bank_run", "cat_parliament_occupation",
+	"national_power_outage", "bank_run", "mass_protest", "palace_fire", "military_mutiny",
+	"government_data_leak", "cat_parliament_occupation", "water_supply_turns_blue",
+	"public_transport_strike", "cheese_shortage_crisis", "international_border_confusion",
+	"bureaucrat_general_strike", "national_internet_outage", "fake_news_panic",
+	"budget_meltdown", "ai_cabinet_lockout", "moon_ownership_dispute",
+	"national_festival_stampede",
 ]
 const SPECIAL_ENDINGS: Array[String] = [
 	"cat_republic", "nation_in_darkness", "eternal_smile_state",

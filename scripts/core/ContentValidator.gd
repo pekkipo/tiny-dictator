@@ -406,7 +406,20 @@ func validate_crisis(crisis: Dictionary, repository: ContentRepository) -> Array
 		if str(entry.get("card_type", "")) != "crisis":
 			errors.append("Crisis '%s' entry decision '%s' must have card_type 'crisis'" % [id, entry_id])
 
-	var entry_options: Dictionary = _option_ids_for_decision(entry_id, repository)
+	var resolution_decision_id: String = str(crisis.get("resolution_decision_id", ""))
+	var path_decision_id: String = entry_id
+	if not resolution_decision_id.is_empty():
+		if not repository.has_decision(resolution_decision_id):
+			errors.append("Crisis '%s' resolution decision '%s' not found" % [id, resolution_decision_id])
+		else:
+			var resolution_decision: Dictionary = repository.get_decision(resolution_decision_id)
+			if str(resolution_decision.get("card_type", "")) != "crisis":
+				errors.append("Crisis '%s' resolution decision '%s' must have card_type 'crisis'" % [
+					id, resolution_decision_id,
+				])
+			path_decision_id = resolution_decision_id
+
+	var path_options: Dictionary = _option_ids_for_decision(path_decision_id, repository)
 	for path in crisis.get("resolution_paths", []):
 		if not (path is Dictionary):
 			continue
@@ -416,8 +429,10 @@ func validate_crisis(crisis: Dictionary, repository: ContentRepository) -> Array
 			errors.append("Crisis '%s' resolution_path missing 'resolution_id'" % id)
 		if option_id.is_empty():
 			errors.append("Crisis '%s' resolution_path missing 'option_id'" % id)
-		elif not entry_options.has(option_id):
-			errors.append("Crisis '%s' resolution_path option '%s' not on entry decision" % [id, option_id])
+		elif not path_options.has(option_id):
+			errors.append("Crisis '%s' resolution_path option '%s' not on %s decision" % [
+				id, option_id, "resolution" if not resolution_decision_id.is_empty() else "entry",
+			])
 
 	for path in crisis.get("failure_paths", []):
 		if not (path is Dictionary):
@@ -425,8 +440,10 @@ func validate_crisis(crisis: Dictionary, repository: ContentRepository) -> Array
 		var option_id: String = str(path.get("option_id", ""))
 		if option_id.is_empty():
 			errors.append("Crisis '%s' failure_path missing 'option_id'" % id)
-		elif not entry_options.has(option_id):
-			errors.append("Crisis '%s' failure_path option '%s' not on entry decision" % [id, option_id])
+		elif not path_options.has(option_id):
+			errors.append("Crisis '%s' failure_path option '%s' not on %s decision" % [
+				id, option_id, "resolution" if not resolution_decision_id.is_empty() else "entry",
+			])
 		var ending_id: String = str(path.get("trigger_ending_id", ""))
 		if not ending_id.is_empty() and not repository.has_ending(ending_id):
 			errors.append("Crisis '%s' failure_path references unknown ending '%s'" % [id, ending_id])

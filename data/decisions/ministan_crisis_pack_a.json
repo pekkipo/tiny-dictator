@@ -1,0 +1,1235 @@
+[
+	{
+		"id": "national_power_outage",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "luna_news",
+		"category": "infrastructure",
+		"proposal": "CRISIS: The whole country is dark. Three emergency generator cables reach the palace switchboard.",
+		"one_time": true,
+		"base_weight": 10,
+		"minimum_day": 8,
+		"maximum_day": 38,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability"
+			]
+		},
+		"narrative": {
+			"crisis_id": "national_power_outage",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "hospital_priority",
+				"label": "Prioritize hospitals",
+				"effects": {
+					"happiness": 5,
+					"treasury": -7,
+					"elite_loyalty": -3
+				},
+				"add_flags": [
+					"outage_hospital_priority"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "national_power_outage_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Hospital windows glow. Palace staff discover candles are not a privilege."
+			},
+			{
+				"id": "broadcast_priority",
+				"label": "Power the broadcasts",
+				"effects": {
+					"order": 4,
+					"happiness": -2,
+					"elite_loyalty": 2
+				},
+				"add_flags": [
+					"outage_broadcast_priority"
+				],
+				"add_laws": [
+					"emergency_broadcast_priority"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "national_power_outage_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The news remains brightly lit and explains that darkness is a national hobby."
+			},
+			{
+				"id": "palace_priority",
+				"label": "Light the palace",
+				"effects": {
+					"elite_loyalty": 6,
+					"happiness": -9,
+					"order": -4
+				},
+				"add_flags": [
+					"outage_palace_priority"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "national_power_outage_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The chandelier sparkles above a country that can now see it from nowhere."
+			}
+		],
+		"tags": [
+			"infrastructure",
+			"crisis",
+			"city_dark",
+			"hospital_lights",
+			"palace_lit"
+		]
+	},
+	{
+		"id": "national_power_outage_resolution",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "luna_news",
+		"category": "infrastructure",
+		"proposal": "The generator sputters. One final routing choice will decide whether Ministan wakes up or learns braille.",
+		"one_time": true,
+		"base_weight": 1,
+		"minimum_day": 8,
+		"maximum_day": 39,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability"
+			]
+		},
+		"requirements": {
+			"active_crisis": "national_power_outage"
+		},
+		"narrative": {
+			"crisis_id": "national_power_outage"
+		},
+		"options": [
+			{
+				"id": "hospital_restore",
+				"label": "Restore hospital grid",
+				"effects": {
+					"happiness": 7,
+					"treasury": -6,
+					"order": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "national_power_outage",
+						"action": "resolve",
+						"resolution_id": "hospital_restore"
+					}
+				],
+				"result_text": "The hospital grid hums back. Even the surgeons applaud quietly."
+			},
+			{
+				"id": "science_generator",
+				"label": "Use TV science rig",
+				"effects": {
+					"order": 8,
+					"happiness": 4,
+					"treasury": -3
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "national_power_outage",
+						"action": "resolve",
+						"resolution_id": "science_generator"
+					}
+				],
+				"result_text": "A television science show plugs in its experimental generator. It works between advertisements."
+			},
+			{
+				"id": "palace_blackout",
+				"label": "Keep palace glowing",
+				"effects": {
+					"elite_loyalty": 4,
+					"happiness": -12,
+					"order": -7
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "national_power_outage",
+						"action": "fail",
+						"reason": "palace_blackout"
+					}
+				],
+				"result_text": "The palace remains visible. The nation becomes a very large dark audience.",
+				"trigger_ending": "nation_in_darkness"
+			}
+		],
+		"tags": [
+			"infrastructure",
+			"crisis",
+			"city_dark",
+			"hospital_lights",
+			"palace_lit"
+		]
+	},
+	{
+		"id": "bank_run",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "sir_profit",
+		"category": "economy",
+		"proposal": "CRISIS: Citizens queue outside every bank with jars, socks, and alarming confidence in mattresses.",
+		"one_time": true,
+		"base_weight": 10,
+		"minimum_day": 8,
+		"maximum_day": 38,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "bank_run",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "promise_deposits",
+				"label": "Promise deposits",
+				"effects": {
+					"happiness": 4,
+					"treasury": -5,
+					"elite_loyalty": -3
+				},
+				"add_flags": [
+					"bank_run_deposit_promise"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "bank_run_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "You promise every coin is safe. Sir Profit begins looking for smaller words than 'every'."
+			},
+			{
+				"id": "court_elites",
+				"label": "Court big depositors",
+				"effects": {
+					"elite_loyalty": 5,
+					"happiness": -4,
+					"treasury": -3
+				},
+				"add_flags": [
+					"bank_run_elite_deal"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "bank_run_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The wealthy receive velvet queue ropes. Everyone else receives a new reason to worry."
+			},
+			{
+				"id": "publish_ledgers",
+				"label": "Publish the ledgers",
+				"effects": {
+					"happiness": 2,
+					"order": -2,
+					"elite_loyalty": -2
+				},
+				"add_flags": [
+					"bank_run_open_ledgers"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "bank_run_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The ledgers are published. Nobody understands them, but panic now has footnotes."
+			}
+		],
+		"tags": [
+			"economy",
+			"crisis",
+			"banking",
+			"bank_panic"
+		]
+	},
+	{
+		"id": "bank_run_resolution",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "sir_profit",
+		"category": "economy",
+		"proposal": "The queues have reached the post office. Sir Profit requests one decisive financial gesture.",
+		"one_time": true,
+		"base_weight": 1,
+		"minimum_day": 8,
+		"maximum_day": 39,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"requirements": {
+			"active_crisis": "bank_run"
+		},
+		"narrative": {
+			"crisis_id": "bank_run"
+		},
+		"options": [
+			{
+				"id": "deposit_guarantee",
+				"label": "Guarantee deposits",
+				"effects": {
+					"treasury": -12,
+					"happiness": 7,
+					"elite_loyalty": -4
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "bank_run",
+						"action": "resolve",
+						"resolution_id": "deposit_guarantee"
+					}
+				],
+				"result_text": "Queues dissolve. The Treasury develops a nervous twitch."
+			},
+			{
+				"id": "emergency_loan",
+				"label": "Take emergency loan",
+				"effects": {
+					"treasury": 9,
+					"order": 3,
+					"elite_loyalty": -7
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "bank_run",
+						"action": "resolve",
+						"resolution_id": "emergency_loan"
+					}
+				],
+				"result_text": "The loan arrives tied with a ribbon and several invisible strings."
+			},
+			{
+				"id": "close_banks",
+				"label": "Close the banks",
+				"effects": {
+					"order": 4,
+					"happiness": -13,
+					"treasury": -6
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "bank_run",
+						"action": "fail",
+						"reason": "close_banks"
+					}
+				],
+				"result_text": "The doors close. Mattresses become the national financial sector.",
+				"trigger_ending": "bankrupt_leader"
+			}
+		],
+		"tags": [
+			"economy",
+			"crisis",
+			"banking",
+			"bank_panic"
+		]
+	},
+	{
+		"id": "mass_protest",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "CRISIS: The square is full of chanting citizens, handmade signs, and surprisingly organized sandwiches.",
+		"one_time": true,
+		"base_weight": 9,
+		"minimum_day": 12,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "mass_protest",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "send_olga",
+				"label": "Send Auntie Olga",
+				"effects": {
+					"happiness": 5,
+					"treasury": -3,
+					"order": -1
+				},
+				"advisor_affinity": {
+					"auntie_olga": 2
+				},
+				"add_flags": [
+					"protest_negotiation_started"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "mass_protest_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Auntie Olga brings tea, folding chairs, and a notebook full of serious eyebrows."
+			},
+			{
+				"id": "announce_reform",
+				"label": "Announce reforms",
+				"effects": {
+					"happiness": 4,
+					"elite_loyalty": -4,
+					"treasury": -4
+				},
+				"add_flags": [
+					"protest_reform_promised"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "mass_protest_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The crowd pauses to ask whether the reforms come with dates or merely adjectives."
+			},
+			{
+				"id": "open_microphone",
+				"label": "Open a microphone",
+				"effects": {
+					"happiness": 3,
+					"order": -3,
+					"elite_loyalty": -2
+				},
+				"add_flags": [
+					"protest_open_microphone"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "mass_protest_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Citizens queue for the microphone. The loudest speech is about bus timetables."
+			}
+		],
+		"tags": [
+			"public_life",
+			"crisis",
+			"protest_crowd"
+		]
+	},
+	{
+		"id": "mass_protest_resolution",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "The protest has stayed overnight. The sandwiches are now better organized than the cabinet.",
+		"one_time": true,
+		"base_weight": 1,
+		"minimum_day": 12,
+		"maximum_day": 41,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"requirements": {
+			"active_crisis": "mass_protest"
+		},
+		"narrative": {
+			"crisis_id": "mass_protest"
+		},
+		"options": [
+			{
+				"id": "sign_civic_pact",
+				"label": "Sign civic pact",
+				"effects": {
+					"happiness": 9,
+					"treasury": -7,
+					"elite_loyalty": -4
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "mass_protest",
+						"action": "resolve",
+						"resolution_id": "sign_civic_pact"
+					}
+				],
+				"result_text": "A pact is signed. The square gains benches and a new committee for bench maintenance."
+			},
+			{
+				"id": "fund_local_fixes",
+				"label": "Fund local fixes",
+				"effects": {
+					"happiness": 6,
+					"order": 4,
+					"treasury": -9
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "mass_protest",
+						"action": "resolve",
+						"resolution_id": "fund_local_fixes"
+					}
+				],
+				"result_text": "Streetlights, buses, and a suspiciously popular public fountain receive funding."
+			},
+			{
+				"id": "crackdown_protest",
+				"label": "Clear the square",
+				"effects": {
+					"order": 7,
+					"happiness": -14,
+					"elite_loyalty": 3
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "mass_protest",
+						"action": "fail",
+						"reason": "crackdown_protest"
+					}
+				],
+				"result_text": "The square empties. The anger discovers every other street.",
+				"trigger_ending": "revolution"
+			}
+		],
+		"tags": [
+			"public_life",
+			"crisis",
+			"protest_crowd"
+		]
+	},
+	{
+		"id": "palace_fire",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "CRISIS: A palace kitchen fire has found the ceremonial curtains and is making ambitious plans.",
+		"one_time": true,
+		"base_weight": 8,
+		"minimum_day": 10,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "palace_fire",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "rescue_people",
+				"label": "Rescue palace staff",
+				"effects": {
+					"happiness": 5,
+					"elite_loyalty": -2,
+					"treasury": -3
+				},
+				"add_flags": [
+					"palace_fire_people_first"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "palace_fire_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Staff emerge carrying one another and, somehow, a tea trolley."
+			},
+			{
+				"id": "save_records",
+				"label": "Save the records",
+				"effects": {
+					"order": 4,
+					"happiness": -2,
+					"treasury": -2
+				},
+				"add_flags": [
+					"palace_fire_records_first"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "palace_fire_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Archivists sprint out with files proving the palace owns three unusually important spoons."
+			},
+			{
+				"id": "save_treasury",
+				"label": "Save the treasury",
+				"effects": {
+					"treasury": 5,
+					"happiness": -5,
+					"elite_loyalty": 3
+				},
+				"add_flags": [
+					"palace_fire_treasury_first"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "palace_fire_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "Gold leaves first. The paintings develop a highly critical smoke smell."
+			}
+		],
+		"tags": [
+			"military",
+			"crisis",
+			"palace_fire",
+			"smoke_over_palace"
+		]
+	},
+	{
+		"id": "palace_fire_resolution",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "The fire reaches the grand hall. General Boom offers a hose, a parade blanket, and one terrible idea.",
+		"one_time": true,
+		"base_weight": 1,
+		"minimum_day": 10,
+		"maximum_day": 41,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"requirements": {
+			"active_crisis": "palace_fire"
+		},
+		"narrative": {
+			"crisis_id": "palace_fire"
+		},
+		"options": [
+			{
+				"id": "fire_brigade",
+				"label": "Call fire brigades",
+				"effects": {
+					"treasury": -6,
+					"happiness": 5,
+					"order": 3
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "palace_fire",
+						"action": "resolve",
+						"resolution_id": "fire_brigade"
+					}
+				],
+				"result_text": "The brigades save the palace's dignity and most of its roof."
+			},
+			{
+				"id": "open_palace_gates",
+				"label": "Open every gate",
+				"effects": {
+					"happiness": 7,
+					"elite_loyalty": -3,
+					"order": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "palace_fire",
+						"action": "resolve",
+						"resolution_id": "open_palace_gates"
+					}
+				],
+				"result_text": "Citizens form a bucket line. Nobody agrees who invited the marching band."
+			},
+			{
+				"id": "ignore_fire",
+				"label": "Ignore the fire",
+				"effects": {
+					"treasury": -8,
+					"happiness": -9,
+					"order": -6
+				},
+				"add_flags": [
+					"palace_fire_ruin"
+				],
+				"crisis_actions": [
+					{
+						"crisis_id": "palace_fire",
+						"action": "fail",
+						"reason": "ignore_fire"
+					}
+				],
+				"result_text": "The palace becomes beautifully empty, except for a very determined pigeon.",
+				"trigger_ending": "palace_beautiful_empty"
+			}
+		],
+		"tags": [
+			"military",
+			"crisis",
+			"palace_fire",
+			"smoke_over_palace"
+		]
+	},
+	{
+		"id": "military_mutiny",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "CRISIS: Several officers have parked their tanks sideways and demand a meeting, better hats, and snacks.",
+		"one_time": true,
+		"base_weight": 9,
+		"minimum_day": 12,
+		"maximum_day": 42,
+		"pacing": {
+			"allowed_stages": [
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "military_mutiny",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "hear_officers",
+				"label": "Hear the officers",
+				"effects": {
+					"order": 2,
+					"elite_loyalty": -2,
+					"treasury": -2
+				},
+				"advisor_affinity": {
+					"general_boom": 1
+				},
+				"add_flags": [
+					"mutiny_talks_open"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "military_mutiny_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "The officers present a twelve-page hat proposal and one genuine grievance."
+			},
+			{
+				"id": "promote_boom",
+				"label": "Promote General Boom",
+				"effects": {
+					"elite_loyalty": 4,
+					"order": 3,
+					"treasury": -4
+				},
+				"advisor_affinity": {
+					"general_boom": 2
+				},
+				"add_flags": [
+					"mutiny_boom_promoted"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "military_mutiny_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "General Boom receives another medal and immediately asks where to pin it."
+			},
+			{
+				"id": "inspect_barracks",
+				"label": "Inspect barracks",
+				"effects": {
+					"happiness": 1,
+					"order": 4,
+					"treasury": -3
+				},
+				"add_flags": [
+					"mutiny_barracks_inspected"
+				],
+				"follow_up": {
+					"type": "hard",
+					"decision_id": "military_mutiny_resolution",
+					"minimum_delay_days": 0,
+					"maximum_delay_days": 1,
+					"priority": 95
+				},
+				"result_text": "You inspect the barracks. The soup is revolting, but the revolt may be negotiable."
+			}
+		],
+		"tags": [
+			"military",
+			"crisis",
+			"tanks_in_square"
+		]
+	},
+	{
+		"id": "military_mutiny_resolution",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "The officers await your final answer. General Boom has brought a mascot costume 'for morale'.",
+		"one_time": true,
+		"base_weight": 1,
+		"minimum_day": 12,
+		"maximum_day": 43,
+		"pacing": {
+			"allowed_stages": [
+				"instability",
+				"endgame"
+			]
+		},
+		"requirements": {
+			"active_crisis": "military_mutiny"
+		},
+		"narrative": {
+			"crisis_id": "military_mutiny"
+		},
+		"options": [
+			{
+				"id": "sign_service_charter",
+				"label": "Sign service charter",
+				"effects": {
+					"order": 7,
+					"elite_loyalty": 4,
+					"treasury": -6
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "military_mutiny",
+						"action": "resolve",
+						"resolution_id": "sign_service_charter"
+					}
+				],
+				"result_text": "A charter settles the dispute. The new hat budget is filed under national security."
+			},
+			{
+				"id": "make_boom_mascot",
+				"label": "Name Boom mascot",
+				"effects": {
+					"happiness": 8,
+					"order": 5,
+					"elite_loyalty": -1
+				},
+				"add_flags": [
+					"general_boom_mascot_path"
+				],
+				"crisis_actions": [
+					{
+						"crisis_id": "military_mutiny",
+						"action": "resolve",
+						"resolution_id": "make_boom_mascot"
+					}
+				],
+				"result_text": "General Boom's mascot salute ends the mutiny and starts an unstoppable merchandise line.",
+				"trigger_ending": "general_becomes_mascot"
+			},
+			{
+				"id": "arrest_officers",
+				"label": "Arrest the officers",
+				"effects": {
+					"order": -6,
+					"happiness": -7,
+					"elite_loyalty": -8
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "military_mutiny",
+						"action": "fail",
+						"reason": "arrest_officers"
+					}
+				],
+				"result_text": "The officers decline arrest and demonstrate excellent coordination.",
+				"trigger_ending": "general_boom_coup"
+			}
+		],
+		"tags": [
+			"military",
+			"crisis",
+			"tanks_in_square"
+		]
+	},
+	{
+		"id": "government_data_leak",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "clerk_zero",
+		"category": "bureaucracy",
+		"proposal": "CRISIS: A public folder contains ministry salaries, lunch orders, and your draft speech titled 'Be More Beloved'.",
+		"one_time": true,
+		"base_weight": 7,
+		"minimum_day": 8,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "government_data_leak",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "publish_correction",
+				"label": "Publish corrections",
+				"effects": {
+					"happiness": 4,
+					"order": 2,
+					"elite_loyalty": -2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "government_data_leak",
+						"action": "resolve",
+						"resolution_id": "publish_correction"
+					}
+				],
+				"result_text": "The government explains every embarrassing line item with a footnote and a sigh."
+			},
+			{
+				"id": "hire_security_team",
+				"label": "Hire security team",
+				"effects": {
+					"treasury": -7,
+					"order": 5,
+					"happiness": -2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "government_data_leak",
+						"action": "resolve",
+						"resolution_id": "hire_security_team"
+					}
+				],
+				"result_text": "The files vanish behind seven passwords and one very anxious fern."
+			},
+			{
+				"id": "blame_the_printer",
+				"label": "Blame the printer",
+				"effects": {
+					"order": -5,
+					"happiness": -4,
+					"elite_loyalty": 1
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "government_data_leak",
+						"action": "fail",
+						"reason": "blame_the_printer"
+					}
+				],
+				"result_text": "The printer cannot respond, but its silence looks deeply suspicious."
+			}
+		],
+		"tags": [
+			"bureaucracy",
+			"crisis",
+			"leaked_forms"
+		]
+	},
+	{
+		"id": "cat_parliament_occupation",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "comrade_whiskers",
+		"category": "politics",
+		"proposal": "CRISIS: Cats have occupied parliament and replaced the agenda with warm laps, fish, and one strategic nap.",
+		"one_time": true,
+		"base_weight": 8,
+		"minimum_day": 6,
+		"maximum_day": 38,
+		"pacing": {
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			]
+		},
+		"narrative": {
+			"crisis_id": "cat_parliament_occupation",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "grant_cat_gallery",
+				"label": "Grant a cat gallery",
+				"effects": {
+					"happiness": 6,
+					"order": -3,
+					"treasury": -4
+				},
+				"advisor_affinity": {
+					"comrade_whiskers": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "cat_parliament_occupation",
+						"action": "resolve",
+						"resolution_id": "grant_cat_gallery"
+					}
+				],
+				"result_text": "Cats receive a sunlit gallery and stop sitting on the voting buttons. Humans lose a meeting room."
+			},
+			{
+				"id": "sign_fish_compact",
+				"label": "Sign fish compact",
+				"effects": {
+					"happiness": 4,
+					"treasury": -8,
+					"elite_loyalty": 3
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "cat_parliament_occupation",
+						"action": "resolve",
+						"resolution_id": "sign_fish_compact"
+					}
+				],
+				"result_text": "A fish compact is signed with a paw print. Elites celebrate the sudden seafood import contracts."
+			},
+			{
+				"id": "move_parliament",
+				"label": "Move parliament",
+				"effects": {
+					"order": -6,
+					"happiness": -2,
+					"treasury": -5,
+					"elite_loyalty": -3
+				},
+				"add_flags": [
+					"cats_own_parliament_seats"
+				],
+				"crisis_actions": [
+					{
+						"crisis_id": "cat_parliament_occupation",
+						"action": "fail",
+						"reason": "move_parliament"
+					}
+				],
+				"result_text": "Parliament relocates. The cats keep the building and immediately improve attendance.",
+				"trigger_ending": "cat_republic"
+			}
+		],
+		"tags": [
+			"cats",
+			"politics",
+			"crisis",
+			"cats_in_square"
+		]
+	},
+	{
+		"id": "water_supply_turns_blue",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "doctor_maybe",
+		"category": "science",
+		"proposal": "CRISIS: Every tap now pours sparkling blue water. Doctor Maybe says it is either harmless or extremely fashionable.",
+		"one_time": true,
+		"base_weight": 7,
+		"minimum_day": 7,
+		"maximum_day": 38,
+		"pacing": {
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			]
+		},
+		"narrative": {
+			"crisis_id": "water_supply_turns_blue",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "test_the_water",
+				"label": "Test the water",
+				"effects": {
+					"treasury": -5,
+					"happiness": 3,
+					"order": 3
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "water_supply_turns_blue",
+						"action": "resolve",
+						"resolution_id": "test_the_water"
+					}
+				],
+				"result_text": "Tests confirm the blue is cosmetic. Citizens remain unconvinced by the word cosmetic."
+			},
+			{
+				"id": "deliver_tankers",
+				"label": "Deliver clean water",
+				"effects": {
+					"treasury": -8,
+					"happiness": 7,
+					"order": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "water_supply_turns_blue",
+						"action": "resolve",
+						"resolution_id": "deliver_tankers"
+					}
+				],
+				"result_text": "Tankers arrive. Blue tea becomes a temporary national memory."
+			},
+			{
+				"id": "brand_blue_water",
+				"label": "Brand blue water",
+				"effects": {
+					"treasury": 4,
+					"happiness": -7,
+					"order": -4
+				},
+				"add_flags": [
+					"blue_water_branding"
+				],
+				"crisis_actions": [
+					{
+						"crisis_id": "water_supply_turns_blue",
+						"action": "fail",
+						"reason": "brand_blue_water"
+					}
+				],
+				"result_text": "The new bottled-water campaign is beautiful until the taps begin to fizz.",
+				"trigger_ending": "experiment_leaves"
+			}
+		],
+		"tags": [
+			"science",
+			"crisis",
+			"blue_fountains"
+		]
+	},
+	{
+		"id": "public_transport_strike",
+		"schema_version": 2,
+		"card_type": "crisis",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "CRISIS: Bus drivers, tram conductors, and the ceremonial ferry captain have all stopped moving at once.",
+		"one_time": true,
+		"base_weight": 8,
+		"minimum_day": 8,
+		"maximum_day": 40,
+		"pacing": {
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"narrative": {
+			"crisis_id": "public_transport_strike",
+			"starts_crisis": true
+		},
+		"options": [
+			{
+				"id": "negotiate_routes",
+				"label": "Negotiate routes",
+				"effects": {
+					"happiness": 6,
+					"treasury": -6,
+					"order": 2
+				},
+				"advisor_affinity": {
+					"auntie_olga": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "public_transport_strike",
+						"action": "resolve",
+						"resolution_id": "negotiate_routes"
+					}
+				],
+				"result_text": "Drivers return after receiving breaks, tea, and a route map with fewer arrows."
+			},
+			{
+				"id": "loan_city_bikes",
+				"label": "Loan city bikes",
+				"effects": {
+					"happiness": 4,
+					"order": 3,
+					"treasury": -4
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "public_transport_strike",
+						"action": "resolve",
+						"resolution_id": "loan_city_bikes"
+					}
+				],
+				"result_text": "Citizens pedal heroically. Hills are declared an administrative error."
+			},
+			{
+				"id": "deploy_tank_buses",
+				"label": "Deploy tank buses",
+				"effects": {
+					"order": -5,
+					"happiness": -6,
+					"elite_loyalty": 2
+				},
+				"crisis_actions": [
+					{
+						"crisis_id": "public_transport_strike",
+						"action": "fail",
+						"reason": "deploy_tank_buses"
+					}
+				],
+				"result_text": "The tank buses are punctual, loud, and not permitted near bridges."
+			}
+		],
+		"tags": [
+			"public_life",
+			"crisis",
+			"stalled_transit"
+		]
+	}
+]

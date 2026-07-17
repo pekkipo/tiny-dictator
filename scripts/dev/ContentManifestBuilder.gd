@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_13_major_arc_pack_d"
-const BATCH_ID: String = "2B-13"
-const DECISION_BATCH_ID: String = "2B-13"
+const PHASE: String = "2b_14_crisis_content_pack"
+const BATCH_ID: String = "2B-14"
+const DECISION_BATCH_ID: String = "2B-14"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -76,6 +76,10 @@ const LEGACY_CATEGORY_MAP: Dictionary = {
 	"business_and_privatization": "business_and_privatization",
 	"bureaucracy": "bureaucracy",
 	"cats_and_animals": "cats_and_animals",
+	"food": "economy",
+	"festival": "public_life",
+	"diplomacy": "military_and_order",
+	"cats": "cats_and_animals",
 }
 
 const GUEST_SPEAKER_IDS: Array[String] = [
@@ -342,12 +346,38 @@ const SHORT_CHAIN_PACK_D_APPROVED_IDS: Array[String] = [
 ]
 
 const DEFERRED_DECISION_IDS: Array[String] = [
-	"budget_meltdown_crisis",
 	"propaganda_smile_campaign",
 ]
 
 const DEFERRED_ARC_IDS: Array[String] = []
-const DEFERRED_CRISIS_IDS: Array[String] = ["budget_meltdown"]
+const DEFERRED_CRISIS_IDS: Array[String] = []
+const NON_QUOTA_CRISIS_IDS: Array[String] = ["pantry_moth_crisis"]
+
+const APPROVED_CRISIS_DECISION_IDS: Array[String] = [
+	"national_power_outage", "national_power_outage_resolution",
+	"bank_run", "bank_run_resolution",
+	"mass_protest", "mass_protest_resolution",
+	"palace_fire", "palace_fire_resolution",
+	"military_mutiny", "military_mutiny_resolution",
+	"government_data_leak", "cat_parliament_occupation",
+	"water_supply_turns_blue", "public_transport_strike",
+	"cheese_shortage_crisis", "cheese_shortage_crisis_resolution",
+	"international_border_confusion", "international_border_confusion_resolution",
+	"bureaucrat_general_strike", "bureaucrat_general_strike_resolution",
+	"national_internet_outage", "national_internet_outage_resolution",
+	"fake_news_panic", "fake_news_panic_resolution",
+	"budget_meltdown_crisis", "ai_cabinet_lockout",
+	"moon_ownership_dispute", "national_festival_stampede",
+]
+
+const APPROVED_CRISIS_DEFINITION_IDS: Array[String] = [
+	"national_power_outage", "bank_run", "mass_protest", "palace_fire", "military_mutiny",
+	"government_data_leak", "cat_parliament_occupation", "water_supply_turns_blue",
+	"public_transport_strike", "cheese_shortage_crisis", "international_border_confusion",
+	"bureaucrat_general_strike", "national_internet_outage", "fake_news_panic",
+	"budget_meltdown", "ai_cabinet_lockout", "moon_ownership_dispute",
+	"national_festival_stampede",
+]
 
 const PLACEHOLDER_DECISION_IDS: Array[String] = [
 	"recovery_international_bank", "recovery_national_smile_day", "endgame_legacy_statue",
@@ -627,14 +657,22 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 
 	for crisis in repository.get_crises_for_country(COUNTRY_ID):
 		var crisis_id := str(crisis.get("id", ""))
+		var crisis_status := "integrated"
+		if crisis_id in DEFERRED_CRISIS_IDS:
+			crisis_status = "deferred"
+		elif crisis_id in NON_QUOTA_CRISIS_IDS:
+			crisis_status = "onboarding"
+		elif crisis_id in APPROVED_CRISIS_DEFINITION_IDS:
+			crisis_status = "approved"
 		catalogs["crises"].append({
 			"id": crisis_id,
 			"content_type": "crisis",
 			"severity": int(crisis.get("severity", 0)),
 			"entry_decision_id": str(crisis.get("entry_decision_id", "")),
-			"status": "deferred" if crisis_id in DEFERRED_CRISIS_IDS else "integrated",
+			"resolution_decision_id": str(crisis.get("resolution_decision_id", "")),
+			"status": crisis_status,
 			"batch_id": DECISION_BATCH_ID,
-			"notes": "",
+			"notes": "Non-quota onboarding crisis." if crisis_id in NON_QUOTA_CRISIS_IDS else "",
 		})
 
 	return catalogs
@@ -808,6 +846,9 @@ func _resolve_status(
 	if id in MAJOR_ARC_PACK_D_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in APPROVED_CRISIS_DECISION_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	var all_pass := (
 		schema_status == "pass"
 		and graph_status == "pass"
@@ -842,6 +883,8 @@ func _graph_validation_status(id: String, findings_by_id: Dictionary) -> String:
 
 func _manual_test_status(id: String, primary_class: String, arc_id: Variant) -> String:
 	if id in MANUAL_TEST_DECISION_IDS:
+		return "pass"
+	if id in APPROVED_CRISIS_DECISION_IDS:
 		return "pass"
 	if str(arc_id) in MAJOR_ARC_IDS:
 		return "partial"
@@ -892,6 +935,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-12 approved major-arc card.")
 	if id in MAJOR_ARC_PACK_D_APPROVED_IDS:
 		notes.append("Milestone 2B-13 approved major-arc card.")
+	if id in APPROVED_CRISIS_DECISION_IDS:
+		notes.append("Milestone 2B-14 approved crisis card.")
 	return ", ".join(notes)
 
 
@@ -903,7 +948,7 @@ func _source_file_hint(id: String) -> String:
 		"window_tax_proposal": "ministan_core.json",
 		"luna_good_news_only": "ministan_core.json",
 		"army_snack_budget": "ministan_core.json",
-		"budget_meltdown_crisis": "ministan_core.json",
+		"budget_meltdown_crisis": "ministan_crisis_pack_b.json",
 		"generic_minister_disagreement": "ministan_core.json",
 		"palace_roof_leak": "ministan_onboarding.json",
 		"border_parade_dispute": "ministan_onboarding.json",
@@ -1066,8 +1111,18 @@ func _source_file_hint(id: String) -> String:
 		return "data/decisions/ministan_international_cheese_crisis_arc.json"
 	if id.begins_with("palace_renovation") or id.begins_with("palace_cost") or id.begins_with("palace_scandal"):
 		return "data/decisions/ministan_palace_renovation_scandal_arc.json"
-	if id.begins_with("national_") or id.begins_with("cheese_shortage_crisis") or id.begins_with("mass_") or id.begins_with("bank_") or id.begins_with("cat_parliament_occupation") or id in ["ai_cabinet_lockout", "moon_ownership_dispute", "national_festival_stampede"]:
-		return "data/decisions/ministan_crises.json"
+	if id in APPROVED_CRISIS_DECISION_IDS:
+		if id in [
+			"cheese_shortage_crisis", "cheese_shortage_crisis_resolution",
+			"international_border_confusion", "international_border_confusion_resolution",
+			"bureaucrat_general_strike", "bureaucrat_general_strike_resolution",
+			"national_internet_outage", "national_internet_outage_resolution",
+			"fake_news_panic", "fake_news_panic_resolution",
+			"budget_meltdown_crisis", "ai_cabinet_lockout",
+			"moon_ownership_dispute", "national_festival_stampede",
+		]:
+			return "data/decisions/ministan_crisis_pack_b.json"
+		return "data/decisions/ministan_crisis_pack_a.json"
 	if id.begins_with("maybe_"):
 		return "data/decisions/ministan_doctor_maybe_arc.json"
 	if id.begins_with("profit_"):

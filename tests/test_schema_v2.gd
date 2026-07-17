@@ -88,12 +88,15 @@ func _test_resolution_by_option_id() -> void:
 
 	# Three-option crisis resolved by authored option id.
 	state = RunState.new()
+	state.country_id = "ministan"
+	var crisis_mgr := CrisisManager.new(_repo)
+	crisis_mgr.force_start_crisis("budget_meltdown", state)
 	var crisis: Dictionary = _repo.get_decision("budget_meltdown_crisis")
-	result = resolver.apply_option(crisis, "print_money", state, _repo)
-	_check(result.selected_option_id == "print_money", "crisis resolution by option id")
-	_check(int(result.resource_changes.get("treasury", 0)) == 15, "third option effects applied")
-	_check(state.has_flag("money_printer_used"), "third option flag applied")
-	_check(str(state.decision_history[0].get("selected_option_id", "")) == "print_money", "history records option id")
+	result = resolver.apply_option(crisis, "pay_in_coupons", state, _repo, null, crisis_mgr)
+	_check(result.selected_option_id == "pay_in_coupons", "crisis resolution by option id")
+	_check(int(result.resource_changes.get("treasury", 0)) == 5, "third option effects applied")
+	_check(state.has_law("coupon_salaries"), "third option law applied")
+	_check(str(state.decision_history[0].get("selected_option_id", "")) == "pay_in_coupons", "history records option id")
 
 	# Unknown option id fails safe.
 	state = RunState.new()
@@ -156,8 +159,8 @@ func _test_game_manager_flow() -> void:
 	game_manager.resolve_choice("left")
 	game_manager.continue_after_result()
 	_check(state.current_decision_id == "budget_meltdown_crisis", "forced crisis card presented")
-	var result: DecisionResult = game_manager.resolve_choice("sell_furniture")
-	_check(result != null and result.selected_option_id == "sell_furniture", "GameManager resolves by option id")
+	var result: DecisionResult = game_manager.resolve_choice("sell_palace_merch")
+	_check(result != null and result.selected_option_id == "sell_palace_merch", "GameManager resolves by option id")
 
 	# Legacy wrappers still work on v2 cards. The day-1 card is random, so only
 	# force the pizza card when it isn't already presented (resolving it first

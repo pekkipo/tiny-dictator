@@ -263,14 +263,15 @@ Statuses: `active`, `paused`, `completed`, `failed`.
     "allowed_stages": ["escalation", "instability"]
   },
   "entry_decision_id": "national_power_outage",
+  "resolution_decision_id": "national_power_outage_resolution",
   "resolution_paths": [
-    { "resolution_id": "hospital", "option_id": "hospital" },
-    { "resolution_id": "television", "option_id": "television" }
+    { "resolution_id": "hospital_restore", "option_id": "hospital_restore" },
+    { "resolution_id": "science_generator", "option_id": "science_generator" }
   ],
   "failure_paths": [
     {
-      "failure_id": "palace_neglect",
-      "option_id": "palace",
+      "failure_id": "palace_blackout",
+      "option_id": "palace_blackout",
       "trigger_ending_id": "nation_in_darkness"
     }
   ],
@@ -282,11 +283,18 @@ Statuses: `active`, `paused`, `completed`, `failed`.
 }
 ```
 
+| Field | Notes |
+|---|---|
+| `entry_decision_id` | Mandatory first crisis card (`starts_crisis: true`) |
+| `resolution_decision_id` | Optional. When set, crisis is two-decision: resolve/fail options live on this card; `resolution_paths` / `failure_paths` `option_id`s must match it |
+| One-decision crises | Omit `resolution_decision_id`; paths refer to entry options |
+
 ### Rules
 
 - Only **one** major crisis active at a time.
 - Crisis cards may have **2 or 3** options.
 - While a mandatory crisis is unresolved, unrelated setup cards are suppressed.
+- After the entry card is used, `CrisisManager.get_mandatory_decision_id` returns `resolution_decision_id` until that card is used or the crisis ends.
 - Crisis runtime state lives in `RunState.active_crisis`.
 
 ---

@@ -121,9 +121,15 @@ func get_mandatory_decision_id(state: RunState) -> String:
 	var entry_id: String = str(crisis.get("entry_decision_id", ""))
 	if entry_id.is_empty():
 		return ""
-	if entry_id in state.used_decision_ids:
+	if entry_id not in state.used_decision_ids:
+		return entry_id
+	# Two-decision crises: force resolution card after entry is used.
+	var resolution_id: String = str(crisis.get("resolution_decision_id", ""))
+	if resolution_id.is_empty():
 		return ""
-	return entry_id
+	if resolution_id in state.used_decision_ids:
+		return ""
+	return resolution_id
 
 
 func update_for_day(day: int, state: RunState) -> bool:

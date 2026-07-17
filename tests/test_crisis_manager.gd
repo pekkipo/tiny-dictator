@@ -15,6 +15,7 @@ func _initialize() -> void:
 	_test_start_valid_crisis()
 	_test_prevent_second_crisis()
 	_test_mandatory_crisis_priority()
+	_test_two_card_handoff()
 	_test_three_option_resolution()
 	_test_timeout_failure()
 	_test_palace_ending()
@@ -116,31 +117,49 @@ func _test_mandatory_crisis_priority() -> void:
 	_check(unrelated_count > 0, "unrelated cards exist in pool but are bypassed")
 
 
+func _test_two_card_handoff() -> void:
+	var state := _fresh_state(10)
+	var crisis := _make_crisis_manager()
+	_check(crisis.force_start_crisis("national_power_outage", state), "force start for handoff")
+	_check(crisis.get_mandatory_decision_id(state) == "national_power_outage", "entry mandatory first")
+	state.mark_decision_used("national_power_outage")
+	_check(crisis.get_mandatory_decision_id(state) == "national_power_outage_resolution", "resolution mandatory after entry")
+	state.mark_decision_used("national_power_outage_resolution")
+	_check(crisis.get_mandatory_decision_id(state) == "", "no mandatory after both used")
+
+
 func _test_three_option_resolution() -> void:
 	var state := _fresh_state(10)
 	var crisis := _make_crisis_manager()
 	var resolver := EffectResolver.new()
 	crisis.force_start_crisis("national_power_outage", state)
-	var decision: Dictionary = _repo.get_decision("national_power_outage")
-	_check(DecisionSchema.get_options(decision).size() == 3, "crisis has 3 options")
-
-	var hospital_result: DecisionResult = resolver.apply_option(
-		decision, "hospital", state, _repo, null, crisis,
+	var entry: Dictionary = _repo.get_decision("national_power_outage")
+	_check(DecisionSchema.get_options(entry).size() == 3, "entry has 3 options")
+	var entry_result: DecisionResult = resolver.apply_option(
+		entry, "hospital_priority", state, _repo, null, crisis,
 	)
-	_check(hospital_result.selected_option_id == "hospital", "hospital option resolves")
-	_check(int(hospital_result.resource_changes.get("happiness", 0)) == 8, "hospital happiness effect")
+	_check(entry_result.selected_option_id == "hospital_priority", "entry hospital option applies")
+	_check(str(state.active_crisis.get("status", "")) == "active", "entry keeps crisis active")
+	_check(state.has_flag("outage_hospital_priority"), "entry sets priority flag")
+
+	var resolution: Dictionary = _repo.get_decision("national_power_outage_resolution")
+	_check(DecisionSchema.get_options(resolution).size() == 3, "resolution has 3 options")
+	var hospital_result: DecisionResult = resolver.apply_option(
+		resolution, "hospital_restore", state, _repo, null, crisis,
+	)
+	_check(hospital_result.selected_option_id == "hospital_restore", "hospital restore resolves")
 	_check(str(state.active_crisis.get("status", "")) == "resolved", "hospital resolves crisis")
 
 	state = _fresh_state(10)
 	crisis = _make_crisis_manager()
 	crisis.force_start_crisis("national_power_outage", state)
-	var tv_result: DecisionResult = resolver.apply_option(
-		decision, "television", state, _repo, null, crisis,
+	resolver.apply_option(entry, "broadcast_priority", state, _repo, null, crisis)
+	_check(state.has_law("emergency_broadcast_priority"), "broadcast priority adds law")
+	var science_result: DecisionResult = resolver.apply_option(
+		resolution, "science_generator", state, _repo, null, crisis,
 	)
-	_check(state.has_flag("propaganda_powered_during_blackout"), "television adds flag")
-	_check(state.has_law("emergency_broadcast_priority"), "television adds law")
-	_check(str(state.active_crisis.get("status", "")) == "resolved", "television resolves crisis")
-	_check(tv_result.triggered_ending_id.is_empty(), "television does not trigger ending")
+	_check(str(state.active_crisis.get("status", "")) == "resolved", "science generator resolves")
+	_check(science_result.triggered_ending_id.is_empty(), "science generator does not trigger ending")
 
 
 func _test_timeout_failure() -> void:
@@ -159,13 +178,13 @@ func _test_palace_ending() -> void:
 	var state := _fresh_state(10)
 	var crisis := _make_crisis_manager()
 	crisis.force_start_crisis("national_power_outage", state)
-	var decision: Dictionary = _repo.get_decision("national_power_outage")
+	var resolution: Dictionary = _repo.get_decision("national_power_outage_resolution")
 	var resolver := EffectResolver.new()
 	var result: DecisionResult = resolver.apply_option(
-		decision, "palace", state, _repo, null, crisis,
+		resolution, "palace_blackout", state, _repo, null, crisis,
 	)
-	_check(result.triggered_ending_id == "nation_in_darkness", "palace triggers ending")
-	_check(str(state.active_crisis.get("status", "")) == "failed", "palace fails crisis")
+	_check(result.triggered_ending_id == "nation_in_darkness", "palace blackout triggers ending")
+	_check(str(state.active_crisis.get("status", "")) == "failed", "palace blackout fails crisis")
 
 
 func _test_restart_cleanup() -> void:

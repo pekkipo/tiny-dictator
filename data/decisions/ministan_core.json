@@ -1,622 +1,545 @@
 [
-  {
-    "id": "switch_off_traffic_lights",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "minister_penny",
-    "category": "infrastructure",
-    "proposal": "We can save money by switching off all traffic lights. Red and green are expensive colors.",
-    "one_time": true,
-    "base_weight": 12,
-    "minimum_day": 1,
-    "maximum_day": 14,
-    "debug_only": true,
-    "narrative": {
-      "arc_id": "traffic_military",
-      "beat_type": "setup",
-      "step": 1,
-      "starts_arc": true,
-      "importance": "minor"
-    },
-    "pacing": {
-      "allowed_stages": [
-        "establishment",
-        "escalation"
-      ]
-    },
-    "requirements": {
-      "blocked_flags": [
-        "traffic_lights_off"
-      ]
-    },
-    "options": [
-      {
-        "id": "keep_on",
-        "label": "Keep them on",
-        "effects": {
-          "treasury": -2,
-          "happiness": 2,
-          "order": 3
-        },
-        "arc_actions": [
-          {
-            "arc_id": "traffic_military",
-            "action": "fail"
-          }
-        ],
-        "result_text": "The lights stay on. Minister Penny begins calculating the cost of colors."
-      },
-      {
-        "id": "switch_off",
-        "label": "Switch them off",
-        "effects": {
-          "treasury": 8,
-          "happiness": -4,
-          "order": -10,
-          "elite_loyalty": 2
-        },
-        "visible_effects": [
-          "treasury",
-          "order"
-        ],
-        "add_flags": [
-          "traffic_lights_off"
-        ],
-        "counter_changes": {
-          "reckless_savings": 1
-        },
-        "arc_actions": [
-          {
-            "arc_id": "traffic_military",
-            "action": "branch",
-            "branch_id": "tank_response"
-          }
-        ],
-        "force_next_decision": "traffic_tank_solution",
-        "result_text": "The Treasury saves money. Every intersection becomes a philosophical debate."
-      }
-    ],
-    "tags": [
-      "economy",
-      "traffic",
-      "arc_setup"
-    ],
-    "visual_tags": [
-      "traffic_tanks"
-    ]
-  },
-  {
-    "id": "free_pizza_friday",
-    "schema_version": 2,
-    "card_type": "normal",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "The people are grumpy. My niece suggests free pizza every Friday. She also owns a pizzeria.",
-    "one_time": true,
-    "base_weight": 10,
-    "options": [
-      {
-        "id": "refuse",
-        "label": "No free lunch",
-        "effects": {
-          "treasury": 4,
-          "happiness": -8
-        },
-        "result_text": "No pizza. Citizens form a support group for disappointed stomachs."
-      },
-      {
-        "id": "approve",
-        "label": "Give them pizza",
-        "effects": {
-          "treasury": -10,
-          "happiness": 14,
-          "elite_loyalty": -2
-        },
-        "add_laws": [
-          "free_pizza_friday"
-        ],
-        "add_flags": [
-          "pizza_policy_active"
-        ],
-        "counter_changes": {
-          "pizza_choices": 1
-        },
-        "follow_up": {
-          "type": "pool",
-          "pool_id": "free_pizza_consequences",
-          "minimum_delay_days": 3,
-          "maximum_delay_days": 7,
-          "priority": 65,
-          "required_flags": [
-            "pizza_policy_active"
-          ]
-        },
-        "result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
-      }
-    ],
-    "tags": [
-      "public_life",
-      "pizza",
-      "setup"
-    ]
-  },
-  {
-    "id": "military_parade",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "general_boom",
-    "category": "military",
-    "proposal": "Capital crowds forget the perimeter. Authorize a public-order parade. Seven tanks. Maximum dignity.",
-    "one_time": true,
-    "base_weight": 12,
-    "minimum_day": 2,
-    "maximum_day": 25,
-    "narrative": {
-      "arc_id": "general_boom_arc",
-      "beat_type": "setup",
-      "step": 1,
-      "starts_arc": true,
-      "importance": "major"
-    },
-    "pacing": {
-      "allowed_stages": [
-        "establishment",
-        "escalation",
-        "instability"
-      ]
-    },
-    "options": [
-      {
-        "id": "march",
-        "label": "Authorize the parade",
-        "effects": {
-          "treasury": -8,
-          "order": 6,
-          "happiness": 3,
-          "elite_loyalty": 5
-        },
-        "advisor_affinity": {
-          "general_boom": 2,
-          "luna_news": 1
-        },
-        "trait_changes": {
-          "authoritarian": 1,
-          "propagandist": 1
-        },
-        "counter_changes": {
-          "military_favor_choices": 1
-        },
-        "add_flags": [
-          "boom_parade_authorized"
-        ],
-        "add_laws": [
-          "mandatory_marching"
-        ],
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "branch",
-            "branch_id": "empower_boom"
-          }
-        ],
-        "force_next_decision": "army_snack_budget",
-        "result_text": "Tanks roll. Children cheer. Boom salutes like the country just won a war against boredom."
-      },
-      {
-        "id": "limited_drill",
-        "label": "Permit a quiet drill",
-        "effects": {
-          "treasury": -3,
-          "order": 3,
-          "elite_loyalty": 2,
-          "happiness": 1
-        },
-        "advisor_affinity": {
-          "general_boom": 1,
-          "auntie_olga": 1
-        },
-        "trait_changes": {
-          "authoritarian": 1
-        },
-        "add_flags": [
-          "boom_limited_drill"
-        ],
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "branch",
-            "branch_id": "empower_boom"
-          }
-        ],
-        "force_next_decision": "army_snack_budget",
-        "result_text": "A polite drill. Boom calls it under-theater. The square still smells of polish."
-      },
-      {
-        "id": "cancel",
-        "label": "Cancel and demote",
-        "effects": {
-          "treasury": 2,
-          "elite_loyalty": -5,
-          "happiness": 2,
-          "order": -2
-        },
-        "advisor_affinity": {
-          "general_boom": -3,
-          "auntie_olga": 2
-        },
-        "trait_changes": {
-          "populist": 2
-        },
-        "add_flags": [
-          "boom_arc_abandoned_early"
-        ],
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "abandon",
-            "reason": "parade_canceled"
-          }
-        ],
-        "result_text": "No parade. Boom polishes tanks alone. Olga brings bread. The arc ends in flour."
-      }
-    ],
-    "tags": [
-      "military",
-      "arc_setup"
-    ],
-    "visual_tags": [
-      "parade_columns"
-    ]
-  },
-  {
-    "id": "window_tax_proposal",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "onboarding",
-    "advisor_id": "minister_penny",
-    "category": "economy",
-    "proposal": "Sunlight is free, but windows are not. I propose a modest tax on every window in the country.",
-    "one_time": true,
-    "base_weight": 14,
-    "minimum_day": 1,
-    "maximum_day": 10,
-    "pacing": {
-      "allowed_stages": [
-        "establishment"
-      ]
-    },
-    "teaches_concepts": [
-      "laws",
-      "hidden_consequences",
-      "advisors",
-      "no_perfect_option"
-    ],
-    "options": [
-      {
-        "id": "leave_alone",
-        "label": "Leave windows alone",
-        "effects": {
-          "treasury": -3,
-          "happiness": 4
-        },
-        "visible_effects": [
-          "treasury",
-          "happiness"
-        ],
-        "result_text": "Windows remain untaxed. Minister Penny eyes the doors thoughtfully."
-      },
-      {
-        "id": "tax_windows",
-        "label": "Tax the windows",
-        "effects": {
-          "treasury": 10,
-          "happiness": -7,
-          "order": -3
-        },
-        "visible_effects": [
-          "treasury",
-          "happiness"
-        ],
-        "add_laws": [
-          "window_tax"
-        ],
-        "counter_changes": {
-          "reckless_savings": 1
-        },
-        "result_text": "The tax passes. Bricklayers become the wealthiest profession overnight."
-      }
-    ],
-    "tags": [
-      "onboarding",
-      "economy"
-    ],
-    "visual_tags": [
-      "window_tax"
-    ]
-  },
-  {
-    "id": "luna_good_news_only",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "onboarding",
-    "advisor_id": "luna_news",
-    "category": "media",
-    "proposal": "Bad news makes people sad. I propose we only report good news. I have already prepared next month's weather.",
-    "one_time": true,
-    "base_weight": 13,
-    "minimum_day": 2,
-    "maximum_day": 12,
-    "pacing": {
-      "allowed_stages": [
-        "establishment"
-      ]
-    },
-    "teaches_concepts": [
-      "visible_effects",
-      "hidden_consequences",
-      "advisors"
-    ],
-    "options": [
-      {
-        "id": "report_truth",
-        "label": "Report the truth",
-        "effects": {
-          "happiness": -2,
-          "order": 4
-        },
-        "visible_effects": [
-          "happiness",
-          "order"
-        ],
-        "result_text": "The news stays honest. Ratings drop, but so does national confusion."
-      },
-      {
-        "id": "good_news_only",
-        "label": "Only good news",
-        "effects": {
-          "happiness": 9,
-          "order": -6,
-          "elite_loyalty": 2
-        },
-        "visible_effects": [
-          "happiness"
-        ],
-        "add_flags": [
-          "media_good_news_only"
-        ],
-        "result_text": "Every broadcast is now delightful. Reality files a complaint that goes unreported."
-      }
-    ],
-    "tags": [
-      "onboarding",
-      "media"
-    ],
-    "visual_tags": [
-      "good_news_broadcast"
-    ]
-  },
-  {
-    "id": "army_snack_budget",
-    "schema_version": 2,
-    "country_id": "ministan",
-    "card_type": "normal",
-    "advisor_id": "general_boom",
-    "category": "military",
-    "proposal": "Troops guard logistics. Logistics include crisps. Approve a national snack line item.",
-    "one_time": true,
-    "base_weight": 1,
-    "queue_only": true,
-    "narrative": {
-      "arc_id": "general_boom_arc",
-      "beat_type": "escalation",
-      "branch_id": "empower_boom",
-      "importance": "major"
-    },
-    "requirements": {
-      "active_arcs": [
-        "general_boom_arc"
-      ],
-      "arc_branches": {
-        "general_boom_arc": "empower_boom"
-      }
-    },
-    "options": [
-      {
-        "id": "fund_snacks",
-        "label": "Fund the snack line",
-        "effects": {
-          "treasury": -6,
-          "order": 3,
-          "elite_loyalty": 6
-        },
-        "advisor_affinity": {
-          "general_boom": 2
-        },
-        "counter_changes": {
-          "military_favor_choices": 1
-        },
-        "add_flags": [
-          "boom_snacks_funded"
-        ],
-        "trait_changes": {
-          "authoritarian": 1
-        },
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "advance"
-          }
-        ],
-        "force_next_decision": "parade_budget_boost",
-        "result_text": "Snack warehouses get honor guards. Boom calls it force readiness."
-      },
-      {
-        "id": "no_snacks",
-        "label": "Keep standard rations",
-        "effects": {
-          "treasury": 3,
-          "elite_loyalty": -4,
-          "order": -1
-        },
-        "advisor_affinity": {
-          "general_boom": -2,
-          "minister_penny": 1
-        },
-        "add_flags": [
-          "boom_snacks_denied"
-        ],
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "advance"
-          }
-        ],
-        "force_next_decision": "parade_budget_boost",
-        "result_text": "Standard rations. Non-standard muttering. Boom files Form Snack-Denied."
-      },
-      {
-        "id": "share_snacks",
-        "label": "Share snacks with civilians",
-        "effects": {
-          "treasury": -4,
-          "happiness": 4,
-          "elite_loyalty": 1,
-          "order": 1
-        },
-        "advisor_affinity": {
-          "general_boom": -1,
-          "auntie_olga": 2
-        },
-        "trait_changes": {
-          "populist": 1
-        },
-        "add_flags": [
-          "boom_snacks_shared"
-        ],
-        "arc_actions": [
-          {
-            "arc_id": "general_boom_arc",
-            "action": "advance"
-          }
-        ],
-        "force_next_decision": "parade_budget_boost",
-        "result_text": "Civilians cheer. Boom salutes the crisp packets with professional grief."
-      }
-    ],
-    "tags": [
-      "military",
-      "arc_escalation"
-    ],
-    "visual_tags": [
-      "parade_columns"
-    ]
-  },
-  {
-    "id": "budget_meltdown_crisis",
-    "schema_version": 2,
-    "card_type": "crisis",
-    "advisor_id": "minister_penny",
-    "category": "economy",
-    "proposal": "CRISIS: The national budget spreadsheet caught fire. Figuratively, then literally. We need money by Friday.",
-    "one_time": true,
-    "base_weight": 10,
-    "minimum_day": 3,
-    "maximum_day": 20,
-    "narrative": {
-      "crisis_id": "budget_meltdown",
-      "starts_crisis": true
-    },
-    "options": [
-      {
-        "id": "raise_taxes",
-        "label": "Emergency tax on everything",
-        "effects": {
-          "treasury": 12,
-          "happiness": -9,
-          "order": -3
-        },
-        "crisis_actions": [
-          {
-            "crisis_id": "budget_meltdown",
-            "action": "resolve",
-            "resolution_id": "raise_taxes"
-          }
-        ],
-        "result_text": "Everything is taxed, including the tax forms. The budget survives; the mood does not."
-      },
-      {
-        "id": "sell_furniture",
-        "label": "Auction the palace furniture",
-        "effects": {
-          "treasury": 8,
-          "elite_loyalty": -6,
-          "happiness": 2
-        },
-        "crisis_actions": [
-          {
-            "crisis_id": "budget_meltdown",
-            "action": "resolve",
-            "resolution_id": "sell_furniture"
-          }
-        ],
-        "result_text": "The golden chairs sell instantly. Ministers now hold meetings standing up, furiously."
-      },
-      {
-        "id": "print_money",
-        "label": "Print more money",
-        "effects": {
-          "treasury": 15,
-          "order": -7,
-          "elite_loyalty": -3
-        },
-        "add_flags": [
-          "money_printer_used"
-        ],
-        "crisis_actions": [
-          {
-            "crisis_id": "budget_meltdown",
-            "action": "fail",
-            "reason": "hyperinflation"
-          }
-        ],
-        "result_text": "The printer runs all night. Bread now costs a suspicious number of zeros."
-      }
-    ],
-    "tags": [
-      "economy",
-      "crisis",
-      "placeholder"
-    ]
-  },
-  {
-    "id": "generic_minister_disagreement",
-    "advisor_id": "auntie_olga",
-    "category": "public_life",
-    "proposal": "Two ministers are arguing over who gets the larger office. Both have submitted formal complaints about the other.",
-    "one_time": false,
-    "weight": 1,
-    "fallback": true,
-    "left": {
-      "label": "Give it to neither",
-      "effects": {
-        "order": 2,
-        "elite_loyalty": -4
-      },
-      "result_text": "Both ministers become equally offended. Balance is restored."
-    },
-    "right": {
-      "label": "Build another office",
-      "effects": {
-        "treasury": -5,
-        "elite_loyalty": 4
-      },
-      "result_text": "The government expands by one office and zero useful employees."
-    },
-    "tags": [
-      "generic",
-      "fallback"
-    ]
-  }
+	{
+		"id": "switch_off_traffic_lights",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "normal",
+		"advisor_id": "minister_penny",
+		"category": "infrastructure",
+		"proposal": "We can save money by switching off all traffic lights. Red and green are expensive colors.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 1,
+		"maximum_day": 14,
+		"debug_only": true,
+		"narrative": {
+			"arc_id": "traffic_military",
+			"beat_type": "setup",
+			"step": 1,
+			"starts_arc": true,
+			"importance": "minor"
+		},
+		"pacing": {
+			"allowed_stages": [
+				"establishment",
+				"escalation"
+			]
+		},
+		"requirements": {
+			"blocked_flags": [
+				"traffic_lights_off"
+			]
+		},
+		"options": [
+			{
+				"id": "keep_on",
+				"label": "Keep them on",
+				"effects": {
+					"treasury": -2,
+					"happiness": 2,
+					"order": 3
+				},
+				"arc_actions": [
+					{
+						"arc_id": "traffic_military",
+						"action": "fail"
+					}
+				],
+				"result_text": "The lights stay on. Minister Penny begins calculating the cost of colors."
+			},
+			{
+				"id": "switch_off",
+				"label": "Switch them off",
+				"effects": {
+					"treasury": 8,
+					"happiness": -4,
+					"order": -10,
+					"elite_loyalty": 2
+				},
+				"visible_effects": [
+					"treasury",
+					"order"
+				],
+				"add_flags": [
+					"traffic_lights_off"
+				],
+				"counter_changes": {
+					"reckless_savings": 1
+				},
+				"arc_actions": [
+					{
+						"arc_id": "traffic_military",
+						"action": "branch",
+						"branch_id": "tank_response"
+					}
+				],
+				"force_next_decision": "traffic_tank_solution",
+				"result_text": "The Treasury saves money. Every intersection becomes a philosophical debate."
+			}
+		],
+		"tags": [
+			"economy",
+			"traffic",
+			"arc_setup"
+		],
+		"visual_tags": [
+			"traffic_tanks"
+		]
+	},
+	{
+		"id": "free_pizza_friday",
+		"schema_version": 2,
+		"card_type": "normal",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "The people are grumpy. My niece suggests free pizza every Friday. She also owns a pizzeria.",
+		"one_time": true,
+		"base_weight": 10,
+		"options": [
+			{
+				"id": "refuse",
+				"label": "No free lunch",
+				"effects": {
+					"treasury": 4,
+					"happiness": -8
+				},
+				"result_text": "No pizza. Citizens form a support group for disappointed stomachs."
+			},
+			{
+				"id": "approve",
+				"label": "Give them pizza",
+				"effects": {
+					"treasury": -10,
+					"happiness": 14,
+					"elite_loyalty": -2
+				},
+				"add_laws": [
+					"free_pizza_friday"
+				],
+				"add_flags": [
+					"pizza_policy_active"
+				],
+				"counter_changes": {
+					"pizza_choices": 1
+				},
+				"follow_up": {
+					"type": "pool",
+					"pool_id": "free_pizza_consequences",
+					"minimum_delay_days": 3,
+					"maximum_delay_days": 7,
+					"priority": 65,
+					"required_flags": [
+						"pizza_policy_active"
+					]
+				},
+				"result_text": "Citizens celebrate. The Treasury receives a very large cheese invoice."
+			}
+		],
+		"tags": [
+			"public_life",
+			"pizza",
+			"setup"
+		]
+	},
+	{
+		"id": "military_parade",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "normal",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "Capital crowds forget the perimeter. Authorize a public-order parade. Seven tanks. Maximum dignity.",
+		"one_time": true,
+		"base_weight": 12,
+		"minimum_day": 2,
+		"maximum_day": 25,
+		"narrative": {
+			"arc_id": "general_boom_arc",
+			"beat_type": "setup",
+			"step": 1,
+			"starts_arc": true,
+			"importance": "major"
+		},
+		"pacing": {
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			]
+		},
+		"options": [
+			{
+				"id": "march",
+				"label": "Authorize the parade",
+				"effects": {
+					"treasury": -8,
+					"order": 6,
+					"happiness": 3,
+					"elite_loyalty": 5
+				},
+				"advisor_affinity": {
+					"general_boom": 2,
+					"luna_news": 1
+				},
+				"trait_changes": {
+					"authoritarian": 1,
+					"propagandist": 1
+				},
+				"counter_changes": {
+					"military_favor_choices": 1
+				},
+				"add_flags": [
+					"boom_parade_authorized"
+				],
+				"add_laws": [
+					"mandatory_marching"
+				],
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "branch",
+						"branch_id": "empower_boom"
+					}
+				],
+				"force_next_decision": "army_snack_budget",
+				"result_text": "Tanks roll. Children cheer. Boom salutes like the country just won a war against boredom."
+			},
+			{
+				"id": "limited_drill",
+				"label": "Permit a quiet drill",
+				"effects": {
+					"treasury": -3,
+					"order": 3,
+					"elite_loyalty": 2,
+					"happiness": 1
+				},
+				"advisor_affinity": {
+					"general_boom": 1,
+					"auntie_olga": 1
+				},
+				"trait_changes": {
+					"authoritarian": 1
+				},
+				"add_flags": [
+					"boom_limited_drill"
+				],
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "branch",
+						"branch_id": "empower_boom"
+					}
+				],
+				"force_next_decision": "army_snack_budget",
+				"result_text": "A polite drill. Boom calls it under-theater. The square still smells of polish."
+			},
+			{
+				"id": "cancel",
+				"label": "Cancel and demote",
+				"effects": {
+					"treasury": 2,
+					"elite_loyalty": -5,
+					"happiness": 2,
+					"order": -2
+				},
+				"advisor_affinity": {
+					"general_boom": -3,
+					"auntie_olga": 2
+				},
+				"trait_changes": {
+					"populist": 2
+				},
+				"add_flags": [
+					"boom_arc_abandoned_early"
+				],
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "abandon",
+						"reason": "parade_canceled"
+					}
+				],
+				"result_text": "No parade. Boom polishes tanks alone. Olga brings bread. The arc ends in flour."
+			}
+		],
+		"tags": [
+			"military",
+			"arc_setup"
+		],
+		"visual_tags": [
+			"parade_columns"
+		]
+	},
+	{
+		"id": "window_tax_proposal",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "onboarding",
+		"advisor_id": "minister_penny",
+		"category": "economy",
+		"proposal": "Sunlight is free, but windows are not. I propose a modest tax on every window in the country.",
+		"one_time": true,
+		"base_weight": 14,
+		"minimum_day": 1,
+		"maximum_day": 10,
+		"pacing": {
+			"allowed_stages": [
+				"establishment"
+			]
+		},
+		"teaches_concepts": [
+			"laws",
+			"hidden_consequences",
+			"advisors",
+			"no_perfect_option"
+		],
+		"options": [
+			{
+				"id": "leave_alone",
+				"label": "Leave windows alone",
+				"effects": {
+					"treasury": -3,
+					"happiness": 4
+				},
+				"visible_effects": [
+					"treasury",
+					"happiness"
+				],
+				"result_text": "Windows remain untaxed. Minister Penny eyes the doors thoughtfully."
+			},
+			{
+				"id": "tax_windows",
+				"label": "Tax the windows",
+				"effects": {
+					"treasury": 10,
+					"happiness": -7,
+					"order": -3
+				},
+				"visible_effects": [
+					"treasury",
+					"happiness"
+				],
+				"add_laws": [
+					"window_tax"
+				],
+				"counter_changes": {
+					"reckless_savings": 1
+				},
+				"result_text": "The tax passes. Bricklayers become the wealthiest profession overnight."
+			}
+		],
+		"tags": [
+			"onboarding",
+			"economy"
+		],
+		"visual_tags": [
+			"window_tax"
+		]
+	},
+	{
+		"id": "luna_good_news_only",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "onboarding",
+		"advisor_id": "luna_news",
+		"category": "media",
+		"proposal": "Bad news makes people sad. I propose we only report good news. I have already prepared next month's weather.",
+		"one_time": true,
+		"base_weight": 13,
+		"minimum_day": 2,
+		"maximum_day": 12,
+		"pacing": {
+			"allowed_stages": [
+				"establishment"
+			]
+		},
+		"teaches_concepts": [
+			"visible_effects",
+			"hidden_consequences",
+			"advisors"
+		],
+		"options": [
+			{
+				"id": "report_truth",
+				"label": "Report the truth",
+				"effects": {
+					"happiness": -2,
+					"order": 4
+				},
+				"visible_effects": [
+					"happiness",
+					"order"
+				],
+				"result_text": "The news stays honest. Ratings drop, but so does national confusion."
+			},
+			{
+				"id": "good_news_only",
+				"label": "Only good news",
+				"effects": {
+					"happiness": 9,
+					"order": -6,
+					"elite_loyalty": 2
+				},
+				"visible_effects": [
+					"happiness"
+				],
+				"add_flags": [
+					"media_good_news_only"
+				],
+				"result_text": "Every broadcast is now delightful. Reality files a complaint that goes unreported."
+			}
+		],
+		"tags": [
+			"onboarding",
+			"media"
+		],
+		"visual_tags": [
+			"good_news_broadcast"
+		]
+	},
+	{
+		"id": "army_snack_budget",
+		"schema_version": 2,
+		"country_id": "ministan",
+		"card_type": "normal",
+		"advisor_id": "general_boom",
+		"category": "military",
+		"proposal": "Troops guard logistics. Logistics include crisps. Approve a national snack line item.",
+		"one_time": true,
+		"base_weight": 1,
+		"queue_only": true,
+		"narrative": {
+			"arc_id": "general_boom_arc",
+			"beat_type": "escalation",
+			"branch_id": "empower_boom",
+			"importance": "major"
+		},
+		"requirements": {
+			"active_arcs": [
+				"general_boom_arc"
+			],
+			"arc_branches": {
+				"general_boom_arc": "empower_boom"
+			}
+		},
+		"options": [
+			{
+				"id": "fund_snacks",
+				"label": "Fund the snack line",
+				"effects": {
+					"treasury": -6,
+					"order": 3,
+					"elite_loyalty": 6
+				},
+				"advisor_affinity": {
+					"general_boom": 2
+				},
+				"counter_changes": {
+					"military_favor_choices": 1
+				},
+				"add_flags": [
+					"boom_snacks_funded"
+				],
+				"trait_changes": {
+					"authoritarian": 1
+				},
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "advance"
+					}
+				],
+				"force_next_decision": "parade_budget_boost",
+				"result_text": "Snack warehouses get honor guards. Boom calls it force readiness."
+			},
+			{
+				"id": "no_snacks",
+				"label": "Keep standard rations",
+				"effects": {
+					"treasury": 3,
+					"elite_loyalty": -4,
+					"order": -1
+				},
+				"advisor_affinity": {
+					"general_boom": -2,
+					"minister_penny": 1
+				},
+				"add_flags": [
+					"boom_snacks_denied"
+				],
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "advance"
+					}
+				],
+				"force_next_decision": "parade_budget_boost",
+				"result_text": "Standard rations. Non-standard muttering. Boom files Form Snack-Denied."
+			},
+			{
+				"id": "share_snacks",
+				"label": "Share snacks with civilians",
+				"effects": {
+					"treasury": -4,
+					"happiness": 4,
+					"elite_loyalty": 1,
+					"order": 1
+				},
+				"advisor_affinity": {
+					"general_boom": -1,
+					"auntie_olga": 2
+				},
+				"trait_changes": {
+					"populist": 1
+				},
+				"add_flags": [
+					"boom_snacks_shared"
+				],
+				"arc_actions": [
+					{
+						"arc_id": "general_boom_arc",
+						"action": "advance"
+					}
+				],
+				"force_next_decision": "parade_budget_boost",
+				"result_text": "Civilians cheer. Boom salutes the crisp packets with professional grief."
+			}
+		],
+		"tags": [
+			"military",
+			"arc_escalation"
+		],
+		"visual_tags": [
+			"parade_columns"
+		]
+	},
+	{
+		"id": "generic_minister_disagreement",
+		"advisor_id": "auntie_olga",
+		"category": "public_life",
+		"proposal": "Two ministers are arguing over who gets the larger office. Both have submitted formal complaints about the other.",
+		"one_time": false,
+		"weight": 1,
+		"fallback": true,
+		"left": {
+			"label": "Give it to neither",
+			"effects": {
+				"order": 2,
+				"elite_loyalty": -4
+			},
+			"result_text": "Both ministers become equally offended. Balance is restored."
+		},
+		"right": {
+			"label": "Build another office",
+			"effects": {
+				"treasury": -5,
+				"elite_loyalty": 4
+			},
+			"result_text": "The government expands by one office and zero useful employees."
+		},
+		"tags": [
+			"generic",
+			"fallback"
+		]
+	}
 ]

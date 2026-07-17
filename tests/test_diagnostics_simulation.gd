@@ -150,7 +150,8 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 
 	var crisis_cards: Array[String] = [
 		"national_power_outage", "cheese_shortage_crisis", "mass_protest",
-		"bank_run", "cat_parliament_occupation",
+		"bank_run", "cat_parliament_occupation", "government_data_leak",
+		"public_transport_strike", "budget_meltdown_crisis",
 	]
 	var decision_counts: Dictionary = sim.get("decision_selection_counts", {})
 	for crisis_id in crisis_cards:
@@ -181,14 +182,9 @@ func _test_simulator_2a9_content_pack(game_manager: Node) -> void:
 			var requirements: Dictionary = decision.get("requirements", {})
 			if requirements.has("arc_branches"):
 				allowed_never.append(id)
-		# Path-gated crisis entries may miss a 1k sample; required crises are asserted above.
+		# Crisis cards (especially resolution siblings) may miss a 1k sample.
 		if str(decision.get("card_type", "")) == "crisis":
-			var narrative: Dictionary = decision.get("narrative", {})
-			if str(narrative.get("crisis_id", "")) not in [
-				"national_power_outage", "cheese_shortage_crisis", "mass_protest",
-				"bank_run", "cat_parliament_occupation",
-			]:
-				allowed_never.append(id)
+			allowed_never.append(id)
 	var unexpected_never: Array[String] = []
 	for id in never_selected:
 		if id not in allowed_never:

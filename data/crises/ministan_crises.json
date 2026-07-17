@@ -1,491 +1,902 @@
 [
-  {
-    "id": "national_power_outage",
-    "display_name": "National Power Outage",
-    "country_id": "ministan",
-    "severity": 2,
-    "maximum_duration_days": 3,
-    "resolution_required": true,
-    "priority": 90,
-    "start_requirements": {
-      "minimum_day": 8,
-      "allowed_stages": [
-        "escalation",
-        "instability"
-      ]
-    },
-    "entry_decision_id": "national_power_outage",
-    "resolution_paths": [
-      {
-        "resolution_id": "hospital",
-        "option_id": "hospital"
-      },
-      {
-        "resolution_id": "television",
-        "option_id": "television"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "palace_neglect",
-        "option_id": "palace",
-        "trigger_ending_id": "nation_in_darkness"
-      }
-    ],
-    "timeout": {
-      "trigger_ending_id": "nation_in_darkness",
-      "effects": {
-        "happiness": -8,
-        "order": -6
-      }
-    },
-    "tags": [
-      "infrastructure",
-      "crisis"
-    ]
-  },
-  {
-    "id": "budget_meltdown",
-    "display_name": "Budget Meltdown",
-    "country_id": "ministan",
-    "severity": 2,
-    "maximum_duration_days": 2,
-    "resolution_required": true,
-    "priority": 85,
-    "start_requirements": {
-      "minimum_day": 3,
-      "allowed_stages": [
-        "establishment",
-        "escalation"
-      ],
-      "maximum_resources": {
-        "treasury": 45
-      }
-    },
-    "entry_decision_id": "budget_meltdown_crisis",
-    "resolution_paths": [
-      {
-        "resolution_id": "raise_taxes",
-        "option_id": "raise_taxes"
-      },
-      {
-        "resolution_id": "sell_furniture",
-        "option_id": "sell_furniture"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "hyperinflation",
-        "option_id": "print_money",
-        "trigger_ending_id": "bankrupt_leader"
-      }
-    ],
-    "timeout": {
-      "trigger_ending_id": "bankrupt_leader",
-      "effects": {
-        "treasury": -10,
-        "happiness": -5
-      }
-    },
-    "tags": [
-      "economy",
-      "crisis"
-    ]
-  },
-  {
-    "id": "cheese_shortage_crisis",
-    "display_name": "National Cheese Shortage",
-    "country_id": "ministan",
-    "severity": 1,
-    "maximum_duration_days": 3,
-    "resolution_required": true,
-    "priority": 75,
-    "start_requirements": {
-      "minimum_day": 10,
-      "allowed_stages": [
-        "escalation",
-        "instability"
-      ],
-      "any_flags": [
-        "pizza_policy_active",
-        "cheese_pride",
-        "cheese_arc_live"
-      ]
-    },
-    "entry_decision_id": "cheese_shortage_crisis",
-    "resolution_paths": [
-      {
-        "resolution_id": "import_cheese",
-        "option_id": "import_cheese"
-      },
-      {
-        "resolution_id": "cheese_rationing",
-        "option_id": "cheese_rationing"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "cancel_pizza",
-        "option_id": "cancel_pizza",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "happiness": -10,
-        "treasury": -5
-      }
-    },
-    "tags": [
-      "food",
-      "crisis",
-      "pizza"
-    ]
-  },
-  {
-    "id": "mass_protest",
-    "display_name": "Mass Protest",
-    "country_id": "ministan",
-    "severity": 2,
-    "maximum_duration_days": 3,
-    "resolution_required": true,
-    "priority": 88,
-    "start_requirements": {
-      "minimum_day": 12,
-      "allowed_stages": [
-        "escalation",
-        "instability",
-        "endgame"
-      ],
-      "maximum_resources": {
-        "happiness": 45
-      }
-    },
-    "entry_decision_id": "mass_protest",
-    "resolution_paths": [
-      {
-        "resolution_id": "negotiate",
-        "option_id": "negotiate"
-      },
-      {
-        "resolution_id": "concessions",
-        "option_id": "concessions"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "crackdown",
-        "option_id": "crackdown",
-        "trigger_ending_id": "revolution"
-      }
-    ],
-    "timeout": {
-      "trigger_ending_id": "chaos_country",
-      "effects": {
-        "order": -10,
-        "happiness": -8
-      }
-    },
-    "tags": [
-      "protest",
-      "crisis",
-      "public"
-    ]
-  },
-  {
-    "id": "bank_run",
-    "display_name": "Bank Run",
-    "country_id": "ministan",
-    "severity": 3,
-    "maximum_duration_days": 2,
-    "resolution_required": true,
-    "priority": 92,
-    "start_requirements": {
-      "minimum_day": 8,
-      "allowed_stages": [
-        "escalation",
-        "instability",
-        "endgame"
-      ],
-      "maximum_resources": {
-        "treasury": 30
-      }
-    },
-    "entry_decision_id": "bank_run",
-    "resolution_paths": [
-      {
-        "resolution_id": "deposit_guarantee",
-        "option_id": "deposit_guarantee"
-      },
-      {
-        "resolution_id": "emergency_loan",
-        "option_id": "emergency_loan"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "close_banks",
-        "option_id": "close_banks",
-        "trigger_ending_id": "bankrupt_leader"
-      }
-    ],
-    "timeout": {
-      "trigger_ending_id": "bankrupt_leader",
-      "effects": {
-        "treasury": -15,
-        "elite_loyalty": -10
-      }
-    },
-    "tags": [
-      "economy",
-      "crisis",
-      "banking"
-    ]
-  },
-  {
-    "id": "cat_parliament_occupation",
-    "display_name": "Cat Parliament Occupation",
-    "country_id": "ministan",
-    "severity": 2,
-    "maximum_duration_days": 3,
-    "resolution_required": true,
-    "priority": 80,
-    "start_requirements": {
-      "minimum_day": 6,
-      "allowed_stages": [
-        "establishment",
-        "escalation",
-        "instability"
-      ],
-      "any_flags": [
-        "cats_enfranchised",
-        "cats_control_parliament"
-      ]
-    },
-    "entry_decision_id": "cat_parliament_occupation",
-    "resolution_paths": [
-      {
-        "resolution_id": "negotiate_cats",
-        "option_id": "negotiate_cats"
-      },
-      {
-        "resolution_id": "fish_treaty",
-        "option_id": "fish_treaty"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "evict_cats",
-        "option_id": "evict_cats",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "order": -8,
-        "happiness": 4
-      }
-    },
-    "tags": [
-      "cats",
-      "crisis",
-      "politics"
-    ]
-  },
-  {
-    "id": "pantry_moth_crisis",
-    "display_name": "Pantry Moth Infestation",
-    "country_id": "ministan",
-    "severity": 1,
-    "maximum_duration_days": 3,
-    "resolution_required": true,
-    "priority": 70,
-    "start_requirements": {
-      "minimum_day": 4,
-      "allowed_stages": [
-        "establishment",
-        "escalation"
-      ]
-    },
-    "entry_decision_id": "pantry_moth_crisis",
-    "resolution_paths": [
-      {
-        "resolution_id": "fumigate",
-        "option_id": "fumigate"
-      },
-      {
-        "resolution_id": "citizen_sweep",
-        "option_id": "citizen_sweep"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "moth_amnesty",
-        "option_id": "moth_amnesty",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "happiness": -6,
-        "treasury": -4
-      }
-    },
-    "tags": [
-      "food",
-      "crisis",
-      "onboarding"
-    ]
-  },
-  {
-    "id": "ai_cabinet_lockout",
-    "display_name": "AI Cabinet Lockout",
-    "country_id": "ministan",
-    "severity": 1,
-    "maximum_duration_days": 2,
-    "resolution_required": true,
-    "priority": 84,
-    "start_requirements": {
-      "minimum_day": 10,
-      "allowed_stages": [
-        "escalation",
-        "instability",
-        "endgame"
-      ],
-      "any_flags": [
-        "ai_control_path",
-        "ai_folder_managed"
-      ]
-    },
-    "entry_decision_id": "ai_cabinet_lockout",
-    "resolution_paths": [
-      {
-        "resolution_id": "dual_key",
-        "option_id": "dual_key"
-      },
-      {
-        "resolution_id": "accept_optimize",
-        "option_id": "accept_optimize"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "smash_terminal",
-        "option_id": "smash_terminal",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "order": -6,
-        "elite_loyalty": -4
-      }
-    },
-    "tags": [
-      "science",
-      "crisis",
-      "ai"
-    ]
-  },
-  {
-    "id": "moon_ownership_dispute",
-    "display_name": "Moon Ownership Dispute",
-    "country_id": "ministan",
-    "severity": 1,
-    "maximum_duration_days": 2,
-    "resolution_required": true,
-    "priority": 82,
-    "start_requirements": {
-      "minimum_day": 10,
-      "allowed_stages": [
-        "escalation",
-        "instability",
-        "endgame"
-      ],
-      "any_flags": [
-        "moon_arc_live",
-        "moon_hard_claim",
-        "moon_new_owner_soft"
-      ]
-    },
-    "entry_decision_id": "moon_ownership_dispute",
-    "resolution_paths": [
-      {
-        "resolution_id": "share_nights",
-        "option_id": "share_nights"
-      },
-      {
-        "resolution_id": "pay_settlement",
-        "option_id": "pay_settlement"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "ignore_tinyria",
-        "option_id": "ignore_tinyria",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "order": -5,
-        "happiness": -3
-      }
-    },
-    "tags": [
-      "diplomacy",
-      "crisis",
-      "moon"
-    ]
-  },
-  {
-    "id": "national_festival_stampede",
-    "display_name": "National Festival Stampede",
-    "country_id": "ministan",
-    "severity": 2,
-    "maximum_duration_days": 2,
-    "resolution_required": true,
-    "priority": 84,
-    "start_requirements": {
-      "minimum_day": 8,
-      "allowed_stages": [
-        "escalation",
-        "instability",
-        "endgame"
-      ],
-      "any_flags": [
-        "festival_permanent",
-        "festival_econ_live"
-      ]
-    },
-    "entry_decision_id": "national_festival_stampede",
-    "resolution_paths": [
-      {
-        "resolution_id": "crowd_control",
-        "option_id": "crowd_control"
-      },
-      {
-        "resolution_id": "shorten_hours",
-        "option_id": "shorten_hours"
-      }
-    ],
-    "failure_paths": [
-      {
-        "failure_id": "ignore_crowd",
-        "option_id": "ignore_crowd",
-        "trigger_ending_id": ""
-      }
-    ],
-    "timeout": {
-      "effects": {
-        "order": -8,
-        "happiness": -4
-      }
-    },
-    "tags": [
-      "festival",
-      "crisis",
-      "public_safety"
-    ]
-  }
+	{
+		"id": "national_power_outage",
+		"display_name": "National Power Outage",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 90,
+		"start_requirements": {
+			"minimum_day": 8,
+			"allowed_stages": [
+				"escalation",
+				"instability"
+			]
+		},
+		"entry_decision_id": "national_power_outage",
+		"resolution_decision_id": "national_power_outage_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "hospital_restore",
+				"option_id": "hospital_restore"
+			},
+			{
+				"resolution_id": "science_generator",
+				"option_id": "science_generator"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "palace_blackout",
+				"option_id": "palace_blackout",
+				"trigger_ending_id": "nation_in_darkness"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "nation_in_darkness",
+			"effects": {
+				"happiness": -8,
+				"order": -6
+			}
+		},
+		"tags": [
+			"infrastructure",
+			"crisis"
+		]
+	},
+	{
+		"id": "bank_run",
+		"display_name": "Bank Run",
+		"country_id": "ministan",
+		"severity": 3,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 92,
+		"start_requirements": {
+			"minimum_day": 8,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			],
+			"maximum_resources": {
+				"treasury": 35
+			}
+		},
+		"entry_decision_id": "bank_run",
+		"resolution_decision_id": "bank_run_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "deposit_guarantee",
+				"option_id": "deposit_guarantee"
+			},
+			{
+				"resolution_id": "emergency_loan",
+				"option_id": "emergency_loan"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "close_banks",
+				"option_id": "close_banks",
+				"trigger_ending_id": "bankrupt_leader"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "bankrupt_leader",
+			"effects": {
+				"treasury": -15,
+				"elite_loyalty": -8
+			}
+		},
+		"tags": [
+			"economy",
+			"crisis",
+			"banking"
+		]
+	},
+	{
+		"id": "mass_protest",
+		"display_name": "Mass Protest",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 88,
+		"start_requirements": {
+			"minimum_day": 12,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			],
+			"maximum_resources": {
+				"happiness": 52
+			}
+		},
+		"entry_decision_id": "mass_protest",
+		"resolution_decision_id": "mass_protest_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "sign_civic_pact",
+				"option_id": "sign_civic_pact"
+			},
+			{
+				"resolution_id": "fund_local_fixes",
+				"option_id": "fund_local_fixes"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "crackdown_protest",
+				"option_id": "crackdown_protest",
+				"trigger_ending_id": "revolution"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "chaos_country",
+			"effects": {
+				"happiness": -8,
+				"order": -10
+			}
+		},
+		"tags": [
+			"public_life",
+			"crisis",
+			"protest"
+		]
+	},
+	{
+		"id": "palace_fire",
+		"display_name": "Palace Fire",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 86,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "palace_fire",
+		"resolution_decision_id": "palace_fire_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "fire_brigade",
+				"option_id": "fire_brigade"
+			},
+			{
+				"resolution_id": "open_palace_gates",
+				"option_id": "open_palace_gates"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "ignore_fire",
+				"option_id": "ignore_fire",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"treasury": -8,
+				"happiness": -6,
+				"order": -4
+			}
+		},
+		"tags": [
+			"military",
+			"crisis",
+			"palace"
+		]
+	},
+	{
+		"id": "military_mutiny",
+		"display_name": "Military Mutiny",
+		"country_id": "ministan",
+		"severity": 3,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 94,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			],
+			"maximum_resources": {
+				"order": 55
+			}
+		},
+		"entry_decision_id": "military_mutiny",
+		"resolution_decision_id": "military_mutiny_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "sign_service_charter",
+				"option_id": "sign_service_charter"
+			},
+			{
+				"resolution_id": "make_boom_mascot",
+				"option_id": "make_boom_mascot"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "arrest_officers",
+				"option_id": "arrest_officers",
+				"trigger_ending_id": "general_boom_coup"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "general_boom_coup",
+			"effects": {
+				"order": -12,
+				"elite_loyalty": -10
+			}
+		},
+		"tags": [
+			"military",
+			"crisis",
+			"mutiny"
+		]
+	},
+	{
+		"id": "government_data_leak",
+		"display_name": "Government Data Leak",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 76,
+		"start_requirements": {
+			"minimum_day": 8,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "government_data_leak",
+		"resolution_paths": [
+			{
+				"resolution_id": "publish_correction",
+				"option_id": "publish_correction"
+			},
+			{
+				"resolution_id": "hire_security_team",
+				"option_id": "hire_security_team"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "blame_the_printer",
+				"option_id": "blame_the_printer",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -4,
+				"happiness": -3
+			}
+		},
+		"tags": [
+			"bureaucracy",
+			"crisis",
+			"security"
+		]
+	},
+	{
+		"id": "cat_parliament_occupation",
+		"display_name": "Cat Parliament Occupation",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 80,
+		"start_requirements": {
+			"minimum_day": 6,
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			]
+		},
+		"entry_decision_id": "cat_parliament_occupation",
+		"resolution_paths": [
+			{
+				"resolution_id": "grant_cat_gallery",
+				"option_id": "grant_cat_gallery"
+			},
+			{
+				"resolution_id": "sign_fish_compact",
+				"option_id": "sign_fish_compact"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "move_parliament",
+				"option_id": "move_parliament",
+				"trigger_ending_id": "cat_republic"
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -7,
+				"happiness": 3
+			}
+		},
+		"tags": [
+			"cats",
+			"politics",
+			"crisis"
+		]
+	},
+	{
+		"id": "water_supply_turns_blue",
+		"display_name": "Blue Water Supply",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 74,
+		"start_requirements": {
+			"minimum_day": 7,
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			]
+		},
+		"entry_decision_id": "water_supply_turns_blue",
+		"resolution_paths": [
+			{
+				"resolution_id": "test_the_water",
+				"option_id": "test_the_water"
+			},
+			{
+				"resolution_id": "deliver_tankers",
+				"option_id": "deliver_tankers"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "brand_blue_water",
+				"option_id": "brand_blue_water",
+				"trigger_ending_id": "experiment_leaves"
+			}
+		],
+		"timeout": {
+			"effects": {
+				"happiness": -6,
+				"order": -3
+			}
+		},
+		"tags": [
+			"science",
+			"health",
+			"crisis"
+		]
+	},
+	{
+		"id": "public_transport_strike",
+		"display_name": "Public Transport Strike",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 81,
+		"start_requirements": {
+			"minimum_day": 8,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "public_transport_strike",
+		"resolution_paths": [
+			{
+				"resolution_id": "negotiate_routes",
+				"option_id": "negotiate_routes"
+			},
+			{
+				"resolution_id": "loan_city_bikes",
+				"option_id": "loan_city_bikes"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "deploy_tank_buses",
+				"option_id": "deploy_tank_buses",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -8,
+				"happiness": -5
+			}
+		},
+		"tags": [
+			"public_life",
+			"infrastructure",
+			"crisis"
+		]
+	},
+	{
+		"id": "cheese_shortage_crisis",
+		"display_name": "National Cheese Shortage",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 75,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability"
+			]
+		},
+		"entry_decision_id": "cheese_shortage_crisis",
+		"resolution_decision_id": "cheese_shortage_crisis_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "import_cheese",
+				"option_id": "import_cheese"
+			},
+			{
+				"resolution_id": "ration_cheese",
+				"option_id": "ration_cheese"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "cancel_pizza_friday",
+				"option_id": "cancel_pizza_friday",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"happiness": -10,
+				"treasury": -5
+			}
+		},
+		"tags": [
+			"food",
+			"economy",
+			"crisis"
+		]
+	},
+	{
+		"id": "international_border_confusion",
+		"display_name": "International Border Confusion",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 82,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "international_border_confusion",
+		"resolution_decision_id": "international_border_confusion_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "sign_goat_shed_treaty",
+				"option_id": "sign_goat_shed_treaty"
+			},
+			{
+				"resolution_id": "host_border_picnic",
+				"option_id": "host_border_picnic"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "claim_everything",
+				"option_id": "claim_everything",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -6,
+				"elite_loyalty": -3
+			}
+		},
+		"tags": [
+			"diplomacy",
+			"crisis",
+			"border"
+		]
+	},
+	{
+		"id": "bureaucrat_general_strike",
+		"display_name": "Bureaucrat General Strike",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 84,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "bureaucrat_general_strike",
+		"resolution_decision_id": "bureaucrat_general_strike_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "sign_workplace_charter",
+				"option_id": "sign_workplace_charter"
+			},
+			{
+				"resolution_id": "simplify_three_forms",
+				"option_id": "simplify_three_forms"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "replace_clerks_with_boxes",
+				"option_id": "replace_clerks_with_boxes",
+				"trigger_ending_id": "government_by_form"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "government_by_form",
+			"effects": {
+				"order": -9,
+				"treasury": -4
+			}
+		},
+		"tags": [
+			"bureaucracy",
+			"crisis",
+			"strike"
+		]
+	},
+	{
+		"id": "national_internet_outage",
+		"display_name": "National Internet Outage",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 83,
+		"start_requirements": {
+			"minimum_day": 9,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "national_internet_outage",
+		"resolution_decision_id": "national_internet_outage_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "repair_backbone",
+				"option_id": "repair_backbone"
+			},
+			{
+				"resolution_id": "create_local_mesh",
+				"option_id": "create_local_mesh"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "unplug_everything",
+				"option_id": "unplug_everything",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -7,
+				"happiness": -5
+			}
+		},
+		"tags": [
+			"infrastructure",
+			"crisis",
+			"internet"
+		]
+	},
+	{
+		"id": "fake_news_panic",
+		"display_name": "Fake News Panic",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 85,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "fake_news_panic",
+		"resolution_decision_id": "fake_news_panic_resolution",
+		"resolution_paths": [
+			{
+				"resolution_id": "show_the_work",
+				"option_id": "show_the_work"
+			},
+			{
+				"resolution_id": "fund_media_literacy",
+				"option_id": "fund_media_literacy"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "ban_all_questions",
+				"option_id": "ban_all_questions",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -8,
+				"happiness": -5
+			}
+		},
+		"tags": [
+			"politics",
+			"media",
+			"crisis"
+		]
+	},
+	{
+		"id": "budget_meltdown",
+		"display_name": "Currency Collapse",
+		"country_id": "ministan",
+		"severity": 3,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 89,
+		"start_requirements": {
+			"minimum_day": 5,
+			"allowed_stages": [
+				"establishment",
+				"escalation",
+				"instability"
+			],
+			"maximum_resources": {
+				"treasury": 45
+			}
+		},
+		"entry_decision_id": "budget_meltdown_crisis",
+		"resolution_paths": [
+			{
+				"resolution_id": "freeze_luxury_spending",
+				"option_id": "freeze_luxury_spending"
+			},
+			{
+				"resolution_id": "sell_palace_merch",
+				"option_id": "sell_palace_merch"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "pay_in_coupons",
+				"option_id": "pay_in_coupons",
+				"trigger_ending_id": "bankrupt_leader"
+			}
+		],
+		"timeout": {
+			"trigger_ending_id": "bankrupt_leader",
+			"effects": {
+				"treasury": -12,
+				"happiness": -6
+			}
+		},
+		"tags": [
+			"economy",
+			"crisis",
+			"currency"
+		]
+	},
+	{
+		"id": "ai_cabinet_lockout",
+		"display_name": "AI Cabinet Lockout",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 77,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "ai_cabinet_lockout",
+		"resolution_paths": [
+			{
+				"resolution_id": "use_dual_key",
+				"option_id": "use_dual_key"
+			},
+			{
+				"resolution_id": "accept_optimization",
+				"option_id": "accept_optimization"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "smash_terminal",
+				"option_id": "smash_terminal",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -6,
+				"elite_loyalty": -4
+			}
+		},
+		"tags": [
+			"science",
+			"bureaucracy",
+			"crisis",
+			"ai"
+		]
+	},
+	{
+		"id": "moon_ownership_dispute",
+		"display_name": "Moon Ownership Dispute",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 76,
+		"start_requirements": {
+			"minimum_day": 10,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "moon_ownership_dispute",
+		"resolution_paths": [
+			{
+				"resolution_id": "share_observation",
+				"option_id": "share_observation"
+			},
+			{
+				"resolution_id": "offer_lunar_picnic",
+				"option_id": "offer_lunar_picnic"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "sell_moon_rights",
+				"option_id": "sell_moon_rights",
+				"trigger_ending_id": "moon_new_owner"
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -5,
+				"happiness": -3
+			}
+		},
+		"tags": [
+			"diplomacy",
+			"crisis",
+			"moon"
+		]
+	},
+	{
+		"id": "national_festival_stampede",
+		"display_name": "National Festival Stampede",
+		"country_id": "ministan",
+		"severity": 2,
+		"maximum_duration_days": 2,
+		"resolution_required": true,
+		"priority": 79,
+		"start_requirements": {
+			"minimum_day": 8,
+			"allowed_stages": [
+				"escalation",
+				"instability",
+				"endgame"
+			]
+		},
+		"entry_decision_id": "national_festival_stampede",
+		"resolution_paths": [
+			{
+				"resolution_id": "open_side_exits",
+				"option_id": "open_side_exits"
+			},
+			{
+				"resolution_id": "stagger_the_shows",
+				"option_id": "stagger_the_shows"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "add_more_fireworks",
+				"option_id": "add_more_fireworks",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"order": -8,
+				"happiness": -4
+			}
+		},
+		"tags": [
+			"festival",
+			"public_life",
+			"crisis"
+		]
+	},
+	{
+		"id": "pantry_moth_crisis",
+		"display_name": "Pantry Moth Infestation",
+		"country_id": "ministan",
+		"severity": 1,
+		"maximum_duration_days": 3,
+		"resolution_required": true,
+		"priority": 70,
+		"start_requirements": {
+			"minimum_day": 4,
+			"allowed_stages": [
+				"establishment",
+				"escalation"
+			]
+		},
+		"entry_decision_id": "pantry_moth_crisis",
+		"resolution_paths": [
+			{
+				"resolution_id": "fumigate",
+				"option_id": "fumigate"
+			},
+			{
+				"resolution_id": "citizen_sweep",
+				"option_id": "citizen_sweep"
+			}
+		],
+		"failure_paths": [
+			{
+				"failure_id": "moth_amnesty",
+				"option_id": "moth_amnesty",
+				"trigger_ending_id": ""
+			}
+		],
+		"timeout": {
+			"effects": {
+				"happiness": -6,
+				"treasury": -4
+			}
+		},
+		"tags": [
+			"food",
+			"crisis",
+			"onboarding"
+		]
+	}
 ]

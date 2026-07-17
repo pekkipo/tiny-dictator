@@ -1,73 +1,74 @@
 {
-  "id": "ministan",
-  "display_name": "Ministan",
-  "description": "A tiny republic with a large palace and several unresolved budget problems.",
-  "starting_resources": {
-    "treasury": 55,
-    "happiness": 55,
-    "order": 55,
-    "elite_loyalty": 55
-  },
-  "max_day": 40,
-  "run_stages": [
-    {
-      "id": "establishment",
-      "minimum_day": 1,
-      "maximum_day": 7
-    },
-    {
-      "id": "escalation",
-      "minimum_day": 8,
-      "maximum_day": 16
-    },
-    {
-      "id": "instability",
-      "minimum_day": 17,
-      "maximum_day": 27
-    },
-    {
-      "id": "endgame",
-      "minimum_day": 28,
-      "maximum_day": 40
-    }
-  ],
-  "decision_files": [
-    "res://data/decisions/ministan_core.json",
-    "res://data/decisions/ministan_followups.json",
-    "res://data/decisions/ministan_stage_placeholders.json",
-    "res://data/decisions/ministan_cat_politics.json",
-    "res://data/decisions/ministan_pizza_consequences.json",
-    "res://data/decisions/ministan_crises.json",
-    "res://data/decisions/ministan_advisor_affinity.json",
-    "res://data/decisions/ministan_traffic_military.json",
-    "res://data/decisions/ministan_traffic_military_control.json",
-    "res://data/decisions/ministan_mandatory_happiness_arc.json",
-    "res://data/decisions/ministan_luna_media_reality_arc.json",
-    "res://data/decisions/ministan_olga_citizen_movement_arc.json",
-    "res://data/decisions/ministan_fake_election_accident_arc.json",
-    "res://data/decisions/ministan_general_boom_arc.json",
-    "res://data/decisions/ministan_doctor_maybe_arc.json",
-    "res://data/decisions/ministan_profit_corporate_state_arc.json",
-    "res://data/decisions/ministan_ai_government_arc.json",
-    "res://data/decisions/ministan_sell_the_moon_arc.json",
-    "res://data/decisions/ministan_palace_renovation_scandal_arc.json",
-    "res://data/decisions/ministan_international_cheese_crisis_arc.json",
-    "res://data/decisions/ministan_national_festival_economy_arc.json",
-    "res://data/decisions/ministan_zero_government_of_forms_arc.json",
-    "res://data/decisions/ministan_whiskers_cat_revolution_arc.json",
-    "res://data/decisions/ministan_penny_austerity_arc.json",
-    "res://data/decisions/ministan_hyperinflation_arc.json",
-    "res://data/decisions/ministan_generic_fill.json",
-    "res://data/decisions/ministan_onboarding.json",
-    "res://data/decisions/ministan_standalone_pack_a.json",
-    "res://data/decisions/ministan_standalone_pack_b.json",
-    "res://data/decisions/ministan_standalone_pack_c.json",
-    "res://data/decisions/ministan_short_chain_pack_a.json",
-    "res://data/decisions/ministan_short_chain_pack_b.json",
-    "res://data/decisions/ministan_short_chain_pack_c.json",
-    "res://data/decisions/ministan_short_chain_pack_d.json"
-  ],
-  "fallback_decision_id": "generic_minister_disagreement",
-  "fallback_decision_limit": 2,
-  "survival_ending_id": "survived_the_prototype"
+	"id": "ministan",
+	"display_name": "Ministan",
+	"description": "A tiny republic with a large palace and several unresolved budget problems.",
+	"starting_resources": {
+		"treasury": 55,
+		"happiness": 55,
+		"order": 55,
+		"elite_loyalty": 55
+	},
+	"max_day": 40,
+	"run_stages": [
+		{
+			"id": "establishment",
+			"minimum_day": 1,
+			"maximum_day": 7
+		},
+		{
+			"id": "escalation",
+			"minimum_day": 8,
+			"maximum_day": 16
+		},
+		{
+			"id": "instability",
+			"minimum_day": 17,
+			"maximum_day": 27
+		},
+		{
+			"id": "endgame",
+			"minimum_day": 28,
+			"maximum_day": 40
+		}
+	],
+	"decision_files": [
+		"res://data/decisions/ministan_core.json",
+		"res://data/decisions/ministan_followups.json",
+		"res://data/decisions/ministan_stage_placeholders.json",
+		"res://data/decisions/ministan_cat_politics.json",
+		"res://data/decisions/ministan_pizza_consequences.json",
+		"res://data/decisions/ministan_crisis_pack_a.json",
+		"res://data/decisions/ministan_crisis_pack_b.json",
+		"res://data/decisions/ministan_advisor_affinity.json",
+		"res://data/decisions/ministan_traffic_military.json",
+		"res://data/decisions/ministan_traffic_military_control.json",
+		"res://data/decisions/ministan_mandatory_happiness_arc.json",
+		"res://data/decisions/ministan_luna_media_reality_arc.json",
+		"res://data/decisions/ministan_olga_citizen_movement_arc.json",
+		"res://data/decisions/ministan_fake_election_accident_arc.json",
+		"res://data/decisions/ministan_general_boom_arc.json",
+		"res://data/decisions/ministan_doctor_maybe_arc.json",
+		"res://data/decisions/ministan_profit_corporate_state_arc.json",
+		"res://data/decisions/ministan_ai_government_arc.json",
+		"res://data/decisions/ministan_sell_the_moon_arc.json",
+		"res://data/decisions/ministan_palace_renovation_scandal_arc.json",
+		"res://data/decisions/ministan_international_cheese_crisis_arc.json",
+		"res://data/decisions/ministan_national_festival_economy_arc.json",
+		"res://data/decisions/ministan_zero_government_of_forms_arc.json",
+		"res://data/decisions/ministan_whiskers_cat_revolution_arc.json",
+		"res://data/decisions/ministan_penny_austerity_arc.json",
+		"res://data/decisions/ministan_hyperinflation_arc.json",
+		"res://data/decisions/ministan_generic_fill.json",
+		"res://data/decisions/ministan_onboarding.json",
+		"res://data/decisions/ministan_standalone_pack_a.json",
+		"res://data/decisions/ministan_standalone_pack_b.json",
+		"res://data/decisions/ministan_standalone_pack_c.json",
+		"res://data/decisions/ministan_short_chain_pack_a.json",
+		"res://data/decisions/ministan_short_chain_pack_b.json",
+		"res://data/decisions/ministan_short_chain_pack_c.json",
+		"res://data/decisions/ministan_short_chain_pack_d.json"
+	],
+	"fallback_decision_id": "generic_minister_disagreement",
+	"fallback_decision_limit": 2,
+	"survival_ending_id": "survived_the_prototype"
 }
