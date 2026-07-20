@@ -79,7 +79,8 @@
     ],
     "visual_tags": [
       "rain_bucket_protests"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "treasury_tip_jar",
@@ -135,7 +136,8 @@
     ],
     "visual_tags": [
       "treasury_tip_jar"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "luxury_chair_tax",
@@ -207,7 +209,8 @@
     ],
     "visual_tags": [
       "taxed_chairs"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "neighborhood_noise_complaint",
@@ -277,7 +280,8 @@
     ],
     "visual_tags": [
       "accordion_alley"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "olga_loyal_council",
@@ -419,7 +423,8 @@
     ],
     "visual_tags": [
       "curtains_drawn"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "commemorative_debt_sale",
@@ -480,7 +485,8 @@
     ],
     "visual_tags": [
       "debt_certificates"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "wage_freeze_mandate",
@@ -625,7 +631,8 @@
     ],
     "visual_tags": [
       "palace_tour_rooms"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "official_queue_etiquette",
@@ -702,7 +709,8 @@
     ],
     "visual_tags": [
       "numbered_queues"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "universal_birthday_holiday",
@@ -750,7 +758,10 @@
             "universal_birthdays"
           ]
         },
-        "result_text": "Cake becomes infrastructure. Luna News hosts thirty birthday segments a day."
+        "result_text": "Cake becomes infrastructure. Luna News hosts thirty birthday segments a day.",
+        "add_laws": [
+          "universal_birthday"
+        ]
       },
       {
         "id": "one_shared_day",
@@ -789,7 +800,8 @@
     ],
     "visual_tags": [
       "birthday_banners"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "public_compliment_quota",
@@ -849,7 +861,8 @@
     ],
     "visual_tags": [
       "compliment_meters"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "absurd_civic_sweeping",
@@ -922,7 +935,8 @@
     ],
     "visual_tags": [
       "broom_brigades"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "palace_bus_routes",
@@ -1086,6 +1100,7 @@
     ],
     "visual_tags": [
       "toll_booths"
-    ]
+    ],
+    "requirements": {}
   }
 ]

@@ -12,25 +12,45 @@
     "minimum_day": 2,
     "maximum_day": 12,
     "pacing": {
-      "allowed_stages": ["establishment"]
+      "allowed_stages": [
+        "establishment"
+      ]
     },
-    "teaches_concepts": ["advisors", "no_perfect_option"],
+    "teaches_concepts": [
+      "advisors",
+      "no_perfect_option"
+    ],
     "options": [
       {
         "id": "repair",
         "label": "Fund repairs",
-        "effects": { "treasury": -7, "happiness": 5, "order": 4 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "treasury": -7,
+          "happiness": 5,
+          "order": 4
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "result_text": "The bridge creaks less. Auntie Olga says it is still suspicious."
       },
       {
         "id": "delay",
         "label": "Delay again",
-        "effects": { "treasury": 2, "happiness": -5, "order": -4 },
+        "effects": {
+          "treasury": 2,
+          "happiness": -5,
+          "order": -4
+        },
         "result_text": "Citizens take the long route. Optimism declines."
       }
     ],
-    "tags": ["onboarding", "public", "infrastructure"]
+    "tags": [
+      "onboarding",
+      "public",
+      "infrastructure"
+    ],
+    "requirements": {}
   },
   {
     "id": "routine_form_inventory",
@@ -48,26 +68,40 @@
       {
         "id": "count_carefully",
         "label": "Count carefully",
-        "effects": { "order": 1, "treasury": -1 },
+        "effects": {
+          "order": 1,
+          "treasury": -1
+        },
         "result_text": "Stamps are counted. One is missing. It was always missing."
       },
       {
         "id": "estimate",
         "label": "Estimate and move on",
-        "effects": { "happiness": 1, "order": -1 },
+        "effects": {
+          "happiness": 1,
+          "order": -1
+        },
         "result_text": "Estimate filed. Accuracy deferred to next inventory."
       }
     ],
-    "tags": ["bureaucracy", "generic", "repeatable", "placeholder"],
+    "tags": [
+      "bureaucracy",
+      "generic",
+      "repeatable",
+      "placeholder"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "bureaucracy",
       "primary_stage": "escalation",
-      "humor_tags": ["routine_filler"],
+      "humor_tags": [
+        "routine_filler"
+      ],
       "emotional_goal": "pool safety valve",
       "visual_hook": "stamp trays being counted",
       "localization_risk": "low",
       "writer_notes": "Temporary low-weight repeatable after Pack C removed one-time fillers; not Pack C approved. Rewrite in 2B-6+."
-    }
+    },
+    "requirements": {}
   }
 ]

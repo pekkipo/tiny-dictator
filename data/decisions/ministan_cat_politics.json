@@ -32,6 +32,11 @@
       "blocked_arcs": [
         "robot_government",
         "whiskers_cat_revolution"
+      ],
+      "any_laws": [
+        "window_tax",
+        "luxury_chair_tax",
+        "privatize_air"
       ]
     },
     "options": [
@@ -322,7 +327,7 @@
         },
         "add_laws": [
           "cat_voting_rights",
-          "fish_emergency_reserve"
+          "fish_market_subsidy_act"
         ],
         "add_flags": [
           "cat_rights_path",
@@ -367,7 +372,7 @@
           "order": 1
         },
         "add_laws": [
-          "cat_lobby_registry"
+          "cat_parliament_seats"
         ],
         "add_flags": [
           "cat_cynical_path",

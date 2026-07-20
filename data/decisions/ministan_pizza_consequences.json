@@ -9,7 +9,9 @@
     "one_time": true,
     "weight": 10,
     "requirements": {
-      "all_flags": ["pizza_policy_active"]
+      "all_flags": [
+        "pizza_policy_active"
+      ]
     },
     "left": {
       "label": "Negotiate",
@@ -28,7 +30,11 @@
       },
       "result_text": "Rolling pins are confiscated. Morale drops faster than dough can rise."
     },
-    "tags": ["pizza", "follow_up", "consequence"]
+    "tags": [
+      "pizza",
+      "follow_up",
+      "consequence"
+    ]
   },
   {
     "id": "pineapple_referendum",
@@ -40,7 +46,9 @@
     "one_time": true,
     "weight": 10,
     "requirements": {
-      "all_flags": ["pizza_policy_active"]
+      "all_flags": [
+        "pizza_policy_active"
+      ]
     },
     "left": {
       "label": "Ban pineapple",
@@ -57,9 +65,15 @@
         "order": -6,
         "treasury": -4
       },
-      "add_flags": ["pineapple_mandated"],
+      "add_flags": [
+        "pineapple_mandated"
+      ],
       "result_text": "Every Friday pizza must include pineapple. Tourism brochures look confused."
     },
-    "tags": ["pizza", "follow_up", "consequence"]
+    "tags": [
+      "pizza",
+      "follow_up",
+      "consequence"
+    ]
   }
 ]

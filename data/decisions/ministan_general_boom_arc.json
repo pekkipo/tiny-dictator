@@ -31,7 +31,7 @@
           "treasury": -8
         },
         "add_laws": [
-          "emergency_martial_law"
+          "palace_curfew_act"
         ],
         "add_flags": [
           "boom_emergency_powers"

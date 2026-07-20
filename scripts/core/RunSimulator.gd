@@ -53,6 +53,7 @@ func run_batch(
 	var crisis_runs: int = 0
 	var content_exhaustion_count: int = 0
 	var fallback_usage: int = 0
+	var law_activation_counts: Dictionary = {}
 	var resource_totals: Dictionary = {}
 	for resource_id in RunState.RESOURCE_IDS:
 		resource_totals[resource_id] = 0
@@ -129,6 +130,9 @@ func run_batch(
 			arc_completion_counts[arc_id] = int(arc_completion_counts.get(arc_id, 0)) + 1
 		total_completed_arcs += state.completed_arc_ids.size()
 
+		for law_id in state.active_laws:
+			law_activation_counts[str(law_id)] = int(law_activation_counts.get(str(law_id), 0)) + 1
+
 		for resource_id in RunState.RESOURCE_IDS:
 			resource_totals[resource_id] += int(summary.final_resources.get(resource_id, 0))
 
@@ -157,6 +161,7 @@ func run_batch(
 	aggregate["fallback_card_usage"] = fallback_usage
 	aggregate["average_medals_earned"] = float(total_medals) / float(maxi(1, completed_runs))
 	aggregate["decision_selection_counts"] = decision_counts
+	aggregate["law_activation_counts"] = law_activation_counts
 
 	var never_selected: Array[String] = []
 	for decision in content.get_all_decisions_for_country(config.country_id):

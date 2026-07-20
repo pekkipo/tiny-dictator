@@ -92,7 +92,8 @@
       "localization_risk": "low",
       "visual_hook": "stamped umbrellas at civic doorways",
       "writer_notes": "Hard follow-up only on full tax path."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "umbrella_tax_enforcement",
@@ -284,7 +285,8 @@
       "localization_risk": "low",
       "visual_hook": "steaming morning kiosks",
       "writer_notes": "REWRITE from Pack A standalone; pool on full fund path."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "coffee_hoarding_crisis",
@@ -397,6 +399,9 @@
       "any_flags": [
         "free_coffee_mornings",
         "discount_coffee"
+      ],
+      "any_laws": [
+        "national_coffee_reserve"
       ]
     },
     "options": [
@@ -501,7 +506,7 @@
           "capitalist": 2
         },
         "add_laws": [
-          "bench_subscription_act"
+          "palace_subscription_plan"
         ],
         "add_flags": [
           "bench_subscriptions_live"
@@ -578,8 +583,9 @@
       "batch_id": "2B-6A",
       "localization_risk": "low",
       "visual_hook": "paywalled park benches",
-      "writer_notes": "Subscription seating \u2014 not rainwater/pothole privatize clone."
-    }
+      "writer_notes": "Subscription seating — not rainwater/pothole privatize clone."
+    },
+    "requirements": {}
   },
   {
     "id": "bench_subscription_backlash",
@@ -597,7 +603,7 @@
         "bench_subscriptions_live"
       ],
       "all_laws": [
-        "bench_subscription_act"
+        "palace_subscription_plan"
       ]
     },
     "options": [
@@ -727,7 +733,7 @@
           "auntie_olga": 2
         },
         "remove_laws": [
-          "bench_subscription_act"
+          "palace_subscription_plan"
         ],
         "remove_flags": [
           "bench_subscriptions_live",
@@ -858,7 +864,8 @@
       "localization_risk": "low",
       "visual_hook": "lottery kiosks on every corner",
       "writer_notes": "REWRITE from Pack A; speaker now Penny; soft to odds collapse."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "lottery_odds_collapse",
@@ -1003,7 +1010,7 @@
           "capitalist": 2
         },
         "add_laws": [
-          "palace_gift_shop_act"
+          "palace_subscription_plan"
         ],
         "add_flags": [
           "palace_gift_shop_open"
@@ -1067,6 +1074,11 @@
       "localization_risk": "low",
       "visual_hook": "gift kiosk beside the throne",
       "writer_notes": "Distinct from Pack C palace tours."
+    },
+    "requirements": {
+      "required_palace_upgrades": [
+        "cushion_throne"
+      ]
     }
   },
   {
@@ -1085,7 +1097,7 @@
         "palace_gift_shop_open"
       ],
       "all_laws": [
-        "palace_gift_shop_act"
+        "palace_subscription_plan"
       ]
     },
     "options": [
@@ -1220,7 +1232,8 @@
       "localization_risk": "low",
       "visual_hook": "Wi-Fi icons in elevators",
       "writer_notes": "REWRITE from Pack A; hard follow-up on pilot."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "elevator_wifi_trap",
@@ -1384,7 +1397,8 @@
       "localization_risk": "low",
       "visual_hook": "logo-stamped potholes",
       "writer_notes": "REWRITE from Pack A; soft to brand war. Distinct from square naming."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "pothole_brand_war",
@@ -1671,7 +1685,8 @@
       "localization_risk": "low",
       "visual_hook": "ribbon-cutting for unfinished bridge",
       "writer_notes": "REWRITE canal placeholder as Bridge to Nowhere; keep ID for saves."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "bridge_budget_overrun",

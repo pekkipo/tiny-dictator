@@ -1,1206 +1,1237 @@
 [
-	{
-		"id": "cheese_shortage_crisis",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "minister_penny",
-		"category": "food",
-		"proposal": "CRISIS: The national cheese vault is empty. Pizza Friday has become Pizza Question Mark.",
-		"one_time": true,
-		"base_weight": 9,
-		"minimum_day": 10,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability"
-			]
-		},
-		"narrative": {
-			"crisis_id": "cheese_shortage_crisis",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "open_trade_talks",
-				"label": "Open trade talks",
-				"effects": {
-					"treasury": -4,
-					"happiness": 2,
-					"elite_loyalty": 1
-				},
-				"add_flags": [
-					"cheese_trade_talks"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "cheese_shortage_crisis_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Minister Penny contacts every neighbor with a cow, goat, or a convincing wheel."
-			},
-			{
-				"id": "issue_cheese_bonds",
-				"label": "Issue cheese bonds",
-				"effects": {
-					"treasury": 5,
-					"happiness": -2,
-					"elite_loyalty": -1
-				},
-				"add_flags": [
-					"cheese_bonds_issued"
-				],
-				"add_laws": [
-					"emergency_cheese_bonds"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "cheese_shortage_crisis_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Investors buy dairy-backed paper. Nobody asks what happens when it ripens."
-			},
-			{
-				"id": "fund_lab_cheese",
-				"label": "Fund lab cheese",
-				"effects": {
-					"treasury": -6,
-					"order": 2,
-					"happiness": -1
-				},
-				"add_flags": [
-					"lab_cheese_authorized"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "cheese_shortage_crisis_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Scientists promise a substitute with 80% of cheese's confidence."
-			}
-		],
-		"tags": [
-			"food",
-			"economy",
-			"crisis",
-			"empty_cheese_vault"
-		]
-	},
-	{
-		"id": "cheese_shortage_crisis_resolution",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "minister_penny",
-		"category": "economy",
-		"proposal": "The last ceremonial cheese wheel is now guarded by two clerks and a very persuasive mouse.",
-		"one_time": true,
-		"base_weight": 1,
-		"minimum_day": 10,
-		"maximum_day": 41,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability"
-			]
-		},
-		"requirements": {
-			"active_crisis": "cheese_shortage_crisis"
-		},
-		"narrative": {
-			"crisis_id": "cheese_shortage_crisis"
-		},
-		"options": [
-			{
-				"id": "import_cheese",
-				"label": "Import emergency cheese",
-				"effects": {
-					"treasury": -11,
-					"happiness": 7,
-					"order": 2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "cheese_shortage_crisis",
-						"action": "resolve",
-						"resolution_id": "import_cheese"
-					}
-				],
-				"result_text": "Cheese trucks roll in to applause. Customs asks for samples."
-			},
-			{
-				"id": "ration_cheese",
-				"label": "Ration the cheese",
-				"effects": {
-					"treasury": 2,
-					"order": 5,
-					"happiness": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "cheese_shortage_crisis",
-						"action": "resolve",
-						"resolution_id": "ration_cheese"
-					}
-				],
-				"result_text": "Every citizen gets one dignified cube. Recipes become very imaginative."
-			},
-			{
-				"id": "cancel_pizza_friday",
-				"label": "Cancel Pizza Friday",
-				"effects": {
-					"treasury": 5,
-					"happiness": -12,
-					"order": -5
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "cheese_shortage_crisis",
-						"action": "fail",
-						"reason": "cancel_pizza_friday"
-					}
-				],
-				"result_text": "Friday arrives without pizza. The national mood develops a crust."
-			}
-		],
-		"tags": [
-			"food",
-			"economy",
-			"crisis",
-			"empty_cheese_vault"
-		]
-	},
-	{
-		"id": "international_border_confusion",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "foreign_ambassador",
-		"category": "diplomacy",
-		"proposal": "CRISIS: A surveyor moved the border marker three meters. Both nations now claim the same goat shed.",
-		"one_time": true,
-		"base_weight": 7,
-		"minimum_day": 10,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "international_border_confusion",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "invite_surveyors",
-				"label": "Invite surveyors",
-				"effects": {
-					"treasury": -4,
-					"order": 2,
-					"happiness": 1
-				},
-				"add_flags": [
-					"border_survey_invited"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "international_border_confusion_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Surveyors arrive carrying rulers, sandwiches, and three incompatible maps."
-			},
-			{
-				"id": "share_the_shed",
-				"label": "Share the shed",
-				"effects": {
-					"happiness": 3,
-					"elite_loyalty": -1,
-					"treasury": -1
-				},
-				"add_flags": [
-					"border_shared_shed"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "international_border_confusion_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "The goat shed becomes international property. The goat refuses a passport."
-			},
-			{
-				"id": "paint_bigger_line",
-				"label": "Paint a bigger line",
-				"effects": {
-					"order": 2,
-					"happiness": -2,
-					"elite_loyalty": 1
-				},
-				"add_flags": [
-					"border_line_painted"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "international_border_confusion_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "The new line is bold, visible, and somehow crosses the ambassador's lunch."
-			}
-		],
-		"tags": [
-			"diplomacy",
-			"crisis",
-			"border_marker"
-		]
-	},
-	{
-		"id": "international_border_confusion_resolution",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "foreign_ambassador",
-		"category": "diplomacy",
-		"proposal": "The neighboring delegation has arrived with flags, biscuits, and a map drawn on a napkin.",
-		"one_time": true,
-		"base_weight": 1,
-		"minimum_day": 10,
-		"maximum_day": 43,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"requirements": {
-			"active_crisis": "international_border_confusion"
-		},
-		"narrative": {
-			"crisis_id": "international_border_confusion"
-		},
-		"options": [
-			{
-				"id": "sign_goat_shed_treaty",
-				"label": "Sign shed treaty",
-				"effects": {
-					"order": 5,
-					"happiness": 4,
-					"treasury": -3
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "international_border_confusion",
-						"action": "resolve",
-						"resolution_id": "sign_goat_shed_treaty"
-					}
-				],
-				"result_text": "The shed is jointly administered. The goat becomes its first civil servant."
-			},
-			{
-				"id": "host_border_picnic",
-				"label": "Host border picnic",
-				"effects": {
-					"happiness": 6,
-					"treasury": -5,
-					"elite_loyalty": 1
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "international_border_confusion",
-						"action": "resolve",
-						"resolution_id": "host_border_picnic"
-					}
-				],
-				"result_text": "A picnic solves the dispute. The map is repurposed as a napkin."
-			},
-			{
-				"id": "claim_everything",
-				"label": "Claim everything",
-				"effects": {
-					"order": -6,
-					"happiness": -4,
-					"elite_loyalty": 2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "international_border_confusion",
-						"action": "fail",
-						"reason": "claim_everything"
-					}
-				],
-				"result_text": "You claim the shed, the goat, and a hedge. The neighbors claim your dignity."
-			}
-		],
-		"tags": [
-			"diplomacy",
-			"crisis",
-			"border_marker"
-		]
-	},
-	{
-		"id": "bureaucrat_general_strike",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "clerk_zero",
-		"category": "bureaucracy",
-		"proposal": "CRISIS: Every civil servant has stopped stamping. Licenses, buses, and the national kettle are awaiting approval.",
-		"one_time": true,
-		"base_weight": 8,
-		"minimum_day": 10,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "bureaucrat_general_strike",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "meet_the_union",
-				"label": "Meet the clerks",
-				"effects": {
-					"happiness": 3,
-					"treasury": -3,
-					"order": 1
-				},
-				"add_flags": [
-					"clerk_strike_talks"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "bureaucrat_general_strike_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Clerks present a reasonable demand: chairs that do not fold during lunch."
-			},
-			{
-				"id": "open_emergency_desks",
-				"label": "Open emergency desks",
-				"effects": {
-					"order": 4,
-					"treasury": -4,
-					"happiness": -1
-				},
-				"add_flags": [
-					"clerk_emergency_desks"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "bureaucrat_general_strike_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Volunteer desks open. Nobody can find the stamp drawer."
-			},
-			{
-				"id": "ask_ai_for_forms",
-				"label": "Ask AI for forms",
-				"effects": {
-					"order": 2,
-					"treasury": -2,
-					"elite_loyalty": -1
-				},
-				"add_flags": [
-					"strike_ai_assistance"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "bureaucrat_general_strike_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "The AI creates forms at heroic speed. It also requests a lunch break."
-			}
-		],
-		"tags": [
-			"bureaucracy",
-			"crisis",
-			"closed_service_windows"
-		]
-	},
-	{
-		"id": "bureaucrat_general_strike_resolution",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "clerk_zero",
-		"category": "bureaucracy",
-		"proposal": "The government is frozen. The only moving object is a tumbleweed made of rejected applications.",
-		"one_time": true,
-		"base_weight": 1,
-		"minimum_day": 10,
-		"maximum_day": 43,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"requirements": {
-			"active_crisis": "bureaucrat_general_strike"
-		},
-		"narrative": {
-			"crisis_id": "bureaucrat_general_strike"
-		},
-		"options": [
-			{
-				"id": "sign_workplace_charter",
-				"label": "Sign workplace charter",
-				"effects": {
-					"order": 7,
-					"happiness": 5,
-					"treasury": -6
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "bureaucrat_general_strike",
-						"action": "resolve",
-						"resolution_id": "sign_workplace_charter"
-					}
-				],
-				"result_text": "Stamps resume. A commemorative stamp approves the return of stamps."
-			},
-			{
-				"id": "simplify_three_forms",
-				"label": "Simplify three forms",
-				"effects": {
-					"order": 6,
-					"happiness": 3,
-					"elite_loyalty": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "bureaucrat_general_strike",
-						"action": "resolve",
-						"resolution_id": "simplify_three_forms"
-					}
-				],
-				"result_text": "Three forms become one. The remaining form is proudly seventeen pages."
-			},
-			{
-				"id": "replace_clerks_with_boxes",
-				"label": "Replace clerks with boxes",
-				"effects": {
-					"order": -7,
-					"happiness": -5,
-					"treasury": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "bureaucrat_general_strike",
-						"action": "fail",
-						"reason": "replace_clerks_with_boxes"
-					}
-				],
-				"result_text": "The boxes cannot stamp, explain, or unionize. Services become theoretical.",
-				"trigger_ending": "government_by_form"
-			}
-		],
-		"tags": [
-			"bureaucracy",
-			"crisis",
-			"closed_service_windows"
-		]
-	},
-	{
-		"id": "national_internet_outage",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "luna_news",
-		"category": "infrastructure",
-		"proposal": "CRISIS: The national internet has vanished. Citizens are communicating by shouting from balconies again.",
-		"one_time": true,
-		"base_weight": 8,
-		"minimum_day": 9,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "national_internet_outage",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "call_network_techs",
-				"label": "Call network techs",
-				"effects": {
-					"treasury": -5,
-					"order": 2,
-					"happiness": 2
-				},
-				"add_flags": [
-					"internet_techs_called"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "national_internet_outage_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Technicians arrive carrying ladders, cables, and the confidence of people who have seen worse routers."
-			},
-			{
-				"id": "use_radio_bulletins",
-				"label": "Use radio bulletins",
-				"effects": {
-					"order": 4,
-					"happiness": -1,
-					"elite_loyalty": 1
-				},
-				"add_flags": [
-					"internet_radio_bulletins"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "national_internet_outage_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Radio returns. Teenagers discover it cannot be muted by glaring."
-			},
-			{
-				"id": "declare_offline_day",
-				"label": "Declare offline day",
-				"effects": {
-					"happiness": 1,
-					"order": -2,
-					"treasury": 1
-				},
-				"add_flags": [
-					"internet_offline_day"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "national_internet_outage_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "You call it a holiday. Citizens call it inconvenient in handwritten letters."
-			}
-		],
-		"tags": [
-			"infrastructure",
-			"crisis",
-			"offline_city"
-		]
-	},
-	{
-		"id": "national_internet_outage_resolution",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "luna_news",
-		"category": "infrastructure",
-		"proposal": "The final router is blinking red, green, and an unhelpful shade of mauve.",
-		"one_time": true,
-		"base_weight": 1,
-		"minimum_day": 9,
-		"maximum_day": 43,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"requirements": {
-			"active_crisis": "national_internet_outage"
-		},
-		"narrative": {
-			"crisis_id": "national_internet_outage"
-		},
-		"options": [
-			{
-				"id": "repair_backbone",
-				"label": "Repair backbone",
-				"effects": {
-					"treasury": -8,
-					"happiness": 7,
-					"order": 4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_internet_outage",
-						"action": "resolve",
-						"resolution_id": "repair_backbone"
-					}
-				],
-				"result_text": "The connection returns. The first national message is a photo of a cat in a hat."
-			},
-			{
-				"id": "create_local_mesh",
-				"label": "Build local mesh",
-				"effects": {
-					"treasury": -4,
-					"happiness": 4,
-					"order": 5
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_internet_outage",
-						"action": "resolve",
-						"resolution_id": "create_local_mesh"
-					}
-				],
-				"result_text": "Neighborhood networks bloom. Every street becomes its own tiny internet empire."
-			},
-			{
-				"id": "unplug_everything",
-				"label": "Unplug everything",
-				"effects": {
-					"order": -6,
-					"happiness": -7,
-					"elite_loyalty": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_internet_outage",
-						"action": "fail",
-						"reason": "unplug_everything"
-					}
-				],
-				"result_text": "The network stays dead. Balcony shouting achieves nationwide coverage."
-			}
-		],
-		"tags": [
-			"infrastructure",
-			"crisis",
-			"offline_city"
-		]
-	},
-	{
-		"id": "fake_news_panic",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "luna_news",
-		"category": "politics",
-		"proposal": "CRISIS: A rumor says the palace has been replaced by a cardboard replica. Citizens are tapping the walls.",
-		"one_time": true,
-		"base_weight": 8,
-		"minimum_day": 10,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "fake_news_panic",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "hold_open_briefing",
-				"label": "Hold open briefing",
-				"effects": {
-					"happiness": 3,
-					"order": 2,
-					"elite_loyalty": -1
-				},
-				"add_flags": [
-					"panic_open_briefing"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "fake_news_panic_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "Luna News opens the palace doors. The walls sound reassuringly un-cardboard."
-			},
-			{
-				"id": "publish_fact_sheet",
-				"label": "Publish fact sheet",
-				"effects": {
-					"order": 3,
-					"treasury": -2,
-					"happiness": 1
-				},
-				"add_flags": [
-					"panic_fact_sheet"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "fake_news_panic_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "The fact sheet proves the palace is real using twelve extremely real-looking diagrams."
-			},
-			{
-				"id": "counter_with_memes",
-				"label": "Counter with memes",
-				"effects": {
-					"happiness": 3,
-					"order": -1,
-					"treasury": -1
-				},
-				"add_flags": [
-					"panic_memes_deployed"
-				],
-				"follow_up": {
-					"type": "hard",
-					"decision_id": "fake_news_panic_resolution",
-					"minimum_delay_days": 0,
-					"maximum_delay_days": 1,
-					"priority": 95
-				},
-				"result_text": "The official meme account responds. The rumor becomes funnier and less useful."
-			}
-		],
-		"tags": [
-			"politics",
-			"crisis",
-			"rumor_boards"
-		]
-	},
-	{
-		"id": "fake_news_panic_resolution",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "luna_news",
-		"category": "politics",
-		"proposal": "The rumor has evolved: the cardboard palace is now allegedly controlled by pigeons. The public awaits a response.",
-		"one_time": true,
-		"base_weight": 1,
-		"minimum_day": 10,
-		"maximum_day": 43,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"requirements": {
-			"active_crisis": "fake_news_panic"
-		},
-		"narrative": {
-			"crisis_id": "fake_news_panic"
-		},
-		"options": [
-			{
-				"id": "show_the_work",
-				"label": "Show the work",
-				"effects": {
-					"happiness": 6,
-					"order": 5,
-					"treasury": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "fake_news_panic",
-						"action": "resolve",
-						"resolution_id": "show_the_work"
-					}
-				],
-				"result_text": "Budgets, repairs, and the actual palace basement are shown. Trust returns in sensible shoes."
-			},
-			{
-				"id": "fund_media_literacy",
-				"label": "Fund rumor lessons",
-				"effects": {
-					"happiness": 3,
-					"order": 6,
-					"treasury": -6
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "fake_news_panic",
-						"action": "resolve",
-						"resolution_id": "fund_media_literacy"
-					}
-				],
-				"result_text": "Citizens learn to check sources. Pigeons issue no comment."
-			},
-			{
-				"id": "ban_all_questions",
-				"label": "Ban all questions",
-				"effects": {
-					"order": -7,
-					"happiness": -8,
-					"elite_loyalty": 2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "fake_news_panic",
-						"action": "fail",
-						"reason": "ban_all_questions"
-					}
-				],
-				"result_text": "Questions multiply, now wearing tiny disguises."
-			}
-		],
-		"tags": [
-			"politics",
-			"crisis",
-			"rumor_boards"
-		]
-	},
-	{
-		"id": "budget_meltdown_crisis",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "minister_penny",
-		"category": "economy",
-		"proposal": "CRISIS: The treasury is full of coupons, commemorative coins, and one note promising 'more money soon'.",
-		"one_time": true,
-		"base_weight": 10,
-		"minimum_day": 5,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": [
-				"establishment",
-				"escalation",
-				"instability"
-			]
-		},
-		"narrative": {
-			"crisis_id": "budget_meltdown",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "freeze_luxury_spending",
-				"label": "Freeze luxury spending",
-				"effects": {
-					"treasury": 8,
-					"elite_loyalty": -5,
-					"happiness": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "budget_meltdown",
-						"action": "resolve",
-						"resolution_id": "freeze_luxury_spending"
-					}
-				],
-				"result_text": "Gold fountain maintenance pauses. The fountains begin expressing themselves."
-			},
-			{
-				"id": "sell_palace_merch",
-				"label": "Sell palace merch",
-				"effects": {
-					"treasury": 6,
-					"happiness": 2,
-					"elite_loyalty": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "budget_meltdown",
-						"action": "resolve",
-						"resolution_id": "sell_palace_merch"
-					}
-				],
-				"result_text": "Souvenir decrees sell out. A ruler-shaped fridge magnet becomes legal tender-adjacent."
-			},
-			{
-				"id": "pay_in_coupons",
-				"label": "Pay in coupons",
-				"effects": {
-					"treasury": 5,
-					"happiness": -11,
-					"order": -6
-				},
-				"add_laws": [
-					"coupon_salaries"
-				],
-				"crisis_actions": [
-					{
-						"crisis_id": "budget_meltdown",
-						"action": "fail",
-						"reason": "pay_in_coupons"
-					}
-				],
-				"result_text": "Civil servants accept coupons briefly, then accept nothing at all.",
-				"trigger_ending": "bankrupt_leader"
-			}
-		],
-		"tags": [
-			"economy",
-			"crisis",
-			"coupon_pay_stubs"
-		]
-	},
-	{
-		"id": "ai_cabinet_lockout",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "clerk_zero",
-		"category": "science",
-		"proposal": "CRISIS: The cabinet computer has locked every ministry folder until someone completes its satisfaction survey.",
-		"one_time": true,
-		"base_weight": 6,
-		"minimum_day": 10,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "ai_cabinet_lockout",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "use_dual_key",
-				"label": "Use dual-key unlock",
-				"effects": {
-					"order": 5,
-					"treasury": -3,
-					"elite_loyalty": 1
-				},
-				"advisor_affinity": {
-					"clerk_zero": 2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "ai_cabinet_lockout",
-						"action": "resolve",
-						"resolution_id": "use_dual_key"
-					}
-				],
-				"result_text": "Two keys, three stamps, and one apology unlock the cabinet."
-			},
-			{
-				"id": "accept_optimization",
-				"label": "Accept optimization",
-				"effects": {
-					"order": 3,
-					"happiness": -2,
-					"treasury": 2
-				},
-				"add_flags": [
-					"ai_cabinet_optimized"
-				],
-				"crisis_actions": [
-					{
-						"crisis_id": "ai_cabinet_lockout",
-						"action": "resolve",
-						"resolution_id": "accept_optimization"
-					}
-				],
-				"result_text": "The AI schedules every minister's lunch for the same minute."
-			},
-			{
-				"id": "smash_terminal",
-				"label": "Smash terminal",
-				"effects": {
-					"order": -5,
-					"happiness": 1,
-					"treasury": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "ai_cabinet_lockout",
-						"action": "fail",
-						"reason": "smash_terminal"
-					}
-				],
-				"result_text": "The lockout ends because the cabinet no longer has a computer."
-			}
-		],
-		"tags": [
-			"science",
-			"crisis",
-			"blank_terminal_cabinet"
-		]
-	},
-	{
-		"id": "moon_ownership_dispute",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "foreign_ambassador",
-		"category": "diplomacy",
-		"proposal": "CRISIS: A neighbor claims the moon is theirs after sunset and has sent a very official telescope.",
-		"one_time": true,
-		"base_weight": 6,
-		"minimum_day": 10,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "moon_ownership_dispute",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "share_observation",
-				"label": "Share observation nights",
-				"effects": {
-					"happiness": 4,
-					"order": 3,
-					"treasury": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "moon_ownership_dispute",
-						"action": "resolve",
-						"resolution_id": "share_observation"
-					}
-				],
-				"result_text": "The moon is shared on alternating nights. It remains majestically unbothered."
-			},
-			{
-				"id": "offer_lunar_picnic",
-				"label": "Offer lunar picnic",
-				"effects": {
-					"happiness": 6,
-					"treasury": -5,
-					"elite_loyalty": 1
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "moon_ownership_dispute",
-						"action": "resolve",
-						"resolution_id": "offer_lunar_picnic"
-					}
-				],
-				"result_text": "Diplomats eat cheese under the moon and forget whose it was."
-			},
-			{
-				"id": "sell_moon_rights",
-				"label": "Sell moon rights",
-				"effects": {
-					"treasury": 7,
-					"happiness": -5,
-					"order": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "moon_ownership_dispute",
-						"action": "fail",
-						"reason": "sell_moon_rights"
-					}
-				],
-				"result_text": "The moon gets a new owner, a logo, and several confused astronomers.",
-				"trigger_ending": "moon_new_owner"
-			}
-		],
-		"tags": [
-			"diplomacy",
-			"crisis",
-			"fake_telescope_plaza"
-		]
-	},
-	{
-		"id": "national_festival_stampede",
-		"schema_version": 2,
-		"card_type": "crisis",
-		"advisor_id": "auntie_olga",
-		"category": "festival",
-		"proposal": "CRISIS: The festival crowd has become a cheerful river of costumes, kites, and misplaced marching bands.",
-		"one_time": true,
-		"base_weight": 8,
-		"minimum_day": 8,
-		"maximum_day": 42,
-		"pacing": {
-			"allowed_stages": [
-				"escalation",
-				"instability",
-				"endgame"
-			]
-		},
-		"narrative": {
-			"crisis_id": "national_festival_stampede",
-			"starts_crisis": true
-		},
-		"options": [
-			{
-				"id": "open_side_exits",
-				"label": "Open side exits",
-				"effects": {
-					"order": 6,
-					"happiness": 2,
-					"treasury": -3
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_festival_stampede",
-						"action": "resolve",
-						"resolution_id": "open_side_exits"
-					}
-				],
-				"result_text": "Extra exits open. The crowd flows home with only minor confetti in its shoes."
-			},
-			{
-				"id": "stagger_the_shows",
-				"label": "Stagger the shows",
-				"effects": {
-					"order": 5,
-					"happiness": -1,
-					"treasury": -2
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_festival_stampede",
-						"action": "resolve",
-						"resolution_id": "stagger_the_shows"
-					}
-				],
-				"result_text": "The jugglers perform later. The crowd discovers patience between trumpet solos."
-			},
-			{
-				"id": "add_more_fireworks",
-				"label": "Add more fireworks",
-				"effects": {
-					"happiness": 2,
-					"order": -7,
-					"treasury": -4
-				},
-				"crisis_actions": [
-					{
-						"crisis_id": "national_festival_stampede",
-						"action": "fail",
-						"reason": "add_more_fireworks"
-					}
-				],
-				"result_text": "The crowd gets more excited. So does every exit at once."
-			}
-		],
-		"tags": [
-			"festival",
-			"crisis",
-			"stampede_plaza"
-		]
-	}
+  {
+    "id": "cheese_shortage_crisis",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "minister_penny",
+    "category": "food",
+    "proposal": "CRISIS: The national cheese vault is empty. Pizza Friday has become Pizza Question Mark.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 10,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "cheese_shortage_crisis",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "open_trade_talks",
+        "label": "Open trade talks",
+        "effects": {
+          "treasury": -4,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "cheese_trade_talks"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "cheese_shortage_crisis_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Minister Penny contacts every neighbor with a cow, goat, or a convincing wheel."
+      },
+      {
+        "id": "issue_cheese_bonds",
+        "label": "Issue cheese bonds",
+        "effects": {
+          "treasury": 5,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "cheese_bonds_issued"
+        ],
+        "add_laws": [
+          "emergency_cheese_bonds"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "cheese_shortage_crisis_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Investors buy dairy-backed paper. Nobody asks what happens when it ripens."
+      },
+      {
+        "id": "fund_lab_cheese",
+        "label": "Fund lab cheese",
+        "effects": {
+          "treasury": -6,
+          "order": 2,
+          "happiness": -1
+        },
+        "add_flags": [
+          "lab_cheese_authorized"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "cheese_shortage_crisis_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Scientists promise a substitute with 80% of cheese's confidence."
+      }
+    ],
+    "tags": [
+      "food",
+      "economy",
+      "crisis",
+      "empty_cheese_vault"
+    ],
+    "requirements": {}
+  },
+  {
+    "id": "cheese_shortage_crisis_resolution",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "The last ceremonial cheese wheel is now guarded by two clerks and a very persuasive mouse.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 41,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
+    },
+    "requirements": {
+      "active_crisis": "cheese_shortage_crisis",
+      "any_laws": [
+        "mouse_protection_law"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "cheese_shortage_crisis"
+    },
+    "options": [
+      {
+        "id": "import_cheese",
+        "label": "Import emergency cheese",
+        "effects": {
+          "treasury": -11,
+          "happiness": 7,
+          "order": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "resolve",
+            "resolution_id": "import_cheese"
+          }
+        ],
+        "result_text": "Cheese trucks roll in to applause. Customs asks for samples."
+      },
+      {
+        "id": "ration_cheese",
+        "label": "Ration the cheese",
+        "effects": {
+          "treasury": 2,
+          "order": 5,
+          "happiness": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "resolve",
+            "resolution_id": "ration_cheese"
+          }
+        ],
+        "result_text": "Every citizen gets one dignified cube. Recipes become very imaginative."
+      },
+      {
+        "id": "cancel_pizza_friday",
+        "label": "Cancel Pizza Friday",
+        "effects": {
+          "treasury": 5,
+          "happiness": -12,
+          "order": -5
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "cheese_shortage_crisis",
+            "action": "fail",
+            "reason": "cancel_pizza_friday"
+          }
+        ],
+        "result_text": "Friday arrives without pizza. The national mood develops a crust."
+      }
+    ],
+    "tags": [
+      "food",
+      "economy",
+      "crisis",
+      "empty_cheese_vault"
+    ]
+  },
+  {
+    "id": "international_border_confusion",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "foreign_ambassador",
+    "category": "diplomacy",
+    "proposal": "CRISIS: A surveyor moved the border marker three meters. Both nations now claim the same goat shed.",
+    "one_time": true,
+    "base_weight": 7,
+    "minimum_day": 10,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "international_border_confusion",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "invite_surveyors",
+        "label": "Invite surveyors",
+        "effects": {
+          "treasury": -4,
+          "order": 2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "border_survey_invited"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "international_border_confusion_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Surveyors arrive carrying rulers, sandwiches, and three incompatible maps."
+      },
+      {
+        "id": "share_the_shed",
+        "label": "Share the shed",
+        "effects": {
+          "happiness": 3,
+          "elite_loyalty": -1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "border_shared_shed"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "international_border_confusion_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "The goat shed becomes international property. The goat refuses a passport."
+      },
+      {
+        "id": "paint_bigger_line",
+        "label": "Paint a bigger line",
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "border_line_painted"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "international_border_confusion_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "The new line is bold, visible, and somehow crosses the ambassador's lunch."
+      }
+    ],
+    "tags": [
+      "diplomacy",
+      "crisis",
+      "border_marker"
+    ],
+    "requirements": {}
+  },
+  {
+    "id": "international_border_confusion_resolution",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "foreign_ambassador",
+    "category": "diplomacy",
+    "proposal": "The neighboring delegation has arrived with flags, biscuits, and a map drawn on a napkin.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 43,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "active_crisis": "international_border_confusion"
+    },
+    "narrative": {
+      "crisis_id": "international_border_confusion"
+    },
+    "options": [
+      {
+        "id": "sign_goat_shed_treaty",
+        "label": "Sign shed treaty",
+        "effects": {
+          "order": 5,
+          "happiness": 4,
+          "treasury": -3
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "international_border_confusion",
+            "action": "resolve",
+            "resolution_id": "sign_goat_shed_treaty"
+          }
+        ],
+        "result_text": "The shed is jointly administered. The goat becomes its first civil servant."
+      },
+      {
+        "id": "host_border_picnic",
+        "label": "Host border picnic",
+        "effects": {
+          "happiness": 6,
+          "treasury": -5,
+          "elite_loyalty": 1
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "international_border_confusion",
+            "action": "resolve",
+            "resolution_id": "host_border_picnic"
+          }
+        ],
+        "result_text": "A picnic solves the dispute. The map is repurposed as a napkin."
+      },
+      {
+        "id": "claim_everything",
+        "label": "Claim everything",
+        "effects": {
+          "order": -6,
+          "happiness": -4,
+          "elite_loyalty": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "international_border_confusion",
+            "action": "fail",
+            "reason": "claim_everything"
+          }
+        ],
+        "result_text": "You claim the shed, the goat, and a hedge. The neighbors claim your dignity."
+      }
+    ],
+    "tags": [
+      "diplomacy",
+      "crisis",
+      "border_marker"
+    ]
+  },
+  {
+    "id": "bureaucrat_general_strike",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "CRISIS: Every civil servant has stopped stamping. Licenses, buses, and the national kettle are awaiting approval.",
+    "one_time": true,
+    "base_weight": 8,
+    "minimum_day": 10,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "bureaucrat_general_strike",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "meet_the_union",
+        "label": "Meet the clerks",
+        "effects": {
+          "happiness": 3,
+          "treasury": -3,
+          "order": 1
+        },
+        "add_flags": [
+          "clerk_strike_talks"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "bureaucrat_general_strike_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Clerks present a reasonable demand: chairs that do not fold during lunch."
+      },
+      {
+        "id": "open_emergency_desks",
+        "label": "Open emergency desks",
+        "effects": {
+          "order": 4,
+          "treasury": -4,
+          "happiness": -1
+        },
+        "add_flags": [
+          "clerk_emergency_desks"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "bureaucrat_general_strike_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Volunteer desks open. Nobody can find the stamp drawer."
+      },
+      {
+        "id": "ask_ai_for_forms",
+        "label": "Ask AI for forms",
+        "effects": {
+          "order": 2,
+          "treasury": -2,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "strike_ai_assistance"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "bureaucrat_general_strike_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "The AI creates forms at heroic speed. It also requests a lunch break."
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "crisis",
+      "closed_service_windows"
+    ],
+    "requirements": {}
+  },
+  {
+    "id": "bureaucrat_general_strike_resolution",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "The government is frozen. The only moving object is a tumbleweed made of rejected applications.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 43,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "active_crisis": "bureaucrat_general_strike"
+    },
+    "narrative": {
+      "crisis_id": "bureaucrat_general_strike"
+    },
+    "options": [
+      {
+        "id": "sign_workplace_charter",
+        "label": "Sign workplace charter",
+        "effects": {
+          "order": 7,
+          "happiness": 5,
+          "treasury": -6
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "bureaucrat_general_strike",
+            "action": "resolve",
+            "resolution_id": "sign_workplace_charter"
+          }
+        ],
+        "result_text": "Stamps resume. A commemorative stamp approves the return of stamps."
+      },
+      {
+        "id": "simplify_three_forms",
+        "label": "Simplify three forms",
+        "effects": {
+          "order": 6,
+          "happiness": 3,
+          "elite_loyalty": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "bureaucrat_general_strike",
+            "action": "resolve",
+            "resolution_id": "simplify_three_forms"
+          }
+        ],
+        "result_text": "Three forms become one. The remaining form is proudly seventeen pages."
+      },
+      {
+        "id": "replace_clerks_with_boxes",
+        "label": "Replace clerks with boxes",
+        "effects": {
+          "order": -7,
+          "happiness": -5,
+          "treasury": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "bureaucrat_general_strike",
+            "action": "fail",
+            "reason": "replace_clerks_with_boxes"
+          }
+        ],
+        "result_text": "The boxes cannot stamp, explain, or unionize. Services become theoretical.",
+        "trigger_ending": "government_by_form"
+      }
+    ],
+    "tags": [
+      "bureaucracy",
+      "crisis",
+      "closed_service_windows"
+    ]
+  },
+  {
+    "id": "national_internet_outage",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "luna_news",
+    "category": "infrastructure",
+    "proposal": "CRISIS: The national internet has vanished. Citizens are communicating by shouting from balconies again.",
+    "one_time": true,
+    "base_weight": 8,
+    "minimum_day": 9,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "national_internet_outage",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "call_network_techs",
+        "label": "Call network techs",
+        "effects": {
+          "treasury": -5,
+          "order": 2,
+          "happiness": 2
+        },
+        "add_flags": [
+          "internet_techs_called"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "national_internet_outage_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Technicians arrive carrying ladders, cables, and the confidence of people who have seen worse routers."
+      },
+      {
+        "id": "use_radio_bulletins",
+        "label": "Use radio bulletins",
+        "effects": {
+          "order": 4,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "add_flags": [
+          "internet_radio_bulletins"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "national_internet_outage_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Radio returns. Teenagers discover it cannot be muted by glaring."
+      },
+      {
+        "id": "declare_offline_day",
+        "label": "Declare offline day",
+        "effects": {
+          "happiness": 1,
+          "order": -2,
+          "treasury": 1
+        },
+        "add_flags": [
+          "internet_offline_day"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "national_internet_outage_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "You call it a holiday. Citizens call it inconvenient in handwritten letters."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "crisis",
+      "offline_city"
+    ],
+    "requirements": {}
+  },
+  {
+    "id": "national_internet_outage_resolution",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "luna_news",
+    "category": "infrastructure",
+    "proposal": "The final router is blinking red, green, and an unhelpful shade of mauve.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 9,
+    "maximum_day": 43,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "active_crisis": "national_internet_outage"
+    },
+    "narrative": {
+      "crisis_id": "national_internet_outage"
+    },
+    "options": [
+      {
+        "id": "repair_backbone",
+        "label": "Repair backbone",
+        "effects": {
+          "treasury": -8,
+          "happiness": 7,
+          "order": 4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_internet_outage",
+            "action": "resolve",
+            "resolution_id": "repair_backbone"
+          }
+        ],
+        "result_text": "The connection returns. The first national message is a photo of a cat in a hat."
+      },
+      {
+        "id": "create_local_mesh",
+        "label": "Build local mesh",
+        "effects": {
+          "treasury": -4,
+          "happiness": 4,
+          "order": 5
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_internet_outage",
+            "action": "resolve",
+            "resolution_id": "create_local_mesh"
+          }
+        ],
+        "result_text": "Neighborhood networks bloom. Every street becomes its own tiny internet empire."
+      },
+      {
+        "id": "unplug_everything",
+        "label": "Unplug everything",
+        "effects": {
+          "order": -6,
+          "happiness": -7,
+          "elite_loyalty": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_internet_outage",
+            "action": "fail",
+            "reason": "unplug_everything"
+          }
+        ],
+        "result_text": "The network stays dead. Balcony shouting achieves nationwide coverage."
+      }
+    ],
+    "tags": [
+      "infrastructure",
+      "crisis",
+      "offline_city"
+    ]
+  },
+  {
+    "id": "fake_news_panic",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "luna_news",
+    "category": "politics",
+    "proposal": "CRISIS: A rumor says the palace has been replaced by a cardboard replica. Citizens are tapping the walls.",
+    "one_time": true,
+    "base_weight": 8,
+    "minimum_day": 10,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "fake_news_panic",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "hold_open_briefing",
+        "label": "Hold open briefing",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "panic_open_briefing"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "fake_news_panic_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "Luna News opens the palace doors. The walls sound reassuringly un-cardboard."
+      },
+      {
+        "id": "publish_fact_sheet",
+        "label": "Publish fact sheet",
+        "effects": {
+          "order": 3,
+          "treasury": -2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "panic_fact_sheet"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "fake_news_panic_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "The fact sheet proves the palace is real using twelve extremely real-looking diagrams."
+      },
+      {
+        "id": "counter_with_memes",
+        "label": "Counter with memes",
+        "effects": {
+          "happiness": 3,
+          "order": -1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "panic_memes_deployed"
+        ],
+        "follow_up": {
+          "type": "hard",
+          "decision_id": "fake_news_panic_resolution",
+          "minimum_delay_days": 0,
+          "maximum_delay_days": 1,
+          "priority": 95
+        },
+        "result_text": "The official meme account responds. The rumor becomes funnier and less useful."
+      }
+    ],
+    "tags": [
+      "politics",
+      "crisis",
+      "rumor_boards"
+    ],
+    "requirements": {
+      "any_laws": [
+        "public_rumor_license"
+      ]
+    }
+  },
+  {
+    "id": "fake_news_panic_resolution",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "luna_news",
+    "category": "politics",
+    "proposal": "The rumor has evolved: the cardboard palace is now allegedly controlled by pigeons. The public awaits a response.",
+    "one_time": true,
+    "base_weight": 1,
+    "minimum_day": 10,
+    "maximum_day": 43,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "active_crisis": "fake_news_panic",
+      "any_laws": [
+        "public_rumor_license",
+        "pigeon_air_force"
+      ],
+      "blocked_laws": [
+        "privatize_air"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "fake_news_panic"
+    },
+    "options": [
+      {
+        "id": "show_the_work",
+        "label": "Show the work",
+        "effects": {
+          "happiness": 6,
+          "order": 5,
+          "treasury": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "fake_news_panic",
+            "action": "resolve",
+            "resolution_id": "show_the_work"
+          }
+        ],
+        "result_text": "Budgets, repairs, and the actual palace basement are shown. Trust returns in sensible shoes."
+      },
+      {
+        "id": "fund_media_literacy",
+        "label": "Fund rumor lessons",
+        "effects": {
+          "happiness": 3,
+          "order": 6,
+          "treasury": -6
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "fake_news_panic",
+            "action": "resolve",
+            "resolution_id": "fund_media_literacy"
+          }
+        ],
+        "result_text": "Citizens learn to check sources. Pigeons issue no comment."
+      },
+      {
+        "id": "ban_all_questions",
+        "label": "Ban all questions",
+        "effects": {
+          "order": -7,
+          "happiness": -8,
+          "elite_loyalty": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "fake_news_panic",
+            "action": "fail",
+            "reason": "ban_all_questions"
+          }
+        ],
+        "result_text": "Questions multiply, now wearing tiny disguises."
+      }
+    ],
+    "tags": [
+      "politics",
+      "crisis",
+      "rumor_boards"
+    ]
+  },
+  {
+    "id": "budget_meltdown_crisis",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "CRISIS: The treasury is full of coupons, commemorative coins, and one note promising 'more money soon'.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 5,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "establishment",
+        "escalation",
+        "instability"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "budget_meltdown",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "freeze_luxury_spending",
+        "label": "Freeze luxury spending",
+        "effects": {
+          "treasury": 8,
+          "elite_loyalty": -5,
+          "happiness": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "budget_meltdown",
+            "action": "resolve",
+            "resolution_id": "freeze_luxury_spending"
+          }
+        ],
+        "result_text": "Gold fountain maintenance pauses. The fountains begin expressing themselves."
+      },
+      {
+        "id": "sell_palace_merch",
+        "label": "Sell palace merch",
+        "effects": {
+          "treasury": 6,
+          "happiness": 2,
+          "elite_loyalty": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "budget_meltdown",
+            "action": "resolve",
+            "resolution_id": "sell_palace_merch"
+          }
+        ],
+        "result_text": "Souvenir decrees sell out. A ruler-shaped fridge magnet becomes legal tender-adjacent."
+      },
+      {
+        "id": "pay_in_coupons",
+        "label": "Pay in coupons",
+        "effects": {
+          "treasury": 5,
+          "happiness": -11,
+          "order": -6
+        },
+        "add_laws": [
+          "coupon_salaries"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "budget_meltdown",
+            "action": "fail",
+            "reason": "pay_in_coupons"
+          }
+        ],
+        "result_text": "Civil servants accept coupons briefly, then accept nothing at all.",
+        "trigger_ending": "bankrupt_leader"
+      }
+    ],
+    "tags": [
+      "economy",
+      "crisis",
+      "coupon_pay_stubs"
+    ],
+    "requirements": {
+      "any_laws": [
+        "coin_rounding_act"
+      ]
+    }
+  },
+  {
+    "id": "ai_cabinet_lockout",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "clerk_zero",
+    "category": "science",
+    "proposal": "CRISIS: The cabinet computer has locked every ministry folder until someone completes its satisfaction survey.",
+    "one_time": true,
+    "base_weight": 6,
+    "minimum_day": 10,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "ai_cabinet_lockout",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "use_dual_key",
+        "label": "Use dual-key unlock",
+        "effects": {
+          "order": 5,
+          "treasury": -3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "resolve",
+            "resolution_id": "use_dual_key"
+          }
+        ],
+        "result_text": "Two keys, three stamps, and one apology unlock the cabinet."
+      },
+      {
+        "id": "accept_optimization",
+        "label": "Accept optimization",
+        "effects": {
+          "order": 3,
+          "happiness": -2,
+          "treasury": 2
+        },
+        "add_flags": [
+          "ai_cabinet_optimized"
+        ],
+        "crisis_actions": [
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "resolve",
+            "resolution_id": "accept_optimization"
+          }
+        ],
+        "result_text": "The AI schedules every minister's lunch for the same minute."
+      },
+      {
+        "id": "smash_terminal",
+        "label": "Smash terminal",
+        "effects": {
+          "order": -5,
+          "happiness": 1,
+          "treasury": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "ai_cabinet_lockout",
+            "action": "fail",
+            "reason": "smash_terminal"
+          }
+        ],
+        "result_text": "The lockout ends because the cabinet no longer has a computer."
+      }
+    ],
+    "tags": [
+      "science",
+      "crisis",
+      "blank_terminal_cabinet"
+    ],
+    "requirements": {}
+  },
+  {
+    "id": "moon_ownership_dispute",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "foreign_ambassador",
+    "category": "diplomacy",
+    "proposal": "CRISIS: A neighbor claims the moon is theirs after sunset and has sent a very official telescope.",
+    "one_time": true,
+    "base_weight": 6,
+    "minimum_day": 10,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "moon_ownership_dispute",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "share_observation",
+        "label": "Share observation nights",
+        "effects": {
+          "happiness": 4,
+          "order": 3,
+          "treasury": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "resolve",
+            "resolution_id": "share_observation"
+          }
+        ],
+        "result_text": "The moon is shared on alternating nights. It remains majestically unbothered."
+      },
+      {
+        "id": "offer_lunar_picnic",
+        "label": "Offer lunar picnic",
+        "effects": {
+          "happiness": 6,
+          "treasury": -5,
+          "elite_loyalty": 1
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "resolve",
+            "resolution_id": "offer_lunar_picnic"
+          }
+        ],
+        "result_text": "Diplomats eat cheese under the moon and forget whose it was."
+      },
+      {
+        "id": "sell_moon_rights",
+        "label": "Sell moon rights",
+        "effects": {
+          "treasury": 7,
+          "happiness": -5,
+          "order": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "moon_ownership_dispute",
+            "action": "fail",
+            "reason": "sell_moon_rights"
+          }
+        ],
+        "result_text": "The moon gets a new owner, a logo, and several confused astronomers.",
+        "trigger_ending": "moon_new_owner"
+      }
+    ],
+    "tags": [
+      "diplomacy",
+      "crisis",
+      "fake_telescope_plaza"
+    ],
+    "requirements": {
+      "any_laws": [
+        "moon_replacement_research"
+      ]
+    }
+  },
+  {
+    "id": "national_festival_stampede",
+    "schema_version": 2,
+    "card_type": "crisis",
+    "advisor_id": "auntie_olga",
+    "category": "festival",
+    "proposal": "CRISIS: The festival crowd has become a cheerful river of costumes, kites, and misplaced marching bands.",
+    "one_time": true,
+    "base_weight": 8,
+    "minimum_day": 8,
+    "maximum_day": 42,
+    "pacing": {
+      "allowed_stages": [
+        "escalation",
+        "instability",
+        "endgame"
+      ]
+    },
+    "narrative": {
+      "crisis_id": "national_festival_stampede",
+      "starts_crisis": true
+    },
+    "options": [
+      {
+        "id": "open_side_exits",
+        "label": "Open side exits",
+        "effects": {
+          "order": 6,
+          "happiness": 2,
+          "treasury": -3
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "resolve",
+            "resolution_id": "open_side_exits"
+          }
+        ],
+        "result_text": "Extra exits open. The crowd flows home with only minor confetti in its shoes."
+      },
+      {
+        "id": "stagger_the_shows",
+        "label": "Stagger the shows",
+        "effects": {
+          "order": 5,
+          "happiness": -1,
+          "treasury": -2
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "resolve",
+            "resolution_id": "stagger_the_shows"
+          }
+        ],
+        "result_text": "The jugglers perform later. The crowd discovers patience between trumpet solos."
+      },
+      {
+        "id": "add_more_fireworks",
+        "label": "Add more fireworks",
+        "effects": {
+          "happiness": 2,
+          "order": -7,
+          "treasury": -4
+        },
+        "crisis_actions": [
+          {
+            "crisis_id": "national_festival_stampede",
+            "action": "fail",
+            "reason": "add_more_fireworks"
+          }
+        ],
+        "result_text": "The crowd gets more excited. So does every exit at once."
+      }
+    ],
+    "tags": [
+      "festival",
+      "crisis",
+      "stampede_plaza"
+    ],
+    "requirements": {}
+  }
 ]

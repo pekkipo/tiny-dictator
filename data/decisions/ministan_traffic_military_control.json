@@ -37,9 +37,6 @@
       ],
       "blocked_arcs": [
         "traffic_military"
-      ],
-      "blocked_laws": [
-        "tank_traffic_control"
       ]
     },
     "options": [
@@ -61,7 +58,7 @@
           "authoritarian": 2
         },
         "add_laws": [
-          "military_route_priority_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_live",
@@ -129,7 +126,7 @@
           "bureaucratic": 1
         },
         "add_laws": [
-          "military_route_priority_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_live",
@@ -188,6 +185,9 @@
       ],
       "all_flags": [
         "traffic_mil_live"
+      ],
+      "any_laws": [
+        "emergency_salute_law"
       ]
     },
     "options": [
@@ -354,6 +354,12 @@
       "any_flags": [
         "traffic_martial_path",
         "traffic_absurd_path"
+      ],
+      "any_laws": [
+        "umbrella_tax"
+      ],
+      "blocked_laws": [
+        "weather_optimism_act"
       ]
     },
     "options": [
@@ -374,7 +380,7 @@
           "authoritarian": 2
         },
         "add_laws": [
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_checkpoint_hour",
@@ -415,7 +421,7 @@
           "populist": 1
         },
         "add_laws": [
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_checkpoint_hour",
@@ -448,7 +454,7 @@
           "bureaucratic": 1
         },
         "add_laws": [
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_checkpoint_hour",
@@ -704,8 +710,7 @@
           "bureaucratic": 1
         },
         "remove_laws": [
-          "military_route_priority_act",
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_complete",
@@ -736,7 +741,7 @@
           "bureaucratic": 2
         },
         "remove_laws": [
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_complete",
@@ -763,8 +768,7 @@
           "general_boom": -2
         },
         "remove_laws": [
-          "military_route_priority_act",
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_complete",
@@ -898,8 +902,7 @@
           "populist": 1
         },
         "remove_laws": [
-          "military_route_priority_act",
-          "traffic_checkpoint_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_mil_complete",

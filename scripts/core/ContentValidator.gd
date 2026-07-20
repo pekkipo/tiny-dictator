@@ -32,6 +32,7 @@ const KNOWN_REQUIREMENT_KEYS: Array[String] = [
 	"active_crisis", "blocked_crisis", "completed_crisis", "failed_crisis",
 	"minimum_advisor_affinity", "maximum_advisor_affinity",
 	"minimum_traits", "maximum_traits",
+	"required_palace_upgrades",
 ]
 
 const KNOWN_ENDING_CONDITION_KEYS: Array[String] = [
@@ -168,6 +169,13 @@ func validate_advisor(advisor: Dictionary) -> Array[String]:
 	return errors
 
 
+const VALID_ENDING_RARITIES: Array[String] = ["common", "uncommon", "rare", "secret"]
+const VALID_PALACE_CATEGORIES: Array[String] = [
+	"throne_room", "propaganda_room", "emergency_bunker",
+	"office_bureaucracy", "science_laboratory", "cat_related",
+]
+
+
 func validate_law(law: Dictionary) -> Array[String]:
 	var errors: Array[String] = []
 	var id: String = str(law.get("id", ""))
@@ -176,6 +184,11 @@ func validate_law(law: Dictionary) -> Array[String]:
 		return errors
 	if str(law.get("display_name", "")).is_empty():
 		errors.append("Law '%s' missing 'display_name'" % id)
+	if str(law.get("category", "")).is_empty():
+		errors.append("Law '%s' missing 'category'" % id)
+	var visual_tags: Variant = law.get("visual_tags", [])
+	if not (visual_tags is Array) or (visual_tags as Array).is_empty():
+		errors.append("Law '%s' missing visual_tags" % id)
 	return errors
 
 
@@ -193,6 +206,15 @@ func validate_ending(ending: Dictionary) -> Array[String]:
 		errors.append("Ending '%s' missing 'title'" % id)
 	if str(ending.get("description", "")).is_empty():
 		errors.append("Ending '%s' missing 'description'" % id)
+	var collectible: bool = bool(ending.get("collectible", true))
+	if collectible:
+		var rarity: String = str(ending.get("rarity", ""))
+		if rarity not in VALID_ENDING_RARITIES:
+			errors.append("Ending '%s' missing or invalid rarity" % id)
+		if str(ending.get("archive_hint", "")).is_empty():
+			errors.append("Ending '%s' missing archive_hint" % id)
+		if str(ending.get("illustration_key", "")).is_empty():
+			errors.append("Ending '%s' missing illustration_key" % id)
 	var conditions: Variant = ending.get("conditions", {})
 	if conditions is Dictionary:
 		for key in conditions:
@@ -360,6 +382,9 @@ func validate_palace_upgrade(upgrade: Dictionary, repository: ContentRepository)
 		errors.append("Palace upgrade '%s' missing 'display_name'" % id)
 	if int(upgrade.get("medal_cost", -1)) < 0:
 		errors.append("Palace upgrade '%s' medal_cost must be non-negative" % id)
+	var category: String = str(upgrade.get("category", ""))
+	if category.is_empty() or category not in VALID_PALACE_CATEGORIES:
+		errors.append("Palace upgrade '%s' missing or invalid category" % id)
 
 	var requirements: Variant = upgrade.get("requirements", {})
 	if not requirements is Dictionary:
@@ -730,6 +755,9 @@ func _validate_requirements(decision_id: String, requirements: Dictionary, repos
 		for law_id in requirements.get(key, []):
 			if not repository.has_law(str(law_id)):
 				errors.append("Decision '%s' requirement %s references unknown law '%s'" % [decision_id, key, law_id])
+	for upgrade_id in requirements.get("required_palace_upgrades", []):
+		if not repository.has_palace_upgrade(str(upgrade_id)):
+			errors.append("Decision '%s' requires unknown palace upgrade '%s'" % [decision_id, upgrade_id])
 	for key in ["minimum_resources", "maximum_resources"]:
 		var thresholds: Variant = requirements.get(key, {})
 		if thresholds is Dictionary:

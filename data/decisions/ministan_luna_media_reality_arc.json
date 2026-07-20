@@ -19,7 +19,10 @@
       "importance": "major"
     },
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "requirements": {
       "blocked_flags": [
@@ -29,19 +32,40 @@
         "media_declares_total_happiness",
         "eternal_smile_active"
       ],
-      "blocked_arcs": ["mandatory_happiness"]
+      "blocked_arcs": [
+        "mandatory_happiness"
+      ]
     },
     "options": [
       {
         "id": "unify_brief",
         "label": "Unify the evening brief",
-        "effects": { "order": 3, "happiness": 2, "elite_loyalty": 1, "treasury": -2 },
-        "add_laws": ["one_headline_policy"],
-        "add_flags": ["luna_media_live", "luna_unified_brief"],
-        "advisor_affinity": { "luna_news": 2, "clerk_zero": 1 },
-        "trait_changes": { "propagandist": 2 },
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "elite_loyalty": 1,
+          "treasury": -2
+        },
+        "add_laws": [
+          "one_headline_policy"
+        ],
+        "add_flags": [
+          "luna_media_live",
+          "luna_unified_brief"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "branch", "branch_id": "loyal_comms" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "branch",
+            "branch_id": "loyal_comms"
+          }
         ],
         "follow_up": {
           "type": "soft",
@@ -49,19 +73,38 @@
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 72,
-          "required_flags": ["luna_media_live"]
+          "required_flags": [
+            "luna_media_live"
+          ]
         },
         "result_text": "One headline. One smile. Clerks stamp 'as broadcast.' Confidence rises before the bridges do."
       },
       {
         "id": "dual_feed",
         "label": "Keep a cautious dual feed",
-        "effects": { "order": 1, "happiness": 1, "elite_loyalty": -1 },
-        "add_flags": ["luna_media_live", "luna_dual_feed"],
-        "advisor_affinity": { "luna_news": 1, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1, "bureaucratic": 1 },
+        "effects": {
+          "order": 1,
+          "happiness": 1,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "luna_media_live",
+          "luna_dual_feed"
+        ],
+        "advisor_affinity": {
+          "luna_news": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "branch", "branch_id": "loyal_comms" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "branch",
+            "branch_id": "loyal_comms"
+          }
         ],
         "follow_up": {
           "type": "soft",
@@ -69,30 +112,49 @@
           "minimum_delay_days": 2,
           "maximum_delay_days": 4,
           "priority": 70,
-          "required_flags": ["luna_media_live"]
+          "required_flags": [
+            "luna_media_live"
+          ]
         },
         "result_text": "Facts stay in a side panel. Luna calls it 'premium transparency.' Ratings still climb."
       },
       {
         "id": "delay_media",
         "label": "Delay the media reform",
-        "effects": { "happiness": -1, "elite_loyalty": 1 },
-        "advisor_affinity": { "luna_news": -2 },
+        "effects": {
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "abandon", "reason": "delayed_media" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "abandon",
+            "reason": "delayed_media"
+          }
         ],
         "result_text": "Luna files the pitch under 'pending optimism.' The nation keeps arguing with itself."
       }
     ],
-    "tags": ["media", "arc_setup", "luna"],
-    "visual_tags": ["single_headline_banner"],
+    "tags": [
+      "media",
+      "arc_setup",
+      "luna"
+    ],
+    "visual_tags": [
+      "single_headline_banner"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "establishment",
       "batch_id": "2B-11A",
-      "humor_tags": ["broadcast_coherence"],
+      "humor_tags": [
+        "broadcast_coherence"
+      ],
       "emotional_goal": "uneasy_clarity",
       "visual_hook": "one glowing headline over the capital skyline",
       "localization_risk": "low",
@@ -116,71 +178,127 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["luna_media_reality"],
-      "all_flags": ["luna_media_live"]
+      "active_arcs": [
+        "luna_media_reality"
+      ],
+      "all_flags": [
+        "luna_media_live"
+      ]
     },
     "options": [
       {
         "id": "lean_into_ratings",
         "label": "Lean into the ratings",
-        "effects": { "happiness": 4, "order": 2, "elite_loyalty": 2, "treasury": -1 },
-        "add_flags": ["luna_confidence_gap"],
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2 },
+        "effects": {
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": 2,
+          "treasury": -1
+        },
+        "add_flags": [
+          "luna_confidence_gap"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
         "follow_up": {
           "type": "soft",
           "decision_id": "luna_reality_segments",
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 74,
-          "required_flags": ["luna_media_live"]
+          "required_flags": [
+            "luna_media_live"
+          ]
         },
         "result_text": "Applause tracks warm the studio. Actual potholes remain untelevised."
       },
       {
         "id": "admit_gap",
         "label": "Admit the service gap",
-        "effects": { "happiness": -2, "order": 1, "elite_loyalty": -2, "treasury": -3 },
-        "add_flags": ["luna_honesty_segment"],
-        "advisor_affinity": { "luna_news": -1, "auntie_olga": 2, "clerk_zero": 1 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "happiness": -2,
+          "order": 1,
+          "elite_loyalty": -2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "luna_honesty_segment"
+        ],
+        "advisor_affinity": {
+          "luna_news": -1,
+          "auntie_olga": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "follow_up": {
           "type": "soft",
           "decision_id": "luna_reality_segments",
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 74,
-          "required_flags": ["luna_media_live"]
+          "required_flags": [
+            "luna_media_live"
+          ]
         },
         "result_text": "Luna airs a 'growth moment' about unfinished bridges. Trust wobbles productively."
       },
       {
         "id": "fund_real_fixes",
         "label": "Fund quiet real fixes",
-        "effects": { "treasury": -6, "happiness": 3, "order": 2, "elite_loyalty": -1 },
-        "add_flags": ["luna_quiet_fixes"],
-        "advisor_affinity": { "auntie_olga": 2, "minister_penny": 1, "luna_news": 1 },
-        "trait_changes": { "bureaucratic": 1, "populist": 1 },
+        "effects": {
+          "treasury": -6,
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "luna_quiet_fixes"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "minister_penny": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
         "follow_up": {
           "type": "pool",
           "pool_id": "luna_media_side_effects",
           "minimum_delay_days": 1,
           "maximum_delay_days": 2,
           "priority": 73,
-          "required_flags": ["luna_media_live"]
+          "required_flags": [
+            "luna_media_live"
+          ]
         },
         "result_text": "Crews work off-camera. Luna still claims exclusive credit in the outro."
       }
     ],
-    "tags": ["media", "arc_escalation", "luna"],
-    "visual_tags": ["ratings_confetti_studio"],
+    "tags": [
+      "media",
+      "arc_escalation",
+      "luna"
+    ],
+    "visual_tags": [
+      "ratings_confetti_studio"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
       "batch_id": "2B-11A",
-      "humor_tags": ["confidence_gap"],
+      "humor_tags": [
+        "confidence_gap"
+      ],
       "emotional_goal": "comic_dissonance",
       "visual_hook": "studio confetti over a cracked sidewalk B-roll",
       "localization_risk": "low"
@@ -203,51 +321,99 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["luna_media_reality"],
-      "all_flags": ["luna_media_live"]
+      "active_arcs": [
+        "luna_media_reality"
+      ],
+      "all_flags": [
+        "luna_media_live"
+      ]
     },
     "options": [
       {
         "id": "greenlight_segments",
         "label": "Greenlight reality segments",
-        "effects": { "happiness": 3, "order": 3, "elite_loyalty": 2, "treasury": -4 },
-        "add_laws": ["ministry_of_memes"],
-        "add_flags": ["luna_segments_live"],
-        "advisor_affinity": { "luna_news": 3 },
-        "trait_changes": { "propagandist": 2, "chaotic": 1 },
+        "effects": {
+          "happiness": 3,
+          "order": 3,
+          "elite_loyalty": 2,
+          "treasury": -4
+        },
+        "add_laws": [
+          "ministry_of_memes"
+        ],
+        "add_flags": [
+          "luna_segments_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "chaotic": 1
+        },
         "force_next_decision": "luna_media_fork",
         "result_text": "Extras practice waiting politely. Meme ministry issues catchphrases in triplicate."
       },
       {
         "id": "limit_segments",
         "label": "Limit to civic explainers",
-        "effects": { "order": 2, "happiness": 1, "treasury": -2 },
-        "add_flags": ["luna_segments_limited"],
-        "advisor_affinity": { "luna_news": 1, "clerk_zero": 2 },
-        "trait_changes": { "bureaucratic": 2 },
+        "effects": {
+          "order": 2,
+          "happiness": 1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "luna_segments_limited"
+        ],
+        "advisor_affinity": {
+          "luna_news": 1,
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
         "force_next_decision": "luna_media_fork",
         "result_text": "Explainers cite Form N-1. Luna still finds a way to clap at the end."
       },
       {
         "id": "kill_segments",
         "label": "Kill the segments",
-        "effects": { "happiness": -2, "order": -1, "elite_loyalty": -2 },
-        "add_flags": ["luna_segments_killed"],
-        "advisor_affinity": { "luna_news": -3, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "happiness": -2,
+          "order": -1,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "luna_segments_killed"
+        ],
+        "advisor_affinity": {
+          "luna_news": -3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "force_next_decision": "luna_media_fork",
         "result_text": "Luna's smile freezes at half wattage. The fork arrives colder."
       }
     ],
-    "tags": ["media", "arc_escalation", "luna"],
-    "visual_tags": ["reality_show_plaza"],
+    "tags": [
+      "media",
+      "arc_escalation",
+      "luna"
+    ],
+    "visual_tags": [
+      "reality_show_plaza"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
       "batch_id": "2B-11A",
-      "humor_tags": ["reenacted_policy"],
+      "humor_tags": [
+        "reenacted_policy"
+      ],
       "emotional_goal": "creeping_control",
       "visual_hook": "plaza marked like a soundstage",
       "localization_risk": "low"
@@ -270,19 +436,39 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["luna_media_reality"],
-      "all_flags": ["luna_media_live"]
+      "active_arcs": [
+        "luna_media_reality"
+      ],
+      "all_flags": [
+        "luna_media_live"
+      ]
     },
     "options": [
       {
         "id": "loyal_anchor",
         "label": "Keep Luna as loyal anchor",
-        "effects": { "order": 3, "happiness": 2, "elite_loyalty": 3 },
-        "add_flags": ["luna_loyal_path"],
-        "advisor_affinity": { "luna_news": 3, "auntie_olga": 1 },
-        "trait_changes": { "propagandist": 1, "populist": 1 },
+        "effects": {
+          "order": 3,
+          "happiness": 2,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "luna_loyal_path"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "populist": 1
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "branch", "branch_id": "loyal_comms" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "branch",
+            "branch_id": "loyal_comms"
+          }
         ],
         "force_next_decision": "luna_credibility_test",
         "result_text": "Luna remains communications. She promises 'truth with better lighting.'"
@@ -290,13 +476,33 @@
       {
         "id": "hand_reality",
         "label": "Hand Luna national reality",
-        "effects": { "order": 5, "happiness": 4, "elite_loyalty": 2, "treasury": -3 },
-        "add_laws": ["national_reality_show"],
-        "add_flags": ["luna_reality_path"],
-        "advisor_affinity": { "luna_news": 4, "auntie_olga": -2, "clerk_zero": -1 },
-        "trait_changes": { "propagandist": 3, "authoritarian": 2 },
+        "effects": {
+          "order": 5,
+          "happiness": 4,
+          "elite_loyalty": 2,
+          "treasury": -3
+        },
+        "add_laws": [
+          "national_reality_show"
+        ],
+        "add_flags": [
+          "luna_reality_path"
+        ],
+        "advisor_affinity": {
+          "luna_news": 4,
+          "auntie_olga": -2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "propagandist": 3,
+          "authoritarian": 2
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "branch", "branch_id": "reality_control" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "branch",
+            "branch_id": "reality_control"
+          }
         ],
         "force_next_decision": "luna_credibility_test",
         "result_text": "The capital becomes a set. Extras are citizens. Citizens are extras."
@@ -304,26 +510,50 @@
       {
         "id": "open_mic",
         "label": "Open the national mic",
-        "effects": { "happiness": 1, "order": -4, "elite_loyalty": -3 },
-        "add_flags": ["luna_credibility_fracture"],
-        "advisor_affinity": { "luna_news": -2, "auntie_olga": 2 },
-        "trait_changes": { "populist": 2, "chaotic": 2 },
+        "effects": {
+          "happiness": 1,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "luna_credibility_fracture"
+        ],
+        "advisor_affinity": {
+          "luna_news": -2,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 2,
+          "chaotic": 2
+        },
         "arc_actions": [
-          { "arc_id": "luna_media_reality", "action": "branch", "branch_id": "credibility_collapse" }
+          {
+            "arc_id": "luna_media_reality",
+            "action": "branch",
+            "branch_id": "credibility_collapse"
+          }
         ],
         "force_next_decision": "luna_credibility_test",
         "result_text": "Callers invent ministries. Luna's teleprompter develops freckles of panic."
       }
     ],
-    "tags": ["media", "arc_climax", "luna"],
-    "visual_tags": ["reality_show_plaza"],
+    "tags": [
+      "media",
+      "arc_climax",
+      "luna"
+    ],
+    "visual_tags": [
+      "reality_show_plaza"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
       "batch_id": "2B-11A",
-      "humor_tags": ["three_way_fork"],
+      "humor_tags": [
+        "three_way_fork"
+      ],
       "emotional_goal": "power_choice",
       "visual_hook": "three lit studio doors labeled Loyal, Reality, Open Mic",
       "localization_risk": "low"
@@ -346,54 +576,110 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["luna_media_reality"],
-      "all_flags": ["luna_media_live"]
+      "active_arcs": [
+        "luna_media_reality"
+      ],
+      "all_flags": [
+        "luna_media_live"
+      ]
     },
     "options": [
       {
         "id": "emergency_broadcast",
         "label": "Authorize emergency broadcast",
-        "effects": { "order": 4, "happiness": -2, "elite_loyalty": 2, "treasury": -2 },
-        "add_laws": ["emergency_broadcast_priority"],
-        "add_flags": ["luna_crisis_comms"],
-        "advisor_affinity": { "clerk_zero": 2, "luna_news": 2, "general_boom": 1 },
-        "trait_changes": { "authoritarian": 1, "bureaucratic": 1 },
+        "effects": {
+          "order": 4,
+          "happiness": -2,
+          "elite_loyalty": 2,
+          "treasury": -2
+        },
+        "add_laws": [
+          "one_headline_policy"
+        ],
+        "add_flags": [
+          "luna_crisis_comms"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "luna_news": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1,
+          "bureaucratic": 1
+        },
         "force_next_decision": "luna_media_resolution",
         "result_text": "Priority sirens play soft jazz. The rumor is scheduled for later."
       },
       {
         "id": "fact_desk",
         "label": "Open a public fact desk",
-        "effects": { "treasury": -4, "happiness": 2, "order": 1, "elite_loyalty": -2 },
-        "add_flags": ["luna_fact_desk"],
-        "advisor_affinity": { "clerk_zero": 3, "auntie_olga": 2, "luna_news": -1 },
-        "trait_changes": { "bureaucratic": 2, "populist": 1 },
+        "effects": {
+          "treasury": -4,
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "luna_fact_desk"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "auntie_olga": 2,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "populist": 1
+        },
         "force_next_decision": "luna_media_resolution",
         "result_text": "Citizens queue for stamps that say 'probably true.' It helps more than expected."
       },
       {
         "id": "ignore_rumors",
         "label": "Ignore the rumor wave",
-        "effects": { "order": -5, "happiness": -3, "elite_loyalty": -2 },
-        "add_flags": ["luna_rumor_ignored"],
-        "advisor_affinity": { "luna_news": -1, "auntie_olga": -1 },
-        "trait_changes": { "chaotic": 2 },
+        "effects": {
+          "order": -5,
+          "happiness": -3,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "luna_rumor_ignored"
+        ],
+        "advisor_affinity": {
+          "luna_news": -1,
+          "auntie_olga": -1
+        },
+        "trait_changes": {
+          "chaotic": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "start" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
         ],
         "force_next_decision": "luna_media_resolution",
         "result_text": "Sandwiches appear in the square. Belief becomes optional."
       }
     ],
-    "tags": ["media", "arc_crisis", "luna"],
-    "visual_tags": ["blank_tv_static_square"],
+    "tags": [
+      "media",
+      "arc_crisis",
+      "luna"
+    ],
+    "visual_tags": [
+      "blank_tv_static_square"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
       "batch_id": "2B-11A",
-      "humor_tags": ["credibility_test"],
+      "humor_tags": [
+        "credibility_test"
+      ],
       "emotional_goal": "fragile_trust",
       "visual_hook": "static-filled plaza screens",
       "localization_risk": "low",
@@ -418,52 +704,109 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["luna_media_reality"],
-      "all_flags": ["luna_media_live"]
+      "active_arcs": [
+        "luna_media_reality"
+      ],
+      "all_flags": [
+        "luna_media_live"
+      ]
     },
     "options": [
       {
         "id": "seal_loyal",
         "label": "Seal Luna as loyal anchor",
-        "effects": { "order": 3, "happiness": 3, "elite_loyalty": 3 },
-        "add_flags": ["luna_media_complete", "luna_loyal_sealed", "endgame_media_stable"],
-        "remove_flags": ["luna_media_live"],
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 1 },
+        "effects": {
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "luna_media_complete",
+          "luna_loyal_sealed",
+          "endgame_media_stable"
+        ],
+        "remove_flags": [
+          "luna_media_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
         "result_text": "Luna stays advisor. Reality remains mostly off-set. Endgame softens."
       },
       {
         "id": "broadcast_state",
         "label": "Declare the broadcast state",
-        "effects": { "order": 6, "happiness": 2, "elite_loyalty": 4, "treasury": -2 },
-        "add_flags": ["luna_media_complete", "nation_becomes_broadcast"],
-        "remove_flags": ["luna_media_live"],
-        "advisor_affinity": { "luna_news": 3 },
-        "trait_changes": { "propagandist": 3, "authoritarian": 2 },
+        "effects": {
+          "order": 6,
+          "happiness": 2,
+          "elite_loyalty": 4,
+          "treasury": -2
+        },
+        "add_flags": [
+          "luna_media_complete",
+          "nation_becomes_broadcast"
+        ],
+        "remove_flags": [
+          "luna_media_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3
+        },
+        "trait_changes": {
+          "propagandist": 3,
+          "authoritarian": 2
+        },
         "trigger_ending": "nation_becomes_broadcast",
         "result_text": "The country is a continuous special. Credits never roll."
       },
       {
         "id": "stopped_believing",
         "label": "Admit nobody believes us",
-        "effects": { "happiness": -4, "order": -4, "elite_loyalty": -3 },
-        "add_flags": ["luna_media_complete", "day_everyone_stopped_believing"],
-        "remove_flags": ["luna_media_live"],
-        "advisor_affinity": { "luna_news": -2, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1, "chaotic": 2 },
+        "effects": {
+          "happiness": -4,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "luna_media_complete",
+          "day_everyone_stopped_believing"
+        ],
+        "remove_flags": [
+          "luna_media_live"
+        ],
+        "advisor_affinity": {
+          "luna_news": -2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "chaotic": 2
+        },
         "trigger_ending": "day_everyone_stopped_believing",
         "result_text": "Screens go blank on purpose. Citizens shrug in stereo."
       }
     ],
-    "tags": ["media", "arc_resolution", "luna", "ending_setup"],
-    "visual_tags": ["blank_tv_static_square"],
+    "tags": [
+      "media",
+      "arc_resolution",
+      "luna",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "blank_tv_static_square"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "luna_media_reality",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
       "batch_id": "2B-11A",
-      "humor_tags": ["broadcast_finale"],
+      "humor_tags": [
+        "broadcast_finale"
+      ],
       "emotional_goal": "closure_or_collapse",
       "visual_hook": "three possible closing title cards",
       "localization_risk": "low",

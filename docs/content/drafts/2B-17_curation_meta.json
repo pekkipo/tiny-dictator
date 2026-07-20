@@ -1,0 +1,226 @@
+{
+  "ending_meta": {
+    "rejected": {
+      "survived_the_prototype": "Rejected from collectible 50 \u2014 survival runtime only.",
+      "content_exhausted": "Rejected from collectible 50 \u2014 fallback only.",
+      "nation_in_darkness": "Deferred \u2014 crisis explicit trigger; weak archive setup.",
+      "everyone_moves_next_door": "Rejected PRD secret \u2014 no narrative setup.",
+      "the_accidental_libertarian": "Rejected PRD ruler-identity ending \u2014 identity not authored.",
+      "the_parade_philosopher": "Rejected PRD candidate \u2014 overlaps tank/parade endings.",
+      "the_minister_of_everything": "Rejected PRD candidate \u2014 overlaps bureaucratic endings.",
+      "economic_miracle": "Rejected PRD candidate \u2014 overlaps country_somehow_works.",
+      "luna_news_immortal": "Rejected PRD advisor ending \u2014 covered by media endings.",
+      "doctor_maybe_definitely": "Deferred PRD advisor ending \u2014 covered by scientific_golden_age.",
+      "the_chaotic_reformer_ending": "Deferred with ruler identity gap.",
+      "the_sponsored_supreme_leader": "Deferred \u2014 covered by corporate_ministan.",
+      "the_bureaucratic_oracle": "Deferred \u2014 covered by spreadsheet/clerk endings.",
+      "the_last_honest_propagandist": "Rejected \u2014 overlaps Luna/broadcast paths.",
+      "the_peoples_favorite_problem": "Deferred PRD identity ending."
+    },
+    "rarity_counts": {
+      "common": 12,
+      "uncommon": 18,
+      "rare": 14,
+      "secret": 6
+    },
+    "common": [
+      "bankrupt_leader",
+      "revolution",
+      "chaos_country",
+      "elite_coup",
+      "beloved_retirement",
+      "country_somehow_works",
+      "peaceful_accidental_democracy",
+      "general_remains_loyal",
+      "olga_sends_you_home",
+      "clerk_zero_closes_file",
+      "penny_balances_final_budget",
+      "profit_buys_retirement"
+    ],
+    "uncommon": [
+      "spreadsheet_state",
+      "austerity_without_citizens",
+      "nation_becomes_broadcast",
+      "olga_peoples_cabinet",
+      "palace_hears_the_street",
+      "experimental_republic",
+      "experiment_leaves",
+      "corporate_ministan",
+      "country_is_acquired",
+      "purrfect_transfer",
+      "government_by_form",
+      "final_stamp",
+      "happiness_reaches_100_percent",
+      "tanks_direct_everything",
+      "general_becomes_mascot",
+      "hyperinflation_millionaires",
+      "great_cheese_settlement",
+      "eternal_national_festival"
+    ],
+    "rare": [
+      "general_boom_coup",
+      "scientific_golden_age",
+      "ai_accepts_resignation",
+      "moon_new_owner",
+      "democracy_by_administrative_error",
+      "palace_beautiful_empty",
+      "renovation_reveals_truth",
+      "smiling_tyrant_soft_exit",
+      "smallest_superpower",
+      "traffic_system_achieves_peace",
+      "day_everyone_stopped_believing",
+      "eternal_smile_state",
+      "competent_successor",
+      "whiskers_boxes_truce"
+    ],
+    "secret": [
+      "toaster_elected_president",
+      "wrong_map_republic",
+      "palace_micronation",
+      "forms_become_citizens",
+      "cat_republic",
+      "accidental_moon_replacement"
+    ]
+  },
+  "thin_gates": [],
+  "never_added": [],
+  "law_remap": {
+    "luxury_chair_levy": "luxury_chair_tax",
+    "free_coffee_morning": "national_coffee_reserve",
+    "public_compliment_quota": "compliment_quota_law",
+    "official_queue_etiquette": "queue_etiquette_law",
+    "palace_curfew": "palace_curfew_act",
+    "emergency_salute_protocol": "emergency_salute_law",
+    "anti_gravity_transit": "antigravity_transit",
+    "sponsored_potholes": "sponsored_potholes_act",
+    "permit_for_complaints": "complaint_permit_act",
+    "fish_subsidy": "fish_market_subsidy_act",
+    "anti_vacuum_act": "antivacuum_act",
+    "national_mouse_protection": "mouse_protection_law",
+    "fish_emergency_reserve": "fish_market_subsidy_act",
+    "official_palace_pet_act": "cat_voting_rights",
+    "cat_cushion_charter": "official_nap_zones",
+    "cat_lobby_registry": "cat_parliament_seats",
+    "no_weekends": "three_day_weekend",
+    "fake_smile_standard": "mandatory_smiling",
+    "national_smile_day_act": "mandatory_smiling",
+    "national_clock_law": "national_bedtime",
+    "emergency_broadcast_priority": "one_headline_policy",
+    "festival_stimulus_act": "free_pizza_friday",
+    "permanent_festival_act": "free_pizza_friday",
+    "palace_public_tour_act": "palace_subscription_plan",
+    "soup_line_permit": "free_pizza_friday",
+    "block_captain_charter": "queue_etiquette_law",
+    "civic_half_day_act": "three_day_weekend",
+    "emergency_martial_law": "palace_curfew_act",
+    "rival_parade_response_act": "border_parade_act",
+    "ceremonial_tank_florist_act": "tank_traffic_control",
+    "traffic_flag_corps_act": "tank_traffic_control",
+    "camouflage_uniform_act": "mandatory_marching",
+    "military_route_priority_act": "tank_traffic_control",
+    "traffic_checkpoint_act": "tank_traffic_control",
+    "temporary_parade_pause": "border_parade_act",
+    "flag_traffic_law": "tank_traffic_control",
+    "national_happiness_index": "mandatory_applause",
+    "weather_censorship_act": "weather_optimism_act",
+    "catchphrase_registry_act": "ministry_of_memes",
+    "controlled_audit_broadcast": "one_headline_policy",
+    "scientific_experiment_permit": "artificial_sun_program",
+    "predictive_toaster_act": "ai_cabinet_pilot",
+    "labcoat_lighting_act": "artificial_sun_program",
+    "national_trial_oversight_act": "clone_holiday",
+    "capital_square_naming_act": "corporate_capital_naming",
+    "citizen_service_subscription_act": "palace_subscription_plan",
+    "palace_tour_act": "palace_subscription_plan",
+    "anthem_sponsor_act": "privatize_air",
+    "bench_subscription_act": "palace_subscription_plan",
+    "palace_gift_shop_act": "palace_subscription_plan",
+    "elite_seating_protocol": "luxury_chair_tax",
+    "prestige_fountain_act": "sponsored_potholes_act",
+    "title_lottery_edict": "national_lottery_budget",
+    "cabinet_briefing_protocol": "form_request_form_act",
+    "contradictory_signage_law": "triple_stamp_requirement",
+    "emergency_efficiency_act": "ministry_of_waiting",
+    "notarized_apology_act": "complaint_permit_act",
+    "administrative_reform_act": "form_request_form_act",
+    "form_sovereignty_act": "form_request_form_act",
+    "emergency_stamp_tax": "triple_stamp_requirement",
+    "emergency_queue_charter": "ministry_of_waiting",
+    "cabinet_nameplate_act": "national_filing_week",
+    "quiet_hours_charter": "national_filing_week",
+    "fish_currency_act": "coin_rounding_act",
+    "emergency_austerity_act": "coupon_salaries",
+    "public_service_sunset_act": "privatize_air",
+    "emergency_price_board_act": "coin_rounding_act",
+    "barter_license_act": "coin_rounding_act",
+    "cheese_substitute_act": "emergency_cheese_bonds",
+    "bank_handshake_clause": "emergency_cheese_bonds",
+    "scent_mask_act": "sponsored_potholes_act"
+  },
+  "contradictions": [
+    [
+      "free_pizza_friday",
+      "coupon_salaries"
+    ],
+    [
+      "mandatory_smiling",
+      "national_bedtime"
+    ],
+    [
+      "three_day_weekend",
+      "national_filing_week"
+    ],
+    [
+      "national_nap_hour",
+      "mandatory_marching"
+    ],
+    [
+      "tank_traffic_control",
+      "antigravity_transit"
+    ],
+    [
+      "pigeon_air_force",
+      "privatize_air"
+    ],
+    [
+      "palace_curfew_act",
+      "palace_subscription_plan"
+    ],
+    [
+      "weather_optimism_act",
+      "public_rumor_license"
+    ],
+    [
+      "one_headline_policy",
+      "national_reality_show"
+    ],
+    [
+      "artificial_sun_program",
+      "moon_replacement_research"
+    ],
+    [
+      "robot_civil_service",
+      "form_request_form_act"
+    ],
+    [
+      "cat_voting_rights",
+      "mouse_protection_law"
+    ],
+    [
+      "antivacuum_act",
+      "official_nap_zones"
+    ],
+    [
+      "antivacuum_act",
+      "privatize_air"
+    ],
+    [
+      "window_tax",
+      "corporate_capital_naming"
+    ],
+    [
+      "umbrella_tax",
+      "weather_optimism_act"
+    ]
+  ]
+}

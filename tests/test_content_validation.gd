@@ -31,8 +31,13 @@ func _test_repository_loads() -> void:
 	_check(ok, "repository loads without errors")
 	_check(repo.has_country("ministan"), "ministan country loaded")
 	_check(repo.get_raw_advisors().size() == 12, "12 advisors loaded")
-	_check(repo.get_raw_laws().size() == 106, "106 laws loaded")
-	_check(repo.get_raw_endings().size() == 53, "53 endings loaded")
+	_check(repo.get_raw_laws().size() == 50, "50 laws loaded")
+	var collectible_endings := 0
+	for ending in repo.get_raw_endings():
+		if bool(ending.get("collectible", true)):
+			collectible_endings += 1
+	_check(collectible_endings == 50, "50 collectible endings loaded")
+	_check(repo.get_raw_palace_upgrades().size() == 24, "24 palace upgrades loaded")
 	_check(repo.get_all_decisions_for_country("ministan").size() == 343, "343 decisions loaded for ministan")
 	_check(repo.get_raw_ruler_identities().size() == 7, "7 ruler identities loaded")
 	_check(repo.get_raw_arcs().size() == 19, "19 arcs loaded")
@@ -48,7 +53,7 @@ func _test_repository_loads() -> void:
 	_check(repo.has_ending("government_by_form"), "government_by_form ending present")
 	_check(repo.has_law("coupon_salaries"), "coupon_salaries law present")
 	_check(repo.has_law("form_request_form_act"), "form_request_form_act law present")
-	_check(repo.has_law("fish_currency_act"), "fish_currency_act law present")
+	_check(repo.has_law("coin_rounding_act"), "coin_rounding_act law present")
 	_check(repo.has_law("ministry_of_waiting"), "ministry_of_waiting law present")
 	_check(repo.has_law("antivacuum_act"), "antivacuum_act law present")
 	_check(repo.has_law("national_nap_hour"), "national_nap_hour law present")
@@ -89,7 +94,7 @@ func _test_repository_loads() -> void:
 	_check(repo.has_ending("purrfect_transfer"), "purrfect_transfer ending present")
 	_check(repo.has_ending("great_cheese_settlement"), "great_cheese_settlement ending present")
 	_check(repo.has_ending("palace_beautiful_empty"), "palace_beautiful_empty ending present")
-	_check(repo.has_law("cat_cushion_charter"), "cat_cushion_charter law present")
+	_check(repo.has_law("official_nap_zones"), "official_nap_zones law present")
 	_check(repo.has_law("palace_subscription_plan"), "palace_subscription_plan law present")
 	_check(repo.has_crisis("national_festival_stampede"), "national_festival_stampede crisis present")
 	_check(repo.has_follow_up_pool("festival_side_effects"), "festival_side_effects pool present")

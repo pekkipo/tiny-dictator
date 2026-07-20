@@ -37,7 +37,7 @@
           "maybe_queue_pilot"
         ],
         "add_laws": [
-          "scientific_experiment_permit"
+          "artificial_sun_program"
         ],
         "advisor_affinity": {
           "doctor_maybe": 2,
@@ -77,7 +77,7 @@
           "maybe_light_pilot"
         ],
         "add_laws": [
-          "scientific_experiment_permit"
+          "artificial_sun_program"
         ],
         "advisor_affinity": {
           "doctor_maybe": 2,
@@ -213,7 +213,7 @@
           "maybe_oversight_seed"
         ],
         "add_laws": [
-          "national_trial_oversight_act"
+          "clone_holiday"
         ],
         "advisor_affinity": {
           "doctor_maybe": 1,
@@ -356,7 +356,7 @@
           "maybe_dependence_ethics"
         ],
         "add_laws": [
-          "national_trial_oversight_act"
+          "clone_holiday"
         ],
         "advisor_affinity": {
           "clerk_zero": 3,
@@ -501,7 +501,7 @@
           "maybe_limits_path"
         ],
         "add_laws": [
-          "national_trial_oversight_act"
+          "clone_holiday"
         ],
         "advisor_affinity": {
           "doctor_maybe": -2,

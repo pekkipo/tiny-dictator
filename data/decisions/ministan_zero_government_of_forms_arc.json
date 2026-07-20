@@ -40,7 +40,7 @@
           "elite_loyalty": 1
         },
         "add_laws": [
-          "administrative_reform_act"
+          "form_request_form_act"
         ],
         "add_flags": [
           "zero_forms_live",
@@ -82,7 +82,7 @@
           "happiness": 1
         },
         "add_laws": [
-          "administrative_reform_act"
+          "form_request_form_act"
         ],
         "add_flags": [
           "zero_forms_live",
@@ -345,7 +345,7 @@
           "treasury": -3
         },
         "add_laws": [
-          "form_sovereignty_act"
+          "form_request_form_act"
         ],
         "add_flags": [
           "zero_sovereignty",
@@ -537,7 +537,7 @@
           "forms_run_government"
         ],
         "remove_laws": [
-          "form_sovereignty_act"
+          "form_request_form_act"
         ],
         "advisor_affinity": {
           "clerk_zero": -1,

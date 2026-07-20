@@ -154,7 +154,7 @@ func _test_three_option_resolution() -> void:
 	crisis = _make_crisis_manager()
 	crisis.force_start_crisis("national_power_outage", state)
 	resolver.apply_option(entry, "broadcast_priority", state, _repo, null, crisis)
-	_check(state.has_law("emergency_broadcast_priority"), "broadcast priority adds law")
+	_check(state.has_law("one_headline_policy"), "broadcast priority adds law")
 	var science_result: DecisionResult = resolver.apply_option(
 		resolution, "science_generator", state, _repo, null, crisis,
 	)

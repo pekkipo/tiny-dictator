@@ -108,7 +108,7 @@ func _test_medal_calculation() -> void:
 func _test_arc_bonuses() -> void:
 	_meta.reset_meta_progression()
 	var state := _fresh_state(6)
-	state.completed_arc_ids = ["cat_politics", "robot_government"]
+	state.completed_arc_ids = ["cat_politics", "traffic_military"]
 	var rewards: Dictionary = _meta.calculate_run_rewards(state, _repo, "revolution", false)
 	_check(int(rewards.get("breakdown", {}).get("major_arcs", 0)) == 3, "major arc bonus")
 	_check(int(rewards.get("breakdown", {}).get("minor_arcs", 0)) == 1, "minor arc bonus")

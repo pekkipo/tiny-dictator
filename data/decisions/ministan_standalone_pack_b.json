@@ -12,48 +12,90 @@
     "minimum_day": 8,
     "maximum_day": 20,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "counter_parade",
         "label": "Nine ceremonial tanks",
-        "effects": { "treasury": -8, "order": 4, "elite_loyalty": 5, "happiness": -2 },
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "authoritarian": 2 },
-        "add_laws": ["rival_parade_response_act"],
-        "add_flags": ["rival_parade_answered"],
+        "effects": {
+          "treasury": -8,
+          "order": 4,
+          "elite_loyalty": 5,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_laws": [
+          "border_parade_act"
+        ],
+        "add_flags": [
+          "rival_parade_answered"
+        ],
         "result_text": "Nine tanks rumble. One is rented. Tinyland sends a polite postcard."
       },
       {
         "id": "flower_gift",
         "label": "Send flower tanks",
-        "effects": { "happiness": 5, "order": 2, "elite_loyalty": -3, "treasury": -3 },
-        "advisor_affinity": { "general_boom": -1, "auntie_olga": 1 },
-        "trait_changes": { "populist": 2 },
-        "add_flags": ["flower_tank_diplomacy"],
+        "effects": {
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": -3,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "general_boom": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "flower_tank_diplomacy"
+        ],
         "result_text": "Tanks deliver tulips. Boom salutes the stems. Neighbors cheer anyway."
       },
       {
         "id": "ignore_rival",
         "label": "Ignore Tinyland",
-        "effects": { "elite_loyalty": -5, "happiness": 2, "order": -2 },
-        "advisor_affinity": { "general_boom": -2 },
+        "effects": {
+          "elite_loyalty": -5,
+          "happiness": 2,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2
+        },
         "result_text": "No parade. Boom files a memo addressed to History itself."
       }
     ],
-    "tags": ["standalone", "military", "ceremonial_rivalry"],
-    "visual_tags": ["rival_parade_balloons"],
+    "tags": [
+      "standalone",
+      "military",
+      "ceremonial_rivalry"
+    ],
+    "visual_tags": [
+      "rival_parade_balloons"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "escalation",
-      "humor_tags": ["ceremonial_rivalry"],
+      "humor_tags": [
+        "ceremonial_rivalry"
+      ],
       "emotional_goal": "absurd pride",
       "visual_hook": "nine tanks or flower tanks vs neighbor parade",
       "localization_risk": "low",
       "writer_notes": "REWRITE of placeholder; includes non-authoritarian flower path."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "palace_curfew_drill",
@@ -68,46 +110,83 @@
     "minimum_day": 2,
     "maximum_day": 14,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "enforce_curfew",
         "label": "Enforce the drill",
-        "effects": { "order": 6, "happiness": -5, "elite_loyalty": 3, "treasury": -2 },
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "authoritarian": 2 },
-        "add_laws": ["palace_curfew_act"],
-        "add_flags": ["palace_curfew_active"],
+        "effects": {
+          "order": 6,
+          "happiness": -5,
+          "elite_loyalty": 3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_laws": [
+          "palace_curfew_act"
+        ],
+        "add_flags": [
+          "palace_curfew_active"
+        ],
         "result_text": "Gates clang at dusk. Cats ignore the schedule. Boom sleeps better."
       },
       {
         "id": "symbolic_curfew",
         "label": "Symbolic whistle only",
-        "effects": { "order": 2, "happiness": -1, "elite_loyalty": 1 },
-        "advisor_affinity": { "general_boom": 1 },
+        "effects": {
+          "order": 2,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "general_boom": 1
+        },
         "result_text": "A whistle blows. Nobody locks. Boom calls it phased readiness."
       },
       {
         "id": "refuse_curfew",
         "label": "Skip the drill",
-        "effects": { "happiness": 3, "order": -3, "elite_loyalty": -2 },
-        "advisor_affinity": { "general_boom": -2 },
+        "effects": {
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -2
+        },
         "result_text": "Doors stay unlocked. Boom patrols the rose garden alone."
       }
     ],
-    "tags": ["standalone", "military", "palace_security"],
-    "visual_tags": ["palace_curfew_gates"],
+    "tags": [
+      "standalone",
+      "military",
+      "palace_security"
+    ],
+    "visual_tags": [
+      "palace_curfew_gates"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "establishment",
-      "humor_tags": ["palace_security"],
+      "humor_tags": [
+        "palace_security"
+      ],
       "emotional_goal": "ceremonial control",
       "visual_hook": "palace gates closing at dusk",
       "localization_risk": "low",
       "writer_notes": "Palace security without tank shopping."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "emergency_salute_protocol",
@@ -122,38 +201,74 @@
     "minimum_day": 8,
     "maximum_day": 22,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "requirements": {
-      "any_flags": ["marching_band_active", "palace_curfew_active", "rival_parade_answered"]
+      "any_flags": [
+        "marching_band_active",
+        "palace_curfew_active",
+        "rival_parade_answered"
+      ]
     },
     "options": [
       {
         "id": "mandate_salute",
         "label": "Mandate noon salutes",
-        "effects": { "order": 5, "happiness": -4, "elite_loyalty": 3, "treasury": -1 },
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "authoritarian": 1 },
-        "add_laws": ["emergency_salute_law"],
-        "add_flags": ["salute_protocol_active"],
+        "effects": {
+          "order": 5,
+          "happiness": -4,
+          "elite_loyalty": 3,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "emergency_salute_law"
+        ],
+        "add_flags": [
+          "salute_protocol_active"
+        ],
         "result_text": "Arms rise on the hour. Three sprained wrists. Order improves."
       },
       {
         "id": "wave_instead",
         "label": "Allow friendly waves",
-        "effects": { "happiness": 3, "order": 1, "elite_loyalty": -2 },
-        "advisor_affinity": { "general_boom": -1, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "general_boom": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "result_text": "Waves replace salutes. Boom mutters about discipline inflation."
       }
     ],
-    "tags": ["standalone", "military", "state_gated"],
-    "visual_tags": ["noon_salute_wrists"],
+    "tags": [
+      "standalone",
+      "military",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "noon_salute_wrists"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "escalation",
-      "humor_tags": ["civilian_militarization"],
+      "humor_tags": [
+        "civilian_militarization"
+      ],
       "emotional_goal": "forced ceremony",
       "visual_hook": "citizens saluting at noon",
       "localization_risk": "low",
@@ -173,16 +288,31 @@
     "minimum_day": 2,
     "maximum_day": 16,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "fund_band",
         "label": "Fund the band",
-        "effects": { "happiness": 6, "order": 2, "treasury": -4, "elite_loyalty": -2 },
-        "advisor_affinity": { "auntie_olga": 2, "general_boom": -1 },
-        "trait_changes": { "populist": 2 },
-        "add_flags": ["marching_band_active"],
+        "effects": {
+          "happiness": 6,
+          "order": 2,
+          "treasury": -4,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "marching_band_active"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "emergency_salute_protocol",
@@ -195,32 +325,58 @@
       {
         "id": "convert_drill",
         "label": "Convert to drill",
-        "effects": { "order": 5, "happiness": -4, "elite_loyalty": 3, "treasury": -2 },
-        "advisor_affinity": { "general_boom": 2, "auntie_olga": -2 },
-        "trait_changes": { "authoritarian": 2 },
-        "add_flags": ["marching_band_active"],
+        "effects": {
+          "order": 5,
+          "happiness": -4,
+          "elite_loyalty": 3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "marching_band_active"
+        ],
         "result_text": "Instruments become batons. Olga cancels the snack schedule."
       },
       {
         "id": "refuse_band",
         "label": "Keep weekends quiet",
-        "effects": { "happiness": -1, "order": 1 },
-        "advisor_affinity": { "auntie_olga": -1 },
+        "effects": {
+          "happiness": -1,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "auntie_olga": -1
+        },
         "result_text": "No band. Someone still practices trumpet at dawn."
       }
     ],
-    "tags": ["standalone", "military", "non_authoritarian"],
-    "visual_tags": ["accordion_marching_band"],
+    "tags": [
+      "standalone",
+      "military",
+      "non_authoritarian"
+    ],
+    "visual_tags": [
+      "accordion_marching_band"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "establishment",
-      "humor_tags": ["civilian_order"],
+      "humor_tags": [
+        "civilian_order"
+      ],
       "emotional_goal": "warm community vs drill",
       "visual_hook": "accordion marching band in the square",
       "localization_risk": "low",
       "writer_notes": "Non-authoritarian military/order resolution."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "national_anthem_remix",
@@ -235,39 +391,70 @@
     "minimum_day": 2,
     "maximum_day": 18,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "release_remix",
         "label": "Release the remix",
-        "effects": { "happiness": 5, "order": -3, "elite_loyalty": -2 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2, "populist": 1 },
-        "add_flags": ["anthem_remix_live"],
+        "effects": {
+          "happiness": 5,
+          "order": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "populist": 1
+        },
+        "add_flags": [
+          "anthem_remix_live"
+        ],
         "result_text": "Ceremonies bounce. Elders demand volume forms. Luna smiles on air."
       },
       {
         "id": "keep_classic",
         "label": "Keep the classic",
-        "effects": { "order": 3, "happiness": -2, "elite_loyalty": 2 },
-        "advisor_affinity": { "luna_news": -1 },
-        "trait_changes": { "propagandist": 1 },
+        "effects": {
+          "order": 3,
+          "happiness": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
         "result_text": "Tradition holds. Luna still adds a subtle applause bed."
       }
     ],
-    "tags": ["standalone", "media", "broadcast"],
-    "visual_tags": ["anthem_remix_speakers"],
+    "tags": [
+      "standalone",
+      "media",
+      "broadcast"
+    ],
+    "visual_tags": [
+      "anthem_remix_speakers"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "establishment",
-      "humor_tags": ["broadcast_cheer"],
+      "humor_tags": [
+        "broadcast_cheer"
+      ],
       "emotional_goal": "chipper modernization",
       "visual_hook": "speakers blasting anthem remix",
       "localization_risk": "moderate",
       "writer_notes": "REWRITE of thin generic fill; propagandist identity hook."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "one_headline_policy",
@@ -282,47 +469,88 @@
     "minimum_day": 8,
     "maximum_day": 24,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "options": [
       {
         "id": "enforce_one",
         "label": "One headline only",
-        "effects": { "order": 5, "elite_loyalty": 3, "happiness": -2, "treasury": 2 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2, "authoritarian": 1 },
-        "add_laws": ["one_headline_policy"],
-        "add_flags": ["one_headline_active"],
+        "effects": {
+          "order": 5,
+          "elite_loyalty": 3,
+          "happiness": -2,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "one_headline_policy"
+        ],
+        "add_flags": [
+          "one_headline_active"
+        ],
         "result_text": "Boards show one line. Elites relax. Side stories file Form Quiet."
       },
       {
         "id": "three_headlines",
         "label": "Allow three headlines",
-        "effects": { "order": 2, "elite_loyalty": 1, "happiness": 1, "treasury": -1 },
-        "advisor_affinity": { "luna_news": 1 },
-        "trait_changes": { "propagandist": 1 },
+        "effects": {
+          "order": 2,
+          "elite_loyalty": 1,
+          "happiness": 1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
         "result_text": "Three lines rotate. Luna calls it curated abundance."
       },
       {
         "id": "free_press_chaos",
         "label": "Keep the free chaos",
-        "effects": { "happiness": 2, "order": -4, "elite_loyalty": -3 },
-        "advisor_affinity": { "luna_news": -2 },
+        "effects": {
+          "happiness": 2,
+          "order": -4,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
         "result_text": "Headlines multiply. Luna schedules an emergency smile segment."
       }
     ],
-    "tags": ["standalone", "media", "headline_control"],
-    "visual_tags": ["single_headline_boards"],
+    "tags": [
+      "standalone",
+      "media",
+      "headline_control"
+    ],
+    "visual_tags": [
+      "single_headline_boards"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
-      "humor_tags": ["headline_control"],
+      "humor_tags": [
+        "headline_control"
+      ],
       "emotional_goal": "narrative control",
       "visual_hook": "city boards with a single headline",
       "localization_risk": "low",
       "writer_notes": "Consequences emphasize order/elite/treasury, not happiness alone."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "licensed_rumor_bureau",
@@ -337,17 +565,33 @@
     "minimum_day": 8,
     "maximum_day": 22,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "open_bureau",
         "label": "Open the bureau",
-        "effects": { "treasury": 5, "order": 3, "happiness": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 1, "bureaucratic": 1 },
-        "add_laws": ["public_rumor_license"],
-        "add_flags": ["rumor_bureau_open"],
+        "effects": {
+          "treasury": 5,
+          "order": 3,
+          "happiness": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "public_rumor_license"
+        ],
+        "add_flags": [
+          "rumor_bureau_open"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "one_headline_policy",
@@ -360,31 +604,54 @@
       {
         "id": "ban_rumors",
         "label": "Ban all rumors",
-        "effects": { "order": 4, "happiness": -5, "elite_loyalty": 1 },
-        "advisor_affinity": { "luna_news": 1 },
-        "trait_changes": { "authoritarian": 1 },
+        "effects": {
+          "order": 4,
+          "happiness": -5,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
         "result_text": "Silence spreads. People invent quieter rumors about the ban."
       },
       {
         "id": "ignore_gossip",
         "label": "Ignore the gossip",
-        "effects": { "happiness": 2, "order": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "luna_news": -1 },
+        "effects": {
+          "happiness": 2,
+          "order": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
         "result_text": "Gossip blooms free. Luna files it under ambient color."
       }
     ],
-    "tags": ["standalone", "media", "headline_control"],
-    "visual_tags": ["rumor_license_kiosks"],
+    "tags": [
+      "standalone",
+      "media",
+      "headline_control"
+    ],
+    "visual_tags": [
+      "rumor_license_kiosks"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
-      "humor_tags": ["licensed_gossip"],
+      "humor_tags": [
+        "licensed_gossip"
+      ],
       "emotional_goal": "cheerful control",
       "visual_hook": "kiosks selling rumor permits",
       "localization_risk": "low",
       "writer_notes": "Soft queues one_headline_policy."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "official_statistics_festival",
@@ -399,46 +666,83 @@
     "minimum_day": 3,
     "maximum_day": 16,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "fund_festival",
         "label": "Fund the festival",
-        "effects": { "treasury": -5, "order": 4, "elite_loyalty": 2, "happiness": 1 },
-        "advisor_affinity": { "clerk_zero": 2 },
-        "trait_changes": { "bureaucratic": 2 },
-        "add_flags": ["stats_festival_held"],
+        "effects": {
+          "treasury": -5,
+          "order": 4,
+          "elite_loyalty": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "add_flags": [
+          "stats_festival_held"
+        ],
         "result_text": "Pie-chart floats jam the square. Accuracy optional. Order rises."
       },
       {
         "id": "paper_only",
         "label": "Paper parade only",
-        "effects": { "treasury": -2, "order": 2, "elite_loyalty": 1 },
-        "advisor_affinity": { "clerk_zero": 1 },
-        "trait_changes": { "bureaucratic": 1 },
+        "effects": {
+          "treasury": -2,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
         "result_text": "Citizens shuffle forms in rhythm. Luna calls it ambient data."
       },
       {
         "id": "cancel_festival",
         "label": "Cancel the festival",
-        "effects": { "treasury": 1, "order": -2, "happiness": -1 },
-        "advisor_affinity": { "clerk_zero": -1 },
+        "effects": {
+          "treasury": 1,
+          "order": -2,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -1
+        },
         "result_text": "No floats. The unused confetti becomes Form 12 filler."
       }
     ],
-    "tags": ["standalone", "media", "statistics"],
-    "visual_tags": ["statistics_parade_floats"],
+    "tags": [
+      "standalone",
+      "media",
+      "statistics"
+    ],
+    "visual_tags": [
+      "statistics_parade_floats"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "establishment",
-      "humor_tags": ["bureaucratic_spectacle"],
+      "humor_tags": [
+        "bureaucratic_spectacle"
+      ],
       "emotional_goal": "dry spectacle",
       "visual_hook": "parade floats shaped like pie charts",
       "localization_risk": "low",
       "writer_notes": "Media card with treasury/order focus, not happiness campaign."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "science_grant_request",
@@ -453,16 +757,31 @@
     "minimum_day": 3,
     "maximum_day": 18,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "full_fund",
         "label": "Fund the full trial",
-        "effects": { "treasury": -7, "happiness": 4, "order": -2, "elite_loyalty": 1 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 2, "chaotic": 1 },
-        "add_flags": ["cloud_shape_grant"],
+        "effects": {
+          "treasury": -7,
+          "happiness": 4,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "cloud_shape_grant"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "cloud_relocation_trial",
@@ -475,32 +794,57 @@
       {
         "id": "pilot_only",
         "label": "Fund a tiny pilot",
-        "effects": { "treasury": -3, "happiness": 2, "order": -1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
-        "add_flags": ["cloud_shape_grant"],
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_flags": [
+          "cloud_shape_grant"
+        ],
         "result_text": "One cloud becomes a hat. The lab requests more hats."
       },
       {
         "id": "deny_grant",
         "label": "Deny politely",
-        "effects": { "order": 2, "happiness": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "doctor_maybe": -2 },
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
         "result_text": "Maybe sketches revenge-shaped cumulus in the margins."
       }
     ],
-    "tags": ["standalone", "science", "costly_success"],
-    "visual_tags": ["cloud_shape_lab"],
+    "tags": [
+      "standalone",
+      "science",
+      "costly_success"
+    ],
+    "visual_tags": [
+      "cloud_shape_lab"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "establishment",
-      "humor_tags": ["scientific_understatement"],
+      "humor_tags": [
+        "scientific_understatement"
+      ],
       "emotional_goal": "curious optimism",
       "visual_hook": "lab watching oddly shaped clouds",
       "localization_risk": "low",
       "writer_notes": "REWRITE of repeatable filler; costly success path; soft to cloud trial."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "predictive_toaster_admin",
@@ -515,17 +859,34 @@
     "minimum_day": 8,
     "maximum_day": 24,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "deploy_toasters",
         "label": "Deploy toaster clerks",
-        "effects": { "treasury": -6, "order": 4, "happiness": 2, "elite_loyalty": -2 },
-        "advisor_affinity": { "doctor_maybe": 2, "clerk_zero": -1 },
-        "trait_changes": { "scientific": 2, "bureaucratic": 1 },
-        "add_laws": ["predictive_toaster_act"],
-        "add_flags": ["toaster_admin_live"],
+        "effects": {
+          "treasury": -6,
+          "order": 4,
+          "happiness": 2,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "ai_cabinet_pilot"
+        ],
+        "add_flags": [
+          "toaster_admin_live"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "prototype_scooter_fleet",
@@ -538,31 +899,55 @@
       {
         "id": "lab_only",
         "label": "Keep it in the lab",
-        "effects": { "treasury": -2, "order": 1, "happiness": 1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -2,
+          "order": 1,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "One toaster stamps Form 12. Clerk Zero requests hazard pay."
       },
       {
         "id": "refuse_toasters",
         "label": "Humans keep forms",
-        "effects": { "order": 2, "happiness": -1, "elite_loyalty": 1 },
-        "advisor_affinity": { "doctor_maybe": -2, "clerk_zero": 1 },
+        "effects": {
+          "order": 2,
+          "happiness": -1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "clerk_zero": 1
+        },
         "result_text": "Toasters remain kitchen-only. Maybe files a maybe-memo."
       }
     ],
-    "tags": ["standalone", "science", "appliance_bureaucracy"],
-    "visual_tags": ["toaster_filing_cabinets"],
+    "tags": [
+      "standalone",
+      "science",
+      "appliance_bureaucracy"
+    ],
+    "visual_tags": [
+      "toaster_filing_cabinets"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "escalation",
-      "humor_tags": ["appliance_bureaucracy"],
+      "humor_tags": [
+        "appliance_bureaucracy"
+      ],
       "emotional_goal": "delightful wrongness",
       "visual_hook": "toasters filing papers",
       "localization_risk": "low",
       "writer_notes": "Scientific identity hook; soft queues scooter fleet."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "cloud_relocation_trial",
@@ -577,44 +962,84 @@
     "minimum_day": 8,
     "maximum_day": 26,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "requirements": {
-      "all_flags": ["cloud_shape_grant"]
+      "all_flags": [
+        "cloud_shape_grant"
+      ]
     },
     "options": [
       {
         "id": "relocate_cloud",
         "label": "Relocate the cloud",
-        "effects": { "treasury": -8, "happiness": 5, "order": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 2, "chaotic": 1 },
-        "add_flags": ["cloud_relocated"],
+        "effects": {
+          "treasury": -8,
+          "happiness": 5,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "cloud_relocated"
+        ],
         "result_text": "Parade grounds get rain. Markets get mud. Maybe calls it calibrated weather."
       },
       {
         "id": "simulate_only",
         "label": "Simulate on paper",
-        "effects": { "treasury": -2, "order": 2, "happiness": 1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -2,
+          "order": 2,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "Paper clouds move perfectly. Real clouds decline the invitation."
       },
       {
         "id": "abort_trial",
         "label": "Abort the trial",
-        "effects": { "order": 2, "happiness": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
         "result_text": "Cloud stays put. Maybe labels the folder 'pending delight'."
       }
     ],
-    "tags": ["standalone", "science", "costly_success", "state_gated"],
-    "visual_tags": ["relocated_clouds"],
+    "tags": [
+      "standalone",
+      "science",
+      "costly_success",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "relocated_clouds"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "escalation",
-      "humor_tags": ["weather_trial"],
+      "humor_tags": [
+        "weather_trial"
+      ],
       "emotional_goal": "controlled chaos",
       "visual_hook": "one cloud parked over parade grounds",
       "localization_risk": "low",
@@ -634,46 +1059,84 @@
     "minimum_day": 3,
     "maximum_day": 20,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "roll_out",
         "label": "Roll out the fleet",
-        "effects": { "treasury": -6, "happiness": 3, "order": -3, "elite_loyalty": 2 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 1, "chaotic": 1 },
-        "add_flags": ["scooter_fleet_live"],
+        "effects": {
+          "treasury": -6,
+          "happiness": 3,
+          "order": -3,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "scooter_fleet_live"
+        ],
         "result_text": "Ministers wobble through traffic. Maybe records 'encouraging anomalies'."
       },
       {
         "id": "pilot_square",
         "label": "Pilot in one square",
-        "effects": { "treasury": -3, "happiness": 2, "order": -1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "One square becomes a scooter orbit. Pedestrians file zigzags."
       },
       {
         "id": "shelve_scooters",
         "label": "Shelve the prototypes",
-        "effects": { "order": 2, "treasury": 1, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
+        "effects": {
+          "order": 2,
+          "treasury": 1,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
         "result_text": "Scooters enter storage. Maybe labels the crate 'not yet'."
       }
     ],
-    "tags": ["standalone", "science", "transport"],
-    "visual_tags": ["scooter_prototype_fleet"],
+    "tags": [
+      "standalone",
+      "science",
+      "transport"
+    ],
+    "visual_tags": [
+      "scooter_prototype_fleet"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "establishment",
-      "humor_tags": ["prototype_transport"],
+      "humor_tags": [
+        "prototype_transport"
+      ],
       "emotional_goal": "wobbly progress",
       "visual_hook": "ministers on unstable scooters",
       "localization_risk": "low",
       "writer_notes": "Transport-adjacent; avoids anti-gravity bus chain premise."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "boom_hostile_coup_rumor",
@@ -688,46 +1151,92 @@
     "minimum_day": 17,
     "maximum_day": 32,
     "pacing": {
-      "allowed_stages": ["instability"]
+      "allowed_stages": [
+        "instability"
+      ]
     },
     "requirements": {
-      "maximum_advisor_affinity": { "general_boom": -3 }
+      "maximum_advisor_affinity": {
+        "general_boom": -3
+      }
     },
     "options": [
       {
         "id": "public_reconciliation",
         "label": "Stage a medal ceremony",
-        "effects": { "elite_loyalty": 4, "happiness": 2, "treasury": -4, "order": 2 },
-        "advisor_affinity": { "general_boom": 3 },
-        "trait_changes": { "propagandist": 1, "authoritarian": 1 },
-        "add_flags": ["boom_perimeter_reconciled"],
+        "effects": {
+          "elite_loyalty": 4,
+          "happiness": 2,
+          "treasury": -4,
+          "order": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 3
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "authoritarian": 1
+        },
+        "add_flags": [
+          "boom_perimeter_reconciled"
+        ],
         "result_text": "Medals glitter. Rumors quiet. Boom salutes the camera twice."
       },
       {
         "id": "audit_perimeter",
         "label": "Audit the perimeter",
-        "effects": { "order": 5, "elite_loyalty": -2, "treasury": -3, "happiness": -1 },
-        "advisor_affinity": { "general_boom": 1, "clerk_zero": 1 },
-        "trait_changes": { "bureaucratic": 1 },
-        "add_flags": ["perimeter_audit_done"],
+        "effects": {
+          "order": 5,
+          "elite_loyalty": -2,
+          "treasury": -3,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "general_boom": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "perimeter_audit_done"
+        ],
         "result_text": "Clipboards patrol the rose garden. Boom calls it respectful suspicion."
       },
       {
         "id": "strip_parade_budget",
         "label": "Cut his parade budget",
-        "effects": { "order": -4, "elite_loyalty": -4, "happiness": 2, "treasury": 3 },
-        "advisor_affinity": { "general_boom": -2 },
-        "trait_changes": { "authoritarian": 2 },
+        "effects": {
+          "order": -4,
+          "elite_loyalty": -4,
+          "happiness": 2,
+          "treasury": 3
+        },
+        "advisor_affinity": {
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
         "result_text": "Parade funds freeze. Boom salutes with visible contempt."
       }
     ],
-    "tags": ["standalone", "military", "affinity", "state_gated"],
-    "visual_tags": ["perimeter_rumor_posters"],
+    "tags": [
+      "standalone",
+      "military",
+      "affinity",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "perimeter_rumor_posters"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "instability",
-      "humor_tags": ["perimeter_rumor"],
+      "humor_tags": [
+        "perimeter_rumor"
+      ],
       "emotional_goal": "lightly dark tension",
       "visual_hook": "rumor posters near palace gates",
       "localization_risk": "low",
@@ -747,47 +1256,88 @@
     "minimum_day": 8,
     "maximum_day": 22,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "approve_florists",
         "label": "Approve tank florists",
-        "effects": { "treasury": -5, "happiness": 5, "order": 2, "elite_loyalty": 2 },
-        "advisor_affinity": { "general_boom": 2, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1, "authoritarian": 1 },
-        "add_laws": ["ceremonial_tank_florist_act"],
-        "add_flags": ["tank_florists_active"],
+        "effects": {
+          "treasury": -5,
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "authoritarian": 1
+        },
+        "add_laws": [
+          "tank_traffic_control"
+        ],
+        "add_flags": [
+          "tank_florists_active"
+        ],
         "result_text": "Tanks plant tulips. Petals in the treads. Boom calls it soft power."
       },
       {
         "id": "keep_empty",
         "label": "Keep tanks ceremonial",
-        "effects": { "order": 3, "elite_loyalty": 2, "happiness": -2, "treasury": -1 },
-        "advisor_affinity": { "general_boom": 1 },
-        "trait_changes": { "authoritarian": 1 },
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": -2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
         "result_text": "Tanks stay empty and shiny. Florists apply for Form Petal."
       },
       {
         "id": "refuse_florists",
         "label": "Refuse the florists",
-        "effects": { "happiness": -2, "order": -1, "elite_loyalty": -1 },
-        "advisor_affinity": { "general_boom": -1 },
+        "effects": {
+          "happiness": -2,
+          "order": -1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "general_boom": -1
+        },
         "result_text": "No flowers. Boom mutters about neglected optics."
       }
     ],
-    "tags": ["standalone", "military", "flower_militarization"],
-    "visual_tags": ["tank_flower_beds"],
+    "tags": [
+      "standalone",
+      "military",
+      "flower_militarization"
+    ],
+    "visual_tags": [
+      "tank_flower_beds"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "escalation",
-      "humor_tags": ["flower_militarization"],
+      "humor_tags": [
+        "flower_militarization"
+      ],
       "emotional_goal": "absurd charm",
       "visual_hook": "tanks delivering flower beds",
       "localization_risk": "low",
       "writer_notes": "Ceremonial military; not buy-more-tanks."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "honor_guard_crosswalk",
@@ -802,46 +1352,84 @@
     "minimum_day": 2,
     "maximum_day": 14,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "station_guards",
         "label": "Station honor guards",
-        "effects": { "order": 5, "treasury": -4, "happiness": -2, "elite_loyalty": 3 },
-        "advisor_affinity": { "general_boom": 2 },
-        "trait_changes": { "authoritarian": 2 },
-        "add_flags": ["honor_crosswalk_active"],
+        "effects": {
+          "order": 5,
+          "treasury": -4,
+          "happiness": -2,
+          "elite_loyalty": 3
+        },
+        "advisor_affinity": {
+          "general_boom": 2
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "add_flags": [
+          "honor_crosswalk_active"
+        ],
         "result_text": "Guards salute pedestrians. Jams lengthen. Boom is proud."
       },
       {
         "id": "volunteer_ushers",
         "label": "Use volunteer ushers",
-        "effects": { "order": 2, "happiness": 2, "treasury": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "general_boom": -1, "auntie_olga": 1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "order": 2,
+          "happiness": 2,
+          "treasury": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "general_boom": -1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "result_text": "Neighbors wave cars across. Boom calls it soft perimeter duty."
       },
       {
         "id": "keep_paint",
         "label": "Keep painted lines",
-        "effects": { "order": 1, "happiness": 1 },
-        "advisor_affinity": { "general_boom": -1 },
+        "effects": {
+          "order": 1,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "general_boom": -1
+        },
         "result_text": "Paint remains. Boom files a memo titled Undignified Asphalt."
       }
     ],
-    "tags": ["standalone", "military", "traffic_ceremony"],
-    "visual_tags": ["honor_guard_crosswalk"],
+    "tags": [
+      "standalone",
+      "military",
+      "traffic_ceremony"
+    ],
+    "visual_tags": [
+      "honor_guard_crosswalk"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "establishment",
-      "humor_tags": ["traffic_ceremony"],
+      "humor_tags": [
+        "traffic_ceremony"
+      ],
       "emotional_goal": "ceremonial inconvenience",
       "visual_hook": "saluting guards at crosswalks",
       "localization_risk": "low",
       "writer_notes": "Distinct from Pack A flag_traffic_system."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "volunteer_night_watch",
@@ -856,46 +1444,86 @@
     "minimum_day": 28,
     "maximum_day": 40,
     "pacing": {
-      "allowed_stages": ["endgame"]
+      "allowed_stages": [
+        "endgame"
+      ]
     },
     "options": [
       {
         "id": "volunteer_watch",
         "label": "Fund volunteer watch",
-        "effects": { "order": 4, "happiness": 3, "treasury": -4, "elite_loyalty": -3 },
-        "advisor_affinity": { "clerk_zero": 1, "auntie_olga": 2, "general_boom": -1 },
-        "trait_changes": { "populist": 2 },
-        "add_flags": ["volunteer_watch_active"],
+        "effects": {
+          "order": 4,
+          "happiness": 3,
+          "treasury": -4,
+          "elite_loyalty": -3
+        },
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 2,
+          "general_boom": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_flags": [
+          "volunteer_watch_active"
+        ],
         "result_text": "Lanterns on corners. Neighbors patrol. Boom calls it unauthorized courage."
       },
       {
         "id": "hire_patrols",
         "label": "Hire silent patrols",
-        "effects": { "order": 6, "happiness": -4, "treasury": -6, "elite_loyalty": 4 },
-        "advisor_affinity": { "general_boom": 2, "clerk_zero": 1 },
-        "trait_changes": { "authoritarian": 2 },
+        "effects": {
+          "order": 6,
+          "happiness": -4,
+          "treasury": -6,
+          "elite_loyalty": 4
+        },
+        "advisor_affinity": {
+          "general_boom": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
         "result_text": "Quiet boots. Quieter streets. Forms for every shadow."
       },
       {
         "id": "do_nothing",
         "label": "File and wait",
-        "effects": { "order": -3, "happiness": -1, "elite_loyalty": -1 },
-        "advisor_affinity": { "clerk_zero": -1 },
+        "effects": {
+          "order": -3,
+          "happiness": -1,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "clerk_zero": -1
+        },
         "result_text": "The folder thickens. The night does not."
       }
     ],
-    "tags": ["standalone", "military", "non_authoritarian"],
-    "visual_tags": ["volunteer_watch_lanterns"],
+    "tags": [
+      "standalone",
+      "military",
+      "non_authoritarian"
+    ],
+    "visual_tags": [
+      "volunteer_watch_lanterns"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "military_and_order",
       "primary_stage": "endgame",
-      "humor_tags": ["civic_patrol"],
+      "humor_tags": [
+        "civic_patrol"
+      ],
       "emotional_goal": "community vs control",
       "visual_hook": "lantern night watch vs silent patrols",
       "localization_risk": "low",
       "writer_notes": "Second non-authoritarian military resolution; endgame stage."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "weather_optimism_bulletin",
@@ -910,17 +1538,32 @@
     "minimum_day": 8,
     "maximum_day": 22,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "mandate_sunny",
         "label": "Mandate sunny copy",
-        "effects": { "happiness": 4, "order": 2, "elite_loyalty": 2, "treasury": -1 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2 },
-        "add_laws": ["weather_optimism_act"],
-        "add_flags": ["weather_optimism_live"],
+        "effects": {
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": 2,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_laws": [
+          "weather_optimism_act"
+        ],
+        "add_flags": [
+          "weather_optimism_live"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "loyalty_variety_hour",
@@ -933,23 +1576,38 @@
       {
         "id": "honest_forecast",
         "label": "Allow honest forecasts",
-        "effects": { "happiness": -1, "order": 1, "elite_loyalty": -2 },
-        "advisor_affinity": { "luna_news": -1 },
+        "effects": {
+          "happiness": -1,
+          "order": 1,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "luna_news": -1
+        },
         "result_text": "Rain is named rain. Luna schedules a smile segment about puddles."
       }
     ],
-    "tags": ["standalone", "media", "broadcast_optimism"],
-    "visual_tags": ["sunny_bulletin_boards"],
+    "tags": [
+      "standalone",
+      "media",
+      "broadcast_optimism"
+    ],
+    "visual_tags": [
+      "sunny_bulletin_boards"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "escalation",
-      "humor_tags": ["broadcast_optimism"],
+      "humor_tags": [
+        "broadcast_optimism"
+      ],
       "emotional_goal": "chipper denial",
       "visual_hook": "sunny bulletins during rain",
       "localization_risk": "low",
       "writer_notes": "Adjacent to weather-censorship chain; not the chain setup."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "loyalty_variety_hour",
@@ -964,36 +1622,69 @@
     "minimum_day": 17,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["instability"]
+      "allowed_stages": [
+        "instability"
+      ]
     },
     "requirements": {
-      "any_flags": ["weather_optimism_live", "rumor_bureau_open", "one_headline_active", "anthem_remix_live"]
+      "any_flags": [
+        "weather_optimism_live",
+        "rumor_bureau_open",
+        "one_headline_active",
+        "anthem_remix_live"
+      ]
     },
     "options": [
       {
         "id": "launch_hour",
         "label": "Launch the variety hour",
-        "effects": { "elite_loyalty": 5, "order": 3, "treasury": -5, "happiness": 1 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2 },
-        "add_flags": ["loyalty_variety_live"],
+        "effects": {
+          "elite_loyalty": 5,
+          "order": 3,
+          "treasury": -5,
+          "happiness": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_flags": [
+          "loyalty_variety_live"
+        ],
         "result_text": "Elites clap on cue. Order steadies. Ratings invent themselves."
       },
       {
         "id": "cancel_show",
         "label": "Cancel the show",
-        "effects": { "elite_loyalty": -3, "order": -2, "happiness": 2, "treasury": 1 },
-        "advisor_affinity": { "luna_news": -2 },
+        "effects": {
+          "elite_loyalty": -3,
+          "order": -2,
+          "happiness": 2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
         "result_text": "Studio lights dim. Luna files a segment titled Temporary Silence."
       }
     ],
-    "tags": ["standalone", "media", "state_gated"],
-    "visual_tags": ["variety_hour_stage"],
+    "tags": [
+      "standalone",
+      "media",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "variety_hour_stage"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "instability",
-      "humor_tags": ["loyalty_entertainment"],
+      "humor_tags": [
+        "loyalty_entertainment"
+      ],
       "emotional_goal": "sinister cheer",
       "visual_hook": "variety stage with loyalty applause",
       "localization_risk": "low",
@@ -1013,17 +1704,34 @@
     "minimum_day": 2,
     "maximum_day": 16,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "open_registry",
         "label": "Open the registry",
-        "effects": { "order": 3, "elite_loyalty": 2, "happiness": -2, "treasury": 2 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2, "bureaucratic": 1 },
-        "add_laws": ["catchphrase_registry_act"],
-        "add_flags": ["catchphrase_registry_open"],
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": -2,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "bureaucratic": 1
+        },
+        "add_laws": [
+          "ministry_of_memes"
+        ],
+        "add_flags": [
+          "catchphrase_registry_open"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "crisis_reframing_desk",
@@ -1036,31 +1744,54 @@
       {
         "id": "soft_guidelines",
         "label": "Publish soft guidelines",
-        "effects": { "order": 1, "happiness": 1, "elite_loyalty": 1 },
-        "advisor_affinity": { "luna_news": 1 },
-        "trait_changes": { "propagandist": 1 },
+        "effects": {
+          "order": 1,
+          "happiness": 1,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
         "result_text": "Guidelines smile. Citizens invent loopholes with excellent timing."
       },
       {
         "id": "refuse_registry",
         "label": "Refuse the registry",
-        "effects": { "happiness": 2, "order": -3, "elite_loyalty": -2 },
-        "advisor_affinity": { "luna_news": -2 },
+        "effects": {
+          "happiness": 2,
+          "order": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
         "result_text": "Slogans run wild. Luna schedules an emergency clarity hour."
       }
     ],
-    "tags": ["standalone", "media", "identity_hook"],
-    "visual_tags": ["catchphrase_billboards"],
+    "tags": [
+      "standalone",
+      "media",
+      "identity_hook"
+    ],
+    "visual_tags": [
+      "catchphrase_billboards"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "establishment",
-      "humor_tags": ["slogan_bureaucracy"],
+      "humor_tags": [
+        "slogan_bureaucracy"
+      ],
       "emotional_goal": "polished control",
       "visual_hook": "official catchphrase billboards",
       "localization_risk": "moderate",
       "writer_notes": "Propagandist identity support; soft to reframing desk."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "crisis_reframing_desk",
@@ -1075,44 +1806,83 @@
     "minimum_day": 28,
     "maximum_day": 40,
     "pacing": {
-      "allowed_stages": ["endgame"]
+      "allowed_stages": [
+        "endgame"
+      ]
     },
     "requirements": {
-      "any_flags": ["catchphrase_registry_open", "loyalty_variety_live", "one_headline_active"]
+      "any_flags": [
+        "catchphrase_registry_open",
+        "loyalty_variety_live",
+        "one_headline_active"
+      ]
     },
     "options": [
       {
         "id": "fund_desk",
         "label": "Fund the desk",
-        "effects": { "treasury": -6, "order": 4, "elite_loyalty": 5, "happiness": -1 },
-        "advisor_affinity": { "luna_news": 2 },
-        "trait_changes": { "propagandist": 2 },
-        "add_flags": ["reframing_desk_live"],
+        "effects": {
+          "treasury": -6,
+          "order": 4,
+          "elite_loyalty": 5,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 2
+        },
+        "add_flags": [
+          "reframing_desk_live"
+        ],
         "result_text": "Setbacks become exclusives. Elites nod. The ledger winces."
       },
       {
         "id": "skeleton_crew",
         "label": "Skeleton crew only",
-        "effects": { "treasury": -2, "order": 2, "elite_loyalty": 2 },
-        "advisor_affinity": { "luna_news": 1 },
-        "trait_changes": { "propagandist": 1 },
+        "effects": {
+          "treasury": -2,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
         "result_text": "Two producers reframe everything. Quality varies. Optics hold."
       },
       {
         "id": "skip_desk",
         "label": "Skip the desk",
-        "effects": { "order": -3, "elite_loyalty": -4, "treasury": 2 },
-        "advisor_affinity": { "luna_news": -2 },
+        "effects": {
+          "order": -3,
+          "elite_loyalty": -4,
+          "treasury": 2
+        },
+        "advisor_affinity": {
+          "luna_news": -2
+        },
         "result_text": "Raw headlines escape. Luna calls it an authenticity experiment."
       }
     ],
-    "tags": ["standalone", "media", "state_gated"],
-    "visual_tags": ["reframing_newsroom"],
+    "tags": [
+      "standalone",
+      "media",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "reframing_newsroom"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "media_and_propaganda",
       "primary_stage": "endgame",
-      "humor_tags": ["crisis_spin"],
+      "humor_tags": [
+        "crisis_spin"
+      ],
       "emotional_goal": "controlled narrative",
       "visual_hook": "late-run newsroom reframing crises",
       "localization_risk": "low",
@@ -1132,17 +1902,32 @@
     "minimum_day": 8,
     "maximum_day": 24,
     "pacing": {
-      "allowed_stages": ["escalation"]
+      "allowed_stages": [
+        "escalation"
+      ]
     },
     "options": [
       {
         "id": "deploy_coats",
         "label": "Deploy coat lighting",
-        "effects": { "treasury": -8, "order": 3, "happiness": 3, "elite_loyalty": -1 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 2 },
-        "add_laws": ["labcoat_lighting_act"],
-        "add_flags": ["labcoat_lights_live"],
+        "effects": {
+          "treasury": -8,
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "add_laws": [
+          "artificial_sun_program"
+        ],
+        "add_flags": [
+          "labcoat_lights_live"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "national_nap_grid",
@@ -1155,31 +1940,54 @@
       {
         "id": "pilot_block",
         "label": "Pilot one block",
-        "effects": { "treasury": -3, "happiness": 2, "order": 1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "One block hums. Neighbors bring popcorn. Sparks politely."
       },
       {
         "id": "refuse_coats",
         "label": "Keep normal bulbs",
-        "effects": { "order": 1, "treasury": 1, "happiness": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
+        "effects": {
+          "order": 1,
+          "treasury": 1,
+          "happiness": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
         "result_text": "Bulbs stay boring. Maybe files 'deferred luminescence'."
       }
     ],
-    "tags": ["standalone", "science", "costly_success"],
-    "visual_tags": ["labcoat_streetlights"],
+    "tags": [
+      "standalone",
+      "science",
+      "costly_success"
+    ],
+    "visual_tags": [
+      "labcoat_streetlights"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "escalation",
-      "humor_tags": ["experimental_infra"],
+      "humor_tags": [
+        "experimental_infra"
+      ],
       "emotional_goal": "curious success",
       "visual_hook": "streetlights glowing from lab coats",
       "localization_risk": "low",
       "writer_notes": "Successful but costly deploy path."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "national_nap_grid",
@@ -1194,44 +2002,83 @@
     "minimum_day": 17,
     "maximum_day": 30,
     "pacing": {
-      "allowed_stages": ["instability"]
+      "allowed_stages": [
+        "instability"
+      ]
     },
     "requirements": {
-      "blocked_flags": ["nap_grid_live", "national_nap_live"]
+      "blocked_flags": [
+        "nap_grid_live",
+        "national_nap_live"
+      ]
     },
     "options": [
       {
         "id": "full_grid",
         "label": "Build the nap grid",
-        "effects": { "treasury": -7, "happiness": 5, "order": -2, "elite_loyalty": 1 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 1, "chaotic": 1 },
-        "add_flags": ["nap_grid_live"],
+        "effects": {
+          "treasury": -7,
+          "happiness": 5,
+          "order": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "nap_grid_live"
+        ],
         "result_text": "Cots bloom. Productivity naps. Diplomats negotiate mid-yawn."
       },
       {
         "id": "pilot_naps",
         "label": "Pilot ministry naps",
-        "effects": { "treasury": -3, "happiness": 2, "order": 1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "Ministers nap on schedule. Forms wait patiently."
       },
       {
         "id": "refuse_naps",
         "label": "Refuse the grid",
-        "effects": { "order": 2, "happiness": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "doctor_maybe": -1 },
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -1
+        },
         "result_text": "No cots. Maybe doodles sleep curves in the margins."
       }
     ],
-    "tags": ["standalone", "science", "energy_medicine"],
-    "visual_tags": ["nap_grid_cots"],
+    "tags": [
+      "standalone",
+      "science",
+      "energy_medicine"
+    ],
+    "visual_tags": [
+      "nap_grid_cots"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "instability",
-      "humor_tags": ["synchronized_naps"],
+      "humor_tags": [
+        "synchronized_naps"
+      ],
       "emotional_goal": "gentle absurdity",
       "visual_hook": "citywide cot grid for naps",
       "localization_risk": "low",
@@ -1251,44 +2098,87 @@
     "minimum_day": 8,
     "maximum_day": 26,
     "pacing": {
-      "allowed_stages": ["escalation", "instability"]
+      "allowed_stages": [
+        "escalation",
+        "instability"
+      ]
     },
     "requirements": {
-      "minimum_advisor_affinity": { "doctor_maybe": 2 }
+      "minimum_advisor_affinity": {
+        "doctor_maybe": 2
+      },
+      "any_laws": [
+        "mandatory_smiling"
+      ]
     },
     "options": [
       {
         "id": "open_clinic",
         "label": "Open the pilot clinic",
-        "effects": { "treasury": -9, "happiness": 6, "order": -2, "elite_loyalty": 2 },
-        "advisor_affinity": { "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 2 },
-        "add_flags": ["clinic_maybe_open"],
+        "effects": {
+          "treasury": -9,
+          "happiness": 6,
+          "order": -2,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "add_flags": [
+          "clinic_maybe_open"
+        ],
         "result_text": "Patients improve, mostly. Budget does not. Maybe is thrilled."
       },
       {
         "id": "lab_hours",
         "label": "Lab hours only",
-        "effects": { "treasury": -4, "happiness": 3, "order": 1 },
-        "advisor_affinity": { "doctor_maybe": 1 },
-        "trait_changes": { "scientific": 1 },
+        "effects": {
+          "treasury": -4,
+          "happiness": 3,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
         "result_text": "Limited hours. Limited miracles. Forms for every vial."
       },
       {
         "id": "delay_clinic",
         "label": "Delay indefinitely",
-        "effects": { "order": 2, "happiness": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "doctor_maybe": -2 },
+        "effects": {
+          "order": 2,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
         "result_text": "Clinic stays theoretical. Maybe labels it 'pending kindness'."
       }
     ],
-    "tags": ["standalone", "science", "costly_success", "affinity", "state_gated"],
-    "visual_tags": ["clinic_maybe_tent"],
+    "tags": [
+      "standalone",
+      "science",
+      "costly_success",
+      "affinity",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "clinic_maybe_tent"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "escalation",
-      "humor_tags": ["experimental_medicine"],
+      "humor_tags": [
+        "experimental_medicine"
+      ],
       "emotional_goal": "hopeful risk",
       "visual_hook": "tent clinic with maybe-serums",
       "localization_risk": "low",
@@ -1308,19 +2198,37 @@
     "minimum_day": 3,
     "maximum_day": 16,
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "requirements": {
-      "minimum_resources": { "treasury": 40 }
+      "minimum_resources": {
+        "treasury": 40
+      }
     },
     "options": [
       {
         "id": "fund_board",
         "label": "Fund the board",
-        "effects": { "treasury": -6, "order": 2, "happiness": 2, "elite_loyalty": 1 },
-        "advisor_affinity": { "minister_penny": 1, "doctor_maybe": 2 },
-        "trait_changes": { "scientific": 1, "bureaucratic": 1 },
-        "add_flags": ["hypothesis_board_funded"],
+        "effects": {
+          "treasury": -6,
+          "order": 2,
+          "happiness": 2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "add_flags": [
+          "hypothesis_board_funded"
+        ],
         "follow_up": {
           "type": "soft",
           "decision_id": "clinic_maybe_pilot",
@@ -1333,26 +2241,50 @@
       {
         "id": "coupon_science",
         "label": "Issue science coupons",
-        "effects": { "treasury": -2, "happiness": 1, "elite_loyalty": 2 },
-        "advisor_affinity": { "minister_penny": 2, "doctor_maybe": -1 },
-        "trait_changes": { "capitalist": 1 },
+        "effects": {
+          "treasury": -2,
+          "happiness": 1,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "doctor_maybe": -1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
         "result_text": "Coupons for curiosity. Labs stack receipts. Innovation waits in line."
       },
       {
         "id": "refuse_board",
         "label": "Refuse the board",
-        "effects": { "treasury": 2, "happiness": -2, "elite_loyalty": -1 },
-        "advisor_affinity": { "minister_penny": 1, "doctor_maybe": -2 },
+        "effects": {
+          "treasury": 2,
+          "happiness": -2,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "minister_penny": 1,
+          "doctor_maybe": -2
+        },
         "result_text": "No board. Experiments improvise. Penny calls it fiscal hygiene."
       }
     ],
-    "tags": ["standalone", "science", "state_gated"],
-    "visual_tags": ["hypothesis_budget_board"],
+    "tags": [
+      "standalone",
+      "science",
+      "state_gated"
+    ],
+    "visual_tags": [
+      "hypothesis_budget_board"
+    ],
     "authoring": {
       "primary_content_class": "standalone",
       "primary_category": "science_and_technology",
       "primary_stage": "establishment",
-      "humor_tags": ["budgeted_curiosity"],
+      "humor_tags": [
+        "budgeted_curiosity"
+      ],
       "emotional_goal": "fiscal vs wonder",
       "visual_hook": "cabinet board of priced hypotheses",
       "localization_risk": "low",

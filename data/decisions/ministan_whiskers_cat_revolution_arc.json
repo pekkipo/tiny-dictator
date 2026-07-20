@@ -6,7 +6,7 @@
     "card_type": "normal",
     "advisor_id": "comrade_whiskers",
     "category": "public_life",
-    "proposal": "Comrades of the cabinet: cushions in ministries are concrete. Fish reserves are empty. We demand a Cushion Charter \u2014 not toys. Dignity.",
+    "proposal": "Comrades of the cabinet: cushions in ministries are concrete. Fish reserves are empty. We demand a Cushion Charter — not toys. Dignity.",
     "one_time": true,
     "base_weight": 12,
     "minimum_day": 3,
@@ -43,7 +43,7 @@
           "elite_loyalty": -1
         },
         "add_laws": [
-          "cat_cushion_charter"
+          "official_nap_zones"
         ],
         "add_flags": [
           "whiskers_rev_live",
@@ -336,7 +336,7 @@
           }
         ],
         "force_next_decision": "whiskers_revolution_resolution",
-        "result_text": "Clause filed. Dignity gains a paragraph. Nobody is overthrown \u2014 yet."
+        "result_text": "Clause filed. Dignity gains a paragraph. Nobody is overthrown — yet."
       },
       {
         "id": "dominance",

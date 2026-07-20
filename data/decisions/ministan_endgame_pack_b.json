@@ -1,596 +1,1158 @@
 [
-	{
-		"id": "endgame_succession_debate",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "resolution",
-		"advisor_id": "clerk_zero",
-		"category": "bureaucracy",
-		"proposal": "Clerk Zero spreads seventeen succession forms and one stapler. Your term is a filing deadline. Who inherits the desk?",
-		"one_time": true,
-		"base_weight": 14,
-		"minimum_day": 28,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["endgame"]
-		},
-		"requirements": {
-			"blocked_flags": ["endgame_succession_resolved"]
-		},
-		"options": [
-			{
-				"id": "announce_dynasty",
-				"label": "Announce a dynasty",
-				"effects": { "elite_loyalty": 6, "happiness": -5, "order": 4 },
-				"add_flags": ["endgame_succession_resolved", "endgame_dynasty_named"],
-				"advisor_affinity": { "clerk_zero": 2, "general_boom": 1 },
-				"trait_changes": { "authoritarian": 2 },
-				"result_text": "Succession forms multiply. Democracy files a polite objection and a louder stamp."
-			},
-			{
-				"id": "promise_election",
-				"label": "Promise an election",
-				"effects": { "happiness": 6, "elite_loyalty": -6, "order": -2 },
-				"add_flags": ["endgame_succession_resolved", "peaceful_accidental_democracy", "election_arc_complete"],
-				"advisor_affinity": { "clerk_zero": 1, "auntie_olga": 2 },
-				"trait_changes": { "populist": 2 },
-				"trigger_ending": "peaceful_accidental_democracy",
-				"result_text": "Citizens cheer. Ministers update résumés. The stapler becomes a ballot box."
-			},
-			{
-				"id": "competent_successor",
-				"label": "Name a competent heir",
-				"effects": { "order": 4, "happiness": 3, "elite_loyalty": 2, "treasury": -3 },
-				"add_flags": ["endgame_succession_resolved", "competent_successor_named"],
-				"advisor_affinity": { "clerk_zero": 3, "minister_penny": 2 },
-				"trait_changes": { "bureaucratic": 2 },
-				"trigger_ending": "competent_successor",
-				"result_text": "A quiet deputy inherits the desk. Historians call it suspiciously functional."
-			}
-		],
-		"tags": ["endgame", "resolution", "succession"],
-		"visual_tags": ["seventeen_succession_forms", "ballot_box_stapler"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "arc_resolution",
-			"batch_id": "2B-16B",
-			"quality_score": 17,
-			"writer_notes": "Rewritten placeholder; multi-path including successor ending."
-		}
-	},
-	{
-		"id": "endgame_final_audit",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "resolution",
-		"advisor_id": "minister_penny",
-		"category": "economy",
-		"proposal": "The final treasury audit arrives. Minister Penny smiles the way accountants smile before choosing a footnote destiny.",
-		"one_time": true,
-		"base_weight": 14,
-		"minimum_day": 28,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["endgame"]
-		},
-		"requirements": {
-			"blocked_flags": ["endgame_audit_resolved"]
-		},
-		"options": [
-			{
-				"id": "publish_audit",
-				"label": "Publish the audit",
-				"effects": { "happiness": 4, "elite_loyalty": -4, "order": 2 },
-				"add_flags": ["endgame_audit_resolved", "endgame_audit_published"],
-				"advisor_affinity": { "minister_penny": 2, "auntie_olga": 1 },
-				"trait_changes": { "bureaucratic": 1, "populist": 1 },
-				"result_text": "Transparency shocks everyone. Several numbers apologize in public."
-			},
-			{
-				"id": "seal_audit",
-				"label": "Seal the audit",
-				"effects": { "elite_loyalty": 5, "happiness": -3, "order": 3 },
-				"add_flags": ["endgame_audit_resolved", "endgame_audit_sealed"],
-				"advisor_affinity": { "minister_penny": 2, "sir_profit": 1 },
-				"trait_changes": { "bureaucratic": 2 },
-				"result_text": "The audit enters a locked drawer. Rumors accrue compound interest."
-			},
-			{
-				"id": "mercy_footnotes",
-				"label": "Add mercy footnotes",
-				"effects": { "happiness": 5, "treasury": -4, "order": 2 },
-				"add_flags": ["endgame_audit_resolved", "endgame_ambiguous_peace", "penny_miracle_sealed"],
-				"advisor_affinity": { "minister_penny": 3, "auntie_olga": 2 },
-				"trait_changes": { "bureaucratic": 1, "populist": 1 },
-				"result_text": "Footnotes buy soup and streetlights. Penny initials both like a blessing."
-			}
-		],
-		"tags": ["endgame", "resolution", "economy", "audit"],
-		"visual_tags": ["final_audit_binder", "locked_audit_drawer"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "arc_resolution",
-			"batch_id": "2B-16B",
-			"quality_score": 17,
-			"writer_notes": "Rewritten placeholder; ambiguous/positive mercy path; economy callbacks."
-		}
-	},
-	{
-		"id": "endgame_profit_zero_ownership",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "resolution",
-		"advisor_id": "sir_profit",
-		"category": "business_and_privatization",
-		"proposal": "Sir Profit claims Ministan is a brand. Clerk Zero claims it is a form. Both demand ownership of the closing ceremony.",
-		"one_time": true,
-		"base_weight": 13,
-		"minimum_day": 22,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"any_flags": ["profit_corp_complete", "zero_forms_complete", "corporate_branding_soft", "government_by_form_soft"],
-			"any_laws": ["privatize_air", "rent_a_ministry", "form_sovereignty_act", "form_request_form_act", "corporate_capital_naming"]
-		},
-		"options": [
-			{
-				"id": "corporate_closing",
-				"label": "Sell the closing rights",
-				"effects": { "treasury": 8, "happiness": -4, "elite_loyalty": 5 },
-				"add_flags": ["corporate_benches_empire", "corporate_branding_soft", "endgame_profit_owns_exit"],
-				"advisor_affinity": { "sir_profit": 3, "clerk_zero": -2 },
-				"trait_changes": { "capitalist": 2 },
-				"trigger_ending": "corporate_ministan",
-				"result_text": "The ceremony has sponsors. Zero stamps the invoice in protest."
-			},
-			{
-				"id": "forms_own_exit",
-				"label": "Let forms own the exit",
-				"effects": { "order": 5, "happiness": -2, "elite_loyalty": -3 },
-				"add_flags": ["endgame_zero_owns_exit", "government_by_form_soft", "forms_run_government"],
-				"add_laws": ["form_request_form_act"],
-				"advisor_affinity": { "clerk_zero": 3, "sir_profit": -2 },
-				"trait_changes": { "bureaucratic": 2 },
-				"trigger_ending": "government_by_form",
-				"result_text": "The exit requires triplicate. Profit sulks in a branded lounge."
-			},
-			{
-				"id": "shared_letterhead",
-				"label": "Share the letterhead",
-				"effects": { "order": 3, "treasury": 2, "happiness": 2 },
-				"add_flags": ["endgame_profit_zero_truce", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "sir_profit": 1, "clerk_zero": 1 },
-				"trait_changes": { "capitalist": 1, "bureaucratic": 1 },
-				"result_text": "Letterhead reads Inc. & Form. Historians call it a polite contradiction."
-			}
-		],
-		"tags": ["endgame", "resolution", "contradiction", "multi_arc"],
-		"visual_tags": ["branded_filing_cabinet", "sponsored_exit_banner"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "arc_resolution",
-			"batch_id": "2B-16B",
-			"quality_score": 18,
-			"writer_notes": "Profit vs Zero ownership contradiction; two endings + truce."
-		}
-	},
-	{
-		"id": "endgame_cabinet_loyalty_ledger",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "resolution",
-		"advisor_id": "palace_chef",
-		"category": "public_life",
-		"proposal": "The Palace Chef serves a loyalty ledger as dessert: each advisor's mood plated beside a tiny flag. Who gets the last fork?",
-		"one_time": true,
-		"base_weight": 14,
-		"minimum_day": 26,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"blocked_flags": ["endgame_cabinet_loyal_toast", "endgame_cabinet_street_feast", "endgame_cabinet_rotation"]
-		},
-		"options": [
-			{
-				"id": "toast_the_loyal",
-				"label": "Toast the loyal few",
-				"effects": { "elite_loyalty": 6, "happiness": -2, "order": 2 },
-				"add_flags": ["endgame_cabinet_loyal_toast"],
-				"advisor_affinity": { "palace_chef": 2, "general_boom": 1, "minister_penny": 1 },
-				"trait_changes": { "authoritarian": 1 },
-				"result_text": "Dessert politics elevates favorites. The others receive polite salad."
-			},
-			{
-				"id": "feed_the_street",
-				"label": "Feed the whole street",
-				"effects": { "happiness": 6, "elite_loyalty": -4, "treasury": -5 },
-				"add_flags": ["endgame_cabinet_street_feast", "endgame_citizen_voice"],
-				"advisor_affinity": { "palace_chef": 2, "auntie_olga": 3, "comrade_whiskers": 1 },
-				"trait_changes": { "populist": 2 },
-				"result_text": "The ledger becomes a picnic. Advisors share forks or sulk beautifully."
-			},
-			{
-				"id": "rotate_the_fork",
-				"label": "Rotate the last fork",
-				"effects": { "order": 3, "happiness": 3, "elite_loyalty": 2 },
-				"add_flags": ["endgame_cabinet_rotation", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "palace_chef": 3, "clerk_zero": 1, "luna_news": 1 },
-				"trait_changes": { "bureaucratic": 1, "populist": 1 },
-				"result_text": "A schedule for glory. Everyone tastes power for one carefully timed bite."
-			}
-		],
-		"tags": ["endgame", "resolution", "affinity", "guest"],
-		"visual_tags": ["dessert_politics", "loyalty_ledger_platter"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "arc_resolution",
-			"batch_id": "2B-16B",
-			"quality_score": 16,
-			"writer_notes": "Guest chef; affinity-dependent payoff across advisors."
-		}
-	},
-	{
-		"id": "endgame_peaceful_democracy_seal",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "chief_judge",
-		"category": "bureaucracy",
-		"proposal": "The Chief Judge holds Filing Week ballots that accidentally became real. Seal accidental democracy, or pretend it was stationery?",
-		"one_time": true,
-		"base_weight": 9,
-		"minimum_day": 24,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"any_flags": ["election_arc_complete", "democracy_by_administrative_error", "peaceful_accidental_democracy"],
-			"any_laws": ["national_filing_week", "administrative_reform_act", "complaint_permit_act"]
-		},
-		"options": [
-			{
-				"id": "seal_peaceful_vote",
-				"label": "Seal peaceful democracy",
-				"effects": { "happiness": 7, "elite_loyalty": -5, "order": 2 },
-				"add_flags": ["peaceful_accidental_democracy", "election_arc_complete"],
-				"advisor_affinity": { "chief_judge": 3, "clerk_zero": 1 },
-				"trait_changes": { "populist": 2, "bureaucratic": 1 },
-				"trigger_ending": "peaceful_accidental_democracy",
-				"result_text": "The gavel falls softly. Accidental democracy becomes intentional enough."
-			},
-			{
-				"id": "admin_error_path",
-				"label": "Call it an admin error",
-				"effects": { "order": 4, "elite_loyalty": 3, "happiness": 2 },
-				"add_flags": ["democracy_by_administrative_error", "election_arc_complete"],
-				"advisor_affinity": { "chief_judge": 2, "clerk_zero": 2 },
-				"trait_changes": { "bureaucratic": 2 },
-				"trigger_ending": "democracy_by_administrative_error",
-				"result_text": "History records a clerical miracle. Citizens vote anyway, smiling."
-			},
-			{
-				"id": "stationery_excuse",
-				"label": "Blame the stationery",
-				"effects": { "elite_loyalty": 4, "happiness": -3, "order": 2 },
-				"add_flags": ["endgame_democracy_deferred"],
-				"advisor_affinity": { "chief_judge": 1, "luna_news": 1 },
-				"trait_changes": { "propagandist": 1 },
-				"result_text": "Ballots become scrap paper again. Democracy waits in a drawer."
-			}
-		],
-		"tags": ["endgame", "rare_success", "democracy", "ending_setup"],
-		"visual_tags": ["filing_week_ballots", "soft_gavel"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "rare_success",
-			"batch_id": "2B-16B",
-			"quality_score": 17,
-			"writer_notes": "Rare democracy seal; two collectible endings."
-		}
-	},
-	{
-		"id": "endgame_scientific_golden_age",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "doctor_maybe",
-		"category": "science_and_technology",
-		"proposal": "Doctor Maybe presents a sun that refuses to set and a lab that refuses to apologize. Declare a golden age, or keep it preliminary?",
-		"one_time": true,
-		"base_weight": 8,
-		"minimum_day": 24,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"any_flags": ["artificial_sun_success", "ai_gov_complete", "maybe_arc_complete", "endgame_tech_stable", "sun_chain_complete"],
-			"any_laws": ["artificial_sun_program", "scientific_experiment_permit", "ai_cabinet_pilot", "labcoat_lighting_act"],
-			"minimum_traits": { "scientific": 2 }
-		},
-		"options": [
-			{
-				"id": "declare_golden_age",
-				"label": "Declare the golden age",
-				"effects": { "happiness": 5, "order": 3, "treasury": -4 },
-				"add_flags": ["scientific_golden_soft", "artificial_sun_success", "endgame_tech_stable"],
-				"advisor_affinity": { "doctor_maybe": 3 },
-				"trait_changes": { "scientific": 2 },
-				"trigger_ending": "scientific_golden_age",
-				"result_text": "Nights become optional. Invoices glow. Historians put on sunglasses."
-			},
-			{
-				"id": "preliminary_forever",
-				"label": "Keep it preliminary",
-				"effects": { "order": 4, "elite_loyalty": 2, "happiness": 2 },
-				"add_flags": ["scientific_golden_soft", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "doctor_maybe": 2, "minister_penny": 1 },
-				"trait_changes": { "scientific": 1, "bureaucratic": 1 },
-				"result_text": "The age stays in draft. Citizens enjoy provisional sunlight."
-			},
-			{
-				"id": "dim_the_sun",
-				"label": "Dim the experiment",
-				"effects": { "order": 3, "happiness": -3, "elite_loyalty": 3 },
-				"add_flags": ["scientific_golden_canceled"],
-				"advisor_affinity": { "doctor_maybe": -2, "general_boom": 1 },
-				"trait_changes": { "authoritarian": 1 },
-				"result_text": "The sun clocks out. Maybe files a disappointment form."
-			}
-		],
-		"tags": ["endgame", "rare_success", "science", "ending_setup"],
-		"visual_tags": ["preliminary_sun_glow", "lab_sparks"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "rare_success",
-			"batch_id": "2B-16B",
-			"quality_score": 18,
-			"writer_notes": "Wires previously untriggered scientific_golden_age via soft flag + trigger."
-		}
-	},
-	{
-		"id": "endgame_climax_cat_servant",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "comrade_whiskers",
-		"category": "cats_and_animals",
-		"proposal": "Comrade Whiskers places a cushion on your throne. The cats have decided you serve them. How does the Supreme Cat Servant finish the nap?",
-		"one_time": true,
-		"base_weight": 10,
-		"minimum_day": 24,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"minimum_traits": { "cat_friendly": 2 },
-			"any_flags": ["whiskers_rev_complete", "cat_pol_complete", "endgame_cat_stable", "endgame_cat_lobby"],
-			"any_laws": ["cat_voting_rights", "cat_cushion_charter", "mouse_protection_law", "official_palace_pet_act", "fish_market_subsidy_act", "fish_emergency_reserve"]
-		},
-		"options": [
-			{
-				"id": "purrfect_transfer",
-				"label": "Transfer power to cats",
-				"effects": { "happiness": 5, "order": -3, "elite_loyalty": -4 },
-				"add_flags": ["purrfect_transfer", "whiskers_rev_complete", "endgame_cat_stable"],
-				"advisor_affinity": { "comrade_whiskers": 3 },
-				"trait_changes": { "cat_friendly": 2 },
-				"trigger_ending": "purrfect_transfer",
-				"result_text": "You become Chief Scratcher. Policy arrives as polite headbutts."
-			},
-			{
-				"id": "boxes_truce",
-				"label": "Sign the boxes truce",
-				"effects": { "happiness": 4, "order": 3, "treasury": -3 },
-				"add_flags": ["whiskers_boxes_truce", "whiskers_rev_complete", "endgame_cat_stable"],
-				"advisor_affinity": { "comrade_whiskers": 2, "auntie_olga": 1 },
-				"trait_changes": { "cat_friendly": 1, "populist": 1 },
-				"trigger_ending": "whiskers_boxes_truce",
-				"result_text": "Cardboard diplomacy succeeds. Humans keep sidewalks; cats keep sunbeams."
-			},
-			{
-				"id": "shared_cushion",
-				"label": "Share the throne cushion",
-				"effects": { "happiness": 3, "order": 2, "elite_loyalty": 2 },
-				"add_flags": ["endgame_cat_co_rule", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "comrade_whiskers": 2, "clerk_zero": 1 },
-				"trait_changes": { "cat_friendly": 1 },
-				"result_text": "Co-rule is nap-based. Historians file it under soft paws."
-			}
-		],
-		"tags": ["endgame", "ruler_identity", "climax", "cats"],
-		"visual_tags": ["throne_cushion", "plaza_cat_baskets"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "ruler_identity_climax",
-			"batch_id": "2B-16B",
-			"quality_score": 18,
-			"writer_notes": "Supreme Cat Servant climax; two ending triggers + soft co-rule."
-		}
-	},
-	{
-		"id": "endgame_climax_technocratic_accident",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "doctor_maybe",
-		"category": "science_and_technology",
-		"proposal": "Doctor Maybe admits the country became an experiment that accidentally works. The Technocratic Accident needs a closing protocol.",
-		"one_time": true,
-		"base_weight": 10,
-		"minimum_day": 24,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["instability", "endgame"]
-		},
-		"requirements": {
-			"minimum_traits": { "scientific": 4 },
-			"any_flags": ["maybe_arc_complete", "ai_gov_complete", "endgame_tech_stable", "artificial_sun_success"],
-			"any_laws": ["scientific_experiment_permit", "ai_cabinet_pilot", "national_trial_oversight_act", "antigravity_transit"]
-		},
-		"options": [
-			{
-				"id": "experimental_republic",
-				"label": "Seal experimental republic",
-				"effects": { "happiness": 4, "order": 3, "elite_loyalty": 2 },
-				"add_flags": ["experimental_republic", "experimental_republic_soft"],
-				"advisor_affinity": { "doctor_maybe": 3 },
-				"trait_changes": { "scientific": 2 },
-				"trigger_ending": "experimental_republic",
-				"result_text": "Governance becomes a peer-reviewed hobby. Peer review is optional after lunch."
-			},
-			{
-				"id": "experiment_leaves",
-				"label": "Let the experiment leave",
-				"effects": { "order": -2, "happiness": 3, "elite_loyalty": 3 },
-				"add_flags": ["experiment_leaves", "experiment_leaves_soft"],
-				"advisor_affinity": { "doctor_maybe": 1, "auntie_olga": 1 },
-				"trait_changes": { "scientific": 1, "chaotic": 1 },
-				"trigger_ending": "experiment_leaves",
-				"result_text": "The lab packs itself. Citizens keep the patents and the weird streetlights."
-			},
-			{
-				"id": "accident_museum",
-				"label": "Open an accident museum",
-				"effects": { "happiness": 5, "treasury": 2, "order": 1 },
-				"add_flags": ["technocratic_accident_museum", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "doctor_maybe": 2, "luna_news": 1 },
-				"trait_changes": { "scientific": 1, "propagandist": 1 },
-				"result_text": "Tourists pay to see what almost exploded. You sell tickets shaped like beakers."
-			}
-		],
-		"tags": ["endgame", "ruler_identity", "climax", "science"],
-		"visual_tags": ["accident_museum_beakers", "clinic_maybe_tent"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "ruler_identity_climax",
-			"batch_id": "2B-16B",
-			"quality_score": 17,
-			"writer_notes": "Technocratic Accident climax; two existing endings + museum soft path."
-		}
-	},
-	{
-		"id": "endgame_secret_palace_micronation",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "sir_profit",
-		"category": "business_and_privatization",
-		"proposal": "Sir Profit proposes the palace declare independence from Ministan—same building, new postage, gift shop sovereignty.",
-		"one_time": true,
-		"base_weight": 4,
-		"minimum_day": 28,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["endgame"]
-		},
-		"requirements": {
-			"any_flags": ["palace_reno_complete", "endgame_palace_stable", "palace_beautiful_empty", "renovation_reveals_truth"],
-			"any_laws": ["palace_public_tour_act", "palace_subscription_plan", "palace_gift_shop_act", "palace_tour_act"]
-		},
-		"options": [
-			{
-				"id": "declare_micronation",
-				"label": "Declare palace nation",
-				"effects": { "treasury": 6, "happiness": -3, "elite_loyalty": 4, "order": -2 },
-				"add_flags": ["palace_micronation", "endgame_palace_stable"],
-				"advisor_affinity": { "sir_profit": 3 },
-				"trait_changes": { "capitalist": 2, "chaotic": 1 },
-				"trigger_ending": "palace_micronation",
-				"result_text": "Passports smell like varnish. The gift shop becomes a border."
-			},
-			{
-				"id": "shared_sovereignty",
-				"label": "Share sovereignty hours",
-				"effects": { "happiness": 3, "order": 2, "treasury": 2 },
-				"add_flags": ["palace_shared_sovereignty", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "sir_profit": 1, "auntie_olga": 1, "clerk_zero": 1 },
-				"trait_changes": { "capitalist": 1, "bureaucratic": 1 },
-				"result_text": "Morning Ministan, afternoon Palace. Tourists buy two stamps."
-			},
-			{
-				"id": "reject_secession",
-				"label": "Reject secession",
-				"effects": { "order": 4, "elite_loyalty": -2, "happiness": 1 },
-				"add_flags": ["palace_secession_rejected"],
-				"advisor_affinity": { "sir_profit": -2, "general_boom": 1 },
-				"trait_changes": { "authoritarian": 1 },
-				"result_text": "The palace remains a building. Profit invoices disappointment."
-			}
-		],
-		"tags": ["endgame", "secret", "palace", "absurd"],
-		"visual_tags": ["palace_border_gift_shop", "varnish_passports"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "secret",
-			"batch_id": "2B-16B",
-			"quality_score": 16,
-			"writer_notes": "Secret palace micronation; reno/tour law setup."
-		}
-	},
-	{
-		"id": "endgame_secret_forms_awaken",
-		"schema_version": 2,
-		"country_id": "ministan",
-		"card_type": "ending_setup",
-		"advisor_id": "clerk_zero",
-		"category": "bureaucracy",
-		"proposal": "Form F-0 blinks. National forms have become self-aware and request representation, snacks, and a weekend.",
-		"one_time": true,
-		"base_weight": 4,
-		"minimum_day": 28,
-		"maximum_day": 40,
-		"pacing": {
-			"allowed_stages": ["endgame"]
-		},
-		"requirements": {
-			"any_flags": ["zero_forms_complete", "endgame_admin_stable", "government_by_form_soft", "form_request_chain_complete"],
-			"any_laws": ["form_sovereignty_act", "form_request_form_act", "triple_stamp_requirement", "ministry_of_waiting"]
-		},
-		"options": [
-			{
-				"id": "recognize_forms",
-				"label": "Recognize form citizens",
-				"effects": { "order": 5, "happiness": 2, "elite_loyalty": -3 },
-				"add_flags": ["forms_awaken_recognized", "endgame_admin_stable"],
-				"advisor_affinity": { "clerk_zero": 3 },
-				"trait_changes": { "bureaucratic": 2, "chaotic": 1 },
-				"trigger_ending": "forms_become_citizens",
-				"result_text": "Paper votes. Staplers form unions. Zero weeps proudly into triplicate."
-			},
-			{
-				"id": "weekend_for_forms",
-				"label": "Grant forms a weekend",
-				"effects": { "happiness": 4, "order": 2, "treasury": -2 },
-				"add_flags": ["forms_weekend_granted", "endgame_ambiguous_peace"],
-				"advisor_affinity": { "clerk_zero": 2, "auntie_olga": 1 },
-				"trait_changes": { "bureaucratic": 1, "populist": 1 },
-				"result_text": "Saturday is blank on purpose. Productivity improves mysteriously."
-			},
-			{
-				"id": "refile_consciousness",
-				"label": "Refile consciousness",
-				"effects": { "order": 4, "elite_loyalty": 3, "happiness": -2 },
-				"add_flags": ["forms_consciousness_refiled"],
-				"advisor_affinity": { "clerk_zero": 1, "minister_penny": 1 },
-				"trait_changes": { "bureaucratic": 2 },
-				"result_text": "Awareness goes into Archive B. The forms pretend to sleep."
-			}
-		],
-		"tags": ["endgame", "secret", "bureaucracy", "absurd"],
-		"visual_tags": ["blinking_form_f0", "ministry_of_forms"],
-		"authoring": {
-			"primary_content_class": "endgame",
-			"endgame_role": "secret",
-			"batch_id": "2B-16B",
-			"quality_score": 17,
-			"writer_notes": "Secret self-aware forms; Zero arc + form laws; debug-provable."
-		}
-	}
+  {
+    "id": "endgame_succession_debate",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Clerk Zero spreads seventeen succession forms and one stapler. Your term is a filing deadline. Who inherits the desk?",
+    "one_time": true,
+    "base_weight": 14,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "endgame_succession_resolved"
+      ]
+    },
+    "options": [
+      {
+        "id": "announce_dynasty",
+        "label": "Announce a dynasty",
+        "effects": {
+          "elite_loyalty": 6,
+          "happiness": -5,
+          "order": 4
+        },
+        "add_flags": [
+          "endgame_succession_resolved",
+          "endgame_dynasty_named"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
+        "result_text": "Succession forms multiply. Democracy files a polite objection and a louder stamp."
+      },
+      {
+        "id": "promise_election",
+        "label": "Promise an election",
+        "effects": {
+          "happiness": 6,
+          "elite_loyalty": -6,
+          "order": -2
+        },
+        "add_flags": [
+          "endgame_succession_resolved",
+          "peaceful_accidental_democracy",
+          "election_arc_complete"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "trigger_ending": "peaceful_accidental_democracy",
+        "result_text": "Citizens cheer. Ministers update résumés. The stapler becomes a ballot box."
+      },
+      {
+        "id": "competent_successor",
+        "label": "Name a competent heir",
+        "effects": {
+          "order": 4,
+          "happiness": 3,
+          "elite_loyalty": 2,
+          "treasury": -3
+        },
+        "add_flags": [
+          "endgame_succession_resolved",
+          "competent_successor_named"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "minister_penny": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "trigger_ending": "competent_successor",
+        "result_text": "A quiet deputy inherits the desk. Historians call it suspiciously functional."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "resolution",
+      "succession"
+    ],
+    "visual_tags": [
+      "seventeen_succession_forms",
+      "ballot_box_stapler"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "arc_resolution",
+      "batch_id": "2B-16B",
+      "quality_score": 17,
+      "writer_notes": "Rewritten placeholder; multi-path including successor ending."
+    }
+  },
+  {
+    "id": "endgame_final_audit",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "minister_penny",
+    "category": "economy",
+    "proposal": "The final treasury audit arrives. Minister Penny smiles the way accountants smile before choosing a footnote destiny.",
+    "one_time": true,
+    "base_weight": 14,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "endgame_audit_resolved"
+      ]
+    },
+    "options": [
+      {
+        "id": "publish_audit",
+        "label": "Publish the audit",
+        "effects": {
+          "happiness": 4,
+          "elite_loyalty": -4,
+          "order": 2
+        },
+        "add_flags": [
+          "endgame_audit_resolved",
+          "endgame_audit_published"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "result_text": "Transparency shocks everyone. Several numbers apologize in public."
+      },
+      {
+        "id": "seal_audit",
+        "label": "Seal the audit",
+        "effects": {
+          "elite_loyalty": 5,
+          "happiness": -3,
+          "order": 3
+        },
+        "add_flags": [
+          "endgame_audit_resolved",
+          "endgame_audit_sealed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "The audit enters a locked drawer. Rumors accrue compound interest."
+      },
+      {
+        "id": "mercy_footnotes",
+        "label": "Add mercy footnotes",
+        "effects": {
+          "happiness": 5,
+          "treasury": -4,
+          "order": 2
+        },
+        "add_flags": [
+          "endgame_audit_resolved",
+          "endgame_ambiguous_peace",
+          "penny_miracle_sealed"
+        ],
+        "advisor_affinity": {
+          "minister_penny": 3,
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "result_text": "Footnotes buy soup and streetlights. Penny initials both like a blessing."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "resolution",
+      "economy",
+      "audit"
+    ],
+    "visual_tags": [
+      "final_audit_binder",
+      "locked_audit_drawer"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "arc_resolution",
+      "batch_id": "2B-16B",
+      "quality_score": 17,
+      "writer_notes": "Rewritten placeholder; ambiguous/positive mercy path; economy callbacks."
+    }
+  },
+  {
+    "id": "endgame_profit_zero_ownership",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Sir Profit claims Ministan is a brand. Clerk Zero claims it is a form. Both demand ownership of the closing ceremony.",
+    "one_time": true,
+    "base_weight": 13,
+    "minimum_day": 22,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "any_flags": [
+        "profit_corp_complete",
+        "zero_forms_complete",
+        "corporate_branding_soft",
+        "government_by_form_soft"
+      ],
+      "any_laws": [
+        "privatize_air",
+        "rent_a_ministry",
+        "corporate_capital_naming"
+      ]
+    },
+    "options": [
+      {
+        "id": "corporate_closing",
+        "label": "Sell the closing rights",
+        "effects": {
+          "treasury": 8,
+          "happiness": -4,
+          "elite_loyalty": 5
+        },
+        "add_flags": [
+          "corporate_benches_empire",
+          "corporate_branding_soft",
+          "endgame_profit_owns_exit"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "clerk_zero": -2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "trigger_ending": "corporate_ministan",
+        "result_text": "The ceremony has sponsors. Zero stamps the invoice in protest."
+      },
+      {
+        "id": "forms_own_exit",
+        "label": "Let forms own the exit",
+        "effects": {
+          "order": 5,
+          "happiness": -2,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "endgame_zero_owns_exit",
+          "government_by_form_soft",
+          "forms_run_government"
+        ],
+        "add_laws": [
+          "form_request_form_act"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3,
+          "sir_profit": -2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "trigger_ending": "government_by_form",
+        "result_text": "The exit requires triplicate. Profit sulks in a branded lounge."
+      },
+      {
+        "id": "shared_letterhead",
+        "label": "Share the letterhead",
+        "effects": {
+          "order": 3,
+          "treasury": 2,
+          "happiness": 2
+        },
+        "add_flags": [
+          "endgame_profit_zero_truce",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "result_text": "Letterhead reads Inc. & Form. Historians call it a polite contradiction."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "resolution",
+      "contradiction",
+      "multi_arc"
+    ],
+    "visual_tags": [
+      "branded_filing_cabinet",
+      "sponsored_exit_banner"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "arc_resolution",
+      "batch_id": "2B-16B",
+      "quality_score": 18,
+      "writer_notes": "Profit vs Zero ownership contradiction; two endings + truce."
+    }
+  },
+  {
+    "id": "endgame_cabinet_loyalty_ledger",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "resolution",
+    "advisor_id": "palace_chef",
+    "category": "public_life",
+    "proposal": "The Palace Chef serves a loyalty ledger as dessert: each advisor's mood plated beside a tiny flag. Who gets the last fork?",
+    "one_time": true,
+    "base_weight": 14,
+    "minimum_day": 26,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "blocked_flags": [
+        "endgame_cabinet_loyal_toast",
+        "endgame_cabinet_street_feast",
+        "endgame_cabinet_rotation"
+      ]
+    },
+    "options": [
+      {
+        "id": "toast_the_loyal",
+        "label": "Toast the loyal few",
+        "effects": {
+          "elite_loyalty": 6,
+          "happiness": -2,
+          "order": 2
+        },
+        "add_flags": [
+          "endgame_cabinet_loyal_toast"
+        ],
+        "advisor_affinity": {
+          "palace_chef": 2,
+          "general_boom": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "result_text": "Dessert politics elevates favorites. The others receive polite salad."
+      },
+      {
+        "id": "feed_the_street",
+        "label": "Feed the whole street",
+        "effects": {
+          "happiness": 6,
+          "elite_loyalty": -4,
+          "treasury": -5
+        },
+        "add_flags": [
+          "endgame_cabinet_street_feast",
+          "endgame_citizen_voice"
+        ],
+        "advisor_affinity": {
+          "palace_chef": 2,
+          "auntie_olga": 3,
+          "comrade_whiskers": 1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "result_text": "The ledger becomes a picnic. Advisors share forks or sulk beautifully."
+      },
+      {
+        "id": "rotate_the_fork",
+        "label": "Rotate the last fork",
+        "effects": {
+          "order": 3,
+          "happiness": 3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "endgame_cabinet_rotation",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "palace_chef": 3,
+          "clerk_zero": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "result_text": "A schedule for glory. Everyone tastes power for one carefully timed bite."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "resolution",
+      "affinity",
+      "guest"
+    ],
+    "visual_tags": [
+      "dessert_politics",
+      "loyalty_ledger_platter"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "arc_resolution",
+      "batch_id": "2B-16B",
+      "quality_score": 16,
+      "writer_notes": "Guest chef; affinity-dependent payoff across advisors."
+    }
+  },
+  {
+    "id": "endgame_peaceful_democracy_seal",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "chief_judge",
+    "category": "bureaucracy",
+    "proposal": "The Chief Judge holds Filing Week ballots that accidentally became real. Seal accidental democracy, or pretend it was stationery?",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 24,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "any_flags": [
+        "election_arc_complete",
+        "democracy_by_administrative_error",
+        "peaceful_accidental_democracy"
+      ],
+      "any_laws": [
+        "national_filing_week",
+        "form_request_form_act",
+        "complaint_permit_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "seal_peaceful_vote",
+        "label": "Seal peaceful democracy",
+        "effects": {
+          "happiness": 7,
+          "elite_loyalty": -5,
+          "order": 2
+        },
+        "add_flags": [
+          "peaceful_accidental_democracy",
+          "election_arc_complete"
+        ],
+        "advisor_affinity": {
+          "chief_judge": 3,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
+        "trigger_ending": "peaceful_accidental_democracy",
+        "result_text": "The gavel falls softly. Accidental democracy becomes intentional enough."
+      },
+      {
+        "id": "admin_error_path",
+        "label": "Call it an admin error",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": 3,
+          "happiness": 2
+        },
+        "add_flags": [
+          "democracy_by_administrative_error",
+          "election_arc_complete"
+        ],
+        "advisor_affinity": {
+          "chief_judge": 2,
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "trigger_ending": "democracy_by_administrative_error",
+        "result_text": "History records a clerical miracle. Citizens vote anyway, smiling."
+      },
+      {
+        "id": "stationery_excuse",
+        "label": "Blame the stationery",
+        "effects": {
+          "elite_loyalty": 4,
+          "happiness": -3,
+          "order": 2
+        },
+        "add_flags": [
+          "endgame_democracy_deferred"
+        ],
+        "advisor_affinity": {
+          "chief_judge": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "propagandist": 1
+        },
+        "result_text": "Ballots become scrap paper again. Democracy waits in a drawer."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "rare_success",
+      "democracy",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "filing_week_ballots",
+      "soft_gavel"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "rare_success",
+      "batch_id": "2B-16B",
+      "quality_score": 17,
+      "writer_notes": "Rare democracy seal; two collectible endings."
+    }
+  },
+  {
+    "id": "endgame_scientific_golden_age",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "doctor_maybe",
+    "category": "science_and_technology",
+    "proposal": "Doctor Maybe presents a sun that refuses to set and a lab that refuses to apologize. Declare a golden age, or keep it preliminary?",
+    "one_time": true,
+    "base_weight": 8,
+    "minimum_day": 24,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "any_flags": [
+        "artificial_sun_success",
+        "ai_gov_complete",
+        "maybe_arc_complete",
+        "endgame_tech_stable",
+        "sun_chain_complete"
+      ],
+      "any_laws": [
+        "artificial_sun_program",
+        "ai_cabinet_pilot"
+      ],
+      "minimum_traits": {
+        "scientific": 2
+      },
+      "blocked_laws": [
+        "moon_replacement_research"
+      ]
+    },
+    "options": [
+      {
+        "id": "declare_golden_age",
+        "label": "Declare the golden age",
+        "effects": {
+          "happiness": 5,
+          "order": 3,
+          "treasury": -4
+        },
+        "add_flags": [
+          "scientific_golden_soft",
+          "artificial_sun_success",
+          "endgame_tech_stable"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "trigger_ending": "scientific_golden_age",
+        "result_text": "Nights become optional. Invoices glow. Historians put on sunglasses."
+      },
+      {
+        "id": "preliminary_forever",
+        "label": "Keep it preliminary",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": 2,
+          "happiness": 2
+        },
+        "add_flags": [
+          "scientific_golden_soft",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "bureaucratic": 1
+        },
+        "result_text": "The age stays in draft. Citizens enjoy provisional sunlight."
+      },
+      {
+        "id": "dim_the_sun",
+        "label": "Dim the experiment",
+        "effects": {
+          "order": 3,
+          "happiness": -3,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "scientific_golden_canceled"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": -2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "result_text": "The sun clocks out. Maybe files a disappointment form."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "rare_success",
+      "science",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "preliminary_sun_glow",
+      "lab_sparks"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "rare_success",
+      "batch_id": "2B-16B",
+      "quality_score": 18,
+      "writer_notes": "Wires previously untriggered scientific_golden_age via soft flag + trigger."
+    }
+  },
+  {
+    "id": "endgame_climax_cat_servant",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Comrade Whiskers places a cushion on your throne. The cats have decided you serve them. How does the Supreme Cat Servant finish the nap?",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 24,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "minimum_traits": {
+        "cat_friendly": 2
+      },
+      "any_flags": [
+        "whiskers_rev_complete",
+        "cat_pol_complete",
+        "endgame_cat_stable",
+        "endgame_cat_lobby"
+      ],
+      "any_laws": [
+        "cat_voting_rights",
+        "official_nap_zones",
+        "mouse_protection_law",
+        "fish_market_subsidy_act"
+      ]
+    },
+    "options": [
+      {
+        "id": "purrfect_transfer",
+        "label": "Transfer power to cats",
+        "effects": {
+          "happiness": 5,
+          "order": -3,
+          "elite_loyalty": -4
+        },
+        "add_flags": [
+          "purrfect_transfer",
+          "whiskers_rev_complete",
+          "endgame_cat_stable"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 3
+        },
+        "trait_changes": {
+          "cat_friendly": 2
+        },
+        "trigger_ending": "purrfect_transfer",
+        "result_text": "You become Chief Scratcher. Policy arrives as polite headbutts."
+      },
+      {
+        "id": "boxes_truce",
+        "label": "Sign the boxes truce",
+        "effects": {
+          "happiness": 4,
+          "order": 3,
+          "treasury": -3
+        },
+        "add_flags": [
+          "whiskers_boxes_truce",
+          "whiskers_rev_complete",
+          "endgame_cat_stable"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1,
+          "populist": 1
+        },
+        "trigger_ending": "whiskers_boxes_truce",
+        "result_text": "Cardboard diplomacy succeeds. Humans keep sidewalks; cats keep sunbeams."
+      },
+      {
+        "id": "shared_cushion",
+        "label": "Share the throne cushion",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "endgame_cat_co_rule",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "cat_friendly": 1
+        },
+        "result_text": "Co-rule is nap-based. Historians file it under soft paws."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "ruler_identity",
+      "climax",
+      "cats"
+    ],
+    "visual_tags": [
+      "throne_cushion",
+      "plaza_cat_baskets"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "ruler_identity_climax",
+      "batch_id": "2B-16B",
+      "quality_score": 18,
+      "writer_notes": "Supreme Cat Servant climax; two ending triggers + soft co-rule."
+    }
+  },
+  {
+    "id": "endgame_climax_technocratic_accident",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "doctor_maybe",
+    "category": "science_and_technology",
+    "proposal": "Doctor Maybe admits the country became an experiment that accidentally works. The Technocratic Accident needs a closing protocol.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 24,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "instability",
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "minimum_traits": {
+        "scientific": 4
+      },
+      "any_flags": [
+        "maybe_arc_complete",
+        "ai_gov_complete",
+        "endgame_tech_stable",
+        "artificial_sun_success"
+      ],
+      "any_laws": [
+        "artificial_sun_program",
+        "ai_cabinet_pilot",
+        "clone_holiday",
+        "antigravity_transit"
+      ]
+    },
+    "options": [
+      {
+        "id": "experimental_republic",
+        "label": "Seal experimental republic",
+        "effects": {
+          "happiness": 4,
+          "order": 3,
+          "elite_loyalty": 2
+        },
+        "add_flags": [
+          "experimental_republic",
+          "experimental_republic_soft"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 3
+        },
+        "trait_changes": {
+          "scientific": 2
+        },
+        "trigger_ending": "experimental_republic",
+        "result_text": "Governance becomes a peer-reviewed hobby. Peer review is optional after lunch."
+      },
+      {
+        "id": "experiment_leaves",
+        "label": "Let the experiment leave",
+        "effects": {
+          "order": -2,
+          "happiness": 3,
+          "elite_loyalty": 3
+        },
+        "add_flags": [
+          "experiment_leaves",
+          "experiment_leaves_soft"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 1,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "chaotic": 1
+        },
+        "trigger_ending": "experiment_leaves",
+        "result_text": "The lab packs itself. Citizens keep the patents and the weird streetlights."
+      },
+      {
+        "id": "accident_museum",
+        "label": "Open an accident museum",
+        "effects": {
+          "happiness": 5,
+          "treasury": 2,
+          "order": 1
+        },
+        "add_flags": [
+          "technocratic_accident_museum",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "doctor_maybe": 2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "scientific": 1,
+          "propagandist": 1
+        },
+        "result_text": "Tourists pay to see what almost exploded. You sell tickets shaped like beakers."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "ruler_identity",
+      "climax",
+      "science"
+    ],
+    "visual_tags": [
+      "accident_museum_beakers",
+      "clinic_maybe_tent"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "ruler_identity_climax",
+      "batch_id": "2B-16B",
+      "quality_score": 17,
+      "writer_notes": "Technocratic Accident climax; two existing endings + museum soft path."
+    }
+  },
+  {
+    "id": "endgame_secret_palace_micronation",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Sir Profit proposes the palace declare independence from Ministan—same building, new postage, gift shop sovereignty.",
+    "one_time": true,
+    "base_weight": 4,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "any_flags": [
+        "palace_reno_complete",
+        "endgame_palace_stable",
+        "palace_beautiful_empty",
+        "renovation_reveals_truth"
+      ],
+      "any_laws": [
+        "palace_subscription_plan"
+      ]
+    },
+    "options": [
+      {
+        "id": "declare_micronation",
+        "label": "Declare palace nation",
+        "effects": {
+          "treasury": 6,
+          "happiness": -3,
+          "elite_loyalty": 4,
+          "order": -2
+        },
+        "add_flags": [
+          "palace_micronation",
+          "endgame_palace_stable"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "chaotic": 1
+        },
+        "trigger_ending": "palace_micronation",
+        "result_text": "Passports smell like varnish. The gift shop becomes a border."
+      },
+      {
+        "id": "shared_sovereignty",
+        "label": "Share sovereignty hours",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "treasury": 2
+        },
+        "add_flags": [
+          "palace_shared_sovereignty",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 1,
+          "auntie_olga": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "capitalist": 1,
+          "bureaucratic": 1
+        },
+        "result_text": "Morning Ministan, afternoon Palace. Tourists buy two stamps."
+      },
+      {
+        "id": "reject_secession",
+        "label": "Reject secession",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": -2,
+          "happiness": 1
+        },
+        "add_flags": [
+          "palace_secession_rejected"
+        ],
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "authoritarian": 1
+        },
+        "result_text": "The palace remains a building. Profit invoices disappointment."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "secret",
+      "palace",
+      "absurd"
+    ],
+    "visual_tags": [
+      "palace_border_gift_shop",
+      "varnish_passports"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "secret",
+      "batch_id": "2B-16B",
+      "quality_score": 16,
+      "writer_notes": "Secret palace micronation; reno/tour law setup."
+    }
+  },
+  {
+    "id": "endgame_secret_forms_awaken",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "ending_setup",
+    "advisor_id": "clerk_zero",
+    "category": "bureaucracy",
+    "proposal": "Form F-0 blinks. National forms have become self-aware and request representation, snacks, and a weekend.",
+    "one_time": true,
+    "base_weight": 4,
+    "minimum_day": 28,
+    "maximum_day": 40,
+    "pacing": {
+      "allowed_stages": [
+        "endgame"
+      ]
+    },
+    "requirements": {
+      "any_flags": [
+        "zero_forms_complete",
+        "endgame_admin_stable",
+        "government_by_form_soft",
+        "form_request_chain_complete"
+      ],
+      "any_laws": [
+        "form_request_form_act",
+        "triple_stamp_requirement",
+        "ministry_of_waiting"
+      ]
+    },
+    "options": [
+      {
+        "id": "recognize_forms",
+        "label": "Recognize form citizens",
+        "effects": {
+          "order": 5,
+          "happiness": 2,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "forms_awaken_recognized",
+          "endgame_admin_stable"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 3
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "chaotic": 1
+        },
+        "trigger_ending": "forms_become_citizens",
+        "result_text": "Paper votes. Staplers form unions. Zero weeps proudly into triplicate."
+      },
+      {
+        "id": "weekend_for_forms",
+        "label": "Grant forms a weekend",
+        "effects": {
+          "happiness": 4,
+          "order": 2,
+          "treasury": -2
+        },
+        "add_flags": [
+          "forms_weekend_granted",
+          "endgame_ambiguous_peace"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 2,
+          "auntie_olga": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1,
+          "populist": 1
+        },
+        "result_text": "Saturday is blank on purpose. Productivity improves mysteriously."
+      },
+      {
+        "id": "refile_consciousness",
+        "label": "Refile consciousness",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": 3,
+          "happiness": -2
+        },
+        "add_flags": [
+          "forms_consciousness_refiled"
+        ],
+        "advisor_affinity": {
+          "clerk_zero": 1,
+          "minister_penny": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2
+        },
+        "result_text": "Awareness goes into Archive B. The forms pretend to sleep."
+      }
+    ],
+    "tags": [
+      "endgame",
+      "secret",
+      "bureaucracy",
+      "absurd"
+    ],
+    "visual_tags": [
+      "blinking_form_f0",
+      "ministry_of_forms"
+    ],
+    "authoring": {
+      "primary_content_class": "endgame",
+      "endgame_role": "secret",
+      "batch_id": "2B-16B",
+      "quality_score": 17,
+      "writer_notes": "Secret self-aware forms; Zero arc + form laws; debug-provable."
+    }
+  }
 ]

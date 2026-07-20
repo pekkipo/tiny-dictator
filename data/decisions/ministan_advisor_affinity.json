@@ -190,7 +190,8 @@
     ],
     "visual_tags": [
       "fish_treaty"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "bureaucracy_expansion",
@@ -252,7 +253,8 @@
     ],
     "visual_tags": [
       "ministry_of_forms"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "science_gamble",
@@ -347,7 +349,8 @@
     ],
     "visual_tags": [
       "lab_sparks"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "privatize_palace_garden",
@@ -389,7 +392,10 @@
           "capitalist": 3,
           "authoritarian": 1
         },
-        "result_text": "Sir Profit calls it alignment. Auntie Olga calls it a fence."
+        "result_text": "Sir Profit calls it alignment. Auntie Olga calls it a fence.",
+        "add_laws": [
+          "privatize_air"
+        ]
       },
       {
         "id": "keep_public",
@@ -414,7 +420,8 @@
     ],
     "visual_tags": [
       "privatized_garden"
-    ]
+    ],
+    "requirements": {}
   },
   {
     "id": "propaganda_smile_campaign",
@@ -462,6 +469,7 @@
         },
         "result_text": "Ratings drop slightly. Luna News reframes it as authentic skepticism."
       }
-    ]
+    ],
+    "requirements": {}
   }
 ]

@@ -6,7 +6,7 @@
     "card_type": "normal",
     "advisor_id": "doctor_maybe",
     "category": "science",
-    "proposal": "Pilot anti-gravity buses on Route 3. Commutes shorten. Gravity remains a scheduled variable \u2014 maybe.",
+    "proposal": "Pilot anti-gravity buses on Route 3. Commutes shorten. Gravity remains a scheduled variable — maybe.",
     "one_time": true,
     "base_weight": 10,
     "minimum_day": 8,
@@ -136,7 +136,7 @@
     "queue_only": true,
     "advisor_id": "auntie_olga",
     "category": "infrastructure",
-    "proposal": "Your anti-gravity buses still float \u2014 until altitude drifts or gravity returns mid-stop. Citizens want a policy that stays under roofs.",
+    "proposal": "Your anti-gravity buses still float — until altitude drifts or gravity returns mid-stop. Citizens want a policy that stays under roofs.",
     "one_time": true,
     "base_weight": 1,
     "requirements": {
@@ -205,7 +205,7 @@
       },
       {
         "id": "keep_floating_risk",
-        "label": "Keep floating \u2014 accept drift",
+        "label": "Keep floating — accept drift",
         "effects": {
           "happiness": 3,
           "order": -5,
@@ -256,7 +256,7 @@
     "card_type": "normal",
     "advisor_id": "doctor_maybe",
     "category": "science",
-    "proposal": "Declare National Clone Day. Everyone gets a helpful duplicate for queues. Identity forms may need footnotes \u2014 probably.",
+    "proposal": "Declare National Clone Day. Everyone gets a helpful duplicate for queues. Identity forms may need footnotes — probably.",
     "one_time": true,
     "base_weight": 10,
     "minimum_day": 9,
@@ -532,7 +532,7 @@
           "authoritarian": 1
         },
         "add_laws": [
-          "traffic_flag_corps_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_flag_corps_live",
@@ -567,7 +567,7 @@
           "authoritarian": 1
         },
         "add_laws": [
-          "traffic_flag_corps_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "traffic_flag_corps_live",
@@ -638,7 +638,10 @@
         "traffic_flag_corps_live"
       ],
       "all_laws": [
-        "traffic_flag_corps_act"
+        "tank_traffic_control"
+      ],
+      "blocked_laws": [
+        "antigravity_transit"
       ]
     },
     "options": [
@@ -847,7 +850,7 @@
           "populist": 1
         },
         "remove_laws": [
-          "traffic_flag_corps_act"
+          "tank_traffic_control"
         ],
         "add_flags": [
           "civilian_lights_restored",
@@ -904,6 +907,9 @@
       "blocked_flags": [
         "robot_queue_live",
         "robot_queue_chain_complete"
+      ],
+      "blocked_laws": [
+        "form_request_form_act"
       ]
     },
     "options": [
@@ -1012,7 +1018,7 @@
       "batch_id": "2B-8A",
       "localization_risk": "low",
       "visual_hook": "robot kiosk issuing ticket numbers",
-      "writer_notes": "Distinct from robot cabinet legacy; pool \u2192 incident."
+      "writer_notes": "Distinct from robot cabinet legacy; pool → incident."
     }
   },
   {
@@ -1546,7 +1552,7 @@
           "authoritarian": 1
         },
         "add_laws": [
-          "camouflage_uniform_act"
+          "mandatory_marching"
         ],
         "add_flags": [
           "camouflage_live",
@@ -1581,7 +1587,7 @@
           "authoritarian": 1
         },
         "add_laws": [
-          "camouflage_uniform_act"
+          "mandatory_marching"
         ],
         "add_flags": [
           "camouflage_live",
@@ -1652,7 +1658,7 @@
         "camouflage_live"
       ],
       "all_laws": [
-        "camouflage_uniform_act"
+        "mandatory_marching"
       ]
     },
     "options": [
@@ -1723,7 +1729,7 @@
           "populist": 1
         },
         "remove_laws": [
-          "camouflage_uniform_act"
+          "mandatory_marching"
         ],
         "add_flags": [
           "camouflage_recalled",
@@ -1885,7 +1891,7 @@
       "batch_id": "2B-8B",
       "localization_risk": "low",
       "visual_hook": "megaphones and tanks at the border fence",
-      "writer_notes": "Independent of onboarding border_parade_dispute; pool \u2192 diplomatic."
+      "writer_notes": "Independent of onboarding border_parade_dispute; pool → diplomatic."
     }
   },
   {
@@ -2352,7 +2358,7 @@
     "queue_only": true,
     "advisor_id": "general_boom",
     "category": "infrastructure",
-    "proposal": "Resolve tank parking. Build a garage, reclaim streets, or let tanks direct everything \u2014 if Boom still trusts the chain of command.",
+    "proposal": "Resolve tank parking. Build a garage, reclaim streets, or let tanks direct everything — if Boom still trusts the chain of command.",
     "one_time": true,
     "base_weight": 1,
     "requirements": {

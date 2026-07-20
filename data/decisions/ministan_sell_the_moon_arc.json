@@ -28,7 +28,8 @@
         "moon_arc_live",
         "moon_arc_complete",
         "maybe_reckless_path"
-      ]
+      ],
+      "any_laws": []
     },
     "options": [
       {
@@ -58,7 +59,10 @@
           }
         ],
         "force_next_decision": "moon_ownership_campaign",
-        "result_text": "A ledger line appears: LUNAR RESERVE. Bankers clap. Astronomers blink."
+        "result_text": "A ledger line appears: LUNAR RESERVE. Bankers clap. Astronomers blink.",
+        "add_laws": [
+          "moon_replacement_research"
+        ]
       },
       {
         "id": "prestige_naming",
@@ -284,35 +288,6 @@
     },
     "options": [
       {
-        "id": "sell_ownership",
-        "label": "Sell lunar ownership",
-        "effects": {
-          "treasury": 15,
-          "elite_loyalty": 4,
-          "happiness": -3
-        },
-        "add_flags": [
-          "moon_sale_path"
-        ],
-        "advisor_affinity": {
-          "sir_profit": 3,
-          "doctor_maybe": -1,
-          "luna_news": 1
-        },
-        "trait_changes": {
-          "capitalist": 3
-        },
-        "arc_actions": [
-          {
-            "arc_id": "sell_the_moon",
-            "action": "branch",
-            "branch_id": "commercial_sale"
-          }
-        ],
-        "force_next_decision": "moon_international_reaction",
-        "result_text": "A buyer signs. Cash lands. The Moon acquires a new letterhead."
-      },
-      {
         "id": "public_research",
         "label": "Fund public lunar research",
         "effects": {
@@ -350,6 +325,35 @@
           "maximum_delay_days": 2,
           "priority": 40
         }
+      },
+      {
+        "id": "sell_ownership",
+        "label": "Sell lunar ownership",
+        "effects": {
+          "treasury": 15,
+          "elite_loyalty": 4,
+          "happiness": -3
+        },
+        "add_flags": [
+          "moon_sale_path"
+        ],
+        "advisor_affinity": {
+          "sir_profit": 3,
+          "doctor_maybe": -1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "capitalist": 3
+        },
+        "arc_actions": [
+          {
+            "arc_id": "sell_the_moon",
+            "action": "branch",
+            "branch_id": "commercial_sale"
+          }
+        ],
+        "force_next_decision": "moon_international_reaction",
+        "result_text": "A buyer signs. Cash lands. The Moon acquires a new letterhead."
       },
       {
         "id": "diplomatic_claim",

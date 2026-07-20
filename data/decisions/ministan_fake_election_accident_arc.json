@@ -598,7 +598,7 @@
       "emotional_goal": "classification_panic",
       "visual_hook": "tally board with three competing totals and one sticky note",
       "localization_risk": "low",
-      "writer_notes": "State-dependent flavor via option text/branches only \u2014 no option-level requirements. Flags election_managed / election_accidental / election_filing_error. Hard force to response."
+      "writer_notes": "State-dependent flavor via option text/branches only — no option-level requirements. Flags election_managed / election_accidental / election_filing_error. Hard force to response."
     }
   },
   {

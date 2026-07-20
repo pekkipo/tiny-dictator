@@ -105,7 +105,8 @@
       "localization_risk": "low",
       "visual_hook": "empty coin trays at market stalls",
       "writer_notes": "Distinct from tip jar; soft remedy only on shortage paths."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "coin_shortage_remedy",
@@ -257,7 +258,7 @@
           "clock_reform_active"
         ],
         "add_laws": [
-          "national_clock_law"
+          "national_bedtime"
         ],
         "follow_up": {
           "type": "hard",
@@ -299,7 +300,8 @@
       "localization_risk": "low",
       "visual_hook": "identical public clocks nationwide",
       "writer_notes": "REWRITE from standalone; hard follow-up on sync path only."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "clock_appointment_chaos",
@@ -318,7 +320,7 @@
         "clocks_synchronized"
       ],
       "all_laws": [
-        "national_clock_law"
+        "national_bedtime"
       ]
     },
     "options": [
@@ -375,7 +377,7 @@
           "clerk_zero": -2
         },
         "remove_laws": [
-          "national_clock_law"
+          "national_bedtime"
         ],
         "remove_flags": [
           "clocks_synchronized",
@@ -435,7 +437,7 @@
           "elite_loyalty": 3
         },
         "add_laws": [
-          "no_weekends"
+          "three_day_weekend"
         ],
         "trait_changes": {
           "authoritarian": 1,
@@ -524,7 +526,8 @@
       "localization_risk": "low",
       "visual_hook": "tired citizens under mourning calendars",
       "writer_notes": "REWRITE from standalone; compromise half-day path required."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "weekend_burnout_wave",
@@ -652,7 +655,7 @@
           "minister_penny": -2
         },
         "remove_laws": [
-          "no_weekends"
+          "three_day_weekend"
         ],
         "remove_flags": [
           "weekends_abolished",
@@ -703,7 +706,7 @@
           "bureaucratic": 1
         },
         "remove_laws": [
-          "no_weekends"
+          "three_day_weekend"
         ],
         "remove_flags": [
           "weekends_abolished"
@@ -849,7 +852,8 @@
       "localization_risk": "low",
       "visual_hook": "letterheaded meme ministry desk",
       "writer_notes": "Pool on full ministry; soft resolution on pilot."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "meme_virality_crisis",
@@ -1074,7 +1078,7 @@
           "propagandist": 2
         },
         "add_laws": [
-          "weather_censorship_act"
+          "weather_optimism_act"
         ],
         "add_flags": [
           "weather_censorship_live"
@@ -1125,7 +1129,8 @@
       "localization_risk": "low",
       "visual_hook": "blacked-out storm icons on civic maps",
       "writer_notes": "Distinct from weather_optimism_bulletin; soft credibility follow-up."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "weather_credibility_crisis",
@@ -1143,7 +1148,7 @@
         "weather_censorship_live"
       ],
       "all_laws": [
-        "weather_censorship_act"
+        "weather_optimism_act"
       ]
     },
     "options": [
@@ -1182,7 +1187,7 @@
           "clerk_zero": 1
         },
         "remove_laws": [
-          "weather_censorship_act"
+          "weather_optimism_act"
         ],
         "remove_flags": [
           "weather_censorship_live"
@@ -1318,7 +1323,8 @@
       "localization_risk": "low",
       "visual_hook": "state talent stage with ruler chair",
       "writer_notes": "Soft budget scandal follow-up is the government consequence."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "talent_show_budget_scandal",
@@ -1513,7 +1519,8 @@
       "localization_risk": "low",
       "visual_hook": "public applause meters on plazas",
       "writer_notes": "Distinct from compliment quota; hard Boom enforcement."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "applause_enforcement_squad",
@@ -1843,7 +1850,8 @@
       "localization_risk": "low",
       "visual_hook": "tiny artificial sun over capital square",
       "writer_notes": "Pool on full pilot; soft resolution on desk-lamp path."
-    }
+    },
+    "requirements": {}
   },
   {
     "id": "artificial_sun_escalation",

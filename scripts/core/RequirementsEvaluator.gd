@@ -136,4 +136,17 @@ static func matches(requirements: Dictionary, state: RunState) -> bool:
 		if state.get_ruler_trait(str(trait_id)) > int(maximum_traits[trait_id]):
 			return false
 
+	var required_palace: Array = requirements.get("required_palace_upgrades", [])
+	if not required_palace.is_empty():
+		var purchased: Dictionary = {}
+		var tree: SceneTree = Engine.get_main_loop() as SceneTree
+		if tree != null:
+			var meta: Node = tree.root.get_node_or_null("MetaProgressionManager")
+			if meta != null and meta.has_method("get_purchased_upgrades"):
+				purchased = meta.call("get_purchased_upgrades")
+		for upgrade_id in required_palace:
+			var entry: Variant = purchased.get(str(upgrade_id), {})
+			if not (entry is Dictionary and bool(entry.get("purchased", false))):
+				return false
+
 	return true

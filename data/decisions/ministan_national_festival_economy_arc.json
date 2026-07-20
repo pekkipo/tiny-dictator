@@ -6,7 +6,7 @@
     "card_type": "normal",
     "advisor_id": "luna_news",
     "category": "public_life",
-    "proposal": "Empty plazas. Quiet vendors. I propose Festival Stimulus Weekends \u2014 music, stalls, cameras. Tourism as economic CPR. Not an eternal parade. Yet.",
+    "proposal": "Empty plazas. Quiet vendors. I propose Festival Stimulus Weekends — music, stalls, cameras. Tourism as economic CPR. Not an eternal parade. Yet.",
     "one_time": true,
     "base_weight": 11,
     "minimum_day": 6,
@@ -40,7 +40,7 @@
           "elite_loyalty": 1
         },
         "add_laws": [
-          "festival_stimulus_act"
+          "free_pizza_friday"
         ],
         "add_flags": [
           "festival_econ_live",
@@ -84,7 +84,7 @@
           "elite_loyalty": 3
         },
         "add_laws": [
-          "festival_stimulus_act"
+          "free_pizza_friday"
         ],
         "add_flags": [
           "festival_econ_live",
@@ -359,7 +359,7 @@
           "elite_loyalty": -2
         },
         "add_laws": [
-          "permanent_festival_act"
+          "free_pizza_friday"
         ],
         "add_flags": [
           "festival_permanent",
@@ -550,7 +550,7 @@
           "festival_permanent"
         ],
         "remove_laws": [
-          "permanent_festival_act"
+          "free_pizza_friday"
         ],
         "advisor_affinity": {
           "auntie_olga": 4,

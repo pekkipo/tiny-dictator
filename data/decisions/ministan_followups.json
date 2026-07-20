@@ -11,26 +11,47 @@
     "one_time": true,
     "base_weight": 12,
     "requirements": {
-      "all_flags": ["pizza_policy_active"]
+      "all_flags": [
+        "pizza_policy_active"
+      ],
+      "any_laws": [
+        "free_pizza_friday",
+        "emergency_cheese_bonds"
+      ]
     },
     "options": [
       {
         "id": "pay",
         "label": "Pay the invoice",
-        "effects": { "treasury": -10, "happiness": 3 },
-        "add_flags": ["cheese_shortage_resolved"],
+        "effects": {
+          "treasury": -10,
+          "happiness": 3
+        },
+        "add_flags": [
+          "cheese_shortage_resolved"
+        ],
         "result_text": "The invoice is paid. The supplier sends a thank-you wheel of parmesan."
       },
       {
         "id": "cancel",
         "label": "Cancel pizza program",
-        "effects": { "treasury": 5, "happiness": -12 },
-        "remove_laws": ["free_pizza_friday"],
-        "remove_flags": ["pizza_policy_active"],
+        "effects": {
+          "treasury": 5,
+          "happiness": -12
+        },
+        "remove_laws": [
+          "free_pizza_friday"
+        ],
+        "remove_flags": [
+          "pizza_policy_active"
+        ],
         "result_text": "Pizza Friday is cancelled. A nation quietly weeps into its empty plates."
       }
     ],
-    "tags": ["pizza", "follow_up"]
+    "tags": [
+      "pizza",
+      "follow_up"
+    ]
   },
   {
     "id": "cat_parliament",
@@ -43,25 +64,53 @@
     "one_time": true,
     "base_weight": 12,
     "requirements": {
-      "all_flags": ["cats_enfranchised"]
+      "all_flags": [
+        "cats_enfranchised"
+      ],
+      "any_laws": [
+        "cat_parliament_seats",
+        "luxury_chair_tax",
+        "national_nap_hour",
+        "official_nap_zones",
+        "cat_voting_rights"
+      ],
+      "blocked_laws": [
+        "mandatory_marching",
+        "mouse_protection_law"
+      ]
     },
     "options": [
       {
         "id": "contest",
         "label": "Contest the results",
-        "effects": { "order": -4, "happiness": -3, "elite_loyalty": 3 },
+        "effects": {
+          "order": -4,
+          "happiness": -3,
+          "elite_loyalty": 3
+        },
         "result_text": "The recount confirms it: the cats won fairly. They celebrate by ignoring everyone."
       },
       {
         "id": "welcome",
         "label": "Welcome the cats",
-        "effects": { "happiness": 7, "order": -3, "elite_loyalty": -5 },
-        "add_flags": ["cats_control_parliament"],
-        "counter_changes": { "cat_favor_choices": 1 },
+        "effects": {
+          "happiness": 7,
+          "order": -3,
+          "elite_loyalty": -5
+        },
+        "add_flags": [
+          "cats_control_parliament"
+        ],
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
         "result_text": "Parliament installs sunbeam seating. Legislative naps begin immediately."
       }
     ],
-    "tags": ["cats", "follow_up"]
+    "tags": [
+      "cats",
+      "follow_up"
+    ]
   },
   {
     "id": "cat_fish_budget",
@@ -74,23 +123,42 @@
     "one_time": true,
     "base_weight": 12,
     "requirements": {
-      "all_flags": ["cats_control_parliament"]
+      "all_flags": [
+        "cats_control_parliament"
+      ],
+      "any_laws": [
+        "cat_parliament_seats"
+      ]
     },
     "options": [
       {
         "id": "refuse",
         "label": "Refuse the cats",
-        "effects": { "treasury": 2, "happiness": -4, "order": -5 },
+        "effects": {
+          "treasury": 2,
+          "happiness": -4,
+          "order": -5
+        },
         "result_text": "The cats respond with coordinated staring. The nation feels judged."
       },
       {
         "id": "fund",
         "label": "Fund the fish",
-        "effects": { "treasury": -8, "happiness": 6, "order": 2 },
-        "counter_changes": { "cat_favor_choices": 1 },
+        "effects": {
+          "treasury": -8,
+          "happiness": 6,
+          "order": 2
+        },
+        "counter_changes": {
+          "cat_favor_choices": 1
+        },
         "result_text": "The fish budget passes. Purring is heard from the parliament building."
       }
     ],
-    "tags": ["cats", "follow_up", "ending_setup"]
+    "tags": [
+      "cats",
+      "follow_up",
+      "ending_setup"
+    ]
   }
 ]

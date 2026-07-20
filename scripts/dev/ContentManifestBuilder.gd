@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_16_endgame_rare_resolution_pack"
-const BATCH_ID: String = "2B-15"
-const DECISION_BATCH_ID: String = "2B-15"
+const PHASE: String = "2b_17_laws_endings_palace"
+const BATCH_ID: String = "2B-17"
+const DECISION_BATCH_ID: String = "2B-17"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -611,23 +611,28 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 			"id": str(law.get("id", "")),
 			"content_type": "law",
 			"primary_category": str(law.get("category", "")),
-			"status": "integrated",
-			"batch_id": DECISION_BATCH_ID,
+			"status": "approved",
+			"batch_id": "2B-17",
 			"visual_tags": law.get("visual_tags", []),
-			"notes": "",
+			"notes": "Approved in Milestone 2B-17 law catalog.",
 		})
 
 	for ending in repository.get_raw_endings():
 		var ending_id := str(ending.get("id", ""))
 		var notes := ""
+		var status := "approved"
 		if ending_id in ["bankrupt_leader", "revolution", "elite_coup", "chaos_country"]:
 			notes = "Flagged endings_impossible from day-1 starting resources by design."
+		if ending.has("collectible") and not bool(ending.get("collectible", true)):
+			status = "system"
+			notes = "Non-collectible runtime ending outside the approved archive quota."
 		catalogs["endings"].append({
 			"id": ending_id,
 			"content_type": "ending",
 			"ending_type": str(ending.get("type", "")),
-			"status": "integrated",
-			"batch_id": DECISION_BATCH_ID,
+			"rarity": str(ending.get("rarity", "")),
+			"status": status,
+			"batch_id": "2B-17",
 			"notes": notes,
 		})
 
@@ -635,9 +640,10 @@ func _build_catalogs(repository: ContentRepository, decisions: Array[Dictionary]
 		catalogs["palace_upgrades"].append({
 			"id": str(upgrade.get("id", "")),
 			"content_type": "palace_upgrade",
-			"status": "needs_rewrite",
-			"batch_id": DECISION_BATCH_ID,
-			"notes": "Phase 2A placeholder upgrade; expand in Phase 2B.",
+			"category": str(upgrade.get("category", "")),
+			"status": "approved",
+			"batch_id": "2B-17",
+			"notes": "Approved in Milestone 2B-17 palace catalog.",
 		})
 
 	for arc in repository.get_arcs_for_country(COUNTRY_ID):

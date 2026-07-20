@@ -19,7 +19,10 @@
       "importance": "major"
     },
     "pacing": {
-      "allowed_stages": ["establishment", "escalation"]
+      "allowed_stages": [
+        "establishment",
+        "escalation"
+      ]
     },
     "requirements": {
       "blocked_flags": [
@@ -32,12 +35,29 @@
       {
         "id": "fix_bridge_queue",
         "label": "Fix the bridge and the queue",
-        "effects": { "treasury": -5, "happiness": 4, "order": 2, "elite_loyalty": -2 },
-        "add_flags": ["olga_movement_live", "olga_bridge_fixed"],
-        "advisor_affinity": { "auntie_olga": 3, "minister_penny": -1 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "treasury": -5,
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": -2
+        },
+        "add_flags": [
+          "olga_movement_live",
+          "olga_bridge_fixed"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "minister_penny": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "branch", "branch_id": "citizen_pressure" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "branch",
+            "branch_id": "citizen_pressure"
+          }
         ],
         "follow_up": {
           "type": "soft",
@@ -45,31 +65,66 @@
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 72,
-          "required_flags": ["olga_movement_live"]
+          "required_flags": [
+            "olga_movement_live"
+          ]
         },
         "result_text": "Planks stop humming. The bakery line shortens by three neighbors. You owe the volunteers tea."
       },
       {
         "id": "delay_complaint",
         "label": "Promise a study and delay",
-        "effects": { "happiness": -3, "order": -1, "elite_loyalty": 2 },
-        "advisor_affinity": { "auntie_olga": -2, "clerk_zero": 1 },
-        "trait_changes": { "bureaucratic": 1 },
+        "effects": {
+          "happiness": -3,
+          "order": -1,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "auntie_olga": -2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 1
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "abandon", "reason": "delayed_complaint" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "abandon",
+            "reason": "delayed_complaint"
+          }
         ],
         "result_text": "Olga files the promise under 'dear, no.' The bridge keeps humming. The queue keeps counting."
       },
       {
         "id": "complaint_permit_path",
         "label": "Require complaint permits first",
-        "effects": { "treasury": -1, "happiness": -2, "order": 2, "elite_loyalty": 1 },
-        "add_laws": ["complaint_permit_act"],
-        "add_flags": ["olga_movement_live", "olga_permit_path"],
-        "advisor_affinity": { "auntie_olga": -1, "clerk_zero": 2 },
-        "trait_changes": { "bureaucratic": 2, "populist": 1 },
+        "effects": {
+          "treasury": -1,
+          "happiness": -2,
+          "order": 2,
+          "elite_loyalty": 1
+        },
+        "add_laws": [
+          "complaint_permit_act"
+        ],
+        "add_flags": [
+          "olga_movement_live",
+          "olga_permit_path"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": -1,
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "populist": 1
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "branch", "branch_id": "citizen_pressure" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "branch",
+            "branch_id": "citizen_pressure"
+          }
         ],
         "follow_up": {
           "type": "soft",
@@ -77,20 +132,31 @@
           "minimum_delay_days": 2,
           "maximum_delay_days": 4,
           "priority": 70,
-          "required_flags": ["olga_movement_live"]
+          "required_flags": [
+            "olga_movement_live"
+          ]
         },
         "result_text": "Neighbors stamp Form C quietly. Olga calls it 'homework for people who already waited.' The movement still wakes up."
       }
     ],
-    "tags": ["public_life", "arc_setup", "olga"],
-    "visual_tags": ["repaired_bridge_bunting"],
+    "tags": [
+      "public_life",
+      "arc_setup",
+      "olga"
+    ],
+    "visual_tags": [
+      "repaired_bridge_bunting"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "establishment",
       "batch_id": "2B-11B",
-      "humor_tags": ["bridge_kettle", "bakery_queue"],
+      "humor_tags": [
+        "bridge_kettle",
+        "bakery_queue"
+      ],
       "emotional_goal": "practical_irritation",
       "visual_hook": "River Street bridge with laundry-line queue",
       "localization_risk": "low",
@@ -114,72 +180,132 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["olga_citizen_movement"],
-      "all_flags": ["olga_movement_live"]
+      "active_arcs": [
+        "olga_citizen_movement"
+      ],
+      "all_flags": [
+        "olga_movement_live"
+      ]
     },
     "options": [
       {
         "id": "keep_practical",
         "label": "Keep the fix practical",
-        "effects": { "treasury": -2, "happiness": 3, "order": 1, "elite_loyalty": -1 },
-        "add_flags": ["olga_practical_win"],
-        "advisor_affinity": { "auntie_olga": 2 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "treasury": -2,
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "olga_practical_win"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "follow_up": {
           "type": "soft",
           "decision_id": "olga_movement_forms",
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 74,
-          "required_flags": ["olga_movement_live"]
+          "required_flags": [
+            "olga_movement_live"
+          ]
         },
         "result_text": "Chalk numbers hold. Bridge bunting stays homemade. Olga brings leftover soup to the crew."
       },
       {
         "id": "codify_queue_etiquette",
         "label": "Codify queue etiquette",
-        "effects": { "treasury": -1, "happiness": 2, "order": 3, "elite_loyalty": 0 },
-        "add_laws": ["queue_etiquette_law"],
-        "add_flags": ["olga_practical_win", "olga_queue_law"],
-        "advisor_affinity": { "auntie_olga": 1, "clerk_zero": 2 },
-        "trait_changes": { "bureaucratic": 2, "populist": 1 },
+        "effects": {
+          "treasury": -1,
+          "happiness": 2,
+          "order": 3,
+          "elite_loyalty": 0
+        },
+        "add_laws": [
+          "queue_etiquette_law"
+        ],
+        "add_flags": [
+          "olga_practical_win",
+          "olga_queue_law"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "clerk_zero": 2
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "populist": 1
+        },
         "follow_up": {
           "type": "soft",
           "decision_id": "olga_movement_forms",
           "minimum_delay_days": 1,
           "maximum_delay_days": 3,
           "priority": 74,
-          "required_flags": ["olga_movement_live"]
+          "required_flags": [
+            "olga_movement_live"
+          ]
         },
         "result_text": "Tickets appear. Shoe-shuffling becomes approved. Olga says at least the sighs are numbered now."
       },
       {
         "id": "palace_takes_credit",
         "label": "Let the palace take credit",
-        "effects": { "happiness": 1, "order": 1, "elite_loyalty": 3, "treasury": -1 },
-        "add_flags": ["olga_practical_win", "olga_palace_credit"],
-        "advisor_affinity": { "auntie_olga": -2, "luna_news": 2 },
-        "trait_changes": { "propagandist": 1, "populist": 1 },
+        "effects": {
+          "happiness": 1,
+          "order": 1,
+          "elite_loyalty": 3,
+          "treasury": -1
+        },
+        "add_flags": [
+          "olga_practical_win",
+          "olga_palace_credit"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": -2,
+          "luna_news": 2
+        },
+        "trait_changes": {
+          "propagandist": 1,
+          "populist": 1
+        },
         "follow_up": {
           "type": "soft",
           "decision_id": "olga_movement_forms",
           "minimum_delay_days": 1,
           "maximum_delay_days": 2,
           "priority": 75,
-          "required_flags": ["olga_movement_live"]
+          "required_flags": [
+            "olga_movement_live"
+          ]
         },
         "result_text": "Luna airs a ribbon cutting the volunteers already finished. Olga keeps the receipt for later."
       }
     ],
-    "tags": ["public_life", "arc_escalation", "olga"],
-    "visual_tags": ["repaired_bridge_bunting"],
+    "tags": [
+      "public_life",
+      "arc_escalation",
+      "olga"
+    ],
+    "visual_tags": [
+      "repaired_bridge_bunting"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "escalation",
       "batch_id": "2B-11B",
-      "humor_tags": ["chalk_queue", "homemade_bunting"],
+      "humor_tags": [
+        "chalk_queue",
+        "homemade_bunting"
+      ],
       "emotional_goal": "small_civic_win",
       "visual_hook": "fresh bridge rail with chalk ticket numbers",
       "localization_risk": "low",
@@ -203,50 +329,105 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["olga_citizen_movement"],
-      "all_flags": ["olga_movement_live", "olga_practical_win"]
+      "active_arcs": [
+        "olga_citizen_movement"
+      ],
+      "all_flags": [
+        "olga_movement_live",
+        "olga_practical_win"
+      ]
     },
     "options": [
       {
         "id": "recognize_councils",
         "label": "Recognize the kitchen councils",
-        "effects": { "happiness": 3, "order": 1, "elite_loyalty": -3, "treasury": -2 },
-        "add_flags": ["olga_movement_formed", "olga_councils_recognized"],
-        "advisor_affinity": { "auntie_olga": 3, "clerk_zero": -1 },
-        "trait_changes": { "populist": 2 },
+        "effects": {
+          "happiness": 3,
+          "order": 1,
+          "elite_loyalty": -3,
+          "treasury": -2
+        },
+        "add_flags": [
+          "olga_movement_formed",
+          "olga_councils_recognized"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "clerk_zero": -1
+        },
+        "trait_changes": {
+          "populist": 2
+        },
         "force_next_decision": "olga_government_response",
         "result_text": "Kettles vote. Petitions smell like tea. The palace learns neighbors keep minutes."
       },
       {
         "id": "tolerate_quietly",
         "label": "Tolerate the movement quietly",
-        "effects": { "happiness": 1, "order": -1, "elite_loyalty": -1 },
-        "add_flags": ["olga_movement_formed", "olga_tolerated"],
-        "advisor_affinity": { "auntie_olga": 1, "luna_news": 1 },
-        "trait_changes": { "populist": 1, "bureaucratic": 1 },
+        "effects": {
+          "happiness": 1,
+          "order": -1,
+          "elite_loyalty": -1
+        },
+        "add_flags": [
+          "olga_movement_formed",
+          "olga_tolerated"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "bureaucratic": 1
+        },
         "force_next_decision": "olga_government_response",
         "result_text": "No ban. No parade. Signup sheets multiply like spare spoons."
       },
       {
         "id": "monitor_petitions",
         "label": "Monitor petitions with forms",
-        "effects": { "order": 3, "happiness": -1, "elite_loyalty": 1, "treasury": -1 },
-        "add_flags": ["olga_movement_formed", "olga_petitions_monitored"],
-        "advisor_affinity": { "auntie_olga": -1, "clerk_zero": 2, "general_boom": 1 },
-        "trait_changes": { "bureaucratic": 2, "authoritarian": 1 },
+        "effects": {
+          "order": 3,
+          "happiness": -1,
+          "elite_loyalty": 1,
+          "treasury": -1
+        },
+        "add_flags": [
+          "olga_movement_formed",
+          "olga_petitions_monitored"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": -1,
+          "clerk_zero": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "bureaucratic": 2,
+          "authoritarian": 1
+        },
         "force_next_decision": "olga_government_response",
         "result_text": "Clerk Zero issues Petition Cover Sheets. Olga staples them sideways on purpose."
       }
     ],
-    "tags": ["public_life", "arc_escalation", "olga"],
-    "visual_tags": ["kitchen_table_petition"],
+    "tags": [
+      "public_life",
+      "arc_escalation",
+      "olga"
+    ],
+    "visual_tags": [
+      "kitchen_table_petition"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "escalation",
       "batch_id": "2B-11B",
-      "humor_tags": ["kitchen_council", "signup_sheet"],
+      "humor_tags": [
+        "kitchen_council",
+        "signup_sheet"
+      ],
       "emotional_goal": "movement_becomes_real",
       "visual_hook": "kitchen table buried in petition pages",
       "localization_risk": "low",
@@ -270,19 +451,42 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["olga_citizen_movement"],
-      "all_flags": ["olga_movement_live", "olga_movement_formed"]
+      "active_arcs": [
+        "olga_citizen_movement"
+      ],
+      "all_flags": [
+        "olga_movement_live",
+        "olga_movement_formed"
+      ]
     },
     "options": [
       {
         "id": "cooperative_reform",
         "label": "Cooperate on street reforms",
-        "effects": { "treasury": -4, "happiness": 4, "order": 2, "elite_loyalty": -3 },
-        "add_flags": ["olga_reform_path"],
-        "advisor_affinity": { "auntie_olga": 3, "general_boom": -1, "clerk_zero": 1 },
-        "trait_changes": { "populist": 2, "bureaucratic": 1 },
+        "effects": {
+          "treasury": -4,
+          "happiness": 4,
+          "order": 2,
+          "elite_loyalty": -3
+        },
+        "add_flags": [
+          "olga_reform_path"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "general_boom": -1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "branch", "branch_id": "reform" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "branch",
+            "branch_id": "reform"
+          }
         ],
         "force_next_decision": "olga_loyalty_test",
         "result_text": "Palace clerks take notes at kitchen tables. Olga still corrects their handwriting."
@@ -290,15 +494,35 @@
       {
         "id": "hostile_crackdown",
         "label": "Order a firm crackdown",
-        "effects": { "order": 5, "happiness": -5, "elite_loyalty": 3, "treasury": -2 },
-        "add_flags": ["olga_hostile_path"],
-        "advisor_affinity": { "auntie_olga": -3, "general_boom": 3, "luna_news": 1 },
-        "trait_changes": { "authoritarian": 3 },
+        "effects": {
+          "order": 5,
+          "happiness": -5,
+          "elite_loyalty": 3,
+          "treasury": -2
+        },
+        "add_flags": [
+          "olga_hostile_path"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": -3,
+          "general_boom": 3,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "authoritarian": 3
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "branch", "branch_id": "hostile" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "branch",
+            "branch_id": "hostile"
+          }
         ],
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "start" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
         ],
         "force_next_decision": "olga_loyalty_test",
         "result_text": "Banners come down. Folding chairs appear anyway. Boom salutes the empty plaza posts."
@@ -306,26 +530,53 @@
       {
         "id": "co_opt_into_palace",
         "label": "Invite Olga into the palace",
-        "effects": { "happiness": 2, "order": 1, "elite_loyalty": -2, "treasury": -1 },
-        "add_flags": ["olga_coopt_path"],
-        "advisor_affinity": { "auntie_olga": 1, "luna_news": 2, "clerk_zero": 1 },
-        "trait_changes": { "populist": 1, "propagandist": 1 },
+        "effects": {
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": -2,
+          "treasury": -1
+        },
+        "add_flags": [
+          "olga_coopt_path"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 1,
+          "luna_news": 2,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "propagandist": 1
+        },
         "arc_actions": [
-          { "arc_id": "olga_citizen_movement", "action": "branch", "branch_id": "reject_power" }
+          {
+            "arc_id": "olga_citizen_movement",
+            "action": "branch",
+            "branch_id": "reject_power"
+          }
         ],
         "force_next_decision": "olga_loyalty_test",
         "result_text": "A palace badge waits on a velvet tray. Olga eyes it like a suspicious casserole."
       }
     ],
-    "tags": ["public_life", "arc_climax", "olga"],
-    "visual_tags": ["citizen_banner_plaza"],
+    "tags": [
+      "public_life",
+      "arc_climax",
+      "olga"
+    ],
+    "visual_tags": [
+      "citizen_banner_plaza"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "escalation",
       "batch_id": "2B-11B",
-      "humor_tags": ["three_way_fork", "velvet_badge"],
+      "humor_tags": [
+        "three_way_fork",
+        "velvet_badge"
+      ],
       "emotional_goal": "power_choice",
       "visual_hook": "plaza banners facing palace steps",
       "localization_risk": "low",
@@ -349,30 +600,67 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["olga_citizen_movement"],
-      "all_flags": ["olga_movement_live"],
-      "any_flags": ["olga_reform_path", "olga_hostile_path", "olga_coopt_path"]
+      "active_arcs": [
+        "olga_citizen_movement"
+      ],
+      "all_flags": [
+        "olga_movement_live"
+      ],
+      "any_flags": [
+        "olga_reform_path",
+        "olga_hostile_path",
+        "olga_coopt_path"
+      ]
     },
     "options": [
       {
         "id": "stand_with_olga",
         "label": "Stand with Olga publicly",
-        "effects": { "happiness": 4, "order": 1, "elite_loyalty": -3, "treasury": -2 },
-        "add_flags": ["olga_loyalty_sided"],
-        "advisor_affinity": { "auntie_olga": 4, "general_boom": -2, "luna_news": 1 },
-        "trait_changes": { "populist": 3 },
+        "effects": {
+          "happiness": 4,
+          "order": 1,
+          "elite_loyalty": -3,
+          "treasury": -2
+        },
+        "add_flags": [
+          "olga_loyalty_sided"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 4,
+          "general_boom": -2,
+          "luna_news": 1
+        },
+        "trait_changes": {
+          "populist": 3
+        },
         "force_next_decision": "olga_movement_resolution",
         "result_text": "You speak from the plaza steps. Olga nods once. That is her standing ovation."
       },
       {
         "id": "boom_restore_order",
         "label": "Let Boom restore order",
-        "effects": { "order": 4, "happiness": -4, "elite_loyalty": 3, "treasury": -2 },
-        "add_flags": ["olga_loyalty_boom"],
-        "advisor_affinity": { "auntie_olga": -3, "general_boom": 3, "luna_news": -1 },
-        "trait_changes": { "authoritarian": 2 },
+        "effects": {
+          "order": 4,
+          "happiness": -4,
+          "elite_loyalty": 3,
+          "treasury": -2
+        },
+        "add_flags": [
+          "olga_loyalty_boom"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": -3,
+          "general_boom": 3,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "authoritarian": 2
+        },
         "crisis_actions": [
-          { "crisis_id": "mass_protest", "action": "start" }
+          {
+            "crisis_id": "mass_protest",
+            "action": "start"
+          }
         ],
         "force_next_decision": "olga_movement_resolution",
         "result_text": "Boom clears the steps 'politely.' Folding chairs reappear on side streets. Olga counts them."
@@ -380,23 +668,46 @@
       {
         "id": "luna_reframe_movement",
         "label": "Let Luna reframe the movement",
-        "effects": { "happiness": 2, "order": 2, "elite_loyalty": 1, "treasury": -3 },
-        "add_flags": ["olga_loyalty_spun"],
-        "advisor_affinity": { "luna_news": 3, "auntie_olga": -1, "general_boom": 0 },
-        "trait_changes": { "propagandist": 2, "populist": 1 },
+        "effects": {
+          "happiness": 2,
+          "order": 2,
+          "elite_loyalty": 1,
+          "treasury": -3
+        },
+        "add_flags": [
+          "olga_loyalty_spun"
+        ],
+        "advisor_affinity": {
+          "luna_news": 3,
+          "auntie_olga": -1,
+          "general_boom": 0
+        },
+        "trait_changes": {
+          "propagandist": 2,
+          "populist": 1
+        },
         "force_next_decision": "olga_movement_resolution",
         "result_text": "Luna calls it 'civic listening season.' Olga mutes the TV and keeps the kettle on."
       }
     ],
-    "tags": ["public_life", "arc_crisis", "olga"],
-    "visual_tags": ["citizen_banner_plaza"],
+    "tags": [
+      "public_life",
+      "arc_crisis",
+      "olga"
+    ],
+    "visual_tags": [
+      "citizen_banner_plaza"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "escalation",
       "batch_id": "2B-11B",
-      "humor_tags": ["loyalty_hour", "folding_chairs"],
+      "humor_tags": [
+        "loyalty_hour",
+        "folding_chairs"
+      ],
       "emotional_goal": "fragile_trust",
       "visual_hook": "Olga at plaza steps between Boom and Luna crews",
       "localization_risk": "low",
@@ -421,53 +732,117 @@
       "importance": "major"
     },
     "requirements": {
-      "active_arcs": ["olga_citizen_movement"],
-      "all_flags": ["olga_movement_live"]
+      "active_arcs": [
+        "olga_citizen_movement"
+      ],
+      "all_flags": [
+        "olga_movement_live"
+      ]
     },
     "options": [
       {
         "id": "peoples_cabinet",
         "label": "Install Olga's people's cabinet",
-        "effects": { "happiness": 5, "order": 2, "elite_loyalty": -4, "treasury": -3 },
-        "add_flags": ["olga_movement_complete", "olga_peoples_cabinet", "endgame_citizen_voice"],
-        "remove_flags": ["olga_movement_live"],
-        "advisor_affinity": { "auntie_olga": 3, "clerk_zero": 1, "general_boom": -2 },
-        "trait_changes": { "populist": 3 },
+        "effects": {
+          "happiness": 5,
+          "order": 2,
+          "elite_loyalty": -4,
+          "treasury": -3
+        },
+        "add_flags": [
+          "olga_movement_complete",
+          "olga_peoples_cabinet",
+          "endgame_citizen_voice"
+        ],
+        "remove_flags": [
+          "olga_movement_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 3,
+          "clerk_zero": 1,
+          "general_boom": -2
+        },
+        "trait_changes": {
+          "populist": 3
+        },
         "trigger_ending": "olga_peoples_cabinet",
         "result_text": "Kitchen tables become ministries. Soup schedules replace decrees. History smells like bread."
       },
       {
         "id": "palace_hears_street",
         "label": "Make the palace hear the street",
-        "effects": { "happiness": 4, "order": 3, "elite_loyalty": -1, "treasury": -2 },
-        "add_flags": ["olga_movement_complete", "palace_hears_the_street"],
-        "remove_flags": ["olga_movement_live"],
-        "advisor_affinity": { "auntie_olga": 2, "luna_news": 1, "clerk_zero": 1 },
-        "trait_changes": { "populist": 2, "bureaucratic": 1 },
+        "effects": {
+          "happiness": 4,
+          "order": 3,
+          "elite_loyalty": -1,
+          "treasury": -2
+        },
+        "add_flags": [
+          "olga_movement_complete",
+          "palace_hears_the_street"
+        ],
+        "remove_flags": [
+          "olga_movement_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "luna_news": 1,
+          "clerk_zero": 1
+        },
+        "trait_changes": {
+          "populist": 2,
+          "bureaucratic": 1
+        },
         "trigger_ending": "palace_hears_the_street",
         "result_text": "Palace windows open toward River Street. Olga keeps her coat on. Listening is permanent now."
       },
       {
         "id": "olga_rejects_power",
         "label": "Accept Olga rejecting power",
-        "effects": { "happiness": 2, "order": 1, "elite_loyalty": 1, "treasury": 0 },
-        "add_flags": ["olga_movement_complete", "olga_rejects_office", "olga_sends_you_home"],
-        "remove_flags": ["olga_movement_live"],
-        "advisor_affinity": { "auntie_olga": 2, "luna_news": -1 },
-        "trait_changes": { "populist": 1 },
+        "effects": {
+          "happiness": 2,
+          "order": 1,
+          "elite_loyalty": 1,
+          "treasury": 0
+        },
+        "add_flags": [
+          "olga_movement_complete",
+          "olga_rejects_office",
+          "olga_sends_you_home"
+        ],
+        "remove_flags": [
+          "olga_movement_live"
+        ],
+        "advisor_affinity": {
+          "auntie_olga": 2,
+          "luna_news": -1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
         "trigger_ending": "olga_sends_you_home",
         "result_text": "The velvet badge stays on the tray. Olga points you toward your own front door. Softly."
       }
     ],
-    "tags": ["public_life", "arc_resolution", "olga", "ending_setup"],
-    "visual_tags": ["empty_palace_steps"],
+    "tags": [
+      "public_life",
+      "arc_resolution",
+      "olga",
+      "ending_setup"
+    ],
+    "visual_tags": [
+      "empty_palace_steps"
+    ],
     "authoring": {
       "primary_content_class": "major_arc",
       "arc_id": "olga_citizen_movement",
       "primary_category": "public_life",
       "primary_stage": "escalation",
       "batch_id": "2B-11B",
-      "humor_tags": ["kettle_finale", "velvet_badge"],
+      "humor_tags": [
+        "kettle_finale",
+        "velvet_badge"
+      ],
       "emotional_goal": "closure_or_homecoming",
       "visual_hook": "empty palace steps with one kettle and a rejected badge",
       "localization_risk": "low",

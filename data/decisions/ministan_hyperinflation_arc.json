@@ -45,7 +45,7 @@
           "elite_loyalty": -2
         },
         "add_laws": [
-          "emergency_price_board_act"
+          "coin_rounding_act"
         ],
         "add_flags": [
           "hyper_live",
@@ -87,7 +87,7 @@
           "elite_loyalty": 1
         },
         "add_laws": [
-          "barter_license_act"
+          "coin_rounding_act"
         ],
         "add_flags": [
           "hyper_live",

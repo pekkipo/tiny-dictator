@@ -2,7 +2,8 @@
 
 **Status:** Complete (20/20 approved)  
 **Target:** 20 approved endgame / rare-resolution decisions  
-**Do not start:** Milestone 2B-17
+**Completed after:** Milestone 2B-17 (laws/endings/palace)
+**Do not start:** Milestone 2B-18
 
 ---
 

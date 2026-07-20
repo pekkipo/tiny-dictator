@@ -300,7 +300,7 @@
           "scientific": 1
         },
         "add_laws": [
-          "scent_mask_act"
+          "sponsored_potholes_act"
         ],
         "add_flags": [
           "perfumed_sewage_live",
@@ -337,7 +337,7 @@
           "bureaucratic": 1
         },
         "add_laws": [
-          "scent_mask_act"
+          "sponsored_potholes_act"
         ],
         "add_flags": [
           "perfumed_sewage_live",
@@ -414,7 +414,7 @@
         "perfumed_sewage_live"
       ],
       "all_laws": [
-        "scent_mask_act"
+        "sponsored_potholes_act"
       ]
     },
     "options": [
@@ -436,7 +436,7 @@
           "populist": 1
         },
         "remove_laws": [
-          "scent_mask_act"
+          "sponsored_potholes_act"
         ],
         "add_flags": [
           "pipes_actually_fixed",
@@ -494,7 +494,7 @@
           "bureaucratic": 1
         },
         "remove_laws": [
-          "scent_mask_act"
+          "sponsored_potholes_act"
         ],
         "add_flags": [
           "scent_program_scrapped",
@@ -928,7 +928,7 @@
           "cat_favor_choices": 1
         },
         "add_laws": [
-          "fish_currency_act"
+          "coin_rounding_act"
         ],
         "add_flags": [
           "fish_currency_live",
@@ -965,7 +965,7 @@
           "cat_favor_choices": 1
         },
         "add_laws": [
-          "fish_currency_act"
+          "coin_rounding_act"
         ],
         "add_flags": [
           "fish_currency_live",
@@ -1037,7 +1037,7 @@
         "fish_currency_live"
       ],
       "all_laws": [
-        "fish_currency_act"
+        "coin_rounding_act"
       ]
     },
     "options": [
@@ -1219,7 +1219,7 @@
           "bureaucratic": 1
         },
         "remove_laws": [
-          "fish_currency_act"
+          "coin_rounding_act"
         ],
         "add_flags": [
           "fish_currency_abandoned",
@@ -1284,6 +1284,9 @@
       "blocked_flags": [
         "ministry_waiting_live",
         "ministry_waiting_chain_complete"
+      ],
+      "any_laws": [
+        "window_tax"
       ]
     },
     "options": [
@@ -1783,6 +1786,10 @@
       "blocked_flags": [
         "antivacuum_live",
         "antivacuum_chain_complete"
+      ],
+      "blocked_laws": [
+        "official_nap_zones",
+        "privatize_air"
       ]
     },
     "options": [

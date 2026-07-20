@@ -2,29 +2,429 @@
   {
     "id": "gold_desk",
     "display_name": "Gold Desk",
-    "description": "A desk so shiny that ministers forget what they came to argue about.",
+    "description": "A desk so shiny that ministers forget their talking points.",
+    "category": "throne_room",
     "medal_cost": 5,
+    "requirements": {},
     "placeholder_icon": "🪑",
-    "requirements": {}
+    "visual_key": "palace_gold_desk",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_gold_desk"
+      ]
+    }
+  },
+  {
+    "id": "velvet_throne",
+    "display_name": "Velvet Throne",
+    "description": "Slightly taller than necessary. Excellent for dramatic pauses.",
+    "category": "throne_room",
+    "medal_cost": 12,
+    "requirements": {
+      "minimum_total_runs": 2
+    },
+    "placeholder_icon": "👑",
+    "visual_key": "palace_velvet_throne",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_velvet_throne"
+      ]
+    }
+  },
+  {
+    "id": "audience_carpet",
+    "display_name": "Audience Carpet",
+    "description": "Citizens wipe their feet before complaining.",
+    "category": "throne_room",
+    "medal_cost": 18,
+    "requirements": {
+      "minimum_endings_unlocked": 1
+    },
+    "placeholder_icon": "🟥",
+    "visual_key": "palace_audience_carpet",
+    "content_unlock": {
+      "type": "archive_hint",
+      "ids": [
+        "throne_carpet_hint"
+      ]
+    }
+  },
+  {
+    "id": "portrait_wall",
+    "display_name": "Portrait Wall",
+    "description": "Every past mood has a painting. Most look surprised.",
+    "category": "throne_room",
+    "medal_cost": 25,
+    "requirements": {
+      "minimum_endings_unlocked": 3
+    },
+    "placeholder_icon": "🖼️",
+    "visual_key": "palace_portrait_wall",
+    "content_unlock": {
+      "type": "cosmetic_ending_variant",
+      "ids": [
+        "portrait_frame_variant"
+      ]
+    }
+  },
+  {
+    "id": "ceremonial_gavel",
+    "display_name": "Ceremonial Gavel",
+    "description": "Ends meetings and occasionally tables.",
+    "category": "throne_room",
+    "medal_cost": 35,
+    "requirements": {
+      "minimum_total_runs": 5
+    },
+    "placeholder_icon": "🔨",
+    "visual_key": "palace_ceremonial_gavel",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "working_palace_tours"
+      ]
+    }
+  },
+  {
+    "id": "echo_balcony",
+    "display_name": "Echo Balcony",
+    "description": "Your speeches arrive twice for emphasis.",
+    "category": "throne_room",
+    "medal_cost": 45,
+    "requirements": {
+      "minimum_medals": 20
+    },
+    "placeholder_icon": "🏛️",
+    "visual_key": "palace_echo_balcony",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_echo_balcony"
+      ]
+    }
   },
   {
     "id": "propaganda_studio",
     "display_name": "Propaganda Studio",
-    "description": "Broadcast your finest speeches to three loyal citizens and one confused cat.",
+    "description": "Broadcast to three loyal citizens and one confused cat.",
+    "category": "propaganda_room",
     "medal_cost": 10,
-    "placeholder_icon": "📺",
     "requirements": {
       "minimum_endings_unlocked": 2
+    },
+    "placeholder_icon": "📺",
+    "visual_key": "palace_propaganda_studio",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "anthem_sponsor_reads"
+      ]
+    }
+  },
+  {
+    "id": "cue_card_printer",
+    "display_name": "Cue Card Printer",
+    "description": "Never forget which slogan is currently mandatory.",
+    "category": "propaganda_room",
+    "medal_cost": 22,
+    "requirements": {
+      "minimum_endings_unlocked": 4
+    },
+    "placeholder_icon": "🖨️",
+    "visual_key": "palace_cue_card_printer",
+    "content_unlock": {
+      "type": "content_pool",
+      "ids": [
+        "propaganda_soft_pool"
+      ]
+    }
+  },
+  {
+    "id": "applause_track",
+    "display_name": "Applause Track",
+    "description": "A polite clap on demand. Volume is a policy choice.",
+    "category": "propaganda_room",
+    "medal_cost": 30,
+    "requirements": {
+      "minimum_total_runs": 4
+    },
+    "placeholder_icon": "👏",
+    "visual_key": "palace_applause_track",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_applause_booth"
+      ]
+    }
+  },
+  {
+    "id": "headline_carousel",
+    "display_name": "Headline Carousel",
+    "description": "Rotate yesterday's news until it feels new.",
+    "category": "propaganda_room",
+    "medal_cost": 40,
+    "requirements": {
+      "minimum_endings_unlocked": 6
+    },
+    "placeholder_icon": "🗞️",
+    "visual_key": "palace_headline_carousel",
+    "content_unlock": {
+      "type": "archive_hint",
+      "ids": [
+        "headline_carousel_hint"
+      ]
     }
   },
   {
     "id": "emergency_bunker",
     "display_name": "Emergency Bunker",
-    "description": "For when the country needs you to hide with dignity and a snack reserve.",
+    "description": "Hide with dignity and a snack reserve.",
+    "category": "emergency_bunker",
     "medal_cost": 15,
-    "placeholder_icon": "🚪",
     "requirements": {
       "minimum_total_runs": 3
+    },
+    "placeholder_icon": "🚪",
+    "visual_key": "palace_emergency_bunker",
+    "content_unlock": {
+      "type": "starting_modifier",
+      "ids": [
+        "bunker_snack_morale"
+      ]
+    }
+  },
+  {
+    "id": "map_table",
+    "display_name": "Crisis Map Table",
+    "description": "Tiny flags mark tiny problems with huge pins.",
+    "category": "emergency_bunker",
+    "medal_cost": 28,
+    "requirements": {
+      "minimum_total_runs": 5
+    },
+    "placeholder_icon": "🗺️",
+    "visual_key": "palace_map_table",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "sovereign_cookie_futures"
+      ]
+    }
+  },
+  {
+    "id": "sealed_archive",
+    "display_name": "Sealed Archive Drawer",
+    "description": "Contains secrets, crumbs, and one unused apology.",
+    "category": "emergency_bunker",
+    "medal_cost": 38,
+    "requirements": {
+      "minimum_endings_unlocked": 5
+    },
+    "placeholder_icon": "🗄️",
+    "visual_key": "palace_sealed_archive",
+    "content_unlock": {
+      "type": "archive_hint",
+      "ids": [
+        "sealed_archive_hint"
+      ]
+    }
+  },
+  {
+    "id": "red_phone",
+    "display_name": "Mostly Red Phone",
+    "description": "Connects to everyone who is already in the bunker.",
+    "category": "emergency_bunker",
+    "medal_cost": 50,
+    "requirements": {
+      "minimum_medals": 30
+    },
+    "placeholder_icon": "☎️",
+    "visual_key": "palace_red_phone",
+    "content_unlock": {
+      "type": "cosmetic_ending_variant",
+      "ids": [
+        "bunker_ending_frame"
+      ]
+    }
+  },
+  {
+    "id": "triple_intray",
+    "display_name": "Triple In-Tray",
+    "description": "Incoming, ongoing, and eternally pending.",
+    "category": "office_bureaucracy",
+    "medal_cost": 8,
+    "requirements": {},
+    "placeholder_icon": "📥",
+    "visual_key": "palace_triple_intray",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_intray"
+      ]
+    }
+  },
+  {
+    "id": "stamp_museum",
+    "display_name": "Stamp Museum",
+    "description": "A gallery of approvals that changed nothing.",
+    "category": "office_bureaucracy",
+    "medal_cost": 20,
+    "requirements": {
+      "minimum_endings_unlocked": 2
+    },
+    "placeholder_icon": "🔏",
+    "visual_key": "palace_stamp_museum",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "queue_priority_auction"
+      ]
+    }
+  },
+  {
+    "id": "quiet_hours_lamp",
+    "display_name": "Quiet Hours Lamp",
+    "description": "Dims ambition by fifteen percent.",
+    "category": "office_bureaucracy",
+    "medal_cost": 32,
+    "requirements": {
+      "minimum_total_runs": 6
+    },
+    "placeholder_icon": "💡",
+    "visual_key": "palace_quiet_hours_lamp",
+    "content_unlock": {
+      "type": "starting_modifier",
+      "ids": [
+        "quiet_start_order"
+      ]
+    }
+  },
+  {
+    "id": "form_fountain",
+    "display_name": "Form Fountain",
+    "description": "Decorative paperwork that occasionally files itself.",
+    "category": "office_bureaucracy",
+    "medal_cost": 48,
+    "requirements": {
+      "minimum_endings_unlocked": 8
+    },
+    "placeholder_icon": "⛲",
+    "visual_key": "palace_form_fountain",
+    "content_unlock": {
+      "type": "content_pool",
+      "ids": [
+        "bureaucracy_soft_pool"
+      ]
+    }
+  },
+  {
+    "id": "prototype_shelf",
+    "display_name": "Prototype Shelf",
+    "description": "Holds inventions that almost worked and one that meows.",
+    "category": "science_laboratory",
+    "medal_cost": 16,
+    "requirements": {
+      "minimum_total_runs": 3
+    },
+    "placeholder_icon": "⚗️",
+    "visual_key": "palace_prototype_shelf",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "midnight_filing_amnesty"
+      ]
+    }
+  },
+  {
+    "id": "moon_whiteboard",
+    "display_name": "Moon Whiteboard",
+    "description": "Equations, doodles, and a suspicious crater sketch.",
+    "category": "science_laboratory",
+    "medal_cost": 34,
+    "requirements": {
+      "minimum_endings_unlocked": 4
+    },
+    "placeholder_icon": "📝",
+    "visual_key": "palace_moon_whiteboard",
+    "content_unlock": {
+      "type": "archive_hint",
+      "ids": [
+        "moon_whiteboard_hint"
+      ]
+    }
+  },
+  {
+    "id": "ai_coffee_bot",
+    "display_name": "AI Coffee Bot",
+    "description": "Predicts your caffeine needs with unsettling accuracy.",
+    "category": "science_laboratory",
+    "medal_cost": 55,
+    "requirements": {
+      "minimum_medals": 25
+    },
+    "placeholder_icon": "🤖",
+    "visual_key": "palace_ai_coffee_bot",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "official_palace_pet"
+      ]
+    }
+  },
+  {
+    "id": "cushion_throne",
+    "display_name": "Cushion Throne Annex",
+    "description": "A second throne, lower, warmer, and politically influential.",
+    "category": "cat_related",
+    "medal_cost": 14,
+    "requirements": {
+      "minimum_endings_unlocked": 1
+    },
+    "placeholder_icon": "🛏️",
+    "visual_key": "palace_cushion_throne",
+    "content_unlock": {
+      "type": "decision_eligibility",
+      "ids": [
+        "palace_gift_shop_opening"
+      ]
+    }
+  },
+  {
+    "id": "fish_dispenser",
+    "display_name": "Diplomatic Fish Dispenser",
+    "description": "Treats for treaties. Refill weekly.",
+    "category": "cat_related",
+    "medal_cost": 26,
+    "requirements": {
+      "minimum_total_runs": 4
+    },
+    "placeholder_icon": "🐟",
+    "visual_key": "palace_fish_dispenser",
+    "content_unlock": {
+      "type": "visual_palace_state",
+      "ids": [
+        "palace_fish_dispenser"
+      ]
+    }
+  },
+  {
+    "id": "nap_observatory",
+    "display_name": "Nap Observatory",
+    "description": "Monitor national yawn density from the palace roof.",
+    "category": "cat_related",
+    "medal_cost": 42,
+    "requirements": {
+      "minimum_endings_unlocked": 7
+    },
+    "placeholder_icon": "🔭",
+    "visual_key": "palace_nap_observatory",
+    "content_unlock": {
+      "type": "cosmetic_ending_variant",
+      "ids": [
+        "nap_ending_frame"
+      ]
     }
   }
 ]

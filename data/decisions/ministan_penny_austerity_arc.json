@@ -44,7 +44,7 @@
           "elite_loyalty": 2
         },
         "add_laws": [
-          "emergency_austerity_act"
+          "coupon_salaries"
         ],
         "add_flags": [
           "penny_austerity_live",
@@ -78,7 +78,7 @@
           "elite_loyalty": 3
         },
         "add_laws": [
-          "emergency_austerity_act"
+          "coupon_salaries"
         ],
         "add_flags": [
           "penny_austerity_live",
@@ -179,6 +179,9 @@
       ],
       "all_flags": [
         "penny_austerity_live"
+      ],
+      "any_laws": [
+        "mandatory_applause"
       ]
     },
     "options": [
@@ -346,7 +349,7 @@
           "elite_loyalty": 3
         },
         "add_laws": [
-          "public_service_sunset_act"
+          "privatize_air"
         ],
         "add_flags": [
           "penny_services_sunset"
@@ -379,7 +382,7 @@
           "elite_loyalty": 1
         },
         "add_laws": [
-          "public_service_sunset_act"
+          "privatize_air"
         ],
         "add_flags": [
           "penny_services_sunset",
@@ -412,7 +415,7 @@
           "elite_loyalty": 4
         },
         "add_laws": [
-          "public_service_sunset_act"
+          "privatize_air"
         ],
         "add_flags": [
           "penny_services_sunset",
@@ -809,8 +812,8 @@
           "elite_loyalty": -2
         },
         "remove_laws": [
-          "emergency_austerity_act",
-          "public_service_sunset_act"
+          "coupon_salaries",
+          "privatize_air"
         ],
         "add_flags": [
           "penny_austerity_complete",

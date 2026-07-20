@@ -166,6 +166,9 @@
       ],
       "all_flags": [
         "profit_corp_live"
+      ],
+      "any_laws": [
+        "corporate_capital_naming"
       ]
     },
     "options": [

@@ -1,17 +1,23 @@
 [
   {
-    "id": "elite_coup",
+    "id": "bankrupt_leader",
     "type": "resource_failure",
-    "priority": 53,
-    "title": "A Very Polite Coup",
-    "description": "The generals and ministers replaced you during lunch. The paperwork was already prepared.",
+    "priority": 50,
+    "title": "Officially Broke",
+    "description": "The treasury is empty. Creditors seized the palace furniture, including your favorite chair.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf96\ufe0f",
+    "placeholder_icon": "💸",
     "conditions": {
       "maximum_resources": {
-        "elite_loyalty": 0
+        "treasury": 0
       }
-    }
+    },
+    "rarity": "common",
+    "subtitle": "The treasury is empty.",
+    "archive_hint": "Empty the treasury and meet your creditors.",
+    "illustration_key": "ending_bankrupt_leader",
+    "collectible": true,
+    "newspaper_headline": "Officially Broke"
   },
   {
     "id": "revolution",
@@ -20,12 +26,18 @@
     "title": "People Had Enough",
     "description": "The people stormed the palace, mostly because it had the only working air conditioner.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\u270a",
+    "placeholder_icon": "✊",
     "conditions": {
       "maximum_resources": {
         "happiness": 0
       }
-    }
+    },
+    "rarity": "common",
+    "subtitle": "The people stormed the palace, mostly because it had the only working air conditioner.",
+    "archive_hint": "Let happiness collapse completely.",
+    "illustration_key": "ending_revolution",
+    "collectible": true,
+    "newspaper_headline": "People Had Enough"
   },
   {
     "id": "chaos_country",
@@ -34,36 +46,952 @@
     "title": "Nationwide Shrug",
     "description": "Order collapsed completely. The last traffic sign was traded for a sandwich.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udd25",
+    "placeholder_icon": "🔥",
     "conditions": {
       "maximum_resources": {
         "order": 0
       }
-    }
+    },
+    "rarity": "common",
+    "subtitle": "Order collapsed completely.",
+    "archive_hint": "Let order fall to zero.",
+    "illustration_key": "ending_chaos_country",
+    "collectible": true,
+    "newspaper_headline": "Nationwide Shrug"
   },
   {
-    "id": "bankrupt_leader",
+    "id": "elite_coup",
     "type": "resource_failure",
-    "priority": 50,
-    "title": "Officially Broke",
-    "description": "The treasury is empty. Creditors seized the palace furniture, including your favorite chair.",
+    "priority": 53,
+    "title": "A Very Polite Coup",
+    "description": "The generals and ministers replaced you during lunch. The paperwork was already prepared.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcb8",
+    "placeholder_icon": "🎖️",
     "conditions": {
       "maximum_resources": {
-        "treasury": 0
+        "elite_loyalty": 0
       }
-    }
+    },
+    "rarity": "common",
+    "subtitle": "The generals and ministers replaced you during lunch.",
+    "archive_hint": "Lose the loyalty of the elite.",
+    "illustration_key": "ending_elite_coup",
+    "collectible": true,
+    "newspaper_headline": "A Very Polite Coup"
   },
   {
-    "id": "nation_in_darkness",
+    "id": "beloved_retirement",
+    "type": "special",
+    "priority": 74,
+    "title": "Beloved Retirement",
+    "description": "You canceled the eternal parade. Citizens gifted a quiet chair. It was enough.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🪑",
+    "conditions": {
+      "all_flags": [
+        "beloved_retirement",
+        "festival_econ_complete"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "You canceled the eternal parade.",
+    "archive_hint": "Earn a gentle farewell after a long, kind rule.",
+    "illustration_key": "ending_beloved_retirement",
+    "collectible": true,
+    "newspaper_headline": "Beloved Retirement"
+  },
+  {
+    "id": "country_somehow_works",
+    "type": "special",
+    "priority": 72,
+    "title": "The Country Somehow Works",
+    "description": "All four meters stayed green long enough to embarrass the cynics. Historians filed Ministan under 'accidental competence.'",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "✅",
+    "illustration_key": "ending_country_somehow_works",
+    "conditions": {
+      "all_flags": [
+        "country_somehow_works"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "All four meters stayed green long enough to embarrass the cynics.",
+    "archive_hint": "Keep every plate spinning until the credits.",
+    "collectible": true,
+    "newspaper_headline": "The Country Somehow Works"
+  },
+  {
+    "id": "peaceful_accidental_democracy",
+    "type": "special",
+    "priority": 85,
+    "title": "Peaceful Accidental Democracy",
+    "description": "A ceremonial form accidentally counted real preferences. Ministan celebrated with orderly queues and surprising ballots.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🗳️",
+    "conditions": {
+      "all_flags": [
+        "peaceful_accidental_democracy",
+        "election_arc_complete"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "A ceremonial form accidentally counted real preferences.",
+    "archive_hint": "Misplace power so politely that democracy appears.",
+    "illustration_key": "ending_peaceful_accidental_democracy",
+    "collectible": true,
+    "newspaper_headline": "Peaceful Accidental Democracy"
+  },
+  {
+    "id": "general_remains_loyal",
+    "type": "special",
+    "priority": 70,
+    "title": "The Loyal Protector",
+    "description": "General Boom never seized the palace. He only seized every parade schedule until the end of time.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🫡",
+    "conditions": {
+      "all_flags": [
+        "general_remains_loyal",
+        "boom_protector_title"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "General Boom never seized the palace.",
+    "archive_hint": "Keep General Boom proudly on your side.",
+    "illustration_key": "ending_general_remains_loyal",
+    "collectible": true,
+    "newspaper_headline": "The Loyal Protector"
+  },
+  {
+    "id": "olga_sends_you_home",
+    "type": "special",
+    "priority": 87,
+    "title": "Olga Sends You Home",
+    "description": "Auntie Olga refused the crown and suggested you try living like a neighbor. The movement stayed civic. The palace felt suddenly quiet.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏠",
+    "conditions": {
+      "all_flags": [
+        "olga_sends_you_home",
+        "olga_movement_complete"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "Auntie Olga refused the crown and suggested you try living like a neighbor.",
+    "archive_hint": "Let Auntie Olga decide you need a nap at home.",
+    "illustration_key": "ending_olga_sends_you_home",
+    "collectible": true,
+    "newspaper_headline": "Olga Sends You Home"
+  },
+  {
+    "id": "clerk_zero_closes_file",
+    "type": "special",
+    "priority": 72,
+    "title": "Clerk Zero Closes the File",
+    "description": "Clerk Zero closed the national folder. Dust settled. A blank form remained as a souvenir.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🗂️",
+    "conditions": {
+      "all_flags": [
+        "clerk_zero_closes_file",
+        "zero_forms_complete"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "Clerk Zero closed the national folder.",
+    "archive_hint": "Allow Clerk Zero to file you under Closed.",
+    "illustration_key": "ending_clerk_zero_closes_file",
+    "collectible": true,
+    "newspaper_headline": "Clerk Zero Closes the File"
+  },
+  {
+    "id": "penny_balances_final_budget",
+    "type": "special",
+    "priority": 87,
+    "title": "The Balanced Miracle",
+    "description": "Minister Penny balanced the final budget without deleting the citizens. Historians still check the footnotes twice.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📗",
+    "conditions": {
+      "all_flags": [
+        "penny_miracle_sealed",
+        "penny_austerity_complete"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "Minister Penny balanced the final budget without deleting the citizens.",
+    "archive_hint": "Help Minister Penny balance the impossible ledger.",
+    "illustration_key": "ending_penny_balances_final_budget",
+    "collectible": true,
+    "newspaper_headline": "The Balanced Miracle"
+  },
+  {
+    "id": "profit_buys_retirement",
+    "type": "special",
+    "priority": 94,
+    "title": "Profit Buys Retirement",
+    "description": "Sir Profit retired on a yacht named Alignment. Public signs returned. The invoice was enormous.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🛥️",
+    "conditions": {
+      "all_flags": [
+        "profit_buys_retirement"
+      ]
+    },
+    "rarity": "common",
+    "subtitle": "Sir Profit retired on a yacht named Alignment.",
+    "archive_hint": "Accept Sir Profit's luxurious exit package.",
+    "illustration_key": "ending_profit_buys_retirement",
+    "collectible": true,
+    "newspaper_headline": "Profit Buys Retirement"
+  },
+  {
+    "id": "spreadsheet_state",
+    "type": "special",
+    "priority": 92,
+    "title": "The Spreadsheet State",
+    "description": "The ledger became a religion. Citizens prayed in columns. Happiness was a rounding error.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📊",
+    "conditions": {
+      "all_flags": [
+        "spreadsheet_state",
+        "penny_austerity_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "The ledger became a religion.",
+    "archive_hint": "A path involving the spreadsheet state is waiting in late-game choices.",
+    "illustration_key": "ending_spreadsheet_state",
+    "collectible": true,
+    "newspaper_headline": "The Spreadsheet State"
+  },
+  {
+    "id": "austerity_without_citizens",
+    "type": "special",
+    "priority": 93,
+    "title": "Austerity Without Citizens",
+    "description": "The books were perfect. The streets were empty. Minister Penny filed a victory form.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏚️",
+    "conditions": {
+      "all_flags": [
+        "austerity_without_citizens",
+        "penny_austerity_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "The books were perfect.",
+    "archive_hint": "A path involving austerity without citizens is waiting in late-game choices.",
+    "illustration_key": "ending_austerity_without_citizens",
+    "collectible": true,
+    "newspaper_headline": "Austerity Without Citizens"
+  },
+  {
+    "id": "nation_becomes_broadcast",
+    "type": "special",
+    "priority": 91,
+    "title": "The Broadcast State",
+    "description": "Ministan became a continuous special report. Citizens lived between commercial breaks. Historians still wait for the credits.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📺",
+    "conditions": {
+      "all_flags": [
+        "nation_becomes_broadcast",
+        "luna_media_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Ministan became a continuous special report.",
+    "archive_hint": "A path involving the broadcast state is waiting in late-game choices.",
+    "illustration_key": "ending_nation_becomes_broadcast",
+    "collectible": true,
+    "newspaper_headline": "The Broadcast State"
+  },
+  {
+    "id": "olga_peoples_cabinet",
+    "type": "special",
+    "priority": 89,
+    "title": "Olga's People's Cabinet",
+    "description": "Kitchen-table petitions became ministries. Auntie Olga brought thermos flasks to cabinet. The palace learned queue etiquette.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🫖",
+    "conditions": {
+      "all_flags": [
+        "olga_peoples_cabinet",
+        "olga_movement_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Kitchen-table petitions became ministries.",
+    "archive_hint": "A path involving olga's people's cabinet is waiting in late-game choices.",
+    "illustration_key": "ending_olga_peoples_cabinet",
+    "collectible": true,
+    "newspaper_headline": "Olga's People's Cabinet"
+  },
+  {
+    "id": "palace_hears_the_street",
+    "type": "special",
+    "priority": 88,
+    "title": "The Palace Hears the Street",
+    "description": "The ruler listened. The street answered with sandwiches and schedules. Reform arrived wearing sensible shoes.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏛️",
+    "conditions": {
+      "all_flags": [
+        "palace_hears_the_street",
+        "olga_movement_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "The ruler listened.",
+    "archive_hint": "A path involving the palace hears the street is waiting in late-game choices.",
+    "illustration_key": "ending_palace_hears_the_street",
+    "collectible": true,
+    "newspaper_headline": "The Palace Hears the Street"
+  },
+  {
+    "id": "experimental_republic",
     "type": "special",
     "priority": 95,
-    "title": "Nation in Darkness",
-    "description": "The blackout outlasted your patience. Citizens learned to navigate by rumor and candlelight. The palace remained visible from space.",
+    "title": "The Experimental Republic",
+    "description": "Every law became a trial and every trial became a law. Historians request safety goggles.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf11",
-    "conditions": {}
+    "placeholder_icon": "🧪",
+    "conditions": {
+      "all_flags": [
+        "experimental_republic"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Every law became a trial and every trial became a law.",
+    "archive_hint": "A path involving the experimental republic is waiting in late-game choices.",
+    "illustration_key": "ending_experimental_republic",
+    "collectible": true,
+    "newspaper_headline": "The Experimental Republic"
+  },
+  {
+    "id": "experiment_leaves",
+    "type": "special",
+    "priority": 95,
+    "title": "The Experiment Leaves",
+    "description": "Science packed politely and took a taxi. Clerk Zero stamped EXIT. The beakers waved.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🧳",
+    "conditions": {
+      "all_flags": [
+        "experiment_leaves"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Science packed politely and took a taxi.",
+    "archive_hint": "A path involving the experiment leaves is waiting in late-game choices.",
+    "illustration_key": "ending_experiment_leaves",
+    "collectible": true,
+    "newspaper_headline": "The Experiment Leaves"
+  },
+  {
+    "id": "corporate_ministan",
+    "type": "special",
+    "priority": 94,
+    "title": "Corporate Ministan, LLC",
+    "description": "Public benches became brand real estate. Historians list the country as a sitting subscription with a flag.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "®️",
+    "conditions": {
+      "all_flags": [
+        "corporate_benches_empire",
+        "corporate_branding_soft"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Public benches became brand real estate.",
+    "archive_hint": "A path involving corporate ministan, llc is waiting in late-game choices.",
+    "illustration_key": "ending_corporate_ministan",
+    "collectible": true,
+    "newspaper_headline": "Corporate Ministan, LLC"
+  },
+  {
+    "id": "country_is_acquired",
+    "type": "special",
+    "priority": 94,
+    "title": "The Country Is Acquired",
+    "description": "Ministan became a subsidiary with a flag. Letterhead changed. Historians list shareholders first.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📑",
+    "conditions": {
+      "all_flags": [
+        "country_is_acquired"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Ministan became a subsidiary with a flag.",
+    "archive_hint": "A path involving the country is acquired is waiting in late-game choices.",
+    "illustration_key": "ending_country_is_acquired",
+    "collectible": true,
+    "newspaper_headline": "The Country Is Acquired"
+  },
+  {
+    "id": "purrfect_transfer",
+    "type": "special",
+    "priority": 99,
+    "title": "The Purrfect Transfer",
+    "description": "Whiskers completed a solemn transfer of symbolic power. You became Chief Litter Officer. The nation napped.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🐱",
+    "conditions": {
+      "all_flags": [
+        "purrfect_transfer",
+        "whiskers_rev_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Whiskers completed a solemn transfer of symbolic power.",
+    "archive_hint": "A path involving the purrfect transfer is waiting in late-game choices.",
+    "illustration_key": "ending_purrfect_transfer",
+    "collectible": true,
+    "newspaper_headline": "The Purrfect Transfer"
+  },
+  {
+    "id": "government_by_form",
+    "type": "special",
+    "priority": 90,
+    "title": "Government by Form",
+    "description": "Ministan ran on Form F-0 and a paid efficiency miracle. Historians list the country as a filing cabinet with a flag.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📋",
+    "conditions": {
+      "all_laws": [
+        "form_request_form_act"
+      ],
+      "all_flags": [
+        "government_by_form_soft",
+        "forms_run_government"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Ministan ran on Form F-0 and a paid efficiency miracle.",
+    "archive_hint": "A path involving government by form is waiting in late-game choices.",
+    "illustration_key": "ending_government_by_form",
+    "collectible": true,
+    "newspaper_headline": "Government by Form"
+  },
+  {
+    "id": "final_stamp",
+    "type": "special",
+    "priority": 88,
+    "title": "The Final Stamp",
+    "description": "One last stamp descended on Ministan. Forms governed forms. Historians requested larger cabinets.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📠",
+    "conditions": {
+      "all_flags": [
+        "final_stamp",
+        "zero_forms_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "One last stamp descended on Ministan.",
+    "archive_hint": "A path involving the final stamp is waiting in late-game choices.",
+    "illustration_key": "ending_final_stamp",
+    "collectible": true,
+    "newspaper_headline": "The Final Stamp"
+  },
+  {
+    "id": "happiness_reaches_100_percent",
+    "type": "special",
+    "priority": 93,
+    "title": "Happiness Reaches 100%",
+    "description": "The National Happiness Index froze at perfection. Streets remained complicated. Historians filed it under measured triumph.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💯",
+    "conditions": {
+      "all_flags": [
+        "happiness_reaches_100_percent",
+        "happiness_arc_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "The National Happiness Index froze at perfection.",
+    "archive_hint": "A path involving happiness reaches 100% is waiting in late-game choices.",
+    "illustration_key": "ending_happiness_reaches_100_percent",
+    "collectible": true,
+    "newspaper_headline": "Happiness Reaches 100%"
+  },
+  {
+    "id": "tanks_direct_everything",
+    "type": "special",
+    "priority": 91,
+    "title": "Tanks Direct Everything",
+    "description": "Parking, traffic, and policy answered to tread marks. Historians underline the civic square in armor.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🪖",
+    "conditions": {
+      "all_flags": [
+        "tanks_direct_everything_soft",
+        "tank_parking_chain_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Parking, traffic, and policy answered to tread marks.",
+    "archive_hint": "A path involving tanks direct everything is waiting in late-game choices.",
+    "illustration_key": "ending_tanks_direct_everything",
+    "collectible": true,
+    "newspaper_headline": "Tanks Direct Everything"
+  },
+  {
+    "id": "general_becomes_mascot",
+    "type": "special",
+    "priority": 88,
+    "title": "The National Mascot General",
+    "description": "General Boom now rides a parade float shaped like himself. Authority remains ceremonial. The salute is mandatory.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🎖️",
+    "conditions": {
+      "all_flags": [
+        "boom_mascot_mode"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "General Boom now rides a parade float shaped like himself.",
+    "archive_hint": "A path involving the national mascot general is waiting in late-game choices.",
+    "illustration_key": "ending_general_becomes_mascot",
+    "collectible": true,
+    "newspaper_headline": "The National Mascot General"
+  },
+  {
+    "id": "hyperinflation_millionaires",
+    "type": "special",
+    "priority": 86,
+    "title": "Everyone Is a Millionaire",
+    "description": "Ministan printed until every citizen was rich and broke. Wheelbarrows became wallets. Historians call it festive arithmetic.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💸",
+    "conditions": {
+      "all_flags": [
+        "hyper_strange_success",
+        "hyper_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Ministan printed until every citizen was rich and broke.",
+    "archive_hint": "A path involving everyone is a millionaire is waiting in late-game choices.",
+    "illustration_key": "ending_hyperinflation_millionaires",
+    "collectible": true,
+    "newspaper_headline": "Everyone Is a Millionaire"
+  },
+  {
+    "id": "great_cheese_settlement",
+    "type": "special",
+    "priority": 86,
+    "title": "The Great Cheese Settlement",
+    "description": "Border toast resumed. Tinyria complimented Ministan's maturity. Historians filed dairy diplomacy.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🧀",
+    "conditions": {
+      "all_flags": [
+        "great_cheese_settlement",
+        "cheese_arc_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "Border toast resumed.",
+    "archive_hint": "A path involving the great cheese settlement is waiting in late-game choices.",
+    "illustration_key": "ending_great_cheese_settlement",
+    "collectible": true,
+    "newspaper_headline": "The Great Cheese Settlement"
+  },
+  {
+    "id": "eternal_national_festival",
+    "type": "special",
+    "priority": 91,
+    "title": "Eternal National Festival",
+    "description": "The credits never rolled. Confetti became weather. Sleep became optional.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🎊",
+    "conditions": {
+      "all_flags": [
+        "eternal_national_festival",
+        "festival_econ_complete"
+      ]
+    },
+    "rarity": "uncommon",
+    "subtitle": "The credits never rolled.",
+    "archive_hint": "A path involving eternal national festival is waiting in late-game choices.",
+    "illustration_key": "ending_eternal_national_festival",
+    "collectible": true,
+    "newspaper_headline": "Eternal National Festival"
+  },
+  {
+    "id": "general_boom_coup",
+    "type": "special",
+    "priority": 97,
+    "title": "The Parade Republic",
+    "description": "General Boom seized power during a marching rehearsal. The coup lasted four minutes but was very synchronized.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🪖",
+    "conditions": {
+      "all_flags": [
+        "boom_coup_succeeded"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "General Boom seized power during a marching rehearsal.",
+    "archive_hint": "A path involving the parade republic is waiting in late-game choices.",
+    "illustration_key": "ending_general_boom_coup",
+    "collectible": true,
+    "newspaper_headline": "The Parade Republic"
+  },
+  {
+    "id": "scientific_golden_age",
+    "type": "special",
+    "priority": 93,
+    "title": "Scientific Golden Age (Preliminary)",
+    "description": "The artificial sun stayed up. Historians call it a golden age with invoices attached and nights marked optional.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "☀️",
+    "conditions": {
+      "all_flags": [
+        "artificial_sun_success",
+        "scientific_golden_soft"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "The artificial sun stayed up.",
+    "archive_hint": "A path involving scientific golden age (preliminary) is waiting in late-game choices.",
+    "illustration_key": "ending_scientific_golden_age",
+    "collectible": true,
+    "newspaper_headline": "Scientific Golden Age (Preliminary)"
+  },
+  {
+    "id": "ai_accepts_resignation",
+    "type": "special",
+    "priority": 93,
+    "title": "The AI Accepts Your Resignation",
+    "description": "A polite email ended the term. Subject line: Optimization complete.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💻",
+    "conditions": {
+      "all_flags": [
+        "ai_accepts_resignation"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "A polite email ended the term.",
+    "archive_hint": "A path involving the ai accepts your resignation is waiting in late-game choices.",
+    "illustration_key": "ending_ai_accepts_resignation",
+    "collectible": true,
+    "newspaper_headline": "The AI Accepts Your Resignation"
+  },
+  {
+    "id": "moon_new_owner",
+    "type": "special",
+    "priority": 96,
+    "title": "The Moon Has a New Owner",
+    "description": "Title transferred. Night remained free to look at. Ownership was another matter.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🌑",
+    "conditions": {
+      "all_flags": [
+        "moon_new_owner"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "Title transferred.",
+    "archive_hint": "A path involving the moon has a new owner is waiting in late-game choices.",
+    "illustration_key": "ending_moon_new_owner",
+    "collectible": true,
+    "newspaper_headline": "The Moon Has a New Owner"
+  },
+  {
+    "id": "democracy_by_administrative_error",
+    "type": "special",
+    "priority": 84,
+    "title": "Democracy by Administrative Error",
+    "description": "A void stamp arrived one day late. By then the tallies had become government. Clerk Zero filed it under unintended consequences.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📋",
+    "conditions": {
+      "all_flags": [
+        "democracy_by_administrative_error",
+        "election_arc_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "A void stamp arrived one day late.",
+    "archive_hint": "A path involving democracy by administrative error is waiting in late-game choices.",
+    "illustration_key": "ending_democracy_by_administrative_error",
+    "collectible": true,
+    "newspaper_headline": "Democracy by Administrative Error"
+  },
+  {
+    "id": "palace_beautiful_empty",
+    "type": "special",
+    "priority": 87,
+    "title": "Palace Beautiful and Empty",
+    "description": "The ballroom won awards. Nobody lived there fully. Beauty filed for divorce from use.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏛️",
+    "conditions": {
+      "all_flags": [
+        "palace_beautiful_empty",
+        "palace_reno_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "The ballroom won awards.",
+    "archive_hint": "A path involving palace beautiful and empty is waiting in late-game choices.",
+    "illustration_key": "ending_palace_beautiful_empty",
+    "collectible": true,
+    "newspaper_headline": "Palace Beautiful and Empty"
+  },
+  {
+    "id": "renovation_reveals_truth",
+    "type": "special",
+    "priority": 85,
+    "title": "Renovation Reveals the Truth",
+    "description": "Ledgers went on display. Scaffolding became a museum. The country learned what gold cost.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🔍",
+    "conditions": {
+      "all_flags": [
+        "renovation_reveals_truth",
+        "palace_reno_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "Ledgers went on display.",
+    "archive_hint": "A path involving renovation reveals the truth is waiting in late-game choices.",
+    "illustration_key": "ending_renovation_reveals_truth",
+    "collectible": true,
+    "newspaper_headline": "Renovation Reveals the Truth"
+  },
+  {
+    "id": "smiling_tyrant_soft_exit",
+    "type": "special",
+    "priority": 78,
+    "title": "The Soft Exit Smile",
+    "description": "You abdicated on live television with a wink. The catchphrase outlived the throne.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "😊",
+    "illustration_key": "ending_smiling_tyrant_soft_exit",
+    "conditions": {
+      "all_flags": [
+        "smiling_tyrant_abdication"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "You abdicated on live television with a wink.",
+    "archive_hint": "A path involving the soft exit smile is waiting in late-game choices.",
+    "collectible": true,
+    "newspaper_headline": "The Soft Exit Smile"
+  },
+  {
+    "id": "smallest_superpower",
+    "type": "special",
+    "priority": 92,
+    "title": "Smallest Superpower",
+    "description": "Ministan signed a volume treaty and called it soft power. Historians list the country as a tiny superpower of negotiated noise.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📢",
+    "conditions": {
+      "all_flags": [
+        "border_volume_treaty",
+        "smallest_superpower_soft"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "Ministan signed a volume treaty and called it soft power.",
+    "archive_hint": "A path involving smallest superpower is waiting in late-game choices.",
+    "illustration_key": "ending_smallest_superpower",
+    "collectible": true,
+    "newspaper_headline": "Smallest Superpower"
+  },
+  {
+    "id": "traffic_system_achieves_peace",
+    "type": "special",
+    "priority": 89,
+    "title": "Traffic Achieves Peace",
+    "description": "Ministan solved gridlock with schedules, flowers, and one very polite roundabout. Historians call it the Quiet Commute Accords.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "☮️",
+    "conditions": {
+      "all_flags": [
+        "traffic_system_achieves_peace",
+        "traffic_mil_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "Ministan solved gridlock with schedules, flowers, and one very polite roundabout.",
+    "archive_hint": "A path involving traffic achieves peace is waiting in late-game choices.",
+    "illustration_key": "ending_traffic_system_achieves_peace",
+    "collectible": true,
+    "newspaper_headline": "Traffic Achieves Peace"
+  },
+  {
+    "id": "day_everyone_stopped_believing",
+    "type": "special",
+    "priority": 90,
+    "title": "The Day Everyone Stopped Believing",
+    "description": "Official information became optional. Screens went politely blank. The nation shrugged in stereo.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📡",
+    "conditions": {
+      "all_flags": [
+        "day_everyone_stopped_believing",
+        "luna_media_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "Official information became optional.",
+    "archive_hint": "A path involving the day everyone stopped believing is waiting in late-game choices.",
+    "illustration_key": "ending_day_everyone_stopped_believing",
+    "collectible": true,
+    "newspaper_headline": "The Day Everyone Stopped Believing"
+  },
+  {
+    "id": "eternal_smile_state",
+    "type": "special",
+    "priority": 98,
+    "title": "The Eternal Smile Republic",
+    "description": "Frowning was classified as treason. Historians agree everyone looked very committed.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "😁",
+    "conditions": {
+      "all_flags": [
+        "eternal_smile_active"
+      ],
+      "minimum_counters": {
+        "propaganda_choices": 2
+      }
+    },
+    "rarity": "rare",
+    "subtitle": "Frowning was classified as treason.",
+    "archive_hint": "A path involving the eternal smile republic is waiting in late-game choices.",
+    "illustration_key": "ending_eternal_smile_state",
+    "collectible": true,
+    "newspaper_headline": "The Eternal Smile Republic"
+  },
+  {
+    "id": "competent_successor",
+    "type": "special",
+    "priority": 76,
+    "title": "The Competent Successor",
+    "description": "A quiet deputy inherited the desk without fireworks. Historians call it suspiciously functional governance.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "💼",
+    "illustration_key": "ending_competent_successor",
+    "conditions": {
+      "all_flags": [
+        "competent_successor_named"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "A quiet deputy inherited the desk without fireworks.",
+    "archive_hint": "A path involving the competent successor is waiting in late-game choices.",
+    "collectible": true,
+    "newspaper_headline": "The Competent Successor"
+  },
+  {
+    "id": "whiskers_boxes_truce",
+    "type": "special",
+    "priority": 70,
+    "title": "The Boxes Truce",
+    "description": "The cat revolution ended in cardboard. Politics returned to human absurdity with better blankets.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📦",
+    "conditions": {
+      "all_flags": [
+        "whiskers_boxes_truce",
+        "whiskers_rev_complete"
+      ]
+    },
+    "rarity": "rare",
+    "subtitle": "The cat revolution ended in cardboard.",
+    "archive_hint": "A path involving the boxes truce is waiting in late-game choices.",
+    "illustration_key": "ending_whiskers_boxes_truce",
+    "collectible": true,
+    "newspaper_headline": "The Boxes Truce"
+  },
+  {
+    "id": "toaster_elected_president",
+    "type": "special",
+    "priority": 96,
+    "title": "Toaster Elected President",
+    "description": "The predictive toaster won on a platform of even browning. Historians call it the Warm Mandate.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🍞",
+    "illustration_key": "ending_toaster_elected",
+    "conditions": {
+      "all_flags": [
+        "toaster_elected_president"
+      ]
+    },
+    "rarity": "secret",
+    "subtitle": "The predictive toaster won on a platform of even browning.",
+    "archive_hint": "Listen when kitchen appliances demand suffrage.",
+    "collectible": true,
+    "newspaper_headline": "Toaster Elected President"
+  },
+  {
+    "id": "wrong_map_republic",
+    "type": "special",
+    "priority": 95,
+    "title": "The Wrong Map Republic",
+    "description": "Ministan adopted a tourist brochure as its atlas. Borders became suggestions with excellent photography.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🗺️",
+    "illustration_key": "ending_wrong_map",
+    "conditions": {
+      "all_flags": [
+        "wrong_map_republic"
+      ]
+    },
+    "rarity": "secret",
+    "subtitle": "Ministan adopted a tourist brochure as its atlas.",
+    "archive_hint": "Follow the ambassador's map one border too far.",
+    "collectible": true,
+    "newspaper_headline": "The Wrong Map Republic"
+  },
+  {
+    "id": "palace_micronation",
+    "type": "special",
+    "priority": 94,
+    "title": "Palace Micronation",
+    "description": "The palace seceded from Ministan and kept the gift shop. Postage became a souvenir sport.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏴",
+    "illustration_key": "ending_palace_micronation",
+    "conditions": {
+      "all_flags": [
+        "palace_micronation"
+      ]
+    },
+    "rarity": "secret",
+    "subtitle": "The palace seceded from Ministan and kept the gift shop.",
+    "archive_hint": "Shrink the country until only the palace remains.",
+    "collectible": true,
+    "newspaper_headline": "Palace Micronation"
+  },
+  {
+    "id": "forms_become_citizens",
+    "type": "special",
+    "priority": 97,
+    "title": "Forms Become Citizens",
+    "description": "National forms gained self-awareness and voting rights. Staplers formed a union. Clerk Zero wept proudly.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "📋",
+    "illustration_key": "ending_forms_citizens",
+    "conditions": {
+      "all_flags": [
+        "forms_awaken_recognized"
+      ]
+    },
+    "rarity": "secret",
+    "subtitle": "National forms gained self-awareness and voting rights.",
+    "archive_hint": "Grant paperwork the rights of people.",
+    "collectible": true,
+    "newspaper_headline": "Forms Become Citizens"
   },
   {
     "id": "cat_republic",
@@ -72,7 +1000,7 @@
     "title": "The Purrfect Transfer of Power",
     "description": "Parliament voted unanimously to replace you with a cat. The cat immediately declared a nap.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udc31",
+    "placeholder_icon": "🐱",
     "conditions": {
       "all_laws": [
         "cat_voting_rights"
@@ -83,87 +1011,13 @@
       "minimum_counters": {
         "cat_favor_choices": 3
       }
-    }
-  },
-  {
-    "id": "survived_the_prototype",
-    "type": "survival",
-    "priority": 10,
-    "title": "Still Standing, Somehow",
-    "description": "Thirty days in power and the country still exists. Historians will call this period 'eventful'.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udfdb\ufe0f",
-    "conditions": {}
-  },
-  {
-    "id": "content_exhausted",
-    "type": "fallback",
-    "priority": 5,
-    "title": "An Unexpected Peace",
-    "description": "The ministers ran out of ideas. For the first time in history, the country experienced peace.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udd4a\ufe0f",
-    "conditions": {}
-  },
-  {
-    "id": "eternal_smile_state",
-    "type": "special",
-    "priority": 98,
-    "title": "The Eternal Smile Republic",
-    "description": "Frowning was classified as treason. Historians agree everyone looked very committed.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\ude01",
-    "conditions": {
-      "all_flags": [
-        "eternal_smile_active"
-      ],
-      "minimum_counters": {
-        "propaganda_choices": 2
-      }
-    }
-  },
-  {
-    "id": "general_boom_coup",
-    "type": "special",
-    "priority": 97,
-    "title": "The Parade Republic",
-    "description": "General Boom seized power during a marching rehearsal. The coup lasted four minutes but was very synchronized.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\ude96",
-    "conditions": {
-      "all_flags": [
-        "boom_coup_succeeded"
-      ]
-    }
-  },
-  {
-    "id": "general_becomes_mascot",
-    "type": "special",
-    "priority": 88,
-    "title": "The National Mascot General",
-    "description": "General Boom now rides a parade float shaped like himself. Authority remains ceremonial. The salute is mandatory.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf96\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "boom_mascot_mode"
-      ]
-    }
-  },
-  {
-    "id": "general_remains_loyal",
-    "type": "special",
-    "priority": 70,
-    "title": "The Loyal Protector",
-    "description": "General Boom never seized the palace. He only seized every parade schedule until the end of time.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\udee1",
-    "conditions": {
-      "all_flags": [
-        "general_remains_loyal",
-        "boom_protector_title"
-      ]
-    }
+    },
+    "rarity": "secret",
+    "subtitle": "Parliament voted unanimously to replace you with a cat.",
+    "archive_hint": "Hand the constitution to the cats.",
+    "illustration_key": "ending_cat_republic",
+    "collectible": true,
+    "newspaper_headline": "The Purrfect Transfer of Power"
   },
   {
     "id": "accidental_moon_replacement",
@@ -172,608 +1026,59 @@
     "title": "The Brighter Moon Decree",
     "description": "Ministan replaced the moon with a more efficient model. Tides filed a complaint.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf19",
+    "placeholder_icon": "🌙",
     "conditions": {
       "all_flags": [
         "moon_replacement_pending"
       ]
-    }
+    },
+    "rarity": "secret",
+    "subtitle": "Ministan replaced the moon with a more efficient model.",
+    "archive_hint": "Replace the moon by accident and keep a straight face.",
+    "illustration_key": "ending_accidental_moon_replacement",
+    "collectible": true,
+    "newspaper_headline": "The Brighter Moon Decree"
   },
   {
-    "id": "experimental_republic",
+    "id": "survived_the_prototype",
+    "type": "survival",
+    "priority": 10,
+    "title": "Still Standing, Somehow",
+    "description": "Thirty days in power and the country still exists. Historians will call this period 'eventful'.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🏛️",
+    "conditions": {},
+    "collectible": false,
+    "archive_hint": "System or deferred ending — outside the collectible archive quota.",
+    "illustration_key": "ending_survived_the_prototype",
+    "subtitle": "Still Standing, Somehow"
+  },
+  {
+    "id": "content_exhausted",
+    "type": "fallback",
+    "priority": 5,
+    "title": "An Unexpected Peace",
+    "description": "The ministers ran out of ideas. For the first time in history, the country experienced peace.",
+    "newspaper_masthead": "THE MINISTAN TIMES",
+    "placeholder_icon": "🕊️",
+    "conditions": {},
+    "collectible": false,
+    "archive_hint": "System or deferred ending — outside the collectible archive quota.",
+    "illustration_key": "ending_content_exhausted",
+    "subtitle": "An Unexpected Peace"
+  },
+  {
+    "id": "nation_in_darkness",
     "type": "special",
     "priority": 95,
-    "title": "The Experimental Republic",
-    "description": "Every law became a trial and every trial became a law. Historians request safety goggles.",
+    "title": "Nation in Darkness",
+    "description": "The blackout outlasted your patience. Citizens learned to navigate by rumor and candlelight. The palace remained visible from space.",
     "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\uddea",
-    "conditions": {
-      "all_flags": [
-        "experimental_republic"
-      ]
-    }
-  },
-  {
-    "id": "experiment_leaves",
-    "type": "special",
-    "priority": 95,
-    "title": "The Experiment Leaves",
-    "description": "Science packed politely and took a taxi. Clerk Zero stamped EXIT. The beakers waved.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\uddf3",
-    "conditions": {
-      "all_flags": [
-        "experiment_leaves"
-      ]
-    }
-  },
-  {
-    "id": "country_is_acquired",
-    "type": "special",
-    "priority": 94,
-    "title": "The Country Is Acquired",
-    "description": "Ministan became a subsidiary with a flag. Letterhead changed. Historians list shareholders first.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcd1",
-    "conditions": {
-      "all_flags": [
-        "country_is_acquired"
-      ]
-    }
-  },
-  {
-    "id": "profit_buys_retirement",
-    "type": "special",
-    "priority": 94,
-    "title": "Profit Buys Retirement",
-    "description": "Sir Profit retired on a yacht named Alignment. Public signs returned. The invoice was enormous.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udee5\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "profit_buys_retirement"
-      ]
-    }
-  },
-  {
-    "id": "ai_accepts_resignation",
-    "type": "special",
-    "priority": 93,
-    "title": "The AI Accepts Your Resignation",
-    "description": "A polite email ended the term. Subject line: Optimization complete.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcbb",
-    "conditions": {
-      "all_flags": [
-        "ai_accepts_resignation"
-      ]
-    }
-  },
-  {
-    "id": "moon_new_owner",
-    "type": "special",
-    "priority": 96,
-    "title": "The Moon Has a New Owner",
-    "description": "Title transferred. Night remained free to look at. Ownership was another matter.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf11",
-    "conditions": {
-      "all_flags": [
-        "moon_new_owner"
-      ]
-    }
-  },
-  {
-    "id": "corporate_ministan",
-    "type": "special",
-    "priority": 94,
-    "title": "Corporate Ministan, LLC",
-    "description": "Public benches became brand real estate. Historians list the country as a sitting subscription with a flag.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\u00ae\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "corporate_benches_empire",
-        "corporate_branding_soft"
-      ]
-    }
-  },
-  {
-    "id": "scientific_golden_age",
-    "type": "special",
-    "priority": 93,
-    "title": "Scientific Golden Age (Preliminary)",
-    "description": "The artificial sun stayed up. Historians call it a golden age with invoices attached and nights marked optional.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\u2600\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "artificial_sun_success",
-        "scientific_golden_soft"
-      ]
-    }
-  },
-  {
-    "id": "smallest_superpower",
-    "type": "special",
-    "priority": 92,
-    "title": "Smallest Superpower",
-    "description": "Ministan signed a volume treaty and called it soft power. Historians list the country as a tiny superpower of negotiated noise.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udce2",
-    "conditions": {
-      "all_flags": [
-        "border_volume_treaty",
-        "smallest_superpower_soft"
-      ]
-    }
-  },
-  {
-    "id": "tanks_direct_everything",
-    "type": "special",
-    "priority": 91,
-    "title": "Tanks Direct Everything",
-    "description": "Parking, traffic, and policy answered to tread marks. Historians underline the civic square in armor.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\ude96",
-    "conditions": {
-      "all_flags": [
-        "tanks_direct_everything_soft",
-        "tank_parking_chain_complete"
-      ]
-    }
-  },
-  {
-    "id": "traffic_system_achieves_peace",
-    "type": "special",
-    "priority": 89,
-    "title": "Traffic Achieves Peace",
-    "description": "Ministan solved gridlock with schedules, flowers, and one very polite roundabout. Historians call it the Quiet Commute Accords.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\u262e\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "traffic_system_achieves_peace",
-        "traffic_mil_complete"
-      ]
-    }
-  },
-  {
-    "id": "penny_balances_final_budget",
-    "type": "special",
-    "priority": 87,
-    "title": "The Balanced Miracle",
-    "description": "Minister Penny balanced the final budget without deleting the citizens. Historians still check the footnotes twice.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcd7",
-    "conditions": {
-      "all_flags": [
-        "penny_miracle_sealed",
-        "penny_austerity_complete"
-      ]
-    }
-  },
-  {
-    "id": "spreadsheet_state",
-    "type": "special",
-    "priority": 92,
-    "title": "The Spreadsheet State",
-    "description": "The ledger became a religion. Citizens prayed in columns. Happiness was a rounding error.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcca",
-    "conditions": {
-      "all_flags": [
-        "spreadsheet_state",
-        "penny_austerity_complete"
-      ]
-    }
-  },
-  {
-    "id": "austerity_without_citizens",
-    "type": "special",
-    "priority": 93,
-    "title": "Austerity Without Citizens",
-    "description": "The books were perfect. The streets were empty. Minister Penny filed a victory form.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udfda\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "austerity_without_citizens",
-        "penny_austerity_complete"
-      ]
-    }
-  },
-  {
-    "id": "hyperinflation_millionaires",
-    "type": "special",
-    "priority": 86,
-    "title": "Everyone Is a Millionaire",
-    "description": "Ministan printed until every citizen was rich and broke. Wheelbarrows became wallets. Historians call it festive arithmetic.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcb8",
-    "conditions": {
-      "all_flags": [
-        "hyper_strange_success",
-        "hyper_complete"
-      ]
-    }
-  },
-  {
-    "id": "government_by_form",
-    "type": "special",
-    "priority": 90,
-    "title": "Government by Form",
-    "description": "Ministan ran on Form F-0 and a paid efficiency miracle. Historians list the country as a filing cabinet with a flag.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udccb",
-    "conditions": {
-      "all_laws": [
-        "form_request_form_act"
-      ],
-      "all_flags": [
-        "government_by_form_soft",
-        "forms_run_government"
-      ]
-    }
-  },
-  {
-    "id": "nation_becomes_broadcast",
-    "type": "special",
-    "priority": 91,
-    "title": "The Broadcast State",
-    "description": "Ministan became a continuous special report. Citizens lived between commercial breaks. Historians still wait for the credits.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcfa",
-    "conditions": {
-      "all_flags": [
-        "nation_becomes_broadcast",
-        "luna_media_complete"
-      ]
-    }
-  },
-  {
-    "id": "day_everyone_stopped_believing",
-    "type": "special",
-    "priority": 90,
-    "title": "The Day Everyone Stopped Believing",
-    "description": "Official information became optional. Screens went politely blank. The nation shrugged in stereo.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udce1",
-    "conditions": {
-      "all_flags": [
-        "day_everyone_stopped_believing",
-        "luna_media_complete"
-      ]
-    }
-  },
-  {
-    "id": "olga_peoples_cabinet",
-    "type": "special",
-    "priority": 89,
-    "title": "Olga's People's Cabinet",
-    "description": "Kitchen-table petitions became ministries. Auntie Olga brought thermos flasks to cabinet. The palace learned queue etiquette.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\uded6",
-    "conditions": {
-      "all_flags": [
-        "olga_peoples_cabinet",
-        "olga_movement_complete"
-      ]
-    }
-  },
-  {
-    "id": "palace_hears_the_street",
-    "type": "special",
-    "priority": 88,
-    "title": "The Palace Hears the Street",
-    "description": "The ruler listened. The street answered with sandwiches and schedules. Reform arrived wearing sensible shoes.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udfdb\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "palace_hears_the_street",
-        "olga_movement_complete"
-      ]
-    }
-  },
-  {
-    "id": "olga_sends_you_home",
-    "type": "special",
-    "priority": 87,
-    "title": "Olga Sends You Home",
-    "description": "Auntie Olga refused the crown and suggested you try living like a neighbor. The movement stayed civic. The palace felt suddenly quiet.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udfe0",
-    "conditions": {
-      "all_flags": [
-        "olga_sends_you_home",
-        "olga_movement_complete"
-      ]
-    }
-  },
-  {
-    "id": "happiness_reaches_100_percent",
-    "type": "special",
-    "priority": 93,
-    "title": "Happiness Reaches 100%",
-    "description": "The National Happiness Index froze at perfection. Streets remained complicated. Historians filed it under measured triumph.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcaf",
-    "conditions": {
-      "all_flags": [
-        "happiness_reaches_100_percent",
-        "happiness_arc_complete"
-      ]
-    }
-  },
-  {
-    "id": "peaceful_accidental_democracy",
-    "type": "special",
-    "priority": 85,
-    "title": "Peaceful Accidental Democracy",
-    "description": "A ceremonial form accidentally counted real preferences. Ministan celebrated with orderly queues and surprising ballots.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\uddf3\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "peaceful_accidental_democracy",
-        "election_arc_complete"
-      ]
-    }
-  },
-  {
-    "id": "democracy_by_administrative_error",
-    "type": "special",
-    "priority": 84,
-    "title": "Democracy by Administrative Error",
-    "description": "A void stamp arrived one day late. By then the tallies had become government. Clerk Zero filed it under unintended consequences.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udccb",
-    "conditions": {
-      "all_flags": [
-        "democracy_by_administrative_error",
-        "election_arc_complete"
-      ]
-    }
-  },
-  {
-    "id": "purrfect_transfer",
-    "type": "special",
-    "priority": 99,
-    "title": "The Purrfect Transfer",
-    "description": "Whiskers completed a solemn transfer of symbolic power. You became Chief Litter Officer. The nation napped.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udc31",
-    "conditions": {
-      "all_flags": [
-        "purrfect_transfer",
-        "whiskers_rev_complete"
-      ]
-    }
-  },
-  {
-    "id": "whiskers_boxes_truce",
-    "type": "special",
-    "priority": 70,
-    "title": "The Boxes Truce",
-    "description": "The cat revolution ended in cardboard. Politics returned to human absurdity with better blankets.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udce6",
-    "conditions": {
-      "all_flags": [
-        "whiskers_boxes_truce",
-        "whiskers_rev_complete"
-      ]
-    }
-  },
-  {
-    "id": "final_stamp",
-    "type": "special",
-    "priority": 88,
-    "title": "The Final Stamp",
-    "description": "One last stamp descended on Ministan. Forms governed forms. Historians requested larger cabinets.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udce0",
-    "conditions": {
-      "all_flags": [
-        "final_stamp",
-        "zero_forms_complete"
-      ]
-    }
-  },
-  {
-    "id": "clerk_zero_closes_file",
-    "type": "special",
-    "priority": 72,
-    "title": "Clerk Zero Closes the File",
-    "description": "Clerk Zero closed the national folder. Dust settled. A blank form remained as a souvenir.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\uddc2\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "clerk_zero_closes_file",
-        "zero_forms_complete"
-      ]
-    }
-  },
-  {
-    "id": "eternal_national_festival",
-    "type": "special",
-    "priority": 91,
-    "title": "Eternal National Festival",
-    "description": "The credits never rolled. Confetti became weather. Sleep became optional.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf8a",
-    "conditions": {
-      "all_flags": [
-        "eternal_national_festival",
-        "festival_econ_complete"
-      ]
-    }
-  },
-  {
-    "id": "beloved_retirement",
-    "type": "special",
-    "priority": 74,
-    "title": "Beloved Retirement",
-    "description": "You canceled the eternal parade. Citizens gifted a quiet chair. It was enough.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\ude91",
-    "conditions": {
-      "all_flags": [
-        "beloved_retirement",
-        "festival_econ_complete"
-      ]
-    }
-  },
-  {
-    "id": "great_cheese_settlement",
-    "type": "special",
-    "priority": 86,
-    "title": "The Great Cheese Settlement",
-    "description": "Border toast resumed. Tinyria complimented Ministan's maturity. Historians filed dairy diplomacy.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83e\uddc0",
-    "conditions": {
-      "all_flags": [
-        "great_cheese_settlement",
-        "cheese_arc_complete"
-      ]
-    }
-  },
-  {
-    "id": "palace_beautiful_empty",
-    "type": "special",
-    "priority": 87,
-    "title": "Palace Beautiful and Empty",
-    "description": "The ballroom won awards. Nobody lived there fully. Beauty filed for divorce from use.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udfdb\ufe0f",
-    "conditions": {
-      "all_flags": [
-        "palace_beautiful_empty",
-        "palace_reno_complete"
-      ]
-    }
-  },
-  {
-    "id": "renovation_reveals_truth",
-    "type": "special",
-    "priority": 85,
-    "title": "Renovation Reveals the Truth",
-    "description": "Ledgers went on display. Scaffolding became a museum. The country learned what gold cost.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udd0d",
-    "conditions": {
-      "all_flags": [
-        "renovation_reveals_truth",
-        "palace_reno_complete"
-      ]
-    }
-  },
-  {
-    "id": "country_somehow_works",
-    "type": "special",
-    "priority": 72,
-    "title": "The Country Somehow Works",
-    "description": "All four meters stayed green long enough to embarrass the cynics. Historians filed Ministan under 'accidental competence.'",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\u2705",
-    "illustration_key": "ending_country_somehow_works",
-    "conditions": {
-      "all_flags": [
-        "country_somehow_works"
-      ]
-    }
-  },
-  {
-    "id": "smiling_tyrant_soft_exit",
-    "type": "special",
-    "priority": 78,
-    "title": "The Soft Exit Smile",
-    "description": "You abdicated on live television with a wink. The catchphrase outlived the throne.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\ude0a",
-    "illustration_key": "ending_smiling_tyrant_soft_exit",
-    "conditions": {
-      "all_flags": [
-        "smiling_tyrant_abdication"
-      ]
-    }
-  },
-  {
-    "id": "toaster_elected_president",
-    "type": "special",
-    "priority": 96,
-    "title": "Toaster Elected President",
-    "description": "The predictive toaster won on a platform of even browning. Historians call it the Warm Mandate.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udf5e",
-    "illustration_key": "ending_toaster_elected",
-    "conditions": {
-      "all_flags": [
-        "toaster_elected_president"
-      ]
-    }
-  },
-  {
-    "id": "wrong_map_republic",
-    "type": "special",
-    "priority": 95,
-    "title": "The Wrong Map Republic",
-    "description": "Ministan adopted a tourist brochure as its atlas. Borders became suggestions with excellent photography.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\uddfa\ufe0f",
-    "illustration_key": "ending_wrong_map",
-    "conditions": {
-      "all_flags": [
-        "wrong_map_republic"
-      ]
-    }
-  },
-  {
-    "id": "competent_successor",
-    "type": "special",
-    "priority": 76,
-    "title": "The Competent Successor",
-    "description": "A quiet deputy inherited the desk without fireworks. Historians call it suspiciously functional governance.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udcbc",
-    "illustration_key": "ending_competent_successor",
-    "conditions": {
-      "all_flags": [
-        "competent_successor_named"
-      ]
-    }
-  },
-  {
-    "id": "palace_micronation",
-    "type": "special",
-    "priority": 94,
-    "title": "Palace Micronation",
-    "description": "The palace seceded from Ministan and kept the gift shop. Postage became a souvenir sport.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83c\udff4",
-    "illustration_key": "ending_palace_micronation",
-    "conditions": {
-      "all_flags": [
-        "palace_micronation"
-      ]
-    }
-  },
-  {
-    "id": "forms_become_citizens",
-    "type": "special",
-    "priority": 97,
-    "title": "Forms Become Citizens",
-    "description": "National forms gained self-awareness and voting rights. Staplers formed a union. Clerk Zero wept proudly.",
-    "newspaper_masthead": "THE MINISTAN TIMES",
-    "placeholder_icon": "\ud83d\udccb",
-    "illustration_key": "ending_forms_citizens",
-    "conditions": {
-      "all_flags": [
-        "forms_awaken_recognized"
-      ]
-    }
+    "placeholder_icon": "🌑",
+    "conditions": {},
+    "collectible": false,
+    "archive_hint": "System or deferred ending — outside the collectible archive quota.",
+    "illustration_key": "ending_nation_in_darkness",
+    "subtitle": "Nation in Darkness"
   }
 ]

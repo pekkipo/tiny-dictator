@@ -27,6 +27,8 @@ func _populate_endings() -> void:
 	var content: ContentRepository = GameManager.get_content()
 	var records: Dictionary = MetaProgressionManager.get_all_ending_records()
 	for ending in content.get_raw_endings():
+		if ending.has("collectible") and not bool(ending.get("collectible", true)):
+			continue
 		var ending_id: String = str(ending.get("id", ""))
 		var row := _make_ending_row(ending, records.get(ending_id, {}))
 		%EndingList.add_child(row)
@@ -48,12 +50,24 @@ func _make_ending_row(ending: Dictionary, record: Dictionary) -> PanelContainer:
 	var unlocked: bool = not record.is_empty() and bool(record.get("unlocked", false))
 	var icon: String = str(ending.get("placeholder_icon", "📰")) if unlocked else "❓"
 	var title: String = str(ending.get("title", ending.get("id", ""))) if unlocked else "???"
-	var desc: String = str(ending.get("description", "")) if unlocked else "Reach this ending to unlock the archive entry."
+	var rarity: String = str(ending.get("rarity", ""))
+	var desc: String = str(ending.get("description", "")) if unlocked else str(ending.get("archive_hint", "Reach this ending to unlock the archive entry."))
 
 	var title_label := Label.new()
-	title_label.text = "%s  %s" % [icon, title]
+	if unlocked and not rarity.is_empty():
+		title_label.text = "%s  %s (%s)" % [icon, title, rarity]
+	else:
+		title_label.text = "%s  %s" % [icon, title]
 	title_label.add_theme_font_size_override("font_size", 24)
 	vbox.add_child(title_label)
+
+	if unlocked:
+		var subtitle: String = str(ending.get("subtitle", ""))
+		if not subtitle.is_empty() and subtitle != title:
+			var subtitle_label := Label.new()
+			subtitle_label.text = subtitle
+			subtitle_label.add_theme_font_size_override("font_size", 18)
+			vbox.add_child(subtitle_label)
 
 	var desc_label := Label.new()
 	desc_label.text = desc
