@@ -8,7 +8,7 @@
     "category": "economy",
     "proposal": "Treasury gap meets prestige opportunity: list the Moon as a lunar reserve asset. No rockets required—only deeds, headlines, and optimism.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 6,
     "minimum_day": 9,
     "maximum_day": 24,
     "narrative": {
@@ -742,7 +742,6 @@
         "trait_changes": {
           "capitalist": 2
         },
-        "trigger_ending": "moon_new_owner",
         "result_text": "Title transfers. Night remains free to look at. Ownership is another matter."
       },
       {

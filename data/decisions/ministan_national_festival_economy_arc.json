@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "Empty plazas. Quiet vendors. I propose Festival Stimulus Weekends — music, stalls, cameras. Tourism as economic CPR. Not an eternal parade. Yet.",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 6,
     "maximum_day": 18,
     "narrative": {

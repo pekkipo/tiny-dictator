@@ -63,7 +63,6 @@
         "trait_changes": {
           "populist": 2
         },
-        "trigger_ending": "peaceful_accidental_democracy",
         "result_text": "Citizens cheer. Ministers update résumés. The stapler becomes a ballot box."
       },
       {
@@ -267,7 +266,6 @@
         "trait_changes": {
           "capitalist": 2
         },
-        "trigger_ending": "corporate_ministan",
         "result_text": "The ceremony has sponsors. Zero stamps the invoice in protest."
       },
       {
@@ -293,7 +291,6 @@
         "trait_changes": {
           "bureaucratic": 2
         },
-        "trigger_ending": "government_by_form",
         "result_text": "The exit requires triplicate. Profit sulks in a branded lounge."
       },
       {
@@ -499,7 +496,6 @@
           "populist": 2,
           "bureaucratic": 1
         },
-        "trigger_ending": "peaceful_accidental_democracy",
         "result_text": "The gavel falls softly. Accidental democracy becomes intentional enough."
       },
       {
@@ -739,7 +735,6 @@
         "trait_changes": {
           "cat_friendly": 2
         },
-        "trigger_ending": "purrfect_transfer",
         "result_text": "You become Chief Scratcher. Policy arrives as polite headbutts."
       },
       {
@@ -860,7 +855,6 @@
         "trait_changes": {
           "scientific": 2
         },
-        "trigger_ending": "experimental_republic",
         "result_text": "Governance becomes a peer-reviewed hobby. Peer review is optional after lunch."
       },
       {
@@ -883,7 +877,6 @@
           "scientific": 1,
           "chaotic": 1
         },
-        "trigger_ending": "experiment_leaves",
         "result_text": "The lab packs itself. Citizens keep the patents and the weird streetlights."
       },
       {

@@ -2104,9 +2104,6 @@
       ]
     },
     "requirements": {
-      "minimum_advisor_affinity": {
-        "doctor_maybe": 2
-      },
       "any_laws": [
         "mandatory_smiling"
       ]

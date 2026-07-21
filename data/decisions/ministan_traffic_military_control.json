@@ -8,7 +8,7 @@
     "category": "infrastructure",
     "proposal": "Capital gridlock is practical, not ceremonial. Boom offers military route help. Penny has a civilian schedule. Someone suggests an absurdly perfect convoy clock.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 7,
     "minimum_day": 2,
     "maximum_day": 14,
     "narrative": {
@@ -71,11 +71,8 @@
             "branch_id": "martial_traffic"
           }
         ],
-        "result_text": "Soldiers claim the busiest lanes. Civilians invent new shortcuts through flower beds.",
-        "follow_up": {
-          "type": "hard",
-          "decision_id": "traffic_military_convoy"
-        }
+        "force_next_decision": "traffic_military_convoy",
+        "result_text": "Soldiers claim the busiest lanes. Civilians invent new shortcuts through flower beds."
       },
       {
         "id": "civilian_plan",
@@ -185,9 +182,6 @@
       ],
       "all_flags": [
         "traffic_mil_live"
-      ],
-      "any_laws": [
-        "emergency_salute_law"
       ]
     },
     "options": [
@@ -354,12 +348,6 @@
       "any_flags": [
         "traffic_martial_path",
         "traffic_absurd_path"
-      ],
-      "any_laws": [
-        "umbrella_tax"
-      ],
-      "blocked_laws": [
-        "weather_optimism_act"
       ]
     },
     "options": [
@@ -467,14 +455,8 @@
             "action": "advance"
           }
         ],
-        "result_text": "One hour of umbrellas. Eleven hours of rumor. The city holds its breath on schedule.",
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "traffic_control_climax",
-          "minimum_delay_days": 1,
-          "maximum_delay_days": 2,
-          "priority": 68
-        }
+        "force_next_decision": "traffic_control_climax",
+        "result_text": "One hour of umbrellas. Eleven hours of rumor. The city holds its breath on schedule."
       }
     ],
     "tags": [
@@ -713,16 +695,13 @@
           "tank_traffic_control"
         ],
         "add_flags": [
-          "traffic_mil_complete",
-          "traffic_peace_declared",
-          "traffic_system_achieves_peace"
+          "traffic_peace_declared"
         ],
         "remove_flags": [
           "traffic_mil_live",
           "checkpoint_grievance",
           "protest_pressure_traffic"
         ],
-        "trigger_ending": "traffic_system_achieves_peace",
         "result_text": "Historians file it under Impossible Commute Solved. Olga serves cake at the roundabout."
       },
       {
@@ -744,7 +723,6 @@
           "tank_traffic_control"
         ],
         "add_flags": [
-          "traffic_mil_complete",
           "traffic_soft_schedules"
         ],
         "remove_flags": [
@@ -847,7 +825,6 @@
           "authoritarian": 3
         },
         "add_flags": [
-          "traffic_mil_complete",
           "traffic_authoritarian_lock",
           "protest_pressure_traffic"
         ],
@@ -874,7 +851,6 @@
           "authoritarian": 1
         },
         "add_flags": [
-          "traffic_mil_complete",
           "traffic_absurd_success",
           "traffic_mil_tanks_soft"
         ],

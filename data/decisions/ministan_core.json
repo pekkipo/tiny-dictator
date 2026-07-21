@@ -8,7 +8,7 @@
     "category": "infrastructure",
     "proposal": "We can save money by switching off all traffic lights. Red and green are expensive colors.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 7,
     "minimum_day": 1,
     "maximum_day": 14,
     "debug_only": true,
@@ -162,7 +162,7 @@
     "category": "military",
     "proposal": "Capital crowds forget the perimeter. Authorize a public-order parade. Seven tanks. Maximum dignity.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 7,
     "minimum_day": 2,
     "maximum_day": 25,
     "narrative": {

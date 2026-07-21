@@ -1,0 +1,897 @@
+[
+  {
+    "id": "nap_zone_zoning_board",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "Citizens nap on sidewalks. Form a Zoning Board for Official Nap Zones. Maps will purr.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 2,
+    "maximum_day": 12,
+    "pacing": {
+      "allowed_stages": [
+        "establishment"
+      ]
+    },
+    "options": [
+      {
+        "id": "approve_nap_grid",
+        "label": "Approve the nap grid",
+        "effects": {
+          "happiness": 6,
+          "order": -4,
+          "treasury": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_laws": [
+          "official_nap_zones"
+        ],
+        "add_flags": [
+          "nap_zones_mapped",
+          "zoning_board_live"
+        ],
+        "result_text": "Cushions appear on every corner. Ambition must whisper near chalk lines."
+      },
+      {
+        "id": "timed_nap_windows",
+        "label": "Timed nap windows only",
+        "effects": {
+          "happiness": 3,
+          "order": -1,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "timed_nap_windows"
+        ],
+        "result_text": "Sirens mark nap start. Half the city pretends to sleep on schedule."
+      },
+      {
+        "id": "reject_zoning",
+        "label": "Keep sidewalks upright",
+        "effects": {
+          "order": 3,
+          "happiness": -4,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2
+        },
+        "result_text": "Hard pavement remains. Whiskers files a soft protest."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "cats_and_animals",
+      "nap_zoning"
+    ],
+    "visual_tags": [
+      "official_nap_cushions",
+      "timed_nap_zones"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "humor_tags": [
+        "nap_zoning"
+      ],
+      "emotional_goal": "cozy civic chaos",
+      "visual_hook": "chalk nap grids and official cushions on sidewalks",
+      "localization_risk": "low",
+      "writer_notes": "Uses official_nap_zones. Soft early cat beat; order cost on full approve."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "fish_futures_exchange",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Fish prices wobble. Launch a Fish Futures Exchange. Whiskers may attend as a consultant.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "open_exchange",
+        "label": "Open the exchange",
+        "effects": {
+          "treasury": 9,
+          "elite_loyalty": 4,
+          "happiness": -4,
+          "order": -3
+        },
+        "advisor_affinity": {
+          "sir_profit": 2,
+          "comrade_whiskers": 1
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_laws": [
+          "fish_market_subsidy_act"
+        ],
+        "add_flags": [
+          "fish_futures_live",
+          "species_markets_open"
+        ],
+        "result_text": "Traders shout tuna. Cats form a soft lobby outside the pit."
+      },
+      {
+        "id": "peg_to_sardines",
+        "label": "Peg prices to sardines",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 2,
+          "happiness": -1,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "sardine_peg"
+        ],
+        "result_text": "Sardine boards stabilize. Smugglers invent larger sardines."
+      },
+      {
+        "id": "ban_fish_speculation",
+        "label": "Ban fish speculation",
+        "effects": {
+          "happiness": 3,
+          "order": 2,
+          "elite_loyalty": -4,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": -2,
+          "comrade_whiskers": 1
+        },
+        "result_text": "Markets sulk. Street stalls smell honest again."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "business",
+      "fish_markets"
+    ],
+    "visual_tags": [
+      "fish_exchange_board",
+      "fish_subsidy_trucks"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "escalation",
+      "humor_tags": [
+        "fish_markets"
+      ],
+      "emotional_goal": "polite market absurdity",
+      "visual_hook": "ticker boards listing tuna contracts beside fish trucks",
+      "localization_risk": "low",
+      "writer_notes": "Business primary with cat crossover flavor. Uses fish_market_subsidy_act."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "laser_pointer_defense_grid",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "National security lacks focus. Install a Laser Pointer Defense Grid. Cats will volunteer.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 9,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "full_grid",
+        "label": "Deploy the full grid",
+        "effects": {
+          "order": 5,
+          "happiness": 3,
+          "treasury": -6,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "general_boom": 1
+        },
+        "trait_changes": {
+          "populist": 1,
+          "chaotic": 1
+        },
+        "add_flags": [
+          "laser_defense_live",
+          "cat_militia_curious"
+        ],
+        "result_text": "Red dots sweep the sky. Cats abandon meetings for national duty."
+      },
+      {
+        "id": "plaza_pilots",
+        "label": "Pilot plaza pointers only",
+        "effects": {
+          "order": 2,
+          "happiness": 2,
+          "treasury": -3
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1
+        },
+        "add_flags": [
+          "plaza_laser_pilot"
+        ],
+        "result_text": "Three plazas spiral. Tourists film the defense drills."
+      },
+      {
+        "id": "reject_lasers",
+        "label": "Reject the grid",
+        "effects": {
+          "treasury": 2,
+          "elite_loyalty": 3,
+          "happiness": -3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2
+        },
+        "result_text": "Pointers stay in drawers. Whiskers stares at a blank wall with purpose."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "cats_and_animals",
+      "laser_defense"
+    ],
+    "visual_tags": [
+      "cats_in_square",
+      "laser_pointer_towers"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "escalation",
+      "humor_tags": [
+        "laser_defense"
+      ],
+      "emotional_goal": "cute militarism",
+      "visual_hook": "plaza cats chasing civic laser dots under tiny towers",
+      "localization_risk": "low",
+      "writer_notes": "No new law required; invent laser_pointer_towers visual. Clear treasury vs order trade."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "privatize_echoes",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "sir_profit",
+    "category": "business_and_privatization",
+    "proposal": "Palace balconies produce free echoes. Sell premium reverberation packages. Breathing optional.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 17,
+    "maximum_day": 27,
+    "pacing": {
+      "allowed_stages": [
+        "instability"
+      ]
+    },
+    "options": [
+      {
+        "id": "sell_echo_rights",
+        "label": "Sell echo rights",
+        "effects": {
+          "treasury": 10,
+          "elite_loyalty": 5,
+          "happiness": -6,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": 2
+        },
+        "trait_changes": {
+          "capitalist": 2
+        },
+        "add_laws": [
+          "privatize_air"
+        ],
+        "add_flags": [
+          "echo_rights_sold",
+          "premium_reverb_live"
+        ],
+        "result_text": "Shouts now require invoices. Quiet becomes a luxury tier."
+      },
+      {
+        "id": "lease_one_balcony",
+        "label": "Lease one balcony",
+        "effects": {
+          "treasury": 5,
+          "elite_loyalty": 2,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 1
+        },
+        "add_flags": [
+          "echo_balcony_lease"
+        ],
+        "result_text": "One balcony booms on schedule. Neighbors buy earplugs as solidarity."
+      },
+      {
+        "id": "keep_public_echoes",
+        "label": "Keep echoes public",
+        "effects": {
+          "happiness": 4,
+          "order": 1,
+          "elite_loyalty": -4,
+          "treasury": -1
+        },
+        "advisor_affinity": {
+          "sir_profit": -2
+        },
+        "result_text": "Free reverberation returns. Profit drafts a mournful prospectus."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "business",
+      "echo_privatization"
+    ],
+    "visual_tags": [
+      "palace_echo_balcony",
+      "privatized_garden"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "instability",
+      "humor_tags": [
+        "echo_privatization"
+      ],
+      "emotional_goal": "polite corporate horror",
+      "visual_hook": "sponsored balcony speakers selling premium palace echoes",
+      "localization_risk": "low",
+      "writer_notes": "Reuses privatize_air. Instability treasury spike with happiness hit."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "ministry_franchise_kit",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "palace_chef",
+    "category": "business_and_privatization",
+    "proposal": "Every district wants a ministry. Sell Franchise Kits with stamps, aprons, and mild authority.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 17,
+    "maximum_day": 26,
+    "pacing": {
+      "allowed_stages": [
+        "instability"
+      ]
+    },
+    "options": [
+      {
+        "id": "sell_franchise_kits",
+        "label": "Sell franchise kits",
+        "effects": {
+          "treasury": 8,
+          "elite_loyalty": 3,
+          "order": -5,
+          "happiness": -2
+        },
+        "advisor_affinity": {
+          "palace_chef": 2,
+          "sir_profit": 1
+        },
+        "trait_changes": {
+          "capitalist": 2,
+          "chaotic": 1
+        },
+        "add_laws": [
+          "rent_a_ministry"
+        ],
+        "add_flags": [
+          "ministry_franchises_live",
+          "apron_authority"
+        ],
+        "result_text": "Corner ministries open with soup. Policy tastes seasonal."
+      },
+      {
+        "id": "pilot_three_kits",
+        "label": "Pilot three kits",
+        "effects": {
+          "treasury": 4,
+          "elite_loyalty": 1,
+          "order": -2
+        },
+        "advisor_affinity": {
+          "palace_chef": 1
+        },
+        "add_flags": [
+          "ministry_franchise_pilot"
+        ],
+        "result_text": "Three kiosks stamp politely. Citizens argue about which apron is senior."
+      },
+      {
+        "id": "refuse_franchises",
+        "label": "Keep ministries central",
+        "effects": {
+          "order": 4,
+          "happiness": 1,
+          "elite_loyalty": -3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "palace_chef": -2,
+          "clerk_zero": 1
+        },
+        "result_text": "Authority stays downtown. The Chef sulks over unused apron inventory."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "business",
+      "ministry_franchise"
+    ],
+    "visual_tags": [
+      "ministry_franchise_kiosks",
+      "service_tier_kiosks"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "business_and_privatization",
+      "primary_stage": "instability",
+      "humor_tags": [
+        "ministry_franchise"
+      ],
+      "emotional_goal": "culinary bureaucracy chaos",
+      "visual_hook": "street kiosks renting ministry stamps with aprons",
+      "localization_risk": "low",
+      "writer_notes": "Guest speaker palace_chef. Uses rent_a_ministry. Invent ministry_franchise_kiosks visual."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "maybe_weather_machine",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Preliminary request: a weather machine that promises blue skies. Side effects include weather. Maybe.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 8,
+    "maximum_day": 16,
+    "pacing": {
+      "allowed_stages": [
+        "escalation"
+      ]
+    },
+    "options": [
+      {
+        "id": "build_machine",
+        "label": "Build the machine",
+        "effects": {
+          "treasury": -8,
+          "happiness": 5,
+          "order": -3,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "add_laws": [
+          "weather_optimism_act"
+        ],
+        "add_flags": [
+          "weather_machine_online",
+          "maybe_forecast_live"
+        ],
+        "result_text": "Skies improve on paper. Umbrellas become optional and then mandatory again."
+      },
+      {
+        "id": "indoor_pilot",
+        "label": "Pilot indoors only",
+        "effects": {
+          "treasury": -3,
+          "happiness": 2,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_flags": [
+          "indoor_weather_pilot"
+        ],
+        "result_text": "One atrium gets perfect Tuesday. Neighbors request Tuesday imports."
+      },
+      {
+        "id": "deny_machine",
+        "label": "Deny politely",
+        "effects": {
+          "order": 2,
+          "treasury": 1,
+          "happiness": -3,
+          "elite_loyalty": -1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
+        "result_text": "Maybe nods. The lab doodles revenge-shaped rainclouds."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "science",
+      "weather_machine"
+    ],
+    "visual_tags": [
+      "lab_sparks",
+      "weather_machine_dome"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "science_and_technology",
+      "primary_stage": "escalation",
+      "humor_tags": [
+        "scientific_understatement"
+      ],
+      "emotional_goal": "curious optimism with regret",
+      "visual_hook": "lab dome promising blue skies with occasional sparks",
+      "localization_risk": "low",
+      "writer_notes": "Uses weather_optimism_act. Category science maps to science_and_technology."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "clone_coffee_break",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "doctor_maybe",
+    "category": "science",
+    "proposal": "Hypothesis: clones can take coffee breaks for tired officials. Preliminary. Possibly caffeinated.",
+    "one_time": true,
+    "base_weight": 11,
+    "minimum_day": 18,
+    "maximum_day": 27,
+    "pacing": {
+      "allowed_stages": [
+        "instability"
+      ]
+    },
+    "options": [
+      {
+        "id": "authorize_clone_breaks",
+        "label": "Authorize clone coffee breaks",
+        "effects": {
+          "happiness": 4,
+          "order": -5,
+          "treasury": -5,
+          "elite_loyalty": 2
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 2
+        },
+        "trait_changes": {
+          "scientific": 2,
+          "chaotic": 1
+        },
+        "add_laws": [
+          "clone_holiday"
+        ],
+        "add_flags": [
+          "clone_coffee_live",
+          "identity_blur_soft"
+        ],
+        "result_text": "Clones queue for espresso. Originals forget who ordered oat milk."
+      },
+      {
+        "id": "one_clone_per_shift",
+        "label": "One clone per shift",
+        "effects": {
+          "happiness": 2,
+          "order": -2,
+          "treasury": -2,
+          "elite_loyalty": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": 1
+        },
+        "trait_changes": {
+          "scientific": 1
+        },
+        "add_flags": [
+          "clone_shift_pilot"
+        ],
+        "result_text": "Shifts blur politely. Badges acquire tiny question marks."
+      },
+      {
+        "id": "ban_clone_breaks",
+        "label": "Ban clone breaks",
+        "effects": {
+          "order": 4,
+          "elite_loyalty": -2,
+          "happiness": -2,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "doctor_maybe": -2
+        },
+        "result_text": "Coffee remains singular. Maybe schedules a lonely lab latte."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "science",
+      "clone_labor"
+    ],
+    "visual_tags": [
+      "clone_holiday_banners",
+      "lab_sparks"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "science_and_technology",
+      "primary_stage": "instability",
+      "humor_tags": [
+        "clone_labor"
+      ],
+      "emotional_goal": "identity comedy with order risk",
+      "visual_hook": "identical officials sharing coffee badges in the lab courtyard",
+      "localization_risk": "low",
+      "writer_notes": "Uses clone_holiday. Instability science beat; no dominant all-positive option."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "embassy_cat_visa",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "foreign_ambassador",
+    "category": "cats_and_animals",
+    "proposal": "Neighboring cats request diplomatic visas. Stamps must be fish-scented. Relations hang in the balance.",
+    "one_time": true,
+    "base_weight": 9,
+    "minimum_day": 3,
+    "maximum_day": 12,
+    "pacing": {
+      "allowed_stages": [
+        "establishment"
+      ]
+    },
+    "options": [
+      {
+        "id": "issue_cat_visas",
+        "label": "Issue cat visas",
+        "effects": {
+          "happiness": 5,
+          "elite_loyalty": -2,
+          "order": -3,
+          "treasury": -2
+        },
+        "advisor_affinity": {
+          "foreign_ambassador": 2,
+          "comrade_whiskers": 2
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_laws": [
+          "cat_voting_rights"
+        ],
+        "add_flags": [
+          "embassy_cat_visas",
+          "fish_scented_stamps"
+        ],
+        "result_text": "Diplomatic litter boxes arrive. Borders smell like progress."
+      },
+      {
+        "id": "tourist_whiskers_only",
+        "label": "Tourist whiskers only",
+        "effects": {
+          "happiness": 2,
+          "order": -1,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "foreign_ambassador": 1,
+          "comrade_whiskers": 1
+        },
+        "add_flags": [
+          "tourist_cat_visas"
+        ],
+        "result_text": "Short-stay cats pose for photos. Long-stay cats form a queue of dignity."
+      },
+      {
+        "id": "deny_cat_visas",
+        "label": "Deny the visas",
+        "effects": {
+          "order": 3,
+          "elite_loyalty": 2,
+          "happiness": -4,
+          "treasury": 1
+        },
+        "advisor_affinity": {
+          "foreign_ambassador": -2,
+          "comrade_whiskers": -1
+        },
+        "result_text": "Embassies frown softly. Local cats stage a polite glare-in."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "cats_and_animals",
+      "cat_diplomacy"
+    ],
+    "visual_tags": [
+      "cats_in_square",
+      "fish_treaty"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "establishment",
+      "humor_tags": [
+        "cat_diplomacy"
+      ],
+      "emotional_goal": "cute international awkwardness",
+      "visual_hook": "fish-scented visa stamps beside embassy cats in the square",
+      "localization_risk": "low",
+      "writer_notes": "Guest foreign_ambassador. Cats category. Uses cat_voting_rights lightly."
+    },
+    "requirements": {}
+  },
+  {
+    "id": "union_yarn_subsidy",
+    "schema_version": 2,
+    "country_id": "ministan",
+    "card_type": "normal",
+    "advisor_id": "comrade_whiskers",
+    "category": "cats_and_animals",
+    "proposal": "The yarn supply is unstable. Subsidize national yarn for workers and cats. Solidarity is soft.",
+    "one_time": true,
+    "base_weight": 10,
+    "minimum_day": 17,
+    "maximum_day": 27,
+    "pacing": {
+      "allowed_stages": [
+        "instability"
+      ]
+    },
+    "options": [
+      {
+        "id": "full_yarn_subsidy",
+        "label": "Fund the full subsidy",
+        "effects": {
+          "happiness": 6,
+          "treasury": -7,
+          "order": -3,
+          "elite_loyalty": -2
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 2,
+          "workers_union_leader": 2
+        },
+        "trait_changes": {
+          "populist": 2
+        },
+        "add_laws": [
+          "mouse_protection_law"
+        ],
+        "add_flags": [
+          "yarn_subsidy_live",
+          "soft_solidarity"
+        ],
+        "result_text": "Yarn floods plazas. Mice get protective yarn tunnels. Elites trip politely."
+      },
+      {
+        "id": "ration_yarn_balls",
+        "label": "Ration yarn balls",
+        "effects": {
+          "happiness": 3,
+          "treasury": -3,
+          "order": -1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": 1,
+          "workers_union_leader": 1
+        },
+        "trait_changes": {
+          "populist": 1
+        },
+        "add_flags": [
+          "yarn_ration_cards"
+        ],
+        "result_text": "Ration cards tangle. Cats invent creative accounting of balls."
+      },
+      {
+        "id": "reject_yarn_subsidy",
+        "label": "Reject the subsidy",
+        "effects": {
+          "treasury": 3,
+          "elite_loyalty": 3,
+          "happiness": -5,
+          "order": 1
+        },
+        "advisor_affinity": {
+          "comrade_whiskers": -2,
+          "workers_union_leader": -1
+        },
+        "result_text": "Yarn stays private. Unions knit a very pointed banner."
+      }
+    ],
+    "tags": [
+      "standalone",
+      "cats_and_animals",
+      "yarn_subsidy"
+    ],
+    "visual_tags": [
+      "yarn_subsidy_reels",
+      "cats_in_square"
+    ],
+    "authoring": {
+      "primary_content_class": "standalone",
+      "primary_category": "cats_and_animals",
+      "primary_stage": "instability",
+      "humor_tags": [
+        "yarn_subsidy"
+      ],
+      "emotional_goal": "soft solidarity with budget pain",
+      "visual_hook": "giant yarn reels in the square feeding cats and workers",
+      "localization_risk": "low",
+      "writer_notes": "Whiskers lead with union affinity. mouse_protection_law as soft yarn-tunnel joke. Invent yarn_subsidy_reels."
+    },
+    "requirements": {}
+  }
+]

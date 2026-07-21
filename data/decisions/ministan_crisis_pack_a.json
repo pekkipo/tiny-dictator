@@ -703,8 +703,7 @@
             "reason": "ignore_fire"
           }
         ],
-        "result_text": "The palace becomes beautifully empty, except for a very determined pigeon.",
-        "trigger_ending": "palace_beautiful_empty"
+        "result_text": "The palace becomes beautifully empty, except for a very determined pigeon."
       }
     ],
     "tags": [
@@ -869,8 +868,7 @@
             "resolution_id": "make_boom_mascot"
           }
         ],
-        "result_text": "General Boom's mascot salute ends the mutiny and starts an unstoppable merchandise line.",
-        "trigger_ending": "general_becomes_mascot"
+        "result_text": "General Boom's mascot salute ends the mutiny and starts an unstoppable merchandise line."
       },
       {
         "id": "arrest_officers",
@@ -1062,8 +1060,7 @@
             "reason": "move_parliament"
           }
         ],
-        "result_text": "Parliament relocates. The cats keep the building and immediately improve attendance.",
-        "trigger_ending": "cat_republic"
+        "result_text": "Parliament relocates. The cats keep the building and immediately improve attendance."
       }
     ],
     "tags": [
@@ -1149,8 +1146,7 @@
             "reason": "brand_blue_water"
           }
         ],
-        "result_text": "The new bottled-water campaign is beautiful until the taps begin to fizz.",
-        "trigger_ending": "experiment_leaves"
+        "result_text": "The new bottled-water campaign is beautiful until the taps begin to fizz."
       }
     ],
     "tags": [

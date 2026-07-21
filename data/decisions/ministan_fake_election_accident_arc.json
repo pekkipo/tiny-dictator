@@ -8,7 +8,7 @@
     "category": "bureaucracy",
     "proposal": "National Filing Week requires Form 44-C Civic Preference. The form uses boxes, names, and a stamp line. It resembles a ballot. Proceed, keep it ceremonial, or delay the week.",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 12,
     "maximum_day": 36,
     "narrative": {
@@ -798,7 +798,6 @@
           "populist": 3,
           "bureaucratic": 1
         },
-        "trigger_ending": "peaceful_accidental_democracy",
         "result_text": "The nation shrugs into self-rule by accident. Clerk Zero archives Form 44-C under 'successful mishap.'"
       },
       {

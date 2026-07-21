@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "The east wing leaks into the good carpets. Renovation is legitimate. I can bid modest, luxurious, or public-tour transparent. Expensive is not automatically wrong.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 6,
     "minimum_day": 10,
     "maximum_day": 28,
     "narrative": {
@@ -553,7 +553,6 @@
           "capitalist": 2,
           "propagandist": 1
         },
-        "trigger_ending": "palace_beautiful_empty",
         "result_text": "Echoes win awards. Nobody lives here fully. Beauty files for divorce from use."
       },
       {

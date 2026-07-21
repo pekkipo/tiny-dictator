@@ -8,7 +8,7 @@
     "category": "economy",
     "proposal": "Tinyria sends an awkward note: ceremonial cheese for the border toast is short. Trade lanes quarrel. Compliments enclosed. Urgency implied.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 6,
     "minimum_day": 7,
     "maximum_day": 20,
     "narrative": {
@@ -484,7 +484,6 @@
         "trait_changes": {
           "bureaucratic": 2
         },
-        "trigger_ending": "great_cheese_settlement",
         "result_text": "Border toast resumes. Tinyria compliments your maturity. Historians file under dairy diplomacy."
       },
       {

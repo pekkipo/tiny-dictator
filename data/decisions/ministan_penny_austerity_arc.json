@@ -8,7 +8,7 @@
     "category": "economy",
     "proposal": "Treasury shortfall: 4.2%. I have three ledgers and one smile. Shall we streamline, amputate, or postpone the arithmetic?",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 3,
     "maximum_day": 28,
     "narrative": {
@@ -179,9 +179,6 @@
       ],
       "all_flags": [
         "penny_austerity_live"
-      ],
-      "any_laws": [
-        "mandatory_applause"
       ]
     },
     "options": [
@@ -223,7 +220,8 @@
           "elite_loyalty": 2
         },
         "add_flags": [
-          "penny_deep_trim"
+          "penny_deep_trim",
+          "penny_cut_empty"
         ],
         "advisor_affinity": {
           "minister_penny": 2,
@@ -236,20 +234,16 @@
         "arc_actions": [
           {
             "arc_id": "penny_austerity_arc",
+            "action": "branch",
+            "branch_id": "cut_until_empty"
+          },
+          {
+            "arc_id": "penny_austerity_arc",
             "action": "advance"
           }
         ],
-        "result_text": "Waiting rooms become suggestions. Profit calls it lean. Olga brings soup to the sidewalk.",
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "penny_service_sunset",
-          "minimum_delay_days": 1,
-          "maximum_delay_days": 2,
-          "priority": 70,
-          "required_flags": [
-            "penny_cut_empty"
-          ]
-        }
+        "force_next_decision": "penny_service_sunset",
+        "result_text": "Waiting rooms become suggestions. Profit calls it lean. Olga brings soup to the sidewalk."
       },
       {
         "id": "soft_trim",
@@ -622,9 +616,8 @@
       "active_arcs": [
         "penny_austerity_arc"
       ],
-      "any_flags": [
-        "penny_disciplined",
-        "penny_compromise"
+      "all_flags": [
+        "penny_miracle_declared"
       ]
     },
     "options": [
@@ -638,9 +631,7 @@
           "elite_loyalty": 2
         },
         "add_flags": [
-          "penny_austerity_complete",
-          "penny_austerity_recovery_available",
-          "penny_miracle_sealed"
+          "penny_austerity_recovery_available"
         ],
         "advisor_affinity": {
           "minister_penny": 3,
@@ -661,9 +652,7 @@
           "elite_loyalty": 3
         },
         "add_flags": [
-          "penny_austerity_complete",
-          "penny_austerity_recovery_available",
-          "penny_miracle_sealed"
+          "penny_austerity_recovery_available"
         ],
         "advisor_affinity": {
           "minister_penny": 2,
@@ -673,7 +662,6 @@
           "bureaucratic": 1,
           "propagandist": 1
         },
-        "trigger_ending": "penny_balances_final_budget",
         "result_text": "The Final Budget prints on cream paper. Historians call it rare. Penny frames the receipt."
       },
       {
@@ -763,10 +751,7 @@
           "order": 4,
           "elite_loyalty": 3
         },
-        "add_flags": [
-          "penny_austerity_complete",
-          "spreadsheet_state"
-        ],
+        "add_flags": [],
         "advisor_affinity": {
           "minister_penny": 3,
           "clerk_zero": 2,
@@ -775,7 +760,6 @@
         "trait_changes": {
           "bureaucratic": 3
         },
-        "trigger_ending": "spreadsheet_state",
         "result_text": "Every policy becomes a cell. Citizens genuflect at pivot tables. Amen, formatted."
       },
       {
@@ -787,10 +771,7 @@
           "order": -3,
           "elite_loyalty": 4
         },
-        "add_flags": [
-          "penny_austerity_complete",
-          "austerity_without_citizens"
-        ],
+        "add_flags": [],
         "advisor_affinity": {
           "minister_penny": 2,
           "sir_profit": 3,
@@ -799,7 +780,6 @@
         "trait_changes": {
           "capitalist": 3
         },
-        "trigger_ending": "austerity_without_citizens",
         "result_text": "Costs hit zero. So do pedestrians. Penny calls it peak efficiency."
       },
       {

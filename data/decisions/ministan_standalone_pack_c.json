@@ -974,11 +974,7 @@
       "localization_risk": "low",
       "writer_notes": "Not automatically favorable; order/elite costs. Soft unlock palace pet (B)."
     },
-    "requirements": {
-      "any_laws": [
-        "antivacuum_act"
-      ]
-    }
+    "requirements": {}
   },
   {
     "id": "mouse_protection_act",
@@ -1208,9 +1204,6 @@
         "palace_tour_unlocked",
         "citizen_tiers_live",
         "bronze_tier_pilot"
-      ],
-      "required_palace_upgrades": [
-        "ceremonial_gavel"
       ],
       "any_laws": [
         "palace_curfew_act"
@@ -1486,11 +1479,7 @@
       "localization_risk": "low",
       "writer_notes": "Non-obvious resources: order and happiness, not treasury-only."
     },
-    "requirements": {
-      "required_palace_upgrades": [
-        "map_table"
-      ]
-    }
+    "requirements": {}
   },
   {
     "id": "border_lane_concession",
@@ -1888,11 +1877,7 @@
       "localization_risk": "low",
       "writer_notes": "Bureaucracy with treasury economics; three options."
     },
-    "requirements": {
-      "required_palace_upgrades": [
-        "stamp_museum"
-      ]
-    }
+    "requirements": {}
   },
   {
     "id": "midnight_filing_amnesty",
@@ -2023,9 +2008,6 @@
         "palace_pet_unlocked",
         "public_cat_baskets",
         "basket_pilot"
-      ],
-      "required_palace_upgrades": [
-        "ai_coffee_bot"
       ]
     },
     "options": [

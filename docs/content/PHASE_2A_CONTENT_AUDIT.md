@@ -1,7 +1,7 @@
 # Phase 2A Content Audit
 
 **Milestone:** 2B-1 — Voice Bible and Production Scaffolding
-**Generated:** 2026-07-17T13:11:12
+**Generated:** 2026-07-20T13:22:42
 **Country:** ministan
 **Manifest version:** 1
 
@@ -12,16 +12,16 @@
 
 | Metric | Current cataloged | Approved | 2B target | Gap |
 |---|---:|---:|---:|---:|
-| Decisions | 326 | 301 | 330 | 29 |
+| Decisions | 343 | 321 | 330 | 9 |
 | Major Arcs | 18 | 18 | 18 | 0 |
 | Short Chains | 35 | 32 | 32 | 0 |
 | Crises | 18 | 18 | 18 | 0 |
-| Laws | 106 | 0 | 50 | 50 |
-| Endings | 46 | 0 | 50 | 50 |
-| Palace Upgrades | 0 | 0 | 24 | 24 |
+| Laws | 50 | 50 | 50 | 0 |
+| Endings | 50 | 50 | 50 | 0 |
+| Palace Upgrades | 24 | 24 | 24 | 0 |
 | Ruler Identities | 7 | 0 | 12 | 12 |
 
-**Approved decision count:** 301 (voice bible complete; approval requires rubric ≥16/20 per batch).
+**Approved decision count:** 321 (voice bible complete; approval requires rubric ≥16/20 per batch).
 **Draft decision count:** 0
 
 ## 2. Decision-class quota gaps (approved vs target)
@@ -34,16 +34,16 @@
 | major_arc | 96 | 96 | 96 | 96 | 0 |
 | crisis | 28 | 28 | 28 | 28 | 0 |
 | recovery | 24 | 24 | 24 | 24 | 0 |
-| endgame | 3 | 0 | 0 | 20 | 20 |
+| endgame | 20 | 20 | 20 | 20 | 0 |
 
 ## 3. Distribution reports
 
 ### by_status
 
-- **approved:** 301
+- **approved:** 321
 - **integrated:** 20
-- **needs_rewrite:** 4
 - **deferred:** 1
+- **needs_rewrite:** 1
 
 ### by_primary_content_class
 
@@ -52,91 +52,91 @@
 - **crisis:** 28
 - **short_chain:** 89
 - **onboarding:** 10
-- **endgame:** 3
+- **endgame:** 20
 - **recovery:** 24
 
 ### by_primary_category
 
-- **public_life:** 48
+- **public_life:** 51
 - **science:** 31
-- **business_and_privatization:** 16
-- **infrastructure:** 33
-- **politics:** 8
+- **business_and_privatization:** 18
+- **infrastructure:** 34
+- **politics:** 6
 - **media:** 33
 - **military:** 27
-- **economy:** 56
+- **economy:** 58
 - **administration:** 6
-- **bureaucracy:** 35
+- **bureaucracy:** 40
 - **follow_up:** 7
 - **food:** 1
-- **cats_and_animals:** 9
+- **cats_and_animals:** 10
+- **media_and_propaganda:** 7
+- **science_and_technology:** 5
+- **military_and_order:** 5
 - **diplomacy:** 3
 - **festival:** 1
-- **military_and_order:** 4
-- **media_and_propaganda:** 6
-- **science_and_technology:** 2
 
 ### by_primary_category_canonical
 
-- **public_life:** 64
-- **science_and_technology:** 33
-- **business_and_privatization:** 16
-- **infrastructure:** 33
-- **media_and_propaganda:** 39
-- **military_and_order:** 34
-- **economy:** 57
-- **bureaucracy:** 41
-- **cats_and_animals:** 9
+- **public_life:** 65
+- **science_and_technology:** 36
+- **business_and_privatization:** 18
+- **infrastructure:** 34
+- **media_and_propaganda:** 40
+- **military_and_order:** 35
+- **economy:** 59
+- **bureaucracy:** 46
+- **cats_and_animals:** 10
 
 ### by_primary_speaker
 
-- **auntie_olga:** 45
-- **doctor_maybe:** 26
-- **clerk_zero:** 46
-- **luna_news:** 55
-- **sir_profit:** 38
-- **comrade_whiskers:** 18
+- **auntie_olga:** 47
+- **doctor_maybe:** 29
+- **clerk_zero:** 48
+- **luna_news:** 56
+- **sir_profit:** 40
+- **comrade_whiskers:** 19
 - **general_boom:** 37
-- **minister_penny:** 46
-- **foreign_ambassador:** 8
-- **palace_chef:** 3
-- **chief_judge:** 3
+- **minister_penny:** 48
+- **foreign_ambassador:** 9
+- **palace_chef:** 4
+- **chief_judge:** 5
 - **workers_union_leader:** 1
 
 ### by_primary_run_stage
 
-- **instability:** 17
+- **instability:** 27
 - **escalation:** 76
 - **establishment:** 225
-- **endgame:** 8
+- **endgame:** 15
 
 ## 3b. Category quota (canonical)
 
 | Dimension | Cataloged | Approved | Draft | Target | Gap |
 |---|---:|---:|---:|---:|---:|
-| economy | 57 | 54 | 0 | 50 | -4 |
-| public_life | 64 | 52 | 0 | 48 | -4 |
-| military_and_order | 34 | 32 | 0 | 38 | 6 |
-| media_and_propaganda | 39 | 35 | 0 | 34 | -1 |
-| science_and_technology | 33 | 33 | 0 | 40 | 7 |
-| business_and_privatization | 16 | 16 | 0 | 32 | 16 |
-| bureaucracy | 41 | 40 | 0 | 32 | -8 |
-| cats_and_animals | 9 | 9 | 0 | 26 | 17 |
-| infrastructure | 33 | 30 | 0 | 30 | 0 |
+| economy | 59 | 57 | 0 | 50 | -7 |
+| public_life | 65 | 55 | 0 | 48 | -7 |
+| military_and_order | 35 | 33 | 0 | 38 | 5 |
+| media_and_propaganda | 40 | 36 | 0 | 34 | -2 |
+| science_and_technology | 36 | 36 | 0 | 40 | 4 |
+| business_and_privatization | 18 | 18 | 0 | 32 | 14 |
+| bureaucracy | 46 | 45 | 0 | 32 | -13 |
+| cats_and_animals | 10 | 10 | 0 | 26 | 16 |
+| infrastructure | 34 | 31 | 0 | 30 | -1 |
 
 ## 3c. Speaker quota
 
 | Dimension | Cataloged | Approved | Draft | Target | Gap |
 |---|---:|---:|---:|---:|---:|
-| general_boom | 37 | 32 | 0 | 38 | 6 |
-| minister_penny | 46 | 41 | 0 | 40 | -1 |
-| luna_news | 55 | 49 | 0 | 38 | -11 |
-| auntie_olga | 45 | 40 | 0 | 42 | 2 |
-| doctor_maybe | 26 | 26 | 0 | 38 | 12 |
-| sir_profit | 38 | 38 | 0 | 36 | -2 |
-| comrade_whiskers | 18 | 18 | 0 | 34 | 16 |
-| clerk_zero | 46 | 44 | 0 | 36 | -8 |
-| guest_and_system | 15 | 13 | 0 | 28 | 15 |
+| general_boom | 37 | 33 | 0 | 38 | 5 |
+| minister_penny | 48 | 44 | 0 | 40 | -4 |
+| luna_news | 56 | 50 | 0 | 38 | -12 |
+| auntie_olga | 47 | 42 | 0 | 42 | 0 |
+| doctor_maybe | 29 | 29 | 0 | 38 | 9 |
+| sir_profit | 40 | 40 | 0 | 36 | -4 |
+| comrade_whiskers | 19 | 19 | 0 | 34 | 15 |
+| clerk_zero | 48 | 47 | 0 | 36 | -11 |
+| guest_and_system | 19 | 17 | 0 | 28 | 11 |
 
 ## 3d. Stage quota
 
@@ -144,8 +144,8 @@
 |---|---:|---:|---:|---:|---:|
 | establishment | 225 | 204 | 0 | 83 | -121 |
 | escalation | 76 | 75 | 0 | 99 | 24 |
-| instability | 17 | 16 | 0 | 89 | 73 |
-| endgame | 8 | 6 | 0 | 59 | 53 |
+| instability | 27 | 27 | 0 | 89 | 62 |
+| endgame | 15 | 15 | 0 | 59 | 44 |
 
 ## 4. Decision IDs by primary content class
 
@@ -463,10 +463,27 @@
 - `science_gamble`
 - `window_tax_proposal`
 
-### endgame (3)
+### endgame (20)
 
+- `endgame_beloved_retirement`
+- `endgame_boom_olga_ceasefire`
+- `endgame_cabinet_loyalty_ledger`
+- `endgame_civic_stack_verdict`
+- `endgame_climax_cat_servant`
+- `endgame_climax_smiling_tyrant`
+- `endgame_climax_spreadsheet_emperor`
+- `endgame_climax_technocratic_accident`
+- `endgame_country_somehow_works`
 - `endgame_final_audit`
 - `endgame_legacy_statue`
+- `endgame_media_forms_convergence`
+- `endgame_peaceful_democracy_seal`
+- `endgame_profit_zero_ownership`
+- `endgame_scientific_golden_age`
+- `endgame_secret_forms_awaken`
+- `endgame_secret_palace_micronation`
+- `endgame_secret_toaster_election`
+- `endgame_secret_wrong_map`
 - `endgame_succession_debate`
 
 ### recovery (24)
@@ -580,163 +597,114 @@
 - `national_festival_stampede` — status: approved
 - `pantry_moth_crisis` — status: onboarding
 
-### laws (106)
+### laws (50)
 
-- `free_pizza_friday` — status: integrated
-- `mandatory_smiling` — status: integrated
-- `window_tax` — status: integrated
-- `cat_voting_rights` — status: integrated
-- `tank_traffic_control` — status: integrated
-- `emergency_broadcast_priority` — status: integrated
-- `no_weekends` — status: integrated
-- `fake_smile_standard` — status: integrated
-- `emergency_martial_law` — status: integrated
-- `mandatory_marching` — status: integrated
-- `national_happiness_index` — status: integrated
-- `scientific_experiment_permit` — status: integrated
-- `fish_emergency_reserve` — status: integrated
-- `luxury_chair_tax` — status: integrated
-- `national_bedtime` — status: integrated
-- `national_clock_law` — status: integrated
-- `queue_etiquette_law` — status: integrated
-- `compliment_quota_law` — status: integrated
-- `flag_traffic_law` — status: integrated
-- `rival_parade_response_act` — status: integrated
-- `palace_curfew_act` — status: integrated
-- `emergency_salute_law` — status: integrated
-- `one_headline_policy` — status: integrated
-- `public_rumor_license` — status: integrated
-- `predictive_toaster_act` — status: integrated
-- `ceremonial_tank_florist_act` — status: integrated
-- `weather_optimism_act` — status: integrated
-- `catchphrase_registry_act` — status: integrated
-- `labcoat_lighting_act` — status: integrated
-- `capital_square_naming_act` — status: integrated
-- `citizen_service_subscription_act` — status: integrated
-- `cabinet_briefing_protocol` — status: integrated
-- `complaint_permit_act` — status: integrated
-- `contradictory_signage_law` — status: integrated
-- `mouse_protection_law` — status: integrated
-- `fish_market_subsidy_act` — status: integrated
-- `palace_tour_act` — status: integrated
-- `anthem_sponsor_act` — status: integrated
-- `emergency_efficiency_act` — status: integrated
-- `notarized_apology_act` — status: integrated
-- `official_palace_pet_act` — status: integrated
-- `umbrella_tax` — status: integrated
-- `national_coffee_reserve` — status: integrated
-- `bench_subscription_act` — status: integrated
-- `national_lottery_budget` — status: integrated
-- `palace_gift_shop_act` — status: integrated
-- `sponsored_potholes_act` — status: integrated
-- `coin_rounding_act` — status: integrated
-- `ministry_of_memes` — status: integrated
-- `weather_censorship_act` — status: integrated
-- `national_reality_show` — status: integrated
-- `mandatory_applause` — status: integrated
-- `artificial_sun_program` — status: integrated
-- `antigravity_transit` — status: integrated
-- `clone_holiday` — status: integrated
-- `traffic_flag_corps_act` — status: integrated
-- `robot_civil_service` — status: integrated
-- `pigeon_air_force` — status: integrated
-- `camouflage_uniform_act` — status: integrated
-- `border_parade_act` — status: integrated
-- `coupon_salaries` — status: integrated
-- `scent_mask_act` — status: integrated
-- `form_request_form_act` — status: integrated
-- `fish_currency_act` — status: integrated
-- `ministry_of_waiting` — status: integrated
-- `triple_stamp_requirement` — status: integrated
-- `antivacuum_act` — status: integrated
-- `national_nap_hour` — status: integrated
-- `military_route_priority_act` — status: integrated
-- `traffic_checkpoint_act` — status: integrated
-- `emergency_austerity_act` — status: integrated
-- `public_service_sunset_act` — status: integrated
-- `emergency_price_board_act` — status: integrated
-- `barter_license_act` — status: integrated
-- `national_filing_week` — status: integrated
-- `national_trial_oversight_act` — status: integrated
-- `privatize_air` — status: integrated
-- `rent_a_ministry` — status: integrated
-- `corporate_capital_naming` — status: integrated
-- `ai_cabinet_pilot` — status: integrated
-- `moon_replacement_research` — status: integrated
-- `cat_cushion_charter` — status: integrated
-- `administrative_reform_act` — status: integrated
-- `form_sovereignty_act` — status: integrated
-- `cat_lobby_registry` — status: integrated
-- `festival_stimulus_act` — status: integrated
-- `permanent_festival_act` — status: integrated
-- `three_day_weekend` — status: integrated
-- `emergency_cheese_bonds` — status: integrated
-- `cheese_substitute_act` — status: integrated
-- `palace_subscription_plan` — status: integrated
-- `palace_public_tour_act` — status: integrated
-- `bank_handshake_clause` — status: integrated
-- `emergency_stamp_tax` — status: integrated
-- `national_smile_day_act` — status: integrated
-- `soup_line_permit` — status: integrated
-- `temporary_parade_pause` — status: integrated
-- `block_captain_charter` — status: integrated
-- `emergency_queue_charter` — status: integrated
-- `elite_seating_protocol` — status: integrated
-- `cabinet_nameplate_act` — status: integrated
-- `controlled_audit_broadcast` — status: integrated
-- `civic_half_day_act` — status: integrated
-- `quiet_hours_charter` — status: integrated
-- `prestige_fountain_act` — status: integrated
-- `title_lottery_edict` — status: integrated
+- `window_tax` — status: approved
+- `umbrella_tax` — status: approved
+- `free_pizza_friday` — status: approved
+- `coupon_salaries` — status: approved
+- `luxury_chair_tax` — status: approved
+- `national_lottery_budget` — status: approved
+- `coin_rounding_act` — status: approved
+- `emergency_cheese_bonds` — status: approved
+- `mandatory_smiling` — status: approved
+- `national_bedtime` — status: approved
+- `three_day_weekend` — status: approved
+- `national_nap_hour` — status: approved
+- `national_coffee_reserve` — status: approved
+- `compliment_quota_law` — status: approved
+- `universal_birthday` — status: approved
+- `queue_etiquette_law` — status: approved
+- `tank_traffic_control` — status: approved
+- `mandatory_marching` — status: approved
+- `pigeon_air_force` — status: approved
+- `palace_curfew_act` — status: approved
+- `border_parade_act` — status: approved
+- `emergency_salute_law` — status: approved
+- `ministry_of_memes` — status: approved
+- `weather_optimism_act` — status: approved
+- `mandatory_applause` — status: approved
+- `one_headline_policy` — status: approved
+- `public_rumor_license` — status: approved
+- `national_reality_show` — status: approved
+- `artificial_sun_program` — status: approved
+- `robot_civil_service` — status: approved
+- `antigravity_transit` — status: approved
+- `moon_replacement_research` — status: approved
+- `clone_holiday` — status: approved
+- `ai_cabinet_pilot` — status: approved
+- `privatize_air` — status: approved
+- `corporate_capital_naming` — status: approved
+- `sponsored_potholes_act` — status: approved
+- `rent_a_ministry` — status: approved
+- `palace_subscription_plan` — status: approved
+- `form_request_form_act` — status: approved
+- `ministry_of_waiting` — status: approved
+- `triple_stamp_requirement` — status: approved
+- `complaint_permit_act` — status: approved
+- `national_filing_week` — status: approved
+- `cat_voting_rights` — status: approved
+- `fish_market_subsidy_act` — status: approved
+- `antivacuum_act` — status: approved
+- `cat_parliament_seats` — status: approved
+- `mouse_protection_law` — status: approved
+- `official_nap_zones` — status: approved
 
-### endings (46)
+### endings (53)
 
-- `elite_coup` — status: integrated
-- `revolution` — status: integrated
-- `chaos_country` — status: integrated
-- `bankrupt_leader` — status: integrated
-- `nation_in_darkness` — status: integrated
-- `cat_republic` — status: integrated
-- `survived_the_prototype` — status: integrated
-- `content_exhausted` — status: integrated
-- `eternal_smile_state` — status: integrated
-- `general_boom_coup` — status: integrated
-- `general_becomes_mascot` — status: integrated
-- `general_remains_loyal` — status: integrated
-- `accidental_moon_replacement` — status: integrated
-- `experimental_republic` — status: integrated
-- `experiment_leaves` — status: integrated
-- `country_is_acquired` — status: integrated
-- `profit_buys_retirement` — status: integrated
-- `ai_accepts_resignation` — status: integrated
-- `moon_new_owner` — status: integrated
-- `corporate_ministan` — status: integrated
-- `scientific_golden_age` — status: integrated
-- `smallest_superpower` — status: integrated
-- `tanks_direct_everything` — status: integrated
-- `traffic_system_achieves_peace` — status: integrated
-- `penny_balances_final_budget` — status: integrated
-- `spreadsheet_state` — status: integrated
-- `austerity_without_citizens` — status: integrated
-- `hyperinflation_millionaires` — status: integrated
-- `government_by_form` — status: integrated
-- `nation_becomes_broadcast` — status: integrated
-- `day_everyone_stopped_believing` — status: integrated
-- `olga_peoples_cabinet` — status: integrated
-- `palace_hears_the_street` — status: integrated
-- `olga_sends_you_home` — status: integrated
-- `happiness_reaches_100_percent` — status: integrated
-- `peaceful_accidental_democracy` — status: integrated
-- `democracy_by_administrative_error` — status: integrated
-- `purrfect_transfer` — status: integrated
-- `whiskers_boxes_truce` — status: integrated
-- `final_stamp` — status: integrated
-- `clerk_zero_closes_file` — status: integrated
-- `eternal_national_festival` — status: integrated
-- `beloved_retirement` — status: integrated
-- `great_cheese_settlement` — status: integrated
-- `palace_beautiful_empty` — status: integrated
-- `renovation_reveals_truth` — status: integrated
+- `bankrupt_leader` — status: approved
+- `revolution` — status: approved
+- `chaos_country` — status: approved
+- `elite_coup` — status: approved
+- `beloved_retirement` — status: approved
+- `country_somehow_works` — status: approved
+- `peaceful_accidental_democracy` — status: approved
+- `general_remains_loyal` — status: approved
+- `olga_sends_you_home` — status: approved
+- `clerk_zero_closes_file` — status: approved
+- `penny_balances_final_budget` — status: approved
+- `profit_buys_retirement` — status: approved
+- `spreadsheet_state` — status: approved
+- `austerity_without_citizens` — status: approved
+- `nation_becomes_broadcast` — status: approved
+- `olga_peoples_cabinet` — status: approved
+- `palace_hears_the_street` — status: approved
+- `experimental_republic` — status: approved
+- `experiment_leaves` — status: approved
+- `corporate_ministan` — status: approved
+- `country_is_acquired` — status: approved
+- `purrfect_transfer` — status: approved
+- `government_by_form` — status: approved
+- `final_stamp` — status: approved
+- `happiness_reaches_100_percent` — status: approved
+- `tanks_direct_everything` — status: approved
+- `general_becomes_mascot` — status: approved
+- `hyperinflation_millionaires` — status: approved
+- `great_cheese_settlement` — status: approved
+- `eternal_national_festival` — status: approved
+- `general_boom_coup` — status: approved
+- `scientific_golden_age` — status: approved
+- `ai_accepts_resignation` — status: approved
+- `moon_new_owner` — status: approved
+- `democracy_by_administrative_error` — status: approved
+- `palace_beautiful_empty` — status: approved
+- `renovation_reveals_truth` — status: approved
+- `smiling_tyrant_soft_exit` — status: approved
+- `smallest_superpower` — status: approved
+- `traffic_system_achieves_peace` — status: approved
+- `day_everyone_stopped_believing` — status: approved
+- `eternal_smile_state` — status: approved
+- `competent_successor` — status: approved
+- `whiskers_boxes_truce` — status: approved
+- `toaster_elected_president` — status: approved
+- `wrong_map_republic` — status: approved
+- `palace_micronation` — status: approved
+- `forms_become_citizens` — status: approved
+- `cat_republic` — status: approved
+- `accidental_moon_replacement` — status: approved
+- `survived_the_prototype` — status: system
+- `content_exhausted` — status: system
+- `nation_in_darkness` — status: system
 
 ### advisors (12)
 
@@ -763,17 +731,38 @@
 - `the_golden_oligarch` — status: integrated
 - `the_accidental_ruler` — status: integrated
 
-### palace_upgrades (3)
+### palace_upgrades (24)
 
-- `gold_desk` — status: needs_rewrite
-- `propaganda_studio` — status: needs_rewrite
-- `emergency_bunker` — status: needs_rewrite
+- `gold_desk` — status: approved
+- `velvet_throne` — status: approved
+- `audience_carpet` — status: approved
+- `portrait_wall` — status: approved
+- `ceremonial_gavel` — status: approved
+- `echo_balcony` — status: approved
+- `propaganda_studio` — status: approved
+- `cue_card_printer` — status: approved
+- `applause_track` — status: approved
+- `headline_carousel` — status: approved
+- `emergency_bunker` — status: approved
+- `map_table` — status: approved
+- `sealed_archive` — status: approved
+- `red_phone` — status: approved
+- `triple_intray` — status: approved
+- `stamp_museum` — status: approved
+- `quiet_hours_lamp` — status: approved
+- `form_fountain` — status: approved
+- `prototype_shelf` — status: approved
+- `moon_whiteboard` — status: approved
+- `ai_coffee_bot` — status: approved
+- `cushion_throne` — status: approved
+- `fish_dispenser` — status: approved
+- `nap_observatory` — status: approved
 
 ## 6. Quality findings
 
 ### Static diagnostics summary
 
-- **unreachable_decisions:** 156
+- **unreachable_decisions:** 178
 - **dominant_choice_options:** 0
 - **cards_no_meaningful_effects:** 0
 - **endings_impossible:** 4
@@ -807,9 +796,6 @@
 - `cheese_shortage`
 - `cheese_shortage_crisis`
 - `cheese_shortage_crisis_resolution`
-- `endgame_final_audit`
-- `endgame_legacy_statue`
-- `endgame_succession_debate`
 - `fake_news_panic`
 - `fake_news_panic_resolution`
 - `free_pizza_friday`
@@ -967,8 +953,25 @@
 - `elevator_wifi_trap`
 - `emergency_efficiency_week`
 - `emergency_salute_protocol`
+- `endgame_beloved_retirement`
+- `endgame_boom_olga_ceasefire`
+- `endgame_cabinet_loyalty_ledger`
+- `endgame_civic_stack_verdict`
+- `endgame_climax_cat_servant`
+- `endgame_climax_smiling_tyrant`
+- `endgame_climax_spreadsheet_emperor`
+- `endgame_climax_technocratic_accident`
+- `endgame_country_somehow_works`
 - `endgame_final_audit`
 - `endgame_legacy_statue`
+- `endgame_media_forms_convergence`
+- `endgame_peaceful_democracy_seal`
+- `endgame_profit_zero_ownership`
+- `endgame_scientific_golden_age`
+- `endgame_secret_forms_awaken`
+- `endgame_secret_palace_micronation`
+- `endgame_secret_toaster_election`
+- `endgame_secret_wrong_map`
 - `endgame_succession_debate`
 - `escalation_only_rival_parade`
 - `express_sidewalk_franchise`
@@ -1205,30 +1208,27 @@
 
 #### voice_review_status
 
-- **not_reviewed:** 326
+- **not_reviewed:** 343
 
 #### balance_review_status
 
-- **partial:** 326
+- **partial:** 343
 
 #### manual_test_status
 
-- **pass:** 252
-- **partial:** 44
+- **pass:** 272
+- **partial:** 41
 - **untested:** 30
 
 #### graph_validation_status
 
-- **partial:** 156
-- **pass:** 170
+- **partial:** 178
+- **pass:** 165
 
 ## 7. Rewrite, defer, and reclassify recommendations
 
 ### Needs rewrite
 
-- `endgame_final_audit`
-- `endgame_legacy_statue`
-- `endgame_succession_debate`
 - `routine_form_inventory`
 
 ### Deferred (extra beyond 2A-9 required set)

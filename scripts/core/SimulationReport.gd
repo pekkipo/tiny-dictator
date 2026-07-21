@@ -132,7 +132,21 @@ func export_to_user_diagnostics(prefix: String = "") -> Dictionary:
 	var base_name := "%s_%s" % [prefix, stamp]
 	var json_path := "%s%s.json" % [DIAGNOSTICS_DIR, base_name]
 	var text_path := "%s%s.txt" % [DIAGNOSTICS_DIR, base_name]
+	_write_export_files(json_path, text_path)
+	export_paths = {"json": json_path, "text": text_path}
+	return export_paths.duplicate(true)
 
+
+func export_to_stable_names(json_name: String, text_name: String) -> Dictionary:
+	_ensure_diagnostics_dir()
+	var json_path := "%s%s" % [DIAGNOSTICS_DIR, json_name]
+	var text_path := "%s%s" % [DIAGNOSTICS_DIR, text_name]
+	_write_export_files(json_path, text_path)
+	export_paths = {"json": json_path, "text": text_path}
+	return export_paths.duplicate(true)
+
+
+func _write_export_files(json_path: String, text_path: String) -> void:
 	var json_file := FileAccess.open(json_path, FileAccess.WRITE)
 	if json_file != null:
 		json_file.store_string(JSON.stringify(to_dictionary(), "\t"))
@@ -142,9 +156,6 @@ func export_to_user_diagnostics(prefix: String = "") -> Dictionary:
 	if text_file != null:
 		text_file.store_string(to_text())
 		text_file.close()
-
-	export_paths = {"json": json_path, "text": text_path}
-	return export_paths.duplicate(true)
 
 
 static func get_diagnostics_dir_absolute() -> String:

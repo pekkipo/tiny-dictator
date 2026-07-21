@@ -38,7 +38,7 @@ func _test_repository_loads() -> void:
 			collectible_endings += 1
 	_check(collectible_endings == 50, "50 collectible endings loaded")
 	_check(repo.get_raw_palace_upgrades().size() == 24, "24 palace upgrades loaded")
-	_check(repo.get_all_decisions_for_country("ministan").size() == 343, "343 decisions loaded for ministan")
+	_check(repo.get_all_decisions_for_country("ministan").size() == 352, "352 decisions loaded for ministan")
 	_check(repo.get_raw_ruler_identities().size() == 7, "7 ruler identities loaded")
 	_check(repo.get_raw_arcs().size() == 19, "19 arcs loaded")
 	_check(repo.get_raw_crises().size() == 19, "19 crises loaded")

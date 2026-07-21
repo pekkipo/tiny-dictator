@@ -5,9 +5,9 @@ extends RefCounted
 
 const MANIFEST_VERSION: int = 1
 const COUNTRY_ID: String = "ministan"
-const PHASE: String = "2b_17_laws_endings_palace"
-const BATCH_ID: String = "2B-17"
-const DECISION_BATCH_ID: String = "2B-17"
+const PHASE: String = "2b_18_full_library_diagnostics"
+const BATCH_ID: String = "2B-18"
+const DECISION_BATCH_ID: String = "2B-18"
 
 const DRAFT_STATUSES: Array[String] = ["idea", "outlined", "draft"]
 
@@ -299,6 +299,12 @@ const STANDALONE_PACK_C_APPROVED_IDS: Array[String] = [
 	"border_lane_concession", "emergency_efficiency_week", "notarized_apology_requirement",
 	"queue_priority_auction", "midnight_filing_amnesty", "official_palace_pet",
 	"dog_apology_festival", "squirrel_union_recognition", "crosswalk_cat_priority",
+]
+
+const STANDALONE_PACK_D_APPROVED_IDS: Array[String] = [
+	"nap_zone_zoning_board", "fish_futures_exchange", "laser_pointer_defense_grid",
+	"privatize_echoes", "ministry_franchise_kit", "maybe_weather_machine",
+	"clone_coffee_break", "embassy_cat_visa", "union_yarn_subsidy",
 ]
 
 const SHORT_CHAIN_PACK_A_APPROVED_IDS: Array[String] = [
@@ -848,6 +854,9 @@ func _resolve_status(
 	if id in STANDALONE_PACK_C_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
+	if id in STANDALONE_PACK_D_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
+		return "approved"
+
 	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS and schema_status == "pass" and graph_status in ["pass", "partial"]:
 		return "approved"
 
@@ -955,6 +964,8 @@ func _decision_notes(id: String, primary_class: String, arc_id: Variant, chain_i
 		notes.append("Milestone 2B-4 approved standalone policy card.")
 	if id in STANDALONE_PACK_C_APPROVED_IDS:
 		notes.append("Milestone 2B-5 approved standalone policy card.")
+	if id in STANDALONE_PACK_D_APPROVED_IDS:
+		notes.append("Milestone 2B-18 approved standalone fill card.")
 	if id in SHORT_CHAIN_PACK_A_APPROVED_IDS:
 		notes.append("Milestone 2B-6 approved short-chain card.")
 	if id in SHORT_CHAIN_PACK_B_APPROVED_IDS:

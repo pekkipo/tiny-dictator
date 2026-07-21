@@ -8,7 +8,7 @@
     "category": "media",
     "proposal": "Citizens hear three versions of every decree. I propose one evening narrative brief — policy and entertainment, same microphone.",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 4,
     "minimum_day": 3,
     "maximum_day": 18,
     "narrative": {
@@ -759,7 +759,6 @@
           "propagandist": 3,
           "authoritarian": 2
         },
-        "trigger_ending": "nation_becomes_broadcast",
         "result_text": "The country is a continuous special. Credits never roll."
       },
       {

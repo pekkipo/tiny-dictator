@@ -265,7 +265,7 @@
     "category": "science",
     "proposal": "Doctor Maybe wants to test whether happiness is contagious. Sample size: everyone.",
     "one_time": true,
-    "base_weight": 13,
+    "base_weight": 7,
     "minimum_day": 3,
     "maximum_day": 14,
     "teaches_concepts": [

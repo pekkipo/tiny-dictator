@@ -8,7 +8,7 @@
     "category": "economy",
     "proposal": "A public-private partnership for the Ministry of Waiting Rooms. Short-term cash, shared branding, zero couches sold—yet. Shall we align stakeholders?",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 6,
     "maximum_day": 20,
     "narrative": {
@@ -166,9 +166,6 @@
       ],
       "all_flags": [
         "profit_corp_live"
-      ],
-      "any_laws": [
-        "corporate_capital_naming"
       ]
     },
     "options": [
@@ -190,16 +187,7 @@
         "trait_changes": {
           "capitalist": 1
         },
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "profit_institution_lease",
-          "minimum_delay_days": 1,
-          "maximum_delay_days": 3,
-          "priority": 78,
-          "required_flags": [
-            "profit_corp_live"
-          ]
-        },
+        "force_next_decision": "profit_institution_lease",
         "result_text": "Surplus becomes more logos. Citizens call it 'weirdly comfortable.'"
       },
       {
@@ -223,16 +211,7 @@
           "capitalist": 1,
           "populist": 1
         },
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "profit_institution_lease",
-          "minimum_delay_days": 1,
-          "maximum_delay_days": 3,
-          "priority": 78,
-          "required_flags": [
-            "profit_corp_live"
-          ]
-        },
+        "force_next_decision": "profit_institution_lease",
         "result_text": "Small checks arrive. Olga cashes hers and still distrusts the cushions."
       },
       {
@@ -388,17 +367,8 @@
         "trait_changes": {
           "capitalist": 3
         },
-        "result_text": "Breathable premium tiers appear. Jokes write themselves. So do invoices.",
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "profit_ownership_fork",
-          "minimum_delay_days": 0,
-          "maximum_delay_days": 1,
-          "priority": 85,
-          "required_flags": [
-            "profit_corp_live"
-          ]
-        }
+        "force_next_decision": "profit_ownership_fork",
+        "result_text": "Breathable premium tiers appear. Jokes write themselves. So do invoices."
       }
     ],
     "tags": [
@@ -618,16 +588,7 @@
         "trait_changes": {
           "propagandist": 2
         },
-        "follow_up": {
-          "type": "soft",
-          "decision_id": "profit_corporate_resolution",
-          "minimum_delay_days": 0,
-          "maximum_delay_days": 1,
-          "priority": 90,
-          "required_flags": [
-            "profit_corp_live"
-          ]
-        },
+        "force_next_decision": "profit_corporate_resolution",
         "result_text": "Luna calls cushions 'heritage seating.' Gift-shop soft opens in the foyer."
       },
       {
@@ -772,8 +733,7 @@
         },
         "add_flags": [
           "profit_corp_complete",
-          "corporate_ministan_done",
-          "country_is_acquired"
+          "corporate_ministan_done"
         ],
         "remove_flags": [
           "profit_corp_live"
@@ -785,7 +745,6 @@
         "trait_changes": {
           "capitalist": 3
         },
-        "trigger_ending": "country_is_acquired",
         "result_text": "Letterhead changes. Historians list Ministan as a subsidiary with a flag."
       },
       {

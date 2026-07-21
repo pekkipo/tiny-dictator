@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "Comrades of the cabinet: cushions in ministries are concrete. Fish reserves are empty. We demand a Cushion Charter — not toys. Dignity.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 7,
     "minimum_day": 3,
     "maximum_day": 14,
     "narrative": {
@@ -518,7 +518,6 @@
           "chaotic": 2,
           "populist": 2
         },
-        "trigger_ending": "purrfect_transfer",
         "result_text": "You are demoted to Chief Litter Officer. Whiskers declares a national nap."
       },
       {

@@ -8,7 +8,7 @@
     "category": "media",
     "proposal": "National Wellbeing Week looks harmless: optional cheerful workplaces, free tea, and a tiny happiness index pilot. Shall we launch it?",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 5,
     "minimum_day": 2,
     "maximum_day": 16,
     "narrative": {
@@ -745,7 +745,6 @@
           "propagandist": 3,
           "authoritarian": 2
         },
-        "trigger_ending": "eternal_smile_state",
         "result_text": "The nation grins forever. Jaw surgeons become national heroes."
       },
       {

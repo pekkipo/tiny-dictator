@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "Cats contribute fur taxes and emotional support. A rights lobby wants seats. Profit wants mascots. Olga wants quieter stairs. Pick a ledger.",
     "one_time": true,
-    "base_weight": 13,
+    "base_weight": 7,
     "minimum_day": 2,
     "maximum_day": 12,
     "narrative": {
@@ -512,7 +512,6 @@
           "populist": 2,
           "chaotic": 2
         },
-        "trigger_ending": "cat_republic",
         "result_text": "Scratching post replaces your portrait. You are Chief Litter Officer. Naps ensue."
       },
       {

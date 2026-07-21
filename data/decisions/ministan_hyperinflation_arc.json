@@ -8,7 +8,7 @@
     "category": "economy",
     "proposal": "Prices have begun sprinting. Bread costs a rumor more each hour. I propose a board, a barter license, or a printer with ambition.",
     "one_time": true,
-    "base_weight": 12,
+    "base_weight": 7,
     "minimum_day": 17,
     "maximum_day": 40,
     "narrative": {

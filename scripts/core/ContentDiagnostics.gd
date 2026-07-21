@@ -16,10 +16,23 @@ const CATEGORIES: Array[String] = [
 	"branches_no_continuation",
 	"endings_impossible",
 	"endings_never_reached",
+	"ending_priority_conflicts",
 	"invalid_references",
 	"forced_follow_up_cycles",
 	"narrative_event_cycles",
+	"unresolved_mandatory_follow_ups",
 	"self_blocking_requirements",
+	"crises_no_resolution",
+	"crises_permanent_active_risk",
+	"laws_no_downstream",
+	"laws_block_required_content",
+	"recovery_loops",
+	"duplicate_premises",
+	"repeated_result_text",
+	"repeated_option_labels",
+	"orphaned_flags_and_counters",
+	"wrong_run_stage_assignment",
+	"palace_unlock_invalid",
 	"content_exhaustion_risk",
 	"excessive_fallback_use",
 	"dominant_choice_options",
@@ -68,8 +81,17 @@ func analyze(content: ContentRepository, country_id: String = "ministan") -> Dic
 	_analyze_arcs(report, content, country_id, decision_map)
 	_analyze_branches(report, content, country_id, decision_map)
 	_analyze_endings_impossible(report, content, country_id)
+	_analyze_ending_priority_conflicts(report, content)
 	_analyze_cycles(report, content, country_id, decision_map)
+	_analyze_mandatory_follow_ups(report, decisions, decision_map)
 	_analyze_self_blocking(report, decisions, decision_map)
+	_analyze_crises(report, content, country_id, decision_map)
+	_analyze_laws_downstream(report, content, country_id, decisions)
+	_analyze_recovery_loops(report, decisions, decision_map)
+	_analyze_text_duplicates(report, decisions)
+	_analyze_orphaned_state(report, decisions)
+	_analyze_stage_assignment(report, content, country_id, decisions)
+	_analyze_palace_unlocks(report, content)
 	_analyze_balance(report, content, country_id, decisions)
 	_analyze_concentration(report, decisions)
 
@@ -343,11 +365,13 @@ func _analyze_endings_impossible(
 func _ending_can_ever_match(conditions: Dictionary, starting: Dictionary) -> bool:
 	var minimum_resources: Dictionary = conditions.get("minimum_resources", {})
 	for resource_id in minimum_resources:
-		if int(starting.get(resource_id, 0)) < int(minimum_resources[resource_id]):
+		# Minimum above absolute UI cap is impossible; otherwise resources can rise during a run.
+		if int(minimum_resources[resource_id]) > 100:
 			return false
 	var maximum_resources: Dictionary = conditions.get("maximum_resources", {})
 	for resource_id in maximum_resources:
-		if int(starting.get(resource_id, 100)) > int(maximum_resources[resource_id]):
+		# Resource-collapse endings (e.g. max 0) are reachable by draining from any start.
+		if int(maximum_resources[resource_id]) < 0:
 			return false
 	if conditions.has("minimum_day") and int(conditions["minimum_day"]) > 1:
 		pass
@@ -627,3 +651,297 @@ func _analyze_concentration(report: Dictionary, decisions: Array[Dictionary]) ->
 			_add_finding(report, "excessive_joke_concentration", joke_tag, "info",
 				"Joke tag '%s' appears on %.0f%% of cards." % [joke_tag, ratio * 100.0],
 				{"count": joke_counts[joke_tag], "ratio": ratio})
+
+
+func _analyze_ending_priority_conflicts(report: Dictionary, content: ContentRepository) -> void:
+	var by_priority: Dictionary = {}
+	for ending in content.get_raw_endings():
+		if bool(ending.get("system", false)) or str(ending.get("type", "")) == "system":
+			continue
+		var priority: int = int(ending.get("priority", 0))
+		var ending_id: String = str(ending.get("id", ""))
+		if not by_priority.has(priority):
+			by_priority[priority] = []
+		by_priority[priority].append(ending_id)
+	for priority in by_priority:
+		var ids: Array = by_priority[priority]
+		if ids.size() > 1:
+			_add_finding(report, "ending_priority_conflicts", str(priority), "warning",
+				"Multiple endings share priority %d: %s" % [priority, ", ".join(ids)],
+				{"priority": priority, "ending_ids": ids})
+
+
+func _analyze_mandatory_follow_ups(
+	report: Dictionary,
+	decisions: Array[Dictionary],
+	decision_map: Dictionary,
+) -> void:
+	for decision in decisions:
+		var decision_id: String = str(decision.get("id", ""))
+		for option in DecisionSchema.get_options(decision):
+			if not (option is Dictionary):
+				continue
+			var follow_up: Variant = option.get("follow_up", {})
+			if not (follow_up is Dictionary):
+				continue
+			if str(follow_up.get("type", "")) != "hard":
+				continue
+			var target_id: String = str(follow_up.get("decision_id", ""))
+			if target_id.is_empty():
+				_add_finding(report, "unresolved_mandatory_follow_ups", decision_id, "error",
+					"Decision '%s' has a hard follow-up with empty decision_id." % decision_id, {})
+			elif not decision_map.has(target_id):
+				_add_finding(report, "unresolved_mandatory_follow_ups", decision_id, "error",
+					"Decision '%s' hard follow-up '%s' is missing." % [decision_id, target_id],
+					{"target_id": target_id})
+			var forced_id: String = str(option.get("force_next_decision", ""))
+			if not forced_id.is_empty() and not decision_map.has(forced_id):
+				_add_finding(report, "unresolved_mandatory_follow_ups", decision_id, "error",
+					"Decision '%s' force_next_decision '%s' is missing." % [decision_id, forced_id],
+					{"target_id": forced_id})
+
+
+func _analyze_crises(
+	report: Dictionary,
+	content: ContentRepository,
+	country_id: String,
+	decision_map: Dictionary,
+) -> void:
+	for crisis in content.get_crises_for_country(country_id):
+		var crisis_id: String = str(crisis.get("id", ""))
+		var entry_id: String = str(crisis.get("entry_decision_id", ""))
+		var resolution_id: String = str(crisis.get("resolution_decision_id", ""))
+		if not entry_id.is_empty() and not decision_map.has(entry_id):
+			_add_finding(report, "crises_no_resolution", crisis_id, "error",
+				"Crisis '%s' entry decision '%s' is missing." % [crisis_id, entry_id], {})
+		if bool(crisis.get("resolution_required", true)):
+			if resolution_id.is_empty():
+				# Single-decision crises resolve via entry options — require crisis_actions.
+				var entry: Dictionary = decision_map.get(entry_id, {})
+				var has_resolve := false
+				for option in DecisionSchema.get_options(entry):
+					for action in option.get("crisis_actions", []):
+						if action is Dictionary and str(action.get("action", "")) in ["resolve", "fail"]:
+							has_resolve = true
+							break
+				if not has_resolve and not decision_map.has(resolution_id):
+					_add_finding(report, "crises_no_resolution", crisis_id, "warning",
+						"Crisis '%s' requires resolution but has no resolution path." % crisis_id, {})
+			elif not decision_map.has(resolution_id):
+				_add_finding(report, "crises_no_resolution", crisis_id, "error",
+					"Crisis '%s' resolution decision '%s' is missing." % [crisis_id, resolution_id], {})
+		var max_days: int = int(crisis.get("maximum_duration_days", 3))
+		if max_days <= 0 and bool(crisis.get("resolution_required", true)):
+			_add_finding(report, "crises_permanent_active_risk", crisis_id, "warning",
+				"Crisis '%s' has non-positive maximum_duration_days and may remain active permanently." % crisis_id,
+				{"maximum_duration_days": max_days})
+
+
+func _analyze_laws_downstream(
+	report: Dictionary,
+	content: ContentRepository,
+	country_id: String,
+	decisions: Array[Dictionary],
+) -> void:
+	var referenced_laws: Dictionary = {}
+	for decision in decisions:
+		for option in DecisionSchema.get_options(decision):
+			if not (option is Dictionary):
+				continue
+			for law_id in option.get("add_laws", []):
+				referenced_laws[str(law_id)] = true
+			for law_id in option.get("remove_laws", []):
+				referenced_laws[str(law_id)] = true
+		var requirements: Dictionary = decision.get("requirements", {})
+		for key in ["required_laws", "any_laws", "forbidden_laws"]:
+			for law_id in requirements.get(key, []):
+				referenced_laws[str(law_id)] = true
+
+	for law in content.get_raw_laws():
+		var law_id: String = str(law.get("id", ""))
+		if law_id.is_empty():
+			continue
+		if not referenced_laws.has(law_id):
+			# Also check endings and crises
+			var used_elsewhere := false
+			for ending in content.get_raw_endings():
+				var conditions: Dictionary = ending.get("conditions", {})
+				for key in ["required_laws", "any_laws", "forbidden_laws"]:
+					if str(law_id) in conditions.get(key, []):
+						used_elsewhere = true
+						break
+			if not used_elsewhere:
+				_add_finding(report, "laws_no_downstream", law_id, "info",
+					"Law '%s' is never added, removed, or required by decisions/endings." % law_id, {})
+
+	# Soft check: laws that appear only as forbidden_laws on required onboarding/arc entries.
+	for decision in decisions:
+		var decision_id: String = str(decision.get("id", ""))
+		var narrative: Dictionary = decision.get("narrative", {}) if decision.get("narrative", {}) is Dictionary else {}
+		if not bool(narrative.get("starts_arc", false)):
+			continue
+		var forbidden: Array = decision.get("requirements", {}).get("forbidden_laws", [])
+		for law_id in forbidden:
+			_add_finding(report, "laws_block_required_content", "%s:%s" % [law_id, decision_id], "info",
+				"Law '%s' forbids arc-entry decision '%s' while active." % [law_id, decision_id], {})
+
+
+func _analyze_recovery_loops(
+	report: Dictionary,
+	decisions: Array[Dictionary],
+	decision_map: Dictionary,
+) -> void:
+	var edges: Dictionary = {}
+	for decision in decisions:
+		if str(decision.get("card_type", "")) != "recovery":
+			continue
+		var decision_id: String = str(decision.get("id", ""))
+		for option in DecisionSchema.get_options(decision):
+			if not (option is Dictionary):
+				continue
+			var forced_id: String = str(option.get("force_next_decision", ""))
+			if not forced_id.is_empty() and decision_map.has(forced_id):
+				if str(decision_map[forced_id].get("card_type", "")) == "recovery":
+					_add_edge(edges, decision_id, forced_id)
+			var follow_up: Variant = option.get("follow_up", {})
+			if follow_up is Dictionary and str(follow_up.get("type", "")) == "hard":
+				var target_id: String = str(follow_up.get("decision_id", ""))
+				if decision_map.has(target_id) and str(decision_map[target_id].get("card_type", "")) == "recovery":
+					_add_edge(edges, decision_id, target_id)
+	for cycle in _find_cycles(edges):
+		_add_finding(report, "recovery_loops", cycle[0], "error",
+			"Recovery loop detected: %s" % " -> ".join(cycle), {"cycle": cycle})
+
+
+func _analyze_text_duplicates(report: Dictionary, decisions: Array[Dictionary]) -> void:
+	var premises: Dictionary = {}
+	var results: Dictionary = {}
+	var labels: Dictionary = {}
+	for decision in decisions:
+		var decision_id: String = str(decision.get("id", ""))
+		var premise: String = str(decision.get("proposal", "")).strip_edges().to_lower()
+		if not premise.is_empty():
+			if premises.has(premise):
+				_add_finding(report, "duplicate_premises", decision_id, "warning",
+					"Decision '%s' shares proposal text with '%s'." % [decision_id, premises[premise]],
+					{"other_id": premises[premise]})
+			else:
+				premises[premise] = decision_id
+		for option in DecisionSchema.get_options(decision):
+			if not (option is Dictionary):
+				continue
+			var option_id: String = str(option.get("id", ""))
+			var result_text: String = str(option.get("result_text", "")).strip_edges().to_lower()
+			if not result_text.is_empty():
+				var result_key: String = result_text
+				if results.has(result_key):
+					_add_finding(report, "repeated_result_text", "%s:%s" % [decision_id, option_id], "info",
+						"Result text repeats prior card '%s'." % results[result_key],
+						{"other": results[result_key]})
+				else:
+					results[result_key] = "%s:%s" % [decision_id, option_id]
+			var label: String = str(option.get("label", "")).strip_edges().to_lower()
+			if not label.is_empty():
+				var label_key: String = label
+				if labels.has(label_key):
+					var other_label: String = str(labels[label_key])
+					var other_decision: String = other_label.get_slice(":", 0)
+					if other_decision != decision_id:
+						_add_finding(report, "repeated_option_labels", "%s:%s" % [decision_id, option_id], "info",
+							"Option label repeats prior card '%s'." % other_label,
+							{"other": other_label})
+				else:
+					labels[label_key] = "%s:%s" % [decision_id, option_id]
+
+
+func _analyze_orphaned_state(report: Dictionary, decisions: Array[Dictionary]) -> void:
+	var set_flags: Dictionary = {}
+	var required_flags: Dictionary = {}
+	var set_counters: Dictionary = {}
+	var required_counters: Dictionary = {}
+	for decision in decisions:
+		var requirements: Dictionary = decision.get("requirements", {})
+		for flag_id in requirements.get("required_flags", []):
+			required_flags[str(flag_id)] = true
+		for flag_id in requirements.get("any_flags", []):
+			required_flags[str(flag_id)] = true
+		for flag_id in requirements.get("forbidden_flags", []):
+			required_flags[str(flag_id)] = true
+		var counters_req: Variant = requirements.get("counters", {})
+		if counters_req is Dictionary:
+			for counter_id in counters_req:
+				required_counters[str(counter_id)] = true
+		for option in DecisionSchema.get_options(decision):
+			if not (option is Dictionary):
+				continue
+			for flag_id in option.get("add_flags", []):
+				set_flags[str(flag_id)] = true
+			for flag_id in option.get("remove_flags", []):
+				set_flags[str(flag_id)] = true
+			var counter_changes: Variant = option.get("counter_changes", {})
+			if counter_changes is Dictionary:
+				for counter_id in counter_changes:
+					set_counters[str(counter_id)] = true
+	for flag_id in required_flags:
+		if not set_flags.has(flag_id):
+			_add_finding(report, "orphaned_flags_and_counters", flag_id, "info",
+				"Flag '%s' is required/forbidden but never set or removed by an option." % flag_id, {})
+	for counter_id in required_counters:
+		if not set_counters.has(counter_id):
+			_add_finding(report, "orphaned_flags_and_counters", counter_id, "info",
+				"Counter '%s' is required but never changed by an option." % counter_id, {})
+
+
+func _analyze_stage_assignment(
+	report: Dictionary,
+	content: ContentRepository,
+	country_id: String,
+	decisions: Array[Dictionary],
+) -> void:
+	var country: Dictionary = content.get_country(country_id)
+	var stages: Array = country.get("run_stages", [])
+	var stage_bounds: Dictionary = {}
+	for stage in stages:
+		if stage is Dictionary:
+			stage_bounds[str(stage.get("id", ""))] = stage
+	for decision in decisions:
+		var decision_id: String = str(decision.get("id", ""))
+		var pacing: Dictionary = decision.get("pacing", {}) if decision.get("pacing", {}) is Dictionary else {}
+		var allowed: Array = pacing.get("allowed_stages", [])
+		var min_day: int = int(decision.get("minimum_day", 1))
+		var max_day: int = int(decision.get("maximum_day", 999))
+		if allowed.is_empty():
+			continue
+		for stage_id_variant in allowed:
+			var stage_id: String = str(stage_id_variant)
+			if not stage_bounds.has(stage_id):
+				_add_finding(report, "wrong_run_stage_assignment", decision_id, "warning",
+					"Decision '%s' references unknown stage '%s'." % [decision_id, stage_id], {})
+				continue
+			var stage: Dictionary = stage_bounds[stage_id]
+			var stage_min: int = int(stage.get("minimum_day", 1))
+			var stage_max: int = int(stage.get("maximum_day", 999))
+			if max_day < stage_min or min_day > stage_max:
+				_add_finding(report, "wrong_run_stage_assignment", decision_id, "warning",
+					"Decision '%s' day range %d-%d does not overlap stage '%s' (%d-%d)." % [
+						decision_id, min_day, max_day, stage_id, stage_min, stage_max,
+					], {})
+
+
+func _analyze_palace_unlocks(report: Dictionary, content: ContentRepository) -> void:
+	for upgrade in content.get_raw_palace_upgrades():
+		var upgrade_id: String = str(upgrade.get("id", ""))
+		var cost: Variant = upgrade.get("cost", upgrade.get("medal_cost", null))
+		if cost != null and int(cost) < 0:
+			_add_finding(report, "palace_unlock_invalid", upgrade_id, "error",
+				"Palace upgrade '%s' has negative cost." % upgrade_id, {"cost": cost})
+		var requirements: Variant = upgrade.get("requirements", upgrade.get("unlock_requirements", {}))
+		if requirements is Dictionary:
+			for ending_id in requirements.get("required_endings", []):
+				if content.get_ending(str(ending_id)).is_empty():
+					_add_finding(report, "palace_unlock_invalid", upgrade_id, "error",
+						"Palace upgrade '%s' requires unknown ending '%s'." % [upgrade_id, ending_id], {})
+			for other_id in requirements.get("required_upgrades", []):
+				if content.get_palace_upgrade(str(other_id)).is_empty():
+					_add_finding(report, "palace_unlock_invalid", upgrade_id, "error",
+						"Palace upgrade '%s' requires unknown upgrade '%s'." % [upgrade_id, other_id], {})

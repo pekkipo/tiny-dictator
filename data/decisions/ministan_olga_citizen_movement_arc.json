@@ -8,7 +8,7 @@
     "category": "public_life",
     "proposal": "The River Street bridge hums like a bad kettle, and the bakery queue now wraps past my sister's laundry line. Fix both, dear — or keep inventing reasons while neighbors count.",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 4,
     "maximum_day": 20,
     "narrative": {
@@ -793,7 +793,6 @@
           "populist": 2,
           "bureaucratic": 1
         },
-        "trigger_ending": "palace_hears_the_street",
         "result_text": "Palace windows open toward River Street. Olga keeps her coat on. Listening is permanent now."
       },
       {
@@ -820,7 +819,6 @@
         "trait_changes": {
           "populist": 1
         },
-        "trigger_ending": "olga_sends_you_home",
         "result_text": "The velvet badge stays on the tray. Olga points you toward your own front door. Softly."
       }
     ],

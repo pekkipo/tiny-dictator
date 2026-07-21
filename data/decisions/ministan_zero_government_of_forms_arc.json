@@ -8,7 +8,7 @@
     "category": "administration",
     "proposal": "Backlog: 4,812 unanswered civic requests. Proposal: Administrative Reform Act. Shorter queues. Numbered windows. No new Form-to-Request-Forms. Hypothesis: useful.",
     "one_time": true,
-    "base_weight": 11,
+    "base_weight": 6,
     "minimum_day": 4,
     "maximum_day": 16,
     "narrative": {

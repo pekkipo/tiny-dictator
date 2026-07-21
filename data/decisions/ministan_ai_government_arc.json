@@ -8,7 +8,7 @@
     "category": "science",
     "proposal": "A limited admin AI can triage forms and route bakery queues. Not a cabinet. Not a coup. Just fewer stamps lost under desks. Hypothesis: useful.",
     "one_time": true,
-    "base_weight": 10,
+    "base_weight": 6,
     "minimum_day": 8,
     "maximum_day": 22,
     "narrative": {

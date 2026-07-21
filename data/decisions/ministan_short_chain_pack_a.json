@@ -1075,11 +1075,7 @@
       "visual_hook": "gift kiosk beside the throne",
       "writer_notes": "Distinct from Pack C palace tours."
     },
-    "requirements": {
-      "required_palace_upgrades": [
-        "cushion_throne"
-      ]
-    }
+    "requirements": {}
   },
   {
     "id": "gift_shop_merch_scandal",

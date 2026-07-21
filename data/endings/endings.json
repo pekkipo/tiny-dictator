@@ -91,7 +91,8 @@
       "all_flags": [
         "beloved_retirement",
         "festival_econ_complete"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "You canceled the eternal parade.",
@@ -112,7 +113,8 @@
     "conditions": {
       "all_flags": [
         "country_somehow_works"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "All four meters stayed green long enough to embarrass the cynics.",
@@ -132,7 +134,8 @@
       "all_flags": [
         "peaceful_accidental_democracy",
         "election_arc_complete"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "A ceremonial form accidentally counted real preferences.",
@@ -153,7 +156,8 @@
       "all_flags": [
         "general_remains_loyal",
         "boom_protector_title"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "General Boom never seized the palace.",
@@ -174,7 +178,8 @@
       "all_flags": [
         "olga_sends_you_home",
         "olga_movement_complete"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "Auntie Olga refused the crown and suggested you try living like a neighbor.",
@@ -195,7 +200,8 @@
       "all_flags": [
         "clerk_zero_closes_file",
         "zero_forms_complete"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "Clerk Zero closed the national folder.",
@@ -216,7 +222,8 @@
       "all_flags": [
         "penny_miracle_sealed",
         "penny_austerity_complete"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "Minister Penny balanced the final budget without deleting the citizens.",
@@ -236,7 +243,8 @@
     "conditions": {
       "all_flags": [
         "profit_buys_retirement"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "common",
     "subtitle": "Sir Profit retired on a yacht named Alignment.",
@@ -257,7 +265,8 @@
       "all_flags": [
         "spreadsheet_state",
         "penny_austerity_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "The ledger became a religion.",
@@ -278,7 +287,8 @@
       "all_flags": [
         "austerity_without_citizens",
         "penny_austerity_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "The books were perfect.",
@@ -299,7 +309,8 @@
       "all_flags": [
         "nation_becomes_broadcast",
         "luna_media_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Ministan became a continuous special report.",
@@ -320,7 +331,8 @@
       "all_flags": [
         "olga_peoples_cabinet",
         "olga_movement_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Kitchen-table petitions became ministries.",
@@ -341,7 +353,8 @@
       "all_flags": [
         "palace_hears_the_street",
         "olga_movement_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "The ruler listened.",
@@ -361,7 +374,8 @@
     "conditions": {
       "all_flags": [
         "experimental_republic"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Every law became a trial and every trial became a law.",
@@ -381,7 +395,8 @@
     "conditions": {
       "all_flags": [
         "experiment_leaves"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Science packed politely and took a taxi.",
@@ -402,7 +417,8 @@
       "all_flags": [
         "corporate_benches_empire",
         "corporate_branding_soft"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Public benches became brand real estate.",
@@ -422,7 +438,8 @@
     "conditions": {
       "all_flags": [
         "country_is_acquired"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Ministan became a subsidiary with a flag.",
@@ -443,7 +460,8 @@
       "all_flags": [
         "purrfect_transfer",
         "whiskers_rev_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Whiskers completed a solemn transfer of symbolic power.",
@@ -467,7 +485,8 @@
       "all_flags": [
         "government_by_form_soft",
         "forms_run_government"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Ministan ran on Form F-0 and a paid efficiency miracle.",
@@ -488,7 +507,8 @@
       "all_flags": [
         "final_stamp",
         "zero_forms_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "One last stamp descended on Ministan.",
@@ -509,7 +529,8 @@
       "all_flags": [
         "happiness_reaches_100_percent",
         "happiness_arc_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "The National Happiness Index froze at perfection.",
@@ -530,7 +551,8 @@
       "all_flags": [
         "tanks_direct_everything_soft",
         "tank_parking_chain_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Parking, traffic, and policy answered to tread marks.",
@@ -550,7 +572,8 @@
     "conditions": {
       "all_flags": [
         "boom_mascot_mode"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "General Boom now rides a parade float shaped like himself.",
@@ -571,7 +594,8 @@
       "all_flags": [
         "hyper_strange_success",
         "hyper_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Ministan printed until every citizen was rich and broke.",
@@ -592,7 +616,8 @@
       "all_flags": [
         "great_cheese_settlement",
         "cheese_arc_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "Border toast resumed.",
@@ -613,7 +638,8 @@
       "all_flags": [
         "eternal_national_festival",
         "festival_econ_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "uncommon",
     "subtitle": "The credits never rolled.",
@@ -633,7 +659,8 @@
     "conditions": {
       "all_flags": [
         "boom_coup_succeeded"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "General Boom seized power during a marching rehearsal.",
@@ -654,7 +681,8 @@
       "all_flags": [
         "artificial_sun_success",
         "scientific_golden_soft"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "The artificial sun stayed up.",
@@ -674,7 +702,8 @@
     "conditions": {
       "all_flags": [
         "ai_accepts_resignation"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "A polite email ended the term.",
@@ -694,7 +723,8 @@
     "conditions": {
       "all_flags": [
         "moon_new_owner"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Title transferred.",
@@ -715,7 +745,8 @@
       "all_flags": [
         "democracy_by_administrative_error",
         "election_arc_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "A void stamp arrived one day late.",
@@ -736,7 +767,8 @@
       "all_flags": [
         "palace_beautiful_empty",
         "palace_reno_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "The ballroom won awards.",
@@ -757,7 +789,8 @@
       "all_flags": [
         "renovation_reveals_truth",
         "palace_reno_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Ledgers went on display.",
@@ -778,7 +811,8 @@
     "conditions": {
       "all_flags": [
         "smiling_tyrant_abdication"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "You abdicated on live television with a wink.",
@@ -798,7 +832,8 @@
       "all_flags": [
         "border_volume_treaty",
         "smallest_superpower_soft"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Ministan signed a volume treaty and called it soft power.",
@@ -819,7 +854,8 @@
       "all_flags": [
         "traffic_system_achieves_peace",
         "traffic_mil_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Ministan solved gridlock with schedules, flowers, and one very polite roundabout.",
@@ -840,7 +876,8 @@
       "all_flags": [
         "day_everyone_stopped_believing",
         "luna_media_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Official information became optional.",
@@ -863,7 +900,8 @@
       ],
       "minimum_counters": {
         "propaganda_choices": 2
-      }
+      },
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "Frowning was classified as treason.",
@@ -884,7 +922,8 @@
     "conditions": {
       "all_flags": [
         "competent_successor_named"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "A quiet deputy inherited the desk without fireworks.",
@@ -904,7 +943,8 @@
       "all_flags": [
         "whiskers_boxes_truce",
         "whiskers_rev_complete"
-      ]
+      ],
+      "minimum_day": 30
     },
     "rarity": "rare",
     "subtitle": "The cat revolution ended in cardboard.",
@@ -925,7 +965,8 @@
     "conditions": {
       "all_flags": [
         "toaster_elected_president"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "The predictive toaster won on a platform of even browning.",
@@ -945,7 +986,8 @@
     "conditions": {
       "all_flags": [
         "wrong_map_republic"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "Ministan adopted a tourist brochure as its atlas.",
@@ -965,7 +1007,8 @@
     "conditions": {
       "all_flags": [
         "palace_micronation"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "The palace seceded from Ministan and kept the gift shop.",
@@ -985,7 +1028,8 @@
     "conditions": {
       "all_flags": [
         "forms_awaken_recognized"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "National forms gained self-awareness and voting rights.",
@@ -1010,7 +1054,8 @@
       ],
       "minimum_counters": {
         "cat_favor_choices": 3
-      }
+      },
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "Parliament voted unanimously to replace you with a cat.",
@@ -1030,7 +1075,8 @@
     "conditions": {
       "all_flags": [
         "moon_replacement_pending"
-      ]
+      ],
+      "minimum_day": 28
     },
     "rarity": "secret",
     "subtitle": "Ministan replaced the moon with a more efficient model.",

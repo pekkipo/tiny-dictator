@@ -518,8 +518,7 @@
             "reason": "replace_clerks_with_boxes"
           }
         ],
-        "result_text": "The boxes cannot stamp, explain, or unionize. Services become theoretical.",
-        "trigger_ending": "government_by_form"
+        "result_text": "The boxes cannot stamp, explain, or unionize. Services become theoretical."
       }
     ],
     "tags": [
@@ -1137,8 +1136,7 @@
             "reason": "sell_moon_rights"
           }
         ],
-        "result_text": "The moon gets a new owner, a logo, and several confused astronomers.",
-        "trigger_ending": "moon_new_owner"
+        "result_text": "The moon gets a new owner, a logo, and several confused astronomers."
       }
     ],
     "tags": [

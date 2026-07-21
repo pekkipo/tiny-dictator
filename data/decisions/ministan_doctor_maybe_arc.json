@@ -751,7 +751,6 @@
           "scientific": 3,
           "chaotic": 2
         },
-        "trigger_ending": "experimental_republic",
         "result_text": "Every law is a trial. Every trial is a law. Historians request safety goggles."
       },
       {
@@ -778,7 +777,6 @@
         "trait_changes": {
           "bureaucratic": 2
         },
-        "trigger_ending": "experiment_leaves",
         "result_text": "Beakers pack politely. Clerk Zero stamps EXIT. Doctor Maybe waves from a taxi."
       }
     ],
