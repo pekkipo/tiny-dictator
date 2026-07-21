@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=3 uid="uid://calphafeedback01"]
+
+[ext_resource type="Script" path="res://scripts/ui/AlphaFeedbackPanel.gd" id="1_script"]
+
+[node name="AlphaFeedbackPanel" type="CanvasLayer"]
+layer = 120
+script = ExtResource("1_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(920, 1200)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Alpha Feedback"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Feedback type"
+
+[node name="TypeOption" type="OptionButton" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DecisionLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Related decision ID (optional)"
+
+[node name="DecisionIdEdit" type="LineEdit" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "decision_id"
+
+[node name="RunLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Related run ID (optional)"
+
+[node name="RunIdEdit" type="LineEdit" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "run_id"
+
+[node name="RatingLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Rating (1–5)"
+
+[node name="RatingSpin" type="SpinBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+
+[node name="CommentLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+text = "Short comment"
+
+[node name="CommentEdit" type="TextEdit" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="ConfusingCheck" type="CheckBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Confusing content"
+
+[node name="RepeatedCheck" type="CheckBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Repeated content"
+
+[node name="BugCheck" type="CheckBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Technical bug"
+
+[node name="OffensiveCheck" type="CheckBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Offensive or inappropriate"
+
+[node name="FavoriteCheck" type="CheckBox" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Favorite moment"
+
+[node name="StatusLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="SubmitButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Submit locally"
+
+[node name="CloseButton" type="Button" parent="Center/Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Close"

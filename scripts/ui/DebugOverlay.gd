@@ -79,11 +79,25 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo \
 			and (event.keycode == KEY_F1 or event.keycode == KEY_QUOTELEFT):
+		if not _can_open_debug_menu():
+			return
 		toggle_visibility()
 		get_viewport().set_input_as_handled()
 
 
+func _can_open_debug_menu() -> bool:
+	## Outside closed alpha, keep developer convenience.
+	if not ClosedAlphaConfig.is_enabled():
+		return true
+	## In closed alpha, cheats stay hidden unless explicitly unlocked.
+	if ClosedAlphaConfig.is_hidden_debug_menu_enabled():
+		return true
+	return SaveManager.is_debug_enabled()
+
+
 func toggle_visibility() -> void:
+	if not visible and not _can_open_debug_menu():
+		return
 	visible = not visible
 	if visible:
 		_populate_ending_options()

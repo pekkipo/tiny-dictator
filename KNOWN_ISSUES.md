@@ -16,7 +16,7 @@ Intentional scope limits and known quirks at the Phase 2A architecture freeze.
 
 ## Platform and export
 
-- Desktop editor play only; no Android/iOS export configuration or testing yet.
+- Closed alpha (2B-19): desktop editor play is the primary test path; `export_presets.cfg` defines macOS/Windows/Linux closed-alpha presets. A packaged binary requires matching Godot export templates — do not claim mobile packaging yet.
 - Portrait layout is responsive, but only spot-checked at 1080×1920 aspect ratios.
 
 ## Persistence

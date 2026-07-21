@@ -24,3 +24,6 @@ signal crisis_resolved(crisis_id: String, runtime: Dictionary)
 signal crisis_failed(crisis_id: String, runtime: Dictionary)
 signal meta_progression_updated
 signal meta_screen_requested
+signal alpha_settings_requested
+signal alpha_feedback_requested(feedback_type: String, decision_id: String, run_id: String)
+signal alpha_report_issue_requested

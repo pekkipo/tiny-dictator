@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Tiny Dictator"
+config/version="0.2.0-alpha"
 run/main_scene="res://scenes/main/Main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -21,6 +22,7 @@ EventBus="*res://scripts/core/EventBus.gd"
 GameManager="*res://scripts/core/GameManager.gd"
 SaveManager="*res://scripts/core/SaveManager.gd"
 MetaProgressionManager="*res://scripts/core/MetaProgressionManager.gd"
+ClosedAlphaLogger="*res://scripts/core/ClosedAlphaLogger.gd"
 
 [display]
 

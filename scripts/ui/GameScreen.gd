@@ -19,7 +19,17 @@ func _ready() -> void:
 	EventBus.law_removed.connect(_on_laws_changed)
 	EventBus.run_started.connect(_on_run_started)
 	EventBus.run_reset.connect(_on_run_reset)
+	_setup_alpha_report()
 	_refresh_all()
+
+
+func _setup_alpha_report() -> void:
+	if not has_node("%ReportIssueButton"):
+		return
+	var alpha_on: bool = ClosedAlphaConfig.is_enabled()
+	%ReportIssueButton.visible = alpha_on
+	if alpha_on:
+		%ReportIssueButton.pressed.connect(func() -> void: EventBus.alpha_report_issue_requested.emit())
 
 
 func _on_run_started(_state: RunState) -> void:

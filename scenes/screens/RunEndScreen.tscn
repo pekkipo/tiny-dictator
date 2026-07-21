@@ -168,6 +168,22 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "RULE AGAIN"
 
+[node name="FeedbackButton" type="Button" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "OPTIONAL FEEDBACK"
+visible = false
+
+[node name="ReportIssueButton" type="Button" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "REPORT ISSUE"
+visible = false
+
 [node name="MainMenuButton" type="Button" parent="SafeAreaMargin/NewspaperPanel/NewspaperMargin/NewspaperVBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)

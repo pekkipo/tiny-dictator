@@ -100,6 +100,22 @@ func get_save_version() -> int:
 	return int(_data.get("version", 0))
 
 
+func get_settings() -> Dictionary:
+	var settings: Variant = _data.get("settings", {})
+	return settings.duplicate(true) if settings is Dictionary else {"debug_enabled": false}
+
+
+func is_debug_enabled() -> bool:
+	return bool(get_settings().get("debug_enabled", false))
+
+
+func set_debug_enabled(enabled: bool) -> void:
+	var settings: Dictionary = get_settings()
+	settings["debug_enabled"] = enabled
+	_data["settings"] = settings
+	_persist()
+
+
 func get_medals() -> int:
 	return int(_data.get("medals", 0))
 
@@ -187,7 +203,7 @@ func get_last_run_summary() -> Dictionary:
 
 
 func reset_meta_progression() -> void:
-	var settings: Dictionary = _data.get("settings", {"debug_enabled": true})
+	var settings: Dictionary = _data.get("settings", {"debug_enabled": false})
 	_data = _default_data()
 	_data["settings"] = settings.duplicate(true)
 	_persist()
@@ -233,7 +249,7 @@ func _default_data() -> Dictionary:
 		"palace_upgrades": {},
 		"unlocked_endings": [],
 		"settings": {
-			"debug_enabled": true,
+			"debug_enabled": false,
 		},
 		"last_run_summary": {},
 		"introduced_onboarding_concepts": [],

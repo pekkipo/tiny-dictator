@@ -8,7 +8,17 @@ signal back_pressed
 func _ready() -> void:
 	%BackButton.pressed.connect(_on_back_pressed)
 	EventBus.meta_progression_updated.connect(_populate)
+	_setup_alpha_button()
 	_populate()
+
+
+func _setup_alpha_button() -> void:
+	if not has_node("%AlphaSettingsButton"):
+		return
+	var alpha_on: bool = ClosedAlphaConfig.is_enabled()
+	%AlphaSettingsButton.visible = alpha_on
+	if alpha_on:
+		%AlphaSettingsButton.pressed.connect(func() -> void: EventBus.alpha_settings_requested.emit())
 
 
 func _populate() -> void:

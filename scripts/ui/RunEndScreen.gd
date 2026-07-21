@@ -7,7 +7,22 @@ extends Control
 func _ready() -> void:
 	%RestartButton.pressed.connect(_on_restart_pressed)
 	%MainMenuButton.pressed.connect(_on_main_menu_pressed)
+	_setup_alpha_buttons()
 	_populate()
+
+
+func _setup_alpha_buttons() -> void:
+	var alpha_on: bool = ClosedAlphaConfig.is_enabled()
+	%FeedbackButton.visible = alpha_on
+	%ReportIssueButton.visible = alpha_on
+	if not alpha_on:
+		return
+	%FeedbackButton.pressed.connect(func() -> void:
+		EventBus.alpha_feedback_requested.emit("ending", "", ClosedAlphaLogger.get_last_completed_run_id())
+	)
+	%ReportIssueButton.pressed.connect(func() -> void:
+		EventBus.alpha_report_issue_requested.emit()
+	)
 
 
 func _populate() -> void:
@@ -90,6 +105,8 @@ func _format_reward_summary(summary: RunSummary) -> String:
 
 
 func _on_restart_pressed() -> void:
+	if ClosedAlphaConfig.is_enabled():
+		ClosedAlphaLogger.mark_restart_after_ending()
 	GameManager.restart_run()
 
 

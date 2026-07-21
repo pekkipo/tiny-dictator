@@ -84,6 +84,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "DAY 1"
 
+[node name="ReportIssueButton" type="Button" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox/DayRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "REPORT"
+visible = false
+
 [node name="ResourceBar" parent="SafeAreaMargin/MainVBox/TopBar/TopBarMargin/TopBarVBox" instance=ExtResource("2_rbar")]
 unique_name_in_owner = true
 layout_mode = 2
